@@ -82,7 +82,7 @@ Now that this is not going to work, do we have another way?
 
 Yes, that is, you do it the way I mentioned above, and then you go to the website that has practice tests to practice a lot of questions. Remember, be sure to practice enough questions before you prepare for the exam, and practice as many times as you could, 5 times, 10 times or even 20 to 30 times. Don’t just practice once or twice then go to feed their pockets.
 
-When browsing the [PHP Net](http://php.net) site, watch out for some news about the 7.0 feature (obviously not as new as it was then). Because the new features in this version of php7 are not so many, you can easily master them. So the focus of the exam is on some of the features in the early version, or on some of the magic tricks that php comes with in the first place.
+When browsing the [PHP Net](http://php.net) site, watch out for some news about the 7.0 feature (obviously not as new as it was then). Because the new features in this version of PHP7 are not so many, you can easily master them. So the focus of the exam is on some of the features in the early version, or on some of the magic tricks that PHP comes with in the first place.
 
 Here are some of the things I've listed that might have been relevant to the exam:
 
@@ -107,7 +107,7 @@ So when is the best time to go to the test center? In fact, when you master all 
 
 # How to defeat the fear before the exam
 
-If you are the first to go to the test center, I can only say that there is no good way to ease your nervousness. The first time you do something, you are always nervous. Just try a few more times.
+If this is your first time, I can only say that there is no good way to ease your nervousness. The first time you do something, you are always nervous. Just try a few more times.
 
 Like the first time you're in contact with someone you like, you'll have a sense of the computer screen in the test centre, but it's more about fear than ecstasy.
 

@@ -1,4 +1,4 @@
-baseURL = "https://stevendongchen.github.io/dongchen.co/"
+baseURL = "https://dongchen.co/"
 languageCode = "en"
 defaultContentLanguage = "en"                             # en / zh-cn / ... (This field determines which i18n file to use)
 title = "Dong - A place to track my time log"
@@ -156,11 +156,11 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
 
   [params.reward]                                         # 文章打赏
     enable = true
-    wechat = "https://stevendongchen.github.io/dongchen.co/images/wepay_qr_final.png"           # 微信二维码
-    alipay = "https://stevendongchen.github.io/dongchen.co/images/alipay_qr_final.png"           # 支付宝二维码
+    wechat = "https://dongchen.co/images/wepay_qr_final.png"           # 微信二维码
+    alipay = "https://dongchen.co/images/alipay_qr_final.png"           # 支付宝二维码
 
   [params.social]                                         # 社交链接
-    a-email = "snowhidenz@gmail.com"
+    a-email = "mailto:snowhidenz@gmail.com"
     # b-stack-overflow = "http://localhost:1313"
     # c-twitter = "http://localhost:1313"
     # d-facebook = "http://localhost:1313"
