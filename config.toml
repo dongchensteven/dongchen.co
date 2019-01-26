@@ -156,8 +156,8 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
 
   [params.reward]                                         # 文章打赏
     enable = true
-    wechat = "/images/wepay_qr_final.png"           # 微信二维码
-    alipay = "/images/alipay_qr_final.png"           # 支付宝二维码
+    wechat = "https://stevendongchen.github.io/dongchen.co/images/wepay_qr_final.png"           # 微信二维码
+    alipay = "https://stevendongchen.github.io/dongchen.co/images/alipay_qr_final.png"           # 支付宝二维码
 
   [params.social]                                         # 社交链接
     a-email = "snowhidenz@gmail.com"
