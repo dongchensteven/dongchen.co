@@ -74,15 +74,15 @@ But that doesn't mean we don't have to pay any price for it. If we fail the exam
 
 So do your best to prepare for the exam, as if you have accepted a challenge that must be done. We must overcome this obstacle on the way of life; otherwise our career development will be stagnant forever because this challenge is only a drop in the ocean of your career.
 
-# What materials should be prepared?
+# What materials should be prepared
 
-If there is only one choice of preparation materials, I would recommend that you go through all the code and descriptions on http://php.net and find out what their origins and uses are. But if you do as I say, you will suffer a lot because the information is too much.
+If there is only one choice of preparation materials, I would recommend that you go through all the code and descriptions on [PHP Net](http://php.net) and find out what their origins and uses are. But if you do as I say, you will suffer a lot because the information is too much.
 
 Now that this is not going to work, do we have another way?
 
 Yes, that is, you do it the way I mentioned above, and then you go to the website that has practice tests to practice a lot of questions. Remember, be sure to practice enough questions before you prepare for the exam, and practice as many times as you could, 5 times, 10 times or even 20 to 30 times. Don’t just practice once or twice then go to feed their pockets.
 
-When browsing the http://php.net site, watch out for some news about the 7.0 feature (obviously not as new as it was then). Because the new features in this version of php7 are not so many, you can easily master them. So the focus of the exam is on some of the features in the early version, or on some of the magic tricks that php comes with in the first place.
+When browsing the [PHP Net](http://php.net) site, watch out for some news about the 7.0 feature (obviously not as new as it was then). Because the new features in this version of php7 are not so many, you can easily master them. So the focus of the exam is on some of the features in the early version, or on some of the magic tricks that php comes with in the first place.
 
 Here are some of the things I've listed that might have been relevant to the exam:
 
@@ -95,7 +95,7 @@ Here are some of the things I've listed that might have been relevant to the exa
 
 All of this is taken from the manual page of the php.net website.
 
-# How long does it take to be prepared?
+# How long does it take to be prepared
 
 I don't have a definite answer about how long it takes to prepare for the exam. I personally spent a lot of time preparing for the exam. I can't remember how much time it took. It was so long that I forgot about it.
 
@@ -105,7 +105,7 @@ My advice is to minimise the time it takes to prepare for the exam because your 
 
 So when is the best time to go to the test center? In fact, when you master all the questions, every time you see a new practice test, you can get the answers in a tight time. If you can do that, yourself can book the entrance exam right away.
 
-# How to defeat the fear before the exam?
+# How to defeat the fear before the exam
 
 If you are the first to go to the test center, I can only say that there is no good way to ease your nervousness. The first time you do something, you are always nervous. Just try a few more times.
 
@@ -115,7 +115,7 @@ But what is the use of fear? Fear can only make us more and more afraid to do wh
 
 The best way to defeat fear is to acknowledge its existence, find out why it exists, and then solve it in a scientific way, and Google will provide you with many powerful solutions. But the final solution is to face a little more fear, so you're immune to it.
 
-# The most important part of the exam?
+# The most important part of the exam
 
 Preparation for an exam is like a warrior who practised inner strength in ancient times. Like the [Jinyong Qunxia Zhuan](https://www.giantbomb.com/jinyong-qunxia-zhuan/3030-7980/) RPG computer game, I played when I was a kid. The attacking force of a character has nothing to do with their skill trees. The attack force depends on their inner strengths, and the inner strength is linked to the level, the higher the level of a character, the stronger the attack force the character outputs.
 
