@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>How did I pass the Zend PHP7 Certified Engineer exam - Dong - A place to track my time log</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Dong Chen" /><meta name="description" content="The other day I received an email from a fellow, which he sent me through Zend&amp;rsquo;s list of certifiers. Although we didn&amp;rsquo;t know each other until then, I felt that since we were all in the community of PHP, I should help him sort out the areas he needed to pay attention to before taking the exam. However, it would be nice if other people who had to prepare for the ZCE PHP7 also found this article." /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://stevendongchen.github.io/dongchen.co/post/certification/zend-php7-certified-engineer-passing-technique-sharing/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/dongchen.co/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/dongchen.co/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/dongchen.co/favicon-16x16.png">
+<link rel="manifest" href="/dongchen.co/manifest.json">
+<link rel="mask-icon" href="/dongchen.co/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dongchen.co/dist/even.ea128f8b.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="How did I pass the Zend PHP7 Certified Engineer exam" />
+<meta property="og:description" content="The other day I received an email from a fellow, which he sent me through Zend&rsquo;s list of certifiers. Although we didn&rsquo;t know each other until then, I felt that since we were all in the community of PHP, I should help him sort out the areas he needed to pay attention to before taking the exam. However, it would be nice if other people who had to prepare for the ZCE PHP7 also found this article." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://stevendongchen.github.io/dongchen.co/post/certification/zend-php7-certified-engineer-passing-technique-sharing/" /><meta property="article:published_time" content="2019-01-26T07:01:23&#43;13:00"/>
+<meta property="article:modified_time" content="2019-01-26T07:01:23&#43;13:00"/>
+
+<meta itemprop="name" content="How did I pass the Zend PHP7 Certified Engineer exam">
+<meta itemprop="description" content="The other day I received an email from a fellow, which he sent me through Zend&rsquo;s list of certifiers. Although we didn&rsquo;t know each other until then, I felt that since we were all in the community of PHP, I should help him sort out the areas he needed to pay attention to before taking the exam. However, it would be nice if other people who had to prepare for the ZCE PHP7 also found this article.">
+
+
+<meta itemprop="datePublished" content="2019-01-26T07:01:23&#43;13:00" />
+<meta itemprop="dateModified" content="2019-01-26T07:01:23&#43;13:00" />
+<meta itemprop="wordCount" content="1595">
+
+
+
+<meta itemprop="keywords" content="Professional Certification," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="How did I pass the Zend PHP7 Certified Engineer exam"/>
+<meta name="twitter:description" content="The other day I received an email from a fellow, which he sent me through Zend&rsquo;s list of certifiers. Although we didn&rsquo;t know each other until then, I felt that since we were all in the community of PHP, I should help him sort out the areas he needed to pay attention to before taking the exam. However, it would be nice if other people who had to prepare for the ZCE PHP7 also found this article."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/dongchen.co/" class="logo">Dong</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/dongchen.co/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/dongchen.co/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/dongchen.co/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/dongchen.co/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/dongchen.co/" class="logo">Dong</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/dongchen.co/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/dongchen.co/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/dongchen.co/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/dongchen.co/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">How did I pass the Zend PHP7 Certified Engineer exam</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> Sat Jan 26 2019 </span>
+        <div class="post-category">
+            <a href="/dongchen.co/categories/how-to-be-certified/"> How To Be Certified </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#how-to-prepare-for-the-exam">How to prepare for the exam</a></li>
+<li><a href="#what-materials-should-be-prepared">What materials should be prepared</a></li>
+<li><a href="#how-long-does-it-take-to-be-prepared">How long does it take to be prepared</a></li>
+<li><a href="#how-to-defeat-the-fear-before-the-exam">How to defeat the fear before the exam</a></li>
+<li><a href="#the-most-important-part-of-the-exam">The most important part of the exam</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>The other day I received an email from a fellow, which he sent me through Zend&rsquo;s list of certifiers. Although we didn&rsquo;t know each other until then, I felt that since we were all in the community of PHP, I should help him sort out the areas he needed to pay attention to before taking the exam. However, it would be nice if other people who had to prepare for the ZCE PHP7 also found this article.</p>
+
+<figure>
+    <img src="../request_for_zce_exam_passing_techniques.png"
+         alt="img"/> <figcaption>
+            <h4>Considering the privacy of the fellow, I did some work on this screenshot</h4>
+        </figcaption>
+</figure>
+
+
+<p>The preparation process is always long and painful. If you have a similar experience, I believe you agree with me.</p>
+
+<p>So how do we prepare for the exam so that we don&rsquo;t fail? Unfortunately, I don&rsquo;t have a perfect answer to this question. I believe that other people who have passed the exam have no perfect answer to such questions as I do.</p>
+
+<p>While it&rsquo;s a long weekend in New Zealand, I&rsquo;ll take some time to discuss the issues mentioned in the email. I&rsquo;ll try my best to answer these questions:</p>
+
+<ul>
+<li>How to prepare for the exam?</li>
+<li>What materials should be prepared?</li>
+<li>How long does it take to be prepared?</li>
+<li>How to defeat the fear before the exam?</li>
+<li>The most important part of the exam?</li>
+</ul>
+
+<p>Which may not be that professional, but better than nothing.</p>
+
+<p>Before we begin, let&rsquo;s ask ourselves why I need this certificate. Is it to prepare for a better position than the current one? Alternatively, are we just taking an exam to show off to someone else? If we had different intentions, the results would be very different. If you want to have a better career, you will try your best to prepare for the exam, or vice versa.</p>
+
+<p>When you have answered the above questions, I shall begin to answer your questions.</p>
+
+<h1 id="how-to-prepare-for-the-exam">How to prepare for the exam</h1>
+
+<p>Well, no matter what the purpose of the test is, I&rsquo;m just here to make a suggestion, try to test for the former I mentioned above, so that you have a chance of passing the exam. Since the test questions for this certificate are quite challenging for those who have not taken the exam for early PHP versions, I should be careful to note that the new features of PHP7 do not frequently appear on the exam.</p>
+
+<p>My advice is not to put too much pressure on yourself during the preparation period. Failing the exam doesn&rsquo;t mean you&rsquo;re finished, so the first thing you have to do during this period is to keep yourself in a relaxed state.</p>
+
+<p>But that doesn&rsquo;t mean we don&rsquo;t have to pay any price for it. If we fail the exam, Zend will provide us with a coupon and encourage us for a retesting, and I can&rsquo;t remember what percentage of the amount can be deducted. But failure to pass the exam is not only a loss of money for us but also the courage to take another try and the time spent preparing for it.</p>
+
+<p>So do your best to prepare for the exam, as if you have accepted a challenge that must be done. We must overcome this obstacle on the way of life; otherwise our career development will be stagnant forever because this challenge is only a drop in the ocean of your career.</p>
+
+<h1 id="what-materials-should-be-prepared">What materials should be prepared</h1>
+
+<p>If there is only one choice of preparation materials, I would recommend that you go through all the code and descriptions on <a href="http://php.net">PHP Net</a> and find out what their origins and uses are. But if you do as I say, you will suffer a lot because the information is too much.</p>
+
+<p>Now that this is not going to work, do we have another way?</p>
+
+<p>Yes, that is, you do it the way I mentioned above, and then you go to the website that has practice tests to practice a lot of questions. Remember, be sure to practice enough questions before you prepare for the exam, and practice as many times as you could, 5 times, 10 times or even 20 to 30 times. Don’t just practice once or twice then go to feed their pockets.</p>
+
+<p>When browsing the <a href="http://php.net">PHP Net</a> site, watch out for some news about the 7.0 feature (obviously not as new as it was then). Because the new features in this version of php7 are not so many, you can easily master them. So the focus of the exam is on some of the features in the early version, or on some of the magic tricks that php comes with in the first place.</p>
+
+<p>Here are some of the things I&rsquo;ve listed that might have been relevant to the exam:</p>
+
+<ul>
+<li><a href="http://php.net/manual/en/langref.php">Language Reference</a></li>
+<li><a href="http://php.net/manual/en/security.php">Security</a></li>
+<li><a href="http://php.net/manual/en/features.php">Features</a></li>
+<li><a href="http://php.net/manual/en/funcref.php">Function Reference</a></li>
+<li><a href="http://php.net/manual/en/internals2.php">PHP at the Core: A Hacker&rsquo;s Guide</a></li>
+<li><a href="http://php.net/manual/en/migration70.php">Migrating from PHP 5.6.x to PHP 7.0.x</a></li>
+</ul>
+
+<p>All of this is taken from the manual page of the php.net website.</p>
+
+<h1 id="how-long-does-it-take-to-be-prepared">How long does it take to be prepared</h1>
+
+<p>I don&rsquo;t have a definite answer about how long it takes to prepare for the exam. I personally spent a lot of time preparing for the exam. I can&rsquo;t remember how much time it took. It was so long that I forgot about it.</p>
+
+<p>How long it will take to prepare for this exam varies entirely from person to person. For the novice, it may spend months to do the preparation, and for those who are familiar with the field, they may even take the exam without any practice in a short period(Although, <a href="https://www.urbandictionary.com/define.php?term=zhuangbility">Zhungability</a> is quite easy to get stroke by the thunder). And experienced people who need a little longer may be prepared for a week, two or three weeks.</p>
+
+<p>My advice is to minimise the time it takes to prepare for the exam because your motivation will be dampened if you take too long to prepare for the exam. Just think, a goal took you a long time to plan to achieve, but after a long time, you found that it has not been completed, and the result is a shock, anyway, I have experienced it.</p>
+
+<p>So when is the best time to go to the test center? In fact, when you master all the questions, every time you see a new practice test, you can get the answers in a tight time. If you can do that, yourself can book the entrance exam right away.</p>
+
+<h1 id="how-to-defeat-the-fear-before-the-exam">How to defeat the fear before the exam</h1>
+
+<p>If you are the first to go to the test center, I can only say that there is no good way to ease your nervousness. The first time you do something, you are always nervous. Just try a few more times.</p>
+
+<p>Like the first time you&rsquo;re in contact with someone you like, you&rsquo;ll have a sense of the computer screen in the test centre, but it&rsquo;s more about fear than ecstasy.</p>
+
+<p>But what is the use of fear? Fear can only make us more and more afraid to do what we want to do. As long as we aim for direction and work hard for it, everything can be solved. It is mainly our spiritual shackles that constrain our daily behaviour, fear what we want but do not dare to work for and cause us to become farther and farther from our ideal life, if we are in this state for a long time then we&rsquo;re going crazy.</p>
+
+<p>The best way to defeat fear is to acknowledge its existence, find out why it exists, and then solve it in a scientific way, and Google will provide you with many powerful solutions. But the final solution is to face a little more fear, so you&rsquo;re immune to it.</p>
+
+<h1 id="the-most-important-part-of-the-exam">The most important part of the exam</h1>
+
+<p>Preparation for an exam is like a warrior who practised inner strength in ancient times. Like the <a href="https://www.giantbomb.com/jinyong-qunxia-zhuan/3030-7980/">Jinyong Qunxia Zhuan</a> RPG computer game, I played when I was a kid. The attacking force of a character has nothing to do with their skill trees. The attack force depends on their inner strengths, and the inner strength is linked to the level, the higher the level of a character, the stronger the attack force the character outputs.</p>
+
+<p>Doing exercises is like learning martial arts with others. The more times we play, the higher our grades are, and our inner strengths will improve accordingly. So we need to control the time we spend in other places, such as entertainment, do less, do more things related to training so that we can prepare for the exam. As the saying goes that Know the enemy and know yourself, and you can fight a hundred battles with no danger of defeat. We always need to practice hard, and there are no shortcuts on the way to spiritual practice.</p>
+
+<p>If you think the content of this article has helped you, and if you would like some more high-quality materials in the near future, please give me some modest support.</p>
+
+<!-- Buy Me a Coffee Button -->
+
+<p class="align-center">
+  <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/PFou9WhLr"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
+</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Dong Chen</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">Sat Jan 26 2019</span>
+  </p>
+  
+  
+</div><div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wepay_qr_final.png">
+        <span>wechat</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay_qr_final.png">
+        <span>alipay</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/dongchen.co/tags/professional-certification/">Professional Certification</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/dongchen.co/post/server-side-programming/nginx/simple-but-profound/4.-default-nginx.conf-file/">
+            <span class="next-text nav-default">4. An overview of the default nginx.conf file</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'dongchenco';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="snowhidenz@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.linkedin.com/in/stevendongchen" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/stevendongchen" class="iconfont icon-github" title="github"></a>
+  <a href="https://stevendongchen.github.io/dongchen.co/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Dong Chen</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dongchen.co/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-133226289-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Professional Certification on Dong - A place to track my time log</title>
+    <link>https://stevendongchen.github.io/dongchen.co/tags/professional-certification/</link>
+    <description>Recent content in Professional Certification on Dong - A place to track my time log</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 26 Jan 2019 07:01:23 +1300</lastBuildDate>
+    
+	<atom:link href="https://stevendongchen.github.io/dongchen.co/tags/professional-certification/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How did I pass the Zend PHP7 Certified Engineer exam</title>
+      <link>https://stevendongchen.github.io/dongchen.co/post/certification/zend-php7-certified-engineer-passing-technique-sharing/</link>
+      <pubDate>Sat, 26 Jan 2019 07:01:23 +1300</pubDate>
+      
+      <guid>https://stevendongchen.github.io/dongchen.co/post/certification/zend-php7-certified-engineer-passing-technique-sharing/</guid>
+      <description>The other day I received an email from a fellow, which he sent me through Zend&amp;rsquo;s list of certifiers. Although we didn&amp;rsquo;t know each other until then, I felt that since we were all in the community of PHP, I should help him sort out the areas he needed to pay attention to before taking the exam. However, it would be nice if other people who had to prepare for the ZCE PHP7 also found this article.</description>
+    </item>
+    
+  </channel>
+</rss>
