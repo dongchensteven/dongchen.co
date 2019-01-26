@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Dong - A place to track my time log</title>
-    <link>https://stevendongchen.github.io/dongchen.co/tags/</link>
+    <link>https://dongchen.co/tags/</link>
     <description>Recent content in Tags on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 11 Oct 2018 00:49:00 +1300</lastBuildDate>
     
-	<atom:link href="https://stevendongchen.github.io/dongchen.co/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://dongchen.co/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>High Performance</title>
-      <link>https://stevendongchen.github.io/dongchen.co/tags/high-performance/</link>
+      <link>https://dongchen.co/tags/high-performance/</link>
       <pubDate>Thu, 11 Oct 2018 00:49:00 +1300</pubDate>
       
-      <guid>https://stevendongchen.github.io/dongchen.co/tags/high-performance/</guid>
+      <guid>https://dongchen.co/tags/high-performance/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Professional Certification</title>
-      <link>https://stevendongchen.github.io/dongchen.co/tags/professional-certification/</link>
+      <link>https://dongchen.co/tags/professional-certification/</link>
       <pubDate>Sat, 26 Jan 2019 07:01:23 +1300</pubDate>
       
-      <guid>https://stevendongchen.github.io/dongchen.co/tags/professional-certification/</guid>
+      <guid>https://dongchen.co/tags/professional-certification/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Server-side Programming</title>
-      <link>https://stevendongchen.github.io/dongchen.co/tags/server-side-programming/</link>
+      <link>https://dongchen.co/tags/server-side-programming/</link>
       <pubDate>Thu, 11 Oct 2018 00:49:00 +1300</pubDate>
       
-      <guid>https://stevendongchen.github.io/dongchen.co/tags/server-side-programming/</guid>
+      <guid>https://dongchen.co/tags/server-side-programming/</guid>
       <description></description>
     </item>
     

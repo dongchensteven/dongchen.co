@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://stevendongchen.github.io/dongchen.co/sitemap.xml
+Sitemap: https://dongchen.co/sitemap.xml

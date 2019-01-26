@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Server-side Programming on Dong - A place to track my time log</title>
-    <link>https://stevendongchen.github.io/dongchen.co/tags/server-side-programming/</link>
+    <link>https://dongchen.co/tags/server-side-programming/</link>
     <description>Recent content in Server-side Programming on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 11 Oct 2018 00:49:00 +1300</lastBuildDate>
     
-	<atom:link href="https://stevendongchen.github.io/dongchen.co/tags/server-side-programming/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://dongchen.co/tags/server-side-programming/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>4. An overview of the default nginx.conf file</title>
-      <link>https://stevendongchen.github.io/dongchen.co/post/server-side-programming/nginx/simple-but-profound/4.-default-nginx.conf-file/</link>
+      <link>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/4.-default-nginx.conf-file/</link>
       <pubDate>Thu, 11 Oct 2018 00:49:00 +1300</pubDate>
       
-      <guid>https://stevendongchen.github.io/dongchen.co/post/server-side-programming/nginx/simple-but-profound/4.-default-nginx.conf-file/</guid>
+      <guid>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/4.-default-nginx.conf-file/</guid>
       <description>The first place we need to visit after the installation should be the nginx.conf file. This file contains everything we need for rendering a very basic static HTML web page on HTTP port 80.
 If you have started your Nginx process after the installation then we can get its configuration file through the master process:
 1  ps -ef | grep nginx   The result should look like:
@@ -25,19 +25,19 @@ If you have started your Nginx process after the installation then we can get it
     
     <item>
       <title>2. Install Nginx</title>
-      <link>https://stevendongchen.github.io/dongchen.co/post/server-side-programming/nginx/simple-but-profound/2.-install-nginx/</link>
+      <link>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/2.-install-nginx/</link>
       <pubDate>Wed, 10 Oct 2018 00:50:00 +1300</pubDate>
       
-      <guid>https://stevendongchen.github.io/dongchen.co/post/server-side-programming/nginx/simple-but-profound/2.-install-nginx/</guid>
+      <guid>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/2.-install-nginx/</guid>
       <description></description>
     </item>
     
     <item>
       <title>1. An Introduction</title>
-      <link>https://stevendongchen.github.io/dongchen.co/post/server-side-programming/nginx/simple-but-profound/1.-introduction/</link>
+      <link>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/1.-introduction/</link>
       <pubDate>Wed, 10 Oct 2018 00:49:00 +1300</pubDate>
       
-      <guid>https://stevendongchen.github.io/dongchen.co/post/server-side-programming/nginx/simple-but-profound/1.-introduction/</guid>
+      <guid>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/1.-introduction/</guid>
       <description>Many companies start on a shoestring budget at first, so they choose Cheap Hosting Plans. However, as they are growing bigger and bigger, their customers are also growing. The next most significant consideration is their portals’ PERFORMANCE.
 Most Hosting Plans use Apache Server, it suits well for little traffic websites, but it is a nightmare for high traffic websites, that’s why Nginx was born. People then start moving their websites to Dedicated Virtual Servers.</description>
     </item>

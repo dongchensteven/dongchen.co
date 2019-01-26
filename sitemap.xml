@@ -1,92 +1,92 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<?xml-stylesheet type="text/xsl" href="https://stevendongchen.github.io/dongchen.co/sitemap.xsl"?>
+<?xml-stylesheet type="text/xsl" href="https://dongchen.co/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://stevendongchen.github.io/dongchen.co/post/certification/zend-php7-certified-engineer-passing-technique-sharing/</loc>
+    <loc>https://dongchen.co/post/certification/zend-php7-certified-engineer-passing-technique-sharing/</loc>
     <lastmod>2019-01-26T07:01:23+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://stevendongchen.github.io/dongchen.co/post/server-side-programming/nginx/simple-but-profound/4.-default-nginx.conf-file/</loc>
+    <loc>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/4.-default-nginx.conf-file/</loc>
     <lastmod>2018-10-11T00:49:00+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://stevendongchen.github.io/dongchen.co/post/server-side-programming/nginx/simple-but-profound/2.-install-nginx/</loc>
+    <loc>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/2.-install-nginx/</loc>
     <lastmod>2018-10-10T00:50:00+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://stevendongchen.github.io/dongchen.co/post/server-side-programming/nginx/simple-but-profound/1.-introduction/</loc>
+    <loc>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/1.-introduction/</loc>
     <lastmod>2018-10-10T00:49:00+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://stevendongchen.github.io/dongchen.co/categories/</loc>
+    <loc>https://dongchen.co/categories/</loc>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://stevendongchen.github.io/dongchen.co/</loc>
+    <loc>https://dongchen.co/</loc>
     <lastmod>2019-01-26T07:01:23+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://stevendongchen.github.io/dongchen.co/tags/high-performance/</loc>
+    <loc>https://dongchen.co/tags/high-performance/</loc>
     <lastmod>2018-10-11T00:49:00+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://stevendongchen.github.io/dongchen.co/categories/how-to-be-certified/</loc>
+    <loc>https://dongchen.co/categories/how-to-be-certified/</loc>
     <lastmod>2019-01-26T07:01:23+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://stevendongchen.github.io/dongchen.co/categories/nginx-simple-but-profound/</loc>
+    <loc>https://dongchen.co/categories/nginx-simple-but-profound/</loc>
     <lastmod>2018-10-11T00:49:00+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://stevendongchen.github.io/dongchen.co/post/</loc>
+    <loc>https://dongchen.co/post/</loc>
     <lastmod>2019-01-26T07:01:23+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://stevendongchen.github.io/dongchen.co/tags/professional-certification/</loc>
+    <loc>https://dongchen.co/tags/professional-certification/</loc>
     <lastmod>2019-01-26T07:01:23+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://stevendongchen.github.io/dongchen.co/tags/server-side-programming/</loc>
+    <loc>https://dongchen.co/tags/server-side-programming/</loc>
     <lastmod>2018-10-11T00:49:00+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://stevendongchen.github.io/dongchen.co/tags/</loc>
+    <loc>https://dongchen.co/tags/</loc>
     <lastmod>2018-10-11T00:49:00+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
