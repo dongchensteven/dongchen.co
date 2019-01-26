@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>2. Install Nginx - Dong - A place to track my time log</title>
+  <title>3. Basic Nginx operations - Dong - A place to track my time log</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,10 +16,9 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="Before we begin our journey, we must prepare at least a Basic Linux Server. Or you can follow along with your existing up to date Linux Server if you have one. If you are ready, then let’s begin our High-Performance Journey!
-Let’s install Nginx first:
-1  sudo vi /etc/yum.repos.d/nginx.repo   Paste in the following content:
-1 2 3 4 5  [nginx] name=nginx repo baseurl=http://nginx.org/packages/centos/7/$basearch/ gpgcheck=0 enabled=1   ‌Update the local repo:" /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="Dong Chen" /><meta name="description" content="Like any other servers, Nginx definitely has its own operational instructions (known as a signal). We can manipulate Nginx’s status by using these instructions. We can also reload Nginx’s configuration file at its runtime, this feature is handy for minor configuration updates while Nginx is running.
+The ‌Fast Shutdown signal: (terminates all Nginx related processes immediately, especially the master and worker processes)
+1  nginx -s stop   The ‌Graceful Shutdown signal: (waiting for worker processes to finish serving current requests)" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -29,7 +28,7 @@ Let’s install Nginx first:
 <meta name="generator" content="Hugo 0.53 with even 4.0.0" />
 
 
-<link rel="canonical" href="https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/2.-install-nginx/" />
+<link rel="canonical" href="https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/3.-basic-nginx-operations/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -41,35 +40,32 @@ Let’s install Nginx first:
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="2. Install Nginx" />
-<meta property="og:description" content="Before we begin our journey, we must prepare at least a Basic Linux Server. Or you can follow along with your existing up to date Linux Server if you have one. If you are ready, then let’s begin our High-Performance Journey!
-Let’s install Nginx first:
-1  sudo vi /etc/yum.repos.d/nginx.repo   Paste in the following content:
-1 2 3 4 5  [nginx] name=nginx repo baseurl=http://nginx.org/packages/centos/7/$basearch/ gpgcheck=0 enabled=1   ‌Update the local repo:" />
+<meta property="og:title" content="3. Basic Nginx operations" />
+<meta property="og:description" content="Like any other servers, Nginx definitely has its own operational instructions (known as a signal). We can manipulate Nginx’s status by using these instructions. We can also reload Nginx’s configuration file at its runtime, this feature is handy for minor configuration updates while Nginx is running.
+The ‌Fast Shutdown signal: (terminates all Nginx related processes immediately, especially the master and worker processes)
+1  nginx -s stop   The ‌Graceful Shutdown signal: (waiting for worker processes to finish serving current requests)" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/2.-install-nginx/" /><meta property="article:published_time" content="2018-10-10T00:50:00&#43;13:00"/>
-<meta property="article:modified_time" content="2018-10-10T00:50:00&#43;13:00"/>
+<meta property="og:url" content="https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/3.-basic-nginx-operations/" /><meta property="article:published_time" content="2018-10-10T00:52:00&#43;13:00"/>
+<meta property="article:modified_time" content="2018-10-10T00:52:00&#43;13:00"/>
 
-<meta itemprop="name" content="2. Install Nginx">
-<meta itemprop="description" content="Before we begin our journey, we must prepare at least a Basic Linux Server. Or you can follow along with your existing up to date Linux Server if you have one. If you are ready, then let’s begin our High-Performance Journey!
-Let’s install Nginx first:
-1  sudo vi /etc/yum.repos.d/nginx.repo   Paste in the following content:
-1 2 3 4 5  [nginx] name=nginx repo baseurl=http://nginx.org/packages/centos/7/$basearch/ gpgcheck=0 enabled=1   ‌Update the local repo:">
+<meta itemprop="name" content="3. Basic Nginx operations">
+<meta itemprop="description" content="Like any other servers, Nginx definitely has its own operational instructions (known as a signal). We can manipulate Nginx’s status by using these instructions. We can also reload Nginx’s configuration file at its runtime, this feature is handy for minor configuration updates while Nginx is running.
+The ‌Fast Shutdown signal: (terminates all Nginx related processes immediately, especially the master and worker processes)
+1  nginx -s stop   The ‌Graceful Shutdown signal: (waiting for worker processes to finish serving current requests)">
 
 
-<meta itemprop="datePublished" content="2018-10-10T00:50:00&#43;13:00" />
-<meta itemprop="dateModified" content="2018-10-10T00:50:00&#43;13:00" />
-<meta itemprop="wordCount" content="204">
+<meta itemprop="datePublished" content="2018-10-10T00:52:00&#43;13:00" />
+<meta itemprop="dateModified" content="2018-10-10T00:52:00&#43;13:00" />
+<meta itemprop="wordCount" content="160">
 
 
 
 <meta itemprop="keywords" content="Server-side Programming,High Performance," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="2. Install Nginx"/>
-<meta name="twitter:description" content="Before we begin our journey, we must prepare at least a Basic Linux Server. Or you can follow along with your existing up to date Linux Server if you have one. If you are ready, then let’s begin our High-Performance Journey!
-Let’s install Nginx first:
-1  sudo vi /etc/yum.repos.d/nginx.repo   Paste in the following content:
-1 2 3 4 5  [nginx] name=nginx repo baseurl=http://nginx.org/packages/centos/7/$basearch/ gpgcheck=0 enabled=1   ‌Update the local repo:"/>
+<meta name="twitter:title" content="3. Basic Nginx operations"/>
+<meta name="twitter:description" content="Like any other servers, Nginx definitely has its own operational instructions (known as a signal). We can manipulate Nginx’s status by using these instructions. We can also reload Nginx’s configuration file at its runtime, this feature is handy for minor configuration updates while Nginx is running.
+The ‌Fast Shutdown signal: (terminates all Nginx related processes immediately, especially the master and worker processes)
+1  nginx -s stop   The ‌Graceful Shutdown signal: (waiting for worker processes to finish serving current requests)"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -132,7 +128,7 @@ Let’s install Nginx first:
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">2. Install Nginx</h1>
+      <h1 class="post-title">3. Basic Nginx operations</h1>
 
       <div class="post-meta">
         <span class="post-time"> Wed Oct 10 2018 </span>
@@ -145,121 +141,47 @@ Let’s install Nginx first:
 
     
     <div class="post-content">
-      <p>Before we begin our journey, we must prepare at least a Basic Linux Server. Or you can follow along with your existing up to date Linux Server if you have one. If you are ready, then let’s begin our High-Performance Journey!</p>
+      <p>Like any other servers, Nginx definitely has its own operational instructions (known as a signal). We can manipulate Nginx’s status by using these instructions. We can also reload Nginx’s configuration file at its runtime, this feature is handy for minor configuration updates while Nginx is running.</p>
 
-<p>Let’s install Nginx first:</p>
+<p>The ‌Fast Shutdown signal: (terminates all Nginx related processes immediately, especially the master and worker processes)</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">sudo vi /etc/yum.repos.d/nginx.repo</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">nginx -s stop</code></pre></td></tr></table>
 </div>
 </div>
-<p>Paste in the following content:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[nginx]</span>
-<span class="na">name</span><span class="o">=</span><span class="s">nginx repo</span>
-<span class="na">baseurl</span><span class="o">=</span><span class="s">http://nginx.org/packages/centos/7/$basearch/</span>
-<span class="na">gpgcheck</span><span class="o">=</span><span class="s">0</span>
-<span class="na">enabled</span><span class="o">=</span><span class="s">1</span></code></pre></td></tr></table>
-</div>
-</div>
-<p>‌Update the local repo:</p>
+<p>The ‌Graceful Shutdown signal: (waiting for worker processes to finish serving current requests)</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">sudo yum update</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">nginx -s quit</code></pre></td></tr></table>
 </div>
 </div>
-<p>Install Nginx:</p>
+<p>The ‌Reopen Log Files signal: (this command will let Nginx tries to reopen a log file, it will create one if the log file doesn&rsquo;t exist. Without this instruction, Nginx will continue writing the original log file, even if we rename it by using mv command)</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">sudo yum install nginx -y</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">nginx -s reopen</code></pre></td></tr></table>
 </div>
 </div>
-<p>After the installation, we start Nginx immediately, and we should enable Nginx at boot:</p>
+<p>The Reload Configuration File signal: (Nginx provides this beneficial instruction to reload its modified configuration file during its runtime)</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl start nginx <span class="o">&amp;&amp;</span> sudo systemctl <span class="nb">enable</span> nginx</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">nginx -s reload</code></pre></td></tr></table>
 </div>
 </div>
-<p>Make sure Nginx has started both master and worker processes:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ps -ef <span class="p">|</span> grep nginx</code></pre></td></tr></table>
-</div>
-</div>
-<p>The results of running the command should be similar to the screenshot listed below:</p>
-
-<figure>
-    <img src="../images/2_nginx_master_worker_processes.png"
-         alt="img"/> <figcaption>
-            <h4>Nginx Master &amp; Worker Processes</h4>
-        </figcaption>
-</figure>
-
-
-<p>Make sure Nginx is listening on port 80:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">sudo netstat -anp <span class="p">|</span> grep nginx</code></pre></td></tr></table>
-</div>
-</div>
-<p>The results of running the command should be similar to the screenshot listed below:</p>
-
-<figure>
-    <img src="../images/2_nginx_listening_on_port_80.png"
-         alt="img"/> <figcaption>
-            <h4>Nginx Master &amp; Worker Processes</h4>
-        </figcaption>
-</figure>
-
-
-<p>Finally, let’s also make sure we can visit Nginx’s default home page:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">curl http://localhost</code></pre></td></tr></table>
-</div>
-</div>
-<p>Result should look like:</p>
-
-<figure>
-    <img src="../images/2_nginx_home_page.png"
-         alt="img"/> <figcaption>
-            <h4>Nginx Master &amp; Worker Processes</h4>
-        </figcaption>
-</figure>
-
-
 <blockquote>
 <p>References:
-<a href="http://nginx.org/en/linux_packages.html#stable">Pre-Built Packages for Stable version</a></p>
+<a href="http://nginx.org/en/docs/beginners_guide.html">Nginx Beginner’s Guide</a></p>
 </blockquote>
     </div>
 
@@ -294,13 +216,13 @@ Let’s install Nginx first:
           <a href="/tags/high-performance/">High Performance</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/server-side-programming/nginx/simple-but-profound/3.-basic-nginx-operations/">
+        <a class="prev" href="/post/server-side-programming/nginx/simple-but-profound/4.-default-nginx.conf-file/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">3. Basic Nginx operations</span>
+            <span class="prev-text nav-default">4. An overview of the default nginx.conf file</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
-        <a class="next" href="/post/server-side-programming/nginx/simple-but-profound/1.-introduction/">
-            <span class="next-text nav-default">1. An brief introduction</span>
+        <a class="next" href="/post/server-side-programming/nginx/simple-but-profound/2.-install-nginx/">
+            <span class="next-text nav-default">2. Install Nginx</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>

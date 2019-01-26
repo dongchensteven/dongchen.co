@@ -159,6 +159,29 @@ If you have started your Nginx process after the installation then we can get it
 
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/server-side-programming/nginx/simple-but-profound/3.-basic-nginx-operations/">3. Basic Nginx operations</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> Wed Oct 10 2018 </span>
+      <div class="post-category">
+          <a href="/categories/nginx-simple-but-profound/"> Nginx: Simple But Profound </a>
+          </div>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      Like any other servers, Nginx definitely has its own operational instructions (known as a signal). We can manipulate Nginx’s status by using these instructions. We can also reload Nginx’s configuration file at its runtime, this feature is handy for minor configuration updates while Nginx is running.
+The ‌Fast Shutdown signal: (terminates all Nginx related processes immediately, especially the master and worker processes)
+1  nginx -s stop   The ‌Graceful Shutdown signal: (waiting for worker processes to finish serving current requests)
+    </div>
+    <div class="read-more">
+      <a href="/post/server-side-programming/nginx/simple-but-profound/3.-basic-nginx-operations/" class="read-more-link">Read more..</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/server-side-programming/nginx/simple-but-profound/2.-install-nginx/">2. Install Nginx</a></h1>
     <div class="post-meta">
       <span class="post-time"> Wed Oct 10 2018 </span>
@@ -170,7 +193,10 @@ If you have started your Nginx process after the installation then we can get it
   
   <div class="post-content">
     <div class="post-summary">
-      
+      Before we begin our journey, we must prepare at least a Basic Linux Server. Or you can follow along with your existing up to date Linux Server if you have one. If you are ready, then let’s begin our High-Performance Journey!
+Let’s install Nginx first:
+1  sudo vi /etc/yum.repos.d/nginx.repo   Paste in the following content:
+1 2 3 4 5  [nginx] name=nginx repo baseurl=http://nginx.org/packages/centos/7/$basearch/ gpgcheck=0 enabled=1   ‌Update the local repo:
     </div>
     <div class="read-more">
       <a href="/post/server-side-programming/nginx/simple-but-profound/2.-install-nginx/" class="read-more-link">Read more..</a>
@@ -180,7 +206,7 @@ If you have started your Nginx process after the installation then we can get it
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/server-side-programming/nginx/simple-but-profound/1.-introduction/">1. An Introduction</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/server-side-programming/nginx/simple-but-profound/1.-introduction/">1. An brief introduction</a></h1>
     <div class="post-meta">
       <span class="post-time"> Wed Oct 10 2018 </span>
       <div class="post-category">

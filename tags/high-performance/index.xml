@@ -6,7 +6,7 @@
     <description>Recent content in High Performance on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 11 Oct 2018 00:49:00 +1300</lastBuildDate>
+    <lastBuildDate>Thu, 11 Oct 2018 00:00:00 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/tags/high-performance/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>4. An overview of the default nginx.conf file</title>
       <link>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/4.-default-nginx.conf-file/</link>
-      <pubDate>Thu, 11 Oct 2018 00:49:00 +1300</pubDate>
+      <pubDate>Thu, 11 Oct 2018 00:00:00 +1300</pubDate>
       
       <guid>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/4.-default-nginx.conf-file/</guid>
       <description>The first place we need to visit after the installation should be the nginx.conf file. This file contains everything we need for rendering a very basic static HTML web page on HTTP port 80.
@@ -24,16 +24,30 @@ If you have started your Nginx process after the installation then we can get it
     </item>
     
     <item>
+      <title>3. Basic Nginx operations</title>
+      <link>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/3.-basic-nginx-operations/</link>
+      <pubDate>Wed, 10 Oct 2018 00:52:00 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/3.-basic-nginx-operations/</guid>
+      <description>Like any other servers, Nginx definitely has its own operational instructions (known as a signal). We can manipulate Nginx’s status by using these instructions. We can also reload Nginx’s configuration file at its runtime, this feature is handy for minor configuration updates while Nginx is running.
+The ‌Fast Shutdown signal: (terminates all Nginx related processes immediately, especially the master and worker processes)
+1  nginx -s stop   The ‌Graceful Shutdown signal: (waiting for worker processes to finish serving current requests)</description>
+    </item>
+    
+    <item>
       <title>2. Install Nginx</title>
       <link>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/2.-install-nginx/</link>
       <pubDate>Wed, 10 Oct 2018 00:50:00 +1300</pubDate>
       
       <guid>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/2.-install-nginx/</guid>
-      <description></description>
+      <description>Before we begin our journey, we must prepare at least a Basic Linux Server. Or you can follow along with your existing up to date Linux Server if you have one. If you are ready, then let’s begin our High-Performance Journey!
+Let’s install Nginx first:
+1  sudo vi /etc/yum.repos.d/nginx.repo   Paste in the following content:
+1 2 3 4 5  [nginx] name=nginx repo baseurl=http://nginx.org/packages/centos/7/$basearch/ gpgcheck=0 enabled=1   ‌Update the local repo:</description>
     </item>
     
     <item>
-      <title>1. An Introduction</title>
+      <title>1. An brief introduction</title>
       <link>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/1.-introduction/</link>
       <pubDate>Wed, 10 Oct 2018 00:49:00 +1300</pubDate>
       
