@@ -1,4 +1,4 @@
-baseURL = "http://dongchen.co/"
+baseURL = "https://stevendongchen.github.io/dongchen.co/"
 languageCode = "en"
 defaultContentLanguage = "en"                             # en / zh-cn / ... (This field determines which i18n file to use)
 title = "Dong - A place to track my time log"
