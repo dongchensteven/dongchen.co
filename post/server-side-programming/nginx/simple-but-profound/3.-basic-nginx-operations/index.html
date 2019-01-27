@@ -16,9 +16,9 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="Like any other servers, Nginx definitely has its own operational instructions (known as a signal). We can manipulate Nginx’s status by using these instructions. We can also reload Nginx’s configuration file at its runtime, this feature is handy for minor configuration updates while Nginx is running.
-The ‌Fast Shutdown signal: (terminates all Nginx related processes immediately, especially the master and worker processes)
-1  nginx -s stop   The ‌Graceful Shutdown signal: (waiting for worker processes to finish serving current requests)" /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="Dong Chen" /><meta name="description" content="Nginx Parameters and Signals Like any other servers, Nginx has its operational instructions (called signals).
+The existence of these instructions makes it very convenient for us to manipulate the various configurations of Nginx. We can manipulate Nginx’s status, running path, test configuration files, etc. We can also reload Nginx’s configuration file at its runtime; this feature is handy for minor changes to Nginx while it&amp;rsquo;s running.
+1. Parameters Parameters can be used to manipulate Nginx to accomplish some basic tasks." /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -41,31 +41,31 @@ The ‌Fast Shutdown signal: (terminates all Nginx related processes immediately
 
 
 <meta property="og:title" content="3. Basic Nginx operations" />
-<meta property="og:description" content="Like any other servers, Nginx definitely has its own operational instructions (known as a signal). We can manipulate Nginx’s status by using these instructions. We can also reload Nginx’s configuration file at its runtime, this feature is handy for minor configuration updates while Nginx is running.
-The ‌Fast Shutdown signal: (terminates all Nginx related processes immediately, especially the master and worker processes)
-1  nginx -s stop   The ‌Graceful Shutdown signal: (waiting for worker processes to finish serving current requests)" />
+<meta property="og:description" content="Nginx Parameters and Signals Like any other servers, Nginx has its operational instructions (called signals).
+The existence of these instructions makes it very convenient for us to manipulate the various configurations of Nginx. We can manipulate Nginx’s status, running path, test configuration files, etc. We can also reload Nginx’s configuration file at its runtime; this feature is handy for minor changes to Nginx while it&rsquo;s running.
+1. Parameters Parameters can be used to manipulate Nginx to accomplish some basic tasks." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/3.-basic-nginx-operations/" /><meta property="article:published_time" content="2018-10-10T00:52:00&#43;13:00"/>
-<meta property="article:modified_time" content="2018-10-10T00:52:00&#43;13:00"/>
+<meta property="article:modified_time" content="2019-01-28T07:47:00&#43;13:00"/>
 
 <meta itemprop="name" content="3. Basic Nginx operations">
-<meta itemprop="description" content="Like any other servers, Nginx definitely has its own operational instructions (known as a signal). We can manipulate Nginx’s status by using these instructions. We can also reload Nginx’s configuration file at its runtime, this feature is handy for minor configuration updates while Nginx is running.
-The ‌Fast Shutdown signal: (terminates all Nginx related processes immediately, especially the master and worker processes)
-1  nginx -s stop   The ‌Graceful Shutdown signal: (waiting for worker processes to finish serving current requests)">
+<meta itemprop="description" content="Nginx Parameters and Signals Like any other servers, Nginx has its operational instructions (called signals).
+The existence of these instructions makes it very convenient for us to manipulate the various configurations of Nginx. We can manipulate Nginx’s status, running path, test configuration files, etc. We can also reload Nginx’s configuration file at its runtime; this feature is handy for minor changes to Nginx while it&rsquo;s running.
+1. Parameters Parameters can be used to manipulate Nginx to accomplish some basic tasks.">
 
 
 <meta itemprop="datePublished" content="2018-10-10T00:52:00&#43;13:00" />
-<meta itemprop="dateModified" content="2018-10-10T00:52:00&#43;13:00" />
-<meta itemprop="wordCount" content="160">
+<meta itemprop="dateModified" content="2019-01-28T07:47:00&#43;13:00" />
+<meta itemprop="wordCount" content="484">
 
 
 
 <meta itemprop="keywords" content="Server-side Programming,High Performance," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="3. Basic Nginx operations"/>
-<meta name="twitter:description" content="Like any other servers, Nginx definitely has its own operational instructions (known as a signal). We can manipulate Nginx’s status by using these instructions. We can also reload Nginx’s configuration file at its runtime, this feature is handy for minor configuration updates while Nginx is running.
-The ‌Fast Shutdown signal: (terminates all Nginx related processes immediately, especially the master and worker processes)
-1  nginx -s stop   The ‌Graceful Shutdown signal: (waiting for worker processes to finish serving current requests)"/>
+<meta name="twitter:description" content="Nginx Parameters and Signals Like any other servers, Nginx has its operational instructions (called signals).
+The existence of these instructions makes it very convenient for us to manipulate the various configurations of Nginx. We can manipulate Nginx’s status, running path, test configuration files, etc. We can also reload Nginx’s configuration file at its runtime; this feature is handy for minor changes to Nginx while it&rsquo;s running.
+1. Parameters Parameters can be used to manipulate Nginx to accomplish some basic tasks."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -141,9 +141,87 @@ The ‌Fast Shutdown signal: (terminates all Nginx related processes immediately
 
     
     <div class="post-content">
-      <p>Like any other servers, Nginx definitely has its own operational instructions (known as a signal). We can manipulate Nginx’s status by using these instructions. We can also reload Nginx’s configuration file at its runtime, this feature is handy for minor configuration updates while Nginx is running.</p>
+      <h1 id="nginx-parameters-and-signals">Nginx Parameters and Signals</h1>
 
-<p>The ‌Fast Shutdown signal: (terminates all Nginx related processes immediately, especially the master and worker processes)</p>
+<p>Like any other servers, Nginx has its operational instructions (called signals).</p>
+
+<p>The existence of these instructions makes it very convenient for us to manipulate the various configurations of Nginx. We can manipulate Nginx’s status, running path, test configuration files, etc. We can also reload Nginx’s configuration file at its runtime; this feature is handy for minor changes to Nginx while it&rsquo;s running.</p>
+
+<h2 id="1-parameters">1. Parameters</h2>
+
+<p>Parameters can be used to manipulate Nginx to accomplish some basic tasks. With these parameters, we can: use a configuration file instead of the default one, change the global configuration directives, set the directory that keeps server files, test the configuration file syntaxes&rsquo; correctness, view Nginx&rsquo;s versions and its configured parameters.</p>
+
+<h3 id="specify-a-configuration-file">Specify a configuration file</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">nginx -c file</code></pre></td></tr></table>
+</div>
+</div>
+<p>Use an alternative configuration file instead of the default one.</p>
+
+<h3 id="set-nginx-global-configuration-directive">Set Nginx global configuration directive</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">nginx -g <span class="s2">&#34;pid /var/run/nginx.pid; worker_processes `sysctl -n hw.ncpu`;&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>This command assigns the worker_processes directive to the amount of logic CPUs, and save it to the configuration of the master related to the specified process id.</p>
+
+<h3 id="change-nginx-server-directory">Change Nginx server directory</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">nginx -p path</code></pre></td></tr></table>
+</div>
+</div>
+<p>This command sets the root directory of Nginx server files.</p>
+
+<h3 id="checks-the-syntaxes-correctness-of-nginx-configuration-files">Checks the syntaxes correctness of Nginx configuration files</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">nginx -t</code></pre></td></tr></table>
+</div>
+</div>
+<p>This command searches the syntaxes correctness of all the configuration files. If we want to print the configuration files&rsquo; contents on the screen when testing, we can use -T parameter instead, so I think this upper-case parameter is not that useful, If you used it, you&rsquo;d feel the same way.</p>
+
+<h2 id="show-nginx-version">Show Nginx version</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">nginx -v</code></pre></td></tr></table>
+</div>
+</div>
+<p>The -v parameter only shows the version of Nginx. If we want to see not only the version of Nginx but also the version of the GCC compiler built it, we can use -V instead, and this upper-case parameter also shows the configured arguments of Nginx.</p>
+
+<h3 id="show-error-messages-only-during-the-syntax-checking">Show error messages only during the syntax checking</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">nginx -t -q</code></pre></td></tr></table>
+</div>
+</div>
+<p>The -q parameter hides the non-error messages while testing the syntaxes of Nginx&rsquo;s configuration files.</p>
+
+<h2 id="2-signals">2. Signals</h2>
+
+<p>Nginx allows us to change its processes status through sending a signal to its master process, and the signals we use often are: stop, quit, reload, reopen.</p>
+
+<h3 id="fast-shutdown">Fast Shutdown</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -152,7 +230,9 @@ The ‌Fast Shutdown signal: (terminates all Nginx related processes immediately
 <pre class="chroma"><code class="language-bash" data-lang="bash">nginx -s stop</code></pre></td></tr></table>
 </div>
 </div>
-<p>The ‌Graceful Shutdown signal: (waiting for worker processes to finish serving current requests)</p>
+<p>The <a href="http://nginx.org/en/docs/beginners_guide.html">stop</a> signal terminates all Nginx related processes immediately, especially the master and worker processes.</p>
+
+<h3 id="graceful-shutdown">Graceful Shutdown</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -161,7 +241,9 @@ The ‌Fast Shutdown signal: (terminates all Nginx related processes immediately
 <pre class="chroma"><code class="language-bash" data-lang="bash">nginx -s quit</code></pre></td></tr></table>
 </div>
 </div>
-<p>The ‌Reopen Log Files signal: (this command will let Nginx tries to reopen a log file, it will create one if the log file doesn&rsquo;t exist. Without this instruction, Nginx will continue writing the original log file, even if we rename it by using mv command)</p>
+<p>The <a href="http://nginx.org/en/docs/beginners_guide.html">quit</a> signal waits for worker processes to finish serving current requests before terminates them.</p>
+
+<h2 id="reopen-log-file">Reopen Log File</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -170,7 +252,9 @@ The ‌Fast Shutdown signal: (terminates all Nginx related processes immediately
 <pre class="chroma"><code class="language-bash" data-lang="bash">nginx -s reopen</code></pre></td></tr></table>
 </div>
 </div>
-<p>The Reload Configuration File signal: (Nginx provides this beneficial instruction to reload its modified configuration file during its runtime)</p>
+<p>The <a href="http://nginx.org/en/docs/beginners_guide.html">reopen</a> signal asks Nginx to try to reopen a log file, and it creates one if the log file doesn&rsquo;t exist. Without this instruction, Nginx keeps writing logs to the original log file, even if we rename it by using mv command.</p>
+
+<h3 id="reload-configuration-files">Reload Configuration Files</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -179,6 +263,8 @@ The ‌Fast Shutdown signal: (terminates all Nginx related processes immediately
 <pre class="chroma"><code class="language-bash" data-lang="bash">nginx -s reload</code></pre></td></tr></table>
 </div>
 </div>
+<p>The <a href="http://nginx.org/en/docs/beginners_guide.html">reload</a> signal is a frequently used signal; it reloads all Nginx configuration files at runtime.</p>
+
 <blockquote>
 <p>References:
 <a href="http://nginx.org/en/docs/beginners_guide.html">Nginx Beginner’s Guide</a></p>
@@ -192,7 +278,7 @@ The ‌Fast Shutdown signal: (terminates all Nginx related processes immediately
   </p>
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
-    <span class="item-content">Wed Oct 10 2018</span>
+    <span class="item-content">Mon Jan 28 2019</span>
   </p>
   
   
