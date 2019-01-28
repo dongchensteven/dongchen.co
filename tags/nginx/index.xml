@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nginx on Dong - A place to track my time log</title>
+    <link>https://dongchen.co/tags/nginx/</link>
+    <description>Recent content in Nginx on Dong - A place to track my time log</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 11 Oct 2018 00:00:00 +1300</lastBuildDate>
+    
+	<atom:link href="https://dongchen.co/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>4. An overview of the default nginx.conf file</title>
+      <link>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/4.-default-nginx.conf-file/</link>
+      <pubDate>Thu, 11 Oct 2018 00:00:00 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/4.-default-nginx.conf-file/</guid>
+      <description>The first place we need to visit after the installation should be the nginx.conf file. This file contains everything we need for rendering a very basic static HTML web page on HTTP port 80.
+If you have started your Nginx process after the installation then we can get its configuration file through the master process:
+1  ps -ef | grep nginx   The result should look like:
+  Nginx Process   We See the nginx.</description>
+    </item>
+    
+    <item>
+      <title>3. Basic Nginx operations</title>
+      <link>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/3.-basic-nginx-operations/</link>
+      <pubDate>Wed, 10 Oct 2018 00:52:00 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/3.-basic-nginx-operations/</guid>
+      <description>Nginx Parameters and Signals Like any other servers, Nginx has its operational instructions (parameters and signals).
+The existence of these instructions makes it very convenient for us to manipulate the various configurations of Nginx. We can manipulate Nginx’s status, running path, test configuration files, etc. We can also reload Nginx’s configuration file at its runtime; this feature is handy for minor changes to Nginx while it&amp;rsquo;s running.
+1. Parameters Parameters can be used to manipulate Nginx to accomplish some basic tasks.</description>
+    </item>
+    
+    <item>
+      <title>2. Install Nginx</title>
+      <link>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/2.-install-nginx/</link>
+      <pubDate>Wed, 10 Oct 2018 00:50:00 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/2.-install-nginx/</guid>
+      <description>Before we begin our journey, we must prepare at least a Basic Linux Server. Or you can follow along with your existing up to date Linux Server if you have one. If you are ready, then let’s begin our High-Performance Journey!
+Let’s install Nginx first:
+1  sudo vi /etc/yum.repos.d/nginx.repo   Paste in the following content:
+1 2 3 4 5  [nginx] name=nginx repo baseurl=http://nginx.org/packages/centos/7/$basearch/ gpgcheck=0 enabled=1   ‌Update the local repo:</description>
+    </item>
+    
+    <item>
+      <title>1. A brief introduction</title>
+      <link>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/1.-introduction/</link>
+      <pubDate>Wed, 10 Oct 2018 00:49:00 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/1.-introduction/</guid>
+      <description>Many companies start on a shoestring budget at first, so they choose Cheap Hosting Plans. However, as they are growing bigger and bigger, their customers are also growing. The next most significant consideration is their portals’ PERFORMANCE.
+Most Hosting Plans use Apache Server, it suits well for little traffic websites, but it is a nightmare for high traffic websites, that’s why Nginx was born. People then start moving their websites to Dedicated Virtual Servers.</description>
+    </item>
+    
+  </channel>
+</rss>

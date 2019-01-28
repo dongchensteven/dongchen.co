@@ -59,11 +59,11 @@ If you have started your Nginx process after the installation then we can get it
 
 <meta itemprop="datePublished" content="2018-10-11T00:00:00&#43;13:00" />
 <meta itemprop="dateModified" content="2018-10-11T00:00:00&#43;13:00" />
-<meta itemprop="wordCount" content="214">
+<meta itemprop="wordCount" content="974">
 
 
 
-<meta itemprop="keywords" content="Server-side Programming,High Performance," />
+<meta itemprop="keywords" content="Nginx,Server," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="4. An overview of the default nginx.conf file"/>
 <meta name="twitter:description" content="The first place we need to visit after the installation should be the nginx.conf file. This file contains everything we need for rendering a very basic static HTML web page on HTTP port 80.
@@ -251,15 +251,162 @@ As shown in the picture above, the complete path for nginx.conf is /etc/nginx/ng
 <span class="p">}</span></code></pre></td></tr></table>
 </div>
 </div>
-<h1 id="explanation">Explanation</h1>
+<div class="admonition tip"><p class="admonition-title">Summary</p>
+  <p>I&rsquo;m just going to make a brief and practical description of these instructions:</p>
 
-<dl>
-<dd><p>item 1</p>
+<div class="admonition question"><p class="admonition-title">user</p>
+  <p>The default user Nginx uses at run time is <em>nginx</em>, we usually don’t change this value. If you want Nginx to be able to access a directory, then you need to set the ownership of that directory to <em>nginx</em>.</p>
 
-<p>item 2</p>
+<p><a href="http://nginx.org/en/docs/ngx_core_module.html#user">More&hellip;</a></p>
 
-<p>item 3</p></dd>
-</dl>
+</div>
+
+<div class="admonition question"><p class="admonition-title">worker_processes</p>
+  <p>Specifies the number of worker processes running in parallel after Nginx starts. This number is usually consistent with the number of logical CPUs on your <a href="https://www.linode.com/?r=6dbaf596fccc4d80aa991a21e94127870ad098ab">server</a>.</p>
+
+<p>Usually, people just set it to <em>auto</em>, and this asks Nginx to use as many logical CPUs as it could to create a sufficient amount of worker processes.</p>
+
+<p><a href="http://nginx.org/en/docs/ngx_core_module.html#worker_processes">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">error_log</p>
+  <p>The file saves any Nginx error information. We can also specify a logging level: <em>warn</em>, <em>error</em>, <em>crit</em>, <em>alert</em>, or <em>emerg</em>.</p>
+
+<p>By default, Nginx uses <em>error</em>, this logs <em>error</em>, <em>crit</em>, <em>alert</em>, and <em>emerg</em> messages.</p>
+
+<p><a href="http://nginx.org/en/docs/ngx_core_module.html#error_log">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">pid</p>
+  <p>The file stores Nginx&rsquo;s main process ID.</p>
+
+<p><a href="http://nginx.org/en/docs/ngx_core_module.html#pid">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">events</p>
+  <p>This block can specify the maximum number of connections per worker process, which event-driven model should be selected to handle connection requests, whether to serialise the network connection and so on.</p>
+
+<p><a href="http://nginx.org/en/docs/ngx_core_module.html#events">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">worker_connections</p>
+  <p>The maximum number of connections each worker process can connect to and process at the same time, including connections between proxy servers. The maximum number of connections cannot exceed the current maximum number of open files, and the worker_rlimit_nofile directive can do the trick.</p>
+
+<p><a href="http://nginx.org/en/docs/ngx_core_module.html#worker_connections">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">http</p>
+  <p>This directive is the most-used module, and its types of operations include io, hash, clients and socket.</p>
+
+<p><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#http">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">include</p>
+  <p>This directive is used to load the mapping list of MIME(multipurpose internet mail extension) protocol types to the configuration file.</p>
+
+<p>Of course, the same is true of the instructions used to include other configuration files, such as <em>include /etc/nginx/sites-enabled/*</em> includes all configuration files under the sites-enabled directory into the configuration file.</p>
+
+<p><a href="http://nginx.org/en/docs/ngx_core_module.html#include">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">default_type</p>
+  <p>As we can see from the configuration above, Nginx&rsquo;s default MIME type for responding a request is octet-stream, octet means 8 bits, and one byte is equal to 8 bits, so the octet-stream here can be understood as a stream of bytes.</p>
+
+<p>If Nginx does not match the response request to the mime-type corresponding in the /etc/nginx/mime.types file included above, then the type specified by default_type is used.</p>
+
+<p><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#default_type">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">log_format</p>
+  <p><em>log_format</em> is the format of the output content to access log, and <em>log_format</em> can specify common variables of Nginx, common variables are the variables that exist only at the moment when Nginx writes the log into the <em>access_log</em> file.</p>
+
+<p><a href="http://nginx.org/en/docs/http/ngx_http_log_module.html#log_format">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">access_log</p>
+  <p>The <em>access_log</em> instruction can specify the log file of the Nginx access request. We can specify the output format of the log, that is, the format arranged by <em>log_format</em>.</p>
+
+<p><a href="http://nginx.org/en/docs/http/ngx_http_log_module.html#access_log">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">sendfile</p>
+  <p>The directive to disable or allow the call to the sendfile () function to send a file is called sendfile.</p>
+
+<p><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#sendfile">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">keepalive_timeout</p>
+  <p>The first parameter sets the timeout between the server and the client to maintain a keep-alive connection and to set zero means disabling the keep-alive connection between the server and the client.</p>
+
+<p>The second parameter is used to set the time value in &ldquo;keep-alive: timeout=<em>time</em>&rdquo; to the response header information so that the client browser knows when to close its keep-alive connection to the server.</p>
+
+<p><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#keepalive_timeout">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">server</p>
+  <p>This directive specifies a virtual server-related configuration, and we can include some common virtual server-related configuration information into the context of server directive, including server name (i.e. domain name), the port number to listen on, project root path, address redirection, SSL security certificate, and so on.</p>
+
+<p><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#server">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">listen</p>
+  <p>The directive we used to specify a port number of the virtual server, and if we don&rsquo;t specify a port, the default is 80.</p>
+
+<p><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#listen">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">server_name</p>
+  <p>With this instruction, we can assign a name (domain name) to the virtual server, and we can also specify the wildcard (*) domain name (*.example.com or www.example.*), which is very convenient.</p>
+
+<p><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#server_name">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">location</p>
+  <p>This directive can be used to configure a unified resource identifier (domain_name/<em>xxx/query</em>) that is accessible to the outside world, where we can configure flexible address matching patterns using regular expressions.</p>
+
+<p><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#location">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">root</p>
+  <p>This directive configures the project root path of the virtual server, which uses with the built-in variables provided by Nginx.</p>
+
+<p><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#root">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">index</p>
+  <p>This directive configures one or more home pages under the project&rsquo;s root path, and the famous home page is index.html or index.php. When someone requests the location, Nginx matches back and forth from several of the front pages configured by the index directive. If the previous home page does not exist, use the next one, and so on.</p>
+
+<p><a href="http://nginx.org/en/docs/http/ngx_http_index_module.html#index">More&hellip;</a></p>
+
+</div>
+
+</div>
+
+<div class="admonition quote"><p class="admonition-title">References</p>
+  <p><a href="http://nginx.org/en/docs/ngx_core_module.html#user">Core functionality</a>,
+<a href="http://nginx.org/en/docs/http/ngx_http_core_module.html">ngx_http_core_module</a>,
+<a href="http://nginx.org/en/docs/hash.html">Setting up hashes</a>,
+<a href="http://nginx.org/en/docs/http/ngx_http_log_module.html">ngx_http_log_module</a>,
+<a href="http://nginx.org/en/docs/http/ngx_http_index_module.html">ngx_http_index_module</a></p>
+
+</div>
     </div>
 
     <div class="post-copyright">
@@ -289,8 +436,8 @@ As shown in the picture above, the complete path for nginx.conf is /etc/nginx/ng
   </div>
 </div><footer class="post-footer">
       <div class="post-tags">
-          <a href="/tags/server-side-programming/">Server-side Programming</a>
-          <a href="/tags/high-performance/">High Performance</a>
+          <a href="/tags/nginx/">Nginx</a>
+          <a href="/tags/server/">Server</a>
           </div>
       <nav class="post-nav">
         <a class="prev" href="/post/certification/zend-php7-certified-engineer-passing-technique-sharing/">
