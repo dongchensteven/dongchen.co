@@ -38,7 +38,7 @@ If you have started your Nginx process after the installation then we can get it
       <pubDate>Wed, 10 Oct 2018 00:52:00 +1300</pubDate>
       
       <guid>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/3.-basic-nginx-operations/</guid>
-      <description>Nginx Parameters and Signals Like any other servers, Nginx has its operational instructions (parameters and signals).
+      <description>Parameters and Signals Like any other servers, Nginx has its operational instructions (parameters and signals).
 The existence of these instructions makes it very convenient for us to manipulate the various configurations of Nginx. We can manipulate Nginx’s status, running path, test configuration files, etc. We can also reload Nginx’s configuration file at its runtime; this feature is handy for minor changes to Nginx while it&amp;rsquo;s running.
 1. Parameters Parameters can be used to manipulate Nginx to accomplish some basic tasks.</description>
     </item>
