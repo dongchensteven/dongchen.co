@@ -6,10 +6,20 @@
     <description>Recent content in Nginx: Simple But Profound on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 11 Oct 2018 00:00:00 +1300</lastBuildDate>
+    <lastBuildDate>Thu, 31 Jan 2019 07:51:02 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/categories/nginx-simple-but-profound/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>5. Nginx Space and Time Measurement Units</title>
+      <link>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/5.-nginx-space-and-time-measurement-units/</link>
+      <pubDate>Thu, 31 Jan 2019 07:51:02 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/5.-nginx-space-and-time-measurement-units/</guid>
+      <description>A unit of measurement that is often misleading I often see people confuse the time and space units of Nginx, which is especially prevalent among beginners. One measure unit that most often misleads them is an m letter, which can be expressed either as megabytes or as minutes.
+Space Measurement Units Bytes 1  1024 # A unit without a suffix letter stands for bytes.   Kilobytes 1  8k # A unit with a suffix letter &amp;#39;k&amp;#39; or &amp;#39;K&amp;#39; stands for kilobytes.</description>
+    </item>
     
     <item>
       <title>4. An overview of the default nginx.conf file</title>
@@ -17,10 +27,9 @@
       <pubDate>Thu, 11 Oct 2018 00:00:00 +1300</pubDate>
       
       <guid>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/4.-default-nginx.conf-file/</guid>
-      <description>The first place we need to visit after the installation should be the nginx.conf file. This file contains everything we need for rendering a very basic static HTML web page on HTTP port 80.
-If you have started your Nginx process after the installation then we can get its configuration file through the master process:
-1  ps -ef | grep nginx   The result should look like:
-  Nginx Process   We See the nginx.</description>
+      <description>Have a glance of Nginx default configuration file The first place we need to visit after the installation should be the nginx.conf file. This file contains everything we need for rendering a very basic static HTML web page on HTTP port 80.
+Locate it through the main process If you have started your Nginx process after the installation then we can get its configuration file through the master process:
+1  ps -ef | grep nginx   The result should look like:</description>
     </item>
     
     <item>
@@ -40,10 +49,9 @@ The existence of these instructions makes it very convenient for us to manipulat
       <pubDate>Wed, 10 Oct 2018 00:50:00 +1300</pubDate>
       
       <guid>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/2.-install-nginx/</guid>
-      <description>Before we begin our journey, we must prepare at least a Basic Linux Server. Or you can follow along with your existing up to date Linux Server if you have one. If you are ready, then let’s begin our High-Performance Journey!
-Let’s install Nginx first:
-1  sudo vi /etc/yum.repos.d/nginx.repo   Paste in the following content:
-1 2 3 4 5  [nginx] name=nginx repo baseurl=http://nginx.org/packages/centos/7/$basearch/ gpgcheck=0 enabled=1   ‌Update the local repo:</description>
+      <description>Ways to install Nginx on CentOS 7 Before we begin our journey, we must prepare a CentOS 7 Linux Server, if you don&amp;rsquo;t have one, you can consider getting one from Linode for very cheap price. Or you can follow along with your existing CentOS 7 Linux Server if you have one. If you are ready, then let’s begin our High-Performance Journey!
+There are two ways of installation:
+1. Nginx package installation This option is suggested to the newcomers since they don&amp;rsquo;t know much details about what exactly Nginx use for, so the first thing they need to do is to quickly install it and start playing around with it.</description>
     </item>
     
     <item>

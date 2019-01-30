@@ -38,6 +38,7 @@ The existence of these instructions makes it very convenient for us to manipulat
 
 <link href="/dist/even.ea128f8b.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/styles.css">
 
 
 <meta property="og:title" content="3. Basic Nginx operations" />
@@ -56,7 +57,7 @@ The existence of these instructions makes it very convenient for us to manipulat
 
 <meta itemprop="datePublished" content="2018-10-10T00:52:00&#43;13:00" />
 <meta itemprop="dateModified" content="2019-01-28T07:47:00&#43;13:00" />
-<meta itemprop="wordCount" content="607">
+<meta itemprop="wordCount" content="614">
 
 
 
@@ -144,7 +145,8 @@ The existence of these instructions makes it very convenient for us to manipulat
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#parameters-and-signals">Parameters and Signals</a></li>
+<li><a href="#parameters-and-signals">Parameters and Signals</a>
+<ul>
 <li><a href="#1-parameters">1. Parameters</a>
 <ul>
 <li><a href="#configuration-file">Configuration file</a></li>
@@ -153,13 +155,15 @@ The existence of these instructions makes it very convenient for us to manipulat
 <li><a href="#syntax-validating">Syntax Validating</a></li>
 <li><a href="#nginx-version">Nginx version</a></li>
 <li><a href="#syntax-validating-with-or-without-error">Syntax Validating with or without error</a></li>
+<li><a href="#signal-sending">Signal Sending</a></li>
 </ul></li>
-<li><a href="#2-signals">2. Signals</a>
+<li><a href="#2-signal-usages">2. Signal Usages</a>
 <ul>
 <li><a href="#fast-shutdown">Fast Shutdown</a></li>
 <li><a href="#graceful-shutdown">Graceful Shutdown</a></li>
 <li><a href="#reopen-log-file">Reopen Log File</a></li>
 <li><a href="#reload-configuration-files">Reload Configuration Files</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -172,11 +176,11 @@ The existence of these instructions makes it very convenient for us to manipulat
 
 <p>The existence of these instructions makes it very convenient for us to manipulate the various configurations of Nginx. We can manipulate Nginx’s status, running path, test configuration files, etc. We can also reload Nginx’s configuration file at its runtime; this feature is handy for minor changes to Nginx while it&rsquo;s running.</p>
 
-<h1 id="1-parameters">1. Parameters</h1>
+<h2 id="1-parameters">1. Parameters</h2>
 
 <p>Parameters can be used to manipulate Nginx to accomplish some basic tasks. With these parameters, we can: use a configuration file instead of the default one, change the global configuration directives, set the directory that keeps server files, test the configuration file syntaxes&rsquo; correctness, view Nginx&rsquo;s versions and its configured parameters.</p>
 
-<h2 id="configuration-file">Configuration file</h2>
+<h3 id="configuration-file">Configuration file</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -187,7 +191,7 @@ The existence of these instructions makes it very convenient for us to manipulat
 </div>
 <p>Use an alternative configuration file instead of the default one.</p>
 
-<h2 id="global-configuration-directive">Global configuration directive</h2>
+<h3 id="global-configuration-directive">Global configuration directive</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -198,7 +202,7 @@ The existence of these instructions makes it very convenient for us to manipulat
 </div>
 <p>This command assigns the worker_processes directive to the amount of logic CPUs, and save it to the configuration of the master related to the specified process id.</p>
 
-<h2 id="server-directory">Server directory</h2>
+<h3 id="server-directory">Server directory</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -209,7 +213,7 @@ The existence of these instructions makes it very convenient for us to manipulat
 </div>
 <p>This command sets the root directory of Nginx server files.</p>
 
-<h2 id="syntax-validating">Syntax Validating</h2>
+<h3 id="syntax-validating">Syntax Validating</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -220,7 +224,7 @@ The existence of these instructions makes it very convenient for us to manipulat
 </div>
 <p>This command searches the syntaxes correctness of all the configuration files. If we want to print the configuration files&rsquo; contents on the screen when testing, we can use -T parameter instead, so I think this upper-case parameter is not that useful, If you used it, you&rsquo;d feel the same way.</p>
 
-<h2 id="nginx-version">Nginx version</h2>
+<h3 id="nginx-version">Nginx version</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -231,7 +235,7 @@ The existence of these instructions makes it very convenient for us to manipulat
 </div>
 <p>The -v parameter only shows the version of Nginx. If we want to see not only the version of Nginx but also the version of the GCC compiler built it, we can use -V instead, and this upper-case parameter also shows the configured arguments of Nginx.</p>
 
-<h2 id="syntax-validating-with-or-without-error">Syntax Validating with or without error</h2>
+<h3 id="syntax-validating-with-or-without-error">Syntax Validating with or without error</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -242,11 +246,20 @@ The existence of these instructions makes it very convenient for us to manipulat
 </div>
 <p>The -q parameter hides the non-error messages while testing the syntaxes of Nginx&rsquo;s configuration files.</p>
 
-<h1 id="2-signals">2. Signals</h1>
+<h3 id="signal-sending">Signal Sending</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">nginx -s behavior_of_nginx</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="2-signal-usages">2. Signal Usages</h2>
 
 <p>Nginx allows us to change its processes status through sending a signal to its master process, and the signals we use often are: stop, quit, reload, reopen.</p>
 
-<h2 id="fast-shutdown">Fast Shutdown</h2>
+<h3 id="fast-shutdown">Fast Shutdown</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -257,7 +270,7 @@ The existence of these instructions makes it very convenient for us to manipulat
 </div>
 <p>The <a href="http://nginx.org/en/docs/beginners_guide.html">stop</a> signal terminates all Nginx related processes immediately, especially the master and worker processes.</p>
 
-<h2 id="graceful-shutdown">Graceful Shutdown</h2>
+<h3 id="graceful-shutdown">Graceful Shutdown</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -268,7 +281,7 @@ The existence of these instructions makes it very convenient for us to manipulat
 </div>
 <p>The <a href="http://nginx.org/en/docs/beginners_guide.html">quit</a> signal waits for worker processes to finish serving current requests before terminates them.</p>
 
-<h2 id="reopen-log-file">Reopen Log File</h2>
+<h3 id="reopen-log-file">Reopen Log File</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -279,7 +292,7 @@ The existence of these instructions makes it very convenient for us to manipulat
 </div>
 <p>The <a href="http://nginx.org/en/docs/beginners_guide.html">reopen</a> signal asks Nginx to try to reopen a log file, and it creates one if the log file doesn&rsquo;t exist. Without this instruction, Nginx keeps writing logs to the original log file, even if we rename it by using mv command.</p>
 
-<h2 id="reload-configuration-files">Reload Configuration Files</h2>
+<h3 id="reload-configuration-files">Reload Configuration Files</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1

@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/5.-nginx-space-and-time-measurement-units/</loc>
+    <lastmod>2019-01-31T07:51:02+13:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://dongchen.co/post/certification/zend-php7-certified-engineer-passing-technique-sharing/</loc>
     <lastmod>2019-01-26T07:01:23+13:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -45,7 +52,7 @@
   
   <url>
     <loc>https://dongchen.co/</loc>
-    <lastmod>2019-01-26T07:01:23+13:00</lastmod>
+    <lastmod>2019-01-31T07:51:02+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -59,21 +66,21 @@
   
   <url>
     <loc>https://dongchen.co/tags/nginx/</loc>
-    <lastmod>2018-10-11T00:00:00+13:00</lastmod>
+    <lastmod>2019-01-31T07:51:02+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://dongchen.co/categories/nginx-simple-but-profound/</loc>
-    <lastmod>2018-10-11T00:00:00+13:00</lastmod>
+    <lastmod>2019-01-31T07:51:02+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://dongchen.co/post/</loc>
-    <lastmod>2019-01-26T07:01:23+13:00</lastmod>
+    <lastmod>2019-01-31T07:51:02+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -87,14 +94,14 @@
   
   <url>
     <loc>https://dongchen.co/tags/server/</loc>
-    <lastmod>2018-10-11T00:00:00+13:00</lastmod>
+    <lastmod>2019-01-31T07:51:02+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://dongchen.co/tags/</loc>
-    <lastmod>2018-10-11T00:00:00+13:00</lastmod>
+    <lastmod>2019-01-31T07:51:02+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
