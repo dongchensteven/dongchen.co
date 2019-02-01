@@ -5,7 +5,7 @@ lastmod: 2019-01-26T07:01:23+13:00
 draft: false
 keywords: []
 description: ""
-tags: [ "Professional Certification" ]
+tags: [ "Professional Certification", "Zend Certified PHP7 Engineer" ]
 categories: [ "How To Be Certified" ]
 author: ""
 
