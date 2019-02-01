@@ -6,10 +6,19 @@
     <description>Recent content in Personal Development on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 01 Feb 2019 07:38:01 +1300</lastBuildDate>
+    <lastBuildDate>Fri, 01 Feb 2019 08:14:04 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/tags/personal-development/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How to start from scratch</title>
+      <link>https://dongchen.co/post/career-path/2.-how-to-start-from-scratch/</link>
+      <pubDate>Fri, 01 Feb 2019 08:14:04 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/career-path/2.-how-to-start-from-scratch/</guid>
+      <description>My Experience I started working in the industry in early 2014 until now, and I stumbled upon a pattern. A popular technology that is fast in popularity will be eliminated very quickly. So I&amp;rsquo;ve come to the conclusion that you are not necessary to catch up with fashion technology for no reason, but if you need to, just double check and approximately estimate its EOL (End Of Life) time. Five years?</description>
+    </item>
     
     <item>
       <title>A little about me</title>

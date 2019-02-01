@@ -59,7 +59,15 @@
   </url>
   
   <url>
+    <loc>https://dongchen.co/categories/career-path/</loc>
+    <lastmod>2019-02-01T08:14:04+13:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://dongchen.co/categories/</loc>
+    <lastmod>2019-02-01T08:14:04+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -94,7 +102,7 @@
   
   <url>
     <loc>https://dongchen.co/tags/personal-development/</loc>
-    <lastmod>2019-02-01T07:38:01+13:00</lastmod>
+    <lastmod>2019-02-01T08:14:04+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
