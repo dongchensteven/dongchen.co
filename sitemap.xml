@@ -59,7 +59,7 @@
   </url>
   
   <url>
-    <loc>https://dongchen.co/categories/career-path/</loc>
+    <loc>https://dongchen.co/tags/career-path/</loc>
     <lastmod>2019-02-01T08:14:04+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -67,7 +67,6 @@
   
   <url>
     <loc>https://dongchen.co/categories/</loc>
-    <lastmod>2019-02-01T08:14:04+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -101,7 +100,7 @@
   </url>
   
   <url>
-    <loc>https://dongchen.co/tags/personal-development/</loc>
+    <loc>https://dongchen.co/categories/personal-development/</loc>
     <lastmod>2019-02-01T08:14:04+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -130,14 +129,21 @@
   
   <url>
     <loc>https://dongchen.co/tags/</loc>
-    <lastmod>2019-01-31T07:51:02+13:00</lastmod>
+    <lastmod>2019-02-01T08:14:04+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/categories/time-log/</loc>
+    <loc>https://dongchen.co/tags/time-log/</loc>
     <lastmod>2019-02-01T07:38:01+13:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/tags/zend-certified-php7-engineer/</loc>
+    <lastmod>2019-01-26T07:01:23+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Personal Development on Dong - A place to track my time log</title>
+    <link>https://dongchen.co/categories/personal-development/</link>
+    <description>Recent content in Personal Development on Dong - A place to track my time log</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 01 Feb 2019 08:14:04 +1300</lastBuildDate>
+    
+	<atom:link href="https://dongchen.co/categories/personal-development/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How to start from scratch</title>
+      <link>https://dongchen.co/post/career-path/2.-how-to-start-from-scratch/</link>
+      <pubDate>Fri, 01 Feb 2019 08:14:04 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/career-path/2.-how-to-start-from-scratch/</guid>
+      <description>My Experience I started working in the industry in early 2014 until now, and I stumbled upon a pattern. A popular technology that is fast in popularity will be eliminated very quickly. So I&amp;rsquo;ve come to the conclusion that you are not necessary to catch up with fashion technology for no reason, but if you need to, just double check and approximately estimate its EOL (End Of Life) time. Five years?</description>
+    </item>
+    
+    <item>
+      <title>A little about me</title>
+      <link>https://dongchen.co/post/career-path/1.-a-little-about-me/</link>
+      <pubDate>Fri, 01 Feb 2019 07:38:01 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/career-path/1.-a-little-about-me/</guid>
+      <description>My Story I went to a small island country with my family in 2000 to work in the retail business, and then in 2009, I came to New Zealand to study, and after graduation, I spent a few months in a fish shop and then a few months at a construction site. In 2014, a fortuitous opportunity brought me to a New Zealand telecoms company and opened the way for me to grow in technology.</description>
+    </item>
+    
+  </channel>
+</rss>

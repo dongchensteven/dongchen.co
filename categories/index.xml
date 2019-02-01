@@ -6,19 +6,9 @@
     <description>Recent content in Categories on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 01 Feb 2019 08:14:04 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/categories/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Career Path</title>
-      <link>https://dongchen.co/categories/career-path/</link>
-      <pubDate>Fri, 01 Feb 2019 08:14:04 +1300</pubDate>
-      
-      <guid>https://dongchen.co/categories/career-path/</guid>
-      <description></description>
-    </item>
     
     <item>
       <title>How To Be Certified</title>
@@ -39,11 +29,11 @@
     </item>
     
     <item>
-      <title>Time Log</title>
-      <link>https://dongchen.co/categories/time-log/</link>
-      <pubDate>Fri, 01 Feb 2019 07:38:01 +1300</pubDate>
+      <title>Personal Development</title>
+      <link>https://dongchen.co/categories/personal-development/</link>
+      <pubDate>Fri, 01 Feb 2019 08:14:04 +1300</pubDate>
       
-      <guid>https://dongchen.co/categories/time-log/</guid>
+      <guid>https://dongchen.co/categories/personal-development/</guid>
       <description></description>
     </item>
     

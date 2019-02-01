@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Career Path on Dong - A place to track my time log</title>
+    <link>https://dongchen.co/tags/career-path/</link>
+    <description>Recent content in Career Path on Dong - A place to track my time log</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 01 Feb 2019 08:14:04 +1300</lastBuildDate>
+    
+	<atom:link href="https://dongchen.co/tags/career-path/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How to start from scratch</title>
+      <link>https://dongchen.co/post/career-path/2.-how-to-start-from-scratch/</link>
+      <pubDate>Fri, 01 Feb 2019 08:14:04 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/career-path/2.-how-to-start-from-scratch/</guid>
+      <description>My Experience I started working in the industry in early 2014 until now, and I stumbled upon a pattern. A popular technology that is fast in popularity will be eliminated very quickly. So I&amp;rsquo;ve come to the conclusion that you are not necessary to catch up with fashion technology for no reason, but if you need to, just double check and approximately estimate its EOL (End Of Life) time. Five years?</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -6,10 +6,19 @@
     <description>Recent content in Tags on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 31 Jan 2019 07:51:02 +1300</lastBuildDate>
+    <lastBuildDate>Fri, 01 Feb 2019 08:14:04 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Career Path</title>
+      <link>https://dongchen.co/tags/career-path/</link>
+      <pubDate>Fri, 01 Feb 2019 08:14:04 +1300</pubDate>
+      
+      <guid>https://dongchen.co/tags/career-path/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Nginx</title>
@@ -17,15 +26,6 @@
       <pubDate>Thu, 31 Jan 2019 07:51:02 +1300</pubDate>
       
       <guid>https://dongchen.co/tags/nginx/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Personal Development</title>
-      <link>https://dongchen.co/tags/personal-development/</link>
-      <pubDate>Fri, 01 Feb 2019 08:14:04 +1300</pubDate>
-      
-      <guid>https://dongchen.co/tags/personal-development/</guid>
       <description></description>
     </item>
     
@@ -44,6 +44,24 @@
       <pubDate>Thu, 31 Jan 2019 07:51:02 +1300</pubDate>
       
       <guid>https://dongchen.co/tags/server/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Time Log</title>
+      <link>https://dongchen.co/tags/time-log/</link>
+      <pubDate>Fri, 01 Feb 2019 07:38:01 +1300</pubDate>
+      
+      <guid>https://dongchen.co/tags/time-log/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Zend Certified PHP7 Engineer</title>
+      <link>https://dongchen.co/tags/zend-certified-php7-engineer/</link>
+      <pubDate>Sat, 26 Jan 2019 07:01:23 +1300</pubDate>
+      
+      <guid>https://dongchen.co/tags/zend-certified-php7-engineer/</guid>
       <description></description>
     </item>
     
