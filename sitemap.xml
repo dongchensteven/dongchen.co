@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/2.-linux-installation/</loc>
+    <lastmod>2019-02-03T06:22:53+13:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/1.-introduction/</loc>
     <lastmod>2019-02-02T10:45:06+13:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -11,7 +18,7 @@
   
   <url>
     <loc>https://dongchen.co/post/career-path/2.-how-to-start-from-scratch/</loc>
-    <lastmod>2019-02-01T08:14:04+13:00</lastmod>
+    <lastmod>2019-02-03T06:35:04+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -67,7 +74,7 @@
   
   <url>
     <loc>https://dongchen.co/tags/career-path/</loc>
-    <lastmod>2019-02-01T08:14:04+13:00</lastmod>
+    <lastmod>2019-02-03T06:35:04+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -80,7 +87,7 @@
   
   <url>
     <loc>https://dongchen.co/</loc>
-    <lastmod>2019-02-02T10:45:06+13:00</lastmod>
+    <lastmod>2019-02-03T06:22:53+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -94,14 +101,14 @@
   
   <url>
     <loc>https://dongchen.co/tags/linux/</loc>
-    <lastmod>2019-02-02T10:45:06+13:00</lastmod>
+    <lastmod>2019-02-03T06:22:53+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://dongchen.co/categories/linux-simple-but-profound/</loc>
-    <lastmod>2019-02-02T10:45:06+13:00</lastmod>
+    <lastmod>2019-02-03T06:22:53+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -122,14 +129,14 @@
   
   <url>
     <loc>https://dongchen.co/categories/personal-development/</loc>
-    <lastmod>2019-02-01T08:14:04+13:00</lastmod>
+    <lastmod>2019-02-03T06:35:04+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://dongchen.co/post/</loc>
-    <lastmod>2019-02-02T10:45:06+13:00</lastmod>
+    <lastmod>2019-02-03T06:22:53+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -143,14 +150,14 @@
   
   <url>
     <loc>https://dongchen.co/tags/server/</loc>
-    <lastmod>2019-02-02T10:45:06+13:00</lastmod>
+    <lastmod>2019-02-03T06:22:53+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://dongchen.co/tags/</loc>
-    <lastmod>2019-02-01T08:14:04+13:00</lastmod>
+    <lastmod>2019-02-03T06:35:04+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
