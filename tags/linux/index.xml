@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on Dong - A place to track my time log</title>
+    <link>https://dongchen.co/tags/linux/</link>
+    <description>Recent content in Linux on Dong - A place to track my time log</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 02 Feb 2019 10:45:06 +1300</lastBuildDate>
+    
+	<atom:link href="https://dongchen.co/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>1. A brief introduction of Linux</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/1.-introduction/</link>
+      <pubDate>Sat, 02 Feb 2019 10:45:06 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/1.-introduction/</guid>
+      <description>History Because at that time Linus after studying Minix source code discovered that Minix&amp;rsquo;s design is terrible. So he wrote a kernel from scratch, the Linux kernel, based on the assembly and c language he had accumulated as a child. It was later used by many kernel enthusiasts and vendors to develop release versions suitable for their preferences and needs.
+C language is a high-level language, its efficiency is much faster than most of the current high-level languages, but the effectiveness of c language is 30% slower than assembly language.</description>
+    </item>
+    
+  </channel>
+</rss>

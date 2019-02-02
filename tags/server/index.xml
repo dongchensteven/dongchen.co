@@ -6,10 +6,20 @@
     <description>Recent content in Server on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 31 Jan 2019 07:51:02 +1300</lastBuildDate>
+    <lastBuildDate>Sat, 02 Feb 2019 10:45:06 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/tags/server/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>1. A brief introduction of Linux</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/1.-introduction/</link>
+      <pubDate>Sat, 02 Feb 2019 10:45:06 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/1.-introduction/</guid>
+      <description>History Because at that time Linus after studying Minix source code discovered that Minix&amp;rsquo;s design is terrible. So he wrote a kernel from scratch, the Linux kernel, based on the assembly and c language he had accumulated as a child. It was later used by many kernel enthusiasts and vendors to develop release versions suitable for their preferences and needs.
+C language is a high-level language, its efficiency is much faster than most of the current high-level languages, but the effectiveness of c language is 30% slower than assembly language.</description>
+    </item>
     
     <item>
       <title>5. Nginx Space and Time Measurement Units</title>
@@ -55,7 +65,7 @@ There are two ways of installation:
     </item>
     
     <item>
-      <title>1. A brief introduction</title>
+      <title>1. A brief introduction of Nginx</title>
       <link>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/1.-introduction/</link>
       <pubDate>Wed, 10 Oct 2018 00:49:00 +1300</pubDate>
       
