@@ -6,10 +6,21 @@
     <description>Recent content in Linux on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 04 Feb 2019 06:41:44 +1300</lastBuildDate>
+    <lastBuildDate>Tue, 05 Feb 2019 07:25:20 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>4. Linux System and Hardware Times</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/4.-linux-system-and-hardware-times/</link>
+      <pubDate>Tue, 05 Feb 2019 07:25:20 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/4.-linux-system-and-hardware-times/</guid>
+      <description>In a Linux system, we can view the time of the system or the time of the underlying hardware.
+Hardware Time We can view the time of the hardware by using the hwclock or clock command. We looked at the two commands separately through the ll command, and we learned that clock was a soft link to hwclock, so they were the same.
+With the help of the man command, we know that hwclock is the command used by system administrators:</description>
+    </item>
     
     <item>
       <title>3. File Systems</title>
