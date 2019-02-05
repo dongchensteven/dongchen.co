@@ -6,10 +6,22 @@
     <description>Recent content in Posts on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 05 Feb 2019 07:25:20 +1300</lastBuildDate>
+    <lastBuildDate>Wed, 06 Feb 2019 07:11:06 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>5. Command Manual Page (man page)</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/5.-command-manual-page-man-page/</link>
+      <pubDate>Wed, 06 Feb 2019 07:11:06 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/5.-command-manual-page-man-page/</guid>
+      <description>With the power of the man page command, we can see what parameters a command accepts and how to use each parameter corresponding to the command. In this way, we are more efficient when using commands.
+Page Sections Given the wide variety of commands, man solves the problem of command classification through section numbering.
+1. User Commands Section (1) is used to categorise user commands.
+Such as the date command we used earlier:</description>
+    </item>
     
     <item>
       <title>4. Linux System and Hardware Times</title>
