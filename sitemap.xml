@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/7.-types-of-commands/</loc>
+    <lastmod>2019-02-08T06:19:30+13:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/6.-bash-help-system-man-info/</loc>
     <lastmod>2019-02-07T07:12:39+13:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -115,7 +122,7 @@
   
   <url>
     <loc>https://dongchen.co/</loc>
-    <lastmod>2019-02-07T07:12:39+13:00</lastmod>
+    <lastmod>2019-02-08T06:19:30+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -129,14 +136,14 @@
   
   <url>
     <loc>https://dongchen.co/tags/linux/</loc>
-    <lastmod>2019-02-07T07:12:39+13:00</lastmod>
+    <lastmod>2019-02-08T06:19:30+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://dongchen.co/categories/linux-simple-but-profound/</loc>
-    <lastmod>2019-02-07T07:12:39+13:00</lastmod>
+    <lastmod>2019-02-08T06:19:30+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -164,7 +171,7 @@
   
   <url>
     <loc>https://dongchen.co/post/</loc>
-    <lastmod>2019-02-07T07:12:39+13:00</lastmod>
+    <lastmod>2019-02-08T06:19:30+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -178,7 +185,7 @@
   
   <url>
     <loc>https://dongchen.co/tags/server/</loc>
-    <lastmod>2019-02-07T07:12:39+13:00</lastmod>
+    <lastmod>2019-02-08T06:19:30+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
