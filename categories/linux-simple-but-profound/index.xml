@@ -6,40 +6,52 @@
     <description>Recent content in Linux: Simple But Profound on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 08 Feb 2019 06:19:30 +1300</lastBuildDate>
+    <lastBuildDate>Sat, 09 Feb 2019 10:56:58 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/categories/linux-simple-but-profound/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>7. Types of Commands</title>
-      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/7.-types-of-commands/</link>
+      <title>8. Linux Directory and File Management</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/8.-linux-directory-and-file-management/</link>
+      <pubDate>Sat, 09 Feb 2019 10:56:58 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/8.-linux-directory-and-file-management/</guid>
+      <description>Linux servers exist to process data efficiently, and files store data, so file management is critical. Directories manage files, so directory management is more crucial.
+Let&amp;rsquo;s begin with the first one.
+Print Current Working Directory Let&amp;rsquo;s take a look at the manual for the pwd command:
+1  man pwd # pwd&amp;#39;s manual     Check pwd&amp;#39;s definition and usage   With this command, we know which directory we are currently working on:</description>
+    </item>
+    
+    <item>
+      <title>7. Types of Linux Commands</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/7.-types-of-linux-commands/</link>
       <pubDate>Fri, 08 Feb 2019 06:19:30 +1300</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/7.-types-of-commands/</guid>
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/7.-types-of-linux-commands/</guid>
       <description>Type is a command to view command types. We can look at what types this command can see with the help of the help command:
-  there are five types   Alias Alias is a shortcut to commands, such as ll is a simplified version of ls-alF:
-  the simplified version of ls -alF   More&amp;hellip;
+  there are five types   Alias Alias is a shortcut to commands, such as ll is a simplified version of ls -l:
+  the simplified version of ls -l   More&amp;hellip;
 Keyword Shell has some reserved keywords, while is one of them:</description>
     </item>
     
     <item>
-      <title>6. Bash help, System man, info</title>
-      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/6.-bash-help-system-man-info/</link>
+      <title>6. Linux Bash help, System man, info</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/6.-linux-bash-help-system-man-info/</link>
       <pubDate>Thu, 07 Feb 2019 07:12:39 +1300</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/6.-bash-help-system-man-info/</guid>
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/6.-linux-bash-help-system-man-info/</guid>
       <description>Bash Help Command Let&amp;rsquo;s take a look at what bash is, and you can see it through whatis bash, apropos bash or man -k bash commands:
   bash is GNU&amp;#39;s Bourne-Again SHell   The builtins is actually a soft link to bash-builtins:
   builtins is a soft link to bash-builtins   So we can use man builtins, info builtins, man bash-builtins or info bash-builtins commands to view bash&amp;rsquo;s built-in commands:</description>
     </item>
     
     <item>
-      <title>5. Command Manual Page (man page)</title>
-      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/5.-command-manual-page-man-page/</link>
+      <title>5. Linux Command Manual Page (man page)</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/5.-linux-command-manual-page-man-page/</link>
       <pubDate>Wed, 06 Feb 2019 07:11:06 +1300</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/5.-command-manual-page-man-page/</guid>
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/5.-linux-command-manual-page-man-page/</guid>
       <description>With the power of the man page command, we can see what parameters a command accepts and how to use each parameter corresponding to the command. In this way, we are more efficient when using commands.
 Page Sections Given the wide variety of commands, man solves the problem of command classification through section numbering.
 1. User Commands Section (1) is used to categorise user commands.
@@ -58,11 +70,11 @@ With the help of the man command, we know that hwclock is the command used by sy
     </item>
     
     <item>
-      <title>3. File Systems</title>
-      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/3.-file-systems/</link>
+      <title>3. Linux File Systems</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/3.-linux-file-systems/</link>
       <pubDate>Mon, 04 Feb 2019 06:41:44 +1300</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/3.-file-systems/</guid>
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/3.-linux-file-systems/</guid>
       <description>Filesystem hierarchy standard is maintained by the Linux Foundation, which defines the structure and contents of directories in various distributions of Linux.
   Linux File System on CentOS 7 Distribution   File System Hierarchy File System Hierarchy
 Let&amp;rsquo;s look at what each of these directories means and what types of files are suitable for each of them.
