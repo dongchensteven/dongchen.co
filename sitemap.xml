@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/9.-vim-a-powerful-linux-text-editors-basic-usage/</loc>
+    <lastmod>2019-02-10T06:00:30+13:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/8.-linux-directory-and-file-management/</loc>
     <lastmod>2019-02-09T10:56:58+13:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -129,7 +136,7 @@
   
   <url>
     <loc>https://dongchen.co/</loc>
-    <lastmod>2019-02-09T10:56:58+13:00</lastmod>
+    <lastmod>2019-02-10T06:00:30+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -143,14 +150,14 @@
   
   <url>
     <loc>https://dongchen.co/tags/linux/</loc>
-    <lastmod>2019-02-09T10:56:58+13:00</lastmod>
+    <lastmod>2019-02-10T06:00:30+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://dongchen.co/categories/linux-simple-but-profound/</loc>
-    <lastmod>2019-02-09T10:56:58+13:00</lastmod>
+    <lastmod>2019-02-10T06:00:30+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -178,7 +185,7 @@
   
   <url>
     <loc>https://dongchen.co/post/</loc>
-    <lastmod>2019-02-09T10:56:58+13:00</lastmod>
+    <lastmod>2019-02-10T06:00:30+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -192,7 +199,7 @@
   
   <url>
     <loc>https://dongchen.co/tags/server/</loc>
-    <lastmod>2019-02-09T10:56:58+13:00</lastmod>
+    <lastmod>2019-02-10T06:00:30+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
