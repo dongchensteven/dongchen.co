@@ -6,10 +6,22 @@
     <description>Recent content in Server on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 10 Feb 2019 06:00:30 +1300</lastBuildDate>
+    <lastBuildDate>Mon, 11 Feb 2019 07:08:31 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/tags/server/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>10. Alias - A Linux Command for Shortcut Creation</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/10.-alias-a-linux-command-for-shortcut-creation/</link>
+      <pubDate>Mon, 11 Feb 2019 07:08:31 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/10.-alias-a-linux-command-for-shortcut-creation/</guid>
+      <description>Sometimes a frequently used Linux command can be very long, and when that happens, we need the alias command to help simplify the work of human input.
+We can create aliases in two common ways, one for temporary aliases and the other for permanent aliases.
+Let&amp;rsquo;s take a look at its help documentation:
+1  help alias     Check alias&amp;#39;s definition and usage   We can use the alias command to view the shortcuts owned by current user:</description>
+    </item>
     
     <item>
       <title>9. Vim - A Powerful Linux Text Editor&#39;s Basic Usage</title>
@@ -19,7 +31,7 @@
       <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/9.-vim-a-powerful-linux-text-editors-basic-usage/</guid>
       <description>Vim Text editor can efficiently help us quickly create or modify some common text type files, such as configuration files:
   Check vim&amp;#39;s definition and usage   Create File 1  vim newfile # After running the command, it&amp;#39;ll create an empty file called newfile     Create a new file   Command Mode Vim opens a file in command mode:
-  Command mode   Help We can view the command-related help by the: help command:</description>
+  Command mode   Help We can view the command-related help by the :help command:</description>
     </item>
     
     <item>
