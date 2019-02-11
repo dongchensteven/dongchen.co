@@ -6,10 +6,22 @@
     <description>Recent content in Linux: Simple But Profound on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 11 Feb 2019 07:08:31 +1300</lastBuildDate>
+    <lastBuildDate>Tue, 12 Feb 2019 07:13:00 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/categories/linux-simple-but-profound/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>11. Bash Shell Auto Completion</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/11.-bash-shell-auto-completion/</link>
+      <pubDate>Tue, 12 Feb 2019 07:13:00 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/11.-bash-shell-auto-completion/</guid>
+      <description>CentOS does not install autocompletion support for all tools by default, so we need to install it manually.
+Check If We Have Bash Completion Installed We can use the following command to verify:
+1  yum list installed | grep completion   We won&amp;rsquo;t see any output if it hasn&amp;rsquo;t been installed, so we need to install this package:
+Install 1  yum install bash-completion -y   Although it is installed, it has not yet been loaded into the running bash, so we need to use the source command to load them into the bash:</description>
+    </item>
     
     <item>
       <title>10. Alias - A Linux Command for Shortcut Creation</title>
