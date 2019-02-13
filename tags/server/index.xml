@@ -6,17 +6,27 @@
     <description>Recent content in Server on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 12 Feb 2019 07:13:00 +1300</lastBuildDate>
+    <lastBuildDate>Wed, 13 Feb 2019 07:10:22 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/tags/server/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>11. Bash Shell Auto Completion</title>
-      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/11.-bash-shell-auto-completion/</link>
+      <title>12. Bash Shell History Record Operations</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/12.-bash-shell-commands-history-record-usage/</link>
+      <pubDate>Wed, 13 Feb 2019 07:10:22 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/12.-bash-shell-commands-history-record-usage/</guid>
+      <description>With the command reuse feature of the bash shell, it is easy to use a previous command again or to see what commands we have recently used.
+  Check history&amp;#39;s definition and usage   History File Location 1  echo $HISTFILE     the file that records the used commands   History Size 1 2  echo $HISTSIZE echo $HISTFILESIZE     these two commands show the amount of the lines of commands they can keep   History List 1  history     shows all recently used commands   Run Previous Command 1  !</description>
+    </item>
+    
+    <item>
+      <title>11. CentOS 7 - Bash Shell Auto Completion</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/11.-centos-7-bash-shell-auto-completion/</link>
       <pubDate>Tue, 12 Feb 2019 07:13:00 +1300</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/11.-bash-shell-auto-completion/</guid>
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/11.-centos-7-bash-shell-auto-completion/</guid>
       <description>CentOS does not install autocompletion support for all tools by default, so we need to install it manually.
 Check If We Have Bash Completion Installed We can use the following command to verify:
 1  yum list installed | grep completion   We won&amp;rsquo;t see any output if it hasn&amp;rsquo;t been installed, so we need to install this package:
