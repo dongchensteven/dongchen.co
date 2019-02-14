@@ -6,10 +6,22 @@
     <description>Recent content in Linux on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 13 Feb 2019 07:10:22 +1300</lastBuildDate>
+    <lastBuildDate>Thu, 14 Feb 2019 08:17:49 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>13. Bourne and Bash Shells&#39; Environment Variables</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/13.-bourne-and-bash-shells-environment-variables/</link>
+      <pubDate>Thu, 14 Feb 2019 08:17:49 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/13.-bourne-and-bash-shells-environment-variables/</guid>
+      <description>The shell that Linux used in the first place was Bourne, and then Linux released Bash, which is an enhanced version of Bourne, and most Linux systems now use Bash by default.
+Bourne Shell Variables Home and path are the two most commonly used bourne shell variables
+HOME Current user&amp;rsquo;s home directory.
+1  echo $HOME     prints current user&amp;#39;s home directory   PATH Paths of binary files, which are runnable programs.</description>
+    </item>
     
     <item>
       <title>12. Bash Shell History Record Operations</title>
