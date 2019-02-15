@@ -6,10 +6,21 @@
     <description>Recent content in Posts on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 14 Feb 2019 08:17:49 +1300</lastBuildDate>
+    <lastBuildDate>Fri, 15 Feb 2019 07:52:08 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>14. Shell - Cursor Movement</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/14.-shell-cursor-movement/</link>
+      <pubDate>Fri, 15 Feb 2019 07:52:08 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/14.-shell-cursor-movement/</guid>
+      <description>We can quickly move the cursor to a specific location with the shortcut key provided by the shell.
+Move cursor to the new line We can move the cursor to the beginning of the new line:
+1  Ctrl + C # press Control and C keys     before moving     after moving   Move cursor to the beginning We can move the cursor to the beginning of the line:</description>
+    </item>
     
     <item>
       <title>13. Bourne and Bash Shells&#39; Environment Variables</title>

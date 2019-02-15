@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/14.-shell-cursor-movement/</loc>
+    <lastmod>2019-02-15T07:52:08+13:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/13.-bourne-and-bash-shells-environment-variables/</loc>
     <lastmod>2019-02-14T08:17:49+13:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -164,7 +171,7 @@
   
   <url>
     <loc>https://dongchen.co/</loc>
-    <lastmod>2019-02-14T08:17:49+13:00</lastmod>
+    <lastmod>2019-02-15T07:52:08+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -178,14 +185,14 @@
   
   <url>
     <loc>https://dongchen.co/tags/linux/</loc>
-    <lastmod>2019-02-14T08:17:49+13:00</lastmod>
+    <lastmod>2019-02-15T07:52:08+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://dongchen.co/categories/linux-simple-but-profound/</loc>
-    <lastmod>2019-02-14T08:17:49+13:00</lastmod>
+    <lastmod>2019-02-15T07:52:08+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -213,7 +220,7 @@
   
   <url>
     <loc>https://dongchen.co/post/</loc>
-    <lastmod>2019-02-14T08:17:49+13:00</lastmod>
+    <lastmod>2019-02-15T07:52:08+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -227,7 +234,7 @@
   
   <url>
     <loc>https://dongchen.co/tags/server/</loc>
-    <lastmod>2019-02-14T08:17:49+13:00</lastmod>
+    <lastmod>2019-02-15T07:52:08+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
