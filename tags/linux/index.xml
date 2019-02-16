@@ -6,28 +6,39 @@
     <description>Recent content in Linux on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 16 Feb 2019 08:05:01 +1300</lastBuildDate>
+    <lastBuildDate>Sun, 17 Feb 2019 09:35:21 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>15. Shell - Text Manipulation</title>
-      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/15.-shell-text-manipulation/</link>
+      <title>16. Bash Shell - Killing And Yanking</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/16.-bash-shell-killing-and-yanking/</link>
+      <pubDate>Sun, 17 Feb 2019 09:35:21 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/16.-bash-shell-killing-and-yanking/</guid>
+      <description>You can cut and paste text through the killing and yanking features provided by the bash shell.
+Killing Text Forward We can use Ctrl K to cut the text behind the cursor:
+1  Ctrl + K # press Control and K keys     before killing     after killing   Killing Text Backward We can use Ctrl U to cut the text before the cursor:</description>
+    </item>
+    
+    <item>
+      <title>15. Bash Shell - Text Manipulation</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/15.-bash-shell-text-manipulation/</link>
       <pubDate>Sat, 16 Feb 2019 08:05:01 +1300</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/15.-shell-text-manipulation/</guid>
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/15.-bash-shell-text-manipulation/</guid>
       <description>We usually need to change the display of some text, and these changes can be made through the text changing command.
 Delete char We can use Ctrl + D to delete the character on the current cursor:
 1  Ctrl + D # press Control and D keys     before manipulating     after manipulating   Backward delete char We can use Backspace to delete the character before the current cursor:</description>
     </item>
     
     <item>
-      <title>14. Shell - Cursor Movement</title>
-      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/14.-shell-cursor-movement/</link>
+      <title>14. Bash Shell - Cursor Movement</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/14.-bash-shell-cursor-movement/</link>
       <pubDate>Fri, 15 Feb 2019 07:52:08 +1300</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/14.-shell-cursor-movement/</guid>
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/14.-bash-shell-cursor-movement/</guid>
       <description>We can quickly move the cursor to a specific location with the shortcut key provided by the shell.
 Move cursor to the new line We can move the cursor to the beginning of the new line:
 1  Ctrl + C # press Control and C keys     before moving     after moving   Move cursor to the beginning We can move the cursor to the beginning of the line:</description>

@@ -3,14 +3,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/15.-shell-text-manipulation/</loc>
+    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/16.-bash-shell-killing-and-yanking/</loc>
+    <lastmod>2019-02-17T09:35:21+13:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/15.-bash-shell-text-manipulation/</loc>
     <lastmod>2019-02-16T08:05:01+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/14.-shell-cursor-movement/</loc>
+    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/14.-bash-shell-cursor-movement/</loc>
     <lastmod>2019-02-15T07:52:08+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -178,7 +185,7 @@
   
   <url>
     <loc>https://dongchen.co/</loc>
-    <lastmod>2019-02-16T08:05:01+13:00</lastmod>
+    <lastmod>2019-02-17T09:35:21+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -192,14 +199,14 @@
   
   <url>
     <loc>https://dongchen.co/tags/linux/</loc>
-    <lastmod>2019-02-16T08:05:01+13:00</lastmod>
+    <lastmod>2019-02-17T09:35:21+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://dongchen.co/categories/linux-simple-but-profound/</loc>
-    <lastmod>2019-02-16T08:05:01+13:00</lastmod>
+    <lastmod>2019-02-17T09:35:21+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -227,7 +234,7 @@
   
   <url>
     <loc>https://dongchen.co/post/</loc>
-    <lastmod>2019-02-16T08:05:01+13:00</lastmod>
+    <lastmod>2019-02-17T09:35:21+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -241,7 +248,7 @@
   
   <url>
     <loc>https://dongchen.co/tags/server/</loc>
-    <lastmod>2019-02-16T08:05:01+13:00</lastmod>
+    <lastmod>2019-02-17T09:35:21+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
