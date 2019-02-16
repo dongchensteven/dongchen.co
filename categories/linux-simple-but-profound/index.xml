@@ -6,10 +6,21 @@
     <description>Recent content in Linux: Simple But Profound on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 15 Feb 2019 07:52:08 +1300</lastBuildDate>
+    <lastBuildDate>Sat, 16 Feb 2019 08:05:01 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/categories/linux-simple-but-profound/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>15. Shell - Text Manipulation</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/15.-shell-text-manipulation/</link>
+      <pubDate>Sat, 16 Feb 2019 08:05:01 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/15.-shell-text-manipulation/</guid>
+      <description>We usually need to change the display of some text, and these changes can be made through the text changing command.
+Delete char We can use Ctrl + D to delete the character on the current cursor:
+1  Ctrl + D # press Control and D keys     before manipulating     after manipulating   Backward delete char We can use Backspace to delete the character before the current cursor:</description>
+    </item>
     
     <item>
       <title>14. Shell - Cursor Movement</title>

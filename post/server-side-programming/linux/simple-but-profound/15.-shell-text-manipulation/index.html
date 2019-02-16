@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>14. Shell - Cursor Movement - Dong - A place to track my time log</title>
+  <title>15. Shell - Text Manipulation - Dong - A place to track my time log</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,9 +16,9 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="We can quickly move the cursor to a specific location with the shortcut key provided by the shell.
-Move cursor to the new line We can move the cursor to the beginning of the new line:
-1  Ctrl &#43; C # press Control and C keys     before moving     after moving   Move cursor to the beginning We can move the cursor to the beginning of the line:" /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="Dong Chen" /><meta name="description" content="We usually need to change the display of some text, and these changes can be made through the text changing command.
+Delete char We can use Ctrl &#43; D to delete the character on the current cursor:
+1  Ctrl &#43; D # press Control and D keys     before manipulating     after manipulating   Backward delete char We can use Backspace to delete the character before the current cursor:" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -28,7 +28,7 @@ Move cursor to the new line We can move the cursor to the beginning of the new l
 <meta name="generator" content="Hugo 0.53 with even 4.0.0" />
 
 
-<link rel="canonical" href="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/14.-shell-cursor-movement/" />
+<link rel="canonical" href="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/15.-shell-text-manipulation/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -41,32 +41,32 @@ Move cursor to the new line We can move the cursor to the beginning of the new l
 <link rel="stylesheet" href="/css/styles.css">
 
 
-<meta property="og:title" content="14. Shell - Cursor Movement" />
-<meta property="og:description" content="We can quickly move the cursor to a specific location with the shortcut key provided by the shell.
-Move cursor to the new line We can move the cursor to the beginning of the new line:
-1  Ctrl &#43; C # press Control and C keys     before moving     after moving   Move cursor to the beginning We can move the cursor to the beginning of the line:" />
+<meta property="og:title" content="15. Shell - Text Manipulation" />
+<meta property="og:description" content="We usually need to change the display of some text, and these changes can be made through the text changing command.
+Delete char We can use Ctrl &#43; D to delete the character on the current cursor:
+1  Ctrl &#43; D # press Control and D keys     before manipulating     after manipulating   Backward delete char We can use Backspace to delete the character before the current cursor:" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/14.-shell-cursor-movement/" /><meta property="article:published_time" content="2019-02-15T07:52:08&#43;13:00"/>
-<meta property="article:modified_time" content="2019-02-15T07:52:08&#43;13:00"/>
+<meta property="og:url" content="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/15.-shell-text-manipulation/" /><meta property="article:published_time" content="2019-02-16T08:05:01&#43;13:00"/>
+<meta property="article:modified_time" content="2019-02-16T08:05:01&#43;13:00"/>
 
-<meta itemprop="name" content="14. Shell - Cursor Movement">
-<meta itemprop="description" content="We can quickly move the cursor to a specific location with the shortcut key provided by the shell.
-Move cursor to the new line We can move the cursor to the beginning of the new line:
-1  Ctrl &#43; C # press Control and C keys     before moving     after moving   Move cursor to the beginning We can move the cursor to the beginning of the line:">
+<meta itemprop="name" content="15. Shell - Text Manipulation">
+<meta itemprop="description" content="We usually need to change the display of some text, and these changes can be made through the text changing command.
+Delete char We can use Ctrl &#43; D to delete the character on the current cursor:
+1  Ctrl &#43; D # press Control and D keys     before manipulating     after manipulating   Backward delete char We can use Backspace to delete the character before the current cursor:">
 
 
-<meta itemprop="datePublished" content="2019-02-15T07:52:08&#43;13:00" />
-<meta itemprop="dateModified" content="2019-02-15T07:52:08&#43;13:00" />
-<meta itemprop="wordCount" content="393">
+<meta itemprop="datePublished" content="2019-02-16T08:05:01&#43;13:00" />
+<meta itemprop="dateModified" content="2019-02-16T08:05:01&#43;13:00" />
+<meta itemprop="wordCount" content="432">
 
 
 
 <meta itemprop="keywords" content="Linux,Server," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="14. Shell - Cursor Movement"/>
-<meta name="twitter:description" content="We can quickly move the cursor to a specific location with the shortcut key provided by the shell.
-Move cursor to the new line We can move the cursor to the beginning of the new line:
-1  Ctrl &#43; C # press Control and C keys     before moving     after moving   Move cursor to the beginning We can move the cursor to the beginning of the line:"/>
+<meta name="twitter:title" content="15. Shell - Text Manipulation"/>
+<meta name="twitter:description" content="We usually need to change the display of some text, and these changes can be made through the text changing command.
+Delete char We can use Ctrl &#43; D to delete the character on the current cursor:
+1  Ctrl &#43; D # press Control and D keys     before manipulating     after manipulating   Backward delete char We can use Backspace to delete the character before the current cursor:"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -129,15 +129,15 @@ Move cursor to the new line We can move the cursor to the beginning of the new l
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">14. Shell - Cursor Movement</h1>
+      <h1 class="post-title">15. Shell - Text Manipulation</h1>
 
       <div class="post-meta">
-        <span class="post-time"> Fri Feb 15 2019 </span>
+        <span class="post-time"> Sat Feb 16 2019 </span>
         <div class="post-category">
             <a href="/categories/linux-simple-but-profound/"> Linux: Simple But Profound </a>
             </div>
-          <span class="more-meta"> 393 words </span>
-          <span class="more-meta"> 2 mins read </span>
+          <span class="more-meta"> 432 words </span>
+          <span class="more-meta"> 3 mins read </span>
         
       </div>
     </header>
@@ -147,240 +147,209 @@ Move cursor to the new line We can move the cursor to the beginning of the new l
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#move-cursor-to-the-new-line">Move cursor to the new line</a></li>
-<li><a href="#move-cursor-to-the-beginning">Move cursor to the beginning</a></li>
-<li><a href="#move-cursor-to-the-end">Move cursor to the end</a></li>
-<li><a href="#move-cursor-forward-a-char">Move cursor forward a char</a></li>
-<li><a href="#move-cursor-backward-a-char">Move cursor backward a char</a></li>
-<li><a href="#move-cursor-forward-a-word">Move cursor forward a word</a></li>
-<li><a href="#move-cursor-backward-a-word">Move cursor backward a word</a></li>
-<li><a href="#clear-the-screen">Clear the screen</a></li>
+<li><a href="#delete-char">Delete char</a></li>
+<li><a href="#backward-delete-char">Backward delete char</a></li>
+<li><a href="#exchange-chars">Exchange chars</a></li>
+<li><a href="#exchange-words">Exchange words</a></li>
+<li><a href="#uppercase-word">Uppercase word</a></li>
+<li><a href="#lowercase-word">Lowercase word</a></li>
+<li><a href="#capitalize-word">Capitalize word</a></li>
 </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <p>We can quickly move the cursor to a specific location with the shortcut key provided by the shell.</p>
+      <p>We usually need to change the display of some text, and these changes can be made through the text changing command.</p>
 
-<h1 id="move-cursor-to-the-new-line">Move cursor to the new line</h1>
+<h1 id="delete-char">Delete char</h1>
 
-<p>We can move the cursor to the beginning of the new line:</p>
+<p>We can use Ctrl + D to delete the character on the current cursor:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">Ctrl + C    <span class="c1"># press Control and C keys</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">Ctrl + D    <span class="c1"># press Control and D keys</span></code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/14/cursor_at_the_end.png"
+    <img src="../images/15/cursor_at_the_first_char.png"
          alt="img"/> <figcaption>
-            <h4>before moving</h4>
+            <h4>before manipulating</h4>
         </figcaption>
 </figure>
 
 
 <figure>
-    <img src="../images/14/cursor_at_the_beginning_of_the_new_line.png"
+    <img src="../images/15/cursor_removed_the_first_char.png"
          alt="img"/> <figcaption>
-            <h4>after moving</h4>
+            <h4>after manipulating</h4>
         </figcaption>
 </figure>
 
 
-<h1 id="move-cursor-to-the-beginning">Move cursor to the beginning</h1>
+<h1 id="backward-delete-char">Backward delete char</h1>
 
-<p>We can move the cursor to the beginning of the line:</p>
+<p>We can use Backspace to delete the character before the current cursor:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">Ctrl + A    <span class="c1"># press Control and A keys</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">Backspace    <span class="c1"># press Backspace key</span></code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/14/cursor_at_the_end.png"
+    <img src="../images/15/cursor_behind_the_first_word.png"
          alt="img"/> <figcaption>
-            <h4>before moving</h4>
+            <h4>before manipulating</h4>
         </figcaption>
 </figure>
 
 
 <figure>
-    <img src="../images/14/cursor_at_the_beginning.png"
+    <img src="../images/15/cursor_removed_the_last_char_of_the_first_word.png"
          alt="img"/> <figcaption>
-            <h4>after moving</h4>
+            <h4>after manipulating</h4>
         </figcaption>
 </figure>
 
 
-<h1 id="move-cursor-to-the-end">Move cursor to the end</h1>
+<h1 id="exchange-chars">Exchange chars</h1>
 
-<p>We can move the cursor to the end of the line:</p>
+<p>We can use Ctrl + T to swap the characters between the one the current cursor is on and the char before that char:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">Ctrl + E    <span class="c1"># press Control and E keys</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">Ctrl + T    <span class="c1"># press Control and T keys</span></code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/14/cursor_at_the_beginning.png"
+    <img src="../images/15/cursor_at_the_second_char_of_the_first_word.png"
          alt="img"/> <figcaption>
-            <h4>before moving</h4>
+            <h4>before manipulating</h4>
         </figcaption>
 </figure>
 
 
 <figure>
-    <img src="../images/14/cursor_at_the_end.png"
+    <img src="../images/15/cursor_swapped_the_second_char_to_the_first_char.png"
          alt="img"/> <figcaption>
-            <h4>after moving</h4>
+            <h4>after manipulating</h4>
         </figcaption>
 </figure>
 
 
-<h1 id="move-cursor-forward-a-char">Move cursor forward a char</h1>
+<p>If we want to restore them, we have to move the cursor to the previous position and press the same command.</p>
 
-<p>We can move the cursor to the next char:</p>
+<h1 id="exchange-words">Exchange words</h1>
+
+<p>We can use Alt + T to swap the words between the one the current cursor is on and the the word before that word:</p>
+
+<figure>
+    <img src="../images/15/cursor_at_the_beginning_of_the_third_word.png"
+         alt="img"/> <figcaption>
+            <h4>before manipulating</h4>
+        </figcaption>
+</figure>
+
+
+<figure>
+    <img src="../images/15/cursor_swapped_the_third_word_to_the_second_word.png"
+         alt="img"/> <figcaption>
+            <h4>after manipulating</h4>
+        </figcaption>
+</figure>
+
+
+<p>If we want to restore them, we have to move the cursor to the beginning of the word &ldquo;Changing&rdquo; and press the same command.</p>
+
+<h1 id="uppercase-word">Uppercase word</h1>
+
+<p>We can use Alt + U to uppercase the word on or after the current cursor:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">Ctrl + F    <span class="c1"># press Control and F keys</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">Alt + U    <span class="c1"># press Alternate and U keys</span></code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/14/cursor_at_the_beginning.png"
+    <img src="../images/15/cursor_at_the_beginning_of_the_second_word.png"
          alt="img"/> <figcaption>
-            <h4>before moving</h4>
+            <h4>before manipulating</h4>
         </figcaption>
 </figure>
 
 
 <figure>
-    <img src="../images/14/cursor_at_the_second_char.png"
+    <img src="../images/15/cursor_after_the_second_word.png"
          alt="img"/> <figcaption>
-            <h4>after moving</h4>
+            <h4>after manipulating</h4>
         </figcaption>
 </figure>
 
 
-<h1 id="move-cursor-backward-a-char">Move cursor backward a char</h1>
+<h1 id="lowercase-word">Lowercase word</h1>
 
-<p>We can move the cursor to the previous char:</p>
+<p>We can use Alt + U to lowercase the word on or after the current cursor:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">Ctrl + B    <span class="c1"># press Control and B keys</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">Alt + L    <span class="c1"># press Alternate and L keys</span></code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/14/cursor_at_the_end.png"
+    <img src="../images/15/cursor_at_the_beginning_of_the_second_word.png"
          alt="img"/> <figcaption>
-            <h4>before moving</h4>
+            <h4>before manipulating</h4>
         </figcaption>
 </figure>
 
 
 <figure>
-    <img src="../images/14/cursor_at_the_last_char.png"
+    <img src="../images/15/cursor_after_the_second_lowercased_word.png"
          alt="img"/> <figcaption>
-            <h4>after moving</h4>
+            <h4>after manipulating</h4>
         </figcaption>
 </figure>
 
 
-<h1 id="move-cursor-forward-a-word">Move cursor forward a word</h1>
+<h1 id="capitalize-word">Capitalize word</h1>
 
-<p>We can move the cursor to the end of the word:</p>
+<p>We can use Alt + C to capitalize the word on or after the current cursor:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ALT + F    <span class="c1"># press Alternate and F keys</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">Alt + C    <span class="c1"># press Alternate and C keys</span></code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/14/cursor_at_the_beginning.png"
+    <img src="../images/15/cursor_at_the_beginning_of_the_second_lowercased_word.png"
          alt="img"/> <figcaption>
-            <h4>before moving</h4>
+            <h4>before manipulating</h4>
         </figcaption>
 </figure>
 
 
 <figure>
-    <img src="../images/14/cursor_at_the_end_of_the_word.png"
+    <img src="../images/15/cursor_after_the_second_capitalized_word.png"
          alt="img"/> <figcaption>
-            <h4>after moving</h4>
-        </figcaption>
-</figure>
-
-
-<h1 id="move-cursor-backward-a-word">Move cursor backward a word</h1>
-
-<p>We can move the cursor to the the first char of the word:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ALT + B    <span class="c1"># press Alternate and B keys</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/14/cursor_at_the_end.png"
-         alt="img"/> <figcaption>
-            <h4>before moving</h4>
-        </figcaption>
-</figure>
-
-
-<figure>
-    <img src="../images/14/cursor_at_the_first_char_of_the_word.png"
-         alt="img"/> <figcaption>
-            <h4>after moving</h4>
-        </figcaption>
-</figure>
-
-
-<h1 id="clear-the-screen">Clear the screen</h1>
-
-<p>We can clear the screen:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">Ctrl + L    <span class="c1"># press Control and L keys</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/14/before_clear_the_screen.png"
-         alt="img"/> <figcaption>
-            <h4>before clearing</h4>
-        </figcaption>
-</figure>
-
-
-<figure>
-    <img src="../images/14/after_clear_the_screen.png"
-         alt="img"/> <figcaption>
-            <h4>after clearing</h4>
+            <h4>after manipulating</h4>
         </figcaption>
 </figure>
 
 
 <blockquote>
 <p>References
-<a href="https://www.gnu.org/software/bash/manual/html_node/Commands-For-Moving.html#Commands-For-Moving">8.4.1 Commands For Moving</a></p>
+<a href="https://www.gnu.org/software/bash/manual/html_node/Commands-For-Text.html#Commands-For-Text">8.4.3 Commands For Changing Text</a></p>
 </blockquote>
 
 <p>If you think the content of this article has helped you, and if you would like some more high-quality materials in the near future, please give me some modest support.</p>
@@ -399,7 +368,7 @@ Move cursor to the new line We can move the cursor to the beginning of the new l
   </p>
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
-    <span class="item-content">Fri Feb 15 2019</span>
+    <span class="item-content">Sat Feb 16 2019</span>
   </p>
   
   
@@ -423,13 +392,9 @@ Move cursor to the new line We can move the cursor to the beginning of the new l
           <a href="/tags/server/">Server</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/server-side-programming/linux/simple-but-profound/15.-shell-text-manipulation/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">15. Shell - Text Manipulation</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        <a class="next" href="/post/server-side-programming/linux/simple-but-profound/13.-bourne-and-bash-shells-environment-variables/">
-            <span class="next-text nav-default">13. Bourne and Bash Shells&#39; Environment Variables</span>
+        
+        <a class="next" href="/post/server-side-programming/linux/simple-but-profound/14.-shell-cursor-movement/">
+            <span class="next-text nav-default">14. Shell - Cursor Movement</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>
