@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>17. Bash Shell - Completion Commands - Dong - A place to track my time log</title>
+  <title>18. Bash Shell - Directory Stack Builtins - Dong - A place to track my time log</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,8 +16,10 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="Most of the time, we can use commands efficiently with the help of Linux&amp;rsquo;s automatic completion capability.
-TAB Completion Variable Tab 1  $HISTS # press Tab key to auto-complete this command     before completing     after completing   Command Tab 1  ec # press Tab key to auto-complete this command     before completing     after completing   File Tab 1  # press Tab key to auto-complete this command     before completing     after completing   Possible Completions Can we use Alt&#43;Shift&#43;?" /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="Dong Chen" /><meta name="description" content="With a directory stack, we can push the directories we visit sequentially into the directory stack, and when we&amp;rsquo;ve done a series of operations, we can go all the way back to the origin based on the record of the directory stack.
+Directory Stack Commands The directory stack provides us with three available commands.
+dirs Displays all directories recorded in the directory stack:
+1  help dirs     Check dirs&amp;#39;s definition and usage   pushd Records the specified directory to the directory stack and switches the working directory to the recorded directory:" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -27,7 +29,7 @@ TAB Completion Variable Tab 1  $HISTS # press Tab key to auto-complete this comm
 <meta name="generator" content="Hugo 0.53 with even 4.0.0" />
 
 
-<link rel="canonical" href="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/17.-bash-shell-completion-commands/" />
+<link rel="canonical" href="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/18.-bash-shell-directory-stack-builtins/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -40,29 +42,35 @@ TAB Completion Variable Tab 1  $HISTS # press Tab key to auto-complete this comm
 <link rel="stylesheet" href="/css/styles.css">
 
 
-<meta property="og:title" content="17. Bash Shell - Completion Commands" />
-<meta property="og:description" content="Most of the time, we can use commands efficiently with the help of Linux&rsquo;s automatic completion capability.
-TAB Completion Variable Tab 1  $HISTS # press Tab key to auto-complete this command     before completing     after completing   Command Tab 1  ec # press Tab key to auto-complete this command     before completing     after completing   File Tab 1  # press Tab key to auto-complete this command     before completing     after completing   Possible Completions Can we use Alt&#43;Shift&#43;?" />
+<meta property="og:title" content="18. Bash Shell - Directory Stack Builtins" />
+<meta property="og:description" content="With a directory stack, we can push the directories we visit sequentially into the directory stack, and when we&rsquo;ve done a series of operations, we can go all the way back to the origin based on the record of the directory stack.
+Directory Stack Commands The directory stack provides us with three available commands.
+dirs Displays all directories recorded in the directory stack:
+1  help dirs     Check dirs&#39;s definition and usage   pushd Records the specified directory to the directory stack and switches the working directory to the recorded directory:" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/17.-bash-shell-completion-commands/" /><meta property="article:published_time" content="2019-02-18T07:10:12&#43;13:00"/>
-<meta property="article:modified_time" content="2019-02-18T07:10:12&#43;13:00"/>
+<meta property="og:url" content="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/18.-bash-shell-directory-stack-builtins/" /><meta property="article:published_time" content="2019-02-19T08:31:14&#43;13:00"/>
+<meta property="article:modified_time" content="2019-02-19T08:31:14&#43;13:00"/>
 
-<meta itemprop="name" content="17. Bash Shell - Completion Commands">
-<meta itemprop="description" content="Most of the time, we can use commands efficiently with the help of Linux&rsquo;s automatic completion capability.
-TAB Completion Variable Tab 1  $HISTS # press Tab key to auto-complete this command     before completing     after completing   Command Tab 1  ec # press Tab key to auto-complete this command     before completing     after completing   File Tab 1  # press Tab key to auto-complete this command     before completing     after completing   Possible Completions Can we use Alt&#43;Shift&#43;?">
+<meta itemprop="name" content="18. Bash Shell - Directory Stack Builtins">
+<meta itemprop="description" content="With a directory stack, we can push the directories we visit sequentially into the directory stack, and when we&rsquo;ve done a series of operations, we can go all the way back to the origin based on the record of the directory stack.
+Directory Stack Commands The directory stack provides us with three available commands.
+dirs Displays all directories recorded in the directory stack:
+1  help dirs     Check dirs&#39;s definition and usage   pushd Records the specified directory to the directory stack and switches the working directory to the recorded directory:">
 
 
-<meta itemprop="datePublished" content="2019-02-18T07:10:12&#43;13:00" />
-<meta itemprop="dateModified" content="2019-02-18T07:10:12&#43;13:00" />
-<meta itemprop="wordCount" content="457">
+<meta itemprop="datePublished" content="2019-02-19T08:31:14&#43;13:00" />
+<meta itemprop="dateModified" content="2019-02-19T08:31:14&#43;13:00" />
+<meta itemprop="wordCount" content="662">
 
 
 
 <meta itemprop="keywords" content="Linux,Server," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="17. Bash Shell - Completion Commands"/>
-<meta name="twitter:description" content="Most of the time, we can use commands efficiently with the help of Linux&rsquo;s automatic completion capability.
-TAB Completion Variable Tab 1  $HISTS # press Tab key to auto-complete this command     before completing     after completing   Command Tab 1  ec # press Tab key to auto-complete this command     before completing     after completing   File Tab 1  # press Tab key to auto-complete this command     before completing     after completing   Possible Completions Can we use Alt&#43;Shift&#43;?"/>
+<meta name="twitter:title" content="18. Bash Shell - Directory Stack Builtins"/>
+<meta name="twitter:description" content="With a directory stack, we can push the directories we visit sequentially into the directory stack, and when we&rsquo;ve done a series of operations, we can go all the way back to the origin based on the record of the directory stack.
+Directory Stack Commands The directory stack provides us with three available commands.
+dirs Displays all directories recorded in the directory stack:
+1  help dirs     Check dirs&#39;s definition and usage   pushd Records the specified directory to the directory stack and switches the working directory to the recorded directory:"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -125,15 +133,15 @@ TAB Completion Variable Tab 1  $HISTS # press Tab key to auto-complete this comm
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">17. Bash Shell - Completion Commands</h1>
+      <h1 class="post-title">18. Bash Shell - Directory Stack Builtins</h1>
 
       <div class="post-meta">
-        <span class="post-time"> Mon Feb 18 2019 </span>
+        <span class="post-time"> Tue Feb 19 2019 </span>
         <div class="post-category">
             <a href="/categories/linux-simple-but-profound/"> Linux: Simple But Profound </a>
             </div>
-          <span class="more-meta"> 457 words </span>
-          <span class="more-meta"> 3 mins read </span>
+          <span class="more-meta"> 662 words </span>
+          <span class="more-meta"> 4 mins read </span>
         
       </div>
     </header>
@@ -143,321 +151,363 @@ TAB Completion Variable Tab 1  $HISTS # press Tab key to auto-complete this comm
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#tab-completion">TAB Completion</a>
+<li><a href="#directory-stack-commands">Directory Stack Commands</a>
 <ul>
-<li><a href="#variable-tab">Variable Tab</a></li>
-<li><a href="#command-tab">Command Tab</a></li>
-<li><a href="#file-tab">File Tab</a></li>
+<li><a href="#dirs">dirs</a></li>
+<li><a href="#pushd">pushd</a></li>
+<li><a href="#popd">popd</a></li>
 </ul></li>
-<li><a href="#possible-completions">Possible Completions</a>
+<li><a href="#preparing-directories">Preparing Directories</a></li>
+<li><a href="#use-of-commands">Use of Commands</a>
 <ul>
-<li><a href="#variable-alt-shift">Variable Alt+Shift+?</a></li>
-<li><a href="#command-alt-shift">Command Alt+Shift+?</a></li>
-<li><a href="#file-alt-shift">File Alt+Shift+?</a></li>
+<li><a href="#adding-directories">Adding Directories</a></li>
+<li><a href="#show-recorded-directories">Show Recorded Directories</a>
+<ul>
+<li><a href="#by-default">By Default</a></li>
+<li><a href="#with-user-home-directory-name">With User Home Directory Name</a></li>
+<li><a href="#line-by-line">Line by Line</a></li>
+<li><a href="#line-by-line-with-their-indexes">Line by Line With Their Indexes</a></li>
+<li><a href="#first-recorded-directory">First Recorded Directory</a></li>
+<li><a href="#last-recorded-directory">Last Recorded Directory</a></li>
 </ul></li>
-<li><a href="#specific-completion">Specific Completion</a>
+<li><a href="#use-recorded-directories">Use Recorded Directories</a>
 <ul>
-<li><a href="#file-alt-shift-1">File Alt+Shift+/</a></li>
-<li><a href="#username-alt-shift">Username Alt+Shift+~</a></li>
-<li><a href="#variable-alt-shift-1">Variable Alt+Shift+$</a></li>
-<li><a href="#hostname-alt-shift">Hostname Alt+Shift+@</a></li>
-<li><a href="#command-alt-shift-1">Command Alt+Shift+!</a></li>
+<li><a href="#use-from-right">Use From right</a></li>
+<li><a href="#use-from-left">Use From left</a></li>
+</ul></li>
+<li><a href="#remove-recorded-directories">Remove Recorded Directories</a>
+<ul>
+<li><a href="#remove-from-right">Remove From right</a></li>
+<li><a href="#remove-from-left">Remove From left</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <p>Most of the time, we can use commands efficiently with the help of Linux&rsquo;s automatic completion capability.</p>
+      <p>With a directory stack, we can push the directories we visit sequentially into the directory stack, and when we&rsquo;ve done a series of operations, we can go all the way back to the origin based on the record of the directory stack.</p>
 
-<h1 id="tab-completion">TAB Completion</h1>
+<h1 id="directory-stack-commands">Directory Stack Commands</h1>
 
-<h2 id="variable-tab">Variable Tab</h2>
+<p>The directory stack provides us with three available commands.</p>
+
+<h2 id="dirs">dirs</h2>
+
+<p>Displays all directories recorded in the directory stack:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">$HISTS</span>    <span class="c1"># press Tab key to auto-complete this command</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">help</span> dirs</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/17/HISTSIZE_before_tab.png"
+    <img src="../images/18/help_dirs.png"
          alt="img"/> <figcaption>
-            <h4>before completing</h4>
+            <h4>Check dirs&#39;s definition and usage</h4>
         </figcaption>
 </figure>
 
 
-<figure>
-    <img src="../images/17/HISTSIZE_after_tab.png"
-         alt="img"/> <figcaption>
-            <h4>after completing</h4>
-        </figcaption>
-</figure>
+<h2 id="pushd">pushd</h2>
 
-
-<h2 id="command-tab">Command Tab</h2>
+<p>Records the specified directory to the directory stack and switches the working directory to the recorded directory:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ec    <span class="c1"># press Tab key to auto-complete this command</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">help</span> pushd</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/17/echo_before_tab.png"
+    <img src="../images/18/help_pushd.png"
          alt="img"/> <figcaption>
-            <h4>before completing</h4>
+            <h4>Check pushd&#39;s definition and usage</h4>
         </figcaption>
 </figure>
 
 
-<figure>
-    <img src="../images/17/echo_after_tab.png"
-         alt="img"/> <figcaption>
-            <h4>after completing</h4>
-        </figcaption>
-</figure>
+<h2 id="popd">popd</h2>
 
-
-<h2 id="file-tab">File Tab</h2>
+<p>Remove the last directory recorded in the directory stack and switch the working directory to the removed directory:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">    <span class="c1"># press Tab key to auto-complete this command</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">help</span> popd</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/17/less_before_tab.png"
+    <img src="../images/18/help_popd.png"
          alt="img"/> <figcaption>
-            <h4>before completing</h4>
+            <h4>Check popd&#39;s definition and usage</h4>
         </figcaption>
 </figure>
 
 
+<h1 id="preparing-directories">Preparing Directories</h1>
+
+<p>Let&rsquo;s prepare some directories for demonstration:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">mkdir -p a/b/c/d/e/f/g
+tree a</code></pre></td></tr></table>
+</div>
+</div>
 <figure>
-    <img src="../images/17/less_after_tab.png"
+    <img src="../images/18/mkdir_recursive_tree.png"
          alt="img"/> <figcaption>
-            <h4>after completing</h4>
+            <h4>Check dirs&#39;s definition and usage</h4>
         </figcaption>
 </figure>
 
 
-<h1 id="possible-completions">Possible Completions</h1>
+<p>Now that we have some nested directories, we can begin to demonstrate. The directory stack can store any directory we push into, and the nested directory is used here just for ease of operation.</p>
 
-<p>Can we use <em>Alt+Shift+?</em> keys to print out possible completion options.</p>
+<h1 id="use-of-commands">Use of Commands</h1>
 
-<h2 id="variable-alt-shift">Variable Alt+Shift+?</h2>
+<h2 id="adding-directories">Adding Directories</h2>
+
+<p>Let&rsquo;s adding directories to directory stack:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> ~
+<span class="nb">dirs</span>
+<span class="nb">pushd</span> a
+<span class="nb">pushd</span> b
+<span class="nb">pushd</span> c
+<span class="nb">pushd</span> d
+<span class="nb">pushd</span> e
+<span class="nb">pushd</span> f
+<span class="nb">pushd</span> g</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/18/cd_dirs_pushd.png"
+         alt="img"/> <figcaption>
+            <h4>Switch to user&#39;s home directory, check to make sure that dirs only shows the tilde(~) and start pushing the nested directories into directory stack</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="show-recorded-directories">Show Recorded Directories</h2>
+
+<h3 id="by-default">By Default</h3>
+
+<p>Use <em>dirs</em> to print the recorded directories:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">$HISTS</span>    <span class="c1"># press Alternate and Shift and Question Mark keys to print the possible variables</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">dirs</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/17/HIST_before_possible_completion.png"
+    <img src="../images/18/dirs.png"
          alt="img"/> <figcaption>
-            <h4>before printing possible variables</h4>
+            <h4>Show the directory stack recorded directories</h4>
         </figcaption>
 </figure>
 
 
-<figure>
-    <img src="../images/17/HIST_after_possible_completion.png"
-         alt="img"/> <figcaption>
-            <h4>after printing possible variables</h4>
-        </figcaption>
-</figure>
+<h3 id="with-user-home-directory-name">With User Home Directory Name</h3>
 
-
-<h2 id="command-alt-shift">Command Alt+Shift+?</h2>
+<p>Use <em>dirs -l</em> to print the recorded directories with user home directory&rsquo;s name instead of a tilde:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ec    <span class="c1"># press Alternate and Shift and Question Mark keys to print the possible variables</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">dirs</span> -l</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/17/ec_before_possible_completion.png"
+    <img src="../images/18/dirs_l.png"
          alt="img"/> <figcaption>
-            <h4>before printing possible commands</h4>
+            <h4>Show the directory stack recorded directories with user home name instead of a tilde</h4>
         </figcaption>
 </figure>
 
 
-<figure>
-    <img src="../images/17/ec_after_possible_completion.png"
-         alt="img"/> <figcaption>
-            <h4>after printing possible commands</h4>
-        </figcaption>
-</figure>
+<h3 id="line-by-line">Line by Line</h3>
 
-
-<h2 id="file-alt-shift">File Alt+Shift+?</h2>
+<p>Use <em>dirs -p</em> to print the recorded directories line by line:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">/bin/le    <span class="c1"># press Alternate and Shift and Question Mark keys to print the possible variables</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">dirs</span> -p</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/17/le_before_possible_completion.png"
+    <img src="../images/18/dirs_p.png"
          alt="img"/> <figcaption>
-            <h4>before printing possible files</h4>
+            <h4>Show the directory stack recorded directories line by line</h4>
         </figcaption>
 </figure>
 
 
-<figure>
-    <img src="../images/17/le_after_possible_completion.png"
-         alt="img"/> <figcaption>
-            <h4>after printing possible files</h4>
-        </figcaption>
-</figure>
+<h3 id="line-by-line-with-their-indexes">Line by Line With Their Indexes</h3>
 
-
-<h1 id="specific-completion">Specific Completion</h1>
-
-<p>We can also get the corresponding completion through a specific combination of keys.</p>
-
-<h2 id="file-alt-shift-1">File Alt+Shift+/</h2>
+<p>Use <em>dirs -v</em> to print the recorded directories line by line with their indexes:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">/bin/le    <span class="c1"># press Alternate and Shift and Slash Sign keys to print the possible variables</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">dirs</span> -v</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/17/le_before_alt_shift.png"
+    <img src="../images/18/dirs_v.png"
          alt="img"/> <figcaption>
-            <h4>before completing a nearest filename</h4>
+            <h4>Show the directory stack recorded directories line by line with their indexes</h4>
         </figcaption>
 </figure>
 
 
-<figure>
-    <img src="../images/17/le_after_alt_shift.png"
-         alt="img"/> <figcaption>
-            <h4>after completing a nearest filename</h4>
-        </figcaption>
-</figure>
+<h3 id="first-recorded-directory">First Recorded Directory</h3>
 
-
-<h2 id="username-alt-shift">Username Alt+Shift+~</h2>
+<p>Use <em>dirs -0</em> to print the first recorded directory:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ro    <span class="c1"># press Alternate and Shift and Tilde Sign keys to print the possible variables</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">dirs</span> -0</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/17/ro_before_alt_shift.png"
+    <img src="../images/18/dirs_first.png"
          alt="img"/> <figcaption>
-            <h4>before completing a nearest username</h4>
+            <h4>Show the first recorded directory</h4>
         </figcaption>
 </figure>
 
 
-<figure>
-    <img src="../images/17/ro_after_alt_shift.png"
-         alt="img"/> <figcaption>
-            <h4>after completing a nearest username</h4>
-        </figcaption>
-</figure>
+<h3 id="last-recorded-directory">Last Recorded Directory</h3>
 
-
-<h2 id="variable-alt-shift-1">Variable Alt+Shift+$</h2>
+<p>Use <em>dirs +0</em> to print the last recorded directory:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">$PA</span>    <span class="c1"># press Alternate and Shift and Dollar Sign keys to print the possible variables</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">dirs</span> +0</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/17/pa_before_alt_shift.png"
+    <img src="../images/18/dirs_last.png"
          alt="img"/> <figcaption>
-            <h4>before completing a nearest variable</h4>
+            <h4>Show the last recorded directory</h4>
         </figcaption>
 </figure>
 
 
-<figure>
-    <img src="../images/17/pa_after_alt_shift.png"
-         alt="img"/> <figcaption>
-            <h4>after completing a nearest variable</h4>
-        </figcaption>
-</figure>
+<h2 id="use-recorded-directories">Use Recorded Directories</h2>
 
+<h3 id="use-from-right">Use From right</h3>
 
-<h2 id="hostname-alt-shift">Hostname Alt+Shift+@</h2>
+<p>Use <em>pushd -0</em> to change to the rightmost directory and use it as a working directory:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">dongc    <span class="c1"># press Alternate and Shift and At Sign keys to print the possible variables</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">pushd</span> -0</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/17/dongc_before_alt_shift.png"
+    <img src="../images/18/pushd_use_first.png"
          alt="img"/> <figcaption>
-            <h4>before completing a nearest hostname</h4>
+            <h4>Use the first recorded directory</h4>
         </figcaption>
 </figure>
 
 
-<figure>
-    <img src="../images/17/dongc_after_alt_shift.png"
-         alt="img"/> <figcaption>
-            <h4>after completing a nearest hostname</h4>
-        </figcaption>
-</figure>
+<h3 id="use-from-left">Use From left</h3>
 
-
-<h2 id="command-alt-shift-1">Command Alt+Shift+!</h2>
+<p>Use <em>pushd +1</em> to change to the directory before the leftmost one and use it as a working directory:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ec    <span class="c1"># press Alternate and Shift and Exclamation Mark keys to print the possible variables</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">pushd</span> +1</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/17/ec_before_alt_shift.png"
+    <img src="../images/18/pushd_use_previous.png"
          alt="img"/> <figcaption>
-            <h4>before completing a nearest hostname</h4>
+            <h4>Use the previous recorded directory</h4>
         </figcaption>
 </figure>
 
 
+<h2 id="remove-recorded-directories">Remove Recorded Directories</h2>
+
+<h3 id="remove-from-right">Remove From right</h3>
+
+<p>Use <em>popd -0</em> to remove the rightmost directory:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">popd</span> -0</code></pre></td></tr></table>
+</div>
+</div>
 <figure>
-    <img src="../images/17/ec_after_alt_shift.png"
+    <img src="../images/18/popd_remove_first.png"
          alt="img"/> <figcaption>
-            <h4>after completing a nearest hostname</h4>
+            <h4>Remove the first recorded directory</h4>
+        </figcaption>
+</figure>
+
+
+<h3 id="remove-from-left">Remove From left</h3>
+
+<p>Use <em>popd +0</em> to remove the leftmost directory and use the previous directory as a working directory:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">popd</span> +0</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/18/popd_remove_last_move_to_previous.png"
+         alt="img"/> <figcaption>
+            <h4>Remove the last recorded directory and use the previous recorded directory as the working directory</h4>
         </figcaption>
 </figure>
 
 
 <blockquote>
 <p>References
-<a href="https://www.gnu.org/software/bash/manual/html_node/Commands-For-Completion.html">8.4.6 Letting Readline Type For You</a></p>
+<a href="https://www.gnu.org/software/bash/manual/html_node/Directory-Stack-Builtins.html#Directory-Stack-Builtins">6.8.1 Directory Stack Builtins</a></p>
 </blockquote>
 
 <p>If you think the content of this article has helped you, and if you would like some more high-quality materials in the near future, please give me some modest support.</p>
@@ -476,7 +526,7 @@ TAB Completion Variable Tab 1  $HISTS # press Tab key to auto-complete this comm
   </p>
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
-    <span class="item-content">Mon Feb 18 2019</span>
+    <span class="item-content">Tue Feb 19 2019</span>
   </p>
   
   
@@ -500,13 +550,9 @@ TAB Completion Variable Tab 1  $HISTS # press Tab key to auto-complete this comm
           <a href="/tags/server/">Server</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/server-side-programming/linux/simple-but-profound/18.-bash-shell-directory-stack-builtins/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">18. Bash Shell - Directory Stack Builtins</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        <a class="next" href="/post/server-side-programming/linux/simple-but-profound/16.-bash-shell-killing-and-yanking/">
-            <span class="next-text nav-default">16. Bash Shell - Killing And Yanking</span>
+        
+        <a class="next" href="/post/server-side-programming/linux/simple-but-profound/17.-bash-shell-completion-commands/">
+            <span class="next-text nav-default">17. Bash Shell - Completion Commands</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>

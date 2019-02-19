@@ -6,10 +6,22 @@
     <description>Recent content in Server on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 18 Feb 2019 07:10:12 +1300</lastBuildDate>
+    <lastBuildDate>Tue, 19 Feb 2019 08:31:14 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/tags/server/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>18. Bash Shell - Directory Stack Builtins</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/18.-bash-shell-directory-stack-builtins/</link>
+      <pubDate>Tue, 19 Feb 2019 08:31:14 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/18.-bash-shell-directory-stack-builtins/</guid>
+      <description>With a directory stack, we can push the directories we visit sequentially into the directory stack, and when we&amp;rsquo;ve done a series of operations, we can go all the way back to the origin based on the record of the directory stack.
+Directory Stack Commands The directory stack provides us with three available commands.
+dirs Displays all directories recorded in the directory stack:
+1  help dirs     Check dirs&amp;#39;s definition and usage   pushd Records the specified directory to the directory stack and switches the working directory to the recorded directory:</description>
+    </item>
     
     <item>
       <title>17. Bash Shell - Completion Commands</title>
