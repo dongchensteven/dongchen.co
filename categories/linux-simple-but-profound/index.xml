@@ -6,10 +6,21 @@
     <description>Recent content in Linux: Simple But Profound on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 20 Feb 2019 07:42:28 +1300</lastBuildDate>
+    <lastBuildDate>Thu, 21 Feb 2019 06:27:53 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/categories/linux-simple-but-profound/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>20. Bash Shell - Redirections</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/20.-bash-shell-reirections/</link>
+      <pubDate>Thu, 21 Feb 2019 06:27:53 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/20.-bash-shell-reirections/</guid>
+      <description>With the IO redirection feature, we can easily manipulate the input and output of files or other information.
+Standard Output The standard output stream is usually used to print the output of a program to a file, its file descriptor is 1.
+Output Text to a File 1 2  echo &amp;#39;This is a text for test&amp;#39; &amp;gt; fresh_file cat fresh_file     Output text to fresh_file   Output Result to a File 1 2  ll -a &amp;gt; dir_list_file cat dir_list_file     Output result to fir_list_file   Append Text to a File 1 2  echo &amp;#39;This is a text for test&amp;#39; &amp;gt;&amp;gt; fresh_file cat fresh_file     Append text to fresh_file   Append Result to a File 1 2  ll -a &amp;gt;&amp;gt; dir_list_file cat dir_list_file     Append result to fir_list_file   Standard Input Standard input streams are usually used to print the contents of a file to a screen, its file descriptor is 0.</description>
+    </item>
     
     <item>
       <title>19. Bash Shell - Command Prompt Settings Customization</title>
