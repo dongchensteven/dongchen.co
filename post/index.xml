@@ -6,10 +6,22 @@
     <description>Recent content in Posts on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 19 Feb 2019 08:31:14 +1300</lastBuildDate>
+    <lastBuildDate>Wed, 20 Feb 2019 07:42:28 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>19. Bash Shell - Command Prompt Settings Customization</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/19.-bash-shell-command-prompt-settings-customization/</link>
+      <pubDate>Wed, 20 Feb 2019 07:42:28 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/19.-bash-shell-command-prompt-settings-customization/</guid>
+      <description>Command Prompt Overview The command prompt looks like the following:
+  Command prompt   View Settings of Current Command Prompt There are several ways we can view the settings for the command prompt.
+$PS1 Variable We can get the command-line prompt setting by printing the environment variable $PS1:
+1  echo $PS1     Command prompt   set Command 1  set | grep PS1     Command prompt   Command Prompt Settings Modification Temporarily Back Up the Original Settings Let&amp;rsquo;s temporarily back up the current command prompt settings:</description>
+    </item>
     
     <item>
       <title>18. Bash Shell - Directory Stack Builtins</title>
