@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/22.-bash-shell-pattern-matching-globbing-wildcards/</loc>
+    <lastmod>2019-02-23T11:20:55+13:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/21.-pipelines-get-other-commands-results-as-initial-data/</loc>
     <lastmod>2019-02-22T07:14:06+13:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -220,7 +227,7 @@
   
   <url>
     <loc>https://dongchen.co/</loc>
-    <lastmod>2019-02-22T07:14:06+13:00</lastmod>
+    <lastmod>2019-02-23T11:20:55+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -234,14 +241,14 @@
   
   <url>
     <loc>https://dongchen.co/tags/linux/</loc>
-    <lastmod>2019-02-22T07:14:06+13:00</lastmod>
+    <lastmod>2019-02-23T11:20:55+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://dongchen.co/categories/linux-simple-but-profound/</loc>
-    <lastmod>2019-02-22T07:14:06+13:00</lastmod>
+    <lastmod>2019-02-23T11:20:55+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -269,7 +276,7 @@
   
   <url>
     <loc>https://dongchen.co/post/</loc>
-    <lastmod>2019-02-22T07:14:06+13:00</lastmod>
+    <lastmod>2019-02-23T11:20:55+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -283,7 +290,7 @@
   
   <url>
     <loc>https://dongchen.co/tags/server/</loc>
-    <lastmod>2019-02-22T07:14:06+13:00</lastmod>
+    <lastmod>2019-02-23T11:20:55+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
