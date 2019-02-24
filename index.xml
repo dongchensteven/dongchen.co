@@ -6,10 +6,22 @@
     <description>Recent content on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 23 Feb 2019 11:20:55 +1300</lastBuildDate>
+    <lastBuildDate>Sun, 24 Feb 2019 08:52:48 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>23. Bash Shell - Text Processing Entry Level</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/23.-bash-shell-text-processing-entry-level/</link>
+      <pubDate>Sun, 24 Feb 2019 08:52:48 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/23.-bash-shell-text-processing-entry-level/</guid>
+      <description>With word processing commands, we can quickly get the text we want from a text output or text document.
+Preparation We can simply output a text to a file with the echo command.
+Prepare contents:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30  echo &amp;#34;First line&amp;#34; &amp;gt;&amp;gt; file.</description>
+    </item>
     
     <item>
       <title>22. Bash Shell - Pattern Matching (Globbing Wildcards)</title>
