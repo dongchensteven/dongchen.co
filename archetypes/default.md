@@ -5,8 +5,8 @@ lastmod: {{ .Date }}
 draft: false
 keywords: []
 description: ""
-tags: []
-categories: []
+tags: [ "Linux", "Server" ]
+categories: [ "Linux: Simple But Profound" ]
 author: "Dong Chen"
 
 # You can also close(false) or open(true) something for this content.
@@ -41,3 +41,13 @@ sequenceDiagrams:
 ---
 
 <!--more-->
+
+{{% figure src="../images/num/demo.png" title="" alt="img" %}}
+
+> References
+> [demo](example.com)
+
+If you think the content of this article has helped you, and if you would like some more high-quality materials in the near future, please give me some modest support.
+
+<!-- Buy Me a Coffee Button -->
+{{< buy-me-a-coffee class="align-center" >}}
