@@ -6,28 +6,39 @@
     <description>Recent content in Posts on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 25 Feb 2019 07:39:17 +1300</lastBuildDate>
+    <lastBuildDate>Tue, 26 Feb 2019 07:31:35 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>24. Bash Shell - Text Processing Intermediate Level (1)</title>
-      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/24.-bash-shell-text-processing-intermediate-level-1/</link>
+      <title>25. Bash Shell - Text Processing - uniq, comm</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/25.-bash-shell-text-processing-uniq-comm/</link>
+      <pubDate>Tue, 26 Feb 2019 07:31:35 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/25.-bash-shell-text-processing-uniq-comm/</guid>
+      <description>Let&amp;rsquo;s begin the second part of the intermediate level of word processing.
+Unique Result Let&amp;rsquo;s prepare some repeated and unique contents for the uniq command:
+1 2 3 4 5 6 7 8 9  echo &amp;#39;I am duplicated&amp;#39; &amp;gt;&amp;gt; uniq_file.txt echo &amp;#39;I am duplicated&amp;#39; &amp;gt;&amp;gt; uniq_file.txt echo &amp;#39;I am duplicated&amp;#39; &amp;gt;&amp;gt; uniq_file.txt echo &amp;#39;I am Duplicated&amp;#39; &amp;gt;&amp;gt; uniq_file.txt echo &amp;#39;I am Duplicated&amp;#39; &amp;gt;&amp;gt; uniq_file.txt echo &amp;#39;I am Duplicated&amp;#39; &amp;gt;&amp;gt; uniq_file.</description>
+    </item>
+    
+    <item>
+      <title>24. Bash Shell - Text Processing - wc, sort</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/24.-bash-shell-text-processing-wc-sort/</link>
       <pubDate>Mon, 25 Feb 2019 07:39:17 +1300</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/24.-bash-shell-text-processing-intermediate-level-1/</guid>
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/24.-bash-shell-text-processing-wc-sort/</guid>
       <description>We continue to use the file file.txt test data we used in Entry Level post:
   The contents of the file.txt file   Word Counter The wc command by default outputs the number of newlines, words, and bytes of the file:
 1  wc file.txt     Outputs the length of the newlines, words and bytes of the file.txt file   Byte Counts We can add the -c or &amp;ndash;bytes parameter to output the file&amp;rsquo;s byte counts:</description>
     </item>
     
     <item>
-      <title>23. Bash Shell - Text Processing Entry Level</title>
-      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/23.-bash-shell-text-processing-entry-level/</link>
+      <title>23. Bash Shell - Text Processing - cat, tac, nl, head, tail</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/23.-bash-shell-text-processing-cat-tac-nl-head-tail/</link>
       <pubDate>Sun, 24 Feb 2019 08:52:48 +1300</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/23.-bash-shell-text-processing-entry-level/</guid>
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/23.-bash-shell-text-processing-cat-tac-nl-head-tail/</guid>
       <description>With word processing commands, we can quickly get the text we want from a text output or text document.
 Preparation We can simply output a text to a file with the echo command.
 Prepare contents:
