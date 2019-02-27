@@ -18,8 +18,8 @@
 
 <meta name="author" content="Dong Chen" /><meta name="description" content="By matching patterns, we can easily find the files we need.
 Preparation Let&amp;rsquo;s prepare some test files first before we start:
-1  touch 1.txt 2.doc 3.html 1.c 2.c 3.c file1.txt file2.doc file3.html 1file.txt 2file.doc 3file.html   Special Pattern Characters Matches any string We can use the * character to match any string.
-Matches any file that starts with file 1  ll file*     Finds any file with filename begin with file   Matches any file that ends with ." /><meta name="keywords" content="Hugo, theme, even" />
+1  touch 1.txt 2.doc 3.html 1.c 2.c 3.c file1.txt file2.doc file3.html 1file.txt 2file.doc 3file.html   Special Pattern Characters Match any string We can use the * character to match any string.
+Match any file that starts with file 1  ll file*     Finds any file with filename begin with file   Match any file that ends with ." /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -45,8 +45,8 @@ Matches any file that starts with file 1  ll file*     Finds any file with filen
 <meta property="og:title" content="22. Bash Shell - Pattern Matching (Globbing Wildcards)" />
 <meta property="og:description" content="By matching patterns, we can easily find the files we need.
 Preparation Let&rsquo;s prepare some test files first before we start:
-1  touch 1.txt 2.doc 3.html 1.c 2.c 3.c file1.txt file2.doc file3.html 1file.txt 2file.doc 3file.html   Special Pattern Characters Matches any string We can use the * character to match any string.
-Matches any file that starts with file 1  ll file*     Finds any file with filename begin with file   Matches any file that ends with ." />
+1  touch 1.txt 2.doc 3.html 1.c 2.c 3.c file1.txt file2.doc file3.html 1file.txt 2file.doc 3file.html   Special Pattern Characters Match any string We can use the * character to match any string.
+Match any file that starts with file 1  ll file*     Finds any file with filename begin with file   Match any file that ends with ." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/22.-bash-shell-pattern-matching-globbing-wildcards/" /><meta property="article:published_time" content="2019-02-23T11:20:55&#43;13:00"/>
 <meta property="article:modified_time" content="2019-02-23T11:20:55&#43;13:00"/>
@@ -54,8 +54,8 @@ Matches any file that starts with file 1  ll file*     Finds any file with filen
 <meta itemprop="name" content="22. Bash Shell - Pattern Matching (Globbing Wildcards)">
 <meta itemprop="description" content="By matching patterns, we can easily find the files we need.
 Preparation Let&rsquo;s prepare some test files first before we start:
-1  touch 1.txt 2.doc 3.html 1.c 2.c 3.c file1.txt file2.doc file3.html 1file.txt 2file.doc 3file.html   Special Pattern Characters Matches any string We can use the * character to match any string.
-Matches any file that starts with file 1  ll file*     Finds any file with filename begin with file   Matches any file that ends with .">
+1  touch 1.txt 2.doc 3.html 1.c 2.c 3.c file1.txt file2.doc file3.html 1file.txt 2file.doc 3file.html   Special Pattern Characters Match any string We can use the * character to match any string.
+Match any file that starts with file 1  ll file*     Finds any file with filename begin with file   Match any file that ends with .">
 
 
 <meta itemprop="datePublished" content="2019-02-23T11:20:55&#43;13:00" />
@@ -69,8 +69,8 @@ Matches any file that starts with file 1  ll file*     Finds any file with filen
 <meta name="twitter:title" content="22. Bash Shell - Pattern Matching (Globbing Wildcards)"/>
 <meta name="twitter:description" content="By matching patterns, we can easily find the files we need.
 Preparation Let&rsquo;s prepare some test files first before we start:
-1  touch 1.txt 2.doc 3.html 1.c 2.c 3.c file1.txt file2.doc file3.html 1file.txt 2file.doc 3file.html   Special Pattern Characters Matches any string We can use the * character to match any string.
-Matches any file that starts with file 1  ll file*     Finds any file with filename begin with file   Matches any file that ends with ."/>
+1  touch 1.txt 2.doc 3.html 1.c 2.c 3.c file1.txt file2.doc file3.html 1file.txt 2file.doc 3file.html   Special Pattern Characters Match any string We can use the * character to match any string.
+Match any file that starts with file 1  ll file*     Finds any file with filename begin with file   Match any file that ends with ."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -154,21 +154,21 @@ Matches any file that starts with file 1  ll file*     Finds any file with filen
 <li><a href="#preparation">Preparation</a></li>
 <li><a href="#special-pattern-characters">Special Pattern Characters</a>
 <ul>
-<li><a href="#matches-any-string">Matches any string</a>
+<li><a href="#match-any-string">Match any string</a>
 <ul>
-<li><a href="#matches-any-file-that-starts-with-file">Matches any file that starts with file</a></li>
-<li><a href="#matches-any-file-that-ends-with-txt">Matches any file that ends with .txt</a></li>
+<li><a href="#match-any-file-that-starts-with-file">Match any file that starts with file</a></li>
+<li><a href="#match-any-file-that-ends-with-txt">Match any file that ends with .txt</a></li>
 </ul></li>
-<li><a href="#matches-any-character">Matches any character</a>
+<li><a href="#match-any-character">Match any character</a>
 <ul>
-<li><a href="#matches-any-file-with-a-1-character-filename">Matches any file with a 1-character filename</a></li>
-<li><a href="#matches-any-file-with-a-4-character-extension">Matches any file with a 4-character extension</a></li>
+<li><a href="#match-any-file-with-a-1-character-filename">Match any file with a 1-character filename</a></li>
+<li><a href="#match-any-file-with-a-4-character-extension">Match any file with a 4-character extension</a></li>
 </ul></li>
-<li><a href="#matches-any-one-of-enclosed-characters">Matches any one of enclosed characters</a>
+<li><a href="#match-any-one-of-enclosed-characters">Match any one of enclosed characters</a>
 <ul>
-<li><a href="#matches-any-file-that-starts-with-1-2-or-f">Matches any file that starts with 1, 2 or f</a></li>
-<li><a href="#matches-any-file-that-starts-with-1-2-or-3">Matches any file that starts with 1, 2 or 3</a></li>
-<li><a href="#matches-any-file-that-starts-without-1-2-or-3">Matches any file that starts without 1, 2 or 3</a></li>
+<li><a href="#match-any-file-that-starts-with-1-2-or-f">Match any file that starts with 1, 2 or f</a></li>
+<li><a href="#match-any-file-that-starts-with-1-2-or-3">Match any file that starts with 1, 2 or 3</a></li>
+<li><a href="#match-any-file-that-starts-without-1-2-or-3">Match any file that starts without 1, 2 or 3</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -191,11 +191,11 @@ Matches any file that starts with file 1  ll file*     Finds any file with filen
 </div>
 <h1 id="special-pattern-characters">Special Pattern Characters</h1>
 
-<h2 id="matches-any-string">Matches any string</h2>
+<h2 id="match-any-string">Match any string</h2>
 
 <p>We can use the * character to match any string.</p>
 
-<h3 id="matches-any-file-that-starts-with-file">Matches any file that starts with file</h3>
+<h3 id="match-any-file-that-starts-with-file">Match any file that starts with file</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -212,7 +212,7 @@ Matches any file that starts with file 1  ll file*     Finds any file with filen
 </figure>
 
 
-<h3 id="matches-any-file-that-ends-with-txt">Matches any file that ends with .txt</h3>
+<h3 id="match-any-file-that-ends-with-txt">Match any file that ends with .txt</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -229,11 +229,11 @@ Matches any file that starts with file 1  ll file*     Finds any file with filen
 </figure>
 
 
-<h2 id="matches-any-character">Matches any character</h2>
+<h2 id="match-any-character">Match any character</h2>
 
 <p>We can use the ? character to match any character.</p>
 
-<h3 id="matches-any-file-with-a-1-character-filename">Matches any file with a 1-character filename</h3>
+<h3 id="match-any-file-with-a-1-character-filename">Match any file with a 1-character filename</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -250,7 +250,7 @@ Matches any file that starts with file 1  ll file*     Finds any file with filen
 </figure>
 
 
-<h3 id="matches-any-file-with-a-4-character-extension">Matches any file with a 4-character extension</h3>
+<h3 id="match-any-file-with-a-4-character-extension">Match any file with a 4-character extension</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -267,11 +267,11 @@ Matches any file that starts with file 1  ll file*     Finds any file with filen
 </figure>
 
 
-<h2 id="matches-any-one-of-enclosed-characters">Matches any one of enclosed characters</h2>
+<h2 id="match-any-one-of-enclosed-characters">Match any one of enclosed characters</h2>
 
 <p>We can use the [] range expression to match any one of enclosed characters.</p>
 
-<h3 id="matches-any-file-that-starts-with-1-2-or-f">Matches any file that starts with 1, 2 or f</h3>
+<h3 id="match-any-file-that-starts-with-1-2-or-f">Match any file that starts with 1, 2 or f</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -288,7 +288,7 @@ Matches any file that starts with file 1  ll file*     Finds any file with filen
 </figure>
 
 
-<h3 id="matches-any-file-that-starts-with-1-2-or-3">Matches any file that starts with 1, 2 or 3</h3>
+<h3 id="match-any-file-that-starts-with-1-2-or-3">Match any file that starts with 1, 2 or 3</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -305,7 +305,7 @@ Matches any file that starts with file 1  ll file*     Finds any file with filen
 </figure>
 
 
-<h3 id="matches-any-file-that-starts-without-1-2-or-3">Matches any file that starts without 1, 2 or 3</h3>
+<h3 id="match-any-file-that-starts-without-1-2-or-3">Match any file that starts without 1, 2 or 3</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -369,7 +369,7 @@ Matches any file that starts with file 1  ll file*     Finds any file with filen
       <nav class="post-nav">
         <a class="prev" href="/post/server-side-programming/linux/simple-but-profound/23.-bash-shell-text-processing-cat-tac-nl-head-tail/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">23. Bash Shell - Text Processing - cat, tac, nl, head, tail</span>
+            <span class="prev-text nav-default">23. Bash Shell - Text Processing: cat, tac, nl, head, tail</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
         <a class="next" href="/post/server-side-programming/linux/simple-but-profound/21.-pipelines-get-other-commands-results-as-initial-data/">

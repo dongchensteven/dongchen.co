@@ -6,13 +6,23 @@
     <description>Recent content in Linux: Simple But Profound on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 26 Feb 2019 07:31:35 +1300</lastBuildDate>
+    <lastBuildDate>Wed, 27 Feb 2019 06:55:58 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/categories/linux-simple-but-profound/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>25. Bash Shell - Text Processing - uniq, comm</title>
+      <title>26. Bash Shell - Text Processing: cut, paste, join</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/26.-bash-shell-text-processing-cut-paste-join/</link>
+      <pubDate>Wed, 27 Feb 2019 06:55:58 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/26.-bash-shell-text-processing-cut-paste-join/</guid>
+      <description>Print Selected Parts With cut Let&amp;rsquo;s prepare some test data for the cut command:
+1 2 3  printf &amp;#39;%s\n&amp;#39; 001:andy:30:root 002:mary:26:user 003:anna:22:user 004:john:24:user 005:jeff:28:user &amp;gt;&amp;gt; cut_file printf &amp;#39;%s\t%s\t%s\t%s\n&amp;#39; &amp;#39;006&amp;#39; &amp;#39;andy&amp;#39; &amp;#39;30&amp;#39; &amp;#39;root&amp;#39; &amp;#39;007&amp;#39; &amp;#39;mary&amp;#39; &amp;#39;26&amp;#39; &amp;#39;user&amp;#39; &amp;#39;008&amp;#39; &amp;#39;anna&amp;#39; &amp;#39;22&amp;#39; &amp;#39;user&amp;#39; &amp;#39;009&amp;#39; &amp;#39;john&amp;#39; &amp;#39;24&amp;#39; &amp;#39;user&amp;#39; &amp;#39;010&amp;#39; &amp;#39;jeff&amp;#39; &amp;#39;28&amp;#39; &amp;#39;user&amp;#39; &amp;gt;&amp;gt; cut_file cat cut_file     Prints multiple lines of test data to cut_file   Retrieve the Specified Amount of Bytes We can add the -b or &amp;ndash;bytes parameter to specify the length of bytes to output:</description>
+    </item>
+    
+    <item>
+      <title>25. Bash Shell - Text Processing: uniq, comm</title>
       <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/25.-bash-shell-text-processing-uniq-comm/</link>
       <pubDate>Tue, 26 Feb 2019 07:31:35 +1300</pubDate>
       
@@ -23,7 +33,7 @@ Unique Result Let&amp;rsquo;s prepare some repeated and unique contents for the 
     </item>
     
     <item>
-      <title>24. Bash Shell - Text Processing - wc, sort</title>
+      <title>24. Bash Shell - Text Processing: wc, sort</title>
       <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/24.-bash-shell-text-processing-wc-sort/</link>
       <pubDate>Mon, 25 Feb 2019 07:39:17 +1300</pubDate>
       
@@ -34,7 +44,7 @@ Unique Result Let&amp;rsquo;s prepare some repeated and unique contents for the 
     </item>
     
     <item>
-      <title>23. Bash Shell - Text Processing - cat, tac, nl, head, tail</title>
+      <title>23. Bash Shell - Text Processing: cat, tac, nl, head, tail</title>
       <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/23.-bash-shell-text-processing-cat-tac-nl-head-tail/</link>
       <pubDate>Sun, 24 Feb 2019 08:52:48 +1300</pubDate>
       
@@ -53,8 +63,8 @@ Prepare contents:
       <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/22.-bash-shell-pattern-matching-globbing-wildcards/</guid>
       <description>By matching patterns, we can easily find the files we need.
 Preparation Let&amp;rsquo;s prepare some test files first before we start:
-1  touch 1.txt 2.doc 3.html 1.c 2.c 3.c file1.txt file2.doc file3.html 1file.txt 2file.doc 3file.html   Special Pattern Characters Matches any string We can use the * character to match any string.
-Matches any file that starts with file 1  ll file*     Finds any file with filename begin with file   Matches any file that ends with .</description>
+1  touch 1.txt 2.doc 3.html 1.c 2.c 3.c file1.txt file2.doc file3.html 1file.txt 2file.doc 3file.html   Special Pattern Characters Match any string We can use the * character to match any string.
+Match any file that starts with file 1  ll file*     Finds any file with filename begin with file   Match any file that ends with .</description>
     </item>
     
     <item>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>24. Bash Shell - Text Processing - wc, sort - Dong - A place to track my time log</title>
+  <title>24. Bash Shell - Text Processing: wc, sort - Dong - A place to track my time log</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -41,7 +41,7 @@
 <link rel="stylesheet" href="/css/styles.css">
 
 
-<meta property="og:title" content="24. Bash Shell - Text Processing - wc, sort" />
+<meta property="og:title" content="24. Bash Shell - Text Processing: wc, sort" />
 <meta property="og:description" content="We continue to use the file file.txt test data we used in Entry Level post:
   The contents of the file.txt file   Word Counter The wc command by default outputs the number of newlines, words, and bytes of the file:
 1  wc file.txt     Outputs the length of the newlines, words and bytes of the file.txt file   Byte Counts We can add the -c or &ndash;bytes parameter to output the file&rsquo;s byte counts:" />
@@ -49,7 +49,7 @@
 <meta property="og:url" content="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/24.-bash-shell-text-processing-wc-sort/" /><meta property="article:published_time" content="2019-02-25T07:39:17&#43;13:00"/>
 <meta property="article:modified_time" content="2019-02-25T07:39:17&#43;13:00"/>
 
-<meta itemprop="name" content="24. Bash Shell - Text Processing - wc, sort">
+<meta itemprop="name" content="24. Bash Shell - Text Processing: wc, sort">
 <meta itemprop="description" content="We continue to use the file file.txt test data we used in Entry Level post:
   The contents of the file.txt file   Word Counter The wc command by default outputs the number of newlines, words, and bytes of the file:
 1  wc file.txt     Outputs the length of the newlines, words and bytes of the file.txt file   Byte Counts We can add the -c or &ndash;bytes parameter to output the file&rsquo;s byte counts:">
@@ -63,7 +63,7 @@
 
 <meta itemprop="keywords" content="Linux,Server," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="24. Bash Shell - Text Processing - wc, sort"/>
+<meta name="twitter:title" content="24. Bash Shell - Text Processing: wc, sort"/>
 <meta name="twitter:description" content="We continue to use the file file.txt test data we used in Entry Level post:
   The contents of the file.txt file   Word Counter The wc command by default outputs the number of newlines, words, and bytes of the file:
 1  wc file.txt     Outputs the length of the newlines, words and bytes of the file.txt file   Byte Counts We can add the -c or &ndash;bytes parameter to output the file&rsquo;s byte counts:"/>
@@ -129,7 +129,7 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">24. Bash Shell - Text Processing - wc, sort</h1>
+      <h1 class="post-title">24. Bash Shell - Text Processing: wc, sort</h1>
 
       <div class="post-meta">
         <span class="post-time"> Mon Feb 25 2019 </span>
@@ -156,11 +156,11 @@
 </ul></li>
 <li><a href="#sorted-result">Sorted Result</a>
 <ul>
-<li><a href="#sorts-one-file-contents-in-ascending-order">Sorts One File Contents in Ascending Order</a></li>
-<li><a href="#sorts-multiple-file-contents-in-ascending-order">Sorts Multiple File Contents in Ascending Order</a></li>
-<li><a href="#sorts-contents-in-descending-order">Sorts Contents in Descending Order</a></li>
-<li><a href="#sorts-numeric-contents-in-ascending-order">Sorts Numeric Contents in Ascending Order</a></li>
-<li><a href="#sorts-numeric-contents-in-descending-order">Sorts Numeric Contents in Descending Order</a></li>
+<li><a href="#sort-one-file-contents-in-ascending-order">Sort One File Contents in Ascending Order</a></li>
+<li><a href="#sort-multiple-file-contents-in-ascending-order">Sort Multiple File Contents in Ascending Order</a></li>
+<li><a href="#sort-contents-in-descending-order">Sort Contents in Descending Order</a></li>
+<li><a href="#sort-numeric-contents-in-ascending-order">Sort Numeric Contents in Ascending Order</a></li>
+<li><a href="#sort-numeric-contents-in-descending-order">Sort Numeric Contents in Descending Order</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -282,7 +282,7 @@ wc --lines file.txt</code></pre></td></tr></table>
 
 <h1 id="sorted-result">Sorted Result</h1>
 
-<h2 id="sorts-one-file-contents-in-ascending-order">Sorts One File Contents in Ascending Order</h2>
+<h2 id="sort-one-file-contents-in-ascending-order">Sort One File Contents in Ascending Order</h2>
 
 <p>We can use the sort command to sort the letters of the file contents:</p>
 <div class="highlight"><div class="chroma">
@@ -301,7 +301,7 @@ wc --lines file.txt</code></pre></td></tr></table>
 </figure>
 
 
-<h2 id="sorts-multiple-file-contents-in-ascending-order">Sorts Multiple File Contents in Ascending Order</h2>
+<h2 id="sort-multiple-file-contents-in-ascending-order">Sort Multiple File Contents in Ascending Order</h2>
 
 <p>We can sort multiple files at the same time:</p>
 <div class="highlight"><div class="chroma">
@@ -320,7 +320,7 @@ wc --lines file.txt</code></pre></td></tr></table>
 </figure>
 
 
-<h2 id="sorts-contents-in-descending-order">Sorts Contents in Descending Order</h2>
+<h2 id="sort-contents-in-descending-order">Sort Contents in Descending Order</h2>
 
 <p>We can add the -r or &ndash;reverse parameter to sort the contents of the file in descending order:</p>
 <div class="highlight"><div class="chroma">
@@ -341,7 +341,7 @@ sort --reverse file.txt</code></pre></td></tr></table>
 </figure>
 
 
-<h2 id="sorts-numeric-contents-in-ascending-order">Sorts Numeric Contents in Ascending Order</h2>
+<h2 id="sort-numeric-contents-in-ascending-order">Sort Numeric Contents in Ascending Order</h2>
 
 <p>Before we start, we need to prepare a file with numeric contents:</p>
 <div class="highlight"><div class="chroma">
@@ -397,7 +397,7 @@ sort --sort<span class="o">=</span>numeric num_file</code></pre></td></tr></tabl
 </figure>
 
 
-<h2 id="sorts-numeric-contents-in-descending-order">Sorts Numeric Contents in Descending Order</h2>
+<h2 id="sort-numeric-contents-in-descending-order">Sort Numeric Contents in Descending Order</h2>
 
 <p>We can add the -n, &ndash;numeric-sort or &ndash;sort=numeric with a -r or &ndash;reverse parameter to sort the integer number of the file contents in ascending order.</p>
 <div class="highlight"><div class="chroma">
@@ -468,11 +468,11 @@ sort --sort<span class="o">=</span>numeric --reverse num_file</code></pre></td><
       <nav class="post-nav">
         <a class="prev" href="/post/server-side-programming/linux/simple-but-profound/25.-bash-shell-text-processing-uniq-comm/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">25. Bash Shell - Text Processing - uniq, comm</span>
+            <span class="prev-text nav-default">25. Bash Shell - Text Processing: uniq, comm</span>
             <span class="prev-text nav-mobile">Prev</span>
           </a>
         <a class="next" href="/post/server-side-programming/linux/simple-but-profound/23.-bash-shell-text-processing-cat-tac-nl-head-tail/">
-            <span class="next-text nav-default">23. Bash Shell - Text Processing - cat, tac, nl, head, tail</span>
+            <span class="next-text nav-default">23. Bash Shell - Text Processing: cat, tac, nl, head, tail</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>

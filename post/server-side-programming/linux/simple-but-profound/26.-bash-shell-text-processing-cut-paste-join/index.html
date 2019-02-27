@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>25. Bash Shell - Text Processing: uniq, comm - Dong - A place to track my time log</title>
+  <title>26. Bash Shell - Text Processing: cut, paste, join - Dong - A place to track my time log</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,9 +16,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="Let&amp;rsquo;s begin the second part of the intermediate level of word processing.
-Unique Result Let&amp;rsquo;s prepare some repeated and unique contents for the uniq command:
-1 2 3 4 5 6 7 8 9  echo &amp;#39;I am duplicated&amp;#39; &amp;gt;&amp;gt; uniq_file.txt echo &amp;#39;I am duplicated&amp;#39; &amp;gt;&amp;gt; uniq_file.txt echo &amp;#39;I am duplicated&amp;#39; &amp;gt;&amp;gt; uniq_file.txt echo &amp;#39;I am Duplicated&amp;#39; &amp;gt;&amp;gt; uniq_file.txt echo &amp;#39;I am Duplicated&amp;#39; &amp;gt;&amp;gt; uniq_file.txt echo &amp;#39;I am Duplicated&amp;#39; &amp;gt;&amp;gt; uniq_file." /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="Dong Chen" /><meta name="description" content="Print Selected Parts With cut Let&amp;rsquo;s prepare some test data for the cut command:
+1 2 3  printf &amp;#39;%s\n&amp;#39; 001:andy:30:root 002:mary:26:user 003:anna:22:user 004:john:24:user 005:jeff:28:user &amp;gt;&amp;gt; cut_file printf &amp;#39;%s\t%s\t%s\t%s\n&amp;#39; &amp;#39;006&amp;#39; &amp;#39;andy&amp;#39; &amp;#39;30&amp;#39; &amp;#39;root&amp;#39; &amp;#39;007&amp;#39; &amp;#39;mary&amp;#39; &amp;#39;26&amp;#39; &amp;#39;user&amp;#39; &amp;#39;008&amp;#39; &amp;#39;anna&amp;#39; &amp;#39;22&amp;#39; &amp;#39;user&amp;#39; &amp;#39;009&amp;#39; &amp;#39;john&amp;#39; &amp;#39;24&amp;#39; &amp;#39;user&amp;#39; &amp;#39;010&amp;#39; &amp;#39;jeff&amp;#39; &amp;#39;28&amp;#39; &amp;#39;user&amp;#39; &amp;gt;&amp;gt; cut_file cat cut_file     Prints multiple lines of test data to cut_file   Retrieve the Specified Amount of Bytes We can add the -b or &amp;ndash;bytes parameter to specify the length of bytes to output:" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -28,7 +27,7 @@ Unique Result Let&amp;rsquo;s prepare some repeated and unique contents for the 
 <meta name="generator" content="Hugo 0.53 with even 4.0.0" />
 
 
-<link rel="canonical" href="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/25.-bash-shell-text-processing-uniq-comm/" />
+<link rel="canonical" href="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/26.-bash-shell-text-processing-cut-paste-join/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -41,32 +40,29 @@ Unique Result Let&amp;rsquo;s prepare some repeated and unique contents for the 
 <link rel="stylesheet" href="/css/styles.css">
 
 
-<meta property="og:title" content="25. Bash Shell - Text Processing: uniq, comm" />
-<meta property="og:description" content="Let&rsquo;s begin the second part of the intermediate level of word processing.
-Unique Result Let&rsquo;s prepare some repeated and unique contents for the uniq command:
-1 2 3 4 5 6 7 8 9  echo &#39;I am duplicated&#39; &gt;&gt; uniq_file.txt echo &#39;I am duplicated&#39; &gt;&gt; uniq_file.txt echo &#39;I am duplicated&#39; &gt;&gt; uniq_file.txt echo &#39;I am Duplicated&#39; &gt;&gt; uniq_file.txt echo &#39;I am Duplicated&#39; &gt;&gt; uniq_file.txt echo &#39;I am Duplicated&#39; &gt;&gt; uniq_file." />
+<meta property="og:title" content="26. Bash Shell - Text Processing: cut, paste, join" />
+<meta property="og:description" content="Print Selected Parts With cut Let&rsquo;s prepare some test data for the cut command:
+1 2 3  printf &#39;%s\n&#39; 001:andy:30:root 002:mary:26:user 003:anna:22:user 004:john:24:user 005:jeff:28:user &gt;&gt; cut_file printf &#39;%s\t%s\t%s\t%s\n&#39; &#39;006&#39; &#39;andy&#39; &#39;30&#39; &#39;root&#39; &#39;007&#39; &#39;mary&#39; &#39;26&#39; &#39;user&#39; &#39;008&#39; &#39;anna&#39; &#39;22&#39; &#39;user&#39; &#39;009&#39; &#39;john&#39; &#39;24&#39; &#39;user&#39; &#39;010&#39; &#39;jeff&#39; &#39;28&#39; &#39;user&#39; &gt;&gt; cut_file cat cut_file     Prints multiple lines of test data to cut_file   Retrieve the Specified Amount of Bytes We can add the -b or &ndash;bytes parameter to specify the length of bytes to output:" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/25.-bash-shell-text-processing-uniq-comm/" /><meta property="article:published_time" content="2019-02-26T07:31:35&#43;13:00"/>
-<meta property="article:modified_time" content="2019-02-26T07:31:35&#43;13:00"/>
+<meta property="og:url" content="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/26.-bash-shell-text-processing-cut-paste-join/" /><meta property="article:published_time" content="2019-02-27T06:55:58&#43;13:00"/>
+<meta property="article:modified_time" content="2019-02-27T06:55:58&#43;13:00"/>
 
-<meta itemprop="name" content="25. Bash Shell - Text Processing: uniq, comm">
-<meta itemprop="description" content="Let&rsquo;s begin the second part of the intermediate level of word processing.
-Unique Result Let&rsquo;s prepare some repeated and unique contents for the uniq command:
-1 2 3 4 5 6 7 8 9  echo &#39;I am duplicated&#39; &gt;&gt; uniq_file.txt echo &#39;I am duplicated&#39; &gt;&gt; uniq_file.txt echo &#39;I am duplicated&#39; &gt;&gt; uniq_file.txt echo &#39;I am Duplicated&#39; &gt;&gt; uniq_file.txt echo &#39;I am Duplicated&#39; &gt;&gt; uniq_file.txt echo &#39;I am Duplicated&#39; &gt;&gt; uniq_file.">
+<meta itemprop="name" content="26. Bash Shell - Text Processing: cut, paste, join">
+<meta itemprop="description" content="Print Selected Parts With cut Let&rsquo;s prepare some test data for the cut command:
+1 2 3  printf &#39;%s\n&#39; 001:andy:30:root 002:mary:26:user 003:anna:22:user 004:john:24:user 005:jeff:28:user &gt;&gt; cut_file printf &#39;%s\t%s\t%s\t%s\n&#39; &#39;006&#39; &#39;andy&#39; &#39;30&#39; &#39;root&#39; &#39;007&#39; &#39;mary&#39; &#39;26&#39; &#39;user&#39; &#39;008&#39; &#39;anna&#39; &#39;22&#39; &#39;user&#39; &#39;009&#39; &#39;john&#39; &#39;24&#39; &#39;user&#39; &#39;010&#39; &#39;jeff&#39; &#39;28&#39; &#39;user&#39; &gt;&gt; cut_file cat cut_file     Prints multiple lines of test data to cut_file   Retrieve the Specified Amount of Bytes We can add the -b or &ndash;bytes parameter to specify the length of bytes to output:">
 
 
-<meta itemprop="datePublished" content="2019-02-26T07:31:35&#43;13:00" />
-<meta itemprop="dateModified" content="2019-02-26T07:31:35&#43;13:00" />
-<meta itemprop="wordCount" content="628">
+<meta itemprop="datePublished" content="2019-02-27T06:55:58&#43;13:00" />
+<meta itemprop="dateModified" content="2019-02-27T06:55:58&#43;13:00" />
+<meta itemprop="wordCount" content="638">
 
 
 
 <meta itemprop="keywords" content="Linux,Server," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="25. Bash Shell - Text Processing: uniq, comm"/>
-<meta name="twitter:description" content="Let&rsquo;s begin the second part of the intermediate level of word processing.
-Unique Result Let&rsquo;s prepare some repeated and unique contents for the uniq command:
-1 2 3 4 5 6 7 8 9  echo &#39;I am duplicated&#39; &gt;&gt; uniq_file.txt echo &#39;I am duplicated&#39; &gt;&gt; uniq_file.txt echo &#39;I am duplicated&#39; &gt;&gt; uniq_file.txt echo &#39;I am Duplicated&#39; &gt;&gt; uniq_file.txt echo &#39;I am Duplicated&#39; &gt;&gt; uniq_file.txt echo &#39;I am Duplicated&#39; &gt;&gt; uniq_file."/>
+<meta name="twitter:title" content="26. Bash Shell - Text Processing: cut, paste, join"/>
+<meta name="twitter:description" content="Print Selected Parts With cut Let&rsquo;s prepare some test data for the cut command:
+1 2 3  printf &#39;%s\n&#39; 001:andy:30:root 002:mary:26:user 003:anna:22:user 004:john:24:user 005:jeff:28:user &gt;&gt; cut_file printf &#39;%s\t%s\t%s\t%s\n&#39; &#39;006&#39; &#39;andy&#39; &#39;30&#39; &#39;root&#39; &#39;007&#39; &#39;mary&#39; &#39;26&#39; &#39;user&#39; &#39;008&#39; &#39;anna&#39; &#39;22&#39; &#39;user&#39; &#39;009&#39; &#39;john&#39; &#39;24&#39; &#39;user&#39; &#39;010&#39; &#39;jeff&#39; &#39;28&#39; &#39;user&#39; &gt;&gt; cut_file cat cut_file     Prints multiple lines of test data to cut_file   Retrieve the Specified Amount of Bytes We can add the -b or &ndash;bytes parameter to specify the length of bytes to output:"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -129,14 +125,14 @@ Unique Result Let&rsquo;s prepare some repeated and unique contents for the uniq
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">25. Bash Shell - Text Processing: uniq, comm</h1>
+      <h1 class="post-title">26. Bash Shell - Text Processing: cut, paste, join</h1>
 
       <div class="post-meta">
-        <span class="post-time"> Tue Feb 26 2019 </span>
+        <span class="post-time"> Wed Feb 27 2019 </span>
         <div class="post-category">
             <a href="/categories/linux-simple-but-profound/"> Linux: Simple But Profound </a>
             </div>
-          <span class="more-meta"> 628 words </span>
+          <span class="more-meta"> 638 words </span>
           <span class="more-meta"> 3 mins read </span>
         
       </div>
@@ -147,168 +143,132 @@ Unique Result Let&rsquo;s prepare some repeated and unique contents for the uniq
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#unique-result">Unique Result</a>
+<li><a href="#print-selected-parts-with-cut">Print Selected Parts With cut</a>
 <ul>
-<li><a href="#repeated-contents">Repeated Contents</a></li>
-<li><a href="#unique-contents">Unique Contents</a></li>
-<li><a href="#repeated-contents-without-case-sensitivity">Repeated Contents Without Case Sensitivity</a></li>
-<li><a href="#contents-with-their-occurrence-numbers">Contents With Their Occurrence Numbers</a></li>
+<li><a href="#retrieve-the-specified-amount-of-bytes">Retrieve the Specified Amount of Bytes</a></li>
+<li><a href="#retrieve-the-specified-amount-of-characters">Retrieve the Specified Amount of Characters</a></li>
+<li><a href="#retrieve-the-specified-column">Retrieve the Specified Column</a></li>
 </ul></li>
-<li><a href="#compared-result">Compared Result</a>
+<li><a href="#merge-lines-of-files-with-paste">Merge Lines of Files With paste</a>
 <ul>
-<li><a href="#hide-first-column">Hide First Column</a></li>
-<li><a href="#hide-second-column">Hide Second Column</a></li>
-<li><a href="#hide-third-column">Hide Third Column</a></li>
-<li><a href="#show-first-column">Show First Column</a></li>
-<li><a href="#show-second-column">Show Second Column</a></li>
-<li><a href="#show-third-column">Show Third Column</a></li>
+<li><a href="#retrieve-lines-sequentially">Retrieve Lines Sequentially</a></li>
+<li><a href="#duplicate-lines">Duplicate Lines</a></li>
+<li><a href="#intermix-lines-from-standard-input">Intermix Lines From Standard Input</a></li>
 </ul></li>
+<li><a href="#join-lines-of-two-files-with-join">Join Lines of Two Files With join</a></li>
 </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <p>Let&rsquo;s begin the second part of the intermediate level of word processing.</p>
+      <h1 id="print-selected-parts-with-cut">Print Selected Parts With cut</h1>
 
-<h1 id="unique-result">Unique Result</h1>
-
-<p>Let&rsquo;s prepare some repeated and unique contents for the uniq command:</p>
+<p>Let&rsquo;s prepare some test data for the cut command:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s1">&#39;I am duplicated&#39;</span> &gt;&gt; uniq_file.txt
-<span class="nb">echo</span> <span class="s1">&#39;I am duplicated&#39;</span> &gt;&gt; uniq_file.txt
-<span class="nb">echo</span> <span class="s1">&#39;I am duplicated&#39;</span> &gt;&gt; uniq_file.txt
-<span class="nb">echo</span> <span class="s1">&#39;I am Duplicated&#39;</span> &gt;&gt; uniq_file.txt
-<span class="nb">echo</span> <span class="s1">&#39;I am Duplicated&#39;</span> &gt;&gt; uniq_file.txt
-<span class="nb">echo</span> <span class="s1">&#39;I am Duplicated&#39;</span> &gt;&gt; uniq_file.txt
-<span class="nb">echo</span> <span class="s1">&#39;Line unique 1&#39;</span> &gt;&gt; uniq_file.txt
-<span class="nb">echo</span> <span class="s1">&#39;Line unique 2&#39;</span> &gt;&gt; uniq_file.txt
-<span class="nb">echo</span> <span class="s1">&#39;Line unique 3&#39;</span> &gt;&gt; uniq_file.txt</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">printf</span> <span class="s1">&#39;%s\n&#39;</span> <span class="m">001</span>:andy:30:root <span class="m">002</span>:mary:26:user <span class="m">003</span>:anna:22:user <span class="m">004</span>:john:24:user <span class="m">005</span>:jeff:28:user &gt;&gt; cut_file
+<span class="nb">printf</span> <span class="s1">&#39;%s\t%s\t%s\t%s\n&#39;</span> <span class="s1">&#39;006&#39;</span> <span class="s1">&#39;andy&#39;</span> <span class="s1">&#39;30&#39;</span> <span class="s1">&#39;root&#39;</span> <span class="s1">&#39;007&#39;</span> <span class="s1">&#39;mary&#39;</span> <span class="s1">&#39;26&#39;</span> <span class="s1">&#39;user&#39;</span> <span class="s1">&#39;008&#39;</span> <span class="s1">&#39;anna&#39;</span> <span class="s1">&#39;22&#39;</span> <span class="s1">&#39;user&#39;</span> <span class="s1">&#39;009&#39;</span> <span class="s1">&#39;john&#39;</span> <span class="s1">&#39;24&#39;</span> <span class="s1">&#39;user&#39;</span> <span class="s1">&#39;010&#39;</span> <span class="s1">&#39;jeff&#39;</span> <span class="s1">&#39;28&#39;</span> <span class="s1">&#39;user&#39;</span> &gt;&gt; cut_file
+cat cut_file</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/25/echo_multiple_text_cat_uniq_file.png"
+    <img src="../images/26/printf_multiple_lines_cat_cut_file.png"
          alt="img"/> <figcaption>
-            <h4>Prepared some repeated and unique contents</h4>
+            <h4>Prints multiple lines of test data to cut_file</h4>
         </figcaption>
 </figure>
 
 
-<p>By default, the uniq command output does not include subsequently repeated contents:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">uniq uniq_file.txt</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/25/uniq_uniq_file.png"
-         alt="img"/> <figcaption>
-            <h4>Output all but not the subsequently repeated contents</h4>
-        </figcaption>
-</figure>
+<h2 id="retrieve-the-specified-amount-of-bytes">Retrieve the Specified Amount of Bytes</h2>
 
-
-<h2 id="repeated-contents">Repeated Contents</h2>
-
-<p>We can add the -d or &ndash;repeated parameter to output the file&rsquo;s repeated contents:</p>
+<p>We can add the -b or &ndash;bytes parameter to specify the length of bytes to output:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">uniq -d uniq_file.txt
-uniq --repeated uniq_file.txt</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">cut -b <span class="m">1</span>-10 cut_file
+cut --bytes <span class="m">1</span>-10 cut_file</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/25/uniq_d_or_repeated_uniq_file.png"
+    <img src="../images/26/cut_b_or_bytes_from_1_to_10_cut_file.png"
          alt="img"/> <figcaption>
-            <h4>Output uniq_file.txt file&#39;s repeated contents</h4>
+            <h4>Prints ten bytes from the beginning of the lines</h4>
         </figcaption>
 </figure>
 
 
-<h2 id="unique-contents">Unique Contents</h2>
+<h2 id="retrieve-the-specified-amount-of-characters">Retrieve the Specified Amount of Characters</h2>
 
-<p>We can add the -u or &ndash;unique parameter to output the file&rsquo;s unique contents:</p>
+<p>We can add the -c or &ndash;characters parameter to specify the length of characters to output:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">uniq -u uniq_file.txt
-uniq --unique uniq_file.txt</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">cut -c <span class="m">1</span>-10 cut_file
+cut --characters <span class="m">1</span>-10 cut_file</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/25/uniq_u_or_unique_uniq_file.png"
+    <img src="../images/26/cut_c_or_characters_from_1_to_10_cut_file.png"
          alt="img"/> <figcaption>
-            <h4>Output uniq_file.txt file&#39;s unique contents</h4>
+            <h4>Prints ten characters from the beginning of the lines</h4>
         </figcaption>
 </figure>
 
 
-<h2 id="repeated-contents-without-case-sensitivity">Repeated Contents Without Case Sensitivity</h2>
+<h2 id="retrieve-the-specified-column">Retrieve the Specified Column</h2>
 
-<p>We can add the -d or &ndash;repeated plus -i or &ndash;ignore-case parameters to output the file&rsquo;s repeated contents without case sensitivity:</p>
+<p>By default, the -f or &ndash;fields parameter distinguishes the contents of each column by TAB.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">uniq -d -i uniq_file.txt
-uniq --repeated --ignore-case uniq_file.txt</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">cut -f <span class="m">1</span> -s cut_file
+cut --fields <span class="m">1</span> --only-delimited cut_file</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/25/uniq_d_or_repeated_plus_i_or_ignore_case_uniq_file.png"
+    <img src="../images/26/cut_f_or_fields_1_plus_s_or_only_delimited_cut_file.png"
          alt="img"/> <figcaption>
-            <h4>Output uniq_file.txt file&#39;s repeated contents without case sensitivity</h4>
+            <h4>Retrieves the first column of the cut_file</h4>
         </figcaption>
 </figure>
 
 
-<h2 id="contents-with-their-occurrence-numbers">Contents With Their Occurrence Numbers</h2>
-
-<p>We can add the -c or &ndash;count to output the file&rsquo;s repeated contents without case sensitivity:</p>
+<p>So we need to add an extra -d or &ndash;delimiter parameter to allow the -f or &ndash;fields parameter to distinguish between each column according to the specified delimiter:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">uniq -c uniq_file.txt
-uniq --count uniq_file.txt</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">cut -f <span class="m">1</span> -d <span class="s1">&#39;:&#39;</span> -s cut_file
+cut --fields <span class="m">1</span> --delimiter <span class="s1">&#39;:&#39;</span> --only-delimited cut_file</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/25/uniq_c_or_count_uniq_file.png"
+    <img src="../images/26/cut_f_or_fields_1_plus_d_or_delimiter_plus_s_or_only_delimited_cut_file.png"
          alt="img"/> <figcaption>
-            <h4>Output uniq_file.txt file&#39;s contents with their occurrence numbers</h4>
+            <h4>Retrieves the first column of the cut_file</h4>
         </figcaption>
 </figure>
 
 
-<h1 id="compared-result">Compared Result</h1>
+<h1 id="merge-lines-of-files-with-paste">Merge Lines of Files With paste</h1>
 
-<p>We need to prepare two files to demonstrate the comm command:</p>
+<p>Let&rsquo;s prepare some test data for the paste command:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -317,155 +277,141 @@ uniq --count uniq_file.txt</code></pre></td></tr></table>
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">printf</span> <span class="s1">&#39;%s\n&#39;</span> a b c d e     &gt; file1
-<span class="nb">printf</span> <span class="s1">&#39;%s\n&#39;</span>   b c d e f g &gt; file2
-cat file1
-cat file2</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">printf</span> <span class="s1">&#39;%s\n&#39;</span> file1a file1b file1c file1d file1e file1f &gt; paste_file1
+<span class="nb">printf</span> <span class="s1">&#39;%s\n&#39;</span> file2a file2b file2c file2d file2e file2f &gt; paste_file2
+cat paste_file1
+cat paste_file2</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/25/printf_multiple_files.png"
+    <img src="../images/26/printf_multiple_lines_cat_paste_files.png"
          alt="img"/> <figcaption>
-            <h4>Prints contents to file1 and file2</h4>
+            <h4>Prints multiple lines of test data to two files</h4>
         </figcaption>
 </figure>
 
 
-<p>By default, comm outputs three columns of data, the first column is unique to the first file, the second column is unique to the second file, and the third column is the co-existent contents of the two files:</p>
+<h2 id="retrieve-lines-sequentially">Retrieve Lines Sequentially</h2>
+
+<p>We can use the paste command to output the contents of the two files in sequence:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">comm file1 file2</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">paste paste_file1 paste_file2</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/25/comm_files.png"
+    <img src="../images/26/paste_files.png"
          alt="img"/> <figcaption>
-            <h4>Compares file file1 to file file2</h4>
+            <h4>Retrieves two files&#39; contents sequentially</h4>
         </figcaption>
 </figure>
 
 
-<h2 id="hide-first-column">Hide First Column</h2>
+<h2 id="duplicate-lines">Duplicate Lines</h2>
 
-<p>We can hide the first column with the -1 parameter:</p>
+<p>The paste command supports repeating the contents of the same file:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">comm -1 file1 file2</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">paste paste_file1 paste_file2 paste_file1</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/25/comm_1_files.png"
+    <img src="../images/26/paste_three_files.png"
          alt="img"/> <figcaption>
-            <h4>Hide first column</h4>
+            <h4>Retrieves three files&#39; contents sequentially</h4>
         </figcaption>
 </figure>
 
 
-<h2 id="hide-second-column">Hide Second Column</h2>
+<h2 id="intermix-lines-from-standard-input">Intermix Lines From Standard Input</h2>
 
-<p>We can hide the first column with the -2 parameter:</p>
+<p>By using - symbols, we can distribute the contents of the file in the input stream to each of the - symbols:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">comm -2 file1 file2</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">paste - - - &lt; paste_file1</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/25/comm_2_files.png"
+    <img src="../images/26/paste_hyphen_file.png"
          alt="img"/> <figcaption>
-            <h4>Hide second column</h4>
+            <h4>Distributes standard input stream&#39;s file contents to each - symbols</h4>
         </figcaption>
 </figure>
 
 
-<h2 id="hide-third-column">Hide Third Column</h2>
-
-<p>We can hide the first column with the -3 parameter:</p>
+<p>We can also do this:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">comm -3 file1 file2</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">paste - paste_file1 - paste_file2 - &lt; paste_file1</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/25/comm_3_files.png"
+    <img src="../images/26/paste_hyphens_files.png"
          alt="img"/> <figcaption>
-            <h4>Hide third column</h4>
+            <h4>Distributes standard input stream&#39;s file contents to each - symbols</h4>
         </figcaption>
 </figure>
 
 
-<h2 id="show-first-column">Show First Column</h2>
+<h1 id="join-lines-of-two-files-with-join">Join Lines of Two Files With join</h1>
 
-<p>We can hide the first column with the -23 parameter:</p>
+<p>Let&rsquo;s prepare some test data for the paste command:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">printf</span> <span class="s1">&#39;%s\n&#39;</span> <span class="s1">&#39;ID1 User1&#39;</span> <span class="s1">&#39;ID2 User2&#39;</span> <span class="s1">&#39;ID3 User3&#39;</span> <span class="s1">&#39;ID5 User5&#39;</span> &gt; join_file1
+<span class="nb">printf</span> <span class="s1">&#39;%s\n&#39;</span> <span class="s1">&#39;ID1 User1&#39;</span> <span class="s1">&#39;ID3 User3&#39;</span> <span class="s1">&#39;ID4 User4&#39;</span> &gt; join_file2
+cat join_file1
+cat join_file2</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/26/printf_multiple_lines_cat_join_files.png"
+         alt="img"/> <figcaption>
+            <h4>Prints multiple lines of test data to two files</h4>
+        </figcaption>
+</figure>
+
+
+<p>We can use join to export the overlapped contents in both files:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">comm -23 file1 file2</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">join join_file1 join_file2</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/25/comm_23_files.png"
+    <img src="../images/26/join_files.png"
          alt="img"/> <figcaption>
-            <h4>Show first column</h4>
-        </figcaption>
-</figure>
-
-
-<h2 id="show-second-column">Show Second Column</h2>
-
-<p>We can hide the first column with the -13 parameter:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">comm -13 file1 file2</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/25/comm_13_files.png"
-         alt="img"/> <figcaption>
-            <h4>Show second column</h4>
-        </figcaption>
-</figure>
-
-
-<h2 id="show-third-column">Show Third Column</h2>
-
-<p>We can hide the first column with the -12 parameter:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">comm -12 file1 file2</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/25/comm_12_files.png"
-         alt="img"/> <figcaption>
-            <h4>Show third column</h4>
+            <h4>Retrieves two files overlapped contents</h4>
         </figcaption>
 </figure>
 
 
 <blockquote>
 <p>References
-<a href="https://www.gnu.org/software/coreutils/manual/html_node/uniq-invocation.html">7.3 uniq: Uniquify files</a>,
-<a href="https://www.gnu.org/software/coreutils/manual/html_node/comm-invocation.html">7.4 comm: Compare two sorted files line by line</a></p>
+<a href="https://www.gnu.org/software/coreutils/manual/html_node/cut-invocation.html">8.1 cut: Print selected parts of lines</a>,
+<a href="https://www.gnu.org/software/coreutils/manual/html_node/paste-invocation.html">8.2 paste: Merge lines of files</a>,
+<a href="https://www.gnu.org/software/coreutils/manual/html_node/join-invocation.html">8.3 join: Join lines on a common field</a></p>
 </blockquote>
 
 <p>If you think the content of this article has helped you, and if you would like some more high-quality materials in the near future, please give me some modest support.</p>
@@ -484,7 +430,7 @@ cat file2</code></pre></td></tr></table>
   </p>
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
-    <span class="item-content">Tue Feb 26 2019</span>
+    <span class="item-content">Wed Feb 27 2019</span>
   </p>
   
   
@@ -508,13 +454,9 @@ cat file2</code></pre></td></tr></table>
           <a href="/tags/server/">Server</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/server-side-programming/linux/simple-but-profound/26.-bash-shell-text-processing-cut-paste-join/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">26. Bash Shell - Text Processing: cut, paste, join</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        <a class="next" href="/post/server-side-programming/linux/simple-but-profound/24.-bash-shell-text-processing-wc-sort/">
-            <span class="next-text nav-default">24. Bash Shell - Text Processing: wc, sort</span>
+        
+        <a class="next" href="/post/server-side-programming/linux/simple-but-profound/25.-bash-shell-text-processing-uniq-comm/">
+            <span class="next-text nav-default">25. Bash Shell - Text Processing: uniq, comm</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>

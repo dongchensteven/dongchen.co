@@ -45,7 +45,7 @@
 <meta property="og:description" content="Dong&#39;s blog." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://dongchen.co/" />
-<meta property="og:updated_time" content="2019-02-26T07:31:35&#43;13:00"/>
+<meta property="og:updated_time" content="2019-02-27T06:55:58&#43;13:00"/>
 
 <meta itemprop="name" content="Dong - A place to track my time log">
 <meta itemprop="description" content="Dong&#39;s blog.">
@@ -115,7 +115,31 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/server-side-programming/linux/simple-but-profound/25.-bash-shell-text-processing-uniq-comm/">25. Bash Shell - Text Processing - uniq, comm</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/server-side-programming/linux/simple-but-profound/26.-bash-shell-text-processing-cut-paste-join/">26. Bash Shell - Text Processing: cut, paste, join</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> Wed Feb 27 2019 </span>
+      <div class="post-category">
+          <a href="/categories/linux-simple-but-profound/"> Linux: Simple But Profound </a>
+          </div>
+        <span class="more-meta"> 638 words </span>
+        <span class="more-meta"> 3 mins read </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      Print Selected Parts With cut Let&rsquo;s prepare some test data for the cut command:
+1 2 3  printf &#39;%s\n&#39; 001:andy:30:root 002:mary:26:user 003:anna:22:user 004:john:24:user 005:jeff:28:user &gt;&gt; cut_file printf &#39;%s\t%s\t%s\t%s\n&#39; &#39;006&#39; &#39;andy&#39; &#39;30&#39; &#39;root&#39; &#39;007&#39; &#39;mary&#39; &#39;26&#39; &#39;user&#39; &#39;008&#39; &#39;anna&#39; &#39;22&#39; &#39;user&#39; &#39;009&#39; &#39;john&#39; &#39;24&#39; &#39;user&#39; &#39;010&#39; &#39;jeff&#39; &#39;28&#39; &#39;user&#39; &gt;&gt; cut_file cat cut_file     Prints multiple lines of test data to cut_file   Retrieve the Specified Amount of Bytes We can add the -b or &ndash;bytes parameter to specify the length of bytes to output:
+    </div>
+    <div class="read-more">
+      <a href="/post/server-side-programming/linux/simple-but-profound/26.-bash-shell-text-processing-cut-paste-join/" class="read-more-link">Read more..</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/server-side-programming/linux/simple-but-profound/25.-bash-shell-text-processing-uniq-comm/">25. Bash Shell - Text Processing: uniq, comm</a></h1>
     <div class="post-meta">
       <span class="post-time"> Tue Feb 26 2019 </span>
       <div class="post-category">
@@ -140,7 +164,7 @@ Unique Result Let&rsquo;s prepare some repeated and unique contents for the uniq
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/server-side-programming/linux/simple-but-profound/24.-bash-shell-text-processing-wc-sort/">24. Bash Shell - Text Processing - wc, sort</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/server-side-programming/linux/simple-but-profound/24.-bash-shell-text-processing-wc-sort/">24. Bash Shell - Text Processing: wc, sort</a></h1>
     <div class="post-meta">
       <span class="post-time"> Mon Feb 25 2019 </span>
       <div class="post-category">
@@ -165,7 +189,7 @@ Unique Result Let&rsquo;s prepare some repeated and unique contents for the uniq
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/server-side-programming/linux/simple-but-profound/23.-bash-shell-text-processing-cat-tac-nl-head-tail/">23. Bash Shell - Text Processing - cat, tac, nl, head, tail</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/server-side-programming/linux/simple-but-profound/23.-bash-shell-text-processing-cat-tac-nl-head-tail/">23. Bash Shell - Text Processing: cat, tac, nl, head, tail</a></h1>
     <div class="post-meta">
       <span class="post-time"> Sun Feb 24 2019 </span>
       <div class="post-category">
@@ -206,8 +230,8 @@ Prepare contents:
     <div class="post-summary">
       By matching patterns, we can easily find the files we need.
 Preparation Let&rsquo;s prepare some test files first before we start:
-1  touch 1.txt 2.doc 3.html 1.c 2.c 3.c file1.txt file2.doc file3.html 1file.txt 2file.doc 3file.html   Special Pattern Characters Matches any string We can use the * character to match any string.
-Matches any file that starts with file 1  ll file*     Finds any file with filename begin with file   Matches any file that ends with .
+1  touch 1.txt 2.doc 3.html 1.c 2.c 3.c file1.txt file2.doc file3.html 1file.txt 2file.doc 3file.html   Special Pattern Characters Match any string We can use the * character to match any string.
+Match any file that starts with file 1  ll file*     Finds any file with filename begin with file   Match any file that ends with .
     </div>
     <div class="read-more">
       <a href="/post/server-side-programming/linux/simple-but-profound/22.-bash-shell-pattern-matching-globbing-wildcards/" class="read-more-link">Read more..</a>
@@ -591,31 +615,6 @@ Keyword Shell has some reserved keywords, while is one of them:
     </div>
     <div class="read-more">
       <a href="/post/server-side-programming/linux/simple-but-profound/7.-types-of-linux-commands/" class="read-more-link">Read more..</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/server-side-programming/linux/simple-but-profound/6.-linux-bash-help-system-man-info/">6. Linux Bash help, System man, info</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> Thu Feb 7 2019 </span>
-      <div class="post-category">
-          <a href="/categories/linux-simple-but-profound/"> Linux: Simple But Profound </a>
-          </div>
-        <span class="more-meta"> 426 words </span>
-        <span class="more-meta"> 2 mins read </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      Bash Help Command Let&rsquo;s take a look at what bash is, and you can see it through whatis bash, apropos bash or man -k bash commands:
-  bash is GNU&#39;s Bourne-Again SHell   The builtins is actually a soft link to bash-builtins:
-  builtins is a soft link to bash-builtins   So we can use man builtins, info builtins, man bash-builtins or info bash-builtins commands to view bash&rsquo;s built-in commands:
-    </div>
-    <div class="read-more">
-      <a href="/post/server-side-programming/linux/simple-but-profound/6.-linux-bash-help-system-man-info/" class="read-more-link">Read more..</a>
     </div>
   </div>
 </article>
