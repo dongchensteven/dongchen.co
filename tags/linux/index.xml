@@ -6,10 +6,20 @@
     <description>Recent content in Linux on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 28 Feb 2019 07:29:30 +1300</lastBuildDate>
+    <lastBuildDate>Fri, 01 Mar 2019 07:47:10 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>28. Bash Shell - Most Commonly Used Control Operators</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/28.-bash-shell-most-commonly-used-control-operators/</link>
+      <pubDate>Fri, 01 Mar 2019 07:47:10 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/28.-bash-shell-most-commonly-used-control-operators/</guid>
+      <description>Let&amp;rsquo;s prepare some test data for these two control operators:
+1 2 3 4  printf &amp;#39;%s\n&amp;#39; &amp;#39;File One First Line&amp;#39; &amp;#39;File One Second Line&amp;#39; &amp;gt; file1 printf &amp;#39;%s\n&amp;#39; &amp;#39;File Two First Line&amp;#39; &amp;#39;File Two Second Line&amp;#39; &amp;gt; file2 cat file1 cat file2     Prints multiple lines of test data to two files   Ampersand Ampersand Operator We can use two ampersand symbol to concatenate a series of commands and execute them sequentially:</description>
+    </item>
     
     <item>
       <title>27. Bash Shell - Text Processing: tr</title>
@@ -18,7 +28,7 @@
       
       <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/27.-bash-shell-text-processing-tr/</guid>
       <description>Translate or Delete Characters Let&amp;rsquo;s prepare some test data for the tr command:
-1 2  printf &amp;#39;%s\n&amp;#39; &amp;#39;a b c d e f g&amp;#39; &amp;#39;1 2 3 4 5 6 7 8 9 0&amp;#39; &amp;#39;A B C D E F G&amp;#39; &amp;#39; ~ ! @ # $ % ^ &amp;amp; * ( ) _ +&amp;#39; &amp;gt; tr_file cat tr_file     Translating Characters Translate Lowercase Characters to Uppercase We can use the [:lower:] followed by the [:upper:] parameters to convert lowercase letters into uppercase letters in the content and then output them:</description>
+1 2  printf &amp;#39;%s\n&amp;#39; &amp;#39;a b c d e f g&amp;#39; &amp;#39;1 2 3 4 5 6 7 8 9 0&amp;#39; &amp;#39;A B C D E F G&amp;#39; &amp;#39; ~ ! @ # $ % ^ &amp;amp; * ( ) _ +&amp;#39; &amp;gt; tr_file cat tr_file     Prints multiple lines of test data to tr_file   Translating Characters Translate Lowercase Characters to Uppercase We can use the [:lower:] followed by the [:upper:] parameters to convert lowercase letters into uppercase letters in the content and then output them:</description>
     </item>
     
     <item>
@@ -96,7 +106,7 @@ Pipe Notation (|) A Scenario-based Question Let&amp;rsquo;s assume there&amp;rsq
       <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/20.-bash-shell-reirections/</guid>
       <description>With the IO redirection feature, we can easily manipulate the input and output of files or other information.
 Standard Output The standard output stream is usually used to print the output of a program to a file, its file descriptor is 1.
-Output Text to a File 1 2  echo &amp;#39;This is a text for test&amp;#39; &amp;gt; fresh_file cat fresh_file     Output text to fresh_file   Output Result to a File 1 2  ll -a &amp;gt; dir_list_file cat dir_list_file     Output result to fir_list_file   Append Text to a File 1 2  echo &amp;#39;This is a text for test&amp;#39; &amp;gt;&amp;gt; fresh_file cat fresh_file     Append text to fresh_file   Append Result to a File 1 2  ll -a &amp;gt;&amp;gt; dir_list_file cat dir_list_file     Append result to fir_list_file   Standard Input Standard input streams are usually used to print the contents of a file to a screen, its file descriptor is 0.</description>
+Output Text to a File 1 2  echo &amp;#39;This is a text for test&amp;#39; &amp;gt; fresh_file cat fresh_file     Output text to fresh_file   Output Result to a File 1 2  ll -a &amp;gt; dir_list_file cat dir_list_file     Output result to dir_list_file   Append Text to a File 1 2  echo &amp;#39;This is a text for test&amp;#39; &amp;gt;&amp;gt; fresh_file cat fresh_file     Append text to fresh_file   Append Result to a File 1 2  ll -a &amp;gt;&amp;gt; dir_list_file cat dir_list_file     Append result to dir_list_file   Standard Input Standard input streams are usually used to print the contents of a file to a screen, its file descriptor is 0.</description>
     </item>
     
     <item>
