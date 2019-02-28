@@ -6,10 +6,20 @@
     <description>Recent content on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 27 Feb 2019 06:55:58 +1300</lastBuildDate>
+    <lastBuildDate>Thu, 28 Feb 2019 07:29:30 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>27. Bash Shell - Text Processing: tr</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/27.-bash-shell-text-processing-tr/</link>
+      <pubDate>Thu, 28 Feb 2019 07:29:30 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/27.-bash-shell-text-processing-tr/</guid>
+      <description>Translate or Delete Characters Let&amp;rsquo;s prepare some test data for the tr command:
+1 2  printf &amp;#39;%s\n&amp;#39; &amp;#39;a b c d e f g&amp;#39; &amp;#39;1 2 3 4 5 6 7 8 9 0&amp;#39; &amp;#39;A B C D E F G&amp;#39; &amp;#39; ~ ! @ # $ % ^ &amp;amp; * ( ) _ +&amp;#39; &amp;gt; tr_file cat tr_file     Translating Characters Translate Lowercase Characters to Uppercase We can use the [:lower:] followed by the [:upper:] parameters to convert lowercase letters into uppercase letters in the content and then output them:</description>
+    </item>
     
     <item>
       <title>26. Bash Shell - Text Processing: cut, paste, join</title>
