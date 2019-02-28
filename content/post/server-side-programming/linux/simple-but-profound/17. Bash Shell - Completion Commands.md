@@ -6,7 +6,7 @@ draft: false
 keywords: []
 description: ""
 tags: [ "Linux", "Server" ]
-categories: [ "Linux: Simple But Profound" ]
+categories: [ "Linux Administrator: Simple But Profound" ]
 author: "Dong Chen"
 
 # You can also close(false) or open(true) something for this content.
