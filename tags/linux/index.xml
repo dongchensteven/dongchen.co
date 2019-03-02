@@ -6,10 +6,22 @@
     <description>Recent content in Linux on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 02 Mar 2019 07:07:52 +1300</lastBuildDate>
+    <lastBuildDate>Sun, 03 Mar 2019 06:33:33 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>30. Bash Shell - Expansions: brace, tilde, parameter</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/30.-bash-shell-expansions-brace-tilde-parameter/</link>
+      <pubDate>Sun, 03 Mar 2019 06:33:33 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/30.-bash-shell-expansions-brace-tilde-parameter/</guid>
+      <description>Brace Expansion We can use curly braces to output something similar to the screen:
+1  echo a{d,c,b}e # an official example     Prints three similar words   Another example:
+1  echo M{ike,ichelle,ichael}     Prints three persons&amp;#39; names   Tilde Expansion We can get our home directory through the tilde symbol:
+1  echo ~     Prints current user&amp;#39;s home directory   We can also use the tilde symbol to see what files are in our home directory:</description>
+    </item>
     
     <item>
       <title>29. Bash Shell - Variables Operations</title>
