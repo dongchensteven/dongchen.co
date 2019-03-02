@@ -6,10 +6,22 @@
     <description>Recent content in Posts on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 01 Mar 2019 07:47:10 +1300</lastBuildDate>
+    <lastBuildDate>Sat, 02 Mar 2019 07:07:52 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>29. Bash Shell - Variables Operations</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/29.-bash-shell-variables-operations/</link>
+      <pubDate>Sat, 02 Mar 2019 07:07:52 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/29.-bash-shell-variables-operations/</guid>
+      <description>I believe that people who have learned how to program know what variables are, and at first it can be understood as an alias that points to the data stored in memory.
+Although Bash shell and Bourne shell come with many system variables, we could also customize variables ourselves.
+Check System Variables We can view existing system variables in the following ways:
+Show System Variables with set We can pass the output of the set command to the less or more command to see all the variables from the beginning of the output result:</description>
+    </item>
     
     <item>
       <title>28. Bash Shell - Most Commonly Used Control Operators</title>
