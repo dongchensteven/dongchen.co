@@ -6,10 +6,22 @@
     <description>Recent content in Posts on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 03 Mar 2019 06:33:33 +1300</lastBuildDate>
+    <lastBuildDate>Mon, 04 Mar 2019 07:22:11 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Bash Shell - Expansions: Command, Arithmetic, Process Substitution</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/31.-bash-shell-expansions-command-arithmetic-process-substitution/</link>
+      <pubDate>Mon, 04 Mar 2019 07:22:11 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/31.-bash-shell-expansions-command-arithmetic-process-substitution/</guid>
+      <description>Command We can execute the output as a command by using the $() or `` symbols.
+Let&amp;rsquo;s use the $() symbols to do this first:
+1 2 3  echo &amp;#34;ls -l&amp;#34; &amp;gt; ls_l_command_file cat ls_l_command_file $(cat ls_l_command_file) # This will run the file content &amp;#34;ls -l&amp;#34; as a command.     Alternatively, we can use backtick symbols to achieve the same effect:
+1  `cat ls_l_command_file` # This will run the file content &amp;#34;ls -l&amp;#34; as a command.</description>
+    </item>
     
     <item>
       <title>30. Bash Shell - Expansions: brace, tilde, parameter</title>
