@@ -6,10 +6,22 @@
     <description>Recent content in Linux on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 04 Mar 2019 07:22:11 +1300</lastBuildDate>
+    <lastBuildDate>Tue, 05 Mar 2019 07:37:52 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>32. Bash Shell - Startup Files</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/32.-bash-shell-startup-files/</link>
+      <pubDate>Tue, 05 Mar 2019 07:37:52 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/32.-bash-shell-startup-files/</guid>
+      <description>Bash&amp;rsquo;s startup configuration file can help us preload some other script files as well as preset general and necessary variables.
+Bash provides two types of startup files, one that is loaded on login and the other that is loaded on non-login.
+Login Shell Startup Files The startup files that will be loaded at login are:
+Global 1  cat /etc/profile # Global startup file, Debian(Ubuntu) and Redhat(CentOS) distributions     Prints a partial content of the /etc/profile on CentOS 7 distribution     Prints a partial content of the /etc/profile on Ubuntu 18 distribution   User Specific 1  cat ~/.</description>
+    </item>
     
     <item>
       <title>31. Bash Shell - Expansions: Command, Arithmetic, Process Substitution</title>
