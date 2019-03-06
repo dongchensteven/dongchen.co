@@ -6,10 +6,20 @@
     <description>Recent content in Posts on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 05 Mar 2019 07:37:52 +1300</lastBuildDate>
+    <lastBuildDate>Wed, 06 Mar 2019 08:03:56 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>33. Output Format - Prints Formatted Results</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/33.-output-format-prints-formatted-results/</link>
+      <pubDate>Wed, 06 Mar 2019 08:03:56 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/33.-output-format-prints-formatted-results/</guid>
+      <description>Linux provides a printf command through which we can format what we want to output.
+New line 1  printf &amp;#39;\n&amp;#39;     Prints a new line   Double quote 1  printf &amp;#39;\&amp;#34;\n&amp;#39; # Follow by a new line, so we can see the double quote clearly.     Prints a double quote   Backslash 1  printf &amp;#39;\\\n&amp;#39; # Follow by a new line, so we can see the backslash clearly.</description>
+    </item>
     
     <item>
       <title>32. Bash Shell - Startup Files</title>
