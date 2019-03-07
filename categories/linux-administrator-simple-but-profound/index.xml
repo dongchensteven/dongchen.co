@@ -6,10 +6,21 @@
     <description>Recent content in Linux Administrator: Simple But Profound on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 06 Mar 2019 08:03:56 +1300</lastBuildDate>
+    <lastBuildDate>Thu, 07 Mar 2019 07:35:44 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/categories/linux-administrator-simple-but-profound/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>34. System Context - System Related Details</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/34.-system-context-system-related-details/</link>
+      <pubDate>Thu, 07 Mar 2019 07:35:44 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/34.-system-context-system-related-details/</guid>
+      <description>Linux provides commands that allow you to view system-related information, and with these commands, you can quickly get some necessary system information.
+System Datetime We can use the date command to get or set the date and time of the system:
+1  date     Outputs system&amp;#39;s datetime   Timezone We can use the TZ variable to specify the time zone where our server is located:</description>
+    </item>
     
     <item>
       <title>33. Output Format - Prints Formatted Results</title>
