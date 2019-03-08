@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>34. System Context - Time - Dong - A place to track my time log</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Dong Chen" /><meta name="description" content="Linux provides commands that allow you to view system&amp;rsquo;s time information, and with these commands, you can quickly get the time related information.
+" /><meta name="keywords" content="Linux Time, Linux Locale Time, Linux Timezone, Linux Hour, Linux Minute, Linux Second, Linux 24 Hour Format, Linux Four Digits Timezone, Nearest Minute Timezone, Nearest Second Timezone, Minimum Necessary Precised Timezone, Alphabetic Abbreviated Timezone" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/34.-system-context-time/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.ea128f8b.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/styles.css">
+
+
+<meta property="og:title" content="34. System Context - Time" />
+<meta property="og:description" content="Linux provides commands that allow you to view system&rsquo;s time information, and with these commands, you can quickly get the time related information." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/34.-system-context-time/" /><meta property="article:published_time" content="2019-03-07T07:35:44&#43;13:00"/>
+<meta property="article:modified_time" content="2019-03-07T07:35:44&#43;13:00"/>
+
+<meta itemprop="name" content="34. System Context - Time">
+<meta itemprop="description" content="Linux provides commands that allow you to view system&rsquo;s time information, and with these commands, you can quickly get the time related information.">
+
+
+<meta itemprop="datePublished" content="2019-03-07T07:35:44&#43;13:00" />
+<meta itemprop="dateModified" content="2019-03-07T07:35:44&#43;13:00" />
+<meta itemprop="wordCount" content="515">
+
+
+
+<meta itemprop="keywords" content="Linux,Server," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="34. System Context - Time"/>
+<meta name="twitter:description" content="Linux provides commands that allow you to view system&rsquo;s time information, and with these commands, you can quickly get the time related information."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Dong</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Dong</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">34. System Context - Time</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> Thu Mar 7 2019 </span>
+        <div class="post-category">
+            <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
+            </div>
+          <span class="more-meta"> 515 words </span>
+          <span class="more-meta"> 3 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#system-time">System Time</a>
+<ul>
+<li><a href="#timezone">Timezone</a></li>
+<li><a href="#time-in-difference-timezone">Time in Difference Timezone</a></li>
+<li><a href="#hour-24-hour-format">Hour - 24-hour format</a></li>
+<li><a href="#hour-24-hour-space-padded-format">Hour - 24-hour space padded format</a></li>
+<li><a href="#hour-12-hour-format">Hour - 12-hour format</a></li>
+<li><a href="#hour-12-hour-space-padded-format">Hour - 12-hour space padded format</a></li>
+<li><a href="#minute">Minute</a></li>
+<li><a href="#second">Second</a></li>
+<li><a href="#nanosecond">Nanosecond</a></li>
+<li><a href="#seconds-since-epoch-timestamp">Seconds Since Epoch (Timestamp)</a></li>
+<li><a href="#time-24-hour-format-hour-minute-second">Time - 24-hour format (Hour:Minute:Second)</a></li>
+<li><a href="#time-24-hour-format-hour-minute">Time - 24-hour format (Hour:Minute)</a></li>
+<li><a href="#locale-time-24-hour-clock-time">Locale Time - 24-hour Clock Time</a></li>
+<li><a href="#locale-time-12-hour-clock-time">Locale Time - 12-hour Clock Time</a></li>
+<li><a href="#am-or-pm-uppercase">AM or PM - Uppercase</a></li>
+<li><a href="#am-or-pm-lowercase">AM or PM - Lowercase</a></li>
+<li><a href="#timezone-four-digits">Timezone - Four Digits</a></li>
+<li><a href="#timezone-nearest-minute">Timezone - Nearest Minute</a></li>
+<li><a href="#timezone-nearest-second">Timezone - Nearest Second</a></li>
+<li><a href="#timezone-minimum-necessary-precision">Timezone - Minimum Necessary Precision</a></li>
+<li><a href="#timezone-alphabetic-abbreviation">Timezone - Alphabetic Abbreviation</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>Linux provides commands that allow you to view system&rsquo;s time information, and with these commands, you can quickly get the time related information.</p>
+
+<h1 id="system-time">System Time</h1>
+
+<p>We can use the date command to get or set the time of the system:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/34/date.png"
+         alt="img"/> <figcaption>
+            <h4>Outputs system&#39;s datetime</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="timezone">Timezone</h2>
+
+<p>We can use the TZ variable to specify the time zone where our server is located:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">export</span> <span class="nv">TZ</span><span class="o">=</span>Pacific/Auckland
+date</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/34/export_tz_date.png"
+         alt="img"/> <figcaption>
+            <h4>Changes timezone to Pacific Auckland</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="time-in-difference-timezone">Time in Difference Timezone</h2>
+
+<p>Shows the time in Shanghai when a Auckland clock shows 8:07 on March 07, 2019:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">export</span> <span class="nv">TZ</span><span class="o">=</span><span class="s2">&#34;Asia/Shanghai&#34;</span>
+date --date<span class="o">=</span><span class="s1">&#39;TZ=&#34;Pacific/Auckland&#34; 2019-03-07 08:07&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/34/export_tz_date_tz_date.png"
+         alt="img"/> <figcaption>
+            <h4>Changes timezone to China Shanghai and shows the corresponding time in Shanghai</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="hour-24-hour-format">Hour - 24-hour format</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%H&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/34/date_hour_24.png"
+         alt="img"/> <figcaption>
+            <h4>Outputs current hour in 24 hours format</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="hour-24-hour-space-padded-format">Hour - 24-hour space padded format</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%k&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/34/date_hour_24_space_padded.png"
+         alt="img"/> <figcaption>
+            <h4>Outputs current hour in 24 hours space padded format</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="hour-12-hour-format">Hour - 12-hour format</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%I&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/34/date_hour_12.png"
+         alt="img"/> <figcaption>
+            <h4>Outputs current hour in 12 hours format</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="hour-12-hour-space-padded-format">Hour - 12-hour space padded format</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%l&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/34/date_hour_12_space_padded.png"
+         alt="img"/> <figcaption>
+            <h4>Outputs current hour in 12 hours space padded format</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="minute">Minute</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%M&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/34/date_minute.png"
+         alt="img"/> <figcaption>
+            <h4>Outputs current minutes</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="second">Second</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%S&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/34/date_second.png"
+         alt="img"/> <figcaption>
+            <h4>Outputs current seconds</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="nanosecond">Nanosecond</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%N&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/34/date_nanosecond.png"
+         alt="img"/> <figcaption>
+            <h4>Outputs current nanoseconds</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="seconds-since-epoch-timestamp">Seconds Since Epoch (Timestamp)</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;s&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/34/date_timestamp.png"
+         alt="img"/> <figcaption>
+            <h4>Outputs current timestamp</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="time-24-hour-format-hour-minute-second">Time - 24-hour format (Hour:Minute:Second)</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%T&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/34/date_time_24.png"
+         alt="img"/> <figcaption>
+            <h4>Outputs hour, minute, second in 24-hour time</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="time-24-hour-format-hour-minute">Time - 24-hour format (Hour:Minute)</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%R&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/34/date_time_24_hour_minute.png"
+         alt="img"/> <figcaption>
+            <h4>Outputs hour, minute in 24-hour time</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="locale-time-24-hour-clock-time">Locale Time - 24-hour Clock Time</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%X&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/34/date_clock_time_24.png"
+         alt="img"/> <figcaption>
+            <h4>Outputs 24-hour clock time</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="locale-time-12-hour-clock-time">Locale Time - 12-hour Clock Time</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%r&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/34/date_clock_time_12.png"
+         alt="img"/> <figcaption>
+            <h4>Outputs 12-hour clock time</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="am-or-pm-uppercase">AM or PM - Uppercase</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%p&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/34/date_am_or_pm_uppercase.png"
+         alt="img"/> <figcaption>
+            <h4>Outputs a.m. or p.m. in uppercase</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="am-or-pm-lowercase">AM or PM - Lowercase</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%P&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/34/date_am_or_pm_lowercase.png"
+         alt="img"/> <figcaption>
+            <h4>Outputs a.m. or p.m. in lowercase</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="timezone-four-digits">Timezone - Four Digits</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%z&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/34/date_timezone_four_digits.png"
+         alt="img"/> <figcaption>
+            <h4>Outputs four digits timezone</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="timezone-nearest-minute">Timezone - Nearest Minute</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%:z&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/34/date_timezone_nearest_minute.png"
+         alt="img"/> <figcaption>
+            <h4>Outputs timezone in nearest minute</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="timezone-nearest-second">Timezone - Nearest Second</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%::z&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/34/date_timezone_nearest_second.png"
+         alt="img"/> <figcaption>
+            <h4>Outputs timezone in nearest second</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="timezone-minimum-necessary-precision">Timezone - Minimum Necessary Precision</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%:::z&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/34/date_timezone_minimum_necessary_precision.png"
+         alt="img"/> <figcaption>
+            <h4>Outputs the minimum necessary part of the timezone</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="timezone-alphabetic-abbreviation">Timezone - Alphabetic Abbreviation</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%Z&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/34/date_timezone_alphabetic_abbreviation.png"
+         alt="img"/> <figcaption>
+            <h4>Outputs the timezone in alphabetic abbreviation</h4>
+        </figcaption>
+</figure>
+
+
+<blockquote>
+<p>References
+<a href="https://www.gnu.org/software/coreutils/manual/html_node/System-context.html">21 System context</a>,
+<a href="https://www.gnu.org/software/coreutils/manual/html_node/date-invocation.html">21.1 date: Print or set system date and time</a>,
+<a href="https://twiki.org/cgi-bin/xtra/tzdate">TWiki.org Service: Date and Time Gateway</a>,
+<a href="https://www.gnu.org/software/coreutils/manual/html_node/Specifying-time-zone-rules.html">29.10 Specifying time zone rules</a></p>
+</blockquote>
+
+<p>If you think the content of this article has helped you, and if you would like some more high-quality materials in the near future, please give me some modest support.</p>
+
+<!-- Buy Me a Coffee Button -->
+
+<p class="align-center">
+  <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/PFou9WhLr"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
+</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Dong Chen</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">Thu Mar 7 2019</span>
+  </p>
+  
+  
+</div><div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://dongchen.co/images/wepay_qr_final.png">
+        <span>wechat</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://dongchen.co/images/alipay_qr_final.png">
+        <span>alipay</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/linux/">Linux</a>
+          <a href="/tags/server/">Server</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/server-side-programming/linux/simple-but-profound/35.-system-context-date/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">35. System Context - Date</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/server-side-programming/linux/simple-but-profound/33.-output-format-prints-formatted-results/">
+            <span class="next-text nav-default">33. Output Format - Prints Formatted Results</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:snowhidenz@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.linkedin.com/in/stevendongchen" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/stevendongchen" class="iconfont icon-github" title="github"></a>
+  <a href="https://dongchen.co/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Dong Chen</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-133226289-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

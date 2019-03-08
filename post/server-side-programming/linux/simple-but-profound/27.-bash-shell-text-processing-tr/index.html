@@ -16,8 +16,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="Translate or Delete Characters Let&amp;rsquo;s prepare some test data for the tr command:
-1 2  printf &amp;#39;%s\n&amp;#39; &amp;#39;a b c d e f g&amp;#39; &amp;#39;1 2 3 4 5 6 7 8 9 0&amp;#39; &amp;#39;A B C D E F G&amp;#39; &amp;#39; ~ ! @ # $ % ^ &amp;amp; * ( ) _ &#43;&amp;#39; &amp;gt; tr_file cat tr_file     Prints multiple lines of test data to tr_file   Translating Characters Translate Lowercase Characters to Uppercase We can use the [:lower:] followed by the [:upper:] parameters to convert lowercase letters into uppercase letters in the content and then output them:" /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="Dong Chen" /><meta name="description" content="We can use the tr command provided by linux to replace or remove text contents.
+" /><meta name="keywords" content="Translate Characters, Delete Characters, Translate Characters to Uppercase, Translate Characters to Lowercase, Delete Lowercase Characters, Delete Uppercase Characters, Delete Digital Characters, Delete Alphabetic Characters, Delete Alphanumeric Characters, Delete Punctuation Characters, Delete Horizontal Spaces, Delete Horizontal or Vertical Spaces" />
 
 
 
@@ -41,28 +41,25 @@
 
 
 <meta property="og:title" content="27. Bash Shell - Text Processing: tr" />
-<meta property="og:description" content="Translate or Delete Characters Let&rsquo;s prepare some test data for the tr command:
-1 2  printf &#39;%s\n&#39; &#39;a b c d e f g&#39; &#39;1 2 3 4 5 6 7 8 9 0&#39; &#39;A B C D E F G&#39; &#39; ~ ! @ # $ % ^ &amp; * ( ) _ &#43;&#39; &gt; tr_file cat tr_file     Prints multiple lines of test data to tr_file   Translating Characters Translate Lowercase Characters to Uppercase We can use the [:lower:] followed by the [:upper:] parameters to convert lowercase letters into uppercase letters in the content and then output them:" />
+<meta property="og:description" content="We can use the tr command provided by linux to replace or remove text contents." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/27.-bash-shell-text-processing-tr/" /><meta property="article:published_time" content="2019-02-28T07:29:30&#43;13:00"/>
 <meta property="article:modified_time" content="2019-02-28T07:29:30&#43;13:00"/>
 
 <meta itemprop="name" content="27. Bash Shell - Text Processing: tr">
-<meta itemprop="description" content="Translate or Delete Characters Let&rsquo;s prepare some test data for the tr command:
-1 2  printf &#39;%s\n&#39; &#39;a b c d e f g&#39; &#39;1 2 3 4 5 6 7 8 9 0&#39; &#39;A B C D E F G&#39; &#39; ~ ! @ # $ % ^ &amp; * ( ) _ &#43;&#39; &gt; tr_file cat tr_file     Prints multiple lines of test data to tr_file   Translating Characters Translate Lowercase Characters to Uppercase We can use the [:lower:] followed by the [:upper:] parameters to convert lowercase letters into uppercase letters in the content and then output them:">
+<meta itemprop="description" content="We can use the tr command provided by linux to replace or remove text contents.">
 
 
 <meta itemprop="datePublished" content="2019-02-28T07:29:30&#43;13:00" />
 <meta itemprop="dateModified" content="2019-02-28T07:29:30&#43;13:00" />
-<meta itemprop="wordCount" content="567">
+<meta itemprop="wordCount" content="582">
 
 
 
 <meta itemprop="keywords" content="Linux,Server," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="27. Bash Shell - Text Processing: tr"/>
-<meta name="twitter:description" content="Translate or Delete Characters Let&rsquo;s prepare some test data for the tr command:
-1 2  printf &#39;%s\n&#39; &#39;a b c d e f g&#39; &#39;1 2 3 4 5 6 7 8 9 0&#39; &#39;A B C D E F G&#39; &#39; ~ ! @ # $ % ^ &amp; * ( ) _ &#43;&#39; &gt; tr_file cat tr_file     Prints multiple lines of test data to tr_file   Translating Characters Translate Lowercase Characters to Uppercase We can use the [:lower:] followed by the [:upper:] parameters to convert lowercase letters into uppercase letters in the content and then output them:"/>
+<meta name="twitter:description" content="We can use the tr command provided by linux to replace or remove text contents."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -132,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
             </div>
-          <span class="more-meta"> 567 words </span>
+          <span class="more-meta"> 582 words </span>
           <span class="more-meta"> 3 mins read </span>
         
       </div>
@@ -167,7 +164,9 @@
   </div>
 </div>
     <div class="post-content">
-      <h1 id="translate-or-delete-characters">Translate or Delete Characters</h1>
+      <p>We can use the tr command provided by linux to replace or remove text contents.</p>
+
+<h1 id="translate-or-delete-characters">Translate or Delete Characters</h1>
 
 <p>Let&rsquo;s prepare some test data for the tr command:</p>
 <div class="highlight"><div class="chroma">

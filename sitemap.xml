@@ -3,7 +3,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/34.-system-context-system-related-details/</loc>
+    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/36.-system-context-information/</loc>
+    <lastmod>2019-03-08T05:52:18+13:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/35.-system-context-date/</loc>
+    <lastmod>2019-03-08T05:51:18+13:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/34.-system-context-time/</loc>
     <lastmod>2019-03-07T07:35:44+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -94,14 +108,14 @@
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/21.-pipelines-get-other-commands-results-as-initial-data/</loc>
+    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/21.-pipelines-use-other-commands-running-results/</loc>
     <lastmod>2019-02-22T07:14:06+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/20.-bash-shell-reirections/</loc>
+    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/20.-bash-shell-io-reirection/</loc>
     <lastmod>2019-02-21T06:27:53+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -311,7 +325,7 @@
   
   <url>
     <loc>https://dongchen.co/</loc>
-    <lastmod>2019-03-07T07:35:44+13:00</lastmod>
+    <lastmod>2019-03-08T05:52:18+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -325,14 +339,14 @@
   
   <url>
     <loc>https://dongchen.co/tags/linux/</loc>
-    <lastmod>2019-03-07T07:35:44+13:00</lastmod>
+    <lastmod>2019-03-08T05:52:18+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://dongchen.co/categories/linux-administrator-simple-but-profound/</loc>
-    <lastmod>2019-03-07T07:35:44+13:00</lastmod>
+    <lastmod>2019-03-08T05:52:18+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -360,7 +374,7 @@
   
   <url>
     <loc>https://dongchen.co/post/</loc>
-    <lastmod>2019-03-07T07:35:44+13:00</lastmod>
+    <lastmod>2019-03-08T05:52:18+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -374,7 +388,7 @@
   
   <url>
     <loc>https://dongchen.co/tags/server/</loc>
-    <lastmod>2019-03-07T07:35:44+13:00</lastmod>
+    <lastmod>2019-03-08T05:52:18+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
