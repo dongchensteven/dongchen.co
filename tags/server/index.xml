@@ -6,10 +6,19 @@
     <description>Recent content in Server on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 08 Mar 2019 05:52:18 +1300</lastBuildDate>
+    <lastBuildDate>Sat, 09 Mar 2019 06:33:45 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/tags/server/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>37. Text Editor - Basic Usage of Nano</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/37.-text-editor-basic-usage-of-nano/</link>
+      <pubDate>Sat, 09 Mar 2019 06:33:45 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/37.-text-editor-basic-usage-of-nano/</guid>
+      <description>&lt;p&gt;By using the nano text editor provided by Linux, we can easily do some simple text editing operations such as adding, deleting, modifying, etc.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>36. System Context - Information</title>

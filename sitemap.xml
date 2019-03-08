@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/37.-text-editor-basic-usage-of-nano/</loc>
+    <lastmod>2019-03-09T06:33:45+13:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/36.-system-context-information/</loc>
     <lastmod>2019-03-08T05:52:18+13:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -325,7 +332,7 @@
   
   <url>
     <loc>https://dongchen.co/</loc>
-    <lastmod>2019-03-08T05:52:18+13:00</lastmod>
+    <lastmod>2019-03-09T06:33:45+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -339,14 +346,14 @@
   
   <url>
     <loc>https://dongchen.co/tags/linux/</loc>
-    <lastmod>2019-03-08T05:52:18+13:00</lastmod>
+    <lastmod>2019-03-09T06:33:45+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://dongchen.co/categories/linux-administrator-simple-but-profound/</loc>
-    <lastmod>2019-03-08T05:52:18+13:00</lastmod>
+    <lastmod>2019-03-09T06:33:45+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -374,7 +381,7 @@
   
   <url>
     <loc>https://dongchen.co/post/</loc>
-    <lastmod>2019-03-08T05:52:18+13:00</lastmod>
+    <lastmod>2019-03-09T06:33:45+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -388,7 +395,7 @@
   
   <url>
     <loc>https://dongchen.co/tags/server/</loc>
-    <lastmod>2019-03-08T05:52:18+13:00</lastmod>
+    <lastmod>2019-03-09T06:33:45+13:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
