@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>37. Text Editor - Basic Usage of Nano - Dong - A place to track my time log</title>
+  <title>38. Processes - Running Jobs Management - Dong - A place to track my time log</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,8 +16,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="By using the nano text editor provided by Linux, we can easily do some simple text editing operations such as adding, deleting, modifying, etc.
-" /><meta name="keywords" content="Nano Editor, Nano Version, Editable Mode, Write Content to a File, Enable Mouse Operation, Viewable Mode, Edit an Existing File" />
+<meta name="author" content="Dong Chen" /><meta name="description" content="In linux, each running program will create at least one process in memory, and each process will be assigned a process ID, we can use the ID of the process to do the corresponding operation of a running program.
+" /><meta name="keywords" content="Background Jobs, Jobs&#39; Process IDs, Show Running Jobs, Terminate a Running Job, Force Termination of a Running Job, Unforced Termination of the Running Jobs" />
 
 
 
@@ -27,7 +27,7 @@
 <meta name="generator" content="Hugo 0.53 with even 4.0.0" />
 
 
-<link rel="canonical" href="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/37.-text-editor-basic-usage-of-nano/" />
+<link rel="canonical" href="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/38.-processes-running-jobs-management/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -40,26 +40,26 @@
 <link rel="stylesheet" href="/css/styles.css">
 
 
-<meta property="og:title" content="37. Text Editor - Basic Usage of Nano" />
-<meta property="og:description" content="By using the nano text editor provided by Linux, we can easily do some simple text editing operations such as adding, deleting, modifying, etc." />
+<meta property="og:title" content="38. Processes - Running Jobs Management" />
+<meta property="og:description" content="In linux, each running program will create at least one process in memory, and each process will be assigned a process ID, we can use the ID of the process to do the corresponding operation of a running program." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/37.-text-editor-basic-usage-of-nano/" /><meta property="article:published_time" content="2019-03-09T06:33:45&#43;13:00"/>
-<meta property="article:modified_time" content="2019-03-09T06:33:45&#43;13:00"/>
+<meta property="og:url" content="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/38.-processes-running-jobs-management/" /><meta property="article:published_time" content="2019-03-10T06:35:35&#43;13:00"/>
+<meta property="article:modified_time" content="2019-03-10T06:35:35&#43;13:00"/>
 
-<meta itemprop="name" content="37. Text Editor - Basic Usage of Nano">
-<meta itemprop="description" content="By using the nano text editor provided by Linux, we can easily do some simple text editing operations such as adding, deleting, modifying, etc.">
+<meta itemprop="name" content="38. Processes - Running Jobs Management">
+<meta itemprop="description" content="In linux, each running program will create at least one process in memory, and each process will be assigned a process ID, we can use the ID of the process to do the corresponding operation of a running program.">
 
 
-<meta itemprop="datePublished" content="2019-03-09T06:33:45&#43;13:00" />
-<meta itemprop="dateModified" content="2019-03-09T06:33:45&#43;13:00" />
-<meta itemprop="wordCount" content="556">
+<meta itemprop="datePublished" content="2019-03-10T06:35:35&#43;13:00" />
+<meta itemprop="dateModified" content="2019-03-10T06:35:35&#43;13:00" />
+<meta itemprop="wordCount" content="805">
 
 
 
 <meta itemprop="keywords" content="Linux,Server," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="37. Text Editor - Basic Usage of Nano"/>
-<meta name="twitter:description" content="By using the nano text editor provided by Linux, we can easily do some simple text editing operations such as adding, deleting, modifying, etc."/>
+<meta name="twitter:title" content="38. Processes - Running Jobs Management"/>
+<meta name="twitter:description" content="In linux, each running program will create at least one process in memory, and each process will be assigned a process ID, we can use the ID of the process to do the corresponding operation of a running program."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -122,15 +122,15 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">37. Text Editor - Basic Usage of Nano</h1>
+      <h1 class="post-title">38. Processes - Running Jobs Management</h1>
 
       <div class="post-meta">
-        <span class="post-time"> Sat Mar 9 2019 </span>
+        <span class="post-time"> Sun Mar 10 2019 </span>
         <div class="post-category">
             <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
             </div>
-          <span class="more-meta"> 556 words </span>
-          <span class="more-meta"> 3 mins read </span>
+          <span class="more-meta"> 805 words </span>
+          <span class="more-meta"> 4 mins read </span>
         
       </div>
     </header>
@@ -140,274 +140,318 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#nano-version">Nano Version</a></li>
-<li><a href="#editable-mode">Editable Mode</a>
+<li><a href="#prepare-the-necessary-shell-script">Prepare the Necessary Shell Script</a></li>
+<li><a href="#execute-scripts-in-the-background">Execute Scripts in the Background</a></li>
+<li><a href="#list-all-programs-running-in-the-background">List All Programs Running in the Background</a>
 <ul>
-<li><a href="#write-content-to-a-file">Write Content to a File</a></li>
+<li><a href="#list-with-their-process-ids">List With Their Process IDs</a></li>
+<li><a href="#list-the-process-ids-only">List the Process IDs Only</a></li>
 </ul></li>
-<li><a href="#enable-mouse-operation">Enable Mouse Operation</a></li>
-<li><a href="#viewable-mode">Viewable Mode</a></li>
-<li><a href="#edit-an-existing-file">Edit an Existing File</a></li>
+<li><a href="#see-how-the-program-is-running-in-the-background">See How the Program is Running in the Background</a></li>
+<li><a href="#terminate-running-processes">Terminate Running Processes</a>
+<ul>
+<li><a href="#forced-termination-of-a-running-process">Forced Termination of a Running Process</a></li>
+<li><a href="#unforced-termination-of-a-running-process">Unforced Termination of a Running Process</a></li>
+</ul></li>
 </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <p>By using the nano text editor provided by Linux, we can easily do some simple text editing operations such as adding, deleting, modifying, etc.</p>
+      <p>In linux, each running program will create at least one process in memory, and each process will be assigned a process ID, we can use the ID of the process to do the corresponding operation of a running program.</p>
 
-<h1 id="nano-version">Nano Version</h1>
+<h1 id="prepare-the-necessary-shell-script">Prepare the Necessary Shell Script</h1>
 
-<p>We can take a look at the version of nano:</p>
+<p>Let&rsquo;s create a shell script program that doesn&rsquo;t exit itself to do the demonstration:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">nano -V    <span class="c1"># This is equivalent to nano --version</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s1">&#39;#!/bin/bash&#39;</span> &gt; endless_job.sh
+<span class="nb">echo</span> <span class="s1">&#39;while true; do continue; done&#39;</span> &gt;&gt; endless_job.sh
+cat endless_job.sh</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/37/nano_v.png"
+    <img src="../images/38/echo_bin_bash_script_to_file.png"
          alt="img"/> <figcaption>
-            <h4>Checks the version of the nano we are currently using</h4>
+            <h4>We have a shell script ready for infinite loop operations</h4>
         </figcaption>
 </figure>
 
 
-<h1 id="editable-mode">Editable Mode</h1>
+<p>We&rsquo;re not going to talk too much about the shell script right now. The only thing we need to know is that this script doesn&rsquo;t exit itself after it runs.</p>
 
-<p>We can open a text editor that is editable by running the nano command directly:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">nano</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/37/nano_before.png"
-         alt="img"/> <figcaption>
-            <h4>Running the nano command</h4>
-        </figcaption>
-</figure>
+<h1 id="execute-scripts-in-the-background">Execute Scripts in the Background</h1>
 
-
-<figure>
-    <img src="../images/37/nano_after.png"
-         alt="img"/> <figcaption>
-            <h4>Nano editor opened in editable mode</h4>
-        </figcaption>
-</figure>
-
-
-<p>Let&rsquo;s fill in the editor with the following two lines:</p>
+<p>Let&rsquo;s execute two scripts one at a time and let them run constantly in the background:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">First Line
-Second Line</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">bash ./endless_job.sh <span class="p">&amp;</span>
+bash ./endless_job.sh <span class="p">&amp;</span></code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/37/nano_after_filling_the_content.png"
+    <img src="../images/38/bash_run_scripts.png"
          alt="img"/> <figcaption>
-            <h4>Filling the contents</h4>
+            <h4>Execute two scripts with the bash command and keep them running in the background</h4>
         </figcaption>
 </figure>
 
 
-<h2 id="write-content-to-a-file">Write Content to a File</h2>
+<h1 id="list-all-programs-running-in-the-background">List All Programs Running in the Background</h1>
 
-<p>The symbol ^ (caret) corresponds to the ctrl key on our keyboard.</p>
+<p>We can use the jobs command to see which programs are running in the background.</p>
 
-<p>We can use the combination keys (Ctrl+O) to specify the name of the file that is used to hold the content:</p>
+<p>Some common parameters of the jobs command are:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Option</th>
+<th align="left">Meaning</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">-l</td>
+<td align="left">In addition to basic information, list the ID for each process</td>
+</tr>
+
+<tr>
+<td align="center">-p</td>
+<td align="left">List only the ID for each process</td>
+</tr>
+
+<tr>
+<td align="center">-r</td>
+<td align="left">Show only running processes</td>
+</tr>
+
+<tr>
+<td align="center">-s</td>
+<td align="left">Show only processes that stop running</td>
+</tr>
+</tbody>
+</table>
+
+<p>Let&rsquo;s take a look at the output of the jobs command without specifying parameters:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">Ctrl+O</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">jobs</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/37/nano_after_pressing_the_ctrl_o_keys.png"
+    <img src="../images/38/jobs.png"
          alt="img"/> <figcaption>
-            <h4>A prompt shows up asking what the name of the file is</h4>
+            <h4>Show all the jobs running in the background</h4>
         </figcaption>
 </figure>
 
 
-<figure>
-    <img src="../images/37/nano_after_saving_the_content.png"
-         alt="img"/> <figcaption>
-            <h4>After pressing the enter key, nano saves the content to a text file named nano_file</h4>
-        </figcaption>
-</figure>
+<h2 id="list-with-their-process-ids">List With Their Process IDs</h2>
 
-
-<p>We can use the combination keys (Ctrl+X) to exit nano program.</p>
-
-<p>Let&rsquo;s take a look at the contents of the file we just created through the nano editor:</p>
+<p>List the jobs and the process ID for each program with the -l option:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">cat nano_file</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">jobs</span> -l</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/37/cat_created_file.png"
+    <img src="../images/38/jobs_l.png"
          alt="img"/> <figcaption>
-            <h4>Outputs the content of the newly created text file nano_file</h4>
+            <h4>Show all the jobs and each job&#39;s process ID</h4>
         </figcaption>
 </figure>
 
 
-<h1 id="enable-mouse-operation">Enable Mouse Operation</h1>
+<h2 id="list-the-process-ids-only">List the Process IDs Only</h2>
 
-<p>Nano also provides mouse support by adding the -m parameter:</p>
+<p>List the jobs and the process ID for each program with the -l option:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">nano -m</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">jobs</span> -p</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/37/nano_m_write_out_option_circled.png"
+    <img src="../images/38/jobs_p.png"
          alt="img"/> <figcaption>
-            <h4>Entering nano editor in mouse enabled mode, this will allow us to interact nano menus with mouse pointer</h4>
+            <h4>Show each job&#39;s process ID only</h4>
         </figcaption>
 </figure>
 
 
-<p>We can try clicking on the red box area in the screenshot shown above.</p>
+<h1 id="see-how-the-program-is-running-in-the-background">See How the Program is Running in the Background</h1>
 
-<figure>
-    <img src="../images/37/nano_m_on_write_out_page.png"
-         alt="img"/> <figcaption>
-            <h4>Now we are on the write out page</h4>
-        </figcaption>
-</figure>
-
-
-<p>We can click the cancel option to exit to the editor page:</p>
-
-<figure>
-    <img src="../images/37/nano_m_write_out_cancelled.png"
-         alt="img"/> <figcaption>
-            <h4>Now we are on the main page</h4>
-        </figcaption>
-</figure>
-
-
-<p>We can click the exit option to exit the editor.</p>
-
-<h1 id="viewable-mode">Viewable Mode</h1>
-
-<p>We can enter the view mode with the-v parameter provided by the nano tool, in which all of our edits on the specified file are invalid.</p>
+<p>We can see how the two scripts work through the top command:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">nano -v nano_file    <span class="c1"># This is equivalent to nano --view</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">top</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/37/nano_v_file.png"
+    <img src="../images/38/top_running.png"
          alt="img"/> <figcaption>
-            <h4>Open nano_file in viewable mode</h4>
+            <h4>A list of running programs</h4>
         </figcaption>
 </figure>
 
 
-<figure>
-    <img src="../images/37/nano_v_file_opened.png"
-         alt="img"/> <figcaption>
-            <h4>Opened in viewable mode</h4>
-        </figcaption>
-</figure>
+<p>Through the screenshot, we know that there are three programs currently running, two of which are the two scripts we just ran, and the other is the top command itself.</p>
 
+<p>We also found that both scripts have a common problem, which is that they consume CPU very much during their run-time.</p>
 
-<p>As shown in the screenshot below, we can&rsquo;t do any changes to the file inside viewable mode.</p>
+<h1 id="terminate-running-processes">Terminate Running Processes</h1>
 
-<figure>
-    <img src="../images/37/nano_v_file_opened_warning_msg.png"
-         alt="img"/> <figcaption>
-            <h4>Typing something in the viewable mode</h4>
-        </figcaption>
-</figure>
+<p>We can use the kill command to end the life cycle of a running process with some associated signal values.</p>
 
-
-<h1 id="edit-an-existing-file">Edit an Existing File</h1>
-
-<p>We can use nano to edit an existing text file:</p>
+<p>The kill command sends a TERM(15) signal to a process by default:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">nano nano_file</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">kill</span> process_id <span class="o">[</span>more process IDs<span class="o">]</span>    <span class="c1"># This is equivalent to both kill -TERM and kill -15</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Some common signal options are:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Signal</th>
+<th align="left">Meaning</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">-TERM or -15</td>
+<td align="left">Terminate one or more processes</td>
+</tr>
+
+<tr>
+<td align="center">-KILL or -9</td>
+<td align="left">Kill one or more processes with results that cannot be captured and ignored</td>
+</tr>
+
+<tr>
+<td align="center">-HUP or -1</td>
+<td align="left">Hangup one or more processes</td>
+</tr>
+
+<tr>
+<td align="center">-INT or -2</td>
+<td align="left">Terminal interrupt one or more processes</td>
+</tr>
+
+<tr>
+<td align="center">-QUIT or -3</td>
+<td align="left">Terminal quit one or more processes</td>
+</tr>
+</tbody>
+</table>
+
+<p>The kill command has three running results, success, failure, and partial success:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Return Code</th>
+<th align="left">Meaning</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">0</td>
+<td align="left">Termination succeeded</td>
+</tr>
+
+<tr>
+<td align="center">1</td>
+<td align="left">Termination failed</td>
+</tr>
+
+<tr>
+<td align="center">64</td>
+<td align="left">Termination partially succeeded (When multiple process IDs are specified)</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="forced-termination-of-a-running-process">Forced Termination of a Running Process</h2>
+
+<p>But sometimes situations are special, and some processes cannot be terminated by the default signal.</p>
+
+<p>Then we need to use the KILL(9) signal to terminate the process:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">kill</span> -KILL process_id <span class="o">[</span>more process IDs<span class="o">]</span>    <span class="c1"># This is equivalent kill -9</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="unforced-termination-of-a-running-process">Unforced Termination of a Running Process</h2>
+
+<p>Usually, we would only use the TERM(15) signal to terminate a running process:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">kill</span> process_id <span class="o">[</span>more process IDs<span class="o">]</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Because the code for this script is relatively simple, so the two processes running based on this script can be terminated using the kill command&rsquo;s default signal:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">kill</span> <span class="m">9476</span> <span class="m">9475</span>
+jobs</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/37/nano_file.png"
+    <img src="../images/38/kill_process_ids_jobs.png"
          alt="img"/> <figcaption>
-            <h4>Opening a text file to edit</h4>
+            <h4>List all jobs after killing the two processes</h4>
         </figcaption>
 </figure>
 
 
-<figure>
-    <img src="../images/37/nano_file_opened.png"
-         alt="img"/> <figcaption>
-            <h4>Editing the opened nano_file</h4>
-        </figcaption>
-</figure>
-
-
-<figure>
-    <img src="../images/37/nano_file_add_third_line.png"
-         alt="img"/> <figcaption>
-            <h4>Add another line</h4>
-        </figcaption>
-</figure>
-
-
-<figure>
-    <img src="../images/37/nano_file_write_out_the_third_line.png"
-         alt="img"/> <figcaption>
-            <h4>Write out page</h4>
-        </figcaption>
-</figure>
-
-
-<figure>
-    <img src="../images/37/nano_file_write_out_the_third_line_to_file.png"
-         alt="img"/> <figcaption>
-            <h4>Write out the edited content to existing nano_file</h4>
-        </figcaption>
-</figure>
-
-
-<figure>
-    <img src="../images/37/cat_edited_file.png"
-         alt="img"/> <figcaption>
-            <h4>Outputs the edited nano_file</h4>
-        </figcaption>
-</figure>
-
+<p>From the screenshot, we can see that both processes have been killed.</p>
 
 <blockquote>
 <p>References
-<a href="https://www.nano-editor.org/dist/v2.3/nano.html">Nano 2.3.x Command Manual</a></p>
+<a href="https://www.gnu.org/software/bash/manual/html_node/Job-Control-Builtins.html">7.2 Job Control Builtins</a>,
+<a href="https://www.gnu.org/software/coreutils/manual/html_node/Process-control.html">24 Process control</a>,
+<a href="https://www.gnu.org/software/coreutils/manual/html_node/kill-invocation.html">24.1 kill: Send a signal to processes</a>,
+<a href="https://www.gnu.org/software/coreutils/manual/html_node/Signal-specifications.html">2.5 Signal specifications</a>,
+<a href="http://man7.org/linux/man-pages/man1/kill.1.html">KILL(1)</a></p>
 </blockquote>
 
 <p>If you think the content of this article has helped you, and if you would like some more high-quality materials in the near future, please give me some modest support.</p>
@@ -426,7 +470,7 @@ Second Line</code></pre></td></tr></table>
   </p>
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
-    <span class="item-content">Sat Mar 9 2019</span>
+    <span class="item-content">Sun Mar 10 2019</span>
   </p>
   
   
@@ -450,13 +494,9 @@ Second Line</code></pre></td></tr></table>
           <a href="/tags/server/">Server</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/server-side-programming/linux/simple-but-profound/38.-processes-running-jobs-management/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">38. Processes - Running Jobs Management</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        <a class="next" href="/post/server-side-programming/linux/simple-but-profound/36.-system-context-information/">
-            <span class="next-text nav-default">36. System Context - Information</span>
+        
+        <a class="next" href="/post/server-side-programming/linux/simple-but-profound/37.-text-editor-basic-usage-of-nano/">
+            <span class="next-text nav-default">37. Text Editor - Basic Usage of Nano</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>
