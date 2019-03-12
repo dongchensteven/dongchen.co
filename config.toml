@@ -23,7 +23,7 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
   name = "Dong Chen"
 
 [sitemap]                 # essential                     # 必需
-  changefreq = "weekly"
+  changefreq = "daily"
   priority = 0.5
   filename = "sitemap.xml"
 
@@ -160,13 +160,13 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
     alipay = "https://dongchen.co/images/alipay_qr_final.png"           # 支付宝二维码
 
   [params.social]                                         # 社交链接
-    a-email = "mailto:snowhidenz@gmail.com"
+    a-email = "mailto:dongchensteven@gmail.com"
     # b-stack-overflow = "http://localhost:1313"
     # c-twitter = "http://localhost:1313"
     # d-facebook = "http://localhost:1313"
-    e-linkedin = "https://www.linkedin.com/in/stevendongchen"
+    e-linkedin = "https://www.linkedin.com/in/dongchensteven"
     # f-google = "http://localhost:1313"
-    g-github = "https://github.com/stevendongchen"
+    g-github = "https://github.com/dongchensteven"
     # h-weibo = "http://localhost:1313"
     # i-zhihu = "http://localhost:1313"
     # j-douban = "http://localhost:1313"
