@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/41.-archiving-compress-and-decompress-files/</loc>
+    <lastmod>2019-03-13T07:24:26+13:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/40.-find-utilities-commands-files-searching-usages/</loc>
     <lastmod>2019-03-12T06:17:50+13:00</lastmod>
     <changefreq>daily</changefreq>
@@ -353,7 +360,7 @@
   
   <url>
     <loc>https://dongchen.co/</loc>
-    <lastmod>2019-03-12T06:17:50+13:00</lastmod>
+    <lastmod>2019-03-13T07:24:26+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
@@ -367,14 +374,14 @@
   
   <url>
     <loc>https://dongchen.co/tags/linux/</loc>
-    <lastmod>2019-03-12T06:17:50+13:00</lastmod>
+    <lastmod>2019-03-13T07:24:26+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://dongchen.co/categories/linux-administrator-simple-but-profound/</loc>
-    <lastmod>2019-03-12T06:17:50+13:00</lastmod>
+    <lastmod>2019-03-13T07:24:26+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
@@ -402,7 +409,7 @@
   
   <url>
     <loc>https://dongchen.co/post/</loc>
-    <lastmod>2019-03-12T06:17:50+13:00</lastmod>
+    <lastmod>2019-03-13T07:24:26+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
@@ -416,7 +423,7 @@
   
   <url>
     <loc>https://dongchen.co/tags/server/</loc>
-    <lastmod>2019-03-12T06:17:50+13:00</lastmod>
+    <lastmod>2019-03-13T07:24:26+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>

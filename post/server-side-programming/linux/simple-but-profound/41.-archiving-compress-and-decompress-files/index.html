@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>41. Archiving - Compressing and Decompressing Files - Dong - A place to track my time log</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Dong Chen" /><meta name="description" content="By compressing files and directories into a compressed file, we can easily move and back up the compressed file.
+" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/41.-archiving-compress-and-decompress-files/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.ea128f8b.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/styles.css">
+
+
+<meta property="og:title" content="41. Archiving - Compressing and Decompressing Files" />
+<meta property="og:description" content="By compressing files and directories into a compressed file, we can easily move and back up the compressed file." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/41.-archiving-compress-and-decompress-files/" /><meta property="article:published_time" content="2019-03-13T07:24:26&#43;13:00"/>
+<meta property="article:modified_time" content="2019-03-13T07:24:26&#43;13:00"/>
+
+<meta itemprop="name" content="41. Archiving - Compressing and Decompressing Files">
+<meta itemprop="description" content="By compressing files and directories into a compressed file, we can easily move and back up the compressed file.">
+
+
+<meta itemprop="datePublished" content="2019-03-13T07:24:26&#43;13:00" />
+<meta itemprop="dateModified" content="2019-03-13T07:24:26&#43;13:00" />
+<meta itemprop="wordCount" content="880">
+
+
+
+<meta itemprop="keywords" content="Linux,Server," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="41. Archiving - Compressing and Decompressing Files"/>
+<meta name="twitter:description" content="By compressing files and directories into a compressed file, we can easily move and back up the compressed file."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Dong</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Dong</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">41. Archiving - Compressing and Decompressing Files</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> Wed Mar 13 2019 </span>
+        <div class="post-category">
+            <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
+            </div>
+          <span class="more-meta"> 880 words </span>
+          <span class="more-meta"> 5 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#packaging-and-compressing-files">Packaging and Compressing Files</a>
+<ul>
+<li><a href="#packaging-with-tar">Packaging with tar</a>
+<ul>
+<li><a href="#compressing-with-z-option">Compressing with -z option</a></li>
+</ul></li>
+<li><a href="#compressing-with-gzip">Compressing with gzip</a></li>
+<li><a href="#compressing-with-bzip2">Compressing with bzip2</a></li>
+<li><a href="#compressing-with-xz">Compressing with xz</a></li>
+</ul></li>
+<li><a href="#unpackaging-and-decompressing-files">Unpackaging and Decompressing Files</a>
+<ul>
+<li><a href="#unpackaging-with-tar">Unpackaging with tar</a></li>
+<li><a href="#decompressing-with-gunzip">Decompressing with gunzip</a></li>
+<li><a href="#decompressing-with-bunzip2">Decompressing with bunzip2</a></li>
+<li><a href="#decompressing-with-unxz">Decompressing with unxz</a></li>
+</ul></li>
+<li><a href="#view-compressed-files">View Compressed Files</a>
+<ul>
+<li><a href="#viewing-with-zcat-zmore-bzless-zgrep">Viewing with zcat, zmore, bzless, zgrep</a></li>
+<li><a href="#viewing-with-bzcat-bzmore-bzless-bzgrep">Viewing with bzcat, bzmore, bzless, bzgrep</a></li>
+<li><a href="#viewing-with-xzcat-xzmore-xzless-xzgrep">Viewing with xzcat, xzmore, xzless, xzgrep</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>By compressing files and directories into a compressed file, we can easily move and back up the compressed file.</p>
+
+<h1 id="packaging-and-compressing-files">Packaging and Compressing Files</h1>
+
+<p>Before we start selecting tools, we need to compare the pros and cons of each compression tool, so let&rsquo;s do it. We should take into account the feelings of these people. We need to get their consent before we can interview them.</p>
+
+<p>Let&rsquo;s prepare a file:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>100MBFile <span class="nv">bs</span><span class="o">=</span><span class="m">102400</span> <span class="nv">count</span><span class="o">=</span><span class="m">1</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/41/dd_100mbfile_ll_file.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="packaging-with-tar">Packaging with tar</h2>
+
+<p>The tar command is a standard compression and decompression tool.</p>
+
+<p>The suffix of the tar file is .tar</p>
+
+<p>Here are some options provided by the tar command:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Option</th>
+<th align="left">Meaning</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">-c or &ndash;create</td>
+<td align="left">Create a new archive.</td>
+</tr>
+
+<tr>
+<td align="center">-z or &ndash;gzip</td>
+<td align="left">Filter the archive through gzip.</td>
+</tr>
+
+<tr>
+<td align="center">-v or &ndash;verbose</td>
+<td align="left">Verbosely list files processed.</td>
+</tr>
+
+<tr>
+<td align="center">-x or &ndash;extract or &ndash;get</td>
+<td align="left">extract files from an archive.</td>
+</tr>
+
+<tr>
+<td align="center">-f or &ndash;file</td>
+<td align="left">Use archive file or device ARCHIVE, this option must be at the end.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Create a general archive, this won&#39;t lessen the size</span>
+tar -cvf 100MBFile.tar 100MBFile    <span class="c1"># In addition to f, other options&#39; position can be changed at will</span>
+ll 100MB*</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/41/tar_100mbfile_ll_file.png"
+         alt="img"/> <figcaption>
+            <h4>The archived file&#39;s size is greater than the origin</h4>
+        </figcaption>
+</figure>
+
+
+<h3 id="compressing-with-z-option">Compressing with -z option</h3>
+
+<p>By adding the z option, the tar command compresses the file with the gzip algorithm:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">tar -czvf 100MBFile.tar.gz 100MBFile
+ll 100MB*</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/41/tar_gzip_100mbfile_ll_file.png"
+         alt="img"/> <figcaption>
+            <h4>The archived file&#39;s size is way more less than the origin</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="compressing-with-gzip">Compressing with gzip</h2>
+
+<p>Since gzip will delete the original file after compression, we need to clone a new file:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Clone 100MBFile to 100MBFileGZIP</span>
+cp 100MBFile 100MBFileGZIP
+ll 100MBFile*</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/41/cp_file_newfile_gzip_ll_file.png"
+         alt="img"/> <figcaption>
+            <h4>Clone a new file called 100MBFileGZIP and list the files</h4>
+        </figcaption>
+</figure>
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># This will use the Lempel-Ziv coding (LZ77) to compress the file</span>
+gzip 100MBFileGZIP
+ll 100MBFile*</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/41/gzip_file_ll_file.png"
+         alt="img"/> <figcaption>
+            <h4>Compress the file with gzip command</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="compressing-with-bzip2">Compressing with bzip2</h2>
+
+<p>An upgraded version of gzip.</p>
+
+<p>Since bzip2 will delete the original file after compression, we need to clone a new file:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Clone 100MBFile to 100MBFileGZIP</span>
+cp 100MBFile 100MBFileBZIP2
+ll 100MBFile*</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/41/cp_file_newfile_bzip2_ll_file.png"
+         alt="img"/> <figcaption>
+            <h4>Clone a new file called 100MBFileBZIP2 and list the files</h4>
+        </figcaption>
+</figure>
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># This will use the Burrows-Wheeler block sorting text compression algorithm and Huffman coding to compress the file</span>
+bzip2 100MBFileBZIP2
+ll 100MBFile*</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/41/bzip2_file_ll_file.png"
+         alt="img"/> <figcaption>
+            <h4>Compress the file with bzip2 command</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="compressing-with-xz">Compressing with xz</h2>
+
+<p>A tool with a high compression ratio.</p>
+
+<p>Since xz will delete the original file after compression, we need to clone a new file:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Clone 100MBFile to 100MBFileXZ</span>
+cp 100MBFile 100MBFileXZ
+ll 100MBFile*</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/41/cp_file_newfile_xz_ll_file.png"
+         alt="img"/> <figcaption>
+            <h4>Clone a new file called 100MBFileXZ and list the files</h4>
+        </figcaption>
+</figure>
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">xz 100MBFileXZ
+ll 100MBFile*</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/41/xz_file_ll_file.png"
+         alt="img"/> <figcaption>
+            <h4>Compress the file with xz command</h4>
+        </figcaption>
+</figure>
+
+
+<h1 id="unpackaging-and-decompressing-files">Unpackaging and Decompressing Files</h1>
+
+<h2 id="unpackaging-with-tar">Unpackaging with tar</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">tar -xf 100MBFile.tar    <span class="c1"># tar command will keep the archived file after decompressing</span>
+ll 100MBFile*</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/41/tar_extract_100mbfile_ll_file.png"
+         alt="img"/> <figcaption>
+            <h4>Unpack the file with x option</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="decompressing-with-gunzip">Decompressing with gunzip</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">gunzip 100MBFileGZIP.gz    <span class="c1"># gunzip command will remove the archived file after decompressing</span>
+ll 100MBFile*</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/41/gunzip_file_ll_file.png"
+         alt="img"/> <figcaption>
+            <h4>Decompress the file with gunzip command</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="decompressing-with-bunzip2">Decompressing with bunzip2</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">bunzip2 100MBFileBZIP2.bz2    <span class="c1"># bunzip2 command will remove the archived file after decompressing</span>
+ll 100MBFile*</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/41/bunzip2_file_ll_file.png"
+         alt="img"/> <figcaption>
+            <h4>Decompress the file with bunzip2 command</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="decompressing-with-unxz">Decompressing with unxz</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">unxz 100MBFileXZ.xz    <span class="c1"># unxz command will remove the archived file after decompressing</span>
+ll 100MBFile*</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/41/unxz_file_ll_file.png"
+         alt="img"/> <figcaption>
+            <h4>Decompress the file with unxz command</h4>
+        </figcaption>
+</figure>
+
+
+<h1 id="view-compressed-files">View Compressed Files</h1>
+
+<p>Let&rsquo;s prepare some text files that can be viewed in a compressed file:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s1">&#39;This is a README.txt file for GZIP&#39;</span> &gt; READMEGZIP
+<span class="nb">echo</span> <span class="s1">&#39;This is a README.txt file for BZIP2&#39;</span> &gt; READMEBZIP2
+<span class="nb">echo</span> <span class="s1">&#39;This is a README.txt file for XZ&#39;</span> &gt; READMEXZ
+gzip READMEGZIP
+bzip2 READMEBZIP2
+xz READMEXZ
+ll README*</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/41/echo_texts_to_files_compress_files_ll_file.png"
+         alt="img"/> <figcaption>
+            <h4>Prepare three text files for gzip, bzip2, xz commands</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="viewing-with-zcat-zmore-bzless-zgrep">Viewing with zcat, zmore, bzless, zgrep</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">zcat READMEGZIP.gz
+zmore READMEGZIP.gz
+zgrep -e <span class="s1">&#39;is a&#39;</span> READMEGZIP.gz</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/41/zcat_zmore_zgrep_archive_file.png"
+         alt="img"/> <figcaption>
+            <h4>View the .gz archive file&#39;s text content with zcat, zmore and zgrep commands</h4>
+        </figcaption>
+</figure>
+
+
+<p>zless will be another option.</p>
+
+<h2 id="viewing-with-bzcat-bzmore-bzless-bzgrep">Viewing with bzcat, bzmore, bzless, bzgrep</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">bzcat READMEBZIP2.bz2
+bzmore READMEBZIP2.bz2
+bzgrep -e <span class="s1">&#39;is a&#39;</span> READMEBZIP2.bz2</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/41/bzcat_bzmore_bzgrep_archive_file.png"
+         alt="img"/> <figcaption>
+            <h4>View the .bz2 archive file&#39;s text content with bzcat, bzmore and bzgrep commands</h4>
+        </figcaption>
+</figure>
+
+
+<p>bzless will be another option.</p>
+
+<h2 id="viewing-with-xzcat-xzmore-xzless-xzgrep">Viewing with xzcat, xzmore, xzless, xzgrep</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">xzcat READMEXZ.xz
+xzmore READMEXZ.xz
+xzgrep -e <span class="s1">&#39;is a&#39;</span> READMEXZ.xz</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/41/xzcat_xzmore_xzgrep_archive_file.png"
+         alt="img"/> <figcaption>
+            <h4>View the .xz archive file&#39;s text content with xzcat, xzmore and xzgrep commands</h4>
+        </figcaption>
+</figure>
+
+
+<p>xzless will be another option.</p>
+
+<blockquote>
+<p>References
+<a href="https://www.gnu.org/software/coreutils/manual/html_node/dd-invocation.html">11.2 dd: Convert and copy a file</a>,
+<a href="https://www.gnu.org/software/tar/manual/html_section/tar.html">GNU tar: an archiver tool</a>,
+<a href="https://www.gnu.org/software/gzip/manual/html_node/index.html">GNU Gzip</a>,
+<a href="https://www.sourceware.org/bzip2/#bzip2-doco">bzip2 Documentation</a>,
+<a href="https://tukaani.org/xz/">XZ Utils</a></p>
+</blockquote>
+
+<p>If you think the content of this article has helped you, and if you would like some more high-quality materials in the near future, please give me some modest support.</p>
+
+<!-- Buy Me a Coffee Button -->
+
+<p class="align-center">
+  <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/PFou9WhLr"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
+</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Dong Chen</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">Wed Mar 13 2019</span>
+  </p>
+  
+  
+</div><div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://dongchen.co/images/wepay_qr_final.png">
+        <span>wechat</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://dongchen.co/images/alipay_qr_final.png">
+        <span>alipay</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/linux/">Linux</a>
+          <a href="/tags/server/">Server</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/server-side-programming/linux/simple-but-profound/40.-find-utilities-commands-files-searching-usages/">
+            <span class="next-text nav-default">40. Find Utilities - Commands &amp; Files Searching Usages</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:dongchensteven@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.linkedin.com/in/dongchensteven" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/dongchensteven" class="iconfont icon-github" title="github"></a>
+  <a href="https://dongchen.co/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Dong Chen</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-133226289-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

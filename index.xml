@@ -6,10 +6,19 @@
     <description>Recent content on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 12 Mar 2019 06:17:50 +1300</lastBuildDate>
+    <lastBuildDate>Wed, 13 Mar 2019 07:24:26 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>41. Archiving - Compressing and Decompressing Files</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/41.-archiving-compress-and-decompress-files/</link>
+      <pubDate>Wed, 13 Mar 2019 07:24:26 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/41.-archiving-compress-and-decompress-files/</guid>
+      <description>&lt;p&gt;By compressing files and directories into a compressed file, we can easily move and back up the compressed file.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>40. Find Utilities - Commands &amp; Files Searching Usages</title>
