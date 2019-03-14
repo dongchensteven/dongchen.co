@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 13 Mar 2019 07:24:26 +1300</lastBuildDate>
+    <lastBuildDate>Thu, 14 Mar 2019 07:43:04 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>42. User Information - IDs, Group IDs, Names, and so on</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/42.-user-information-ids-group-ids-names-and-so-on/</link>
+      <pubDate>Thu, 14 Mar 2019 07:43:04 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/42.-user-information-ids-group-ids-names-and-so-on/</guid>
+      <description>&lt;p&gt;The Linux core toolset provides us with some commands to view user-related information.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>41. Archiving - Compressing and Decompressing Files</title>
