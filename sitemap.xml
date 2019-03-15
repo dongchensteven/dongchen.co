@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/44.-file-permissions-chown-chgrp-chmod-umask/</loc>
+    <lastmod>2019-03-16T06:24:51+13:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/43.-file-permissions-symbolic-numeric-modes-setuid-setgid/</loc>
     <lastmod>2019-03-15T07:20:11+13:00</lastmod>
     <changefreq>daily</changefreq>
@@ -374,7 +381,7 @@
   
   <url>
     <loc>https://dongchen.co/</loc>
-    <lastmod>2019-03-15T07:20:11+13:00</lastmod>
+    <lastmod>2019-03-16T06:24:51+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
@@ -388,14 +395,14 @@
   
   <url>
     <loc>https://dongchen.co/tags/linux/</loc>
-    <lastmod>2019-03-15T07:20:11+13:00</lastmod>
+    <lastmod>2019-03-16T06:24:51+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://dongchen.co/categories/linux-administrator-simple-but-profound/</loc>
-    <lastmod>2019-03-15T07:20:11+13:00</lastmod>
+    <lastmod>2019-03-16T06:24:51+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
@@ -423,7 +430,7 @@
   
   <url>
     <loc>https://dongchen.co/post/</loc>
-    <lastmod>2019-03-15T07:20:11+13:00</lastmod>
+    <lastmod>2019-03-16T06:24:51+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
@@ -437,7 +444,7 @@
   
   <url>
     <loc>https://dongchen.co/tags/server/</loc>
-    <lastmod>2019-03-15T07:20:11+13:00</lastmod>
+    <lastmod>2019-03-16T06:24:51+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>

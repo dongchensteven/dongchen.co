@@ -52,7 +52,7 @@
 
 <meta itemprop="datePublished" content="2019-03-15T07:20:11&#43;13:00" />
 <meta itemprop="dateModified" content="2019-03-15T07:20:11&#43;13:00" />
-<meta itemprop="wordCount" content="935">
+<meta itemprop="wordCount" content="992">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
             </div>
-          <span class="more-meta"> 935 words </span>
+          <span class="more-meta"> 992 words </span>
           <span class="more-meta"> 5 mins read </span>
         
       </div>
@@ -159,7 +159,11 @@
 <li><a href="#copying-permissions">Copying Permissions</a></li>
 <li><a href="#changing-special-mode-bits">Changing Special Mode Bits</a>
 <ul>
-<li><a href="#set-user-or-group-id-mode-bit">Set User or Group ID Mode Bit</a></li>
+<li><a href="#set-user-or-group-id-mode-bit">Set User or Group ID Mode Bit</a>
+<ul>
+<li><a href="#impact-on-directories">Impact on Directories</a></li>
+<li><a href="#impact-on-programs-or-files">Impact on Programs or Files</a></li>
+</ul></li>
 <li><a href="#set-restricted-deletion-flag-or-sticky-bit">Set Restricted Deletion Flag or Sticky Bit</a></li>
 </ul></li>
 <li><a href="#making-multiple-changes">Making Multiple Changes</a></li>
@@ -454,11 +458,17 @@ ll <span class="p">|</span> grep <span class="s1">&#39;mode_bits*&#39;</span></c
 </tbody>
 </table>
 
+<h4 id="impact-on-directories">Impact on Directories</h4>
+
 <p>If a directory has the group id set up, the files created in this directory belong to the group of the directory, but setting the user id does not seem to have much effect. A child directory created in this directory inherits the group to which the parent directory belongs and also inherits the special mode bit set group id.</p>
+
+<h4 id="impact-on-programs-or-files">Impact on Programs or Files</h4>
+
+<p>If a program is set up with user id, then whoever executes it, the operator is always the owner of the program. If a program is set up with group id, then no matter who executes it, the runtime group is always the group to which the application belongs.</p>
 
 <h3 id="set-restricted-deletion-flag-or-sticky-bit">Set Restricted Deletion Flag or Sticky Bit</h3>
 
-<p>If we don&rsquo;t want the files we created to be deleted by others; we can add a special mode bit the so-called sticky bit to the permissions of the directory containing those files:</p>
+<p>If we don&rsquo;t want the files we created to be deleted by others; we can add a special mode bit the so-called sticky bit to the permission of the directory containing those files:</p>
 
 <table>
 <thead>
@@ -673,7 +683,11 @@ ll <span class="p">|</span> grep <span class="s1">&#39;mode_bits*&#39;</span></c
           <a href="/tags/server/">Server</a>
           </div>
       <nav class="post-nav">
-        
+        <a class="prev" href="/post/server-side-programming/linux/simple-but-profound/44.-file-permissions-chown-chgrp-chmod-umask/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">44. File Permissions - chown, chgrp, chmod, umask</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
         <a class="next" href="/post/server-side-programming/linux/simple-but-profound/42.-user-information-ids-group-ids-names-and-so-on/">
             <span class="next-text nav-default">42. User Information - IDs, Group IDs, Names, and so on</span>
             <span class="next-text nav-mobile">Next</span>
