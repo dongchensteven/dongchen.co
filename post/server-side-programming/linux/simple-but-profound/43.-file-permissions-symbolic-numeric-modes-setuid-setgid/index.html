@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>43. File Permissions - Symbolic &amp; Numeric Modes, Setuid &amp; Setgid - Dong - A place to track my time log</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Dong Chen" /><meta name="description" content="We can determine the permissions of a file by looking at the mode bits of that file.
+" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/43.-file-permissions-symbolic-numeric-modes-setuid-setgid/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.ea128f8b.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/styles.css">
+
+
+<meta property="og:title" content="43. File Permissions - Symbolic &amp; Numeric Modes, Setuid &amp; Setgid" />
+<meta property="og:description" content="We can determine the permissions of a file by looking at the mode bits of that file." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/43.-file-permissions-symbolic-numeric-modes-setuid-setgid/" /><meta property="article:published_time" content="2019-03-15T07:20:11&#43;13:00"/>
+<meta property="article:modified_time" content="2019-03-15T07:20:11&#43;13:00"/>
+
+<meta itemprop="name" content="43. File Permissions - Symbolic &amp; Numeric Modes, Setuid &amp; Setgid">
+<meta itemprop="description" content="We can determine the permissions of a file by looking at the mode bits of that file.">
+
+
+<meta itemprop="datePublished" content="2019-03-15T07:20:11&#43;13:00" />
+<meta itemprop="dateModified" content="2019-03-15T07:20:11&#43;13:00" />
+<meta itemprop="wordCount" content="683">
+
+
+
+<meta itemprop="keywords" content="Linux,Server," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="43. File Permissions - Symbolic &amp; Numeric Modes, Setuid &amp; Setgid"/>
+<meta name="twitter:description" content="We can determine the permissions of a file by looking at the mode bits of that file."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Dong</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Dong</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">43. File Permissions - Symbolic &amp; Numeric Modes, Setuid &amp; Setgid</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> Fri Mar 15 2019 </span>
+        <div class="post-category">
+            <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
+            </div>
+          <span class="more-meta"> 683 words </span>
+          <span class="more-meta"> 4 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#mode-bits-structure">Mode Bits Structure</a>
+<ul>
+<li><a href="#permissions-of-directory-and-file">Permissions of Directory and File</a>
+<ul>
+<li><a href="#directory-permissions">Directory Permissions</a></li>
+<li><a href="#file-permissions">File Permissions</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#symbolic-modes">Symbolic Modes</a>
+<ul>
+<li><a href="#permissions-assignment">Permissions Assignment</a>
+<ul>
+<li><a href="#users">Users</a></li>
+<li><a href="#operations">Operations</a></li>
+<li><a href="#permissions">Permissions</a></li>
+</ul></li>
+<li><a href="#copying-permissions">Copying Permissions</a></li>
+<li><a href="#changing-special-mode-bits">Changing Special Mode Bits</a>
+<ul>
+<li><a href="#set-user-or-group-id-mode-bit">Set User or Group ID Mode Bit</a></li>
+<li><a href="#set-restricted-deletion-flag-or-sticky-bit">Set Restricted Deletion Flag or Sticky Bit</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>We can determine the permissions of a file by looking at the mode bits of that file.</p>
+
+<h1 id="mode-bits-structure">Mode Bits Structure</h1>
+
+<p>The mode bits structure of files and directories:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Option</th>
+<th align="left">Meaning</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">r</td>
+<td align="left">Read permission.</td>
+</tr>
+
+<tr>
+<td align="center">w</td>
+<td align="left">Write permission.</td>
+</tr>
+
+<tr>
+<td align="center">x</td>
+<td align="left">Execute permission.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="permissions-of-directory-and-file">Permissions of Directory and File</h2>
+
+<p>Let&rsquo;s take a look at the default permissions for the newly created files and directories:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">touch mode_bits_file
+mkdir mode_bits_dir
+ll <span class="p">|</span> grep <span class="s1">&#39;mode_bits*&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/43/touch_file_mkdir_dir_ll_grep_file.png"
+         alt="img"/> 
+</figure>
+
+
+<h3 id="directory-permissions">Directory Permissions</h3>
+
+<p>As we can see from the following table, the directory is:</p>
+
+<ul>
+<li>readable, writable and executable to the user: the user called root;</li>
+<li>readable and executable to the group: everyone in the root group;</li>
+<li>readable and executable to others: anyone else.</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th align="center">User</th>
+<th align="center">Group</th>
+<th align="center">Others</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">rwx</td>
+<td align="center">r-x</td>
+<td align="center">r-x</td>
+</tr>
+</tbody>
+</table>
+
+<p>Without execute permission, we can&rsquo;t access the directory.</p>
+
+<p>Without write permission, we can&rsquo;t add new files or delete existing files in a directory.</p>
+
+<h3 id="file-permissions">File Permissions</h3>
+
+<p>As we can see from the following table, the file is:</p>
+
+<ul>
+<li>readable and writable to the user:  the user called root;</li>
+<li>readable to the group: everyone in the root group;</li>
+<li>readable to others: anyone else.</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th align="center">User</th>
+<th align="center">Group</th>
+<th align="center">Others</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">rw-</td>
+<td align="center">r&ndash;</td>
+<td align="center">r&ndash;</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="symbolic-modes">Symbolic Modes</h1>
+
+<p>We can set permissions for users, groups, others, and everyone in symbolic mode.</p>
+
+<h2 id="permissions-assignment">Permissions Assignment</h2>
+
+<p>We can assign read, write, and execute permissions to the file owner, file group, others or everyone through the plus, equal sign operator, or remove the appropriate permissions from the user by the minus sign operator:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Users</th>
+<th align="center">Operation</th>
+<th align="center">Permissions</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">ugoa</td>
+<td align="center">+-=</td>
+<td align="center">rwx</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="users">Users</h3>
+
+<p>There are four users, file&rsquo;s owner, file&rsquo;s group, others, and all:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">User</th>
+<th align="center">Meaning</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">u</td>
+<td align="center">Owner of the file</td>
+</tr>
+
+<tr>
+<td align="center">g</td>
+<td align="center">Group of the file</td>
+</tr>
+
+<tr>
+<td align="center">o</td>
+<td align="center">Any other users</td>
+</tr>
+
+<tr>
+<td align="center">a</td>
+<td align="center">All users, this is equivalent to ugo</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="operations">Operations</h3>
+
+<p>There are three actions, append, remove, and assign:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Operation</th>
+<th align="center">Meaning</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">+</td>
+<td align="center">Append the permission(s) to user(s)</td>
+</tr>
+
+<tr>
+<td align="center">-</td>
+<td align="center">Remove the permission(s) from user(s)</td>
+</tr>
+
+<tr>
+<td align="center">=</td>
+<td align="center">Assign the permission(s) to user(s)</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="permissions">Permissions</h3>
+
+<p>There are three permissions, read, write, and execute, respectively:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Permission</th>
+<th align="center">Meaning</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">r</td>
+<td align="center">Readable or Viewable permission</td>
+</tr>
+
+<tr>
+<td align="center">w</td>
+<td align="center">Writable or Editable permission</td>
+</tr>
+
+<tr>
+<td align="center">x</td>
+<td align="center">Executable or Runnable permission</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="copying-permissions">Copying Permissions</h2>
+
+<p>We can append the permissions of the user after the addition symbol to the permissions of the user before the addition symbol:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Copy To</th>
+<th align="center">Operation</th>
+<th align="center">Copy From</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">ugoa</td>
+<td align="center">+</td>
+<td align="center">ugoa</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="changing-special-mode-bits">Changing Special Mode Bits</h2>
+
+<h3 id="set-user-or-group-id-mode-bit">Set User or Group ID Mode Bit</h3>
+
+<table>
+<thead>
+<tr>
+<th align="center">Users</th>
+<th align="center">Operation</th>
+<th align="center">Copy From</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">uga</td>
+<td align="center">+-</td>
+<td align="center">s</td>
+</tr>
+</tbody>
+</table>
+
+<p>If a directory has the group id set up, the files created in this directory belong to the group of the directory, but setting the user id does not seem to have much effect. A child directory created in this directory inherits the group to which the parent directory belongs and also inherits the special mode bit set group id.</p>
+
+<h3 id="set-restricted-deletion-flag-or-sticky-bit">Set Restricted Deletion Flag or Sticky Bit</h3>
+
+<p>If we don&rsquo;t want the files we created to be deleted by others; we can add a special mode bit the so-called sticky bit to the permissions of the directory containing those files:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">User</th>
+<th align="center">Operation</th>
+<th align="center">Flag</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">o (This is optional)</td>
+<td align="center">+-=</td>
+<td align="center">t</td>
+</tr>
+</tbody>
+</table>
+
+<p>A file in the flagged directory can only be deleted by the root user, the owner of the directory and the file&rsquo;s owner.</p>
+
+<blockquote>
+<p>References
+<a href="https://www.gnu.org/software/coreutils/manual/html_node/File-permissions.html">27 File permissions</a>,
+<a href="https://www.gnu.org/software/coreutils/manual/html_node/Mode-Structure.html">27.1 Structure of File Mode Bits</a>,
+<a href="https://www.gnu.org/software/coreutils/manual/html_node/Symbolic-Modes.html">27.2 Symbolic Modes</a>,
+<a href="https://www.gnu.org/software/coreutils/manual/html_node/Numeric-Modes.html">27.3 Numeric Modes</a>,
+<a href="https://www.gnu.org/software/coreutils/manual/html_node/Operator-Numeric-Modes.html">27.4 Operator Numeric Modes</a>,
+<a href="https://www.gnu.org/software/coreutils/manual/html_node/Directory-Setuid-and-Setgid.html">27.5 Directories and the Set-User-ID and Set-Group-ID Bits</a></p>
+</blockquote>
+
+<p>If you think the content of this article has helped you, and if you would like some more high-quality materials in the near future, please give me some modest support.</p>
+
+<!-- Buy Me a Coffee Button -->
+
+<p class="align-center">
+  <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/PFou9WhLr"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
+</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Dong Chen</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">Fri Mar 15 2019</span>
+  </p>
+  
+  
+</div><div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://dongchen.co/images/wepay_qr_final.png">
+        <span>wechat</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://dongchen.co/images/alipay_qr_final.png">
+        <span>alipay</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/linux/">Linux</a>
+          <a href="/tags/server/">Server</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/server-side-programming/linux/simple-but-profound/42.-user-information-ids-group-ids-names-and-so-on/">
+            <span class="next-text nav-default">42. User Information - IDs, Group IDs, Names, and so on</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:dongchensteven@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.linkedin.com/in/dongchensteven" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/dongchensteven" class="iconfont icon-github" title="github"></a>
+  <a href="https://dongchen.co/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Dong Chen</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-133226289-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>
