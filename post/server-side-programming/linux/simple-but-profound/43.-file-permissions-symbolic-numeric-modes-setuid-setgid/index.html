@@ -52,7 +52,7 @@
 
 <meta itemprop="datePublished" content="2019-03-15T07:20:11&#43;13:00" />
 <meta itemprop="dateModified" content="2019-03-15T07:20:11&#43;13:00" />
-<meta itemprop="wordCount" content="683">
+<meta itemprop="wordCount" content="872">
 
 
 
@@ -129,8 +129,8 @@
         <div class="post-category">
             <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
             </div>
-          <span class="more-meta"> 683 words </span>
-          <span class="more-meta"> 4 mins read </span>
+          <span class="more-meta"> 872 words </span>
+          <span class="more-meta"> 5 mins read </span>
         
       </div>
     </header>
@@ -162,6 +162,14 @@
 <li><a href="#set-user-or-group-id-mode-bit">Set User or Group ID Mode Bit</a></li>
 <li><a href="#set-restricted-deletion-flag-or-sticky-bit">Set Restricted Deletion Flag or Sticky Bit</a></li>
 </ul></li>
+<li><a href="#making-multiple-changes">Making Multiple Changes</a></li>
+</ul></li>
+<li><a href="#numeric-modes">Numeric Modes</a>
+<ul>
+<li><a href="#special-mode-bits">Special Mode Bits</a></li>
+<li><a href="#the-owner-of-the-file">The Owner of the File</a></li>
+<li><a href="#the-group-of-the-file">The Group of the File</a></li>
+<li><a href="#others">Others</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -471,6 +479,149 @@ ll <span class="p">|</span> grep <span class="s1">&#39;mode_bits*&#39;</span></c
 </table>
 
 <p>A file in the flagged directory can only be deleted by the root user, the owner of the directory and the file&rsquo;s owner.</p>
+
+<h2 id="making-multiple-changes">Making Multiple Changes</h2>
+
+<p>We can use commas to separate multiple actions that change permissions:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">u+r,g+w,o-x    <span class="c1"># Readable to the owner, writable to the group, executable to others.</span></code></pre></td></tr></table>
+</div>
+</div>
+<h1 id="numeric-modes">Numeric Modes</h1>
+
+<p>Linux also gives us another way to change user permissions more quickly. We can provide a range of numbers to represent their corresponding permissions. A complete numeric model has four digits</p>
+
+<h2 id="special-mode-bits">Special Mode Bits</h2>
+
+<p>The first digit represents a special mode bit:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Mode</th>
+<th align="center">Mode Bit</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">4000</td>
+<td align="center">Set User ID</td>
+</tr>
+
+<tr>
+<td align="center">2000</td>
+<td align="center">Set Group ID</td>
+</tr>
+
+<tr>
+<td align="center">1000</td>
+<td align="center">Restricted delete flag or sticky bit</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="the-owner-of-the-file">The Owner of the File</h2>
+
+<p>The second digit represents the owner of the file:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Mode</th>
+<th align="center">Mode Bit</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">0400</td>
+<td align="center"></td>
+</tr>
+
+<tr>
+<td align="center">0200</td>
+<td align="center"></td>
+</tr>
+
+<tr>
+<td align="center">0100</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+
+<p>Usually only displayed as 400, 200 and 100.</p>
+
+<h2 id="the-group-of-the-file">The Group of the File</h2>
+
+<p>The third digit represents the group of the file:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Mode</th>
+<th align="center">Mode Bit</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">0040</td>
+<td align="center"></td>
+</tr>
+
+<tr>
+<td align="center">0020</td>
+<td align="center"></td>
+</tr>
+
+<tr>
+<td align="center">0010</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+
+<p>Usually only displayed as 40, 20 and 10.</p>
+
+<h2 id="others">Others</h2>
+
+<p>The fourth digit represents for others:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Mode</th>
+<th align="center">Mode Bit</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">0004</td>
+<td align="center"></td>
+</tr>
+
+<tr>
+<td align="center">0002</td>
+<td align="center"></td>
+</tr>
+
+<tr>
+<td align="center">0001</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+
+<p>Usually only displayed as 4, 2 and 1.</p>
+
+<p>When used, the preceding zeros are usually removed. Next, we&rsquo;ll show you how to use most of the mode bits listed above.</p>
 
 <blockquote>
 <p>References
