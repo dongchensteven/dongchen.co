@@ -52,7 +52,7 @@
 
 <meta itemprop="datePublished" content="2019-03-14T07:43:04&#43;13:00" />
 <meta itemprop="dateModified" content="2019-03-14T07:43:04&#43;13:00" />
-<meta itemprop="wordCount" content="688">
+<meta itemprop="wordCount" content="724">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
             </div>
-          <span class="more-meta"> 688 words </span>
+          <span class="more-meta"> 724 words </span>
           <span class="more-meta"> 4 mins read </span>
         
       </div>
@@ -154,6 +154,7 @@
 <li><a href="#print-group-names-the-user-belongs-to">Print Group Names the User Belongs to</a></li>
 <li><a href="#print-login-names-of-users-currently-logged-in">Print Login Names of Users Currently Logged in</a></li>
 <li><a href="#print-who-is-currently-logged-in">Print Who is Currently Logged in</a></li>
+<li><a href="#print-user-details-with-finger">Print User Details With finger</a></li>
 </ul>
 </nav>
   </div>
@@ -175,7 +176,7 @@
 <figure>
     <img src="../images/42/id.png"
          alt="img"/> <figcaption>
-            <h4>By default, id outputs the real user ID, real group ID, effective user ID (if different from the real user ID), effective group ID(if different from the real group ID), and supplement group IDs</h4>
+            <h4>By default, id output the real user ID, real group ID, effective user ID (if different from the real user ID), effective group ID(if different from the real group ID), and supplement group IDs</h4>
         </figcaption>
 </figure>
 
@@ -194,7 +195,7 @@
 <figure>
     <img src="../images/42/id_u.png"
          alt="img"/> <figcaption>
-            <h4>Outputs the user&#39;s ID</h4>
+            <h4>Output the user&#39;s ID</h4>
         </figcaption>
 </figure>
 
@@ -213,7 +214,7 @@
 <figure>
     <img src="../images/42/id_g.png"
          alt="img"/> <figcaption>
-            <h4>Outputs the user&#39;s group ID</h4>
+            <h4>Output the user&#39;s group ID</h4>
         </figcaption>
 </figure>
 
@@ -232,7 +233,7 @@
 <figure>
     <img src="../images/42/id_g_uppercase.png"
          alt="img"/> <figcaption>
-            <h4>Outputs the user&#39;s group ID and supplementary groups</h4>
+            <h4>Output the user&#39;s group ID and supplementary groups</h4>
         </figcaption>
 </figure>
 
@@ -255,7 +256,7 @@ id -Gn    <span class="c1"># This is equivalent to id -G --name</span></code></p
 <figure>
     <img src="../images/42/id_u_g_g_uppercase_n.png"
          alt="img"/> <figcaption>
-            <h4>Outputs the user&#39;s name, group name and supplementary group name</h4>
+            <h4>Output the user&#39;s name, group name and supplementary group name</h4>
         </figcaption>
 </figure>
 
@@ -278,7 +279,7 @@ id -Gr    <span class="c1"># This is equivalent to id -G --real</span></code></p
 <figure>
     <img src="../images/42/id_u_g_g_uppercase_r.png"
          alt="img"/> <figcaption>
-            <h4>Outputs the user&#39;s real ID, group real ID, and supplementary group&#39;s real ID</h4>
+            <h4>Output the user&#39;s real ID, group real ID, and supplementary group&#39;s real ID</h4>
         </figcaption>
 </figure>
 
@@ -297,7 +298,7 @@ id -Gr    <span class="c1"># This is equivalent to id -G --real</span></code></p
 <figure>
     <img src="../images/42/id_z_uppercase.png"
          alt="img"/> <figcaption>
-            <h4>Outputs the user&#39;s security context</h4>
+            <h4>Output the user&#39;s security context</h4>
         </figcaption>
 </figure>
 
@@ -316,7 +317,7 @@ id -Gr    <span class="c1"># This is equivalent to id -G --real</span></code></p
 <figure>
     <img src="../images/42/logname.png"
          alt="img"/> <figcaption>
-            <h4>Outputs the user&#39;s login name</h4>
+            <h4>Output the user&#39;s login name</h4>
         </figcaption>
 </figure>
 
@@ -335,7 +336,7 @@ id -Gr    <span class="c1"># This is equivalent to id -G --real</span></code></p
 <figure>
     <img src="../images/42/whoami.png"
          alt="img"/> <figcaption>
-            <h4>Outputs the effective user ID</h4>
+            <h4>Output the effective user ID</h4>
         </figcaption>
 </figure>
 
@@ -354,7 +355,7 @@ id -Gr    <span class="c1"># This is equivalent to id -G --real</span></code></p
 <figure>
     <img src="../images/42/groups.png"
          alt="img"/> <figcaption>
-            <h4>Outputs the user&#39;s beloging groups</h4>
+            <h4>Output the user&#39;s beloging groups</h4>
         </figcaption>
 </figure>
 
@@ -382,26 +383,47 @@ id -Gr    <span class="c1"># This is equivalent to id -G --real</span></code></p
 <figure>
     <img src="../images/42/users.png"
          alt="img"/> <figcaption>
-            <h4>Outputs the login names of the users currently logged in</h4>
+            <h4>Output the login names of the users currently logged in</h4>
         </figcaption>
 </figure>
 
 
 <h1 id="print-who-is-currently-logged-in">Print Who is Currently Logged in</h1>
 
-<p>We can use users command to display the user names currently logged in:</p>
+<p>We can use who command to display the logged in user names and other login details:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">users</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">who</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
     <img src="../images/42/who.png"
          alt="img"/> <figcaption>
-            <h4>Outputs the information about users who are currently logged on</h4>
+            <h4>Output the information about users who are currently logged on</h4>
+        </figcaption>
+</figure>
+
+
+<h1 id="print-user-details-with-finger">Print User Details With finger</h1>
+
+<p>We can use finger command to display the user names currently logged in:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">yum install finger -y
+finger root</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/42/finger_user.png"
+         alt="img"/> <figcaption>
+            <h4>Output the details of the specified user</h4>
         </figcaption>
 </figure>
 

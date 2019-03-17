@@ -16,9 +16,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="Change the Owner or Group of One or More Files or Directories With the chown command, we can assign an owner or group to a file or directory.
-Change Owner, Group or Both of a File or Directory If you just want to specify the owner:
-1  chown user file_for_user # This command will only specify the owner of the file file_for_user to user   If you just want to specify the group:" /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="Dong Chen" /><meta name="description" content="In order to make it easier to manage user and group permissions on files and directories, linux provides some common commands that can assign and reclaim permissions to users and groups in a more standardized way.
+" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -42,31 +41,25 @@ Change Owner, Group or Both of a File or Directory If you just want to specify t
 
 
 <meta property="og:title" content="44. File Permissions - chown, chgrp, chmod, umask" />
-<meta property="og:description" content="Change the Owner or Group of One or More Files or Directories With the chown command, we can assign an owner or group to a file or directory.
-Change Owner, Group or Both of a File or Directory If you just want to specify the owner:
-1  chown user file_for_user # This command will only specify the owner of the file file_for_user to user   If you just want to specify the group:" />
+<meta property="og:description" content="In order to make it easier to manage user and group permissions on files and directories, linux provides some common commands that can assign and reclaim permissions to users and groups in a more standardized way." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/44.-file-permissions-chown-chgrp-chmod-umask/" /><meta property="article:published_time" content="2019-03-16T06:24:51&#43;13:00"/>
 <meta property="article:modified_time" content="2019-03-16T06:24:51&#43;13:00"/>
 
 <meta itemprop="name" content="44. File Permissions - chown, chgrp, chmod, umask">
-<meta itemprop="description" content="Change the Owner or Group of One or More Files or Directories With the chown command, we can assign an owner or group to a file or directory.
-Change Owner, Group or Both of a File or Directory If you just want to specify the owner:
-1  chown user file_for_user # This command will only specify the owner of the file file_for_user to user   If you just want to specify the group:">
+<meta itemprop="description" content="In order to make it easier to manage user and group permissions on files and directories, linux provides some common commands that can assign and reclaim permissions to users and groups in a more standardized way.">
 
 
 <meta itemprop="datePublished" content="2019-03-16T06:24:51&#43;13:00" />
 <meta itemprop="dateModified" content="2019-03-16T06:24:51&#43;13:00" />
-<meta itemprop="wordCount" content="1684">
+<meta itemprop="wordCount" content="1722">
 
 
 
 <meta itemprop="keywords" content="Linux,Server," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="44. File Permissions - chown, chgrp, chmod, umask"/>
-<meta name="twitter:description" content="Change the Owner or Group of One or More Files or Directories With the chown command, we can assign an owner or group to a file or directory.
-Change Owner, Group or Both of a File or Directory If you just want to specify the owner:
-1  chown user file_for_user # This command will only specify the owner of the file file_for_user to user   If you just want to specify the group:"/>
+<meta name="twitter:description" content="In order to make it easier to manage user and group permissions on files and directories, linux provides some common commands that can assign and reclaim permissions to users and groups in a more standardized way."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -136,8 +129,8 @@ Change Owner, Group or Both of a File or Directory If you just want to specify t
         <div class="post-category">
             <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
             </div>
-          <span class="more-meta"> 1684 words </span>
-          <span class="more-meta"> 8 mins read </span>
+          <span class="more-meta"> 1722 words </span>
+          <span class="more-meta"> 9 mins read </span>
         
       </div>
     </header>
@@ -191,7 +184,9 @@ Change Owner, Group or Both of a File or Directory If you just want to specify t
   </div>
 </div>
     <div class="post-content">
-      <h1 id="change-the-owner-or-group-of-one-or-more-files-or-directories">Change the Owner or Group of One or More Files or Directories</h1>
+      <p>In order to make it easier to manage user and group permissions on files and directories, linux provides some common commands that can assign and reclaim permissions to users and groups in a more standardized way.</p>
+
+<h1 id="change-the-owner-or-group-of-one-or-more-files-or-directories">Change the Owner or Group of One or More Files or Directories</h1>
 
 <p>With the chown command, we can assign an owner or group to a file or directory.</p>
 
@@ -703,7 +698,7 @@ cat test.c</code></pre></td></tr></table>
 <figure>
     <img src="../images/44/printf_c_code_file_cat_file.png"
          alt="img"/> <figcaption>
-            <h4>Print the C code into</h4>
+            <h4>Print the C code into file test.c</h4>
         </figcaption>
 </figure>
 
@@ -806,7 +801,11 @@ ll new_touch_file</code></pre></td></tr></table>
           <a href="/tags/server/">Server</a>
           </div>
       <nav class="post-nav">
-        
+        <a class="prev" href="/post/server-side-programming/linux/simple-but-profound/45.-user-and-group-management-creation-modification-and-deletion/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">45. User and Group Management - Creation, Modification and Deletion</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
         <a class="next" href="/post/server-side-programming/linux/simple-but-profound/43.-file-permissions-symbolic-numeric-modes-setuid-setgid/">
             <span class="next-text nav-default">43. File Permissions - Symbolic &amp; Numeric Modes, Setuid &amp; Setgid</span>
             <span class="next-text nav-mobile">Next</span>

@@ -6,10 +6,19 @@
     <description>Recent content in Linux Administrator: Simple But Profound on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 16 Mar 2019 06:24:51 +1300</lastBuildDate>
+    <lastBuildDate>Sun, 17 Mar 2019 09:16:36 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/categories/linux-administrator-simple-but-profound/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>45. User and Group Management - Creation, Modification and Deletion</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/45.-user-and-group-management-creation-modification-and-deletion/</link>
+      <pubDate>Sun, 17 Mar 2019 09:16:36 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/45.-user-and-group-management-creation-modification-and-deletion/</guid>
+      <description>&lt;p&gt;To make it easier to manage users and groups, linux provides some common commands that allow you to add, delete, and modify users and groups in a more standardized way.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>44. File Permissions - chown, chgrp, chmod, umask</title>
@@ -17,9 +26,7 @@
       <pubDate>Sat, 16 Mar 2019 06:24:51 +1300</pubDate>
       
       <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/44.-file-permissions-chown-chgrp-chmod-umask/</guid>
-      <description>Change the Owner or Group of One or More Files or Directories With the chown command, we can assign an owner or group to a file or directory.
-Change Owner, Group or Both of a File or Directory If you just want to specify the owner:
-1  chown user file_for_user # This command will only specify the owner of the file file_for_user to user   If you just want to specify the group:</description>
+      <description>&lt;p&gt;In order to make it easier to manage user and group permissions on files and directories, linux provides some common commands that can assign and reclaim permissions to users and groups in a more standardized way.&lt;/p&gt;</description>
     </item>
     
     <item>
