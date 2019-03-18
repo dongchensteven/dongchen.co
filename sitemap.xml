@@ -3,7 +3,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/45.-user-and-group-management-creation-modification-and-deletion/</loc>
+    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/46.-user-management-creation-modification-and-deletion/</loc>
+    <lastmod>2019-03-18T20:03:45+13:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/45.-group-management-creation-modification-and-deletion/</loc>
     <lastmod>2019-03-17T09:16:36+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -388,7 +395,7 @@
   
   <url>
     <loc>https://dongchen.co/</loc>
-    <lastmod>2019-03-17T09:16:36+13:00</lastmod>
+    <lastmod>2019-03-18T20:03:45+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
@@ -402,14 +409,14 @@
   
   <url>
     <loc>https://dongchen.co/tags/linux/</loc>
-    <lastmod>2019-03-17T09:16:36+13:00</lastmod>
+    <lastmod>2019-03-18T20:03:45+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://dongchen.co/categories/linux-administrator-simple-but-profound/</loc>
-    <lastmod>2019-03-17T09:16:36+13:00</lastmod>
+    <lastmod>2019-03-18T20:03:45+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
@@ -437,7 +444,7 @@
   
   <url>
     <loc>https://dongchen.co/post/</loc>
-    <lastmod>2019-03-17T09:16:36+13:00</lastmod>
+    <lastmod>2019-03-18T20:03:45+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
@@ -451,7 +458,7 @@
   
   <url>
     <loc>https://dongchen.co/tags/server/</loc>
-    <lastmod>2019-03-17T09:16:36+13:00</lastmod>
+    <lastmod>2019-03-18T20:03:45+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>

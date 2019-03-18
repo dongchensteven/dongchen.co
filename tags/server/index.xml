@@ -6,18 +6,27 @@
     <description>Recent content in Server on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 17 Mar 2019 09:16:36 +1300</lastBuildDate>
+    <lastBuildDate>Mon, 18 Mar 2019 20:03:45 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/tags/server/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>45. User and Group Management - Creation, Modification and Deletion</title>
-      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/45.-user-and-group-management-creation-modification-and-deletion/</link>
+      <title>46. User Management - Creation, Modification and Deletion</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/46.-user-management-creation-modification-and-deletion/</link>
+      <pubDate>Mon, 18 Mar 2019 20:03:45 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/46.-user-management-creation-modification-and-deletion/</guid>
+      <description>&lt;p&gt;To make it easier to manage users, linux provides some common commands that allow you to add, delete, and modify users in a more standardized way.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>45. Group Management - Creation, Modification and Deletion</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/45.-group-management-creation-modification-and-deletion/</link>
       <pubDate>Sun, 17 Mar 2019 09:16:36 +1300</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/45.-user-and-group-management-creation-modification-and-deletion/</guid>
-      <description>&lt;p&gt;To make it easier to manage users and groups, linux provides some common commands that allow you to add, delete, and modify users and groups in a more standardized way.&lt;/p&gt;</description>
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/45.-group-management-creation-modification-and-deletion/</guid>
+      <description>&lt;p&gt;To make it easier to manage groups, linux provides some common commands that allow you to add, delete, and modify groups in a more standardized way.&lt;/p&gt;</description>
     </item>
     
     <item>
