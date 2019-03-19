@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>47. User Management - Login Details &amp; Record - Dong - A place to track my time log</title>
+  <title>48. User Management - Communications Between Users - Dong - A place to track my time log</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,8 +16,9 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="Linux provides some commands to view the user: login status, login record, login attempt log, user last login log and so on.
-" /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="Dong Chen" /><meta name="description" content="Linux provides users with tools to communicate with each other. Some can send messages to a specified user; some can send a group of messages; some can even send content as an email to a user&amp;rsquo;s inbox list.
+Send Message to a Specific User Before we send information to a user, we first need to know which terminal the message receiver is at:
+1  who     Check logged in users   When we know the terminal of the message receiver, we can send some messages to the terminal:" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -27,7 +28,7 @@
 <meta name="generator" content="Hugo 0.53 with even 4.0.0" />
 
 
-<link rel="canonical" href="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/47.-user-management-login-details-record/" />
+<link rel="canonical" href="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/48.-user-management-communications-between-users/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -40,26 +41,32 @@
 <link rel="stylesheet" href="/css/styles.css">
 
 
-<meta property="og:title" content="47. User Management - Login Details &amp; Record" />
-<meta property="og:description" content="Linux provides some commands to view the user: login status, login record, login attempt log, user last login log and so on." />
+<meta property="og:title" content="48. User Management - Communications Between Users" />
+<meta property="og:description" content="Linux provides users with tools to communicate with each other. Some can send messages to a specified user; some can send a group of messages; some can even send content as an email to a user&rsquo;s inbox list.
+Send Message to a Specific User Before we send information to a user, we first need to know which terminal the message receiver is at:
+1  who     Check logged in users   When we know the terminal of the message receiver, we can send some messages to the terminal:" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/47.-user-management-login-details-record/" /><meta property="article:published_time" content="2019-03-19T08:19:58&#43;13:00"/>
-<meta property="article:modified_time" content="2019-03-19T08:19:58&#43;13:00"/>
+<meta property="og:url" content="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/48.-user-management-communications-between-users/" /><meta property="article:published_time" content="2019-03-20T04:40:29&#43;13:00"/>
+<meta property="article:modified_time" content="2019-03-20T04:40:29&#43;13:00"/>
 
-<meta itemprop="name" content="47. User Management - Login Details &amp; Record">
-<meta itemprop="description" content="Linux provides some commands to view the user: login status, login record, login attempt log, user last login log and so on.">
+<meta itemprop="name" content="48. User Management - Communications Between Users">
+<meta itemprop="description" content="Linux provides users with tools to communicate with each other. Some can send messages to a specified user; some can send a group of messages; some can even send content as an email to a user&rsquo;s inbox list.
+Send Message to a Specific User Before we send information to a user, we first need to know which terminal the message receiver is at:
+1  who     Check logged in users   When we know the terminal of the message receiver, we can send some messages to the terminal:">
 
 
-<meta itemprop="datePublished" content="2019-03-19T08:19:58&#43;13:00" />
-<meta itemprop="dateModified" content="2019-03-19T08:19:58&#43;13:00" />
-<meta itemprop="wordCount" content="645">
+<meta itemprop="datePublished" content="2019-03-20T04:40:29&#43;13:00" />
+<meta itemprop="dateModified" content="2019-03-20T04:40:29&#43;13:00" />
+<meta itemprop="wordCount" content="528">
 
 
 
 <meta itemprop="keywords" content="Linux,Server," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="47. User Management - Login Details &amp; Record"/>
-<meta name="twitter:description" content="Linux provides some commands to view the user: login status, login record, login attempt log, user last login log and so on."/>
+<meta name="twitter:title" content="48. User Management - Communications Between Users"/>
+<meta name="twitter:description" content="Linux provides users with tools to communicate with each other. Some can send messages to a specified user; some can send a group of messages; some can even send content as an email to a user&rsquo;s inbox list.
+Send Message to a Specific User Before we send information to a user, we first need to know which terminal the message receiver is at:
+1  who     Check logged in users   When we know the terminal of the message receiver, we can send some messages to the terminal:"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -122,15 +129,15 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">47. User Management - Login Details &amp; Record</h1>
+      <h1 class="post-title">48. User Management - Communications Between Users</h1>
 
       <div class="post-meta">
-        <span class="post-time"> Tue Mar 19 2019 </span>
+        <span class="post-time"> Wed Mar 20 2019 </span>
         <div class="post-category">
             <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
             </div>
-          <span class="more-meta"> 645 words </span>
-          <span class="more-meta"> 4 mins read </span>
+          <span class="more-meta"> 528 words </span>
+          <span class="more-meta"> 3 mins read </span>
         
       </div>
     </header>
@@ -140,37 +147,78 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#show-the-logged-in-users-and-their-activities">Show the Logged in Users and Their Activities</a>
+<li><a href="#send-message-to-a-specific-user">Send Message to a Specific User</a></li>
+<li><a href="#disable-or-enable-messaging-function">Disable or Enable Messaging Function</a></li>
+<li><a href="#group-messaging-function">Group Messaging Function</a>
 <ul>
-<li><a href="#show-without-the-header">Show Without the Header</a></li>
-<li><a href="#show-the-short-format">Show the Short Format</a></li>
-<li><a href="#show-without-the-form-column">Show Without the Form Column</a></li>
-<li><a href="#show-the-ip-address-instead-of-hostname">Show the IP Address Instead of Hostname</a></li>
-</ul></li>
-<li><a href="#show-users-login-records">Show Users Login Records</a>
-<ul>
-<li><a href="#number-of-rows-to-show">Number of Rows to Show</a></li>
-</ul></li>
-<li><a href="#show-log-in-failed-record">Show Log in Failed Record</a>
-<ul>
-<li><a href="#displays-ten-lines-of-login-failure-records">Displays Ten Lines of Login Failure Records</a></li>
-</ul></li>
-<li><a href="#show-the-last-login-record-of-users">Show the Last Login Record of Users</a>
-<ul>
-<li><a href="#show-the-record-of-a-specific-user">Show the Record of a Specific User</a></li>
+<li><a href="#output-the-message-without-the-banner">Output the Message Without the Banner</a></li>
 </ul></li>
 </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <p>Linux provides some commands to view the user: login status, login record, login attempt log, user last login log and so on.</p>
+      <p>Linux provides users with tools to communicate with each other. Some can send messages to a specified user; some can send a group of messages; some can even send content as an email to a user&rsquo;s inbox list.</p>
 
-<h1 id="show-the-logged-in-users-and-their-activities">Show the Logged in Users and Their Activities</h1>
+<h1 id="send-message-to-a-specific-user">Send Message to a Specific User</h1>
 
-<p>With the w command, we can see who is currently logged in and what they are doing.</p>
+<p>Before we send information to a user, we first need to know which terminal the message receiver is at:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">who</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/48/who.png"
+         alt="img"/> <figcaption>
+            <h4>Check logged in users</h4>
+        </figcaption>
+</figure>
 
-<p>Here are some common options for w command:</p>
+
+<p>When we know the terminal of the message receiver, we can send some messages to the terminal:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">write user pts/1    <span class="c1"># Run this command first</span>
+Hi Mate,
+This is a msg from root.
+Root
+<span class="c1"># Press Ctrl + D at this line</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/48/write.png"
+         alt="img"/> <figcaption>
+            <h4>Sending message to a user called user</h4>
+        </figcaption>
+</figure>
+
+
+<p>When the message is sent, the receiving terminal should print out the content just sent out by the root terminal:</p>
+
+<figure>
+    <img src="../images/48/write_received.png"
+         alt="img"/> <figcaption>
+            <h4>Sending message to a user called user</h4>
+        </figcaption>
+</figure>
+
+
+<h1 id="disable-or-enable-messaging-function">Disable or Enable Messaging Function</h1>
+
+<p>We can use the mesg command to turn on or off the ability to send and receive messages.</p>
+
+<p>Here are two arguments for mesg command:</p>
 
 <table>
 <thead>
@@ -182,270 +230,115 @@
 
 <tbody>
 <tr>
-<td align="center">-h or &#8209;&#8209;no-header</td>
-<td align="left">Output without header.</td>
+<td align="center">n</td>
+<td align="left">Disable send and receive functions. This parameter is not valid for messages sent from root.</td>
 </tr>
 
 <tr>
-<td align="center">-s or &#8209;&#8209;short</td>
-<td align="left">Output short format.</td>
-</tr>
-
-<tr>
-<td align="center">-f or &#8209;&#8209;form</td>
-<td align="left">Output without form column.</td>
-</tr>
-
-<tr>
-<td align="center">-i or &#8209;&#8209;ip-addr</td>
-<td align="left">Output IP address instead of hostname.</td>
+<td align="center">y</td>
+<td align="left">Enable send and receive functions.</td>
 </tr>
 </tbody>
 </table>
+
+<p>We can set root to not receive or send messages:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">w</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">mesg n</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/47/w.png"
+    <img src="../images/48/mesg_n.png"
          alt="img"/> <figcaption>
-            <h4>Output the users and their activities</h4>
+            <h4>Disable the send and receive functions</h4>
         </figcaption>
 </figure>
 
 
-<h2 id="show-without-the-header">Show Without the Header</h2>
-
-<p>With the -h option, we can view only the content without displaying the title:</p>
+<p>When a user attempts to send a message to root, the system displays that root has disabled the messaging feature:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">w -h    <span class="c1"># This equivalent to w --no-header</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">write root pts/0</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/47/w_h.png"
+    <img src="../images/48/write_disabled.png"
          alt="img"/> <figcaption>
-            <h4>Output without the header</h4>
+            <h4>The user attempts to send a message to a root user who has turned off the messaging function</h4>
         </figcaption>
 </figure>
 
 
-<h2 id="show-the-short-format">Show the Short Format</h2>
+<h1 id="group-messaging-function">Group Messaging Function</h1>
 
-<p>With the -s option, we can view only the output in a short format:</p>
+<p>We can use the wall command to broadcast messages to all users:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">w -s    <span class="c1"># This equivalent to w --short</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">wall</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/47/w_s.png"
+    <img src="../images/48/wall.png"
          alt="img"/> <figcaption>
-            <h4>Output the short format</h4>
+            <h4>Send information to all users, including the sender of the message</h4>
         </figcaption>
 </figure>
 
 
-<h2 id="show-without-the-form-column">Show Without the Form Column</h2>
+<p>When the message is broadcasted, the receiving terminals should print out the content just sent out by the root terminal:</p>
 
-<p>With the -f option, we can view only the output other than the form column:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">w -f    <span class="c1"># This equivalent to w --form</span></code></pre></td></tr></table>
-</div>
-</div>
 <figure>
-    <img src="../images/47/w_f.png"
+    <img src="../images/48/wall_received.png"
          alt="img"/> <figcaption>
-            <h4>Output without the form column</h4>
+            <h4>Broadcasting message to all users</h4>
         </figcaption>
 </figure>
 
 
-<h2 id="show-the-ip-address-instead-of-hostname">Show the IP Address Instead of Hostname</h2>
+<h2 id="output-the-message-without-the-banner">Output the Message Without the Banner</h2>
 
-<p>With the -i option, we can view the ip address instead of the hostname:</p>
+<p>With the -h option, the message sent does not display the sending host:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">w -i    <span class="c1"># This equivalent to w --ip-addr</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">wall -n</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/47/w_i.png"
+    <img src="../images/48/wall_n.png"
          alt="img"/> <figcaption>
-            <h4>Output IP address instead of hostname</h4>
+            <h4>Send information to all users without the banner, including the sender of the message</h4>
         </figcaption>
 </figure>
 
 
-<h1 id="show-users-login-records">Show Users Login Records</h1>
+<p>When the message is broadcasted, the receiving terminals should print out the content just sent out by the root terminal without the banner:</p>
 
-<p>With the last command, we can see users&rsquo; login records.</p>
-
-<p>Here are some common options for last command:</p>
-
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Meaning</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">-n num or &#8209;&#8209;lines num</td>
-<td align="left">Output num of lines.</td>
-</tr>
-
-<tr>
-<td align="center">-x or &#8209;&#8209;more-records</td>
-<td align="left">Output runlevel changes, shutdowns records as well.</td>
-</tr>
-
-<tr>
-<td align="center">-a or &#8209;&#8209;all-records</td>
-<td align="left">Output hostname in the last column.</td>
-</tr>
-
-<tr>
-<td align="center">-i or &#8209;&#8209;ip-address</td>
-<td align="left">Output IP address instead of hostname.</td>
-</tr>
-
-<tr>
-<td align="center">-w or &#8209;&#8209;wide</td>
-<td align="left">Output all the columns of the records.</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">last</code></pre></td></tr></table>
-</div>
-</div>
 <figure>
-    <img src="../images/47/last.png"
+    <img src="../images/48/wall_n_received.png"
          alt="img"/> <figcaption>
-            <h4>Output users&#39; login records</h4>
-        </figcaption>
-</figure>
-
-
-<h2 id="number-of-rows-to-show">Number of Rows to Show</h2>
-
-<p>With the -n or &#8209;&#8209;lines option, we can specify the number of rows to output for the log-in records:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">last -n <span class="m">10</span>    <span class="c1"># This is equivalent to last -10 or last --lines 10</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/47/last_n_10.png"
-         alt="img"/> <figcaption>
-            <h4>Output ten lines of records</h4>
-        </figcaption>
-</figure>
-
-
-<h1 id="show-log-in-failed-record">Show Log in Failed Record</h1>
-
-<p>The options for the lastb command are similar to those for the last command.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">lastb</code></pre></td></tr></table>
-</div>
-</div>
-<h2 id="displays-ten-lines-of-login-failure-records">Displays Ten Lines of Login Failure Records</h2>
-
-<p>With the -n or &#8209;&#8209;lines option, we can specify the number of rows to output for the log-in failed records:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">lastb -n <span class="m">10</span>    <span class="c1"># this is equivalent to lastb -10 or lastb --lines 10</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/47/lastb_n_10.png"
-         alt="img"/> <figcaption>
-            <h4>Output ten lines of login failed records.</h4>
-        </figcaption>
-</figure>
-
-
-<p>We can see from the screenshot that someone is trying to log on to my server.</p>
-
-<h1 id="show-the-last-login-record-of-users">Show the Last Login Record of Users</h1>
-
-<p>We can use the lastlog command to display the record of all or a user&rsquo;s last login:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">lastlog</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/47/lastlog.png"
-         alt="img"/> <figcaption>
-            <h4>Output all the users&#39; last login records.</h4>
-        </figcaption>
-</figure>
-
-
-<h2 id="show-the-record-of-a-specific-user">Show the Record of a Specific User</h2>
-
-<p>With the -u option, we can view only the last login record of a specified user:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">lastlog -u root</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/47/lastlog_u.png"
-         alt="img"/> <figcaption>
-            <h4>Output all the users&#39; last login records.</h4>
+            <h4>Broadcasting message to all users without the banner</h4>
         </figcaption>
 </figure>
 
 
 <blockquote>
 <p>References
-<a href="https://www.gnu.org/software/coreutils/manual/html_node/User-information.html">20 User information</a>,
-<a href="http://man7.org/linux/man-pages/man1/w.1.html">W(1)</a>,
-<a href="http://man7.org/linux/man-pages/man1/last.1@@util-linux.html">LAST, LASTB(1)</a>,
-<a href="http://man7.org/linux/man-pages/man8/lastlog.8.html">LASTLOG(8)</a></p>
+<a href="http://man7.org/linux/man-pages/man1/write.1.html">WRITE(1)</a>,
+<a href="http://man7.org/linux/man-pages/man1/mesg.1.html">MESG(1)</a>,
+<a href="http://man7.org/linux/man-pages/man1/wall.1.html">WALL(1)</a>,
+<a href="http://man7.org/linux/man-pages/man1/write.1.html">WRITE(1)</a></p>
 </blockquote>
 
 <p>If you think the content of this article has helped you, and if you would like some more high-quality materials in the near future, please give me some modest support.</p>
@@ -464,7 +357,7 @@
   </p>
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
-    <span class="item-content">Tue Mar 19 2019</span>
+    <span class="item-content">Wed Mar 20 2019</span>
   </p>
   
   
@@ -488,13 +381,9 @@
           <a href="/tags/server/">Server</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/server-side-programming/linux/simple-but-profound/48.-user-management-communications-between-users/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">48. User Management - Communications Between Users</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        <a class="next" href="/post/server-side-programming/linux/simple-but-profound/46.-user-management-creation-modification-and-deletion/">
-            <span class="next-text nav-default">46. User Management - Creation, Modification and Deletion</span>
+        
+        <a class="next" href="/post/server-side-programming/linux/simple-but-profound/47.-user-management-login-details-record/">
+            <span class="next-text nav-default">47. User Management - Login Details &amp; Record</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>
