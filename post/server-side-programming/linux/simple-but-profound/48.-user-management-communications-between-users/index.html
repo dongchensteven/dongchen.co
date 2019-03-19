@@ -57,7 +57,7 @@ Send Message to a Specific User Before we send information to a user, we first n
 
 <meta itemprop="datePublished" content="2019-03-20T04:40:29&#43;13:00" />
 <meta itemprop="dateModified" content="2019-03-20T04:40:29&#43;13:00" />
-<meta itemprop="wordCount" content="528">
+<meta itemprop="wordCount" content="649">
 
 
 
@@ -136,8 +136,8 @@ Send Message to a Specific User Before we send information to a user, we first n
         <div class="post-category">
             <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
             </div>
-          <span class="more-meta"> 528 words </span>
-          <span class="more-meta"> 3 mins read </span>
+          <span class="more-meta"> 649 words </span>
+          <span class="more-meta"> 4 mins read </span>
         
       </div>
     </header>
@@ -153,6 +153,7 @@ Send Message to a Specific User Before we send information to a user, we first n
 <ul>
 <li><a href="#output-the-message-without-the-banner">Output the Message Without the Banner</a></li>
 </ul></li>
+<li><a href="#send-an-email-to-a-user">Send an Email to a User</a></li>
 </ul>
 </nav>
   </div>
@@ -333,12 +334,79 @@ Root
 </figure>
 
 
+<h1 id="send-an-email-to-a-user">Send an Email to a User</h1>
+
+<p>We can send mail to users based on mail, but we first need to install the mailx package:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">yum mailx -y</code></pre></td></tr></table>
+</div>
+</div>
+<p>We can try sending an email to root:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">mail -s <span class="s1">&#39;Hi root&#39;</span> root
+Hi Mate,
+This is an email from user.
+Talk soon.
+User
+.    <span class="c1"># This is act as an terminate symbol</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/48/mail_s.png"
+         alt="img"/> <figcaption>
+            <h4>Send an email to root</h4>
+        </figcaption>
+</figure>
+
+
+<p>The root user&rsquo;s terminal should prompt a message:</p>
+
+<figure>
+    <img src="../images/48/mail_received.png"
+         alt="img"/> <figcaption>
+            <h4>Received an email</h4>
+        </figcaption>
+</figure>
+
+
+<p>We can view the newly received mail through the mail command:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">mail</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/48/mail_check.png"
+         alt="img"/> <figcaption>
+            <h4>Viewing the received email</h4>
+        </figcaption>
+</figure>
+
+
+<p>When we have finished checking the e-mail, we can terminate the program by pressing the Ctrl + D key combination.</p>
+
 <blockquote>
 <p>References
 <a href="http://man7.org/linux/man-pages/man1/write.1.html">WRITE(1)</a>,
 <a href="http://man7.org/linux/man-pages/man1/mesg.1.html">MESG(1)</a>,
 <a href="http://man7.org/linux/man-pages/man1/wall.1.html">WALL(1)</a>,
-<a href="http://man7.org/linux/man-pages/man1/write.1.html">WRITE(1)</a></p>
+<a href="http://mailutils.org/manual/html_chapter/index.html">GNU Mailutils</a></p>
 </blockquote>
 
 <p>If you think the content of this article has helped you, and if you would like some more high-quality materials in the near future, please give me some modest support.</p>
