@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>48. User Management - Communications Between Users - Dong - A place to track my time log</title>
+  <title>49. User Management - su, sudo - Dong - A place to track my time log</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="Linux provides users with tools to communicate with each other. Some can send messages to a specified user; some can send a group of messages; some can even send content as an email to a user&amp;rsquo;s inbox list.
+<meta name="author" content="Dong Chen" /><meta name="description" content="We can switch between users through the su and sudo commands. Also, we can use these two commands to perform certain command operations with the privileges of other users.
 " /><meta name="keywords" content="Hugo, theme, even" />
 
 
@@ -27,7 +27,7 @@
 <meta name="generator" content="Hugo 0.53 with even 4.0.0" />
 
 
-<link rel="canonical" href="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/48.-user-management-communications-between-users/" />
+<link rel="canonical" href="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/49.-user-management-su-sudo/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -40,26 +40,26 @@
 <link rel="stylesheet" href="/css/styles.css">
 
 
-<meta property="og:title" content="48. User Management - Communications Between Users" />
-<meta property="og:description" content="Linux provides users with tools to communicate with each other. Some can send messages to a specified user; some can send a group of messages; some can even send content as an email to a user&rsquo;s inbox list." />
+<meta property="og:title" content="49. User Management - su, sudo" />
+<meta property="og:description" content="We can switch between users through the su and sudo commands. Also, we can use these two commands to perform certain command operations with the privileges of other users." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/48.-user-management-communications-between-users/" /><meta property="article:published_time" content="2019-03-20T04:40:29&#43;13:00"/>
-<meta property="article:modified_time" content="2019-03-20T04:40:29&#43;13:00"/>
+<meta property="og:url" content="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/49.-user-management-su-sudo/" /><meta property="article:published_time" content="2019-03-21T07:54:32&#43;13:00"/>
+<meta property="article:modified_time" content="2019-03-21T07:54:32&#43;13:00"/>
 
-<meta itemprop="name" content="48. User Management - Communications Between Users">
-<meta itemprop="description" content="Linux provides users with tools to communicate with each other. Some can send messages to a specified user; some can send a group of messages; some can even send content as an email to a user&rsquo;s inbox list.">
+<meta itemprop="name" content="49. User Management - su, sudo">
+<meta itemprop="description" content="We can switch between users through the su and sudo commands. Also, we can use these two commands to perform certain command operations with the privileges of other users.">
 
 
-<meta itemprop="datePublished" content="2019-03-20T04:40:29&#43;13:00" />
-<meta itemprop="dateModified" content="2019-03-20T04:40:29&#43;13:00" />
-<meta itemprop="wordCount" content="649">
+<meta itemprop="datePublished" content="2019-03-21T07:54:32&#43;13:00" />
+<meta itemprop="dateModified" content="2019-03-21T07:54:32&#43;13:00" />
+<meta itemprop="wordCount" content="680">
 
 
 
 <meta itemprop="keywords" content="Linux,Server," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="48. User Management - Communications Between Users"/>
-<meta name="twitter:description" content="Linux provides users with tools to communicate with each other. Some can send messages to a specified user; some can send a group of messages; some can even send content as an email to a user&rsquo;s inbox list."/>
+<meta name="twitter:title" content="49. User Management - su, sudo"/>
+<meta name="twitter:description" content="We can switch between users through the su and sudo commands. Also, we can use these two commands to perform certain command operations with the privileges of other users."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -122,14 +122,14 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">48. User Management - Communications Between Users</h1>
+      <h1 class="post-title">49. User Management - su, sudo</h1>
 
       <div class="post-meta">
-        <span class="post-time"> Wed Mar 20 2019 </span>
+        <span class="post-time"> Thu Mar 21 2019 </span>
         <div class="post-category">
             <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
             </div>
-          <span class="more-meta"> 649 words </span>
+          <span class="more-meta"> 680 words </span>
           <span class="more-meta"> 4 mins read </span>
         
       </div>
@@ -140,77 +140,30 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#send-message-to-a-specific-user">Send Message to a Specific User</a></li>
-<li><a href="#disable-or-enable-messaging-function">Disable or Enable Messaging Function</a></li>
-<li><a href="#group-messaging-function">Group Messaging Function</a>
+<li><a href="#su">su</a>
 <ul>
-<li><a href="#output-the-message-without-the-banner">Output the Message Without the Banner</a></li>
+<li><a href="#stay-on-the-current-working-directory-after-switching-user">Stay on the Current Working Directory After Switching User</a></li>
+<li><a href="#change-current-working-directory-to-the-switched-user-home-directory">Change Current Working Directory to the Switched User Home Directory</a></li>
 </ul></li>
-<li><a href="#send-an-email-to-a-user">Send an Email to a User</a></li>
+<li><a href="#sudo">sudo</a>
+<ul>
+<li><a href="#edit-sudoers-file">Edit Sudoers File</a>
+<ul>
+<li><a href="#locked-before-editing">Locked Before Editing</a></li>
+<li><a href="#naked-editing">Naked Editing</a></li>
+<li><a href="#editing-the-content">Editing the Content</a></li>
+</ul></li>
+<li><a href="#run-the-command-as-another-user">Run the Command as Another User</a></li>
+<li><a href="#alias">Alias</a></li>
+</ul></li>
 </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <p>Linux provides users with tools to communicate with each other. Some can send messages to a specified user; some can send a group of messages; some can even send content as an email to a user&rsquo;s inbox list.</p>
+      <p>We can switch between users through the su and sudo commands. Also, we can use these two commands to perform certain command operations with the privileges of other users.</p>
 
-<h1 id="send-message-to-a-specific-user">Send Message to a Specific User</h1>
-
-<p>Before we send information to a user, we first need to know which terminal the message receiver is at:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">who</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/48/who.png"
-         alt="img"/> <figcaption>
-            <h4>Check logged in users</h4>
-        </figcaption>
-</figure>
-
-
-<p>When we know the terminal of the message receiver, we can send some messages to the terminal:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">write user pts/1    <span class="c1"># Run this command first</span>
-Hi Mate,
-This is a msg from root.
-Root
-<span class="c1"># Press Ctrl + D at this line</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/48/write.png"
-         alt="img"/> <figcaption>
-            <h4>Sending message to a user called user</h4>
-        </figcaption>
-</figure>
-
-
-<p>When the message is sent, the receiving terminal should print out the content just sent out by the root terminal:</p>
-
-<figure>
-    <img src="../images/48/write_received.png"
-         alt="img"/> <figcaption>
-            <h4>Sending message to a user called user</h4>
-        </figcaption>
-</figure>
-
-
-<h1 id="disable-or-enable-messaging-function">Disable or Enable Messaging Function</h1>
-
-<p>We can use the mesg command to turn on or off the ability to send and receive messages.</p>
+<h1 id="su">su</h1>
 
 <p>Here are two arguments for mesg command:</p>
 
@@ -224,121 +177,15 @@ Root
 
 <tbody>
 <tr>
-<td align="center">n</td>
-<td align="left">Disable send and receive functions. This parameter is not valid for messages sent from root.</td>
-</tr>
-
-<tr>
-<td align="center">y</td>
-<td align="left">Enable send and receive functions.</td>
+<td align="center">- or -l or &#8209;&#8209;login</td>
+<td align="left">Start a shell as a login shell and switch to the specified user&rsquo;s home directory.</td>
 </tr>
 </tbody>
 </table>
 
-<p>We can set root to not receive or send messages:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">mesg n</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/48/mesg_n.png"
-         alt="img"/> <figcaption>
-            <h4>Disable the send and receive functions</h4>
-        </figcaption>
-</figure>
+<h2 id="stay-on-the-current-working-directory-after-switching-user">Stay on the Current Working Directory After Switching User</h2>
 
-
-<p>When a user attempts to send a message to root, the system displays that root has disabled the messaging feature:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">write root pts/0</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/48/write_disabled.png"
-         alt="img"/> <figcaption>
-            <h4>The user attempts to send a message to a root user who has turned off the messaging function</h4>
-        </figcaption>
-</figure>
-
-
-<h1 id="group-messaging-function">Group Messaging Function</h1>
-
-<p>We can use the wall command to broadcast messages to all users:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">wall</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/48/wall.png"
-         alt="img"/> <figcaption>
-            <h4>Send information to all users, including the sender of the message</h4>
-        </figcaption>
-</figure>
-
-
-<p>When the message is broadcasted, the receiving terminals should print out the content just sent out by the root terminal:</p>
-
-<figure>
-    <img src="../images/48/wall_received.png"
-         alt="img"/> <figcaption>
-            <h4>Broadcasting message to all users</h4>
-        </figcaption>
-</figure>
-
-
-<h2 id="output-the-message-without-the-banner">Output the Message Without the Banner</h2>
-
-<p>With the -h option, the message sent does not display the sending host:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">wall -n</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/48/wall_n.png"
-         alt="img"/> <figcaption>
-            <h4>Send information to all users without the banner, including the sender of the message</h4>
-        </figcaption>
-</figure>
-
-
-<p>When the message is broadcasted, the receiving terminals should print out the content just sent out by the root terminal without the banner:</p>
-
-<figure>
-    <img src="../images/48/wall_n_received.png"
-         alt="img"/> <figcaption>
-            <h4>Broadcasting message to all users without the banner</h4>
-        </figcaption>
-</figure>
-
-
-<h1 id="send-an-email-to-a-user">Send an Email to a User</h1>
-
-<p>We can send mail to users based on mail, but we first need to install the mailx package:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">yum mailx -y</code></pre></td></tr></table>
-</div>
-</div>
-<p>We can try sending an email to root:</p>
+<p>By default, the su command replaces the current user with the root user.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -346,60 +193,226 @@ Root
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">mail -s <span class="s1">&#39;Hi root&#39;</span> root
-Hi Mate,
-This is an email from user.
-Talk soon.
-User
-.    <span class="c1"># This is act as an terminate symbol</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">whoami
+<span class="nb">pwd</span>
+su    <span class="c1"># This is equivalent to su root</span>
+<span class="nb">pwd</span>
+whoami</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/48/mail_s.png"
+    <img src="../images/49/whoami_pwd_su_whoami_pwd.png"
          alt="img"/> <figcaption>
-            <h4>Send an email to root</h4>
+            <h4>Stay on current working directory after replacing the user</h4>
         </figcaption>
 </figure>
 
 
-<p>The root user&rsquo;s terminal should prompt a message:</p>
+<p>When we replace root with user, we don&rsquo;t need to enter a password.</p>
 
+<h2 id="change-current-working-directory-to-the-switched-user-home-directory">Change Current Working Directory to the Switched User Home Directory</h2>
+
+<p>With the - or -l or -login option, we can use the new current user&rsquo;s home directory as the working directory after replacing the user:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">whoami
+<span class="nb">pwd</span>
+su -    <span class="c1"># This is equivalent to su -l or su --login</span>
+<span class="nb">pwd</span>
+whoami</code></pre></td></tr></table>
+</div>
+</div>
 <figure>
-    <img src="../images/48/mail_received.png"
+    <img src="../images/49/whoami_pwd_su_-_whoami_pwd.png"
          alt="img"/> <figcaption>
-            <h4>Received an email</h4>
+            <h4>Change to root&#39;s current working directory after replacing the user</h4>
         </figcaption>
 </figure>
 
 
-<p>We can view the newly received mail through the mail command:</p>
+<h1 id="sudo">sudo</h1>
+
+<h2 id="edit-sudoers-file">Edit Sudoers File</h2>
+
+<h3 id="locked-before-editing">Locked Before Editing</h3>
+
+<p>A more rigorous approach, which locks the /etc/sudoers file and then opens it:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">mail</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">visudo    <span class="c1"># After marking as occupied, open the /etc/sudoers file through the vi editor</span></code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/48/mail_check.png"
+    <img src="../images/49/visudo_again.png"
          alt="img"/> <figcaption>
-            <h4>Viewing the received email</h4>
+            <h4>When a user is editing the / etc/sudoers file through the visudo command, there is no way for other users to use the visudo command at this point.</h4>
         </figcaption>
 </figure>
 
 
-<p>When we have finished checking the e-mail, we can terminate the program by pressing the Ctrl + D key combination.</p>
+<h3 id="naked-editing">Naked Editing</h3>
+
+<p>One less rigorous approach is to open the /etc/sudoers file directly and others can edit it at the same time:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">vi /etc/sudoers</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="editing-the-content">Editing the Content</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 1. Safely open the /etc/sudoers file through visudo command</span>
+visudo</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="c1"># 2. Paste this line of setting in that file</span>
+<span class="na">usropt ALL</span><span class="o">=</span><span class="s">(root) PASSWD:/usr/sbin/userdel,/usr/sbin/usermod, NOPASSWD:/usr/sbin/useradd</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/49/etc_sudoers_usropt.png"
+         alt="img"/> <figcaption>
+            <h4>The line that starts with usropt is our newly added configuration to the sudoers file</h4>
+        </figcaption>
+</figure>
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 3. Let&#39;s create a user with the same name as the configuration</span>
+useradd usropt
+<span class="nb">echo</span> <span class="s2">&#34;opt123&#34;</span> <span class="p">|</span> passwd --stdin usropt    <span class="c1"># Set password to opt123</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="run-the-command-as-another-user">Run the Command as Another User</h2>
+
+<p>Let&rsquo;s replace the current user with the newly created user:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">su - usropt
+useradd</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/49/su_usropt_useradd.png"
+         alt="img"/> <figcaption>
+            <h4>We can&#39;t run the administrator&#39;s command directly</h4>
+        </figcaption>
+</figure>
+
+
+<p>We need to use the sudo command to run the administrator&rsquo;s command:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo useradd</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/49/sudo_useradd.png"
+         alt="img"/> <figcaption>
+            <h4>With the sudo command, we ran the administrator&#39;s command</h4>
+        </figcaption>
+</figure>
+
+
+<p>When configured, if the command is assigned under passwd, you need to enter the user&rsquo;s password when using the command to prevent malicious abuse of account permissions by others:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo userdel</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/49/sudo_userdel.png"
+         alt="img"/> <figcaption>
+            <h4>After entering the password of the usropt user, the command can be executed</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="alias">Alias</h2>
+
+<p>We can subdivide each as a part through alias:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">su -    <span class="c1"># Replace the current user with root</span>
+visudo    <span class="c1"># Open the /etc/sudoers file again</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="c1"># Replace the previous setting with below settings</span>
+<span class="na">User_Alias USROPT</span> <span class="o">=</span> <span class="s">usropt</span>
+<span class="na">Host_Alias USROPTHOST</span> <span class="o">=</span> <span class="s">ALL</span>
+<span class="na">Runas_Alias USROPTRUNAS</span> <span class="o">=</span> <span class="s">root</span>
+<span class="na">Cmd_Alias USROPTCMDNOPIN</span> <span class="o">=</span> <span class="s">/usr/sbin/useradd</span>
+<span class="na">Cmd_Alias USROPTCMDPIN</span> <span class="o">=</span> <span class="s">/usr/sbin/usermod,/usr/sbin/userdel,!/usr/bin/passwd root,/usr/bin/passwd [A-Za-z]*</span>
+<span class="na">USROPT USROPTHOST</span><span class="o">=</span><span class="s">(USRRUNAS) PASSWD:USROPTCMDPIN,NOPASSWD:USROPTCMDNOPIN</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/49/etc_sudoers_usropt_alias.png"
+         alt="img"/> <figcaption>
+            <h4>Replace the newer settings with the older one</h4>
+        </figcaption>
+</figure>
+
 
 <blockquote>
 <p>References
-<a href="http://man7.org/linux/man-pages/man1/write.1.html">WRITE(1)</a>,
-<a href="http://man7.org/linux/man-pages/man1/mesg.1.html">MESG(1)</a>,
-<a href="http://man7.org/linux/man-pages/man1/wall.1.html">WALL(1)</a>,
-<a href="http://mailutils.org/manual/html_chapter/index.html">GNU Mailutils</a></p>
+<a href="https://ftp.gnu.org/old-gnu/Manuals/coreutils-4.5.4/html_node/coreutils_149.html">22.5 su: Run a command with substitute user and group id</a>,
+<a href="http://man7.org/linux/man-pages/man1/su.1.html">SU(1)</a>,
+<a href="https://www.sudo.ws/man/sudoers.man.html">Sudoers Manual</a>,
+<a href="https://www.sudo.ws/man/1.8.23/visudo.man.html">Visudo 1.8.23 Manual</a></p>
 </blockquote>
 
 <p>If you think the content of this article has helped you, and if you would like some more high-quality materials in the near future, please give me some modest support.</p>
@@ -418,7 +431,7 @@ User
   </p>
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
-    <span class="item-content">Wed Mar 20 2019</span>
+    <span class="item-content">Thu Mar 21 2019</span>
   </p>
   
   
@@ -442,13 +455,9 @@ User
           <a href="/tags/server/">Server</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/server-side-programming/linux/simple-but-profound/49.-user-management-su-sudo/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">49. User Management - su, sudo</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        <a class="next" href="/post/server-side-programming/linux/simple-but-profound/47.-user-management-login-details-record/">
-            <span class="next-text nav-default">47. User Management - Login Details &amp; Record</span>
+        
+        <a class="next" href="/post/server-side-programming/linux/simple-but-profound/48.-user-management-communications-between-users/">
+            <span class="next-text nav-default">48. User Management - Communications Between Users</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>

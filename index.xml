@@ -6,10 +6,19 @@
     <description>Recent content on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 20 Mar 2019 04:40:29 +1300</lastBuildDate>
+    <lastBuildDate>Thu, 21 Mar 2019 07:54:32 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>49. User Management - su, sudo</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/49.-user-management-su-sudo/</link>
+      <pubDate>Thu, 21 Mar 2019 07:54:32 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/49.-user-management-su-sudo/</guid>
+      <description>&lt;p&gt;We can switch between users through the su and sudo commands. Also, we can use these two commands to perform certain command operations with the privileges of other users.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>48. User Management - Communications Between Users</title>
@@ -17,9 +26,7 @@
       <pubDate>Wed, 20 Mar 2019 04:40:29 +1300</pubDate>
       
       <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/48.-user-management-communications-between-users/</guid>
-      <description>Linux provides users with tools to communicate with each other. Some can send messages to a specified user; some can send a group of messages; some can even send content as an email to a user&amp;rsquo;s inbox list.
-Send Message to a Specific User Before we send information to a user, we first need to know which terminal the message receiver is at:
-1  who     Check logged in users   When we know the terminal of the message receiver, we can send some messages to the terminal:</description>
+      <description>&lt;p&gt;Linux provides users with tools to communicate with each other. Some can send messages to a specified user; some can send a group of messages; some can even send content as an email to a user&amp;rsquo;s inbox list.&lt;/p&gt;</description>
     </item>
     
     <item>
