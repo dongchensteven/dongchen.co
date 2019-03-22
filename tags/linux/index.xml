@@ -6,10 +6,19 @@
     <description>Recent content in Linux on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 22 Mar 2019 06:48:25 +1300</lastBuildDate>
+    <lastBuildDate>Sat, 23 Mar 2019 07:13:22 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>51. File Permissions - File Attributes</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/51.-file-permissions-file-attributes/</link>
+      <pubDate>Sat, 23 Mar 2019 07:13:22 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/51.-file-permissions-file-attributes/</guid>
+      <description>&lt;p&gt;To make our files more secure, Linux provides a feature called file attribute. By configuring the attributes of the file, we can specify whether it is read-only or undeleted, or in other statuses.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>50. File Permissions - Filesystem Access Control List</title>
