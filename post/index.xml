@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 21 Mar 2019 07:54:32 +1300</lastBuildDate>
+    <lastBuildDate>Fri, 22 Mar 2019 06:48:25 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>50. File Permissions - Filesystem Access Control List</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/50.-file-permissions-filesystem-access-control-list/</link>
+      <pubDate>Fri, 22 Mar 2019 06:48:25 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/50.-file-permissions-filesystem-access-control-list/</guid>
+      <description>&lt;p&gt;Although the chmod command is powerful enough, it cannot assign permissions more finely, so Linux provides some flexible commands to specify permissions for a particular user or group. Starting from Linux kernel 2.6, we can allocate more granular permissions to users or groups.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>49. User Management - su, sudo</title>

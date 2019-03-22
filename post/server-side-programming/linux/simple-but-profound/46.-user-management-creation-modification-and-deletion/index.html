@@ -52,7 +52,7 @@
 
 <meta itemprop="datePublished" content="2019-03-18T20:03:45&#43;13:00" />
 <meta itemprop="dateModified" content="2019-03-18T20:03:45&#43;13:00" />
-<meta itemprop="wordCount" content="1972">
+<meta itemprop="wordCount" content="2113">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
             </div>
-          <span class="more-meta"> 1972 words </span>
+          <span class="more-meta"> 2113 words </span>
           <span class="more-meta"> 10 mins read </span>
         
       </div>
@@ -161,6 +161,10 @@
 <li><a href="#user-password">User Password</a>
 <ul>
 <li><a href="#set-user-password-through-io-input">Set User Password Through IO Input</a></li>
+</ul></li>
+<li><a href="#users-passwords">Users Passwords</a>
+<ul>
+<li><a href="#set-users-passwords-through-io-input">Set Users Passwords Through IO Input</a></li>
 </ul></li>
 <li><a href="#change-shell">Change Shell</a>
 <ul>
@@ -717,6 +721,75 @@ cat /etc/shadow <span class="p">|</span> grep <span class="s1">&#39;dong:&#39;</
 </figure>
 
 
+<h1 id="users-passwords">Users Passwords</h1>
+
+<p>We can use the chpasswd command to specify or change the users&rsquo; login passwords.</p>
+
+<p>Here are some common options for chpasswd command:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Option</th>
+<th align="left">Meaning</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">-c or &#8209;&#8209;crypt-method</td>
+<td align="left">Use a method to encrypt the password. Algorithms such as DES, MD5, NONE, SHA256, SHA512 can be used, if they exist in libc.</td>
+</tr>
+
+<tr>
+<td align="center">-s or &#8209;&#8209;sha-rounds</td>
+<td align="left">By default, the system uses 5000 rounds to encrypt the password. We can specify a value between 1000 and 999999999.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="set-users-passwords-through-io-input">Set Users Passwords Through IO Input</h2>
+
+<p>Let&rsquo;s first remove dong&rsquo;s password:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">passwd -d dong
+cat /etc/shadow <span class="p">|</span> grep <span class="s1">&#39;dong:&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/46/passwd_d_dong_cat_shadow.png"
+         alt="img"/> <figcaption>
+            <h4>Dong&#39;s password has been removed</h4>
+        </figcaption>
+</figure>
+
+
+<p>We use the chpasswd command to bulk change the users&rsquo; passwords:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">cat /etc/shadow <span class="p">|</span> grep -E <span class="s1">&#39;dong:|dongchen:&#39;</span>
+<span class="nb">printf</span> <span class="s1">&#39;%s\n&#39;</span> <span class="s1">&#39;dong:dong123&#39;</span> <span class="s1">&#39;dongchen:chen123&#39;</span> <span class="p">|</span> chpasswd
+cat /etc/shadow <span class="p">|</span> grep -E <span class="s1">&#39;dong:|dongchen:&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/46/cat_shadow_printf_strings_chpasswd_cat_shadow.png"
+         alt="img"/> <figcaption>
+            <h4>Assign passwords to dong and dongchen individually</h4>
+        </figcaption>
+</figure>
+
+
 <h1 id="change-shell">Change Shell</h1>
 
 <p>We can use the chsh command to change the user&rsquo;s login shell.</p>
@@ -926,6 +999,7 @@ finger dongchen</code></pre></td></tr></table>
 <a href="http://man7.org/linux/man-pages/man8/userdel.8.html">USERDEL(8)</a>,
 <a href="http://man7.org/linux/man-pages/man8/pwck.8.html">PWCK(8)</a>,
 <a href="http://man7.org/linux/man-pages/man1/passwd.1.html">PASSWD(1)</a>,
+<a href="http://man7.org/linux/man-pages/man8/chpasswd.8.html">CHPASSWD(8)</a>,
 <a href="http://man7.org/linux/man-pages/man1/chsh.1.html">CHSH(1)</a>,
 <a href="http://man7.org/linux/man-pages/man1/chfn.1.html">CHFN(1)</a>,
 <a href="http://man7.org/linux/man-pages/man1/chage.1.html">CHAGE(1)</a></p>
