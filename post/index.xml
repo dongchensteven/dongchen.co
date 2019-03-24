@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 23 Mar 2019 07:13:22 +1300</lastBuildDate>
+    <lastBuildDate>Sun, 24 Mar 2019 09:12:59 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>52. Find Utilities - Advanced Files Searching</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/52.-find-utilities-advanced-files-searching/</link>
+      <pubDate>Sun, 24 Mar 2019 09:12:59 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/52.-find-utilities-advanced-files-searching/</guid>
+      <description>&lt;p&gt;The find command provides some useful options for finding files or directories based on creation time, modification time, owner, group, permissions, type, size, etc.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>51. File Permissions - File Attributes</title>
