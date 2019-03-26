@@ -6,10 +6,19 @@
     <description>Recent content on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 25 Mar 2019 07:38:39 +1300</lastBuildDate>
+    <lastBuildDate>Tue, 26 Mar 2019 07:57:47 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>54. Advanced Text Editor - Vim&#39;s Last Line Mode</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/54.-advanced-text-editor-vims-last-line-mode/</link>
+      <pubDate>Tue, 26 Mar 2019 07:57:47 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/54.-advanced-text-editor-vims-last-line-mode/</guid>
+      <description>&lt;p&gt;Through the last line mode of vim, we can easily execute some commands, such as switching between files, saving files, moving the cursor, deleting and replacing text and so on.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>53. Advanced Text Editor - Vim&#39;s Common Usage</title>
