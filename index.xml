@@ -6,10 +6,19 @@
     <description>Recent content on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 26 Mar 2019 07:57:47 +1300</lastBuildDate>
+    <lastBuildDate>Wed, 27 Mar 2019 06:26:32 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>55. Advanced Text Editor - Vim&#39;s Edit Mode</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/55.-advanced-text-editor-vims-edit-mode/</link>
+      <pubDate>Wed, 27 Mar 2019 06:26:32 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/55.-advanced-text-editor-vims-edit-mode/</guid>
+      <description>&lt;p&gt;In addition to last line mode, vim also has edit mode, both of which complement each other.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>54. Advanced Text Editor - Vim&#39;s Last Line Mode</title>
