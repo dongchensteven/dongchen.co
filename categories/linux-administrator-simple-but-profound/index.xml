@@ -12,11 +12,11 @@
     
     
     <item>
-      <title>57. Advanced Text Processing - grep</title>
-      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/57.-advanced-text-processing-grep/</link>
+      <title>57. Advanced Text Processing - grep, egrep</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/57.-advanced-text-processing-grep-egrep/</link>
       <pubDate>Fri, 29 Mar 2019 07:22:38 +1300</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/57.-advanced-text-processing-grep/</guid>
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/57.-advanced-text-processing-grep-egrep/</guid>
       <description>&lt;p&gt;We can use the grep tool provided by linux to find matching rows based on the regular expression pattern.&lt;/p&gt;</description>
     </item>
     
