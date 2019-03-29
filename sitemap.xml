@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/58.-advanced-text-processing-stream-editor-sed/</loc>
+    <lastmod>2019-03-30T09:25:59+13:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/57.-advanced-text-processing-grep-egrep/</loc>
     <lastmod>2019-03-29T07:22:38+13:00</lastmod>
     <changefreq>daily</changefreq>
@@ -472,7 +479,7 @@
   
   <url>
     <loc>https://dongchen.co/</loc>
-    <lastmod>2019-03-29T07:22:38+13:00</lastmod>
+    <lastmod>2019-03-30T09:25:59+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
@@ -486,14 +493,14 @@
   
   <url>
     <loc>https://dongchen.co/tags/linux/</loc>
-    <lastmod>2019-03-29T07:22:38+13:00</lastmod>
+    <lastmod>2019-03-30T09:25:59+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://dongchen.co/categories/linux-administrator-simple-but-profound/</loc>
-    <lastmod>2019-03-29T07:22:38+13:00</lastmod>
+    <lastmod>2019-03-30T09:25:59+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
@@ -521,7 +528,7 @@
   
   <url>
     <loc>https://dongchen.co/post/</loc>
-    <lastmod>2019-03-29T07:22:38+13:00</lastmod>
+    <lastmod>2019-03-30T09:25:59+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
@@ -535,7 +542,7 @@
   
   <url>
     <loc>https://dongchen.co/tags/server/</loc>
-    <lastmod>2019-03-29T07:22:38+13:00</lastmod>
+    <lastmod>2019-03-30T09:25:59+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
