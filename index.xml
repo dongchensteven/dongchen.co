@@ -6,10 +6,19 @@
     <description>Recent content on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 30 Mar 2019 09:25:59 +1300</lastBuildDate>
+    <lastBuildDate>Sun, 31 Mar 2019 08:48:54 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>59. Advanced Text Processing - Awk&#39;s Basic Usage</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/59.-advanced-text-processing-awks-basic-usage/</link>
+      <pubDate>Sun, 31 Mar 2019 08:48:54 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/59.-advanced-text-processing-awks-basic-usage/</guid>
+      <description>&lt;p&gt;Awk is a flexible pattern matching, text processing and line-oriented language, Linux provides us with an implementation version of it, gawk.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>58. Advanced Text Processing - Stream Editor (sed)</title>
