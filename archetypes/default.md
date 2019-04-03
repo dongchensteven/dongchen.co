@@ -45,7 +45,7 @@ sequenceDiagrams:
 {{% figure src="../images/num/demo.png" title="" alt="img" %}}
 
 > References
-> [demo](example.com)
+> [demo](exampledotcom)
 
 If you think the content of this article has helped you, and if you would like some more high-quality materials in the near future, please give me some modest support.
 
