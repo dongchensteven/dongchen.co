@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/62.-raid-redundant-array-of-independent-disks/</loc>
+    <lastmod>2019-04-03T20:13:56+13:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/61.-disk-management-tools/</loc>
     <lastmod>2019-04-02T07:52:07+13:00</lastmod>
     <changefreq>daily</changefreq>
@@ -500,7 +507,7 @@
   
   <url>
     <loc>https://dongchen.co/</loc>
-    <lastmod>2019-04-02T07:52:07+13:00</lastmod>
+    <lastmod>2019-04-03T20:13:56+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
@@ -514,14 +521,14 @@
   
   <url>
     <loc>https://dongchen.co/tags/linux/</loc>
-    <lastmod>2019-04-02T07:52:07+13:00</lastmod>
+    <lastmod>2019-04-03T20:13:56+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://dongchen.co/categories/linux-administrator-simple-but-profound/</loc>
-    <lastmod>2019-04-02T07:52:07+13:00</lastmod>
+    <lastmod>2019-04-03T20:13:56+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
@@ -549,7 +556,7 @@
   
   <url>
     <loc>https://dongchen.co/post/</loc>
-    <lastmod>2019-04-02T07:52:07+13:00</lastmod>
+    <lastmod>2019-04-03T20:13:56+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
@@ -563,7 +570,7 @@
   
   <url>
     <loc>https://dongchen.co/tags/server/</loc>
-    <lastmod>2019-04-02T07:52:07+13:00</lastmod>
+    <lastmod>2019-04-03T20:13:56+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>

@@ -6,10 +6,19 @@
     <description>Recent content in Linux on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 02 Apr 2019 07:52:07 +1300</lastBuildDate>
+    <lastBuildDate>Wed, 03 Apr 2019 20:13:56 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>62. RAID - Redundant Array of Independent Disks</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/62.-raid-redundant-array-of-independent-disks/</link>
+      <pubDate>Wed, 03 Apr 2019 20:13:56 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/62.-raid-redundant-array-of-independent-disks/</guid>
+      <description>&lt;p&gt;With RAID technology, we can combine multiple disks in some way to improve performance or reliability.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>61. Disk Management - Tools</title>
