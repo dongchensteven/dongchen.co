@@ -6,10 +6,19 @@
     <description>Recent content in Linux Administrator: Simple But Profound on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 03 Apr 2019 20:13:56 +1300</lastBuildDate>
+    <lastBuildDate>Thu, 04 Apr 2019 19:51:16 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/categories/linux-administrator-simple-but-profound/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>63. LVM - Logical Volume Management</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/63.-lvm-logical-volume-management/</link>
+      <pubDate>Thu, 04 Apr 2019 19:51:16 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/63.-lvm-logical-volume-management/</guid>
+      <description>&lt;p&gt;Through the logical volume management technology provided by Linux, we can flexibly manipulate the file systems in every volume.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>62. RAID - Redundant Array of Independent Disks</title>
