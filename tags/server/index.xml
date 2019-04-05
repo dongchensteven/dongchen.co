@@ -6,10 +6,19 @@
     <description>Recent content in Server on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 04 Apr 2019 19:51:16 +1300</lastBuildDate>
+    <lastBuildDate>Fri, 05 Apr 2019 07:53:11 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/tags/server/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>64. Process Management</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/64.-process-management/</link>
+      <pubDate>Fri, 05 Apr 2019 07:53:11 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/64.-process-management/</guid>
+      <description>&lt;p&gt;Linux gives us some tools to view and manage the status of processes.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>63. LVM - Logical Volume Management</title>
