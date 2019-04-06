@@ -3,14 +3,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/65.-resources-management/</loc>
+    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/66.-process-management-top-and-htop/</loc>
+    <lastmod>2019-04-07T08:31:18+12:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/65.-process-management-ps/</loc>
     <lastmod>2019-04-06T09:10:10+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/64.-process-management/</loc>
+    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/64.-process-management-pgrep-pkill-and-pidof/</loc>
     <lastmod>2019-04-05T07:53:11+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -528,7 +535,7 @@
   
   <url>
     <loc>https://dongchen.co/</loc>
-    <lastmod>2019-04-06T09:10:10+13:00</lastmod>
+    <lastmod>2019-04-07T08:31:18+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
@@ -542,14 +549,14 @@
   
   <url>
     <loc>https://dongchen.co/tags/linux/</loc>
-    <lastmod>2019-04-06T09:10:10+13:00</lastmod>
+    <lastmod>2019-04-07T08:31:18+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://dongchen.co/categories/linux-administrator-simple-but-profound/</loc>
-    <lastmod>2019-04-06T09:10:10+13:00</lastmod>
+    <lastmod>2019-04-07T08:31:18+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
@@ -577,7 +584,7 @@
   
   <url>
     <loc>https://dongchen.co/post/</loc>
-    <lastmod>2019-04-06T09:10:10+13:00</lastmod>
+    <lastmod>2019-04-07T08:31:18+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
@@ -591,7 +598,7 @@
   
   <url>
     <loc>https://dongchen.co/tags/server/</loc>
-    <lastmod>2019-04-06T09:10:10+13:00</lastmod>
+    <lastmod>2019-04-07T08:31:18+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>

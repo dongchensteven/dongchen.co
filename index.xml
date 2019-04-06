@@ -6,29 +6,36 @@
     <description>Recent content on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 06 Apr 2019 09:10:10 +1300</lastBuildDate>
+    <lastBuildDate>Sun, 07 Apr 2019 08:31:18 +1200</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>65. Resources Management</title>
-      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/65.-resources-management/</link>
-      <pubDate>Sat, 06 Apr 2019 09:10:10 +1300</pubDate>
+      <title>66. Process Management - top and htop</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/66.-process-management-top-and-htop/</link>
+      <pubDate>Sun, 07 Apr 2019 08:31:18 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/65.-resources-management/</guid>
-      <description>References demo
- If you think the content of this article has helped you, and if you would like some more high-quality materials in the near future, please give me some modest support.
-.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.</description>
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/66.-process-management-top-and-htop/</guid>
+      <description>&lt;p&gt;We can view the dynamic information of all processes through two tools, top and htop, which support interactive viewing of processes.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>64. Process Management</title>
-      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/64.-process-management/</link>
+      <title>65. Resources Management - ps</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/65.-process-management-ps/</link>
+      <pubDate>Sat, 06 Apr 2019 09:10:10 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/65.-process-management-ps/</guid>
+      <description>&lt;p&gt;We can view snapshot information for the current processes through the ps command.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>64. Process Management - pgrep, pkill and pidof</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/64.-process-management-pgrep-pkill-and-pidof/</link>
       <pubDate>Fri, 05 Apr 2019 07:53:11 +1300</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/64.-process-management/</guid>
-      <description>&lt;p&gt;Linux gives us some tools to view and manage the status of processes.&lt;/p&gt;</description>
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/64.-process-management-pgrep-pkill-and-pidof/</guid>
+      <description>&lt;p&gt;We can view the process through the pgrep command, and we can signal the process through the pkill command.&lt;/p&gt;</description>
     </item>
     
     <item>
