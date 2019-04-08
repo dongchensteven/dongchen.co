@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 07 Apr 2019 08:31:18 +1200</lastBuildDate>
+    <lastBuildDate>Mon, 08 Apr 2019 20:18:25 +1200</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>67. Process Management - &amp;, bg, fg, jobs and nohup</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/67.-process-management-bg-fg-jobs-and-nohup/</link>
+      <pubDate>Mon, 08 Apr 2019 20:18:25 +1200</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/67.-process-management-bg-fg-jobs-and-nohup/</guid>
+      <description>&lt;p&gt;With commands such as bg fg jobs, we can do something about jobs in the background.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>66. Process Management - top and htop</title>
