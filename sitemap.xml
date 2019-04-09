@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/68.-process-management-dstat/</loc>
+    <lastmod>2019-04-09T08:12:30+12:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/67.-process-management-bg-fg-jobs-and-nohup/</loc>
     <lastmod>2019-04-08T20:18:25+12:00</lastmod>
     <changefreq>daily</changefreq>
@@ -542,7 +549,7 @@
   
   <url>
     <loc>https://dongchen.co/</loc>
-    <lastmod>2019-04-08T20:18:25+12:00</lastmod>
+    <lastmod>2019-04-09T08:12:30+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
@@ -556,14 +563,14 @@
   
   <url>
     <loc>https://dongchen.co/tags/linux/</loc>
-    <lastmod>2019-04-08T20:18:25+12:00</lastmod>
+    <lastmod>2019-04-09T08:12:30+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://dongchen.co/categories/linux-administrator-simple-but-profound/</loc>
-    <lastmod>2019-04-08T20:18:25+12:00</lastmod>
+    <lastmod>2019-04-09T08:12:30+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
@@ -591,7 +598,7 @@
   
   <url>
     <loc>https://dongchen.co/post/</loc>
-    <lastmod>2019-04-08T20:18:25+12:00</lastmod>
+    <lastmod>2019-04-09T08:12:30+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
@@ -605,7 +612,7 @@
   
   <url>
     <loc>https://dongchen.co/tags/server/</loc>
-    <lastmod>2019-04-08T20:18:25+12:00</lastmod>
+    <lastmod>2019-04-09T08:12:30+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>

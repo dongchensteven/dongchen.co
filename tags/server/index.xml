@@ -6,10 +6,19 @@
     <description>Recent content in Server on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 08 Apr 2019 20:18:25 +1200</lastBuildDate>
+    <lastBuildDate>Tue, 09 Apr 2019 08:12:30 +1200</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/tags/server/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>68. Process Management - dstat</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/68.-process-management-dstat/</link>
+      <pubDate>Tue, 09 Apr 2019 08:12:30 +1200</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/68.-process-management-dstat/</guid>
+      <description>&lt;p&gt;We can use the dstat tool to generate statistics on system resource usage.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>67. Process Management - &amp;, bg, fg, jobs and nohup</title>
@@ -30,7 +39,7 @@
     </item>
     
     <item>
-      <title>65. Resources Management - ps</title>
+      <title>65. Process Management - ps</title>
       <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/65.-process-management-ps/</link>
       <pubDate>Sat, 06 Apr 2019 09:10:10 +1300</pubDate>
       

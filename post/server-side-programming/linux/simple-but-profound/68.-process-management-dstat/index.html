@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>68. Process Management - dstat - Dong - A place to track my time log</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Dong Chen" /><meta name="description" content="We can use the dstat tool to generate statistics on system resource usage.
+" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/68.-process-management-dstat/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.ea128f8b.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/styles.css">
+
+
+<meta property="og:title" content="68. Process Management - dstat" />
+<meta property="og:description" content="We can use the dstat tool to generate statistics on system resource usage." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/68.-process-management-dstat/" /><meta property="article:published_time" content="2019-04-09T08:12:30&#43;12:00"/>
+<meta property="article:modified_time" content="2019-04-09T08:12:30&#43;12:00"/>
+
+<meta itemprop="name" content="68. Process Management - dstat">
+<meta itemprop="description" content="We can use the dstat tool to generate statistics on system resource usage.">
+
+
+<meta itemprop="datePublished" content="2019-04-09T08:12:30&#43;12:00" />
+<meta itemprop="dateModified" content="2019-04-09T08:12:30&#43;12:00" />
+<meta itemprop="wordCount" content="1144">
+
+
+
+<meta itemprop="keywords" content="Linux,Server," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="68. Process Management - dstat"/>
+<meta name="twitter:description" content="We can use the dstat tool to generate statistics on system resource usage."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Dong</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Dong</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">68. Process Management - dstat</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> Tue Apr 9 2019 </span>
+        <div class="post-category">
+            <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
+            </div>
+          <span class="more-meta"> 1144 words </span>
+          <span class="more-meta"> 6 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#options">Options</a></li>
+<li><a href="#examples">Examples</a>
+<ul>
+<li><a href="#output-all-available-plug-ins">Output All Available Plug-ins</a></li>
+<li><a href="#output-one-row-per-second-five-lines-in-total">Output One Row Per Second Five Lines in Total</a></li>
+<li><a href="#output-all-default-plugin-set">Output All Default Plugin Set</a></li>
+<li><a href="#output-cpu-statistics">Output CPU Statistics</a></li>
+<li><a href="#output-disk-statistics">Output Disk Statistics</a></li>
+<li><a href="#output-page-statistics">Output Page Statistics</a></li>
+<li><a href="#output-interrupt-statistics">Output Interrupt Statistics</a></li>
+<li><a href="#output-memory-statistics">Output Memory Statistics</a></li>
+<li><a href="#output-network-statistics">Output Network Statistics</a></li>
+<li><a href="#output-process-statistics">Output Process Statistics</a></li>
+<li><a href="#output-process-amount">Output Process Amount</a></li>
+<li><a href="#output-i-o-statistics">Output I/O Statistics</a></li>
+<li><a href="#output-swap-statistics">Output Swap Statistics</a></li>
+<li><a href="#output-system-statistics">Output System Statistics</a></li>
+<li><a href="#output-aio-statistics">Output AIO Statistics</a></li>
+<li><a href="#output-filesystem-statistics">Output Filesystem Statistics</a></li>
+<li><a href="#output-statistics-of-used-and-usable-space">Output Statistics of Used and Usable Space</a></li>
+<li><a href="#output-ipc-statistics">Output IPC Statistics</a></li>
+<li><a href="#output-file-lock-statistics">Output File Lock Statistics</a></li>
+<li><a href="#output-raw-sockets-statistics">Output Raw Sockets Statistics</a></li>
+<li><a href="#output-socket-statistics">Output Socket Statistics</a></li>
+<li><a href="#output-tcp-statistics">Output TCP Statistics</a></li>
+<li><a href="#output-udp-statistics">Output UDP Statistics</a></li>
+<li><a href="#output-unix-statistics">Output UNIX Statistics</a></li>
+<li><a href="#output-virtual-memory-statistics">Output Virtual Memory Statistics</a></li>
+<li><a href="#output-block-i-o-processes-that-consumes-the-most">Output Block I/O Processes that Consumes the Most</a></li>
+<li><a href="#output-processes-that-has-been-waiting-for-child-processes-for-the-longest-time">Output Processes that Has Been Waiting for Child Processes for the Longest Time</a></li>
+<li><a href="#output-cpu-processes-that-consumes-the-most">Output CPU Processes that Consumes the Most</a></li>
+<li><a href="#output-processes-that-consumes-the-most-cpu-time">Output Processes that Consumes the Most CPU Time</a></li>
+<li><a href="#output-i-o-processes-that-consumes-the-most">Output I/O Processes that Consumes the Most</a></li>
+<li><a href="#output-processes-with-the-highest-latency">Output Processes With the Highest Latency</a></li>
+<li><a href="#output-processes-that-consumes-the-most">Output Processes that Consumes the Most</a></li>
+<li><a href="#output-processes-that-is-most-likely-to-be-killed-by-the-out-of-memory-killer">Output Processes that is Most Likely to be killed by the Out-Of-Memory Killer</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>We can use the dstat tool to generate statistics on system resource usage.</p>
+
+<h1 id="options">Options</h1>
+
+<p>Here are some other options for dstat command:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">&#8209;&#8209;list</td>
+<td align="left">Lists the names of all available plug-ins.</td>
+</tr>
+
+<tr>
+<td align="center">-a or &#8209;&#8209;all</td>
+<td align="left">Show default plugin set, this is equivalent to dstat -cdngy.</td>
+</tr>
+
+<tr>
+<td align="center">-c or &#8209;&#8209;cpu</td>
+<td align="left">Show CPU statistics. (system, user, idle, wait)</td>
+</tr>
+
+<tr>
+<td align="center">-C 0,1,N</td>
+<td align="left">Show CPU0, CPU1 and CPUN statistics. (Must be used with the -c or &#8209;&#8209;cpu option.)</td>
+</tr>
+
+<tr>
+<td align="center">-d or &#8209;&#8209;disk</td>
+<td align="left">Show disk statistic.</td>
+</tr>
+
+<tr>
+<td align="center">-D disk1,disk2,N</td>
+<td align="left">Show disk1, disk2 and N staistics. (Must be used with the -d or &#8209;&#8209;disk option.)</td>
+</tr>
+
+<tr>
+<td align="center">-g or &#8209;&#8209;page</td>
+<td align="left">Show page statistics.</td>
+</tr>
+
+<tr>
+<td align="center">-i or &#8209;&#8209;int</td>
+<td align="left">Show interrupt statistics.</td>
+</tr>
+
+<tr>
+<td align="center">-I 27,28,N</td>
+<td align="left">Show interrupt 27, 28 and N.  (Must be used with the -i or &#8209;&#8209;int option.)</td>
+</tr>
+
+<tr>
+<td align="center">-l or &#8209;&#8209;load</td>
+<td align="left">Show load average statistics. (1, 5, 15 mins)</td>
+</tr>
+
+<tr>
+<td align="center">-m or &#8209;&#8209;mem</td>
+<td align="left">Show memory statistics.</td>
+</tr>
+
+<tr>
+<td align="center">-n or &#8209;&#8209;net</td>
+<td align="left">Show network I/O statistics.</td>
+</tr>
+
+<tr>
+<td align="center">-N eth1,eth2,N</td>
+<td align="left">Show network interface eth1, eth2 and N.  (Must be used with the -n or &#8209;&#8209;net option.)</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;net-packets</td>
+<td align="left">Displays received and sent network packets.</td>
+</tr>
+
+<tr>
+<td align="center">-p or &#8209;&#8209;proc</td>
+<td align="left">Show process statistics.</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;proc-count</td>
+<td align="left">Displays the total number of processes.</td>
+</tr>
+
+<tr>
+<td align="center">-r or &#8209;&#8209;io</td>
+<td align="left">Show I/O request statistics.</td>
+</tr>
+
+<tr>
+<td align="center">-s or &#8209;&#8209;swap</td>
+<td align="left">Show swap statistics.</td>
+</tr>
+
+<tr>
+<td align="center">-S swap1,swap2,N</td>
+<td align="left">Show swap1, swap2 and N statistics.  (Must be used with the -s or &#8209;&#8209;swap option.)</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;snooze</td>
+<td align="left">Show the number of seconds consumed per row.</td>
+</tr>
+
+<tr>
+<td align="center">-t or &#8209;&#8209;time</td>
+<td align="left">Show each row&rsquo;s output time.</td>
+</tr>
+
+<tr>
+<td align="center">-T or &#8209;&#8209;epoch</td>
+<td align="left">Show each row&rsquo;s output timestamp.</td>
+</tr>
+
+<tr>
+<td align="center">-y or &#8209;&#8209;sys</td>
+<td align="left">Show system statistics. (interrupts, context switches)</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;aio</td>
+<td align="left">Show aio statistics.</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;fs or &#8209;&#8209;filesystem</td>
+<td align="left">Show filesystem statistics. (open files, inodes)</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;freespace</td>
+<td align="left">Used and usable space for each file system. (A window with a width of 2700 pixels or more is required)</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;ipc</td>
+<td align="left">Show ipc statistics. (message queue, semaphores, shared memory)</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;lock</td>
+<td align="left">Show file lock statistics. (posix, flock, read, write)</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;raw</td>
+<td align="left">Show raw sockets statistics.</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;socket</td>
+<td align="left">Show socket statistics. (total, tcp, udp, raw, ip-fragments)</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;tcp</td>
+<td align="left">Show tcp statistics. (listen, established, syn, time_wait, close)</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;udp</td>
+<td align="left">Show udp statistics. (listen, active)</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;unix</td>
+<td align="left">Show unix statistics. (datagram, stream, listen, active)</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;vm</td>
+<td align="left">Show virtual memory statistics. (hard pagefaults, soft pagefaults, allocated, free)</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;top-bio</td>
+<td align="left">Show the block I/O process that consumes the most.</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;top-bio-adv</td>
+<td align="left">Show the block I/O process that consumes the most. (include the process PID)</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;top-childwait</td>
+<td align="left">Show the process that has been waiting for the child process for the longest time.</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;top-cpu</td>
+<td align="left">Show the CPU process that consumes the most.</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;top-cpu-adv</td>
+<td align="left">Show the CPU process that consumes the most.  (include the process PID)</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;top-cputime</td>
+<td align="left">Show the process that consumes the most CPU time. (in milliseconds)</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;top-cputime-avg</td>
+<td align="left">Shows the process with the highest average time slice. (in milliseconds)</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;top-io</td>
+<td align="left">Show the I/O process that consumes the most.</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;top-io-avg</td>
+<td align="left">Show the I/O process that consumes the most. (include the process PID)</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;top-latency</td>
+<td align="left">Show the process with the highest latency. (in milliseconds)</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;top-latency-avg</td>
+<td align="left">Show the process with the highest average latency. (include the process PID)</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;top-mem</td>
+<td align="left">Show the process that consumes the most memory.</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;top-oom</td>
+<td align="left">Show the process that is most likely to be killed by the out-of-memory killer.</td>
+</tr>
+
+<tr>
+<td align="center">-f or &#8209;&#8209;full</td>
+<td align="left">Show the contents similar to the expansion of the CDINS options.</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;bits</td>
+<td align="left">Converts values displayed in bytes to bits.</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;float</td>
+<td align="left">Show values as floating points.</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;integer</td>
+<td align="left">Show values as integer points.</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;bw or &#8209;&#8209;blackonwhite</td>
+<td align="left">Show non-empty values.</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;nocolor</td>
+<td align="left">Show black and white content.</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;noheaders</td>
+<td align="left">Show headers once.</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="examples">Examples</h1>
+
+<h2 id="output-all-available-plug-ins">Output All Available Plug-ins</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dstat --list</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/68/dstat_list.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="output-one-row-per-second-five-lines-in-total">Output One Row Per Second Five Lines in Total</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dstat <span class="m">1</span> <span class="m">5</span>    <span class="c1"># Output 5 rows, 1 second per row</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/68/dstat_1_5.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="output-all-default-plugin-set">Output All Default Plugin Set</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dstat -a <span class="m">1</span> <span class="m">1</span>    <span class="c1"># This is equivalent to dstat --all 1 1</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/68/dstat_a.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="output-cpu-statistics">Output CPU Statistics</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dstat -c <span class="m">1</span> <span class="m">1</span>    <span class="c1"># This is equivalent to dstat --cpu 1 1</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/68/dstat_c.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="output-disk-statistics">Output Disk Statistics</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dstat -d <span class="m">1</span> <span class="m">1</span>    <span class="c1"># This is equivalent to dstat --disk 1 1</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/68/dstat_d.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="output-page-statistics">Output Page Statistics</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dstat -g <span class="m">1</span> <span class="m">1</span>    <span class="c1"># This is equivalent to dstat --page 1 1</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/68/dstat_g.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="output-interrupt-statistics">Output Interrupt Statistics</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dstat -i <span class="m">1</span> <span class="m">1</span>    <span class="c1"># This is equivalent to dstat --int 1 1</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/68/dstat_i.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="output-memory-statistics">Output Memory Statistics</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dstat -m <span class="m">1</span> <span class="m">1</span>    <span class="c1"># This is equivalent to dstat --mem 1 1</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/68/dstat_m.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="output-network-statistics">Output Network Statistics</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dstat -n <span class="m">1</span> <span class="m">1</span>    <span class="c1"># This is equivalent to dstat --net 1 1</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/68/dstat_n.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="output-process-statistics">Output Process Statistics</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dstat -p <span class="m">1</span> <span class="m">1</span>    <span class="c1"># This is equivalent to dstat --proc 1 1</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/68/dstat_p.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="output-process-amount">Output Process Amount</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dstat --proc-count <span class="m">1</span> <span class="m">1</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/68/dstat_proc_count.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="output-i-o-statistics">Output I/O Statistics</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dstat -r <span class="m">1</span> <span class="m">1</span>    <span class="c1"># This is equivalent to dstat --io 1 1</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/68/dstat_r.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="output-swap-statistics">Output Swap Statistics</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dstat -s <span class="m">1</span> <span class="m">1</span>    <span class="c1"># This is equivalent to dstat --swap 1 1</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/68/dstat_s.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="output-system-statistics">Output System Statistics</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dstat -y <span class="m">1</span> <span class="m">1</span>    <span class="c1"># This is equivalent to dstat --sys 1 1</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/68/dstat_y.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="output-aio-statistics">Output AIO Statistics</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dstat --aio <span class="m">1</span> <span class="m">1</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/68/dstat_aio.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="output-filesystem-statistics">Output Filesystem Statistics</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dstat -fs <span class="m">1</span> <span class="m">1</span>    <span class="c1"># This is equivalent to dstat --filesystem 1 1</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/68/dstat_fs.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="output-statistics-of-used-and-usable-space">Output Statistics of Used and Usable Space</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dstat --freespace <span class="m">1</span> <span class="m">1</span>    <span class="c1"># Should expand the width of the window to 2700 pixel</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/68/dstat_freespace.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="output-ipc-statistics">Output IPC Statistics</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dstat --ipc <span class="m">1</span> <span class="m">1</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/68/dstat_ipc.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="output-file-lock-statistics">Output File Lock Statistics</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dstat --lock <span class="m">1</span> <span class="m">1</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/68/dstat_lock.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="output-raw-sockets-statistics">Output Raw Sockets Statistics</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dstat --raw <span class="m">1</span> <span class="m">1</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/68/dstat_raw.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="output-socket-statistics">Output Socket Statistics</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dstat --socket <span class="m">1</span> <span class="m">1</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/68/dstat_socket.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="output-tcp-statistics">Output TCP Statistics</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dstat --tcp <span class="m">1</span> <span class="m">1</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/68/dstat_tcp.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="output-udp-statistics">Output UDP Statistics</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dstat --udp <span class="m">1</span> <span class="m">1</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/68/dstat_udp.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="output-unix-statistics">Output UNIX Statistics</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dstat --unix <span class="m">1</span> <span class="m">1</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/68/dstat_unix.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="output-virtual-memory-statistics">Output Virtual Memory Statistics</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dstat --vm <span class="m">1</span> <span class="m">1</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/68/dstat_vm.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="output-block-i-o-processes-that-consumes-the-most">Output Block I/O Processes that Consumes the Most</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dstat --top-bio <span class="m">1</span> <span class="m">1</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/68/dstat_top_bio.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="output-processes-that-has-been-waiting-for-child-processes-for-the-longest-time">Output Processes that Has Been Waiting for Child Processes for the Longest Time</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dstat --top-childwait <span class="m">1</span> <span class="m">1</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/68/dstat_top_childwait.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="output-cpu-processes-that-consumes-the-most">Output CPU Processes that Consumes the Most</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dstat --top-cpu <span class="m">1</span> <span class="m">1</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/68/dstat_top_cpu.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="output-processes-that-consumes-the-most-cpu-time">Output Processes that Consumes the Most CPU Time</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dstat --top-cputime <span class="m">1</span> <span class="m">1</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/68/dstat_top_cputime.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="output-i-o-processes-that-consumes-the-most">Output I/O Processes that Consumes the Most</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dstat --top-io <span class="m">1</span> <span class="m">1</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/68/dstat_top_io.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="output-processes-with-the-highest-latency">Output Processes With the Highest Latency</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dstat --top-latency <span class="m">1</span> <span class="m">1</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/68/dstat_top_latency.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="output-processes-that-consumes-the-most">Output Processes that Consumes the Most</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dstat --top-mem <span class="m">1</span> <span class="m">1</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/68/dstat_top_mem.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="output-processes-that-is-most-likely-to-be-killed-by-the-out-of-memory-killer">Output Processes that is Most Likely to be killed by the Out-Of-Memory Killer</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dstat --top-oom <span class="m">1</span> <span class="m">1</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/68/dstat_top_oom.png"
+         alt="img"/> 
+</figure>
+
+
+<blockquote>
+<p>References
+<a href="http://man7.org/linux/man-pages/man1/pcp-dstat.1.html">PCP-DSTAT(1)</a></p>
+</blockquote>
+
+<p>If you think the content of this article has helped you, and if you would like some more high-quality materials in the near future, please give me some modest support.</p>
+
+<!-- Buy Me a Coffee Button -->
+
+<p class="align-center">
+  <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/PFou9WhLr"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
+</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Dong Chen</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">Tue Apr 9 2019</span>
+  </p>
+  
+  
+</div><div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://dongchen.co/images/wepay_qr_final.png">
+        <span>wechat</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://dongchen.co/images/alipay_qr_final.png">
+        <span>alipay</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/linux/">Linux</a>
+          <a href="/tags/server/">Server</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/server-side-programming/linux/simple-but-profound/67.-process-management-bg-fg-jobs-and-nohup/">
+            <span class="next-text nav-default">67. Process Management - &amp;, bg, fg, jobs and nohup</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:dongchensteven@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.linkedin.com/in/dongchensteven" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/dongchensteven" class="iconfont icon-github" title="github"></a>
+  <a href="https://dongchen.co/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Dong Chen</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-133226289-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>
