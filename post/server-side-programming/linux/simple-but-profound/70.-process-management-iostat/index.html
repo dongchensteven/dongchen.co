@@ -16,8 +16,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="CPU Utilization Report Here are some details of CPU report:
-   Header Description     %user User level CPU usage. (application CPU usage)   %nice CPU usage with nice priority at the user level.   %system System level CPU usage. (kernel CPU usage)   %iowait The time CPU or CPUs were idle when the system had an unfinished disk I/O operation.   %steal The amount of time the current processor unwillingly waits when the hypervisor is serving other virtual processors." /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="Dong Chen" /><meta name="description" content="A tool called iostat can be used to display CPU reports, it can also be used to display disk, partition input and output statistics reports.
+" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -41,28 +41,25 @@
 
 
 <meta property="og:title" content="70. Process Management - iostat" />
-<meta property="og:description" content="CPU Utilization Report Here are some details of CPU report:
-   Header Description     %user User level CPU usage. (application CPU usage)   %nice CPU usage with nice priority at the user level.   %system System level CPU usage. (kernel CPU usage)   %iowait The time CPU or CPUs were idle when the system had an unfinished disk I/O operation.   %steal The amount of time the current processor unwillingly waits when the hypervisor is serving other virtual processors." />
+<meta property="og:description" content="A tool called iostat can be used to display CPU reports, it can also be used to display disk, partition input and output statistics reports." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/70.-process-management-iostat/" /><meta property="article:published_time" content="2019-04-11T07:56:45&#43;12:00"/>
 <meta property="article:modified_time" content="2019-04-11T07:56:45&#43;12:00"/>
 
 <meta itemprop="name" content="70. Process Management - iostat">
-<meta itemprop="description" content="CPU Utilization Report Here are some details of CPU report:
-   Header Description     %user User level CPU usage. (application CPU usage)   %nice CPU usage with nice priority at the user level.   %system System level CPU usage. (kernel CPU usage)   %iowait The time CPU or CPUs were idle when the system had an unfinished disk I/O operation.   %steal The amount of time the current processor unwillingly waits when the hypervisor is serving other virtual processors.">
+<meta itemprop="description" content="A tool called iostat can be used to display CPU reports, it can also be used to display disk, partition input and output statistics reports.">
 
 
 <meta itemprop="datePublished" content="2019-04-11T07:56:45&#43;12:00" />
 <meta itemprop="dateModified" content="2019-04-11T07:56:45&#43;12:00" />
-<meta itemprop="wordCount" content="469">
+<meta itemprop="wordCount" content="866">
 
 
 
 <meta itemprop="keywords" content="Linux,Server," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="70. Process Management - iostat"/>
-<meta name="twitter:description" content="CPU Utilization Report Here are some details of CPU report:
-   Header Description     %user User level CPU usage. (application CPU usage)   %nice CPU usage with nice priority at the user level.   %system System level CPU usage. (kernel CPU usage)   %iowait The time CPU or CPUs were idle when the system had an unfinished disk I/O operation.   %steal The amount of time the current processor unwillingly waits when the hypervisor is serving other virtual processors."/>
+<meta name="twitter:description" content="A tool called iostat can be used to display CPU reports, it can also be used to display disk, partition input and output statistics reports."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -132,8 +129,8 @@
         <div class="post-category">
             <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
             </div>
-          <span class="more-meta"> 469 words </span>
-          <span class="more-meta"> 3 mins read </span>
+          <span class="more-meta"> 866 words </span>
+          <span class="more-meta"> 5 mins read </span>
         
       </div>
     </header>
@@ -164,14 +161,16 @@
   </div>
 </div>
     <div class="post-content">
-      <h1 id="cpu-utilization-report">CPU Utilization Report</h1>
+      <p>A tool called iostat can be used to display CPU reports, it can also be used to display disk, partition input and output statistics reports.</p>
 
-<p>Here are some details of CPU report:</p>
+<h1 id="cpu-utilization-report">CPU Utilization Report</h1>
+
+<p>Here are some columns of CPU report:</p>
 
 <table>
 <thead>
 <tr>
-<th align="center">Header</th>
+<th align="center">Column</th>
 <th align="left">Description</th>
 </tr>
 </thead>
@@ -211,12 +210,12 @@
 
 <h1 id="device-utilization-report">Device Utilization Report</h1>
 
-<p>Here are some details of device report:</p>
+<p>Here are some columns of device report:</p>
 
 <table>
 <thead>
 <tr>
-<th align="center">Header</th>
+<th align="center">Column</th>
 <th align="left">Description</th>
 </tr>
 </thead>
@@ -224,162 +223,162 @@
 <tbody>
 <tr>
 <td align="center">Device</td>
-<td align="left"></td>
+<td align="left">The device (partition) name listed under the /dev directory.</td>
 </tr>
 
 <tr>
 <td align="center">tps</td>
-<td align="left"></td>
+<td align="left">Transfers per second sent to the device. Each transfer is an I/O request, which is usually a combination of multiple logical requests.</td>
 </tr>
 
 <tr>
 <td align="center">Blk_read/s (kB_read/s, MB_read/s)</td>
-<td align="left"></td>
+<td align="left">The number of blocks read from the device per second.</td>
 </tr>
 
 <tr>
 <td align="center">Blk_wrtn/s (kB_wrtn/s, MB_wrtn/s)</td>
-<td align="left"></td>
+<td align="left">The number of blocks written to the device per second.</td>
 </tr>
 
 <tr>
 <td align="center">Blk_dscd/s (kB_dscd/s, MB_dscd/s)</td>
-<td align="left"></td>
+<td align="left">The number of blocks discarded for the device per second.</td>
 </tr>
 
 <tr>
 <td align="center">Blk_read (kB_read, MB_read)</td>
-<td align="left"></td>
+<td align="left">The total number of blocks read from the device.</td>
 </tr>
 
 <tr>
 <td align="center">Blk_wrtn (kB_wrtn, MB_wrtn)</td>
-<td align="left"></td>
+<td align="left">The total number of blocks written to the device.</td>
 </tr>
 
 <tr>
 <td align="center">Blk_dscd (kB_dscd, MB_dscd)</td>
-<td align="left"></td>
+<td align="left">The total number of blocks discarded for the device.</td>
 </tr>
 
 <tr>
 <td align="center">r/s</td>
-<td align="left"></td>
+<td align="left">Read requests per second completed for the device.</td>
 </tr>
 
 <tr>
 <td align="center">w/s</td>
-<td align="left"></td>
+<td align="left">Write requests per second completed for the device.</td>
 </tr>
 
 <tr>
 <td align="center">d/s</td>
-<td align="left"></td>
+<td align="left">Discard requests per second completed for the device.</td>
 </tr>
 
 <tr>
 <td align="center">sec/s (kB/s, MB/s)</td>
-<td align="left"></td>
+<td align="left">The number of sectors read from, written to, or discarded for the device per second.</td>
 </tr>
 
 <tr>
 <td align="center">rsec/s (rkB/s, rMB/s)</td>
-<td align="left"></td>
+<td align="left">The number of sectors read from the device per second.</td>
 </tr>
 
 <tr>
 <td align="center">wsec/s (wkB/s, wMB/s)</td>
-<td align="left"></td>
+<td align="left">The number of sectors written to the device per second.</td>
 </tr>
 
 <tr>
 <td align="center">dsec/s (dkB/s, dMB/s)</td>
-<td align="left"></td>
+<td align="left">The number of sectors discarded for the device per second.</td>
 </tr>
 
 <tr>
 <td align="center">rqm/s</td>
-<td align="left"></td>
+<td align="left">The number of merged I/O requests per second in the device queue.</td>
 </tr>
 
 <tr>
 <td align="center">rrqm/s</td>
-<td align="left"></td>
+<td align="left">The number of merged read requests per second in the device queue.</td>
 </tr>
 
 <tr>
 <td align="center">wrqm/s</td>
-<td align="left"></td>
+<td align="left">The number of merged write requests per second in the device queue.</td>
 </tr>
 
 <tr>
 <td align="center">drqm/s</td>
-<td align="left"></td>
+<td align="left">The number of merged discarded requests per second in the device queue.</td>
 </tr>
 
 <tr>
 <td align="center">%rrqm</td>
-<td align="left"></td>
+<td align="left">The percentage of merged read requests per second before being sent to the device.</td>
 </tr>
 
 <tr>
 <td align="center">%wrqm</td>
-<td align="left"></td>
+<td align="left">The percentage of merged write requests per second before being sent to the device.</td>
 </tr>
 
 <tr>
 <td align="center">%drqm</td>
-<td align="left"></td>
+<td align="left">The percentage of merged discard requests per second before being sent to the device.</td>
 </tr>
 
 <tr>
 <td align="center">areq-sz</td>
-<td align="left"></td>
+<td align="left">The average size of the I/O requests sent to the device.</td>
 </tr>
 
 <tr>
 <td align="center">rareq-sz</td>
-<td align="left"></td>
+<td align="left">The average size of the I/O read requests sent to the device.</td>
 </tr>
 
 <tr>
 <td align="center">wareq-sz</td>
-<td align="left"></td>
+<td align="left">The average size of the I/O write requests sent to the device.</td>
 </tr>
 
 <tr>
 <td align="center">dareq-sz</td>
-<td align="left"></td>
+<td align="left">The average size of the I/O discard requests sent to the device.</td>
 </tr>
 
 <tr>
 <td align="center">await</td>
-<td align="left"></td>
+<td align="left">Average time spent on I/O requests sent to the device, including queuing and service time.</td>
 </tr>
 
 <tr>
 <td align="center">r_await</td>
-<td align="left"></td>
+<td align="left">Average time spent on read requests sent to the device, including queuing and service time.</td>
 </tr>
 
 <tr>
 <td align="center">w_await</td>
-<td align="left"></td>
+<td align="left">Average time spent on write requests sent to the device, including queuing and service time.</td>
 </tr>
 
 <tr>
 <td align="center">d_await</td>
-<td align="left"></td>
+<td align="left">Average time spent on discard requests sent to the device, including queuing and service time.</td>
 </tr>
 
 <tr>
 <td align="center">aqu-sz</td>
-<td align="left"></td>
+<td align="left">The average queue length sent to the device.</td>
 </tr>
 
 <tr>
 <td align="center">%util</td>
-<td align="left"></td>
+<td align="left">The percentage of time run-time I/O requests sent to the device.</td>
 </tr>
 </tbody>
 </table>
@@ -464,11 +463,11 @@
 <pre class="chroma"><code class="language-bash" data-lang="bash">iostat <span class="m">1</span> <span class="m">2</span>    <span class="c1"># 1 is the time used to show the next output, 2 is the number of outputs.</span></code></pre></td></tr></table>
 </div>
 </div>
-<!-- <figure>
-    <img src="../images/num/demo.png"
+<figure>
+    <img src="../images/70/iostat.png"
          alt="img"/> 
 </figure>
- -->
+
 
 <h2 id="show-cpu-report">Show CPU Report</h2>
 <div class="highlight"><div class="chroma">
@@ -479,6 +478,12 @@
 <pre class="chroma"><code class="language-bash" data-lang="bash">iostat -c</code></pre></td></tr></table>
 </div>
 </div>
+<figure>
+    <img src="../images/70/iostat_c.png"
+         alt="img"/> 
+</figure>
+
+
 <h2 id="show-device-report">Show Device Report</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -488,6 +493,12 @@
 <pre class="chroma"><code class="language-bash" data-lang="bash">iostat -d</code></pre></td></tr></table>
 </div>
 </div>
+<figure>
+    <img src="../images/70/iostat_d.png"
+         alt="img"/> 
+</figure>
+
+
 <h2 id="show-statistics-for-a-group-of-devices">Show Statistics for a Group of Devices</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -497,6 +508,12 @@
 <pre class="chroma"><code class="language-bash" data-lang="bash">iostat -g root sda</code></pre></td></tr></table>
 </div>
 </div>
+<figure>
+    <img src="../images/70/iostat_g_group_device.png"
+         alt="img"/> 
+</figure>
+
+
 <h2 id="show-device-report-as-human-readable-format">Show Device Report as Human Readable Format</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -506,6 +523,12 @@
 <pre class="chroma"><code class="language-bash" data-lang="bash">iostat -h</code></pre></td></tr></table>
 </div>
 </div>
+<figure>
+    <img src="../images/70/iostat_h.png"
+         alt="img"/> 
+</figure>
+
+
 <h2 id="show-units-in-kilobytes">Show Units in Kilobytes</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -515,6 +538,12 @@
 <pre class="chroma"><code class="language-bash" data-lang="bash">iostat -k</code></pre></td></tr></table>
 </div>
 </div>
+<figure>
+    <img src="../images/70/iostat_k.png"
+         alt="img"/> 
+</figure>
+
+
 <h2 id="show-units-in-megabytes">Show Units in Megabytes</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -524,15 +553,27 @@
 <pre class="chroma"><code class="language-bash" data-lang="bash">iostat -m</code></pre></td></tr></table>
 </div>
 </div>
+<figure>
+    <img src="../images/70/iostat_m.png"
+         alt="img"/> 
+</figure>
+
+
 <h2 id="show-block-devices-and-their-partitions">Show Block Devices and Their Partitions</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">iostat -p sda</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">iostat -p ALL</code></pre></td></tr></table>
 </div>
 </div>
+<figure>
+    <img src="../images/70/iostat_p.png"
+         alt="img"/> 
+</figure>
+
+
 <h2 id="show-the-time-for-each-report">Show the Time for Each Report</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -542,6 +583,12 @@
 <pre class="chroma"><code class="language-bash" data-lang="bash">iostat -t</code></pre></td></tr></table>
 </div>
 </div>
+<figure>
+    <img src="../images/70/iostat_t.png"
+         alt="img"/> 
+</figure>
+
+
 <h2 id="show-extended-information">Show Extended Information</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -551,6 +598,12 @@
 <pre class="chroma"><code class="language-bash" data-lang="bash">iostat -x</code></pre></td></tr></table>
 </div>
 </div>
+<figure>
+    <img src="../images/70/iostat_x.png"
+         alt="img"/> 
+</figure>
+
+
 <blockquote>
 <p>References
 <a href="http://man7.org/linux/man-pages/man1/iostat.1.html">IOSTAT(1)</a></p>
@@ -596,7 +649,11 @@
           <a href="/tags/server/">Server</a>
           </div>
       <nav class="post-nav">
-        
+        <a class="prev" href="/post/server-side-programming/linux/simple-but-profound/71.-process-management-kill-and-killall/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">71. Process Management - kill and killall</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
         <a class="next" href="/post/server-side-programming/linux/simple-but-profound/69.-process-management-glances/">
             <span class="next-text nav-default">69. Process Management - glances</span>
             <span class="next-text nav-mobile">Next</span>

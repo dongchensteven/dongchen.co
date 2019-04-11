@@ -6,10 +6,19 @@
     <description>Recent content in Linux Administrator: Simple But Profound on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 11 Apr 2019 07:56:45 +1200</lastBuildDate>
+    <lastBuildDate>Fri, 12 Apr 2019 06:05:16 +1200</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/categories/linux-administrator-simple-but-profound/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>71. Process Management - kill and killall</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/71.-process-management-kill-and-killall/</link>
+      <pubDate>Fri, 12 Apr 2019 06:05:16 +1200</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/71.-process-management-kill-and-killall/</guid>
+      <description>&lt;p&gt;The kill command can terminate the process by the process ID or name, and the killall command can terminate the process itself and its associated processes by the process name.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>70. Process Management - iostat</title>
@@ -17,8 +26,7 @@
       <pubDate>Thu, 11 Apr 2019 07:56:45 +1200</pubDate>
       
       <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/70.-process-management-iostat/</guid>
-      <description>CPU Utilization Report Here are some details of CPU report:
-   Header Description     %user User level CPU usage. (application CPU usage)   %nice CPU usage with nice priority at the user level.   %system System level CPU usage. (kernel CPU usage)   %iowait The time CPU or CPUs were idle when the system had an unfinished disk I/O operation.   %steal The amount of time the current processor unwillingly waits when the hypervisor is serving other virtual processors.</description>
+      <description>&lt;p&gt;A tool called iostat can be used to display CPU reports, it can also be used to display disk, partition input and output statistics reports.&lt;/p&gt;</description>
     </item>
     
     <item>
