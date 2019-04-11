@@ -6,10 +6,20 @@
     <description>Recent content in Server on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 10 Apr 2019 07:49:47 +1200</lastBuildDate>
+    <lastBuildDate>Thu, 11 Apr 2019 07:56:45 +1200</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/tags/server/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>70. Process Management - iostat</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/70.-process-management-iostat/</link>
+      <pubDate>Thu, 11 Apr 2019 07:56:45 +1200</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/70.-process-management-iostat/</guid>
+      <description>CPU Utilization Report Here are some details of CPU report:
+   Header Description     %user User level CPU usage. (application CPU usage)   %nice CPU usage with nice priority at the user level.   %system System level CPU usage. (kernel CPU usage)   %iowait The time CPU or CPUs were idle when the system had an unfinished disk I/O operation.   %steal The amount of time the current processor unwillingly waits when the hypervisor is serving other virtual processors.</description>
+    </item>
     
     <item>
       <title>69. Process Management - glances</title>
