@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>71. Process Management - kill and killall - Dong - A place to track my time log</title>
+  <title>72. Process Management - nice and renice - Dong - A place to track my time log</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="The kill command can terminate the process by the process ID or name, and the killall command can terminate the process itself and its associated processes by the process name.
+<meta name="author" content="Dong Chen" /><meta name="description" content="With the nice and renice commands, we can specify the priority of a program when it starts, or change the priority of a running process.
 " /><meta name="keywords" content="Hugo, theme, even" />
 
 
@@ -27,7 +27,7 @@
 <meta name="generator" content="Hugo 0.53 with even 4.0.0" />
 
 
-<link rel="canonical" href="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/71.-process-management-kill-and-killall/" />
+<link rel="canonical" href="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/72.-process-management-nice-and-renice/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -40,26 +40,26 @@
 <link rel="stylesheet" href="/css/styles.css">
 
 
-<meta property="og:title" content="71. Process Management - kill and killall" />
-<meta property="og:description" content="The kill command can terminate the process by the process ID or name, and the killall command can terminate the process itself and its associated processes by the process name." />
+<meta property="og:title" content="72. Process Management - nice and renice" />
+<meta property="og:description" content="With the nice and renice commands, we can specify the priority of a program when it starts, or change the priority of a running process." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/71.-process-management-kill-and-killall/" /><meta property="article:published_time" content="2019-04-12T06:05:16&#43;12:00"/>
-<meta property="article:modified_time" content="2019-04-12T06:05:16&#43;12:00"/>
+<meta property="og:url" content="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/72.-process-management-nice-and-renice/" /><meta property="article:published_time" content="2019-04-13T11:24:24&#43;12:00"/>
+<meta property="article:modified_time" content="2019-04-13T11:24:24&#43;12:00"/>
 
-<meta itemprop="name" content="71. Process Management - kill and killall">
-<meta itemprop="description" content="The kill command can terminate the process by the process ID or name, and the killall command can terminate the process itself and its associated processes by the process name.">
+<meta itemprop="name" content="72. Process Management - nice and renice">
+<meta itemprop="description" content="With the nice and renice commands, we can specify the priority of a program when it starts, or change the priority of a running process.">
 
 
-<meta itemprop="datePublished" content="2019-04-12T06:05:16&#43;12:00" />
-<meta itemprop="dateModified" content="2019-04-12T06:05:16&#43;12:00" />
-<meta itemprop="wordCount" content="491">
+<meta itemprop="datePublished" content="2019-04-13T11:24:24&#43;12:00" />
+<meta itemprop="dateModified" content="2019-04-13T11:24:24&#43;12:00" />
+<meta itemprop="wordCount" content="319">
 
 
 
 <meta itemprop="keywords" content="Linux,Server," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="71. Process Management - kill and killall"/>
-<meta name="twitter:description" content="The kill command can terminate the process by the process ID or name, and the killall command can terminate the process itself and its associated processes by the process name."/>
+<meta name="twitter:title" content="72. Process Management - nice and renice"/>
+<meta name="twitter:description" content="With the nice and renice commands, we can specify the priority of a program when it starts, or change the priority of a running process."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -122,15 +122,15 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">71. Process Management - kill and killall</h1>
+      <h1 class="post-title">72. Process Management - nice and renice</h1>
 
       <div class="post-meta">
-        <span class="post-time"> Fri Apr 12 2019 </span>
+        <span class="post-time"> Sat Apr 13 2019 </span>
         <div class="post-category">
             <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
             </div>
-          <span class="more-meta"> 491 words </span>
-          <span class="more-meta"> 3 mins read </span>
+          <span class="more-meta"> 319 words </span>
+          <span class="more-meta"> 2 mins read </span>
         
       </div>
     </header>
@@ -142,34 +142,26 @@
 <ul>
 <li><a href="#options">Options</a>
 <ul>
-<li><a href="#kill-command-options">kill Command Options</a></li>
-<li><a href="#killall-command-options">killall Command Options</a></li>
+<li><a href="#nice-command-options">nice Command Options</a></li>
+<li><a href="#renice-command-options">renice Command Options</a></li>
 </ul></li>
 <li><a href="#examples">Examples</a>
 <ul>
-<li><a href="#kill-command-examples">kill Command Examples</a>
-<ul>
-<li><a href="#output-available-signal-ids-and-names">Output Available Signal IDs and Names</a></li>
-<li><a href="#kill-background-running-processes">Kill Background Running Processes</a></li>
-</ul></li>
-<li><a href="#killall-command-examples">killall Command Examples</a>
-<ul>
-<li><a href="#output-available-signal-names">Output Available Signal Names</a></li>
-<li><a href="#kill-the-process-and-all-its-related-processes">Kill the Process and all Its Related Processes</a></li>
-</ul></li>
+<li><a href="#run-the-program-with-specified-niceness-in-terminal-one">Run the Program With Specified Niceness in Terminal One</a></li>
+<li><a href="#adjust-the-niceness-of-the-top-command-in-terminal-two">Adjust the Niceness of the Top Command in Terminal Two</a></li>
 </ul></li>
 </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <p>The kill command can terminate the process by the process ID or name, and the killall command can terminate the process itself and its associated processes by the process name.</p>
+      <p>With the nice and renice commands, we can specify the priority of a program when it starts, or change the priority of a running process.</p>
 
 <h1 id="options">Options</h1>
 
-<h2 id="kill-command-options">kill Command Options</h2>
+<h2 id="nice-command-options">nice Command Options</h2>
 
-<p>Here are some options for kill command:</p>
+<p>Here are some options for nice command:</p>
 
 <table>
 <thead>
@@ -181,30 +173,15 @@
 
 <tbody>
 <tr>
-<td align="center">-s or &#8209;&#8209;signal signal</td>
-<td align="left">The number or name of the signal to be sent.</td>
-</tr>
-
-<tr>
-<td align="center">-l or &#8209;&#8209;list [number]</td>
-<td align="left">Output the number and name of available signals.</td>
-</tr>
-
-<tr>
-<td align="center">-p or &#8209;&#8209;pid</td>
-<td align="left">Show the process ID of the specified processes instead of sending any signals.</td>
-</tr>
-
-<tr>
-<td align="center">&#8209;&#8209;verbose</td>
-<td align="left">Show the specified process IDs which signaled by the kill command along with the sent signal itself.</td>
+<td align="center">-n or &#8209;&#8209;adjustment=N</td>
+<td align="left">Replace the niceness (priority level) of the specified program with the number N.</td>
 </tr>
 </tbody>
 </table>
 
-<h2 id="killall-command-options">killall Command Options</h2>
+<h2 id="renice-command-options">renice Command Options</h2>
 
-<p>Here are some options for killall command:</p>
+<p>Here are some options for renice command:</p>
 
 <table>
 <thead>
@@ -216,173 +193,73 @@
 
 <tbody>
 <tr>
-<td align="center">-e or &#8209;&#8209;exact</td>
-<td align="left">Match the full name of the program instead of the short name, and the content after 15 characters will be truncated.</td>
+<td align="center">-n or &#8209;&#8209;priority priority</td>
+<td align="left">Replace the niceness (priority level) of the specified program with the number priority.</td>
 </tr>
 
 <tr>
-<td align="center">-I or &#8209;&#8209;ignore-case</td>
-<td align="left">case insensitive.</td>
+<td align="center">-g or &#8209;&#8209;pgrp</td>
+<td align="left">The process group ID(s) is/are specified.</td>
 </tr>
 
 <tr>
-<td align="center">-g or &#8209;&#8209;process-group</td>
-<td align="left">Terminates the group to which the process belongs.</td>
-</tr>
-
-<tr>
-<td align="center">-i or &#8209;&#8209;interactive</td>
-<td align="left">Ask the user to confirm when the termination operation is performed.</td>
-</tr>
-
-<tr>
-<td align="center">l or &#8209;&#8209;list</td>
-<td align="left">Lists all available signal names.</td>
-</tr>
-
-<tr>
-<td align="center">-q or &#8209;&#8209;quiet</td>
-<td align="left">Do not show message if no processes were terminated.</td>
-</tr>
-
-<tr>
-<td align="center">-r or &#8209;&#8209;regexp</td>
-<td align="left">Use regular expressions to match.</td>
-</tr>
-
-<tr>
-<td align="center">-s or &#8209;&#8209;signal or -SIGNAL</td>
-<td align="left">Send the specified signal instead of SIGTERM.</td>
+<td align="center">-p or &#8209;&#8209;pid</td>
+<td align="left">The process ID(s) is/are specified.</td>
 </tr>
 
 <tr>
 <td align="center">-u or &#8209;&#8209;user</td>
-<td align="left">Terminates processes belonging to the specified user.</td>
-</tr>
-
-<tr>
-<td align="center">-v or &#8209;&#8209;verbose</td>
-<td align="left">If the signal is sent successfully, a success message is displayed.</td>
-</tr>
-
-<tr>
-<td align="center">-y or &#8209;&#8209;younger-than</td>
-<td align="left">Match young processes that start after a certain time. Available units are: s=seconds,m=minutes,h=hours,d=days,w=weeks,M=Months,y=years</td>
-</tr>
-
-<tr>
-<td align="center">-Z or &#8209;&#8209;context</td>
-<td align="left">Processes that have security contexts that match the extended regular expression pattern.</td>
+<td align="left">The username(s) or ID(s) is/are specified.</td>
 </tr>
 </tbody>
 </table>
 
 <h1 id="examples">Examples</h1>
 
-<h2 id="kill-command-examples">kill Command Examples</h2>
-
-<h3 id="output-available-signal-ids-and-names">Output Available Signal IDs and Names</h3>
+<h2 id="run-the-program-with-specified-niceness-in-terminal-one">Run the Program With Specified Niceness in Terminal One</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">kill</span> -l</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">nice -n -5 top    <span class="c1"># This is equivalent to nice --adjustment=-5 top</span></code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/71/kill_l.png"
+    <img src="../images/72/nice_top.png"
          alt="img"/> 
 </figure>
 
 
-<h3 id="kill-background-running-processes">Kill Background Running Processes</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">vi <span class="p">&amp;</span>
-<span class="nb">jobs</span>
-<span class="nb">kill</span> -s <span class="m">9</span> <span class="m">4403</span>
-jobs</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/71/kill_s.png"
-         alt="img"/> 
-</figure>
-
-
-<h2 id="killall-command-examples">killall Command Examples</h2>
-
-<h3 id="output-available-signal-names">Output Available Signal Names</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">killall -l</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/71/killall_l.png"
-         alt="img"/> 
-</figure>
-
-
-<h3 id="kill-the-process-and-all-its-related-processes">Kill the Process and all Its Related Processes</h3>
-
-<p>We install nginx for this demonstration:</p>
+<h2 id="adjust-the-niceness-of-the-top-command-in-terminal-two">Adjust the Niceness of the Top Command in Terminal Two</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">yum install nginx -y
-nginx    <span class="c1"># Start nginx server</span></code></pre></td></tr></table>
-</div>
-</div>
-<p>Output nginx running processes:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ps aux <span class="p">|</span> grep nginx</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 17685 is the process ID of the running top command</span>
+renice -n -10 <span class="m">17685</span>    <span class="c1"># This is equivalent to renice --priority -10 17685</span></code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/71/ps_aux_grep_nginx.png"
+    <img src="../images/72/renice_pid.png"
          alt="img"/> 
 </figure>
 
 
-<p>Terminating all processes:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">killall nginx
-ps aux <span class="p">|</span> grep nginx</code></pre></td></tr></table>
-</div>
-</div>
+<p>After adjusted the niceness, let&rsquo;s look back at terminal one:</p>
+
 <figure>
-    <img src="../images/71/killall_nginx_ps_aux_grep_nginx.png"
+    <img src="../images/72/nice_top_2.png"
          alt="img"/> 
 </figure>
 
 
 <blockquote>
 <p>References
-<a href="http://man7.org/linux/man-pages/man1/kill.1.html">KILL(1)</a>,
-<a href="http://man7.org/linux/man-pages/man1/killall.1.html">KILLALL(1)</a></p>
+<a href="http://man7.org/linux/man-pages/man1/nice.1.html">NICE(1)</a>,
+<a href="http://man7.org/linux/man-pages/man1/renice.1.html">RENICE(1)</a></p>
 </blockquote>
 
 <p>If you think the content of this article has helped you, and if you would like some more high-quality materials in the near future, please give me some modest support.</p>
@@ -401,7 +278,7 @@ ps aux <span class="p">|</span> grep nginx</code></pre></td></tr></table>
   </p>
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
-    <span class="item-content">Fri Apr 12 2019</span>
+    <span class="item-content">Sat Apr 13 2019</span>
   </p>
   
   
@@ -425,13 +302,9 @@ ps aux <span class="p">|</span> grep nginx</code></pre></td></tr></table>
           <a href="/tags/server/">Server</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/server-side-programming/linux/simple-but-profound/72.-process-management-nice-and-renice/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">72. Process Management - nice and renice</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        <a class="next" href="/post/server-side-programming/linux/simple-but-profound/70.-process-management-iostat/">
-            <span class="next-text nav-default">70. Process Management - iostat</span>
+        
+        <a class="next" href="/post/server-side-programming/linux/simple-but-profound/71.-process-management-kill-and-killall/">
+            <span class="next-text nav-default">71. Process Management - kill and killall</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>
