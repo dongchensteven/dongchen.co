@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 13 Apr 2019 11:24:24 +1200</lastBuildDate>
+    <lastBuildDate>Sun, 14 Apr 2019 23:48:42 +1200</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>73. Process Management - pmap and pstree</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/73.-process-management-pmap-and-pstree/</link>
+      <pubDate>Sun, 14 Apr 2019 23:48:42 +1200</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/73.-process-management-pmap-and-pstree/</guid>
+      <description>&lt;p&gt;pmap and pstree can let us view the memory map f the process or show processes as a tree.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>72. Process Management - nice and renice</title>
