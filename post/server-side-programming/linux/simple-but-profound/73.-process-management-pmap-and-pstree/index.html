@@ -52,7 +52,7 @@
 
 <meta itemprop="datePublished" content="2019-04-14T23:48:42&#43;12:00" />
 <meta itemprop="dateModified" content="2019-04-14T23:48:42&#43;12:00" />
-<meta itemprop="wordCount" content="255">
+<meta itemprop="wordCount" content="375">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
             </div>
-          <span class="more-meta"> 255 words </span>
+          <span class="more-meta"> 375 words </span>
           <span class="more-meta"> 2 mins read </span>
         
       </div>
@@ -144,6 +144,19 @@
 <ul>
 <li><a href="#pmap-command-options">pmap Command Options</a></li>
 <li><a href="#pstree-command-options">pstree Command Options</a></li>
+</ul></li>
+<li><a href="#examples">Examples</a>
+<ul>
+<li><a href="#pmap">pmap</a>
+<ul>
+<li><a href="#show-first-twenty-lines-of-pmap-process-content">Show First Twenty Lines of pmap Process Content</a></li>
+<li><a href="#show-extended-information-with-pmap">Show Extended Information With pmap</a></li>
+</ul></li>
+<li><a href="#pstree">pstree</a>
+<ul>
+<li><a href="#show-first-twenty-lines-of-pstree-content">Show First Twenty Lines of pstree Content</a></li>
+<li><a href="#show-command-arguments-with-pstree">Show Command Arguments With pstree</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -217,14 +230,115 @@
 </thead>
 
 <tbody>
+<tr>
+<td align="center">-a</td>
+<td align="left">Show command line arguments.</td>
+</tr>
+
+<tr>
+<td align="center">-A</td>
+<td align="left">Draw the tree with ASCII characters.</td>
+</tr>
+
+<tr>
+<td align="center">-c</td>
+<td align="left">Show all the same subtrees.</td>
+</tr>
+
+<tr>
+<td align="center">-h</td>
+<td align="left">Highlight the current process and its ancestors.</td>
+</tr>
+
+<tr>
+<td align="center">-g</td>
+<td align="left">Display process group IDs, and if process IDs and group IDs are displayed at the same time, process IDs are first displayed.</td>
+</tr>
+
+<tr>
+<td align="center">-p</td>
+<td align="left">Display process IDs.</td>
+</tr>
+
+<tr>
+<td align="center">-u</td>
+<td align="left">Display user IDs.</td>
+</tr>
+
+<tr>
+<td align="center">-Z</td>
+<td align="left">Display processes&rsquo; security contexts.</td>
+</tr>
 </tbody>
 </table>
 
-<!-- <figure>
-    <img src="../images/num/demo.png"
+<h1 id="examples">Examples</h1>
+
+<h2 id="pmap">pmap</h2>
+
+<h3 id="show-first-twenty-lines-of-pmap-process-content">Show First Twenty Lines of pmap Process Content</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 1 is the process ID</span>
+pmap <span class="m">1</span> <span class="p">|</span> head -20</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/73/pmap.png"
          alt="img"/> 
 </figure>
- -->
+
+
+<h3 id="show-extended-information-with-pmap">Show Extended Information With pmap</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">pmap -x <span class="m">1</span> <span class="p">|</span> head -20</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/73/pmap_x.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="pstree">pstree</h2>
+
+<h3 id="show-first-twenty-lines-of-pstree-content">Show First Twenty Lines of pstree Content</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">pstree <span class="p">|</span> head -20</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/73/pstree.png"
+         alt="img"/> 
+</figure>
+
+
+<h3 id="show-command-arguments-with-pstree">Show Command Arguments With pstree</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">pstree -a <span class="p">|</span> head -20</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/73/pstree_a.png"
+         alt="img"/> 
+</figure>
+
 
 <blockquote>
 <p>References
@@ -272,7 +386,11 @@
           <a href="/tags/server/">Server</a>
           </div>
       <nav class="post-nav">
-        
+        <a class="prev" href="/post/server-side-programming/linux/simple-but-profound/74.-process-management-sar/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">74. Process Management - sar</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
         <a class="next" href="/post/server-side-programming/linux/simple-but-profound/72.-process-management-nice-and-renice/">
             <span class="next-text nav-default">72. Process Management - nice and renice</span>
             <span class="next-text nav-mobile">Next</span>

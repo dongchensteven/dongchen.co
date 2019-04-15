@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Dong - A place to track my time log</title>
+  <title>74. Process Management - sar - Dong - A place to track my time log</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="Dong&#39;s blog." /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="Dong Chen" /><meta name="description" content="Sar is a command tool for collecting, reporting, or storing system activity information.
+" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -26,9 +27,7 @@
 <meta name="generator" content="Hugo 0.53 with even 4.0.0" />
 
 
-<link rel="canonical" href="https://dongchen.co/" />
-  <link href="https://dongchen.co/index.xml" rel="alternate" type="application/rss+xml" title="Dong - A place to track my time log" />
-  <link href="https://dongchen.co/index.xml" rel="feed" type="application/rss+xml" title="Dong - A place to track my time log" />
+<link rel="canonical" href="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/74.-process-management-sar/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -41,18 +40,26 @@
 <link rel="stylesheet" href="/css/styles.css">
 
 
-<meta property="og:title" content="Dong - A place to track my time log" />
-<meta property="og:description" content="Dong&#39;s blog." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://dongchen.co/" />
-<meta property="og:updated_time" content="2018-10-10T00:50:00&#43;13:00"/>
+<meta property="og:title" content="74. Process Management - sar" />
+<meta property="og:description" content="Sar is a command tool for collecting, reporting, or storing system activity information." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/74.-process-management-sar/" /><meta property="article:published_time" content="2019-04-15T20:41:41&#43;12:00"/>
+<meta property="article:modified_time" content="2019-04-15T20:41:41&#43;12:00"/>
 
-<meta itemprop="name" content="Dong - A place to track my time log">
-<meta itemprop="description" content="Dong&#39;s blog.">
+<meta itemprop="name" content="74. Process Management - sar">
+<meta itemprop="description" content="Sar is a command tool for collecting, reporting, or storing system activity information.">
 
+
+<meta itemprop="datePublished" content="2019-04-15T20:41:41&#43;12:00" />
+<meta itemprop="dateModified" content="2019-04-15T20:41:41&#43;12:00" />
+<meta itemprop="wordCount" content="154">
+
+
+
+<meta itemprop="keywords" content="Linux,Server," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Dong - A place to track my time log"/>
-<meta name="twitter:description" content="Dong&#39;s blog."/>
+<meta name="twitter:title" content="74. Process Management - sar"/>
+<meta name="twitter:description" content="Sar is a command tool for collecting, reporting, or storing system activity information."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -112,65 +119,91 @@
     <main id="main" class="main">
       <div class="content-wrapper">
         <div id="content" class="content">
-          <section id="posts" class="posts">
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/server-side-programming/nginx/simple-but-profound/2.-install-nginx/">2. Install Nginx</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> Wed Oct 10 2018 </span>
-      <div class="post-category">
-          <a href="/categories/nginx-simple-but-profound/"> Nginx: Simple But Profound </a>
-          </div>
-        <span class="more-meta"> 589 words </span>
-        <span class="more-meta"> 3 mins read </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      Ways to install Nginx on CentOS 7 Before we begin our journey, we must prepare a CentOS 7 Linux Server, if you don&rsquo;t have one, you can consider getting one from Linode for very cheap price. Or you can follow along with your existing CentOS 7 Linux Server if you have one. If you are ready, then let’s begin our High-Performance Journey!
-There are two ways of installation:
-1. Nginx package installation This option is suggested to the newcomers since they don&rsquo;t know much details about what exactly Nginx use for, so the first thing they need to do is to quickly install it and start playing around with it.
-    </div>
-    <div class="read-more">
-      <a href="/post/server-side-programming/nginx/simple-but-profound/2.-install-nginx/" class="read-more-link">Read more..</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/server-side-programming/nginx/simple-but-profound/1.-introduction/">1. A brief introduction of Nginx</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> Wed Oct 10 2018 </span>
-      <div class="post-category">
-          <a href="/categories/nginx-simple-but-profound/"> Nginx: Simple But Profound </a>
-          </div>
-        <span class="more-meta"> 267 words </span>
-        <span class="more-meta"> 2 mins read </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      Many companies start on a shoestring budget at first, so they choose Cheap Hosting Plans. However, as they are growing bigger and bigger, their customers are also growing. The next most significant consideration is their portals’ PERFORMANCE.
-Most Hosting Plans use Apache Server, it suits well for little traffic websites, but it is a nightmare for high traffic websites, that’s why Nginx was born. People then start moving their websites to Dedicated Virtual Servers.
-    </div>
-    <div class="read-more">
-      <a href="/post/server-side-programming/nginx/simple-but-profound/1.-introduction/" class="read-more-link">Read more..</a>
-    </div>
-  </div>
-</article>
-
-    </section>
-  
-  <nav class="pagination">
-    <a class="prev" href="/page/4/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text">Prev</span>
-      </a>
+          <article class="post">
     
-  </nav>
+    <header class="post-header">
+      <h1 class="post-title">74. Process Management - sar</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> Mon Apr 15 2019 </span>
+        <div class="post-category">
+            <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
+            </div>
+          <span class="more-meta"> 154 words </span>
+          <span class="more-meta"> 1 min read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+    <div class="post-content">
+      <p>Sar is a command tool for collecting, reporting, or storing system activity information.</p>
+
+<!-- <figure>
+    <img src="../images/num/demo.png"
+         alt="img"/> 
+</figure>
+ -->
+
+<blockquote>
+<p>References
+<a href="http://man7.org/linux/man-pages/man1/sar.1.html">SAR(1)</a></p>
+</blockquote>
+
+<p>If you think the content of this article has helped you, and if you would like some more high-quality materials in the near future, please give me some modest support.</p>
+
+<!-- Buy Me a Coffee Button -->
+
+<p class="align-center">
+  <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/PFou9WhLr"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
+</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Dong Chen</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">Mon Apr 15 2019</span>
+  </p>
+  
+  
+</div><div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://dongchen.co/images/wepay_qr_final.png">
+        <span>wechat</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://dongchen.co/images/alipay_qr_final.png">
+        <span>alipay</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/linux/">Linux</a>
+          <a href="/tags/server/">Server</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/server-side-programming/linux/simple-but-profound/73.-process-management-pmap-and-pstree/">
+            <span class="next-text nav-default">73. Process Management - pmap and pstree</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
         </div>
         
 
