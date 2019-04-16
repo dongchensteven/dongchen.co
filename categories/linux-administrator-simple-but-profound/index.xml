@@ -6,10 +6,19 @@
     <description>Recent content in Linux Administrator: Simple But Profound on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 15 Apr 2019 20:41:41 +1200</lastBuildDate>
+    <lastBuildDate>Tue, 16 Apr 2019 08:04:05 +1200</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/categories/linux-administrator-simple-but-profound/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>75. Process Management - vmstat</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/75.-process-management-vmstat/</link>
+      <pubDate>Tue, 16 Apr 2019 08:04:05 +1200</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/75.-process-management-vmstat/</guid>
+      <description>&lt;p&gt;Displays statistics for virtual memory.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>74. Process Management - sar</title>
@@ -17,7 +26,7 @@
       <pubDate>Mon, 15 Apr 2019 20:41:41 +1200</pubDate>
       
       <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/74.-process-management-sar/</guid>
-      <description>&lt;p&gt;Sar is a command tool for collecting, reporting, or storing system activity information.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Sar is a tool for collecting, reporting, or storing system activity information.&lt;/p&gt;</description>
     </item>
     
     <item>
