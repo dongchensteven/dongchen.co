@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 16 Apr 2019 08:04:05 +1200</lastBuildDate>
+    <lastBuildDate>Wed, 17 Apr 2019 07:50:50 +1200</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>76. Job Scheduling - at</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/76.-job-scheduling-at/</link>
+      <pubDate>Wed, 17 Apr 2019 07:50:50 +1200</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/76.-job-scheduling-at/</guid>
+      <description>&lt;p&gt;Queue, check, or delete a job that needs to be scheduled for execution.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>75. Process Management - vmstat</title>
