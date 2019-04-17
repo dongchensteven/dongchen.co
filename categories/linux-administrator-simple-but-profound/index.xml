@@ -6,10 +6,19 @@
     <description>Recent content in Linux Administrator: Simple But Profound on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 17 Apr 2019 07:50:50 +1200</lastBuildDate>
+    <lastBuildDate>Thu, 18 Apr 2019 05:54:38 +1200</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/categories/linux-administrator-simple-but-profound/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>77. Job Scheduling - crontab</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/77.-job-scheduling-crontab/</link>
+      <pubDate>Thu, 18 Apr 2019 05:54:38 +1200</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/77.-job-scheduling-crontab/</guid>
+      <description>&lt;p&gt;crontab is a tool for configuring scheduled tasks. It also maintains each user&amp;rsquo;s own crontab files.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>76. Job Scheduling - at</title>
@@ -35,7 +44,7 @@
       <pubDate>Mon, 15 Apr 2019 20:41:41 +1200</pubDate>
       
       <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/74.-process-management-sar/</guid>
-      <description>&lt;p&gt;Sar is a tool for collecting, reporting, or storing system activity information.&lt;/p&gt;</description>
+      <description>&lt;p&gt;sar is a tool for collecting, reporting, or storing system activity information.&lt;/p&gt;</description>
     </item>
     
     <item>
