@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>77. Job Scheduling - crontab - Dong - A place to track my time log</title>
+  <title>78. Job Scheduling - anacron - Dong - A place to track my time log</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="crontab is a tool for configuring scheduled tasks. It also maintains each user&amp;rsquo;s own crontab files.
+<meta name="author" content="Dong Chen" /><meta name="description" content="anacron can execute commands or scripts periodically; this tool comes from the cronie package as well.
 " /><meta name="keywords" content="Hugo, theme, even" />
 
 
@@ -27,7 +27,7 @@
 <meta name="generator" content="Hugo 0.53 with even 4.0.0" />
 
 
-<link rel="canonical" href="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/77.-job-scheduling-crontab/" />
+<link rel="canonical" href="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/78.-job-scheduling-anacron/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -40,26 +40,26 @@
 <link rel="stylesheet" href="/css/styles.css">
 
 
-<meta property="og:title" content="77. Job Scheduling - crontab" />
-<meta property="og:description" content="crontab is a tool for configuring scheduled tasks. It also maintains each user&rsquo;s own crontab files." />
+<meta property="og:title" content="78. Job Scheduling - anacron" />
+<meta property="og:description" content="anacron can execute commands or scripts periodically; this tool comes from the cronie package as well." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/77.-job-scheduling-crontab/" /><meta property="article:published_time" content="2019-04-18T05:54:38&#43;12:00"/>
-<meta property="article:modified_time" content="2019-04-18T05:54:38&#43;12:00"/>
+<meta property="og:url" content="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/78.-job-scheduling-anacron/" /><meta property="article:published_time" content="2019-04-19T11:03:29&#43;12:00"/>
+<meta property="article:modified_time" content="2019-04-19T11:03:29&#43;12:00"/>
 
-<meta itemprop="name" content="77. Job Scheduling - crontab">
-<meta itemprop="description" content="crontab is a tool for configuring scheduled tasks. It also maintains each user&rsquo;s own crontab files.">
+<meta itemprop="name" content="78. Job Scheduling - anacron">
+<meta itemprop="description" content="anacron can execute commands or scripts periodically; this tool comes from the cronie package as well.">
 
 
-<meta itemprop="datePublished" content="2019-04-18T05:54:38&#43;12:00" />
-<meta itemprop="dateModified" content="2019-04-18T05:54:38&#43;12:00" />
-<meta itemprop="wordCount" content="568">
+<meta itemprop="datePublished" content="2019-04-19T11:03:29&#43;12:00" />
+<meta itemprop="dateModified" content="2019-04-19T11:03:29&#43;12:00" />
+<meta itemprop="wordCount" content="417">
 
 
 
 <meta itemprop="keywords" content="Linux,Server," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="77. Job Scheduling - crontab"/>
-<meta name="twitter:description" content="crontab is a tool for configuring scheduled tasks. It also maintains each user&rsquo;s own crontab files."/>
+<meta name="twitter:title" content="78. Job Scheduling - anacron"/>
+<meta name="twitter:description" content="anacron can execute commands or scripts periodically; this tool comes from the cronie package as well."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -122,15 +122,15 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">77. Job Scheduling - crontab</h1>
+      <h1 class="post-title">78. Job Scheduling - anacron</h1>
 
       <div class="post-meta">
-        <span class="post-time"> Thu Apr 18 2019 </span>
+        <span class="post-time"> Fri Apr 19 2019 </span>
         <div class="post-category">
             <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
             </div>
-          <span class="more-meta"> 568 words </span>
-          <span class="more-meta"> 3 mins read </span>
+          <span class="more-meta"> 417 words </span>
+          <span class="more-meta"> 2 mins read </span>
         
       </div>
     </header>
@@ -141,31 +141,23 @@
     <nav id="TableOfContents">
 <ul>
 <li><a href="#options">Options</a></li>
-<li><a href="#crontab-file">Crontab File</a>
-<ul>
-<li><a href="#job-definition">Job Definition</a></li>
-<li><a href="#time-and-date-fields">Time and Date Fields</a></li>
-<li><a href="#time-and-date-nicknames">Time and Date Nicknames</a></li>
-<li><a href="#time-and-date-fields-utilization">Time and Date Fields Utilization</a></li>
-</ul></li>
 <li><a href="#examples">Examples</a>
 <ul>
-<li><a href="#check-whether-crond-is-running">Check Whether Crond is Running</a></li>
-<li><a href="#check-crontab-configuration">Check Crontab Configuration</a></li>
-<li><a href="#run-command-every-minute">Run Command Every Minute</a></li>
-<li><a href="#list-scheduled-jobs">List Scheduled Jobs</a></li>
-<li><a href="#delete-scheduled-jobs-with-confirmation">Delete Scheduled Jobs With Confirmation</a></li>
+<li><a href="#number-of-jobs-anacron-can-be-execute-concurrently">Number of Jobs Anacron Can Be Execute Concurrently</a></li>
+<li><a href="#check-anacrontab-configuration">Check Anacrontab Configuration</a></li>
+<li><a href="#configuration-fields">Configuration Fields</a></li>
+<li><a href="#job-definition">Job Definition</a></li>
 </ul></li>
 </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <p>crontab is a tool for configuring scheduled tasks. It also maintains each user&rsquo;s own crontab files.</p>
+      <p>anacron can execute commands or scripts periodically; this tool comes from the cronie package as well.</p>
 
 <h1 id="options">Options</h1>
 
-<p>Here are some options for crontab command:</p>
+<p>Here are some options for anacron command:</p>
 
 <table>
 <thead>
@@ -177,224 +169,89 @@
 
 <tbody>
 <tr>
-<td align="center">-u user</td>
-<td align="left">Modify the specified user&rsquo;s crontab.</td>
+<td align="center">-f</td>
+<td align="left">Force all jobs to run.</td>
 </tr>
 
 <tr>
-<td align="center">-e</td>
-<td align="left">Edit user&rsquo;s crontab.</td>
+<td align="center">-u</td>
+<td align="left">Update the timestamp of all jobs to the current date.</td>
 </tr>
 
 <tr>
-<td align="center">-l</td>
-<td align="left">List user&rsquo;s crontab.</td>
+<td align="center">-s</td>
+<td align="left">Have anacron execute the jobs in order.</td>
 </tr>
 
 <tr>
-<td align="center">-r</td>
-<td align="left">Remove user&rsquo;s crontab.</td>
+<td align="center">-n</td>
+<td align="left">Run all jobs immediately, regardless of the delay time.</td>
 </tr>
 
 <tr>
-<td align="center">-i</td>
-<td align="left">User confirmation is required to perform a delete operation.</td>
-</tr>
-</tbody>
-</table>
-
-<h1 id="crontab-file">Crontab File</h1>
-
-<h2 id="job-definition">Job Definition</h2>
-
-<table>
-<thead>
-<tr>
-<th align="center">Time and Date Fields</th>
-<th align="left">User name</th>
-<th align="left">Command</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">* * * * *</td>
-<td align="left">[root]</td>
-<td align="left">wall &lsquo;Broadcast message&rsquo; [Without receiving mail: &gt; /dev/null or &amp;&gt; /dev/null]</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="time-and-date-fields">Time and Date Fields</h2>
-
-<table>
-<thead>
-<tr>
-<th align="center">Field 1</th>
-<th align="left">Field 2</th>
-<th align="left">Field 3</th>
-<th align="left">Field 4</th>
-<th align="left">Field 5</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">*</td>
-<td align="left">*</td>
-<td align="left">*</td>
-<td align="left">*</td>
-<td align="left">*</td>
+<td align="center">-d</td>
+<td align="left">Let anacron run in the foreground, print messages to standard error output and syslog log file.</td>
 </tr>
 
 <tr>
-<td align="center">Minute</td>
-<td align="left">Hour</td>
-<td align="left">Day of month</td>
-<td align="left">Month</td>
-<td align="left">Day of week</td>
+<td align="center">-q</td>
+<td align="left">Force anacron to send any message to standard error output, which must be used with the -d parameter.</td>
 </tr>
 
 <tr>
-<td align="center">0-59</td>
-<td align="left">0-23</td>
-<td align="left">1-31</td>
-<td align="left">1-12 or Jan-Dec</td>
-<td align="left">0-7 or Mon-Sun</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="time-and-date-nicknames">Time and Date Nicknames</h2>
-
-<table>
-<thead>
-<tr>
-<th align="center">Nickname</th>
-<th align="left">Definition</th>
-<th align="left">Actual meaning</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">@hourly</td>
-<td align="left">0 * * * *</td>
-<td align="left">Run hourly.</td>
+<td align="center">-t anacrontab_file</td>
+<td align="left">Use the specified anacrontab profile instead of the default /etc/anacrontab file.</td>
 </tr>
 
 <tr>
-<td align="center">@daily</td>
-<td align="left">0 0 * * *</td>
-<td align="left">Run daily.</td>
+<td align="center">-T</td>
+<td align="left">Test whether the syntax of the /etc/anacrontab configuration file is correct, return code 1 if syntax is wrong, and return code 0 if syntax is correct.</td>
 </tr>
 
 <tr>
-<td align="center">@weekly</td>
-<td align="left">0 0 * * 0</td>
-<td align="left">Run weekly.</td>
-</tr>
-
-<tr>
-<td align="center">@monthly</td>
-<td align="left">0 0 1 * *</td>
-<td align="left">Run monthly.</td>
-</tr>
-
-<tr>
-<td align="center">@annually or @yearly</td>
-<td align="left">0 0 1 1 *</td>
-<td align="left">Run annually.</td>
-</tr>
-
-<tr>
-<td align="center">@reboot</td>
-<td align="left"></td>
-<td align="left">Run after reboot.</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="time-and-date-fields-utilization">Time and Date Fields Utilization</h2>
-
-<table>
-<thead>
-<tr>
-<th align="center">Field</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">N</td>
-<td align="left">Specifies a value within the valid range value of a field.</td>
-</tr>
-
-<tr>
-<td align="center">*</td>
-<td align="left">All values within the valid range value of a field.</td>
-</tr>
-
-<tr>
-<td align="center">N,N,N</td>
-<td align="left">Multiple values within the valid range value of a field.</td>
-</tr>
-
-<tr>
-<td align="center">N-N</td>
-<td align="left">Range values within the valid range value of a field.</td>
-</tr>
-
-<tr>
-<td align="center">*/N</td>
-<td align="left">The number that can be divided by the maximum value of a field.</td>
+<td align="center">-S spool_path</td>
+<td align="left">Specify a path to keep the timestamps instead of the default /var/spool/anacron directory.</td>
 </tr>
 </tbody>
 </table>
 
 <h1 id="examples">Examples</h1>
 
-<h2 id="check-whether-crond-is-running">Check Whether Crond is Running</h2>
+<h2 id="number-of-jobs-anacron-can-be-execute-concurrently">Number of Jobs Anacron Can Be Execute Concurrently</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">systemctl status crond</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Anacron uses up to two file descriptors for each active job</span>
+<span class="nb">echo</span> <span class="k">$(($(</span><span class="nb">ulimit</span> -n<span class="k">)</span> <span class="o">/</span> <span class="m">2</span><span class="k">))</span></code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/77/systemctl_status_crond.png"
+    <img src="../images/78/echo_ulimit_n_2.png"
          alt="img"/> 
 </figure>
 
 
-<p>Install cronie If It Has Not Been Installed Yet</p>
+<h2 id="check-anacrontab-configuration">Check Anacrontab Configuration</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">yum install cronie</code></pre></td></tr></table>
-</div>
-</div>
-<h2 id="check-crontab-configuration">Check Crontab Configuration</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">cat /etc/crontab</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">cat /etc/anacrontab</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
-    <img src="../images/77/cat_etc_crontab.png"
+    <img src="../images/78/cat_etc_anacrontab.png"
          alt="img"/> 
 </figure>
 
 
-<p>Here are some configuration fields in /etc/crontab file:</p>
+<h2 id="configuration-fields">Configuration Fields</h2>
+
+<p>Here are some configuration fields in /etc/anacrontab file:</p>
 
 <table>
 <thead>
@@ -406,89 +263,56 @@
 
 <tbody>
 <tr>
-<td align="center">SHELL</td>
-<td align="left">Shell to be used by crontab.</td>
+<td align="center">RANDOM_DELAY</td>
+<td align="left">The maximum number of minutes that can be delayed.</td>
 </tr>
 
 <tr>
-<td align="center">PATH</td>
-<td align="left">The path to the command executed by crontab, and if the command is not in these directories, the full path needs to be specified.</td>
-</tr>
-
-<tr>
-<td align="center">MAILTO</td>
-<td align="left">The user who will receive the message after the crontab command has been executed.</td>
+<td align="center">START_HOURS_RANGE</td>
+<td align="left">Specify an executable time range, so long as the machine is running within the time range, the job will be executed.</td>
 </tr>
 </tbody>
 </table>
 
-<h2 id="run-command-every-minute">Run Command Every Minute</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># &gt; /dev/null means don&#39;t send email to user, unless there is an error</span>
-crontab -e    <span class="c1"># This will open the job definition file in editable mode</span>
-*/1 * * * * /usr/bin/wall <span class="s1">&#39;This message is broadcast every minute.&#39;</span> &gt; /dev/null</code></pre></td></tr></table>
-</div>
-</div>
-<p>If this is the first time a crontab is created, the following information will be output after the creation:</p>
+<h2 id="job-definition">Job Definition</h2>
 
-<figure>
-    <img src="../images/77/crontab_e.png"
-         alt="img"/> 
-</figure>
+<p>Here are some columns in /etc/anacrontab file:</p>
 
+<table>
+<thead>
+<tr>
+<th align="center">Column</th>
+<th align="left">Description</th>
+</tr>
+</thead>
 
-<p>After few minutes:</p>
+<tbody>
+<tr>
+<td align="center">Column 1</td>
+<td align="left">How many days are a cycle.</td>
+</tr>
 
-<figure>
-    <img src="../images/77/crontab_e_after.png"
-         alt="img"/> 
-</figure>
+<tr>
+<td align="center">Column 2</td>
+<td align="left">The number of minutes delayed.</td>
+</tr>
 
+<tr>
+<td align="center">Column 3</td>
+<td align="left">The unique name of the job used when logging.</td>
+</tr>
 
-<h2 id="list-scheduled-jobs">List Scheduled Jobs</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">crontab -l</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/77/crontab_l.png"
-         alt="img"/> 
-</figure>
-
-
-<h2 id="delete-scheduled-jobs-with-confirmation">Delete Scheduled Jobs With Confirmation</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">crontab -l
-crontab -ri    <span class="c1"># At this stage: Input y or yes and press enter</span>
-crontab -l</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/77/crontab_l_ri_l.png"
-         alt="img"/> 
-</figure>
-
+<tr>
+<td align="center">Last columns</td>
+<td align="left">Directory of commands or scripts to execute.</td>
+</tr>
+</tbody>
+</table>
 
 <blockquote>
 <p>References
-<a href="http://man7.org/linux/man-pages/man1/crontab.1.html">CRONTAB(1)</a>,
-<a href="http://man7.org/linux/man-pages/man5/crontab.5.html">CRONTAB(5)</a></p>
+<a href="http://man7.org/linux/man-pages/man8/anacron.8.html">ANACRON(8)</a>,
+<a href="http://man7.org/linux/man-pages/man5/anacrontab.5.html">ANACRONTAB(5)</a></p>
 </blockquote>
 
 <p>If you think the content of this article has helped you, and if you would like some more high-quality materials in the near future, please give me some modest support.</p>
@@ -507,7 +331,7 @@ crontab -l</code></pre></td></tr></table>
   </p>
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
-    <span class="item-content">Thu Apr 18 2019</span>
+    <span class="item-content">Fri Apr 19 2019</span>
   </p>
   
   
@@ -531,13 +355,9 @@ crontab -l</code></pre></td></tr></table>
           <a href="/tags/server/">Server</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/server-side-programming/linux/simple-but-profound/78.-job-scheduling-anacron/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">78. Job Scheduling - anacron</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        <a class="next" href="/post/server-side-programming/linux/simple-but-profound/76.-job-scheduling-at/">
-            <span class="next-text nav-default">76. Job Scheduling - at</span>
+        
+        <a class="next" href="/post/server-side-programming/linux/simple-but-profound/77.-job-scheduling-crontab/">
+            <span class="next-text nav-default">77. Job Scheduling - crontab</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>
