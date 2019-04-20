@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>79. Daemon Management - Systemd and Systemctl - Dong - A place to track my time log</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Dong Chen" /><meta name="description" content="Through the systemctl command, we can easily manage the systemd system and services.
+" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/79.-daemon-management-systemd-and-systemctl/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.ea128f8b.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/styles.css">
+
+
+<meta property="og:title" content="79. Daemon Management - Systemd and Systemctl" />
+<meta property="og:description" content="Through the systemctl command, we can easily manage the systemd system and services." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dongchen.co/post/server-side-programming/linux/simple-but-profound/79.-daemon-management-systemd-and-systemctl/" /><meta property="article:published_time" content="2019-04-20T11:37:58&#43;12:00"/>
+<meta property="article:modified_time" content="2019-04-20T11:37:58&#43;12:00"/>
+
+<meta itemprop="name" content="79. Daemon Management - Systemd and Systemctl">
+<meta itemprop="description" content="Through the systemctl command, we can easily manage the systemd system and services.">
+
+
+<meta itemprop="datePublished" content="2019-04-20T11:37:58&#43;12:00" />
+<meta itemprop="dateModified" content="2019-04-20T11:37:58&#43;12:00" />
+<meta itemprop="wordCount" content="792">
+
+
+
+<meta itemprop="keywords" content="Linux,Server," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="79. Daemon Management - Systemd and Systemctl"/>
+<meta name="twitter:description" content="Through the systemctl command, we can easily manage the systemd system and services."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Dong</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Dong</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">79. Daemon Management - Systemd and Systemctl</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> Sat Apr 20 2019 </span>
+        <div class="post-category">
+            <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
+            </div>
+          <span class="more-meta"> 792 words </span>
+          <span class="more-meta"> 4 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#possible-directories-for-daemons">Possible Directories for Daemons</a></li>
+<li><a href="#service-daemon-types">Service Daemon Types</a></li>
+<li><a href="#frequently-used-commands-for-systemctl">Frequently Used Commands for Systemctl</a>
+<ul>
+<li><a href="#general-commands">General Commands</a></li>
+<li><a href="#unit-file-commands">Unit File Commands</a></li>
+<li><a href="#manager-lifecycle-commands">Manager Lifecycle Commands</a></li>
+<li><a href="#system-commands">System Commands</a></li>
+<li><a href="#runlevels">Runlevels</a></li>
+</ul></li>
+<li><a href="#daemon-configuration-file">Daemon Configuration File</a>
+<ul>
+<li><a href="#unit-section-options">[UNIT] Section  Options</a></li>
+<li><a href="#service-section-options">[SERVICE] Section Options</a></li>
+<li><a href="#install-section-options">[INSTALL] Section Options</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>Through the systemctl command, we can easily manage the systemd system and services.</p>
+
+<h1 id="possible-directories-for-daemons">Possible Directories for Daemons</h1>
+
+<p>/etc/systemd/system/*
+/run/systemd/system/*
+/usr/lib/systemd/system/*</p>
+
+<h1 id="service-daemon-types">Service Daemon Types</h1>
+
+<p>Here are some types for system service:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">.service</td>
+<td align="left">Specify the services of the system.</td>
+</tr>
+
+<tr>
+<td align="center">.socket</td>
+<td align="left">Socket files used for inter-process communication. There must be corresponding service files.</td>
+</tr>
+
+<tr>
+<td align="center">.snapshot</td>
+<td align="left">System snapshots.</td>
+</tr>
+
+<tr>
+<td align="center">.device</td>
+<td align="left">Devices that are recognized by the kernel under the /sys or /dev directory.</td>
+</tr>
+
+<tr>
+<td align="center">.mount</td>
+<td align="left">Mount points where the file systems are mounted.</td>
+</tr>
+
+<tr>
+<td align="center">.automount</td>
+<td align="left">Automatic mount point of file system controlled by systemd.</td>
+</tr>
+
+<tr>
+<td align="center">.swap</td>
+<td align="left">Swap devices or in-memory paging files controlled by systemd.</td>
+</tr>
+
+<tr>
+<td align="center">.target</td>
+<td align="left">Target units simply combine an existing set of units and dependencies, and they do not provide additional functionality by themselves. They are more flexible than SysV runlevels in the classic SysV init system.</td>
+</tr>
+
+<tr>
+<td align="center">.path</td>
+<td align="left">Path for path-based activation controlled by systemd.</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="frequently-used-commands-for-systemctl">Frequently Used Commands for Systemctl</h1>
+
+<h2 id="general-commands">General Commands</h2>
+
+<p>Here are some commands for systemctl command:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Command</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">start PATTERN&hellip;</td>
+<td align="left">Activate(s) the specified daemon(s).</td>
+</tr>
+
+<tr>
+<td align="center">stop PATTERN&hellip;</td>
+<td align="left">Deactivate(s) the specified daemon(s).</td>
+</tr>
+
+<tr>
+<td align="center">reload PATTERN&hellip;</td>
+<td align="left">Kill(s) the specified daemon(s) and restart it after reloading its configuration file.</td>
+</tr>
+
+<tr>
+<td align="center">restart PATTERN&hellip;</td>
+<td align="left">Stop(s) the specified daemon(s) and restart it.</td>
+</tr>
+
+<tr>
+<td align="center">try-restart PATTERN&hellip;</td>
+<td align="left">If the specified daemon is running, stop and restart it.</td>
+</tr>
+
+<tr>
+<td align="center">reload-or-restart PATTERN&hellip;</td>
+<td align="left">Reload(s) or restart(s) the specified running daemon(s) and start the stopped daemon(s) if it is not started.</td>
+</tr>
+
+<tr>
+<td align="center">try-reload-or-restart</td>
+<td align="left">Reload(s) or restart(s) the specified running daemon(s).</td>
+</tr>
+
+<tr>
+<td align="center">isolate</td>
+<td align="left">Can only be used when the AllowIsolate attribute in the daemon configuration file is specified as true.</td>
+</tr>
+
+<tr>
+<td align="center">is-active</td>
+<td align="left">Check(s) the specified daemon(s) to see if it is active.</td>
+</tr>
+
+<tr>
+<td align="center">status</td>
+<td align="left">Show(s) brief status information for the daemon(s).</td>
+</tr>
+
+<tr>
+<td align="center">list-dependencies</td>
+<td align="left">Show other daemons on which the specified daemon(s) depend(s).</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="unit-file-commands">Unit File Commands</h2>
+
+<p>Here are some file related commands for systemctl command:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Command</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">enable</td>
+<td align="left">Start(s) the specified daemon(s) at the same time as the system is started.</td>
+</tr>
+
+<tr>
+<td align="center">disable</td>
+<td align="left">Do(es) not start the specified daemon(s) at the same time as the system is started.</td>
+</tr>
+
+<tr>
+<td align="center">is-enabled</td>
+<td align="left">Check to see if there are daemon files in the active state.</td>
+</tr>
+
+<tr>
+<td align="center">mask</td>
+<td align="left">Prevent(s) the daemon(s) from starting in any way.</td>
+</tr>
+
+<tr>
+<td align="center">unmask</td>
+<td align="left">Cancels the mask effect.</td>
+</tr>
+
+<tr>
+<td align="center">get-default</td>
+<td align="left">Starts the default target linked by default.target.</td>
+</tr>
+
+<tr>
+<td align="center">set-default</td>
+<td align="left">Sets the default target for the default.target link.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="manager-lifecycle-commands">Manager Lifecycle Commands</h2>
+
+<p>Here are some daemon lifecycle related commands for systemctl command:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Command</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">daemon-reload</td>
+<td align="left">Rerun all generators, reload all daemon files and recreate the full dependency tree.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="system-commands">System Commands</h2>
+
+<p>Here are some system related commands for systemctl command:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Command</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">rescue</td>
+<td align="left">Enter rescue mode and send messages to all users.</td>
+</tr>
+
+<tr>
+<td align="center">emergency</td>
+<td align="left">Enter emergency mode and send messages to all users.</td>
+</tr>
+
+<tr>
+<td align="center">poweroff</td>
+<td align="left">Shut down the system.</td>
+</tr>
+
+<tr>
+<td align="center">reboot</td>
+<td align="left">Restart the system.</td>
+</tr>
+
+<tr>
+<td align="center">suspend</td>
+<td align="left">Pause the system.</td>
+</tr>
+
+<tr>
+<td align="center">hibernate</td>
+<td align="left">Leave the system dormant.</td>
+</tr>
+
+<tr>
+<td align="center">hybrid-sleep</td>
+<td align="left">Put the system in a paused and dormant state.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="runlevels">Runlevels</h2>
+
+<p>Here are some runlevel targets for systemctl command:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Runlevel</th>
+<th align="left">Target</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">0</td>
+<td align="left">poweroff.target</td>
+</tr>
+
+<tr>
+<td align="center">1</td>
+<td align="left">rescue.target</td>
+</tr>
+
+<tr>
+<td align="center">2, 3, 4</td>
+<td align="left">multi-user.target</td>
+</tr>
+
+<tr>
+<td align="center">5</td>
+<td align="left">graphical.target</td>
+</tr>
+
+<tr>
+<td align="center">6</td>
+<td align="left">reboot.target</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="daemon-configuration-file">Daemon Configuration File</h1>
+
+<h2 id="unit-section-options">[UNIT] Section  Options</h2>
+
+<p>Here are some unit section fields for daemon configuration file:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Field</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">Description=</td>
+<td align="left">The name of the daemon.</td>
+</tr>
+
+<tr>
+<td align="center">Requires=</td>
+<td align="left">Other daemons on which the daemon depends.</td>
+</tr>
+
+<tr>
+<td align="center">Wants=</td>
+<td align="left">Other daemons on which the daemon depends. (Recommended)</td>
+</tr>
+
+<tr>
+<td align="center">Conflicts=</td>
+<td align="left">Daemons that conflict with the current daemon.</td>
+</tr>
+
+<tr>
+<td align="center">Before, After=</td>
+<td align="left">Daemons that start before or after the current daemon starts.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="service-section-options">[SERVICE] Section Options</h2>
+
+<p>Here are some service section fields for daemon configuration file:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Field</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">Type=</td>
+<td align="left">Daemon startup type. Available types are: simple, forking, oneshot, dbus, notify, idle.</td>
+</tr>
+
+<tr>
+<td align="center">ExecStart=</td>
+<td align="left">Commands executed when the daemon is started.</td>
+</tr>
+
+<tr>
+<td align="center">ExecStartPrec=, ExecStartPost=</td>
+<td align="left">Commands executed before or after the execution ExecStart commands.</td>
+</tr>
+
+<tr>
+<td align="center">ExecStop=</td>
+<td align="left">Commands executed before the end of the daemon.</td>
+</tr>
+
+<tr>
+<td align="center">Restart=</td>
+<td align="left">Whether the daemon should be allowed to restart after exiting, stopped, or timed out.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="install-section-options">[INSTALL] Section Options</h2>
+
+<p>Here are some install section fields for daemon configuration file:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Field</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">Alias=</td>
+<td align="left">Additional names of daemons.</td>
+</tr>
+
+<tr>
+<td align="center">WantedBy=, RequiresBy=</td>
+<td align="left">Other daemons on which the daemon depends.</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p>References
+<a href="http://man7.org/linux/man-pages/man1/systemd.1.html">SYSTEMD(1)</a>,
+<a href="http://man7.org/linux/man-pages/man7/systemd.special.7.html">SYSTEMD.SPECIAL(7)</a>,
+<a href="http://man7.org/linux/man-pages/man5/systemd.unit.5.html">SYSTEMD.UNIT(5)</a>,
+<a href="http://man7.org/linux/man-pages/man5/systemd.service.5.html">SYSTEMD.SERVICE(5)</a>,
+<a href="http://man7.org/linux/man-pages/man5/systemd.socket.5.html">SYSTEMD.SOCKET(5)</a>,
+<a href="https://manpages.debian.org/jessie/systemd/systemd.snapshot.5.en.html">SYSTEMD.SNAPSHOT(5)</a>,
+<a href="http://man7.org/linux/man-pages/man5/systemd.device.5.html">SYSTEMD.DEVICE(5)</a>,
+<a href="http://man7.org/linux/man-pages/man5/systemd.mount.5.html">SYSTEMD.MOUNT(5)</a>,
+<a href="http://man7.org/linux/man-pages/man5/systemd.automount.5.html">SYSTEMD.AUTOMOUNT(5)</a>,
+<a href="http://man7.org/linux/man-pages/man5/systemd.swap.5.html">SYSTEMD.SWAP(5)</a>,
+<a href="http://man7.org/linux/man-pages/man5/systemd.target.5.html">SYSTEMD.TARGET(5)</a>,
+<a href="http://man7.org/linux/man-pages/man5/systemd.path.5.html">SYSTEMD.PATH(5)</a>,
+<a href="http://man7.org/linux/man-pages/man1/systemd.1.html">SYSTEMCTL(1)</a>,
+<a href="http://man7.org/linux/man-pages/man8/runlevel.8.html">RUNLEVEL(8)</a></p>
+</blockquote>
+
+<p>If you think the content of this article has helped you, and if you would like some more high-quality materials in the near future, please give me some modest support.</p>
+
+<!-- Buy Me a Coffee Button -->
+
+<p class="align-center">
+  <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/PFou9WhLr"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
+</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Dong Chen</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">Sat Apr 20 2019</span>
+  </p>
+  
+  
+</div><div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://dongchen.co/images/wepay_qr_final.png">
+        <span>wechat</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://dongchen.co/images/alipay_qr_final.png">
+        <span>alipay</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/linux/">Linux</a>
+          <a href="/tags/server/">Server</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/server-side-programming/linux/simple-but-profound/78.-job-scheduling-anacron/">
+            <span class="next-text nav-default">78. Job Scheduling - anacron</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:dongchensteven@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.linkedin.com/in/dongchensteven" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/dongchensteven" class="iconfont icon-github" title="github"></a>
+  <a href="https://dongchen.co/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Dong Chen</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-133226289-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>
