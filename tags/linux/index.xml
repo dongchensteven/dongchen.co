@@ -6,10 +6,19 @@
     <description>Recent content in Linux on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 20 Apr 2019 11:37:58 +1200</lastBuildDate>
+    <lastBuildDate>Sun, 21 Apr 2019 08:47:33 +1200</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>80. Package Management - rpm</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/80.-package-management-rpm/</link>
+      <pubDate>Sun, 21 Apr 2019 08:47:33 +1200</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/80.-package-management-rpm/</guid>
+      <description>&lt;p&gt;RPM is a tool that can be used to find, verify, install, update and delete applications.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>79. Daemon Management - Systemd and Systemctl</title>
