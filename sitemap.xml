@@ -3,14 +3,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/81.-package-management-yum/</loc>
+    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/81.-package-management-yum-yellowdog-updater-modified/</loc>
     <lastmod>2019-04-22T08:27:52+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/80.-package-management-rpm/</loc>
+    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/80.-package-management-rpm-rpm-package-manager/</loc>
     <lastmod>2019-04-21T08:47:33+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
