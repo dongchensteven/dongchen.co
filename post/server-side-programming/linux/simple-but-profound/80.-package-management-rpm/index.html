@@ -52,7 +52,7 @@
 
 <meta itemprop="datePublished" content="2019-04-21T08:47:33&#43;12:00" />
 <meta itemprop="dateModified" content="2019-04-21T08:47:33&#43;12:00" />
-<meta itemprop="wordCount" content="156">
+<meta itemprop="wordCount" content="504">
 
 
 
@@ -129,8 +129,8 @@
         <div class="post-category">
             <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
             </div>
-          <span class="more-meta"> 156 words </span>
-          <span class="more-meta"> 1 min read </span>
+          <span class="more-meta"> 504 words </span>
+          <span class="more-meta"> 3 mins read </span>
         
       </div>
     </header>
@@ -138,21 +138,361 @@
     <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">Contents</h2>
   <div class="post-toc-content always-active">
-    
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#rpm-file-format">RPM File Format</a></li>
+<li><a href="#frequently-used-options">Frequently Used Options</a>
+<ul>
+<li><a href="#locate-and-verify-installation-packages">Locate and Verify Installation Packages</a>
+<ul>
+<li><a href="#select-options">Select Options</a></li>
+<li><a href="#query-options">Query Options</a></li>
+<li><a href="#verify-options">Verify Options</a></li>
+</ul></li>
+<li><a href="#install-update-and-delete-installation-packages">Install, Update and Delete Installation Packages</a>
+<ul>
+<li><a href="#install-and-upgrade-options">Install and Upgrade Options</a></li>
+<li><a href="#upgrade-options">Upgrade Options</a></li>
+<li><a href="#erase-options">Erase Options</a></li>
+</ul></li>
+<li><a href="#general-options">General Options</a></li>
+<li><a href="#rebuild-database-options">Rebuild Database Options</a></li>
+</ul></li>
+</ul>
+</nav>
   </div>
 </div>
     <div class="post-content">
       <p>RPM is a tool that can be used to find, verify, install, update and delete applications.</p>
 
-<figure>
-    <img src="../images/num/demo.png"
-         alt="img"/> 
-</figure>
+<h1 id="rpm-file-format">RPM File Format</h1>
 
+<ul>
+<li>Binary: &lt;name&gt;-&lt;version&gt;-&lt;release&gt;.&lt;architecture&gt;.rpm</li>
+<li>Source: &lt;name&gt;-&lt;version&gt;-&lt;release&gt;.src.rpm</li>
+</ul>
+
+<h1 id="frequently-used-options">Frequently Used Options</h1>
+
+<h2 id="locate-and-verify-installation-packages">Locate and Verify Installation Packages</h2>
+
+<table>
+<thead>
+<tr>
+<th align="center">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">-q or &#8209;&#8209;query</td>
+<td align="left">Query the package.</td>
+</tr>
+
+<tr>
+<td align="center">-V or &#8209;&#8209;verify</td>
+<td align="left">Verify the package.</td>
+</tr>
+
+<tr>
+<td align="center">-K or &#8209;&#8209;checksig</td>
+<td align="left">Check all the digest and signatures.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="select-options">Select Options</h3>
+
+<table>
+<thead>
+<tr>
+<th align="center">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">-a or &#8209;&#8209;all</td>
+<td align="left">Show all installed packages.</td>
+</tr>
+
+<tr>
+<td align="center">-f or &#8209;&#8209;file FILE</td>
+<td align="left">Show FILE owned by package.</td>
+</tr>
+
+<tr>
+<td align="center">-p or &#8209;&#8209;package PACKAGE_FILE</td>
+<td align="left">Show an uninstalled package PACKAGE_FILE.</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;whatprovides CAPABILITY</td>
+<td align="left">Show all packages that provide CAPABILITY ability.</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;whatrequires CAPABILITY</td>
+<td align="left">Show all packages that rely on CAPABILITY for normal use.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="query-options">Query Options</h3>
+
+<table>
+<thead>
+<tr>
+<th align="center">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">&#8209;&#8209;changelog</td>
+<td align="left">Show changes to the package.</td>
+</tr>
+
+<tr>
+<td align="center">-c or &#8209;&#8209;configfiles</td>
+<td align="left">Show only configuration files.</td>
+</tr>
+
+<tr>
+<td align="center">-d or &#8209;&#8209;docfiles</td>
+<td align="left">Show only documentation files.</td>
+</tr>
+
+<tr>
+<td align="center">-i or &#8209;&#8209;info</td>
+<td align="left">Show package information.</td>
+</tr>
+
+<tr>
+<td align="center">-l or &#8209;&#8209;list</td>
+<td align="left">Show package files.</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;provides</td>
+<td align="left">Show package capabilities.</td>
+</tr>
+
+<tr>
+<td align="center">-R or &#8209;&#8209;requires</td>
+<td align="left">Show package&rsquo;s dependencies.</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;scripts</td>
+<td align="left">Show package scriptlet(s).</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="verify-options">Verify Options</h3>
+
+<table>
+<thead>
+<tr>
+<th align="center">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">&#8209;&#8209;nodeps</td>
+<td align="left">Do not check package dependencies.</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;nodigest</td>
+<td align="left">Do not check packages or header summaries.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="install-update-and-delete-installation-packages">Install, Update and Delete Installation Packages</h2>
+
+<table>
+<thead>
+<tr>
+<th align="center">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">-i or &#8209;&#8209;install</td>
+<td align="left">Install packages.</td>
+</tr>
+
+<tr>
+<td align="center">-U or &#8209;&#8209;update</td>
+<td align="left">Update or install packages.</td>
+</tr>
+
+<tr>
+<td align="center">-F or &#8209;&#8209;freshen</td>
+<td align="left">Update packages.</td>
+</tr>
+
+<tr>
+<td align="center">-e or &#8209;&#8209;erase</td>
+<td align="left">Remove packages.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="install-and-upgrade-options">Install and Upgrade Options</h3>
+
+<table>
+<thead>
+<tr>
+<th align="center">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">-h or &#8209;&#8209;hash</td>
+<td align="left">Print hash marks when installing the package.</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;nodigest</td>
+<td align="left">Do not check packages or header summaries.</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;nosignature</td>
+<td align="left">Do not check packages or header signatures.</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;nodeps</td>
+<td align="left">Do not check package&rsquo;s dependencies.</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;replacepkgs</td>
+<td align="left">Install these packages, even if they replace files in other installed packages.</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;test</td>
+<td align="left">Check the package installation process for conflicts, but do not perform the installation operation.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="upgrade-options">Upgrade Options</h3>
+
+<table>
+<thead>
+<tr>
+<th align="center">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">&#8209;&#8209;force</td>
+<td align="left">Similar to &#8209;&#8209;replacepkgs, &#8209;&#8209;replacefiles, and &#8209;&#8209;oldpackage.</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;oldpackage</td>
+<td align="left">Downgrade the version of the package to the previous version.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="erase-options">Erase Options</h3>
+
+<table>
+<thead>
+<tr>
+<th align="center">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">&#8209;&#8209;allmatches</td>
+<td align="left">Remove all versions of the specified package.</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;nodeps</td>
+<td align="left">Do not check package&rsquo;s dependencies.</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;test</td>
+<td align="left">Check the package uninstallation process, but do not perform the uninstallation operation, usually used in conjunction with -vv option.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="general-options">General Options</h2>
+
+<table>
+<thead>
+<tr>
+<th align="center">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">-v</td>
+<td align="left">Output detailed processing messages.</td>
+</tr>
+
+<tr>
+<td align="center">-vv</td>
+<td align="left">Output more detailed processing messages.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="rebuild-database-options">Rebuild Database Options</h2>
+
+<table>
+<thead>
+<tr>
+<th align="center">Option</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">&#8209;&#8209;initdb</td>
+<td align="left">Create a new database.</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;rebuilddb</td>
+<td align="left">Create database indexes through package headers.</td>
+</tr>
+</tbody>
+</table>
 
 <blockquote>
-<p>References
-<a href="exampledotcom">demo</a></p>
+<p>Refereces
+<a href="http://ftp.rpm.org/max-rpm/rpm.8.html">RPM Package Manager</a>,
+<a href="https://rpm.org/documentation.html">RPM Documentation</a></p>
 </blockquote>
 
 <p>If you think the content of this article has helped you, and if you would like some more high-quality materials in the near future, please give me some modest support.</p>
@@ -195,7 +535,11 @@
           <a href="/tags/server/">Server</a>
           </div>
       <nav class="post-nav">
-        
+        <a class="prev" href="/post/server-side-programming/linux/simple-but-profound/81.-package-management-yum/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">81. Package Management - yum</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
         <a class="next" href="/post/server-side-programming/linux/simple-but-profound/79.-daemon-management-systemd-and-systemctl/">
             <span class="next-text nav-default">79. Daemon Management - Systemd and Systemctl</span>
             <span class="next-text nav-mobile">Next</span>

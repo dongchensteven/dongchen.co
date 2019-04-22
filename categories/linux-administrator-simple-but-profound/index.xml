@@ -6,10 +6,21 @@
     <description>Recent content in Linux Administrator: Simple But Profound on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 21 Apr 2019 08:47:33 +1200</lastBuildDate>
+    <lastBuildDate>Mon, 22 Apr 2019 08:27:52 +1200</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/categories/linux-administrator-simple-but-profound/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>81. Package Management - yum</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/81.-package-management-yum/</link>
+      <pubDate>Mon, 22 Apr 2019 08:27:52 +1200</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/81.-package-management-yum/</guid>
+      <description>References demo
+ If you think the content of this article has helped you, and if you would like some more high-quality materials in the near future, please give me some modest support.
+.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.</description>
+    </item>
     
     <item>
       <title>80. Package Management - rpm</title>
