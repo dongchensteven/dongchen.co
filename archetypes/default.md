@@ -5,8 +5,8 @@ lastmod: {{ .Date }}
 draft: false
 keywords: []
 description: ""
-tags: [ "Linux", "Server" ]
-categories: [ "Linux Administrator: Simple But Profound" ]
+tags: [ "Java", "Spring Stack", "Spring", "Spring Boot" ]
+categories: [ "Spring Stack Developer: Simple But Profound" ]
 author: "Dong Chen"
 
 # You can also close(false) or open(true) something for this content.
