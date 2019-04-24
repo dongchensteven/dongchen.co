@@ -6,10 +6,19 @@
     <description>Recent content in Linux Administrator: Simple But Profound on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 22 Apr 2019 08:27:52 +1200</lastBuildDate>
+    <lastBuildDate>Tue, 23 Apr 2019 20:54:13 +1200</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/categories/linux-administrator-simple-but-profound/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>82. System Log Management - rsyslogd</title>
+      <link>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/82.-system-log-management-rsyslogd/</link>
+      <pubDate>Tue, 23 Apr 2019 20:54:13 +1200</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/82.-system-log-management-rsyslogd/</guid>
+      <description>&lt;p&gt;rsyslogd is a system utility that provides support for message logging. Support for network and domain sockets enables this utility to support both local and remote logging.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>81. Package Management - yum (Yellowdog Updater Modified)</title>
