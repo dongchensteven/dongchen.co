@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 23 Apr 2019 20:54:13 +1200</lastBuildDate>
+    <lastBuildDate>Wed, 24 Apr 2019 19:58:51 +1200</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>1. Hello Spring Stack</title>
+      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/1.-hello-spring/</link>
+      <pubDate>Wed, 24 Apr 2019 19:58:51 +1200</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/1.-hello-spring/</guid>
+      <description>&lt;p&gt;Let&amp;rsquo;s use the spring initializer web features provided by the spring website to generate a super-simple hello world project.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>82. System Log Management - rsyslogd</title>
