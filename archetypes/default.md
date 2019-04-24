@@ -5,7 +5,7 @@ lastmod: {{ .Date }}
 draft: false
 keywords: []
 description: ""
-tags: [ "Java", "Spring Stack", "Spring", "Spring Boot" ]
+tags: [ "Java", "Spring", "Spring Stack", "Spring Framework" ]
 categories: [ "Spring Stack Developer: Simple But Profound" ]
 author: "Dong Chen"
 
