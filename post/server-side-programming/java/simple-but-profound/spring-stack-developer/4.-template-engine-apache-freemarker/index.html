@@ -52,7 +52,7 @@
 
 <meta itemprop="datePublished" content="2019-04-27T10:20:00&#43;12:00" />
 <meta itemprop="dateModified" content="2019-04-27T10:20:00&#43;12:00" />
-<meta itemprop="wordCount" content="366">
+<meta itemprop="wordCount" content="370">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/spring-stack-developer-simple-but-profound/"> Spring Stack Developer: Simple But Profound </a>
             </div>
-          <span class="more-meta"> 366 words </span>
+          <span class="more-meta"> 370 words </span>
           <span class="more-meta"> 2 mins read </span>
         
       </div>
@@ -140,7 +140,7 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#add-freemarker-dpendency">Add FreeMarker Dpendency</a></li>
+<li><a href="#add-freemarker-dependency">Add FreeMarker Dependency</a></li>
 <li><a href="#add-freemarker-properties">Add Freemarker Properties</a></li>
 <li><a href="#create-freemarker-template">Create Freemarker Template</a></li>
 <li><a href="#create-freemarker-controller">Create Freemarker Controller</a></li>
@@ -156,9 +156,9 @@
     <div class="post-content">
       <p>FreeMarker is a java-based template engine, commonly used to generate dynamic mvc architecture web pages.</p>
 
-<h1 id="add-freemarker-dpendency">Add FreeMarker Dpendency</h1>
+<h1 id="add-freemarker-dependency">Add FreeMarker Dependency</h1>
 
-<p>Add FreeMarker Dpendency into pom.xml:</p>
+<p>Add FreeMarker dependency into pom.xml:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt">1
@@ -222,11 +222,15 @@
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>Hello FreeMarker<span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Hello FreeMarker<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>Hello Product: ${product.name}<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></td></tr></table>
 </div>
