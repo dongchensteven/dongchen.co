@@ -6,10 +6,19 @@
     <description>Recent content in Spring on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 25 Apr 2019 17:38:16 +1200</lastBuildDate>
+    <lastBuildDate>Fri, 26 Apr 2019 21:18:50 +1200</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/tags/spring/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>3. Connection Pool - Alibaba Druid and Google Guava</title>
+      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/3.-connection-pool-alibaba-druid-and-google-guava/</link>
+      <pubDate>Fri, 26 Apr 2019 21:18:50 +1200</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/3.-connection-pool-alibaba-druid-and-google-guava/</guid>
+      <description>&lt;p&gt;Druid is a database connection pool component developed by Alibaba middleware team. It includes powerful connection pool monitoring features.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>2. Database Access - MyBatis and MariaDB 10.x</title>
