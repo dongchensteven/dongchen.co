@@ -52,7 +52,7 @@
 
 <meta itemprop="datePublished" content="2019-04-26T21:18:50&#43;12:00" />
 <meta itemprop="dateModified" content="2019-04-26T21:18:50&#43;12:00" />
-<meta itemprop="wordCount" content="565">
+<meta itemprop="wordCount" content="566">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/spring-stack-developer-simple-but-profound/"> Spring Stack Developer: Simple But Profound </a>
             </div>
-          <span class="more-meta"> 565 words </span>
+          <span class="more-meta"> 566 words </span>
           <span class="more-meta"> 3 mins read </span>
         
       </div>
@@ -145,12 +145,12 @@
 <li><a href="#add-druid-dependency-into-pom-xml">Add Druid dependency into pom.xml</a></li>
 <li><a href="#add-guava-dependency-into-pom-xml">Add Guava dependency into pom.xml</a></li>
 </ul></li>
-<li><a href="#add-druid-data-source-properties">Add Druid Data Source Properties</a>
+<li><a href="#comment-and-add-properties">Comment and Add Properties</a>
 <ul>
 <li><a href="#comment-previous-data-source-properties">Comment Previous Data Source Properties</a></li>
-<li><a href="#add-druid-data-source-properties-1">Add Druid Data Source Properties</a></li>
+<li><a href="#add-druid-data-source-properties">Add Druid Data Source Properties</a></li>
 </ul></li>
-<li><a href="#add-druid-config-class">Add Druid Config Class</a></li>
+<li><a href="#create-druid-config-class">Create Druid Config Class</a></li>
 <li><a href="#verify">Verify</a>
 <ul>
 <li><a href="#run-the-app">Run the App</a></li>
@@ -177,7 +177,7 @@
 <td class="lntd">
 <pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>com.alibaba<span class="nt">&lt;/groupId&gt;</span>
-    <span class="nt">&lt;artifactId&gt;</span>druid<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>druid-spring-boot-starter<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>1.1.16<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></td></tr></table>
 </div>
@@ -199,7 +199,7 @@
 <span class="nt">&lt;/dependency&gt;</span></code></pre></td></tr></table>
 </div>
 </div>
-<h1 id="add-druid-data-source-properties">Add Druid Data Source Properties</h1>
+<h1 id="comment-and-add-properties">Comment and Add Properties</h1>
 
 <h2 id="comment-previous-data-source-properties">Comment Previous Data Source Properties</h2>
 
@@ -218,9 +218,9 @@
 <span class="c1">#spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver</span></code></pre></td></tr></table>
 </div>
 </div>
-<h2 id="add-druid-data-source-properties-1">Add Druid Data Source Properties</h2>
+<h2 id="add-druid-data-source-properties">Add Druid Data Source Properties</h2>
 
-<p>Add druid data source properties into application.properties file:</p>
+<p>Add Druid data source properties into application.properties file:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-ini" data-lang="ini"><span class="lnt"> 1
@@ -242,7 +242,7 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="na">spring.druid.url</span><span class="o">=</span><span class="s">jdbc:mysql://localhost:3307/shop?serverTimezone=UTC</span>
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="na">spring.druid.url</span><span class="o">=</span><span class="s">jdbc:mysql://localhost:3307/shop?characterEncoding=UTF-8&amp;serverTimezone=UTC</span>
 <span class="na">spring.druid.username</span><span class="o">=</span><span class="s">root</span>
 <span class="na">spring.druid.password</span><span class="o">=</span>
 <span class="na">spring.druid.driverClassName</span><span class="o">=</span><span class="s">com.mysql.cj.jdbc.Driver</span>
@@ -261,7 +261,7 @@
 <span class="na">spring.druid.minIdle</span><span class="o">=</span><span class="s">5</span></code></pre></td></tr></table>
 </div>
 </div>
-<h1 id="add-druid-config-class">Add Druid Config Class</h1>
+<h1 id="create-druid-config-class">Create Druid Config Class</h1>
 
 <ul>
 <li>Right click java directory: New &gt; Package</li>
@@ -422,7 +422,8 @@ Alt + Shift + F10</code></pre></td></tr></table>
 
 <blockquote>
 <p>References
-<a href="https://github.com/alibaba/druid/wiki">Alibaba Druid</a></p>
+<a href="https://github.com/alibaba/druid/wiki">Alibaba Druid</a>,
+<a href="https://github.com/google/guava/wiki">Google Guava</a></p>
 </blockquote>
 
 <p>If you think the content of this article has helped you, and if you would like some more high-quality materials in the near future, please give me some modest support.</p>
@@ -467,7 +468,11 @@ Alt + Shift + F10</code></pre></td></tr></table>
           <a href="/tags/spring-framework/">Spring Framework</a>
           </div>
       <nav class="post-nav">
-        
+        <a class="prev" href="/post/server-side-programming/java/simple-but-profound/spring-stack-developer/4.-template-engine-apache-freemarker/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">4. Template Engine - Apache FreeMarker</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
         <a class="next" href="/post/server-side-programming/java/simple-but-profound/spring-stack-developer/2.-database-access-mybatis-and-mariadb-10.x/">
             <span class="next-text nav-default">2. Database Access - MyBatis and MariaDB 10.x</span>
             <span class="next-text nav-mobile">Next</span>
