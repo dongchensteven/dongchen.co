@@ -3,14 +3,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/2.-database-access-mybatis/</loc>
+    <loc>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/2.-database-access-mybatis-and-mariadb-10.x/</loc>
     <lastmod>2019-04-25T17:38:16+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/1.-hello-spring/</loc>
+    <loc>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/1.-helloworld-demo-hello-spring-stack/</loc>
     <lastmod>2019-04-24T19:58:51+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -667,6 +667,13 @@
   </url>
   
   <url>
+    <loc>https://dongchen.co/tags/hello-world/</loc>
+    <lastmod>2019-04-24T19:58:51+12:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://dongchen.co/categories/how-to-be-certified/</loc>
     <lastmod>2019-01-26T07:01:23+13:00</lastmod>
     <changefreq>daily</changefreq>
@@ -690,6 +697,20 @@
   <url>
     <loc>https://dongchen.co/categories/linux-administrator-simple-but-profound/</loc>
     <lastmod>2019-04-23T20:54:13+12:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/tags/mariadb-10/</loc>
+    <lastmod>2019-04-25T17:38:16+12:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/tags/mybatis/</loc>
+    <lastmod>2019-04-25T17:38:16+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>

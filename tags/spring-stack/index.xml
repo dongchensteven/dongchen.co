@@ -12,20 +12,20 @@
     
     
     <item>
-      <title>2. Database Access - MyBatis</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/2.-database-access-mybatis/</link>
+      <title>2. Database Access - MyBatis and MariaDB 10.x</title>
+      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/2.-database-access-mybatis-and-mariadb-10.x/</link>
       <pubDate>Thu, 25 Apr 2019 17:38:16 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/2.-database-access-mybatis/</guid>
-      <description>&lt;p&gt;We first need to install a mysql or mariadb database locally, and then access the database through MyBatis configuration.&lt;/p&gt;</description>
+      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/2.-database-access-mybatis-and-mariadb-10.x/</guid>
+      <description>&lt;p&gt;We first need to install a MariaDB 10.x database locally, and then access the database through MyBatis configuration.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>1. Hello Spring Stack</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/1.-hello-spring/</link>
+      <title>1. HelloWorld Demo - Hello Spring Stack</title>
+      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/1.-helloworld-demo-hello-spring-stack/</link>
       <pubDate>Wed, 24 Apr 2019 19:58:51 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/1.-hello-spring/</guid>
+      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/1.-helloworld-demo-hello-spring-stack/</guid>
       <description>&lt;p&gt;Let&amp;rsquo;s use the spring initializer web features provided by the spring website to generate a super-simple hello world project.&lt;/p&gt;</description>
     </item>
     
