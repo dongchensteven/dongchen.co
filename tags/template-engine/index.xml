@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Template Engine on Dong - A place to track my time log</title>
+    <link>https://dongchen.co/tags/template-engine/</link>
+    <description>Recent content in Template Engine on Dong - A place to track my time log</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 28 Apr 2019 08:37:25 +1200</lastBuildDate>
+    
+	<atom:link href="https://dongchen.co/tags/template-engine/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>5. Template Engine - Apache FreeMarker Macro</title>
+      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/5.-template-engine-apache-freemarker-macro/</link>
+      <pubDate>Sun, 28 Apr 2019 08:37:25 +1200</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/5.-template-engine-apache-freemarker-macro/</guid>
+      <description>&lt;p&gt;Through the macro features provided by FreeMarker, we can easily manage some of the commonly used template code.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>4. Template Engine - Apache FreeMarker</title>
+      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/4.-template-engine-apache-freemarker/</link>
+      <pubDate>Sat, 27 Apr 2019 10:20:00 +1200</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/4.-template-engine-apache-freemarker/</guid>
+      <description>&lt;p&gt;FreeMarker is a java-based template engine, commonly used to generate dynamic mvc architecture web pages.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
