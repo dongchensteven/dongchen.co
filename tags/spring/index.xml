@@ -6,10 +6,19 @@
     <description>Recent content in Spring on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 30 Apr 2019 23:12:05 +1200</lastBuildDate>
+    <lastBuildDate>Wed, 01 May 2019 20:55:39 +1200</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/tags/spring/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>8. User Management - Login (Authentication)</title>
+      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/8.-user-management-login-authentication/</link>
+      <pubDate>Wed, 01 May 2019 20:55:39 +1200</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/8.-user-management-login-authentication/</guid>
+      <description>&lt;p&gt;Registered users can log into the system through a login interface.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>7. User Management - Registration</title>
