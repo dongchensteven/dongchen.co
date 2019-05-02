@@ -3,14 +3,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/8.-user-management-login-authentication/</loc>
+    <loc>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/9.-spring-interceptor-user-authentication/</loc>
+    <lastmod>2019-05-02T23:48:50+12:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/8.-spring-security-user-login/</loc>
     <lastmod>2019-05-01T20:55:39+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/7.-user-management-registration/</loc>
+    <loc>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/7.-spring-security-user-registration/</loc>
     <lastmod>2019-04-30T23:12:05+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -724,7 +731,7 @@
   
   <url>
     <loc>https://dongchen.co/</loc>
-    <lastmod>2019-05-01T20:55:39+12:00</lastmod>
+    <lastmod>2019-05-02T23:48:50+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
@@ -759,7 +766,7 @@
   
   <url>
     <loc>https://dongchen.co/tags/java/</loc>
-    <lastmod>2019-05-01T20:55:39+12:00</lastmod>
+    <lastmod>2019-05-02T23:48:50+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
@@ -822,7 +829,7 @@
   
   <url>
     <loc>https://dongchen.co/post/</loc>
-    <lastmod>2019-05-01T20:55:39+12:00</lastmod>
+    <lastmod>2019-05-02T23:48:50+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
@@ -843,13 +850,20 @@
   
   <url>
     <loc>https://dongchen.co/tags/spring/</loc>
-    <lastmod>2019-05-01T20:55:39+12:00</lastmod>
+    <lastmod>2019-05-02T23:48:50+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://dongchen.co/tags/spring-framework/</loc>
+    <lastmod>2019-05-02T23:48:50+12:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/tags/spring-security/</loc>
     <lastmod>2019-05-01T20:55:39+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
@@ -857,14 +871,14 @@
   
   <url>
     <loc>https://dongchen.co/tags/spring-stack/</loc>
-    <lastmod>2019-05-01T20:55:39+12:00</lastmod>
+    <lastmod>2019-05-02T23:48:50+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://dongchen.co/categories/spring-stack-developer-simple-but-profound/</loc>
-    <lastmod>2019-05-01T20:55:39+12:00</lastmod>
+    <lastmod>2019-05-02T23:48:50+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
