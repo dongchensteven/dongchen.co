@@ -12,11 +12,11 @@
     
     
     <item>
-      <title>6. Maven - Modularization and Decoupling</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/6.-maven-modularization-and-decoupling/</link>
+      <title>6. Modularization and Decoupling - Maven</title>
+      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/6.-modularization-and-decoupling-maven/</link>
       <pubDate>Mon, 29 Apr 2019 05:47:50 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/6.-maven-modularization-and-decoupling/</guid>
+      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/6.-modularization-and-decoupling-maven/</guid>
       <description>&lt;p&gt;Through the maven modularization mechanism, we can separate different types of functions and store them in different modules.&lt;/p&gt;</description>
     </item>
     

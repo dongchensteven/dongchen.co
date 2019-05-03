@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spring Interceptor on Dong - A place to track my time log</title>
+    <link>https://dongchen.co/tags/spring-interceptor/</link>
+    <description>Recent content in Spring Interceptor on Dong - A place to track my time log</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 02 May 2019 23:48:50 +1200</lastBuildDate>
+    
+	<atom:link href="https://dongchen.co/tags/spring-interceptor/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>9. User Authentication - Spring Interceptor</title>
+      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/9.-user-authentication-spring-interceptor/</link>
+      <pubDate>Thu, 02 May 2019 23:48:50 +1200</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/9.-user-authentication-spring-interceptor/</guid>
+      <description>&lt;p&gt;We can use Spring Interceptor feature to authenticate user more efficiently.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

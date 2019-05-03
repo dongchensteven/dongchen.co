@@ -6,44 +6,53 @@
     <description>Recent content in Spring Framework on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 02 May 2019 23:48:50 +1200</lastBuildDate>
+    <lastBuildDate>Fri, 03 May 2019 18:47:45 +1200</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/tags/spring-framework/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>9. Spring Interceptor - User Authentication</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/9.-spring-interceptor-user-authentication/</link>
+      <title>10. Product List - Pagination</title>
+      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/10.-product-list-pagination/</link>
+      <pubDate>Fri, 03 May 2019 18:47:45 +1200</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/10.-product-list-pagination/</guid>
+      <description>&lt;p&gt;Through paging techniques, we can only show some of the products.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>9. User Authentication - Spring Interceptor</title>
+      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/9.-user-authentication-spring-interceptor/</link>
       <pubDate>Thu, 02 May 2019 23:48:50 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/9.-spring-interceptor-user-authentication/</guid>
+      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/9.-user-authentication-spring-interceptor/</guid>
       <description>&lt;p&gt;We can use Spring Interceptor feature to authenticate user more efficiently.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>8. Spring Security - User Login</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/8.-spring-security-user-login/</link>
+      <title>8. User Login - Spring Security</title>
+      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/8.-user-login-spring-security/</link>
       <pubDate>Wed, 01 May 2019 20:55:39 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/8.-spring-security-user-login/</guid>
+      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/8.-user-login-spring-security/</guid>
       <description>&lt;p&gt;Registered users can log into the system through a login interface.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>7. Spring Security - User Registration</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/7.-spring-security-user-registration/</link>
+      <title>7. User Registration - Spring Security</title>
+      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/7.-user-registration-spring-security/</link>
       <pubDate>Tue, 30 Apr 2019 23:12:05 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/7.-spring-security-user-registration/</guid>
+      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/7.-user-registration-spring-security/</guid>
       <description>&lt;p&gt;The user can register an account to carry on the goods purchase operation.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>6. Maven - Modularization and Decoupling</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/6.-maven-modularization-and-decoupling/</link>
+      <title>6. Modularization and Decoupling - Maven</title>
+      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/6.-modularization-and-decoupling-maven/</link>
       <pubDate>Mon, 29 Apr 2019 05:47:50 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/6.-maven-modularization-and-decoupling/</guid>
+      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/6.-modularization-and-decoupling-maven/</guid>
       <description>&lt;p&gt;Through the maven modularization mechanism, we can separate different types of functions and store them in different modules.&lt;/p&gt;</description>
     </item>
     

@@ -12,20 +12,20 @@
     
     
     <item>
-      <title>8. Spring Security - User Login</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/8.-spring-security-user-login/</link>
+      <title>8. User Login - Spring Security</title>
+      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/8.-user-login-spring-security/</link>
       <pubDate>Wed, 01 May 2019 20:55:39 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/8.-spring-security-user-login/</guid>
+      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/8.-user-login-spring-security/</guid>
       <description>&lt;p&gt;Registered users can log into the system through a login interface.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>7. Spring Security - User Registration</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/7.-spring-security-user-registration/</link>
+      <title>7. User Registration - Spring Security</title>
+      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/7.-user-registration-spring-security/</link>
       <pubDate>Tue, 30 Apr 2019 23:12:05 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/7.-spring-security-user-registration/</guid>
+      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/7.-user-registration-spring-security/</guid>
       <description>&lt;p&gt;The user can register an account to carry on the goods purchase operation.&lt;/p&gt;</description>
     </item>
     
