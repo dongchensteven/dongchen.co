@@ -52,7 +52,7 @@
 
 <meta itemprop="datePublished" content="2019-05-01T20:55:39&#43;12:00" />
 <meta itemprop="dateModified" content="2019-05-01T20:55:39&#43;12:00" />
-<meta itemprop="wordCount" content="564">
+<meta itemprop="wordCount" content="593">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/spring-stack-developer-simple-but-profound/"> Spring Stack Developer: Simple But Profound </a>
             </div>
-          <span class="more-meta"> 564 words </span>
+          <span class="more-meta"> 593 words </span>
           <span class="more-meta"> 3 mins read </span>
         
       </div>
@@ -140,6 +140,7 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
+<li><a href="#add-attribute-into-application-properties-file">Add Attribute into application.properties file</a></li>
 <li><a href="#add-methods-into-the-user-service">Add Methods into the User Service</a></li>
 <li><a href="#create-constants-class">Create Constants Class</a></li>
 <li><a href="#add-method-into-the-user-controller">Add Method into the User Controller</a></li>
@@ -160,6 +161,17 @@
     <div class="post-content">
       <p>Registered users can log into the system through a login interface.</p>
 
+<h1 id="add-attribute-into-application-properties-file">Add Attribute into application.properties file</h1>
+
+<p>Add the image path on the file server into application.properties file:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="na">fileserver.img_path</span><span class="o">=</span><span class="s">http://127.0.0.1/images</span></code></pre></td></tr></table>
+</div>
+</div>
 <h1 id="add-methods-into-the-user-service">Add Methods into the User Service</h1>
 
 <p>Add following methods into the UserService.java file under the service/src/main/java/co.dongchen.shop/service directory:</p>
@@ -179,6 +191,8 @@
 </span><span class="lnt">12
 </span><span class="lnt">13
 </span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="n">User</span> <span class="nf">authenticate</span><span class="o">(</span><span class="n">String</span> <span class="n">email</span><span class="o">,</span> <span class="n">String</span> <span class="n">password</span><span class="o">)</span> <span class="o">{</span>
@@ -193,7 +207,9 @@
     <span class="o">}</span>
 
     <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="nf">queryUserByCondition</span><span class="o">(</span><span class="n">User</span> <span class="n">user</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">queryUsersByCondition</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">queryUsersByCondition</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+        <span class="n">list</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">u</span> <span class="o">-&gt;</span> <span class="n">u</span><span class="o">.</span><span class="na">setAvatar</span><span class="o">(</span><span class="n">imgPath</span> <span class="o">+</span> <span class="n">u</span><span class="o">.</span><span class="na">getAvatar</span><span class="o">()));</span>
+        <span class="k">return</span> <span class="n">list</span><span class="o">;</span>
     <span class="o">}</span></code></pre></td></tr></table>
 </div>
 </div>
