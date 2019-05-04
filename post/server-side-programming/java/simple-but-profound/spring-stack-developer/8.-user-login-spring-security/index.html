@@ -52,7 +52,7 @@
 
 <meta itemprop="datePublished" content="2019-05-01T20:55:39&#43;12:00" />
 <meta itemprop="dateModified" content="2019-05-01T20:55:39&#43;12:00" />
-<meta itemprop="wordCount" content="615">
+<meta itemprop="wordCount" content="636">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/spring-stack-developer-simple-but-profound/"> Spring Stack Developer: Simple But Profound </a>
             </div>
-          <span class="more-meta"> 615 words </span>
+          <span class="more-meta"> 636 words </span>
           <span class="more-meta"> 3 mins read </span>
         
       </div>
@@ -272,7 +272,7 @@
 </div>
 <h1 id="add-method-into-the-user-controller">Add Method into the User Controller</h1>
 
-<p>Add login method into the UserController.java file under the controller/src/main/java/co.dongchen.shop/controller directory:</p>
+<p>Add following methods into the UserController.java file under the controller/src/main/java/co.dongchen.shop/controller directory:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1
@@ -293,6 +293,13 @@
 </span><span class="lnt">16
 </span><span class="lnt">17
 </span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-java" data-lang="java">    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&#34;/user/login&#34;</span><span class="o">)</span>
@@ -312,6 +319,13 @@
             <span class="n">session</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="n">Constants</span><span class="o">.</span><span class="na">LOGGED_ON_USER</span><span class="o">,</span> <span class="n">user</span><span class="o">);</span>
         <span class="o">}</span>
         <span class="k">return</span> <span class="n">StringUtils</span><span class="o">.</span><span class="na">isNotBlank</span><span class="o">(</span><span class="n">dest</span><span class="o">)</span> <span class="o">?</span> <span class="s">&#34;redirect:&#34;</span> <span class="o">+</span> <span class="n">dest</span> <span class="o">:</span> <span class="s">&#34;/user/login_succeeded&#34;</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&#34;/user/logout&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">logout</span><span class="o">(</span><span class="n">HttpServletRequest</span> <span class="n">req</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">HttpSession</span> <span class="n">session</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="na">getSession</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+        <span class="n">session</span><span class="o">.</span><span class="na">invalidate</span><span class="o">();</span>
+        <span class="k">return</span> <span class="s">&#34;redirect:/&#34;</span><span class="o">;</span>
     <span class="o">}</span></code></pre></td></tr></table>
 </div>
 </div>
