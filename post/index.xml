@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 03 May 2019 18:47:45 +1200</lastBuildDate>
+    <lastBuildDate>Sat, 04 May 2019 22:05:24 +1200</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>11. Product Detail - Contact Form</title>
+      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/11.-product-detail-contact-form/</link>
+      <pubDate>Sat, 04 May 2019 22:05:24 +1200</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/11.-product-detail-contact-form/</guid>
+      <description>&lt;p&gt;Through the contact form, customers can easily leave a message to a merchant.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>10. Product List - Pagination</title>
