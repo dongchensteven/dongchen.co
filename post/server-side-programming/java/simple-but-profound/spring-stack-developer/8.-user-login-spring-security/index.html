@@ -52,7 +52,7 @@
 
 <meta itemprop="datePublished" content="2019-05-01T20:55:39&#43;12:00" />
 <meta itemprop="dateModified" content="2019-05-01T20:55:39&#43;12:00" />
-<meta itemprop="wordCount" content="636">
+<meta itemprop="wordCount" content="640">
 
 
 
@@ -129,8 +129,8 @@
         <div class="post-category">
             <a href="/categories/spring-stack-developer-simple-but-profound/"> Spring Stack Developer: Simple But Profound </a>
             </div>
-          <span class="more-meta"> 636 words </span>
-          <span class="more-meta"> 3 mins read </span>
+          <span class="more-meta"> 640 words </span>
+          <span class="more-meta"> 4 mins read </span>
         
       </div>
     </header>
@@ -368,25 +368,29 @@
 </span><span class="lnt">18
 </span><span class="lnt">19
 </span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;en-NZ&#34;</span><span class="p">&gt;</span>
 <span class="err">&lt;</span>@common.header/&gt;
 <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&#34;post&#34;</span> <span class="na">action</span><span class="o">=</span><span class="s">&#34;/user/login&#34;</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Email:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span>  <span class="na">name</span><span class="o">=</span><span class="s">&#34;email&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;${email!}&#34;</span> <span class="na">required</span><span class="p">&gt;</span>
-        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Password:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;password&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;password&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;${password!}&#34;</span> <span class="na">required</span><span class="p">&gt;</span>
-        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;hidden&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;${dest!}&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;dest&#34;</span> <span class="p">/&gt;</span>
-        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;submit&#34;</span><span class="p">&gt;</span>Login<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+  ${errorMsg!}
+  ${successMsg!}
+  <span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&#34;post&#34;</span> <span class="na">action</span><span class="o">=</span><span class="s">&#34;/user/login&#34;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Email:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span>  <span class="na">name</span><span class="o">=</span><span class="s">&#34;email&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;${email!}&#34;</span> <span class="na">required</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Password:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;password&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;password&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;${password!}&#34;</span> <span class="na">required</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;hidden&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;${dest!}&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;dest&#34;</span> <span class="p">/&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;submit&#34;</span><span class="p">&gt;</span>Login<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 <span class="err">&lt;</span>@common.footer/&gt;
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></td></tr></table>

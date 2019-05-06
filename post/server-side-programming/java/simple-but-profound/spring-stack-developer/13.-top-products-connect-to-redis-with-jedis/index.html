@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>12. Merchant List and Detail - Dong - A place to track my time log</title>
+  <title>13. Top Products - Connect to Redis with Jedis - Dong - A place to track my time log</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="Merchants can sell their own products on the platform for consumers to buy.
+<meta name="author" content="Dong Chen" /><meta name="description" content="Redis can be used to cache data that needs to be accessed frequently, data will be cached in memory, and we can manipulate Redis through Jedis.
 " /><meta name="keywords" content="Hugo, theme, even" />
 
 
@@ -27,7 +27,7 @@
 <meta name="generator" content="Hugo 0.53 with even 4.0.0" />
 
 
-<link rel="canonical" href="https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/12.-merchant-list-and-detail/" />
+<link rel="canonical" href="https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/13.-top-products-connect-to-redis-with-jedis/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -40,26 +40,26 @@
 <link rel="stylesheet" href="/css/styles.css">
 
 
-<meta property="og:title" content="12. Merchant List and Detail" />
-<meta property="og:description" content="Merchants can sell their own products on the platform for consumers to buy." />
+<meta property="og:title" content="13. Top Products - Connect to Redis with Jedis" />
+<meta property="og:description" content="Redis can be used to cache data that needs to be accessed frequently, data will be cached in memory, and we can manipulate Redis through Jedis." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/12.-merchant-list-and-detail/" /><meta property="article:published_time" content="2019-05-05T21:40:41&#43;12:00"/>
-<meta property="article:modified_time" content="2019-05-05T21:40:41&#43;12:00"/>
+<meta property="og:url" content="https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/13.-top-products-connect-to-redis-with-jedis/" /><meta property="article:published_time" content="2019-05-06T20:05:01&#43;12:00"/>
+<meta property="article:modified_time" content="2019-05-06T20:05:01&#43;12:00"/>
 
-<meta itemprop="name" content="12. Merchant List and Detail">
-<meta itemprop="description" content="Merchants can sell their own products on the platform for consumers to buy.">
+<meta itemprop="name" content="13. Top Products - Connect to Redis with Jedis">
+<meta itemprop="description" content="Redis can be used to cache data that needs to be accessed frequently, data will be cached in memory, and we can manipulate Redis through Jedis.">
 
 
-<meta itemprop="datePublished" content="2019-05-05T21:40:41&#43;12:00" />
-<meta itemprop="dateModified" content="2019-05-05T21:40:41&#43;12:00" />
-<meta itemprop="wordCount" content="151">
+<meta itemprop="datePublished" content="2019-05-06T20:05:01&#43;12:00" />
+<meta itemprop="dateModified" content="2019-05-06T20:05:01&#43;12:00" />
+<meta itemprop="wordCount" content="164">
 
 
 
 <meta itemprop="keywords" content="Java,Spring,Spring Stack,Spring Framework," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="12. Merchant List and Detail"/>
-<meta name="twitter:description" content="Merchants can sell their own products on the platform for consumers to buy."/>
+<meta name="twitter:title" content="13. Top Products - Connect to Redis with Jedis"/>
+<meta name="twitter:description" content="Redis can be used to cache data that needs to be accessed frequently, data will be cached in memory, and we can manipulate Redis through Jedis."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -122,14 +122,14 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">12. Merchant List and Detail</h1>
+      <h1 class="post-title">13. Top Products - Connect to Redis with Jedis</h1>
 
       <div class="post-meta">
-        <span class="post-time"> Sun May 5 2019 </span>
+        <span class="post-time"> Mon May 6 2019 </span>
         <div class="post-category">
             <a href="/categories/spring-stack-developer-simple-but-profound/"> Spring Stack Developer: Simple But Profound </a>
             </div>
-          <span class="more-meta"> 151 words </span>
+          <span class="more-meta"> 164 words </span>
           <span class="more-meta"> 1 min read </span>
         
       </div>
@@ -142,7 +142,7 @@
   </div>
 </div>
     <div class="post-content">
-      <p>Merchants can sell their own products on the platform for consumers to buy.</p>
+      <p>Redis can be used to cache data that needs to be accessed frequently, data will be cached in memory, and we can manipulate Redis through Jedis.</p>
 
 <p>If you think the content of this article has helped you, and if you would like some more high-quality materials in the near future, please give me some modest support.</p>
 
@@ -160,7 +160,7 @@
   </p>
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
-    <span class="item-content">Sun May 5 2019</span>
+    <span class="item-content">Mon May 6 2019</span>
   </p>
   
   
@@ -186,13 +186,9 @@
           <a href="/tags/spring-framework/">Spring Framework</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/server-side-programming/java/simple-but-profound/spring-stack-developer/13.-top-products-connect-to-redis-with-jedis/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">13. Top Products - Connect to Redis with Jedis</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        <a class="next" href="/post/server-side-programming/java/simple-but-profound/spring-stack-developer/11.-product-detail-contact-form/">
-            <span class="next-text nav-default">11. Product Detail - Contact Form</span>
+        
+        <a class="next" href="/post/server-side-programming/java/simple-but-profound/spring-stack-developer/12.-merchant-list-and-detail/">
+            <span class="next-text nav-default">12. Merchant List and Detail</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>
