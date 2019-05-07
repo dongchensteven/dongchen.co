@@ -691,6 +691,7 @@ Copy and paste the following content into User.java:</p>
     <span class="kd">private</span> <span class="n">String</span> <span class="n">phone</span><span class="o">;</span>
     <span class="kd">private</span> <span class="n">String</span> <span class="n">email</span><span class="o">;</span>
     <span class="kd">private</span> <span class="n">String</span> <span class="n">password</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">newPassword</span><span class="o">;</span>
     <span class="kd">private</span> <span class="n">String</span> <span class="n">confirmedPassword</span><span class="o">;</span>
     <span class="kd">private</span> <span class="n">Integer</span> <span class="n">type</span><span class="o">;</span>
     <span class="kd">private</span> <span class="n">Long</span> <span class="n">createdAt</span><span class="o">;</span>
@@ -700,7 +701,6 @@ Copy and paste the following content into User.java:</p>
     <span class="kd">private</span> <span class="n">String</span> <span class="n">avatar</span><span class="o">;</span>
     <span class="kd">private</span> <span class="n">String</span> <span class="n">introduction</span><span class="o">;</span>
     <span class="kd">private</span> <span class="n">MultipartFile</span> <span class="n">avatarFile</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="n">String</span> <span class="n">passwordNew</span><span class="o">;</span>
     <span class="kd">private</span> <span class="n">Long</span> <span class="n">referenceId</span><span class="o">;</span>
 
     <span class="kd">public</span> <span class="n">Long</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
@@ -749,6 +749,14 @@ Copy and paste the following content into User.java:</p>
 
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPassword</span><span class="o">(</span><span class="n">String</span> <span class="n">password</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">this</span><span class="o">.</span><span class="na">password</span> <span class="o">=</span> <span class="n">password</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getNewPassword</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">newPassword</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setNewPassword</span><span class="o">(</span><span class="n">String</span> <span class="n">newPassword</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">newPassword</span> <span class="o">=</span> <span class="n">newPassword</span><span class="o">;</span>
     <span class="o">}</span>
 
     <span class="kd">public</span> <span class="n">String</span> <span class="nf">getConfirmedPassword</span><span class="o">()</span> <span class="o">{</span>
@@ -821,14 +829,6 @@ Copy and paste the following content into User.java:</p>
 
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAvatarFile</span><span class="o">(</span><span class="n">MultipartFile</span> <span class="n">avatarFile</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">this</span><span class="o">.</span><span class="na">avatarFile</span> <span class="o">=</span> <span class="n">avatarFile</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getPasswordNew</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">passwordNew</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPasswordNew</span><span class="o">(</span><span class="n">String</span> <span class="n">passwordNew</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">passwordNew</span> <span class="o">=</span> <span class="n">passwordNew</span><span class="o">;</span>
     <span class="o">}</span>
 
     <span class="kd">public</span> <span class="n">Long</span> <span class="nf">getReferenceId</span><span class="o">()</span> <span class="o">{</span>
