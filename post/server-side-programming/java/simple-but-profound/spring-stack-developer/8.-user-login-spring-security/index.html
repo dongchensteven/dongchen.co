@@ -170,7 +170,7 @@
 <pre class="chroma"><code class="language-ini" data-lang="ini"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="na">fileserver.img_path</span><span class="o">=</span><span class="s">http://127.0.0.1/images</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="na">fileserver.img_path</span><span class="o">=</span><span class="s">http://127.0.0.1:8089/images</span></code></pre></td></tr></table>
 </div>
 </div>
 <h1 id="add-property-into-user-service">Add Property into User Service</h1>
@@ -220,7 +220,7 @@
         <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
     <span class="o">}</span>
 
-    <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="nf">queryUserByCondition</span><span class="o">(</span><span class="n">User</span> <span class="n">user</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="nf">queryUserByCondition</span><span class="o">(</span><span class="n">User</span> <span class="n">user</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">queryUsersByCondition</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
         <span class="n">list</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">u</span> <span class="o">-&gt;</span> <span class="n">u</span><span class="o">.</span><span class="na">setAvatar</span><span class="o">(</span><span class="n">imgPath</span> <span class="o">+</span> <span class="n">u</span><span class="o">.</span><span class="na">getAvatar</span><span class="o">()));</span>
         <span class="k">return</span> <span class="n">list</span><span class="o">;</span>

@@ -6,54 +6,63 @@
     <description>Recent content on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 07 May 2019 20:51:45 +1200</lastBuildDate>
+    <lastBuildDate>Wed, 08 May 2019 00:18:36 +1200</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>14. Recommended Products</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/14.-recommended-products/</link>
-      <pubDate>Tue, 07 May 2019 20:51:45 +1200</pubDate>
+      <title>15. Recommended Products</title>
+      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/15.-recommended-products/</link>
+      <pubDate>Wed, 08 May 2019 00:18:36 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/14.-recommended-products/</guid>
+      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/15.-recommended-products/</guid>
       <description>&lt;p&gt;We can show our recommended products to visitors.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>13. Top Products - Connect to Redis with Jedis</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/13.-top-products-connect-to-redis-with-jedis/</link>
-      <pubDate>Mon, 06 May 2019 20:05:01 +1200</pubDate>
+      <title>14. Top Products - Connect to Redis with Jedis</title>
+      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/14.-top-products-connect-to-redis-with-jedis/</link>
+      <pubDate>Tue, 07 May 2019 20:51:45 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/13.-top-products-connect-to-redis-with-jedis/</guid>
+      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/14.-top-products-connect-to-redis-with-jedis/</guid>
       <description>&lt;p&gt;Redis can be used to cache data that needs to be accessed frequently, data will be cached in memory, and we can manipulate Redis through Jedis.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>12. Merchant List and Detail</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/12.-merchant-list-and-detail/</link>
-      <pubDate>Sun, 05 May 2019 21:40:41 +1200</pubDate>
+      <title>13. Merchant List and Detail</title>
+      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/13.-merchant-list-and-detail/</link>
+      <pubDate>Mon, 06 May 2019 20:05:01 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/12.-merchant-list-and-detail/</guid>
+      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/13.-merchant-list-and-detail/</guid>
       <description>&lt;p&gt;Merchants can sell their own products on the platform for consumers to buy.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>11. Product Detail - Contact Form</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/11.-product-detail-contact-form/</link>
-      <pubDate>Sat, 04 May 2019 22:05:24 +1200</pubDate>
+      <title>12. Product Detail - Contact Form</title>
+      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/12.-product-detail-contact-form/</link>
+      <pubDate>Sun, 05 May 2019 21:40:41 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/11.-product-detail-contact-form/</guid>
+      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/12.-product-detail-contact-form/</guid>
       <description>&lt;p&gt;Through the contact form, customers can easily leave a message to a merchant.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>10. Product List - Pagination</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/10.-product-list-pagination/</link>
+      <title>11. Product List - Pagination</title>
+      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/11.-product-list-pagination/</link>
+      <pubDate>Sat, 04 May 2019 22:05:24 +1200</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/11.-product-list-pagination/</guid>
+      <description>&lt;p&gt;Through paging techniques, we can only show some of the products.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>10. Static Resources - Nginx Configuration</title>
+      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/10.-static-resources-nginx-configuration/</link>
       <pubDate>Fri, 03 May 2019 18:47:45 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/10.-product-list-pagination/</guid>
-      <description>&lt;p&gt;Through paging techniques, we can only show some of the products.&lt;/p&gt;</description>
+      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/10.-static-resources-nginx-configuration/</guid>
+      <description>&lt;p&gt;With the Nginx server, we can increase the speed of loading static resources.&lt;/p&gt;</description>
     </item>
     
     <item>
