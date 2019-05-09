@@ -6,10 +6,19 @@
     <description>Recent content in Spring Stack Developer: Simple But Profound on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 08 May 2019 00:18:36 +1200</lastBuildDate>
+    <lastBuildDate>Thu, 09 May 2019 22:08:44 +1200</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/categories/spring-stack-developer-simple-but-profound/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>16. Product Creation</title>
+      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/16.-product-creation/</link>
+      <pubDate>Thu, 09 May 2019 22:08:44 +1200</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/16.-product-creation/</guid>
+      <description>&lt;p&gt;We can create products.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>15. Recommended Products</title>
