@@ -6,10 +6,19 @@
     <description>Recent content in Spring Stack on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 09 May 2019 22:08:44 +1200</lastBuildDate>
+    <lastBuildDate>Fri, 10 May 2019 22:49:09 +1200</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/tags/spring-stack/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>17. Wish List</title>
+      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/17.-wish-list/</link>
+      <pubDate>Fri, 10 May 2019 22:49:09 +1200</pubDate>
+      
+      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/17.-wish-list/</guid>
+      <description>&lt;p&gt;We can add our favorite products into wish list.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>16. Product Creation</title>
