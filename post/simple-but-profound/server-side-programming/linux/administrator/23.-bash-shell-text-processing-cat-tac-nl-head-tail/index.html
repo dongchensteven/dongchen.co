@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>23. Bash Shell - Text Processing: cat, tac, nl, head, tail - Dong - A place to track my time log</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Dong Chen" /><meta name="description" content="With word processing commands, we can easily get the text we want from a text output or text document.
+" /><meta name="keywords" content="Print Text File&#39;s Contents from the Start, Print Text File&#39;s Contents from the End, Print Text File Contents from Beginning, Print First Few Lines of the Text File&#39;s Contents, Print Last Few Lines of the Text File&#39;s Contents, View Text File&#39;s Contents with Less Command, View Text File&#39;s Contents with More Command" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/23.-bash-shell-text-processing-cat-tac-nl-head-tail/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.ea128f8b.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/styles.css">
+
+
+<meta property="og:title" content="23. Bash Shell - Text Processing: cat, tac, nl, head, tail" />
+<meta property="og:description" content="With word processing commands, we can easily get the text we want from a text output or text document." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/23.-bash-shell-text-processing-cat-tac-nl-head-tail/" /><meta property="article:published_time" content="2019-02-24T08:52:48&#43;13:00"/>
+<meta property="article:modified_time" content="2019-02-24T08:52:48&#43;13:00"/>
+
+<meta itemprop="name" content="23. Bash Shell - Text Processing: cat, tac, nl, head, tail">
+<meta itemprop="description" content="With word processing commands, we can easily get the text we want from a text output or text document.">
+
+
+<meta itemprop="datePublished" content="2019-02-24T08:52:48&#43;13:00" />
+<meta itemprop="dateModified" content="2019-02-24T08:52:48&#43;13:00" />
+<meta itemprop="wordCount" content="879">
+
+
+
+<meta itemprop="keywords" content="Linux,Server," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="23. Bash Shell - Text Processing: cat, tac, nl, head, tail"/>
+<meta name="twitter:description" content="With word processing commands, we can easily get the text we want from a text output or text document."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Dong</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Dong</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">23. Bash Shell - Text Processing: cat, tac, nl, head, tail</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> Sun Feb 24 2019 </span>
+        <div class="post-category">
+            <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
+            </div>
+          <span class="more-meta"> 879 words </span>
+          <span class="more-meta"> 5 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#preparation">Preparation</a></li>
+<li><a href="#print-text-file-contents-from-beginning-with-cat">Print text file contents from beginning with cat</a></li>
+<li><a href="#print-text-file-contents-from-end-with-tac">Print text file contents from end with tac</a></li>
+<li><a href="#print-contents-and-their-line-numbers-with-nl">Print contents and their line numbers with nl</a></li>
+<li><a href="#print-the-first-lines-of-a-text-file-with-head">Print the first lines of a text file with head</a>
+<ul>
+<li><a href="#print-the-first-twenty-lines-with-parameter-n">Print the first twenty lines with parameter n</a></li>
+</ul></li>
+<li><a href="#print-the-last-lines-of-a-text-file-with-tail">Print the last lines of a text file with tail</a>
+<ul>
+<li><a href="#print-the-last-twenty-lines-with-parameter-n">Print the last twenty lines with parameter n</a></li>
+</ul></li>
+<li><a href="#print-and-interact-text-file-content-with-more">Print and interact text file content with more</a>
+<ul>
+<li><a href="#operations-in-less-interactive-mode">Operations in less interactive mode</a></li>
+</ul></li>
+<li><a href="#print-and-interact-text-file-content-with-less">Print and interact text file content with less</a>
+<ul>
+<li><a href="#operations-in-more-interactive-mode">Operations in more interactive mode</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>With word processing commands, we can easily get the text we want from a text output or text document.</p>
+
+<h1 id="preparation">Preparation</h1>
+
+<p>We can simply output a text to a file with the echo command.</p>
+
+<p>Prepare contents:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s2">&#34;First line&#34;</span> &gt;&gt; file.txt
+<span class="nb">echo</span> <span class="s2">&#34;Second line&#34;</span> &gt;&gt; file.txt
+<span class="nb">echo</span> <span class="s2">&#34;Third line&#34;</span> &gt;&gt; file.txt
+<span class="nb">echo</span> <span class="s2">&#34;Fourth line&#34;</span> &gt;&gt; file.txt
+<span class="nb">echo</span> <span class="s2">&#34;Fifth line&#34;</span> &gt;&gt; file.txt
+<span class="nb">echo</span> <span class="s2">&#34;Sixth line&#34;</span> &gt;&gt; file.txt
+<span class="nb">echo</span> <span class="s2">&#34;Seventh line&#34;</span> &gt;&gt; file.txt
+<span class="nb">echo</span> <span class="s2">&#34;Eighth line&#34;</span> &gt;&gt; file.txt
+<span class="nb">echo</span> <span class="s2">&#34;Ninth line&#34;</span> &gt;&gt; file.txt
+<span class="nb">echo</span> <span class="s2">&#34;Tenth line&#34;</span> &gt;&gt; file.txt
+<span class="nb">echo</span> <span class="s2">&#34;Eleventh line&#34;</span> &gt;&gt; file.txt
+<span class="nb">echo</span> <span class="s2">&#34;Twelfth line&#34;</span> &gt;&gt; file.txt
+<span class="nb">echo</span> <span class="s2">&#34;Thirteenth line&#34;</span> &gt;&gt; file.txt
+<span class="nb">echo</span> <span class="s2">&#34;Fourteenth line&#34;</span> &gt;&gt; file.txt
+<span class="nb">echo</span> <span class="s2">&#34;Fifteenth line&#34;</span> &gt;&gt; file.txt
+<span class="nb">echo</span> <span class="s2">&#34;Sixteenth line&#34;</span> &gt;&gt; file.txt
+<span class="nb">echo</span> <span class="s2">&#34;Seventeenth line&#34;</span> &gt;&gt; file.txt
+<span class="nb">echo</span> <span class="s2">&#34;Eighteenth line&#34;</span> &gt;&gt; file.txt
+<span class="nb">echo</span> <span class="s2">&#34;Nineteenth line&#34;</span> &gt;&gt; file.txt
+<span class="nb">echo</span> <span class="s2">&#34;Twentieth line&#34;</span> &gt;&gt; file.txt
+<span class="nb">echo</span> <span class="s2">&#34;Twenty-first line&#34;</span> &gt;&gt; file.txt
+<span class="nb">echo</span> <span class="s2">&#34;Twenty-second line&#34;</span> &gt;&gt; file.txt
+<span class="nb">echo</span> <span class="s2">&#34;Twenty-third line&#34;</span> &gt;&gt; file.txt
+<span class="nb">echo</span> <span class="s2">&#34;Twenty-fourth line&#34;</span> &gt;&gt; file.txt
+<span class="nb">echo</span> <span class="s2">&#34;Twenty-fifth line&#34;</span> &gt;&gt; file.txt
+<span class="nb">echo</span> <span class="s2">&#34;Twenty-sixth line&#34;</span> &gt;&gt; file.txt
+<span class="nb">echo</span> <span class="s2">&#34;Twenty-seventh line&#34;</span> &gt;&gt; file.txt
+<span class="nb">echo</span> <span class="s2">&#34;Twenty-eighth line&#34;</span> &gt;&gt; file.txt
+<span class="nb">echo</span> <span class="s2">&#34;Twenty-ninth line&#34;</span> &gt;&gt; file.txt
+<span class="nb">echo</span> <span class="s2">&#34;Thirtieth line&#34;</span> &gt;&gt; file.txt</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/23/echo_multiline_text_to_file.png"
+         alt="img"/> <figcaption>
+            <h4>Writes multiline of texts to the screen</h4>
+        </figcaption>
+</figure>
+
+
+<h1 id="print-text-file-contents-from-beginning-with-cat">Print text file contents from beginning with cat</h1>
+
+<p>We can use the cat command to view the text contents of the file from beginning:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">cat file.txt</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/23/cat_file.png"
+         alt="img"/> <figcaption>
+            <h4>Prints the contents of file.txt file to the screen from beginning</h4>
+        </figcaption>
+</figure>
+
+
+<h1 id="print-text-file-contents-from-end-with-tac">Print text file contents from end with tac</h1>
+
+<p>We can use the cat command to view the text contents of the file from end:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">tac file.txt</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/23/tac_file.png"
+         alt="img"/> <figcaption>
+            <h4>Prints the contents of file.txt file to the screen from end</h4>
+        </figcaption>
+</figure>
+
+
+<h1 id="print-contents-and-their-line-numbers-with-nl">Print contents and their line numbers with nl</h1>
+
+<p>We can use the nl command to display the text document content and the line number for each line of content:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">nl file.txt    <span class="c1"># prints contents and their line numbers</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/23/nl_file.png"
+         alt="img"/> <figcaption>
+            <h4>Prints the contents and their line numbers</h4>
+        </figcaption>
+</figure>
+
+
+<h1 id="print-the-first-lines-of-a-text-file-with-head">Print the first lines of a text file with head</h1>
+
+<p>We can use the head command to output the beginning of the file contents:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">head file.txt    <span class="c1"># prints first ten lines by default</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/23/head_file.png"
+         alt="img"/> <figcaption>
+            <h4>Prints the first ten lines of the contents</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="print-the-first-twenty-lines-with-parameter-n">Print the first twenty lines with parameter n</h2>
+
+<p>We can append a -n parameter to specify the number of rows to display</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">head -n <span class="m">20</span> file.txt    <span class="c1"># prints first twenty lines</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/23/head_file_twenty_lines.png"
+         alt="img"/> <figcaption>
+            <h4>Prints the first twenty lines of the contents</h4>
+        </figcaption>
+</figure>
+
+
+<h1 id="print-the-last-lines-of-a-text-file-with-tail">Print the last lines of a text file with tail</h1>
+
+<p>We can use the tail command to output the ending of the file contents:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">tail file.txt    <span class="c1"># prints last ten lines by default</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/23/tail_file.png"
+         alt="img"/> <figcaption>
+            <h4>Prints the last ten lines of the contents</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="print-the-last-twenty-lines-with-parameter-n">Print the last twenty lines with parameter n</h2>
+
+<p>We can append a -n parameter to specify the number of rows to display</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">tail -n <span class="m">20</span> file.txt    <span class="c1"># prints last twenty lines</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/23/tail_file_twenty_lines.png"
+         alt="img"/> <figcaption>
+            <h4>Prints the last twenty lines of the contents</h4>
+        </figcaption>
+</figure>
+
+
+<h1 id="print-and-interact-text-file-content-with-more">Print and interact text file content with more</h1>
+
+<p>We can use the more command to view and interact a text document&rsquo;s contents:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">more file.txt    <span class="c1"># rarely used nowadays, suitable for small files</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/23/more_file.png"
+         alt="img"/> <figcaption>
+            <h4>Prints the contents of file.txt file to the screen in interactive mode</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="operations-in-less-interactive-mode">Operations in less interactive mode</h2>
+
+<p>Some of the operations we can perform with the keyboard keys are:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Operation</th>
+<th align="center">Meaning</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">/string</td>
+<td align="center">Search for the string in the subsequent contents.</td>
+</tr>
+
+<tr>
+<td align="center">:f</td>
+<td align="center">Show file name and current line number.</td>
+</tr>
+
+<tr>
+<td align="center">B key</td>
+<td align="center">Beginning of the contents.</td>
+</tr>
+
+<tr>
+<td align="center">Space key</td>
+<td align="center">Next page.</td>
+</tr>
+
+<tr>
+<td align="center">Enter key</td>
+<td align="center">Next line.</td>
+</tr>
+
+<tr>
+<td align="center">Q key</td>
+<td align="center">Quit interactive mode without showing the subsequent contents.</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="print-and-interact-text-file-content-with-less">Print and interact text file content with less</h1>
+
+<p>We can also use the less command to view and interact a text document&rsquo;s contents:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">less file.txt    <span class="c1"># it&#39;s an enhanced version of more, suitable for large files</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/23/less_file.png"
+         alt="img"/> <figcaption>
+            <h4>Prints the contents of file.txt file to the screen in interactive mode</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="operations-in-more-interactive-mode">Operations in more interactive mode</h2>
+
+<p>Some of the operations we can perform with the keyboard keys are:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Operation</th>
+<th align="center">Meaning</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">?string</td>
+<td align="center">Search for the string in the preceding contents.</td>
+</tr>
+
+<tr>
+<td align="center">/string</td>
+<td align="center">Search for the string in the subsequent contents.</td>
+</tr>
+
+<tr>
+<td align="center">Space key</td>
+<td align="center">Next page.</td>
+</tr>
+
+<tr>
+<td align="center">Page Down key</td>
+<td align="center">Next page.</td>
+</tr>
+
+<tr>
+<td align="center">Down key</td>
+<td align="center">Next line.</td>
+</tr>
+
+<tr>
+<td align="center">Page Up key</td>
+<td align="center">Previous page.</td>
+</tr>
+
+<tr>
+<td align="center">Up key</td>
+<td align="center">Previous line.</td>
+</tr>
+
+<tr>
+<td align="center">Q key</td>
+<td align="center">Quit interactive mode without showing the subsequent contents.</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p>References
+<a href="https://www.gnu.org/software/coreutils/manual/html_node/cat-invocation.html">3.1 cat: Concatenate and write files</a>,
+<a href="https://www.gnu.org/software/coreutils/manual/html_node/cat-invocation.html">3.2 tac: Concatenate and write files in reverse</a>,
+<a href="https://www.gnu.org/software/coreutils/manual/html_node/nl-invocation.html">3.3 nl: Number lines and write files</a>,
+<a href="https://www.gnu.org/software/coreutils/manual/html_node/head-invocation.html">5.1 head: Output the first part of files</a>,
+<a href="https://www.gnu.org/software/coreutils/manual/html_node/tail-invocation.html">5.2 tail: Output the last part of files</a>,
+<a href="http://man7.org/linux/man-pages/man1/more.1.html">MORE(1)</a>,
+<a href="http://man7.org/linux/man-pages/man1/less.1.html">LESS(1)</a></p>
+</blockquote>
+
+<!-- Buy Me a Coffee Button -->
+
+<p class="align-center">
+  <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/PFou9WhLr"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
+</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Dong Chen</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">Sun Feb 24 2019</span>
+  </p>
+  
+  
+</div><div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://dongchen.co/images/wepay_qr_final.png">
+        <span>wechat</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://dongchen.co/images/alipay_qr_final.png">
+        <span>alipay</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/linux/">Linux</a>
+          <a href="/tags/server/">Server</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/simple-but-profound/server-side-programming/linux/administrator/24.-bash-shell-text-processing-wc-sort/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">24. Bash Shell - Text Processing: wc, sort</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/simple-but-profound/server-side-programming/linux/administrator/22.-bash-shell-pattern-matching-globbing-wildcards/">
+            <span class="next-text nav-default">22. Bash Shell - Pattern Matching (Globbing Wildcards)</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:dongchensteven@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.linkedin.com/in/dongchensteven" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/dongchensteven" class="iconfont icon-github" title="github"></a>
+  <a href="https://dongchen.co/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Dong Chen</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-133226289-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

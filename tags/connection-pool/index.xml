@@ -13,10 +13,10 @@
     
     <item>
       <title>3. Connection Pool - Alibaba Druid and Google Guava</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/3.-connection-pool-alibaba-druid-and-google-guava/</link>
+      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/3.-connection-pool-alibaba-druid-and-google-guava/</link>
       <pubDate>Fri, 26 Apr 2019 21:18:50 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/3.-connection-pool-alibaba-druid-and-google-guava/</guid>
+      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/3.-connection-pool-alibaba-druid-and-google-guava/</guid>
       <description>&lt;p&gt;Druid is a database connection pool component developed by Alibaba middleware team. It includes powerful connection pool monitoring features.&lt;/p&gt;</description>
     </item>
     

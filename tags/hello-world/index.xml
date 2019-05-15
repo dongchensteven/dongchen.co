@@ -13,10 +13,10 @@
     
     <item>
       <title>1. HelloWorld Demo - Hello Spring Stack</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/1.-helloworld-demo-hello-spring-stack/</link>
+      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/1.-helloworld-demo-hello-spring-stack/</link>
       <pubDate>Wed, 24 Apr 2019 19:58:51 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/1.-helloworld-demo-hello-spring-stack/</guid>
+      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/1.-helloworld-demo-hello-spring-stack/</guid>
       <description>&lt;p&gt;Let&amp;rsquo;s use the spring initializer web features provided by the spring website to generate a super-simple hello world project.&lt;/p&gt;</description>
     </item>
     

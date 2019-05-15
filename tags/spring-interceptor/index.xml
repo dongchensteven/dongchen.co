@@ -13,10 +13,10 @@
     
     <item>
       <title>9. User Authentication - Spring Interceptor</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/9.-user-authentication-spring-interceptor/</link>
+      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/9.-user-authentication-spring-interceptor/</link>
       <pubDate>Thu, 02 May 2019 23:48:50 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/9.-user-authentication-spring-interceptor/</guid>
+      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/9.-user-authentication-spring-interceptor/</guid>
       <description>&lt;p&gt;We can use Spring Interceptor feature to authenticate user more efficiently.&lt;/p&gt;</description>
     </item>
     

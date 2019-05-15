@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>60. Disk Management - Concept - Dong - A place to track my time log</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Dong Chen" /><meta name="description" content="Data is the most critical thing in the system, and the disk is the necessary hardware device to persist the data.
+" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/60.-disk-management-concept/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.ea128f8b.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/styles.css">
+
+
+<meta property="og:title" content="60. Disk Management - Concept" />
+<meta property="og:description" content="Data is the most critical thing in the system, and the disk is the necessary hardware device to persist the data." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/60.-disk-management-concept/" /><meta property="article:published_time" content="2019-04-01T18:48:38&#43;13:00"/>
+<meta property="article:modified_time" content="2019-04-01T18:48:38&#43;13:00"/>
+
+<meta itemprop="name" content="60. Disk Management - Concept">
+<meta itemprop="description" content="Data is the most critical thing in the system, and the disk is the necessary hardware device to persist the data.">
+
+
+<meta itemprop="datePublished" content="2019-04-01T18:48:38&#43;13:00" />
+<meta itemprop="dateModified" content="2019-04-01T18:48:38&#43;13:00" />
+<meta itemprop="wordCount" content="896">
+
+
+
+<meta itemprop="keywords" content="Linux,Server," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="60. Disk Management - Concept"/>
+<meta name="twitter:description" content="Data is the most critical thing in the system, and the disk is the necessary hardware device to persist the data."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Dong</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Dong</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">60. Disk Management - Concept</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> Mon Apr 1 2019 </span>
+        <div class="post-category">
+            <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
+            </div>
+          <span class="more-meta"> 896 words </span>
+          <span class="more-meta"> 5 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#disk-types">Disk Types</a>
+<ul>
+<li><a href="#hard-disk-drive-hdd">Hard Disk Drive (HDD)</a></li>
+<li><a href="#solid-state-drive-ssd">Solid State Drive (SSD)</a></li>
+</ul></li>
+<li><a href="#disk-interface-types">Disk Interface Types</a>
+<ul>
+<li><a href="#parallel-port">Parallel Port</a></li>
+<li><a href="#serial-port">Serial Port</a></li>
+</ul></li>
+<li><a href="#file-systems">File Systems</a>
+<ul>
+<li><a href="#disk-file-system">Disk File System</a>
+<ul>
+<li><a href="#linux-file-system">Linux File System</a></li>
+<li><a href="#shared-disk-file-system">Shared-disk File System</a></li>
+</ul></li>
+<li><a href="#distributed-file-system">Distributed File System</a>
+<ul>
+<li><a href="#distributed-parallel-fault-tolerant-file-systems">Distributed Parallel Fault-tolerant File Systems</a></li>
+</ul></li>
+<li><a href="#special-purpose-file-system">Special-purpose File System</a>
+<ul>
+<li><a href="#pseudo-and-virtual-file-systems">Pseudo and Virtual File Systems</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#disk-and-partition-suffixes">Disk and Partition Suffixes</a>
+<ul>
+<li><a href="#disks">Disks</a></li>
+<li><a href="#partitions">Partitions</a></li>
+</ul></li>
+<li><a href="#format-types">Format Types</a>
+<ul>
+<li><a href="#master-boot-record-mbr">Master Boot Record (MBR)</a></li>
+<li><a href="#global-unique-identifiers-partition-table-gpt">Global Unique Identifiers Partition Table (GPT)</a></li>
+</ul></li>
+<li><a href="#disk-modes">Disk Modes</a>
+<ul>
+<li><a href="#cylinder-head-sector-chs">Cylinder Head Sector (CHS)</a></li>
+<li><a href="#logical-block-addressing-lba">Logical Block Addressing (LBA)</a></li>
+</ul></li>
+<li><a href="#device-type">Device Type</a>
+<ul>
+<li><a href="#block">Block</a></li>
+<li><a href="#character">Character</a></li>
+</ul></li>
+<li><a href="#device-numbers">Device Numbers</a>
+<ul>
+<li><a href="#major-number">Major Number</a></li>
+<li><a href="#minor-number">Minor Number</a></li>
+</ul></li>
+<li><a href="#links">Links</a>
+<ul>
+<li><a href="#hard-link">Hard Link</a></li>
+<li><a href="#symbolic-link">Symbolic Link</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>Data is the most critical thing in the system, and the disk is the necessary hardware device to persist the data.</p>
+
+<h1 id="disk-types">Disk Types</h1>
+
+<h2 id="hard-disk-drive-hdd">Hard Disk Drive (HDD)</h2>
+
+<table>
+<thead>
+<tr>
+<th align="center">Revolution Per Minute (RPM)</th>
+<th align="center">I/O Per Second (IOPS)</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">5400-15000</td>
+<td align="center">50-210</td>
+<td align="left">The cost is low; it is possible to recover the data, suitable for database servers.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="solid-state-drive-ssd">Solid State Drive (SSD)</h2>
+
+<table>
+<thead>
+<tr>
+<th align="center">Revolution Per Minute (RPM)</th>
+<th align="center">I/O Per Second (IOPS)</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">None</td>
+<td align="center">5000 and above</td>
+<td align="left">The cost is high; it is impossible to recover the data, suitable for application servers.</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="disk-interface-types">Disk Interface Types</h1>
+
+<p>Calculations between bits, Bytes, Mbps and MBps.</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Abbr</th>
+<th align="center">Calculation</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">b</td>
+<td align="center">8 bits = 1 Byte</td>
+<td align="left">bit</td>
+</tr>
+
+<tr>
+<td align="center">B</td>
+<td align="center">1 Byte = 8 bits</td>
+<td align="left">Byte</td>
+</tr>
+
+<tr>
+<td align="center">Mbps</td>
+<td align="center">8 Mbps = 1 MBps</td>
+<td align="left">Megabits Per Second.</td>
+</tr>
+
+<tr>
+<td align="center">MBps</td>
+<td align="center">1 MBps = 8 Mbps</td>
+<td align="left">MegaBytes Per Second.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="parallel-port">Parallel Port</h2>
+
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Speed (Mbps)</th>
+<th align="center">Speed (MBps)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">IDE</td>
+<td align="center">133</td>
+<td align="center">1064</td>
+</tr>
+
+<tr>
+<td align="center">SCSI</td>
+<td align="center">640</td>
+<td align="center">5120</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="serial-port">Serial Port</h2>
+
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Speed (Mbps)</th>
+<th align="center">Speed (MBps)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">SATA</td>
+<td align="center">768</td>
+<td align="center">6144</td>
+</tr>
+
+<tr>
+<td align="center">SAS</td>
+<td align="center">768</td>
+<td align="center">6144</td>
+</tr>
+
+<tr>
+<td align="center">USB 2.0</td>
+<td align="center">60</td>
+<td align="center">480</td>
+</tr>
+
+<tr>
+<td align="center">USB 3.0</td>
+<td align="center">640</td>
+<td align="center">5120</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="file-systems">File Systems</h1>
+
+<h2 id="disk-file-system">Disk File System</h2>
+
+<h3 id="linux-file-system">Linux File System</h3>
+
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">ext2</td>
+<td align="left">Second extended file system, designed for Linux systems.</td>
+</tr>
+
+<tr>
+<td align="center">ext3</td>
+<td align="left">A journaled form of ext2.</td>
+</tr>
+
+<tr>
+<td align="center">ext4</td>
+<td align="left">A follow up for ext3 and also a journaled filesystem with support for extents.</td>
+</tr>
+
+<tr>
+<td align="center">ReiserFS</td>
+<td align="left">File system that uses journaling</td>
+</tr>
+
+<tr>
+<td align="center">XFS</td>
+<td align="left">Used on SGI IRIX and Linux systems</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="shared-disk-file-system">Shared-disk File System</h3>
+
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">GFS2</td>
+<td align="left">(Global File System) from Red Hat. Available for Linux under GPL. Symmetric (GDLM) or Asymmetric (GULM).</td>
+</tr>
+
+<tr>
+<td align="center">OCFS2</td>
+<td align="left">(Oracle Cluster File System) from Oracle Corporation. Available for Linux under GPL. Symmetric.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="distributed-file-system">Distributed File System</h2>
+
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">NFS</td>
+<td align="left">Originally from Sun Microsystems is the standard in UNIX-based networks. NFS may use Kerberos authentication and a client cache.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="distributed-parallel-fault-tolerant-file-systems">Distributed Parallel Fault-tolerant File Systems</h3>
+
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">Ceph</td>
+<td align="left">A massively scalable object store.</td>
+</tr>
+
+<tr>
+<td align="center">GlusterFS</td>
+<td align="left">A general purpose distributed file system for scalable storage.</td>
+</tr>
+
+<tr>
+<td align="center">MoosFS</td>
+<td align="left">A fault tolerant, highly available and high performance scale-out network distributed file system.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="special-purpose-file-system">Special-purpose File System</h2>
+
+<h3 id="pseudo-and-virtual-file-systems">Pseudo and Virtual File Systems</h3>
+
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">proc</td>
+<td align="left">A pseudo-file system, used to access kernel information about processes.</td>
+</tr>
+
+<tr>
+<td align="center">tmpfs</td>
+<td align="left">In-memory temporary file system (on Linux platforms)</td>
+</tr>
+
+<tr>
+<td align="center">specfs</td>
+<td align="left">Special File System for device files.</td>
+</tr>
+
+<tr>
+<td align="center">sysfs</td>
+<td align="left">A virtual file system in Unix-like operating systems holding information about buses, devices, firmware, filesystems, etc.</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="disk-and-partition-suffixes">Disk and Partition Suffixes</h1>
+
+<h2 id="disks">Disks</h2>
+
+<p>Disks&rsquo; names usually start with sd followed by a, b, c, d, etc.</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="left">Meaning</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">sda</td>
+<td align="left">First disk.</td>
+</tr>
+
+<tr>
+<td align="center">sdb</td>
+<td align="left">Second disk.</td>
+</tr>
+
+<tr>
+<td align="center">sdc</td>
+<td align="left">Third disk.</td>
+</tr>
+
+<tr>
+<td align="center">sdd</td>
+<td align="left">Fourth disk.</td>
+</tr>
+
+<tr>
+<td align="center">sdN</td>
+<td align="left">Nth disk.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="partitions">Partitions</h2>
+
+<p>Disks&rsquo; partitions usually start with sd{a|b|c|d} followed by 1, 2, 3, 4, etc.</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="left">Meaning</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">sda1</td>
+<td align="left">First disk&rsquo;s first partition.</td>
+</tr>
+
+<tr>
+<td align="center">sda2</td>
+<td align="left">First disk&rsquo;s second partition.</td>
+</tr>
+
+<tr>
+<td align="center">sda3</td>
+<td align="left">First disk&rsquo;s third partition.</td>
+</tr>
+
+<tr>
+<td align="center">sda4</td>
+<td align="left">First disk&rsquo;s fourth partition.</td>
+</tr>
+
+<tr>
+<td align="center">sdaN</td>
+<td align="left">First disk&rsquo;s Nth partition.</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="format-types">Format Types</h1>
+
+<h2 id="master-boot-record-mbr">Master Boot Record (MBR)</h2>
+
+<ul>
+<li>Used by the Basic Input Output System (BIOS) boot mode when booting the operating system.</li>
+<li>Almost every PCs and Servers support BIOS.</li>
+<li>Poor compatibility with other hardwares.</li>
+<li>Supports Legacy programs.</li>
+<li>Slower than UEFI.</li>
+</ul>
+
+<p>Total MBR size is 512 bytes.</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Description</th>
+<th align="center">Size (Bytes)</th>
+<th align="left">Purpose</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">Bootstrap code area</td>
+<td align="center">446</td>
+<td align="left">Run BootLoader and other necessary programs.</td>
+</tr>
+
+<tr>
+<td align="center">Primary partition tables</td>
+<td align="center">64 = 16 Bytes * 4</td>
+<td align="left">Create partition entries.</td>
+</tr>
+
+<tr>
+<td align="center">Boot signature</td>
+<td align="center">2</td>
+<td align="left">Check whether MBR is valid.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="global-unique-identifiers-partition-table-gpt">Global Unique Identifiers Partition Table (GPT)</h2>
+
+<ul>
+<li>Used by the Unified Extensible Firmware Interface (UEFI) boot mode when booting the operating system.</li>
+<li>Later PCs and Servers support UEFI.</li>
+<li>Good compatibility with other hardwares.</li>
+<li>Doesn&rsquo;t support Legacy programs.</li>
+<li>Faster than BIOS.</li>
+</ul>
+
+<h1 id="disk-modes">Disk Modes</h1>
+
+<h2 id="cylinder-head-sector-chs">Cylinder Head Sector (CHS)</h2>
+
+<p>1000000 GB = 1 PB</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Maximum Addressing Space (GB)</th>
+<th align="center">Addressing (bits)</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">8</td>
+<td align="center">24</td>
+<td align="left">A legacy hard disk mode.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="logical-block-addressing-lba">Logical Block Addressing (LBA)</h2>
+
+<p>1 PB = 1000000 GB</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Maximum Addressing Space (PB)</th>
+<th align="center">Addressing (bits)</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">128</td>
+<td align="center">48</td>
+<td align="left">A later hard disk mode.</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="device-type">Device Type</h1>
+
+<h2 id="block">Block</h2>
+
+<p>Show block devices:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ll /dev <span class="p">|</span> grep <span class="s1">&#39;^b&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/60/ll_dev_grep_b.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="character">Character</h2>
+
+<p>Show character devices:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ll /dev <span class="p">|</span> grep <span class="s1">&#39;^c&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/60/ll_dev_grep_c.png"
+         alt="img"/> 
+</figure>
+
+
+<h1 id="device-numbers">Device Numbers</h1>
+
+<h2 id="major-number">Major Number</h2>
+
+<p>The fifth column of the device list:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ll /dev <span class="p">|</span> grep <span class="s1">&#39;^c&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;{print $10, $5}&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/60/ll_dev_grep_c_awk_5.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="minor-number">Minor Number</h2>
+
+<p>The sixth column of the device list:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ll /dev <span class="p">|</span> grep <span class="s1">&#39;^c&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;{print $10, $6}&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/60/ll_dev_grep_c_awk_6.png"
+         alt="img"/> 
+</figure>
+
+
+<h1 id="links">Links</h1>
+
+<p>Create hard link:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ll
+ln awk_file awk_file_ln
+ll</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/60/ll_ln_file_link_ll.png"
+         alt="img"/> 
+</figure>
+
+
+<p>Show files and linked numbers:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ll <span class="p">|</span> awk <span class="s1">&#39;{print $9, $2}&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/60/ll_awk_2.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="hard-link">Hard Link</h2>
+
+<ul>
+<li>Will accumulate the linked number.</li>
+<li>Can&rsquo;t be applied to directory.</li>
+<li>Can&rsquo;t be created in different partitions.</li>
+<li>The size of the link is the size of the original file.</li>
+</ul>
+
+<h2 id="symbolic-link">Symbolic Link</h2>
+
+<ul>
+<li>Won&rsquo;t accumulate the linked number.</li>
+<li>Can be applied to directory.</li>
+<li>Can be created in different partitions.</li>
+<li>The size of the link is the length of the target path.</li>
+</ul>
+
+<blockquote>
+<p>References
+<a href="https://en.wikipedia.org/wiki/Revolutions_per_minute">Revolutions per minute</a>,
+<a href="https://en.wikipedia.org/wiki/IOPS">IOPS</a>,
+<a href="https://en.wikipedia.org/wiki/Hard_disk_drive">Hard disk drive</a>,
+<a href="https://en.wikipedia.org/wiki/List_of_file_systems">List of file systems</a>,
+<a href="https://en.wikipedia.org/wiki/Master_boot_record">Master boot record</a>,
+<a href="https://en.wikipedia.org/wiki/GUID_Partition_Table">GUID Partition Table</a>,
+<a href="https://en.wikipedia.org/wiki/Device_file">Device file</a>,
+<a href="https://en.wikipedia.org/wiki/Block_(data_storage)">Block (data storage)</a>,
+<a href="https://www.gnu.org/software/coreutils/manual/html_node/ln-invocation.html">12.2 ln: Make links between files</a></p>
+</blockquote>
+
+<!-- Buy Me a Coffee Button -->
+
+<p class="align-center">
+  <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/PFou9WhLr"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
+</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Dong Chen</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">Mon Apr 1 2019</span>
+  </p>
+  
+  
+</div><div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://dongchen.co/images/wepay_qr_final.png">
+        <span>wechat</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://dongchen.co/images/alipay_qr_final.png">
+        <span>alipay</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/linux/">Linux</a>
+          <a href="/tags/server/">Server</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/simple-but-profound/server-side-programming/linux/administrator/61.-disk-management-tools/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">61. Disk Management - Tools</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/simple-but-profound/server-side-programming/linux/administrator/59.-advanced-text-processing-awks-basic-usage/">
+            <span class="next-text nav-default">59. Advanced Text Processing - Awk&#39;s Basic Usage</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:dongchensteven@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.linkedin.com/in/dongchensteven" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/dongchensteven" class="iconfont icon-github" title="github"></a>
+  <a href="https://dongchen.co/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Dong Chen</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-133226289-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

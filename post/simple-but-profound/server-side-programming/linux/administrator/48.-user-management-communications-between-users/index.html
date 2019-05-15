@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>48. User Management - Communications Between Users - Dong - A place to track my time log</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Dong Chen" /><meta name="description" content="Linux provides users with tools to communicate with each other. Some can send messages to a specified user; some can send a group of messages; some can even send content as an email to a user&amp;rsquo;s inbox list.
+" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/48.-user-management-communications-between-users/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.ea128f8b.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/styles.css">
+
+
+<meta property="og:title" content="48. User Management - Communications Between Users" />
+<meta property="og:description" content="Linux provides users with tools to communicate with each other. Some can send messages to a specified user; some can send a group of messages; some can even send content as an email to a user&rsquo;s inbox list." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/48.-user-management-communications-between-users/" /><meta property="article:published_time" content="2019-03-20T04:40:29&#43;13:00"/>
+<meta property="article:modified_time" content="2019-03-20T04:40:29&#43;13:00"/>
+
+<meta itemprop="name" content="48. User Management - Communications Between Users">
+<meta itemprop="description" content="Linux provides users with tools to communicate with each other. Some can send messages to a specified user; some can send a group of messages; some can even send content as an email to a user&rsquo;s inbox list.">
+
+
+<meta itemprop="datePublished" content="2019-03-20T04:40:29&#43;13:00" />
+<meta itemprop="dateModified" content="2019-03-20T04:40:29&#43;13:00" />
+<meta itemprop="wordCount" content="619">
+
+
+
+<meta itemprop="keywords" content="Linux,Server," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="48. User Management - Communications Between Users"/>
+<meta name="twitter:description" content="Linux provides users with tools to communicate with each other. Some can send messages to a specified user; some can send a group of messages; some can even send content as an email to a user&rsquo;s inbox list."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Dong</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Dong</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">48. User Management - Communications Between Users</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> Wed Mar 20 2019 </span>
+        <div class="post-category">
+            <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
+            </div>
+          <span class="more-meta"> 619 words </span>
+          <span class="more-meta"> 3 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#send-message-to-a-specific-user">Send Message to a Specific User</a></li>
+<li><a href="#disable-or-enable-messaging-function">Disable or Enable Messaging Function</a></li>
+<li><a href="#group-messaging-function">Group Messaging Function</a>
+<ul>
+<li><a href="#output-the-message-without-the-banner">Output the Message Without the Banner</a></li>
+</ul></li>
+<li><a href="#send-an-email-to-a-user">Send an Email to a User</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>Linux provides users with tools to communicate with each other. Some can send messages to a specified user; some can send a group of messages; some can even send content as an email to a user&rsquo;s inbox list.</p>
+
+<h1 id="send-message-to-a-specific-user">Send Message to a Specific User</h1>
+
+<p>Before we send information to a user, we first need to know which terminal the message receiver is at:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">who</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/48/who.png"
+         alt="img"/> <figcaption>
+            <h4>Check logged in users</h4>
+        </figcaption>
+</figure>
+
+
+<p>When we know the terminal of the message receiver, we can send some messages to the terminal:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">write user pts/1    <span class="c1"># Run this command first</span>
+Hi Mate,
+This is a msg from root.
+Root
+<span class="c1"># Press Ctrl + D at this line</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/48/write.png"
+         alt="img"/> <figcaption>
+            <h4>Sending message to a user called user</h4>
+        </figcaption>
+</figure>
+
+
+<p>When the message is sent, the receiving terminal should print out the content just sent out by the root terminal:</p>
+
+<figure>
+    <img src="../images/48/write_received.png"
+         alt="img"/> <figcaption>
+            <h4>Sending message to a user called user</h4>
+        </figcaption>
+</figure>
+
+
+<h1 id="disable-or-enable-messaging-function">Disable or Enable Messaging Function</h1>
+
+<p>We can use the mesg command to turn on or off the ability to send and receive messages.</p>
+
+<p>Here are two arguments for mesg command:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Option</th>
+<th align="left">Meaning</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">n</td>
+<td align="left">Disable send and receive functions. This parameter is not valid for messages sent from root.</td>
+</tr>
+
+<tr>
+<td align="center">y</td>
+<td align="left">Enable send and receive functions.</td>
+</tr>
+</tbody>
+</table>
+
+<p>We can set root to not receive or send messages:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">mesg n</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/48/mesg_n.png"
+         alt="img"/> <figcaption>
+            <h4>Disable the send and receive functions</h4>
+        </figcaption>
+</figure>
+
+
+<p>When a user attempts to send a message to root, the system displays that root has disabled the messaging feature:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">write root pts/0</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/48/write_disabled.png"
+         alt="img"/> <figcaption>
+            <h4>The user attempts to send a message to a root user who has turned off the messaging function</h4>
+        </figcaption>
+</figure>
+
+
+<h1 id="group-messaging-function">Group Messaging Function</h1>
+
+<p>We can use the wall command to broadcast messages to all users:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">wall</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/48/wall.png"
+         alt="img"/> <figcaption>
+            <h4>Send information to all users, including the sender of the message</h4>
+        </figcaption>
+</figure>
+
+
+<p>When the message is broadcasted, the receiving terminals should print out the content just sent out by the root terminal:</p>
+
+<figure>
+    <img src="../images/48/wall_received.png"
+         alt="img"/> <figcaption>
+            <h4>Broadcasting message to all users</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="output-the-message-without-the-banner">Output the Message Without the Banner</h2>
+
+<p>With the -h option, the message sent does not display the sending host:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">wall -n</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/48/wall_n.png"
+         alt="img"/> <figcaption>
+            <h4>Send information to all users without the banner, including the sender of the message</h4>
+        </figcaption>
+</figure>
+
+
+<p>When the message is broadcasted, the receiving terminals should print out the content just sent out by the root terminal without the banner:</p>
+
+<figure>
+    <img src="../images/48/wall_n_received.png"
+         alt="img"/> <figcaption>
+            <h4>Broadcasting message to all users without the banner</h4>
+        </figcaption>
+</figure>
+
+
+<h1 id="send-an-email-to-a-user">Send an Email to a User</h1>
+
+<p>We can send mail to users based on mail, but we first need to install the mailx package:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">yum mailx -y</code></pre></td></tr></table>
+</div>
+</div>
+<p>We can try sending an email to root:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">mail -s <span class="s1">&#39;Hi root&#39;</span> root
+Hi Mate,
+This is an email from user.
+Talk soon.
+User
+.    <span class="c1"># This is act as an terminate symbol</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/48/mail_s.png"
+         alt="img"/> <figcaption>
+            <h4>Send an email to root</h4>
+        </figcaption>
+</figure>
+
+
+<p>The root user&rsquo;s terminal should prompt a message:</p>
+
+<figure>
+    <img src="../images/48/mail_received.png"
+         alt="img"/> <figcaption>
+            <h4>Received an email</h4>
+        </figcaption>
+</figure>
+
+
+<p>We can view the newly received mail through the mail command:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">mail</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/48/mail_check.png"
+         alt="img"/> <figcaption>
+            <h4>Viewing the received email</h4>
+        </figcaption>
+</figure>
+
+
+<p>When we have finished checking the e-mail, we can terminate the program by pressing the Ctrl + D key combination.</p>
+
+<blockquote>
+<p>References
+<a href="http://man7.org/linux/man-pages/man1/write.1.html">WRITE(1)</a>,
+<a href="http://man7.org/linux/man-pages/man1/mesg.1.html">MESG(1)</a>,
+<a href="http://man7.org/linux/man-pages/man1/wall.1.html">WALL(1)</a>,
+<a href="http://mailutils.org/manual/html_chapter/index.html">GNU Mailutils</a></p>
+</blockquote>
+
+<!-- Buy Me a Coffee Button -->
+
+<p class="align-center">
+  <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/PFou9WhLr"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
+</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Dong Chen</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">Wed Mar 20 2019</span>
+  </p>
+  
+  
+</div><div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://dongchen.co/images/wepay_qr_final.png">
+        <span>wechat</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://dongchen.co/images/alipay_qr_final.png">
+        <span>alipay</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/linux/">Linux</a>
+          <a href="/tags/server/">Server</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/simple-but-profound/server-side-programming/linux/administrator/49.-user-management-su-sudo/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">49. User Management - su, sudo</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/simple-but-profound/server-side-programming/linux/administrator/47.-user-management-login-details-record/">
+            <span class="next-text nav-default">47. User Management - Login Details &amp; Record</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:dongchensteven@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.linkedin.com/in/dongchensteven" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/dongchensteven" class="iconfont icon-github" title="github"></a>
+  <a href="https://dongchen.co/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Dong Chen</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-133226289-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

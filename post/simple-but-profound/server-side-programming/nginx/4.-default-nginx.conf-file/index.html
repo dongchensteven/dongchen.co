@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>4. An overview of the default nginx.conf file - Dong - A place to track my time log</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Dong Chen" /><meta name="description" content="Have a glance of Nginx default configuration file The first place we need to visit after the installation should be the nginx.conf file. This file contains everything we need for rendering a very basic static HTML web page on HTTP port 80.
+Locate it through the main process If you have started your Nginx process after the installation then we can get its configuration file through the master process:
+1  ps -ef | grep nginx   The result should look like:" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/nginx/4.-default-nginx.conf-file/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.ea128f8b.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/styles.css">
+
+
+<meta property="og:title" content="4. An overview of the default nginx.conf file" />
+<meta property="og:description" content="Have a glance of Nginx default configuration file The first place we need to visit after the installation should be the nginx.conf file. This file contains everything we need for rendering a very basic static HTML web page on HTTP port 80.
+Locate it through the main process If you have started your Nginx process after the installation then we can get its configuration file through the master process:
+1  ps -ef | grep nginx   The result should look like:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/nginx/4.-default-nginx.conf-file/" /><meta property="article:published_time" content="2018-10-11T00:00:00&#43;13:00"/>
+<meta property="article:modified_time" content="2018-10-11T00:00:00&#43;13:00"/>
+
+<meta itemprop="name" content="4. An overview of the default nginx.conf file">
+<meta itemprop="description" content="Have a glance of Nginx default configuration file The first place we need to visit after the installation should be the nginx.conf file. This file contains everything we need for rendering a very basic static HTML web page on HTTP port 80.
+Locate it through the main process If you have started your Nginx process after the installation then we can get its configuration file through the master process:
+1  ps -ef | grep nginx   The result should look like:">
+
+
+<meta itemprop="datePublished" content="2018-10-11T00:00:00&#43;13:00" />
+<meta itemprop="dateModified" content="2018-10-11T00:00:00&#43;13:00" />
+<meta itemprop="wordCount" content="1139">
+
+
+
+<meta itemprop="keywords" content="Nginx,Server," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="4. An overview of the default nginx.conf file"/>
+<meta name="twitter:description" content="Have a glance of Nginx default configuration file The first place we need to visit after the installation should be the nginx.conf file. This file contains everything we need for rendering a very basic static HTML web page on HTTP port 80.
+Locate it through the main process If you have started your Nginx process after the installation then we can get its configuration file through the master process:
+1  ps -ef | grep nginx   The result should look like:"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Dong</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Dong</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">4. An overview of the default nginx.conf file</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> Thu Oct 11 2018 </span>
+        <div class="post-category">
+            <a href="/categories/nginx-simple-but-profound/"> Nginx: Simple But Profound </a>
+            </div>
+          <span class="more-meta"> 1139 words </span>
+          <span class="more-meta"> 6 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#have-a-glance-of-nginx-default-configuration-file">Have a glance of Nginx default configuration file</a>
+<ul>
+<li><a href="#locate-it-through-the-main-process">Locate it through the main process</a></li>
+<li><a href="#output-the-configuration-to-the-screen">Output the configuration to the screen</a></li>
+<li><a href="#purpose-of-each-instruction">Purpose of each instruction</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h1 id="have-a-glance-of-nginx-default-configuration-file">Have a glance of Nginx default configuration file</h1>
+
+<p>The first place we need to visit after the installation should be the nginx.conf file. This file contains everything we need for rendering a very basic static HTML web page on HTTP port 80.</p>
+
+<h2 id="locate-it-through-the-main-process">Locate it through the main process</h2>
+
+<p>If you have started your Nginx process after the installation then we can get its configuration file through the master process:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ps -ef <span class="p">|</span> grep nginx</code></pre></td></tr></table>
+</div>
+</div>
+<p>The result should look like:</p>
+
+<figure>
+    <img src="../images/4_nginx_process.png"
+         alt="img"/> <figcaption>
+            <h4>Nginx Process</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="output-the-configuration-to-the-screen">Output the configuration to the screen</h2>
+
+<p>We See the nginx.conf File’s Location
+As shown in the picture above, the complete path for nginx.conf is /etc/nginx/nginx.conf, so let’s print that content to console by using cat command:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">cat /etc/nginx/nginx.conf</code></pre></td></tr></table>
+</div>
+</div>
+<p>Your result may differ from mine since I only pasted the executable code snippets:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">user</span>  <span class="s">nginx</span><span class="p">;</span>
+<span class="k">worker_processes</span>  <span class="mi">1</span><span class="p">;</span>
+
+<span class="k">error_log</span>  <span class="s">/var/log/nginx/error.log</span>  <span class="s">warn</span><span class="p">;</span>
+<span class="k">pid</span>           <span class="s">/var/run.nginx.pid</span><span class="p">;</span>
+
+<span class="k">events</span> <span class="p">{</span>
+    <span class="kn">worker_connections</span>  <span class="mi">1024</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">http</span> <span class="p">{</span>
+    <span class="kn">include</span>          <span class="s">/etc/nginx/mime.types</span><span class="p">;</span>
+    <span class="kn">default_type</span>  <span class="s">application/octet-stream</span><span class="p">;</span>
+
+    <span class="kn">log_format</span>  <span class="s">main</span>  <span class="s">&#39;</span><span class="nv">$remote_addr</span> <span class="s">-</span> <span class="nv">$remote_user</span> <span class="s">[</span><span class="nv">$time_local]</span> <span class="s">&#34;</span><span class="nv">$request&#34;</span> <span class="s">&#39;</span>
+                      <span class="s">&#39;</span><span class="nv">$status</span> <span class="nv">$body_bytes_sent</span> <span class="s">&#34;</span><span class="nv">$http_referer&#34;</span> <span class="s">&#39;</span>
+                      <span class="s">&#39;&#34;</span><span class="nv">$http_user_agent&#34;</span> <span class="s">&#34;</span><span class="nv">$http_x_forwarded_for&#34;&#39;</span><span class="p">;</span>
+
+    <span class="kn">access_log</span>   <span class="s">/var/log/nginx/access.log</span>   <span class="s">main</span><span class="p">;</span>
+
+    <span class="kn">sendfile</span>        <span class="no">on</span><span class="p">;</span>
+
+    <span class="kn">keepalive_timeout</span>  <span class="mi">65</span><span class="p">;</span>
+
+    <span class="kn">server</span> <span class="p">{</span>
+        <span class="kn">listen</span>       <span class="mi">80</span><span class="p">;</span>
+        <span class="kn">server_name</span>  <span class="s">localhost</span><span class="p">;</span>
+
+        <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+            <span class="kn">root</span>   <span class="s">/usr/share/nginx/html</span><span class="p">;</span>
+            <span class="kn">index</span>  <span class="s">index.html</span> <span class="s">index.htm</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="purpose-of-each-instruction">Purpose of each instruction</h2>
+
+<div class="admonition tip"><p class="admonition-title">Summary</p>
+  <p>I&rsquo;m just going to make a brief and practical description of these instructions:</p>
+
+<div class="admonition question"><p class="admonition-title">user</p>
+  <p>The default user Nginx uses at run time is <em>nginx</em>, we usually don’t change this value. If you want Nginx to be able to access a directory, then you need to set the ownership of that directory to <em>nginx</em>.</p>
+
+<p><a href="http://nginx.org/en/docs/ngx_core_module.html#user">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">worker_processes</p>
+  <p>Specifies the number of worker processes running in parallel after Nginx starts. This number is usually consistent with the number of logical CPUs on your <a href="https://www.linode.com/?r=6dbaf596fccc4d80aa991a21e94127870ad098ab">server</a>.</p>
+
+<p>Usually, people just set it to <em>auto</em>, and this asks Nginx to use as many logical CPUs as it could to create a sufficient amount of worker processes.</p>
+
+<p><a href="http://nginx.org/en/docs/ngx_core_module.html#worker_processes">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">error_log</p>
+  <p>The file saves any Nginx error information. We can also specify a logging level: <em>warn</em>, <em>error</em>, <em>crit</em>, <em>alert</em>, or <em>emerg</em>.</p>
+
+<p>By default, Nginx uses <em>error</em>, this logs <em>error</em>, <em>crit</em>, <em>alert</em>, and <em>emerg</em> messages.</p>
+
+<p><a href="http://nginx.org/en/docs/ngx_core_module.html#error_log">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">pid</p>
+  <p>The file stores Nginx&rsquo;s main process ID.</p>
+
+<p><a href="http://nginx.org/en/docs/ngx_core_module.html#pid">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">events</p>
+  <p>This block can specify the maximum number of connections per worker process, which event-driven model should be selected to handle connection requests, whether to serialise the network connection and so on.</p>
+
+<p><a href="http://nginx.org/en/docs/ngx_core_module.html#events">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">worker_connections</p>
+  <p>The maximum number of connections each worker process can connect to and process at the same time, including connections between proxy servers. The maximum number of connections cannot exceed the current maximum number of open files, and the worker_rlimit_nofile directive can do the trick.</p>
+
+<p><a href="http://nginx.org/en/docs/ngx_core_module.html#worker_connections">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">http</p>
+  <p>This directive is the most-used module, and its types of operations include io, hash, clients and socket.</p>
+
+<p><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#http">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">include</p>
+  <p>This directive is used to load the mapping list of MIME(multipurpose internet mail extension) protocol types to the configuration file.</p>
+
+<p>Of course, the same is true of the instructions used to include other configuration files, such as <em>include /etc/nginx/sites-enabled/*</em> includes all configuration files under the sites-enabled directory into the configuration file.</p>
+
+<p><a href="http://nginx.org/en/docs/ngx_core_module.html#include">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">default_type</p>
+  <p>As we can see from the configuration above, Nginx&rsquo;s default MIME type for responding a request is octet-stream, octet means 8 bits, and one byte is equal to 8 bits, so the octet-stream here can be understood as a stream of bytes.</p>
+
+<p>If Nginx does not match the response request to the mime-type corresponding in the /etc/nginx/mime.types file included above, then the type specified by default_type is used.</p>
+
+<p><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#default_type">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">log_format</p>
+  <p><em>log_format</em> is the format of the output content to access log, and <em>log_format</em> can specify common variables of Nginx, common variables are the variables that exist only at the moment when Nginx writes the log into the <em>access_log</em> file.</p>
+
+<p><a href="http://nginx.org/en/docs/http/ngx_http_log_module.html#log_format">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">access_log</p>
+  <p>The <em>access_log</em> instruction can specify the log file of the Nginx access request. We can specify the output format of the log, that is, the format arranged by <em>log_format</em>.</p>
+
+<p><a href="http://nginx.org/en/docs/http/ngx_http_log_module.html#access_log">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">sendfile</p>
+  <p>The directive to disable or allow the call to the sendfile () function to send a file is called sendfile.</p>
+
+<p><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#sendfile">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">keepalive_timeout</p>
+  <p>The first parameter sets the timeout between the server and the client to maintain a keep-alive connection and to set zero means disabling the keep-alive connection between the server and the client.</p>
+
+<p>The second parameter is used to set the time value in &ldquo;keep-alive: timeout=<em>time</em>&rdquo; to the response header information so that the client browser knows when to close its keep-alive connection to the server.</p>
+
+<p><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#keepalive_timeout">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">server</p>
+  <p>This directive specifies a virtual server-related configuration, and we can include some common virtual server-related configuration information into the context of server directive, including server name (i.e. domain name), the port number to listen on, project root path, address redirection, SSL security certificate, and so on.</p>
+
+<p><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#server">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">listen</p>
+  <p>The directive we used to specify a port number of the virtual server, and if we don&rsquo;t specify a port, the default is 80.</p>
+
+<p><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#listen">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">server_name</p>
+  <p>With this instruction, we can assign a name (domain name) to the virtual server, and we can also specify the wildcard (*) domain name (*.example.com or www.example.*), which is very convenient.</p>
+
+<p><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#server_name">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">location</p>
+  <p>This directive can be used to configure a unified resource identifier (domain_name/<em>xxx/query</em>) that is accessible to the outside world, where we can configure flexible address matching patterns using regular expressions.</p>
+
+<p><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#location">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">root</p>
+  <p>This directive configures the project root path of the virtual server, which uses with the built-in variables provided by Nginx.</p>
+
+<p><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#root">More&hellip;</a></p>
+
+</div>
+
+<div class="admonition question"><p class="admonition-title">index</p>
+  <p>This directive configures one or more home pages under the project&rsquo;s root path, and the famous home page is index.html or index.php. When someone requests the location, Nginx matches back and forth from several of the front pages configured by the index directive. If the previous home page does not exist, use the next one, and so on.</p>
+
+<p><a href="http://nginx.org/en/docs/http/ngx_http_index_module.html#index">More&hellip;</a></p>
+
+</div>
+
+</div>
+
+<blockquote>
+<p>References:
+<a href="http://nginx.org/en/docs/ngx_core_module.html#user">Core functionality</a>,
+<a href="http://nginx.org/en/docs/hash.html">Setting up hashes</a>,
+<a href="http://nginx.org/en/docs/http/ngx_http_core_module.html">Core Module</a>,
+<a href="http://nginx.org/en/docs/http/ngx_http_log_module.html">Log Module</a>,
+<a href="http://nginx.org/en/docs/http/ngx_http_index_module.html">Index Module</a></p>
+</blockquote>
+
+<p>If you think the content of this article has helped you, and if you would like some more high-quality materials in the near future, please give me some modest support.</p>
+
+<!-- Buy Me a Coffee Button -->
+
+<p class="align-center">
+  <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/PFou9WhLr"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
+</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Dong Chen</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">Thu Oct 11 2018</span>
+  </p>
+  
+  
+</div><div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://dongchen.co/images/wepay_qr_final.png">
+        <span>wechat</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://dongchen.co/images/alipay_qr_final.png">
+        <span>alipay</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/nginx/">Nginx</a>
+          <a href="/tags/server/">Server</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/certification/zend-php7-certified-engineer-passing-technique-sharing/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">How did I pass the Zend PHP7 Certified Engineer exam</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/simple-but-profound/server-side-programming/nginx/3.-basic-nginx-operations/">
+            <span class="next-text nav-default">3. Basic Nginx operations</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:dongchensteven@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.linkedin.com/in/dongchensteven" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/dongchensteven" class="iconfont icon-github" title="github"></a>
+  <a href="https://dongchen.co/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Dong Chen</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-133226289-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

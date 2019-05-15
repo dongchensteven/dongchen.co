@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>49. User Management - su, sudo - Dong - A place to track my time log</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Dong Chen" /><meta name="description" content="We can switch between users through the su and sudo commands. Also, we can use these two commands to perform certain command operations with the privileges of other users.
+" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/49.-user-management-su-sudo/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.ea128f8b.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/styles.css">
+
+
+<meta property="og:title" content="49. User Management - su, sudo" />
+<meta property="og:description" content="We can switch between users through the su and sudo commands. Also, we can use these two commands to perform certain command operations with the privileges of other users." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/49.-user-management-su-sudo/" /><meta property="article:published_time" content="2019-03-21T07:54:32&#43;13:00"/>
+<meta property="article:modified_time" content="2019-03-21T07:54:32&#43;13:00"/>
+
+<meta itemprop="name" content="49. User Management - su, sudo">
+<meta itemprop="description" content="We can switch between users through the su and sudo commands. Also, we can use these two commands to perform certain command operations with the privileges of other users.">
+
+
+<meta itemprop="datePublished" content="2019-03-21T07:54:32&#43;13:00" />
+<meta itemprop="dateModified" content="2019-03-21T07:54:32&#43;13:00" />
+<meta itemprop="wordCount" content="805">
+
+
+
+<meta itemprop="keywords" content="Linux,Server," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="49. User Management - su, sudo"/>
+<meta name="twitter:description" content="We can switch between users through the su and sudo commands. Also, we can use these two commands to perform certain command operations with the privileges of other users."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Dong</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Dong</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">49. User Management - su, sudo</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> Thu Mar 21 2019 </span>
+        <div class="post-category">
+            <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
+            </div>
+          <span class="more-meta"> 805 words </span>
+          <span class="more-meta"> 4 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#su">su</a>
+<ul>
+<li><a href="#stay-on-the-current-working-directory-after-switching-user">Stay on the Current Working Directory After Switching User</a></li>
+<li><a href="#change-current-working-directory-to-the-switched-user-home-directory">Change Current Working Directory to the Switched User Home Directory</a></li>
+</ul></li>
+<li><a href="#sudo">sudo</a>
+<ul>
+<li><a href="#edit-sudoers-file">Edit Sudoers File</a>
+<ul>
+<li><a href="#locked-before-editing">Locked Before Editing</a></li>
+<li><a href="#naked-editing">Naked Editing</a></li>
+<li><a href="#editing-the-content">Editing the Content</a></li>
+</ul></li>
+<li><a href="#run-the-command-as-another-user">Run the Command as Another User</a></li>
+<li><a href="#alias">Alias</a></li>
+<li><a href="#wheel-group">wheel group</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>We can switch between users through the su and sudo commands. Also, we can use these two commands to perform certain command operations with the privileges of other users.</p>
+
+<h1 id="su">su</h1>
+
+<p>Here are two arguments for mesg command:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Option</th>
+<th align="left">Meaning</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">- or -l or &#8209;&#8209;login</td>
+<td align="left">Start a shell as a login shell and switch to the specified user&rsquo;s home directory.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="stay-on-the-current-working-directory-after-switching-user">Stay on the Current Working Directory After Switching User</h2>
+
+<p>By default, the su command replaces the current user with the root user.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">whoami
+<span class="nb">pwd</span>
+su    <span class="c1"># This is equivalent to su root</span>
+<span class="nb">pwd</span>
+whoami</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/49/whoami_pwd_su_whoami_pwd.png"
+         alt="img"/> <figcaption>
+            <h4>Stay on current working directory after replacing the user</h4>
+        </figcaption>
+</figure>
+
+
+<p>When we replace root with user, we don&rsquo;t need to enter a password.</p>
+
+<h2 id="change-current-working-directory-to-the-switched-user-home-directory">Change Current Working Directory to the Switched User Home Directory</h2>
+
+<p>With the - or -l or -login option, we can use the new current user&rsquo;s home directory as the working directory after replacing the user:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">whoami
+<span class="nb">pwd</span>
+su -    <span class="c1"># This is equivalent to su -l or su --login</span>
+<span class="nb">pwd</span>
+whoami</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/49/whoami_pwd_su_-_whoami_pwd.png"
+         alt="img"/> <figcaption>
+            <h4>Change to root&#39;s current working directory after replacing the user</h4>
+        </figcaption>
+</figure>
+
+
+<h1 id="sudo">sudo</h1>
+
+<h2 id="edit-sudoers-file">Edit Sudoers File</h2>
+
+<h3 id="locked-before-editing">Locked Before Editing</h3>
+
+<p>A more rigorous approach, which locks the /etc/sudoers file and then opens it:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">visudo    <span class="c1"># After marking as occupied, open the /etc/sudoers file through the vi editor</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>At this point, if a user logged in via another terminal also wants to edit the / etc/sudoers file via visudo, the following alert will appear:</p>
+
+<figure>
+    <img src="../images/49/visudo_again.png"
+         alt="img"/> <figcaption>
+            <h4>When a user is editing the / etc/sudoers file through the visudo command, there is no way for other users to use the visudo command at this point.</h4>
+        </figcaption>
+</figure>
+
+
+<h3 id="naked-editing">Naked Editing</h3>
+
+<p>One less rigorous approach is to open the /etc/sudoers file directly and others can edit it at the same time:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">vi /etc/sudoers</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="editing-the-content">Editing the Content</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 1. Safely open the /etc/sudoers file through visudo command</span>
+visudo</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="c1"># 2. Paste this line of setting in that file</span>
+<span class="na">usropt ALL</span><span class="o">=</span><span class="s">(root) PASSWD:/usr/sbin/userdel,/usr/sbin/usermod, NOPASSWD:/usr/sbin/useradd</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/49/etc_sudoers_usropt.png"
+         alt="img"/> <figcaption>
+            <h4>The line that starts with usropt is our newly added configuration to the sudoers file</h4>
+        </figcaption>
+</figure>
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 3. Let&#39;s create a user with the same name as the configuration</span>
+useradd usropt
+<span class="nb">echo</span> <span class="s2">&#34;opt123&#34;</span> <span class="p">|</span> passwd --stdin usropt    <span class="c1"># Set password to opt123</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="run-the-command-as-another-user">Run the Command as Another User</h2>
+
+<p>Let&rsquo;s replace the current user with the newly created user:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">su - usropt
+useradd</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/49/su_usropt_useradd.png"
+         alt="img"/> <figcaption>
+            <h4>We can&#39;t run the administrator&#39;s command directly</h4>
+        </figcaption>
+</figure>
+
+
+<p>We need to use the sudo command to run the administrator&rsquo;s command:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo useradd</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/49/sudo_useradd.png"
+         alt="img"/> <figcaption>
+            <h4>With the sudo command, we ran the administrator&#39;s command</h4>
+        </figcaption>
+</figure>
+
+
+<p>When configured, if the command is assigned under passwd, you need to enter the user&rsquo;s password when using the command to prevent malicious abuse of account permissions by others:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo userdel    <span class="c1"># Needs to provide the current user&#39;s password</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/49/sudo_userdel.png"
+         alt="img"/> <figcaption>
+            <h4>After entering the password of the usropt user, the command can be executed</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="alias">Alias</h2>
+
+<p>We can subdivide each as a part through alias:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">su -    <span class="c1"># Replace the current user with root</span>
+visudo    <span class="c1"># Open the /etc/sudoers file again</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="c1"># Replace the previous setting with below settings</span>
+<span class="na">User_Alias USROPT</span> <span class="o">=</span> <span class="s">usropt</span>
+<span class="na">Host_Alias USROPTHOST</span> <span class="o">=</span> <span class="s">ALL</span>
+<span class="na">Runas_Alias USROPTRUNAS</span> <span class="o">=</span> <span class="s">root</span>
+<span class="na">Cmd_Alias USROPTCMDNOPIN</span> <span class="o">=</span> <span class="s">/usr/sbin/useradd</span>
+<span class="na">Cmd_Alias USROPTCMDPIN</span> <span class="o">=</span> <span class="s">/usr/sbin/usermod,/usr/sbin/userdel,!/usr/bin/passwd root,/usr/bin/passwd [A-Za-z]*</span>
+<span class="na">USROPT USROPTHOST</span><span class="o">=</span><span class="s">(USRRUNAS) PASSWD:USROPTCMDPIN,NOPASSWD:USROPTCMDNOPIN</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/49/etc_sudoers_usropt_alias.png"
+         alt="img"/> <figcaption>
+            <h4>Replace the newer settings with the older one</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="wheel-group">wheel group</h2>
+
+<p>We can configure a user&rsquo;s privileges the same as root through the wheel group:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">su -    <span class="c1"># Replace the current user with root</span>
+visudo    <span class="c1"># Open the /etc/sudoers file again</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="na">%wheel ALL</span><span class="o">=</span><span class="s">(ALL) ALL</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/49/etc_sudoers_wheel_group.png"
+         alt="img"/> <figcaption>
+            <h4>The default setting that comes with the sudoers file</h4>
+        </figcaption>
+</figure>
+
+
+<p>Create a new user to append a wheel supplementary group to that user:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">useradd wheelopt
+<span class="nb">echo</span> <span class="s2">&#34;opt123&#34;</span> <span class="p">|</span> passwd --stdin wheelopt    <span class="c1"># Set password to opt123</span>
+usermod -a -G wheel wheelopt    <span class="c1"># Append wheel to user&#39;s supplementary group</span>
+su - wheelopt
+id
+sudo useradd    <span class="c1"># Needs to provide the current user&#39;s password</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/49/useradd_wheelopt.png"
+         alt="img"/> <figcaption>
+            <h4>Enables users to have root permissions by appending the wheel group to the user&#39;s supplementary group</h4>
+        </figcaption>
+</figure>
+
+
+<blockquote>
+<p>References
+<a href="https://ftp.gnu.org/old-gnu/Manuals/coreutils-4.5.4/html_node/coreutils_149.html">22.5 su: Run a command with substitute user and group id</a>,
+<a href="http://man7.org/linux/man-pages/man1/su.1.html">SU(1)</a>,
+<a href="https://www.sudo.ws/man/sudoers.man.html">Sudoers Manual</a>,
+<a href="https://www.sudo.ws/man/1.8.23/visudo.man.html">Visudo 1.8.23 Manual</a></p>
+</blockquote>
+
+<!-- Buy Me a Coffee Button -->
+
+<p class="align-center">
+  <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/PFou9WhLr"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
+</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Dong Chen</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">Thu Mar 21 2019</span>
+  </p>
+  
+  
+</div><div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://dongchen.co/images/wepay_qr_final.png">
+        <span>wechat</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://dongchen.co/images/alipay_qr_final.png">
+        <span>alipay</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/linux/">Linux</a>
+          <a href="/tags/server/">Server</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/simple-but-profound/server-side-programming/linux/administrator/50.-file-permissions-filesystem-access-control-list/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">50. File Permissions - Filesystem Access Control List</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/simple-but-profound/server-side-programming/linux/administrator/48.-user-management-communications-between-users/">
+            <span class="next-text nav-default">48. User Management - Communications Between Users</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:dongchensteven@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.linkedin.com/in/dongchensteven" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/dongchensteven" class="iconfont icon-github" title="github"></a>
+  <a href="https://dongchen.co/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Dong Chen</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-133226289-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

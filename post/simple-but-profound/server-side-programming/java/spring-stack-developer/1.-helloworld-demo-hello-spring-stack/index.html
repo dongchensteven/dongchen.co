@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>1. HelloWorld Demo - Hello Spring Stack - Dong - A place to track my time log</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Dong Chen" /><meta name="description" content="Let&amp;rsquo;s use the spring initializer web features provided by the spring website to generate a super-simple hello world project.
+" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/1.-helloworld-demo-hello-spring-stack/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.ea128f8b.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/styles.css">
+
+
+<meta property="og:title" content="1. HelloWorld Demo - Hello Spring Stack" />
+<meta property="og:description" content="Let&rsquo;s use the spring initializer web features provided by the spring website to generate a super-simple hello world project." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/1.-helloworld-demo-hello-spring-stack/" /><meta property="article:published_time" content="2019-04-24T19:58:51&#43;12:00"/>
+<meta property="article:modified_time" content="2019-04-24T19:58:51&#43;12:00"/>
+
+<meta itemprop="name" content="1. HelloWorld Demo - Hello Spring Stack">
+<meta itemprop="description" content="Let&rsquo;s use the spring initializer web features provided by the spring website to generate a super-simple hello world project.">
+
+
+<meta itemprop="datePublished" content="2019-04-24T19:58:51&#43;12:00" />
+<meta itemprop="dateModified" content="2019-04-24T19:58:51&#43;12:00" />
+<meta itemprop="wordCount" content="412">
+
+
+
+<meta itemprop="keywords" content="Java,Spring,Spring Stack,Spring Framework,Hello World," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="1. HelloWorld Demo - Hello Spring Stack"/>
+<meta name="twitter:description" content="Let&rsquo;s use the spring initializer web features provided by the spring website to generate a super-simple hello world project."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Dong</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Dong</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">1. HelloWorld Demo - Hello Spring Stack</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> Wed Apr 24 2019 </span>
+        <div class="post-category">
+            <a href="/categories/spring-stack-developer-simple-but-profound/"> Spring Stack Developer: Simple But Profound </a>
+            </div>
+          <span class="more-meta"> 412 words </span>
+          <span class="more-meta"> 2 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#generate-a-project-from-official-website">Generate a Project from Official Website</a>
+<ul>
+<li><a href="#visit-the-spring-initializer-page">Visit the Spring Initializer Page</a></li>
+<li><a href="#generate-a-web-project">Generate a Web Project</a>
+<ul>
+<li><a href="#choose-the-project-type">Choose the Project Type</a></li>
+<li><a href="#choose-the-language">Choose the Language</a></li>
+<li><a href="#choose-the-spring-boot-version">Choose the Spring Boot Version</a></li>
+<li><a href="#provide-group">Provide Group</a></li>
+<li><a href="#provide-artifact">Provide Artifact</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#working-with-intellij">Working with IntelliJ</a>
+<ul>
+<li><a href="#open-the-folder">Open the Folder</a></li>
+<li><a href="#hello-spring-stack">Hello Spring Stack</a></li>
+</ul></li>
+<li><a href="#verify">Verify</a>
+<ul>
+<li><a href="#run-the-app">Run the App</a></li>
+<li><a href="#check-application-healthiness-in-browser">Check Application Healthiness in Browser</a></li>
+<li><a href="#view-hello-spring-stack-in-the-browser">View Hello Spring Stack in the Browser</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>Let&rsquo;s use the spring initializer web features provided by the spring website to generate a super-simple hello world project.</p>
+
+<h1 id="generate-a-project-from-official-website">Generate a Project from Official Website</h1>
+
+<h2 id="visit-the-spring-initializer-page">Visit the Spring Initializer Page</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-http" data-lang="http"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-http" data-lang="http"><span class="err">https://start.spring.io/</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="generate-a-web-project">Generate a Web Project</h2>
+
+<h3 id="choose-the-project-type">Choose the Project Type</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-code" data-lang="code"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-code" data-lang="code">Maven Project</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="choose-the-language">Choose the Language</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-code" data-lang="code"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-code" data-lang="code">Java</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="choose-the-spring-boot-version">Choose the Spring Boot Version</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-code" data-lang="code"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-code" data-lang="code">2.1.x</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="provide-group">Provide Group</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-code" data-lang="code"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-code" data-lang="code">co.dongchen</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="provide-artifact">Provide Artifact</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-code" data-lang="code"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-code" data-lang="code">shop</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/1/spring_initializer.png"
+         alt="img"/> 
+</figure>
+
+
+<p>After clicking the Generate button, we get the following zip file:</p>
+
+<figure>
+    <img src="../images/1/shop_zip.png"
+         alt="img"/> 
+</figure>
+
+
+<p>Copy and paste the shop folder to whatever directory you would like to or just place it on the desktop:</p>
+
+<figure>
+    <img src="../images/1/shop_on_desktop.png"
+         alt="img"/> 
+</figure>
+
+
+<h1 id="working-with-intellij">Working with IntelliJ</h1>
+
+<p>You can use any of the following IDEs</p>
+
+<ul>
+<li><a href="https://spring.io/tools">STS from Spring Official</a></li>
+<li><a href="https://www.jetbrains.com/idea/">IntelliJ IDEA Community Version</a></li>
+</ul>
+
+<p>I&rsquo;ll use IntelliJ IDEA for this project and the up coming projects as well.</p>
+
+<h2 id="open-the-folder">Open the Folder</h2>
+
+<p>Click on open option:</p>
+
+<figure>
+    <img src="../images/1/click_on_open_option.png"
+         alt="img"/> 
+</figure>
+
+
+<p>Choose the shop folder and click OK:</p>
+
+<figure>
+    <img src="../images/1/choose_the_shop_project.png"
+         alt="img"/> 
+</figure>
+
+
+<p>There might be an message at the right bottom of the IDE showing that IntelliJ is resolving dependencies of the shop project:</p>
+
+<figure>
+    <img src="../images/1/resolving_dependencies_of_the_project.png"
+         alt="img"/> 
+</figure>
+
+
+<p>After IntelliJ resolved the required dependencies, we&rsquo;ll see the project content at the top left of the IDE:</p>
+
+<figure>
+    <img src="../images/1/shop_in_project_area.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="hello-spring-stack">Hello Spring Stack</h2>
+
+<ul>
+<li>Go to src &gt; main &gt; java &gt; co.dongchen.shop</li>
+<li>Double click ShopApplication</li>
+</ul>
+
+<p>Add RestController annotation above the ShopApplication class:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@RestController</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/1/restcontroller_annotation.png"
+         alt="img"/> 
+</figure>
+
+
+<p>Also add a helloSpringStack() method in the ShopApplication class:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&#34;/hello-spring-stack&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">helloSpringStack</span><span class="o">(){</span>
+  <span class="k">return</span> <span class="s">&#34;Hello Spring Stack&#34;</span><span class="o">;</span>
+<span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/1/hellospringstack_method.png"
+         alt="img"/> 
+</figure>
+
+
+<h1 id="verify">Verify</h1>
+
+<h2 id="run-the-app">Run the App</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-Code" data-lang="Code"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Code" data-lang="Code">// Short Cut for &#34;Run the Program&#34;
+Alt + Shift + F10</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/common/run.png"
+         alt="img"/> 
+</figure>
+
+
+<p>Choose the correspondent option and press enter.</p>
+
+<h2 id="check-application-healthiness-in-browser">Check Application Healthiness in Browser</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-http" data-lang="http"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-http" data-lang="http"><span class="err">http://localhost:8080/actuator/health</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/1/actuator_health_page.png"
+         alt="img"/> 
+</figure>
+
+
+<p>The status&rsquo;s value is UP which means the application is healthy.</p>
+
+<h2 id="view-hello-spring-stack-in-the-browser">View Hello Spring Stack in the Browser</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-http" data-lang="http"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-http" data-lang="http"><span class="err">http://localhost:8080/hello-spring-stack</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/1/hellospringstack_page.png"
+         alt="img"/> 
+</figure>
+
+
+<p>Congratulations! Now we have completed our first program.</p>
+
+<blockquote>
+<p>References
+<a href="https://start.spring.io/">Spring Initializer: Bootstrap your application</a>,
+<a href="https://spring.io/tools">Spring Tool Suite</a>,
+<a href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a>,
+<a href="https://www.eclipse.org/downloads/packages/">Eclipse IDE for Enterprise Java Developers</a></p>
+</blockquote>
+
+<!-- Buy Me a Coffee Button -->
+
+<p class="align-center">
+  <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/PFou9WhLr"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
+</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Dong Chen</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">Wed Apr 24 2019</span>
+  </p>
+  
+  
+</div><div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://dongchen.co/images/wepay_qr_final.png">
+        <span>wechat</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://dongchen.co/images/alipay_qr_final.png">
+        <span>alipay</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/java/">Java</a>
+          <a href="/tags/spring/">Spring</a>
+          <a href="/tags/spring-stack/">Spring Stack</a>
+          <a href="/tags/spring-framework/">Spring Framework</a>
+          <a href="/tags/hello-world/">Hello World</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/simple-but-profound/server-side-programming/java/spring-stack-developer/2.-database-access-mybatis-and-mariadb-10.x/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">2. Database Access - MyBatis and MariaDB 10.x</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/simple-but-profound/server-side-programming/linux/administrator/82.-system-log-management-rsyslogd/">
+            <span class="next-text nav-default">82. System Log Management - rsyslogd</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:dongchensteven@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.linkedin.com/in/dongchensteven" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/dongchensteven" class="iconfont icon-github" title="github"></a>
+  <a href="https://dongchen.co/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Dong Chen</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-133226289-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

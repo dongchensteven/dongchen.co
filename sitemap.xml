@@ -3,707 +3,707 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/19.-publish-to-the-production-server/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/19.-publish-to-the-production-server/</loc>
     <lastmod>2019-05-15T10:47:32+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/18.-product-comment/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/18.-product-comment/</loc>
     <lastmod>2019-05-12T15:50:15+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/17.-wish-list/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/17.-wish-list/</loc>
     <lastmod>2019-05-10T22:49:09+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/16.-product-creation/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/16.-product-creation/</loc>
     <lastmod>2019-05-09T22:08:44+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/15.-recommended-products/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/15.-recommended-products/</loc>
     <lastmod>2019-05-08T00:18:36+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/14.-top-products-connect-to-redis-with-jedis/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/14.-top-products-connect-to-redis-with-jedis/</loc>
     <lastmod>2019-05-07T20:51:45+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/13.-merchant-list-and-detail/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/13.-merchant-list-and-detail/</loc>
     <lastmod>2019-05-06T20:05:01+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/12.-product-detail-contact-form/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/12.-product-detail-contact-form/</loc>
     <lastmod>2019-05-05T21:40:41+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/11.-product-list-pagination/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/11.-product-list-pagination/</loc>
     <lastmod>2019-05-04T22:05:24+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/10.-static-resources-nginx-configuration/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/10.-static-resources-nginx-configuration/</loc>
     <lastmod>2019-05-03T18:47:45+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/9.-user-authentication-spring-interceptor/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/9.-user-authentication-spring-interceptor/</loc>
     <lastmod>2019-05-02T23:48:50+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/8.-user-login-spring-security/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/8.-user-login-spring-security/</loc>
     <lastmod>2019-05-01T20:55:39+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/7.-user-registration-spring-security/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/7.-user-registration-spring-security/</loc>
     <lastmod>2019-04-30T23:12:05+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/6.-modularization-and-decoupling-maven/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/6.-modularization-and-decoupling-maven/</loc>
     <lastmod>2019-04-29T05:47:50+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/5.-template-engine-apache-freemarker-macro/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/5.-template-engine-apache-freemarker-macro/</loc>
     <lastmod>2019-04-28T08:37:25+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/4.-template-engine-apache-freemarker/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/4.-template-engine-apache-freemarker/</loc>
     <lastmod>2019-04-27T10:20:00+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/3.-connection-pool-alibaba-druid-and-google-guava/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/3.-connection-pool-alibaba-druid-and-google-guava/</loc>
     <lastmod>2019-04-26T21:18:50+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/2.-database-access-mybatis-and-mariadb-10.x/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/2.-database-access-mybatis-and-mariadb-10.x/</loc>
     <lastmod>2019-04-25T17:38:16+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/1.-helloworld-demo-hello-spring-stack/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/1.-helloworld-demo-hello-spring-stack/</loc>
     <lastmod>2019-04-24T19:58:51+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/82.-system-log-management-rsyslogd/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/82.-system-log-management-rsyslogd/</loc>
     <lastmod>2019-04-23T20:54:13+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/81.-package-management-yum-yellowdog-updater-modified/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/81.-package-management-yum-yellowdog-updater-modified/</loc>
     <lastmod>2019-04-22T08:27:52+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/80.-package-management-rpm-rpm-package-manager/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/80.-package-management-rpm-rpm-package-manager/</loc>
     <lastmod>2019-04-21T08:47:33+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/79.-daemon-management-systemd-and-systemctl/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/79.-daemon-management-systemd-and-systemctl/</loc>
     <lastmod>2019-04-20T11:37:58+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/78.-job-scheduling-anacron/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/78.-job-scheduling-anacron/</loc>
     <lastmod>2019-04-19T11:03:29+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/77.-job-scheduling-crontab/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/77.-job-scheduling-crontab/</loc>
     <lastmod>2019-04-18T05:54:38+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/76.-job-scheduling-at/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/76.-job-scheduling-at/</loc>
     <lastmod>2019-04-17T07:50:50+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/75.-process-management-vmstat/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/75.-process-management-vmstat/</loc>
     <lastmod>2019-04-16T08:04:05+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/74.-process-management-sar/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/74.-process-management-sar/</loc>
     <lastmod>2019-04-15T20:41:41+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/73.-process-management-pmap-and-pstree/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/73.-process-management-pmap-and-pstree/</loc>
     <lastmod>2019-04-14T23:48:42+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/72.-process-management-nice-and-renice/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/72.-process-management-nice-and-renice/</loc>
     <lastmod>2019-04-13T11:24:24+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/71.-process-management-kill-and-killall/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/71.-process-management-kill-and-killall/</loc>
     <lastmod>2019-04-12T06:05:16+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/70.-process-management-iostat/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/70.-process-management-iostat/</loc>
     <lastmod>2019-04-11T07:56:45+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/69.-process-management-glances/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/69.-process-management-glances/</loc>
     <lastmod>2019-04-10T07:49:47+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/68.-process-management-dstat/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/68.-process-management-dstat/</loc>
     <lastmod>2019-04-09T08:12:30+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/67.-process-management-bg-fg-jobs-and-nohup/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/67.-process-management-bg-fg-jobs-and-nohup/</loc>
     <lastmod>2019-04-08T20:18:25+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/66.-process-management-top-and-htop/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/66.-process-management-top-and-htop/</loc>
     <lastmod>2019-04-07T08:31:18+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/65.-process-management-ps/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/65.-process-management-ps/</loc>
     <lastmod>2019-04-06T09:10:10+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/64.-process-management-pgrep-pkill-and-pidof/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/64.-process-management-pgrep-pkill-and-pidof/</loc>
     <lastmod>2019-04-05T07:53:11+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/63.-lvm-logical-volume-management/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/63.-lvm-logical-volume-management/</loc>
     <lastmod>2019-04-04T19:51:16+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/62.-raid-redundant-array-of-independent-disks/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/62.-raid-redundant-array-of-independent-disks/</loc>
     <lastmod>2019-04-03T20:13:56+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/61.-disk-management-tools/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/61.-disk-management-tools/</loc>
     <lastmod>2019-04-02T07:52:07+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/60.-disk-management-concept/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/60.-disk-management-concept/</loc>
     <lastmod>2019-04-01T18:48:38+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/59.-advanced-text-processing-awks-basic-usage/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/59.-advanced-text-processing-awks-basic-usage/</loc>
     <lastmod>2019-03-31T08:48:54+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/58.-advanced-text-processing-stream-editor-sed/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/58.-advanced-text-processing-stream-editor-sed/</loc>
     <lastmod>2019-03-30T09:25:59+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/57.-advanced-text-processing-grep-egrep/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/57.-advanced-text-processing-grep-egrep/</loc>
     <lastmod>2019-03-29T07:22:38+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/56.-advanced-text-editor-vims-visual-and-input-mode/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/56.-advanced-text-editor-vims-visual-and-input-mode/</loc>
     <lastmod>2019-03-28T07:54:50+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/55.-advanced-text-editor-vims-edit-mode/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/55.-advanced-text-editor-vims-edit-mode/</loc>
     <lastmod>2019-03-27T06:26:32+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/54.-advanced-text-editor-vims-last-line-mode/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/54.-advanced-text-editor-vims-last-line-mode/</loc>
     <lastmod>2019-03-26T07:57:47+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/53.-advanced-text-editor-vims-common-usage/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/53.-advanced-text-editor-vims-common-usage/</loc>
     <lastmod>2019-03-25T07:38:39+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/52.-find-utilities-advanced-files-searching/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/52.-find-utilities-advanced-files-searching/</loc>
     <lastmod>2019-03-24T09:12:59+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/51.-file-permissions-file-attributes/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/51.-file-permissions-file-attributes/</loc>
     <lastmod>2019-03-23T07:13:22+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/50.-file-permissions-filesystem-access-control-list/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/50.-file-permissions-filesystem-access-control-list/</loc>
     <lastmod>2019-03-22T06:48:25+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/49.-user-management-su-sudo/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/49.-user-management-su-sudo/</loc>
     <lastmod>2019-03-21T07:54:32+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/48.-user-management-communications-between-users/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/48.-user-management-communications-between-users/</loc>
     <lastmod>2019-03-20T04:40:29+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/47.-user-management-login-details-record/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/47.-user-management-login-details-record/</loc>
     <lastmod>2019-03-19T08:19:58+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/46.-user-management-creation-modification-and-deletion/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/46.-user-management-creation-modification-and-deletion/</loc>
     <lastmod>2019-03-18T20:03:45+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/45.-group-management-creation-modification-and-deletion/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/45.-group-management-creation-modification-and-deletion/</loc>
     <lastmod>2019-03-17T09:16:36+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/44.-file-permissions-chown-chgrp-chmod-umask/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/44.-file-permissions-chown-chgrp-chmod-umask/</loc>
     <lastmod>2019-03-16T06:24:51+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/43.-file-permissions-symbolic-numeric-modes-setuid-setgid/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/43.-file-permissions-symbolic-numeric-modes-setuid-setgid/</loc>
     <lastmod>2019-03-15T07:20:11+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/42.-user-information-ids-group-ids-names-and-so-on/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/42.-user-information-ids-group-ids-names-and-so-on/</loc>
     <lastmod>2019-03-14T07:43:04+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/41.-archiving-compress-and-decompress-files/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/41.-archiving-compress-and-decompress-files/</loc>
     <lastmod>2019-03-13T07:24:26+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/40.-find-utilities-commands-files-searching-usages/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/40.-find-utilities-commands-files-searching-usages/</loc>
     <lastmod>2019-03-12T06:17:50+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/39.-find-utilities-commands-files-searching-basics/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/39.-find-utilities-commands-files-searching-basics/</loc>
     <lastmod>2019-03-11T06:04:44+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/38.-processes-running-jobs-management/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/38.-processes-running-jobs-management/</loc>
     <lastmod>2019-03-10T06:35:35+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/37.-text-editor-basic-usage-of-nano/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/37.-text-editor-basic-usage-of-nano/</loc>
     <lastmod>2019-03-09T06:33:45+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/36.-system-context-information/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/36.-system-context-information/</loc>
     <lastmod>2019-03-08T05:52:18+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/35.-system-context-date/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/35.-system-context-date/</loc>
     <lastmod>2019-03-08T05:51:18+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/34.-system-context-time/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/34.-system-context-time/</loc>
     <lastmod>2019-03-07T07:35:44+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/33.-output-format-prints-formatted-results/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/33.-output-format-prints-formatted-results/</loc>
     <lastmod>2019-03-06T08:03:56+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/32.-bash-shell-startup-files/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/32.-bash-shell-startup-files/</loc>
     <lastmod>2019-03-05T07:37:52+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/31.-bash-shell-expansions-command-arithmetic-process-substitution/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/31.-bash-shell-expansions-command-arithmetic-process-substitution/</loc>
     <lastmod>2019-03-04T07:22:11+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/30.-bash-shell-expansions-brace-tilde-parameter/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/30.-bash-shell-expansions-brace-tilde-parameter/</loc>
     <lastmod>2019-03-03T06:33:33+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/29.-bash-shell-variables-operations/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/29.-bash-shell-variables-operations/</loc>
     <lastmod>2019-03-02T07:07:52+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/28.-bash-shell-most-commonly-used-control-operators/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/28.-bash-shell-most-commonly-used-control-operators/</loc>
     <lastmod>2019-03-01T07:47:10+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/27.-bash-shell-text-processing-tr/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/27.-bash-shell-text-processing-tr/</loc>
     <lastmod>2019-02-28T07:29:30+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/26.-bash-shell-text-processing-cut-paste-join/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/26.-bash-shell-text-processing-cut-paste-join/</loc>
     <lastmod>2019-02-27T06:55:58+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/25.-bash-shell-text-processing-uniq-comm/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/25.-bash-shell-text-processing-uniq-comm/</loc>
     <lastmod>2019-02-26T07:31:35+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/24.-bash-shell-text-processing-wc-sort/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/24.-bash-shell-text-processing-wc-sort/</loc>
     <lastmod>2019-02-25T07:39:17+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/23.-bash-shell-text-processing-cat-tac-nl-head-tail/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/23.-bash-shell-text-processing-cat-tac-nl-head-tail/</loc>
     <lastmod>2019-02-24T08:52:48+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/22.-bash-shell-pattern-matching-globbing-wildcards/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/22.-bash-shell-pattern-matching-globbing-wildcards/</loc>
     <lastmod>2019-02-23T11:20:55+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/21.-pipelines-use-other-commands-running-results/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/21.-pipelines-use-other-commands-running-results/</loc>
     <lastmod>2019-02-22T07:14:06+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/20.-bash-shell-io-reirection/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/20.-bash-shell-io-reirection/</loc>
     <lastmod>2019-02-21T06:27:53+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/19.-bash-shell-command-prompt-settings-customization/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/19.-bash-shell-command-prompt-settings-customization/</loc>
     <lastmod>2019-02-20T07:42:28+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/18.-bash-shell-directory-stack-builtins/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/18.-bash-shell-directory-stack-builtins/</loc>
     <lastmod>2019-02-19T08:31:14+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/17.-bash-shell-completion-commands/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/17.-bash-shell-completion-commands/</loc>
     <lastmod>2019-02-18T07:10:12+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/16.-bash-shell-killing-and-yanking/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/16.-bash-shell-killing-and-yanking/</loc>
     <lastmod>2019-02-17T09:35:21+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/15.-bash-shell-text-manipulation/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/15.-bash-shell-text-manipulation/</loc>
     <lastmod>2019-02-16T08:05:01+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/14.-bash-shell-cursor-movement/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/14.-bash-shell-cursor-movement/</loc>
     <lastmod>2019-02-15T07:52:08+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/13.-bourne-and-bash-shells-environment-variables/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/13.-bourne-and-bash-shells-environment-variables/</loc>
     <lastmod>2019-02-14T08:17:49+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/12.-bash-shell-commands-history-record-usage/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/12.-bash-shell-commands-history-record-usage/</loc>
     <lastmod>2019-02-13T07:10:22+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/11.-centos-7-bash-shell-auto-completion/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/11.-centos-7-bash-shell-auto-completion/</loc>
     <lastmod>2019-02-12T07:13:00+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/10.-alias-a-linux-command-for-shortcut-creation/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/10.-alias-a-linux-command-for-shortcut-creation/</loc>
     <lastmod>2019-02-11T07:08:31+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/9.-text-editor-a-powerful-linux-text-editors-basic-usage/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/9.-text-editor-a-powerful-linux-text-editors-basic-usage/</loc>
     <lastmod>2019-02-10T06:00:30+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/8.-linux-directory-and-file-management/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/8.-linux-directory-and-file-management/</loc>
     <lastmod>2019-02-09T10:56:58+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/7.-types-of-linux-commands/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/7.-types-of-linux-commands/</loc>
     <lastmod>2019-02-08T06:19:30+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/6.-linux-bash-help-system-man-info/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/6.-linux-bash-help-system-man-info/</loc>
     <lastmod>2019-02-07T07:12:39+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/5.-linux-command-manual-page-man-page/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/5.-linux-command-manual-page-man-page/</loc>
     <lastmod>2019-02-06T07:11:06+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/4.-linux-system-and-hardware-times/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/4.-linux-system-and-hardware-times/</loc>
     <lastmod>2019-02-05T07:25:20+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/3.-linux-file-systems/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/3.-linux-file-systems/</loc>
     <lastmod>2019-02-04T06:41:44+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/2.-linux-installation/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/2.-linux-installation/</loc>
     <lastmod>2019-02-03T06:22:53+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/linux/simple-but-profound/1.-introduction/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/1.-introduction/</loc>
     <lastmod>2019-02-09T10:45:06+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -724,7 +724,7 @@
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/5.-nginx-space-and-time-measurement-units/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/nginx/5.-nginx-space-and-time-measurement-units/</loc>
     <lastmod>2019-01-31T07:51:02+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -738,28 +738,28 @@
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/4.-default-nginx.conf-file/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/nginx/4.-default-nginx.conf-file/</loc>
     <lastmod>2018-10-11T00:00:00+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/3.-basic-nginx-operations/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/nginx/3.-basic-nginx-operations/</loc>
     <lastmod>2019-01-28T07:47:00+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/2.-install-nginx/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/nginx/2.-install-nginx/</loc>
     <lastmod>2018-10-10T00:50:00+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://dongchen.co/post/server-side-programming/nginx/simple-but-profound/1.-introduction/</loc>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/nginx/1.-introduction/</loc>
     <lastmod>2018-10-10T00:49:00+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>

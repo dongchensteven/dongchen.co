@@ -13,10 +13,10 @@
     
     <item>
       <title>5. Template Engine - Apache FreeMarker Macro</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/5.-template-engine-apache-freemarker-macro/</link>
+      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/5.-template-engine-apache-freemarker-macro/</link>
       <pubDate>Sun, 28 Apr 2019 08:37:25 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/5.-template-engine-apache-freemarker-macro/</guid>
+      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/5.-template-engine-apache-freemarker-macro/</guid>
       <description>&lt;p&gt;Through the macro features provided by FreeMarker, we can easily manage some of the commonly used template code.&lt;/p&gt;</description>
     </item>
     

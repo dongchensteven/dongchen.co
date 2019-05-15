@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>50. File Permissions - Filesystem Access Control List - Dong - A place to track my time log</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Dong Chen" /><meta name="description" content="Although the chmod command is powerful enough, it cannot assign permissions more finely, so Linux provides some flexible commands to specify permissions for a particular user or group. Starting from Linux kernel 2.6, we can allocate more granular permissions to users or groups.
+" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/50.-file-permissions-filesystem-access-control-list/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.ea128f8b.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/styles.css">
+
+
+<meta property="og:title" content="50. File Permissions - Filesystem Access Control List" />
+<meta property="og:description" content="Although the chmod command is powerful enough, it cannot assign permissions more finely, so Linux provides some flexible commands to specify permissions for a particular user or group. Starting from Linux kernel 2.6, we can allocate more granular permissions to users or groups." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/50.-file-permissions-filesystem-access-control-list/" /><meta property="article:published_time" content="2019-03-22T06:48:25&#43;13:00"/>
+<meta property="article:modified_time" content="2019-03-22T06:48:25&#43;13:00"/>
+
+<meta itemprop="name" content="50. File Permissions - Filesystem Access Control List">
+<meta itemprop="description" content="Although the chmod command is powerful enough, it cannot assign permissions more finely, so Linux provides some flexible commands to specify permissions for a particular user or group. Starting from Linux kernel 2.6, we can allocate more granular permissions to users or groups.">
+
+
+<meta itemprop="datePublished" content="2019-03-22T06:48:25&#43;13:00" />
+<meta itemprop="dateModified" content="2019-03-22T06:48:25&#43;13:00" />
+<meta itemprop="wordCount" content="1519">
+
+
+
+<meta itemprop="keywords" content="Linux,Server," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="50. File Permissions - Filesystem Access Control List"/>
+<meta name="twitter:description" content="Although the chmod command is powerful enough, it cannot assign permissions more finely, so Linux provides some flexible commands to specify permissions for a particular user or group. Starting from Linux kernel 2.6, we can allocate more granular permissions to users or groups."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Dong</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Dong</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">50. File Permissions - Filesystem Access Control List</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> Fri Mar 22 2019 </span>
+        <div class="post-category">
+            <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
+            </div>
+          <span class="more-meta"> 1519 words </span>
+          <span class="more-meta"> 8 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#before-we-start">Before We Start</a></li>
+<li><a href="#get-file-acl">Get File ACL</a>
+<ul>
+<li><a href="#file-access-control-list">File Access Control List</a></li>
+<li><a href="#file-default-access-control-list">File Default Access Control List</a></li>
+<li><a href="#ignore-the-comment-header">Ignore the Comment Header</a></li>
+<li><a href="#all-effective-rights-comments">All Effective Rights Comments</a></li>
+<li><a href="#no-effective-rights-comments">No Effective Rights Comments</a></li>
+<li><a href="#skip-base-acl-entries">Skip Base ACL Entries</a></li>
+<li><a href="#all-files-and-directories-acls">All Files and Directories ACLs</a></li>
+<li><a href="#symbolic-links-in-recursion">Symbolic Links in Recursion</a></li>
+<li><a href="#no-symbolic-links-in-recursion">No Symbolic Links in Recursion</a></li>
+<li><a href="#tabular-format">Tabular Format</a></li>
+<li><a href="#keep-the-leading-slash">Keep the Leading slash (/)</a></li>
+<li><a href="#user-and-group-ids">User and Group IDs</a></li>
+</ul></li>
+<li><a href="#set-and-remove-file-acl">Set and Remove File ACL</a>
+<ul>
+<li><a href="#set-permissions">Set Permissions</a>
+<ul>
+<li><a href="#set-permission-for-a-user">Set Permission for a User</a></li>
+<li><a href="#set-permission-for-a-group">Set Permission for a Group</a></li>
+<li><a href="#set-other-permission">Set Other Permission</a></li>
+<li><a href="#set-mask-permission">Set Mask Permission</a></li>
+<li><a href="#clone-acl-between-files-and-directories">Clone ACL Between Files and Directories</a></li>
+<li><a href="#set-default-permissions">Set Default Permissions</a></li>
+</ul></li>
+<li><a href="#remove-extended-acls">Remove Extended ACLs</a>
+<ul>
+<li><a href="#remove-a-specific-user-or-group-acl">Remove a Specific User or Group ACL</a></li>
+<li><a href="#remove-all-acls">Remove All ACLs</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>Although the chmod command is powerful enough, it cannot assign permissions more finely, so Linux provides some flexible commands to specify permissions for a particular user or group. Starting from Linux kernel 2.6, we can allocate more granular permissions to users or groups.</p>
+
+<h1 id="before-we-start">Before We Start</h1>
+
+<p>Before we begin, we make sure that the system we are using is based on a 2.6 or later kernel:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">uname -r</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/50/uname_r.png"
+         alt="img"/> <figcaption>
+            <h4>The system we are using is based on the kernel 3.10, so we can use the acl commands</h4>
+        </figcaption>
+</figure>
+
+
+<h1 id="get-file-acl">Get File ACL</h1>
+
+<p>We can use the getfacl command to get an access control list for a file.</p>
+
+<p>Here are some options for getfacl command:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Option</th>
+<th align="left">Meaning</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">-a or &#8209;&#8209;access</td>
+<td align="left">Output all ACLs.</td>
+</tr>
+
+<tr>
+<td align="center">-d or &#8209;&#8209;default</td>
+<td align="left">Output default ACLs.</td>
+</tr>
+
+<tr>
+<td align="center">-c or &#8209;&#8209;omit-header</td>
+<td align="left">Output ACLs without the comment header.</td>
+</tr>
+
+<tr>
+<td align="center">-e or &#8209;&#8209;all-effective</td>
+<td align="left">Output all effective right comments.</td>
+</tr>
+
+<tr>
+<td align="center">-E or &#8209;&#8209;no-effective</td>
+<td align="left">Output non effective right comments.</td>
+</tr>
+
+<tr>
+<td align="center">-s or &#8209;&#8209;skip-base</td>
+<td align="left">Skip all files or directories&rsquo; ACLs that only contain basic ACL entries.</td>
+</tr>
+
+<tr>
+<td align="center">-R or &#8209;&#8209;recursive</td>
+<td align="left">Output all the files and directories&rsquo; ACLs recursively.</td>
+</tr>
+
+<tr>
+<td align="center">-L or &#8209;&#8209;logical</td>
+<td align="left">Output all the files, directories and symbolic links&rsquo; ACLs recursively, so must be using with -R.</td>
+</tr>
+
+<tr>
+<td align="center">-P or &#8209;&#8209;physical</td>
+<td align="left">Output all the files and directories&rsquo; ACLs recursively except the symbolic links&rsquo;, so must be using with -R.</td>
+</tr>
+
+<tr>
+<td align="center">-t or &#8209;&#8209;tabular</td>
+<td align="left">Output the file or directory&rsquo;s ACL in tabular format.</td>
+</tr>
+
+<tr>
+<td align="center">-p or &#8209;&#8209;absolute-names</td>
+<td align="left">Keep the leading slash(/) of a path.</td>
+</tr>
+
+<tr>
+<td align="center">-n or &#8209;&#8209;numeric</td>
+<td align="left">Output the owner and group IDs instead of the names.</td>
+</tr>
+</tbody>
+</table>
+
+<p>By default, the getfacl command outputs the access control list and the default access control list:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">touch acl_file
+getfacl acl_file</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/50/touch_file_getfacl_file.png"
+         alt="img"/> <figcaption>
+            <h4>Output access control list information for the newly created file</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="file-access-control-list">File Access Control List</h2>
+
+<p>With the -a or &#8209;&#8209;access parameter, we can view the file&rsquo;s access control list:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">getfacl -a acl_file    <span class="c1"># This is equivalent to getfacl --access acl_file</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/50/getfacl_a_file.png"
+         alt="img"/> <figcaption>
+            <h4>Output the file&#39;s access control list</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="file-default-access-control-list">File Default Access Control List</h2>
+
+<p>With the -d or &#8209;&#8209;default parameter, we can view the file&rsquo;s default access control list:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">getfacl -d acl_file    <span class="c1"># This is equivalent to getfacl --default acl_file</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/50/getfacl_d_file.png"
+         alt="img"/> <figcaption>
+            <h4>Output the file&#39;s default access control list</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="ignore-the-comment-header">Ignore the Comment Header</h2>
+
+<p>With the -c or &#8209;&#8209;omit-header parameter, we can view the file&rsquo;s access control list without the comment header:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">getfacl -c acl_file    <span class="c1"># This is equivalent to getfacl --omit-header acl_file</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/50/getfacl_c_file.png"
+         alt="img"/> <figcaption>
+            <h4>Output the file&#39;s access control list without the comment header</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="all-effective-rights-comments">All Effective Rights Comments</h2>
+
+<p>With the -e or &#8209;&#8209;all-effective parameter, we can view the file&rsquo;s all effective rights comments:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">getfacl -e acl_file    <span class="c1"># This is equivalent to getfacl --all-effective acl_file</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/50/getfacl_e_file.png"
+         alt="img"/> <figcaption>
+            <h4>Output the file&#39;s all effective comments</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="no-effective-rights-comments">No Effective Rights Comments</h2>
+
+<p>With the -E or &#8209;&#8209;no-effective parameter, we can view the file&rsquo;s non effective rights comments:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">getfacl -E acl_file    <span class="c1"># This is equivalent to getfacl --no-effective acl_file</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/50/getfacl_e_upper_file.png"
+         alt="img"/> <figcaption>
+            <h4>Output the file&#39;s non effective comments</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="skip-base-acl-entries">Skip Base ACL Entries</h2>
+
+<p>With the -s or &#8209;&#8209;skip-base parameter, we can skip the file that only has base ACL entries (owner, group, others):</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">getfacl -s acl_file    <span class="c1"># This is equivalent to getfacl --skip-base acl_file</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/50/getfacl_s_file.png"
+         alt="img"/> <figcaption>
+            <h4>Skip the file that only has the base ACL entries</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="all-files-and-directories-acls">All Files and Directories ACLs</h2>
+
+<p>We prepare a directory and two files before we begin:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">mkdir acl_dir
+touch acl_dir/file<span class="o">{</span><span class="m">1</span>,2<span class="o">}</span>
+ll acl_dir</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/50/mkdir_dir_touch_files_ll_dir.png"
+         alt="img"/> <figcaption>
+            <h4>Prepare one directory and two files</h4>
+        </figcaption>
+</figure>
+
+
+<p>With the -R or &#8209;&#8209;recursive parameter, we can view all the files and directories&rsquo; access control lists:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">getfacl -R acl_dir    <span class="c1"># This is equivalent to getfacl --recursive acl_dir</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/50/getfacl_r_upper_acl_dir.png"
+         alt="img"/> <figcaption>
+            <h4>View all the files and directories&#39; access control lists</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="symbolic-links-in-recursion">Symbolic Links in Recursion</h2>
+
+<p>We prepare a symbolic link:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ln -s file1 acl_dir/file1_symbolic_link
+ll acl_dir</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/50/ln_s_file_link_ll_dir.png"
+         alt="img"/> <figcaption>
+            <h4>Prepare one directory and two files</h4>
+        </figcaption>
+</figure>
+
+
+<p>With the -L or &#8209;&#8209;logical parameter plus the -R or &#8209;&#8209;recursive parameter, we can view all the files, directories and symbolic links&rsquo; access control lists:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">getfacl -RL acl_dir    <span class="c1"># This is equivalent to getfacl --recursive --logical acl_dir</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/50/getfacl_rl_upper_dir.png"
+         alt="img"/> <figcaption>
+            <h4>View all the files, directories and symbolic links&#39; access control lists</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="no-symbolic-links-in-recursion">No Symbolic Links in Recursion</h2>
+
+<p>With the -P or &#8209;&#8209;physical parameter plus the -R or &#8209;&#8209;recursive parameter, we can view all the files and directories&rsquo; access control lists but not symbolic links&rsquo;:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">getfacl -RP acl_dir    <span class="c1"># This is equivalent to getfacl --recursive --physical acl_dir</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/50/getfacl_rp_upper_dir.png"
+         alt="img"/> <figcaption>
+            <h4>View all the files and directories&#39; access control lists but not symbolic links&#39;</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="tabular-format">Tabular Format</h2>
+
+<p>With the -t or &#8209;&#8209;tabular parameter, we can view the file or directory&rsquo;s access control lists side by side:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">getfacl -t acl_dir    <span class="c1"># This is equivalent to getfacl --tabular acl_dir</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/50/getfacl_t_dir.png"
+         alt="img"/> <figcaption>
+            <h4>View the directory&#39;s access control lists side by side</h4>
+        </figcaption>
+</figure>
+
+
+<p>Plus the -R or &#8209;&#8209;recursive parameter, we can view all the files and directories&rsquo; access control lists side by side:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">getfacl -Rt acl_dir    <span class="c1"># This is equivalent to getfacl --recursive --tabular acl_dir</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/50/getfacl_r_upper_t_dir.png"
+         alt="img"/> <figcaption>
+            <h4>View all the files and directories&#39; access control lists side by side</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="keep-the-leading-slash">Keep the Leading slash (/)</h2>
+
+<p>With the -p or &#8209;&#8209;absolute-names parameter, we can view the file or directory&rsquo;s access control lists and keep the leading slash:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">getfacl -p acl_dir    <span class="c1"># This is equivalent to getfacl --absolute-names acl_dir</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/50/getfacl_p_dir.png"
+         alt="img"/> <figcaption>
+            <h4>View the directory&#39;s access control lists and keep the leading slash</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="user-and-group-ids">User and Group IDs</h2>
+
+<p>With the -n or &#8209;&#8209;numeric parameter, we can view the file or directory&rsquo;s access control lists and its owner and group&rsquo;s IDs instead of the names:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">getfacl -n acl_dir    <span class="c1"># This is equivalent to getfacl --numeric acl_dir</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/50/getfacl_n_dir.png"
+         alt="img"/> <figcaption>
+            <h4>View the directory&#39;s access control lists and its owner and group&#39;s IDs</h4>
+        </figcaption>
+</figure>
+
+
+<h1 id="set-and-remove-file-acl">Set and Remove File ACL</h1>
+
+<p>We can use the getfacl command to configure the access control list for a file.</p>
+
+<p>Here are some options for getfacl command:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Option</th>
+<th align="left">Meaning</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">&#8209;&#8209;set or &#8209;&#8209;set-file</td>
+<td align="left">Replace an existing ACL of a file or directory with the specified ACL.</td>
+</tr>
+
+<tr>
+<td align="center">-m or &#8209;&#8209;modify or -M &#8209;&#8209;modify-file</td>
+<td align="left">Change the ACL of a file or directory. Can&rsquo;t be use with -x.</td>
+</tr>
+
+<tr>
+<td align="center">-x or &#8209;&#8209;remove or -X or &#8209;&#8209;remove-file</td>
+<td align="left">Delete the ACL of a file or directory. Can&rsquo;t be use with -m</td>
+</tr>
+
+<tr>
+<td align="center">-b or &#8209;&#8209;remove-all</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="center">-k or &#8209;&#8209;remove-default</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="center">-n or &#8209;&#8209;no-mask</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;mask</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="center">-d or &#8209;&#8209;default</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;restore=file</td>
+<td align="left">Must be using individually or with &#8209;&#8209;test</td>
+</tr>
+
+<tr>
+<td align="center">&#8209;&#8209;test</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="center">-R or &#8209;&#8209;recursive</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="center">-L or &#8209;&#8209;logical</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="center">-P or &#8209;&#8209;physical</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="set-permissions">Set Permissions</h2>
+
+<p>With the -m option followed by the {(u|user)|(g|group)|(m|mask)|(o|other)}:{user|group}:{(r|4)|(w|2)|(x|1)} format, we can change a user&rsquo;s permissions on the file.</p>
+
+<h3 id="set-permission-for-a-user">Set Permission for a User</h3>
+
+<p>With the -m option followed by the (u|user):username:{(r|4)|(w|2)|(x|1)} format, we can change a user&rsquo;s permissions on the file:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">getfacl acl_dir
+useradd acl_user
+<span class="c1"># u:username:x</span>
+setfacl -m u:acl_user:x acl_dir    <span class="c1"># This is equivalent to setfacl -m user:acl_user:1 acl_dir</span>
+getfacl acl_dir</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/50/getfacl_dir_useradd_user_setfacl_m_user_r_dir_getfacl_dir.png"
+         alt="img"/> <figcaption>
+            <h4>View the directory&#39;s access control lists before and after the creation and permission allocation of the user acl_user</h4>
+        </figcaption>
+</figure>
+
+
+<h3 id="set-permission-for-a-group">Set Permission for a Group</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">getfacl acl_dir
+groupadd acl_group
+<span class="c1"># g:groupname:x</span>
+setfacl -m g:acl_group:x acl_dir    <span class="c1"># This is equivalent to setfacl -m group:acl_group:1 acl_dir</span>
+getfacl acl_dir</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/50/getfacl_dir_groupadd_group_setfacl_m_group_r_dir_getfacl_dir.png"
+         alt="img"/> <figcaption>
+            <h4>View the directory&#39;s access control lists before and after the creation and permission allocation of the group acl_group</h4>
+        </figcaption>
+</figure>
+
+
+<h3 id="set-other-permission">Set Other Permission</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">getfacl acl_dir
+<span class="c1"># m:x</span>
+setfacl -m o:x acl_dir    <span class="c1"># This is equivalent to setfacl -m other:1 acl_dir</span>
+getfacl acl_dir</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/50/getfacl_dir_setfacl_m_other_x_dir_getfacl_dir.png"
+         alt="img"/> <figcaption>
+            <h4>View the directory&#39;s access control lists before and after the permission allocation of others</h4>
+        </figcaption>
+</figure>
+
+
+<h3 id="set-mask-permission">Set Mask Permission</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">getfacl acl_dir
+<span class="c1"># m:x</span>
+setfacl -m m:rwx acl_dir    <span class="c1"># This is equivalent to setfacl -m mask:7 acl_dir</span>
+getfacl acl_dir</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/50/getfacl_dir_setfacl_m_mask_rwx_dir_getfacl_dir.png"
+         alt="img"/> <figcaption>
+            <h4>View the directory&#39;s access control lists before and after the permission allocation of the mask</h4>
+        </figcaption>
+</figure>
+
+
+<h3 id="clone-acl-between-files-and-directories">Clone ACL Between Files and Directories</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">mkdir acl_dir2
+getfacl acl_dir2
+getfacl acl_dir <span class="p">|</span> setfacl --set-file<span class="o">=</span>- acl_dir2 
+getfacl acl_dir2</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/50/mkdir_dir_getfacl_dir_clone_getfacl_dir.png"
+         alt="img"/> <figcaption>
+            <h4>View the directory&#39;s access control lists before and after the colonization of ACLs from another directory</h4>
+        </figcaption>
+</figure>
+
+
+<h3 id="set-default-permissions">Set Default Permissions</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">getfacl acl_dir2
+setfacl -m d:u:acl_user:rwx acl_dir2    <span class="c1"># This is equivalent to setfacl -m default:acl_user:7 acl_dir</span>
+getfacl acl_dir2</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/50/getfacl_dir_setfacl_m_default_user_rwx_dir_getfacl_dir.png"
+         alt="img"/> <figcaption>
+            <h4>View the directory&#39;s access control lists before and after the permission allocation of user acl_user&#39;s default</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="remove-extended-acls">Remove Extended ACLs</h2>
+
+<h3 id="remove-a-specific-user-or-group-acl">Remove a Specific User or Group ACL</h3>
+
+<p>We can remove the acl of a user or group by replacing the -m parameter with the -x parameter:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">getfacl acl_dir2
+setfacl -x g:acl_group acl_dir2
+getfacl acl_dir2</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/50/getfacl_dir_groupadd_group_setfacl_x_group_r_dir_getfacl_dir.png"
+         alt="img"/> <figcaption>
+            <h4>View the directory&#39;s access control lists before and after the removing of the group acl_group&#39;s ACL</h4>
+        </figcaption>
+</figure>
+
+
+<h3 id="remove-all-acls">Remove All ACLs</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">getfacl acl_dir2
+setfacl -b acl_dir2
+getfacl acl_dir2</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/50/getfacl_dir_setfacl_b_dir_getfacl_dir.png"
+         alt="img"/> <figcaption>
+            <h4>View the directory&#39;s access control lists before and after the removing of all the ACLs</h4>
+        </figcaption>
+</figure>
+
+
+<blockquote>
+<p>References
+<a href="https://www.linux.com/news/posix-acls-linux">POSIX ACLs in Linux</a>
+<a href="http://man7.org/linux/man-pages/man1/getfacl.1.html">GETFACL(1)</a>,
+<a href="http://man7.org/linux/man-pages/man1/setfacl.1.html">SETFACL(1)</a></p>
+</blockquote>
+
+<!-- Buy Me a Coffee Button -->
+
+<p class="align-center">
+  <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/PFou9WhLr"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
+</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Dong Chen</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">Fri Mar 22 2019</span>
+  </p>
+  
+  
+</div><div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://dongchen.co/images/wepay_qr_final.png">
+        <span>wechat</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://dongchen.co/images/alipay_qr_final.png">
+        <span>alipay</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/linux/">Linux</a>
+          <a href="/tags/server/">Server</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/simple-but-profound/server-side-programming/linux/administrator/51.-file-permissions-file-attributes/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">51. File Permissions - File Attributes</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/simple-but-profound/server-side-programming/linux/administrator/49.-user-management-su-sudo/">
+            <span class="next-text nav-default">49. User Management - su, sudo</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:dongchensteven@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.linkedin.com/in/dongchensteven" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/dongchensteven" class="iconfont icon-github" title="github"></a>
+  <a href="https://dongchen.co/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Dong Chen</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-133226289-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

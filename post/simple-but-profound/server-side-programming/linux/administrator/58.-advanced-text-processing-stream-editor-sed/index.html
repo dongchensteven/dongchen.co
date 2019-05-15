@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>58. Advanced Text Processing - Stream Editor (sed) - Dong - A place to track my time log</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Dong Chen" /><meta name="description" content="We can use the sed stream editor provided by linux to filter and convert text line by line.
+" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/58.-advanced-text-processing-stream-editor-sed/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.ea128f8b.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/styles.css">
+
+
+<meta property="og:title" content="58. Advanced Text Processing - Stream Editor (sed)" />
+<meta property="og:description" content="We can use the sed stream editor provided by linux to filter and convert text line by line." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/58.-advanced-text-processing-stream-editor-sed/" /><meta property="article:published_time" content="2019-03-30T09:25:59&#43;13:00"/>
+<meta property="article:modified_time" content="2019-03-30T09:25:59&#43;13:00"/>
+
+<meta itemprop="name" content="58. Advanced Text Processing - Stream Editor (sed)">
+<meta itemprop="description" content="We can use the sed stream editor provided by linux to filter and convert text line by line.">
+
+
+<meta itemprop="datePublished" content="2019-03-30T09:25:59&#43;13:00" />
+<meta itemprop="dateModified" content="2019-03-30T09:25:59&#43;13:00" />
+<meta itemprop="wordCount" content="512">
+
+
+
+<meta itemprop="keywords" content="Linux,Server," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="58. Advanced Text Processing - Stream Editor (sed)"/>
+<meta name="twitter:description" content="We can use the sed stream editor provided by linux to filter and convert text line by line."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Dong</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Dong</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">58. Advanced Text Processing - Stream Editor (sed)</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> Sat Mar 30 2019 </span>
+        <div class="post-category">
+            <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
+            </div>
+          <span class="more-meta"> 512 words </span>
+          <span class="more-meta"> 3 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#options-for-sed-command">Options for sed command</a>
+<ul>
+<li><a href="#options">Options</a></li>
+<li><a href="#commands">Commands</a>
+<ul>
+<li><a href="#zero-or-one-address-commands">Zero- or One- address commands</a></li>
+<li><a href="#commands-with-accept-address-ranges">Commands with accept address ranges</a></li>
+</ul></li>
+<li><a href="#addresses">Addresses</a></li>
+</ul></li>
+<li><a href="#examples">Examples</a>
+<ul>
+<li><a href="#match-from-line-one-to-line-five">Match From Line One to Line Five</a></li>
+<li><a href="#match-the-last-line">Match The Last Line</a></li>
+<li><a href="#append-lines-after-line-one-two-and-three">Append Lines After Line One, Two and Three</a></li>
+<li><a href="#insert-a-line-before-last-line">Insert A Line Before Last Line</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>We can use the sed stream editor provided by linux to filter and convert text line by line.</p>
+
+<h1 id="options-for-sed-command">Options for sed command</h1>
+
+<p>Here are some options for sed commands.</p>
+
+<h2 id="options">Options</h2>
+
+<table>
+<thead>
+<tr>
+<th align="center">Option</th>
+<th align="left">Meaning</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">-n or &#8209;&#8209;quiet or &#8209;&#8209;silent</td>
+<td align="left">Ignore the automatic output.</td>
+</tr>
+
+<tr>
+<td align="center">-e script or &#8209;&#8209;expression=script</td>
+<td align="left">Add the script.</td>
+</tr>
+
+<tr>
+<td align="center">-f script-file or &#8209;&#8209;file=script-file</td>
+<td align="left">Add the script-file&rsquo;s content.</td>
+</tr>
+
+<tr>
+<td align="center">-r or &#8209;&#8209;regexp-extended</td>
+<td align="left">Use extended regular expressions.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="commands">Commands</h2>
+
+<h3 id="zero-or-one-address-commands">Zero- or One- address commands</h3>
+
+<table>
+<thead>
+<tr>
+<th align="center">Command</th>
+<th align="left">Meaning</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">a &#92;text</td>
+<td align="left">Append text after the specified lines.</td>
+</tr>
+
+<tr>
+<td align="center">i &#92;text</td>
+<td align="left">Insert text before the specified lines.</td>
+</tr>
+
+<tr>
+<td align="center">r filename</td>
+<td align="left">Append text from filename.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="commands-with-accept-address-ranges">Commands with accept address ranges</h3>
+
+<table>
+<thead>
+<tr>
+<th align="center">Command</th>
+<th align="left">Meaning</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">c &#92;</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="center">d</td>
+<td align="left">Delete matching lines.</td>
+</tr>
+
+<tr>
+<td align="center">p</td>
+<td align="left">Output matching lines.</td>
+</tr>
+
+<tr>
+<td align="center">s/regexp/replacement/</td>
+<td align="left">Replace the content that the regexp matches with the content of the replacement, append g at the end means match globally, append i at the end means to ignore case.</td>
+</tr>
+
+<tr>
+<td align="center">w filename</td>
+<td align="left">Write the specified content to filename.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="addresses">Addresses</h2>
+
+<table>
+<thead>
+<tr>
+<th align="center">Address</th>
+<th align="left">Meaning</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">number</td>
+<td align="left">Match the specified line number.</td>
+</tr>
+
+<tr>
+<td align="center">first~step</td>
+<td align="left">Match every step line starting with line first.</td>
+</tr>
+
+<tr>
+<td align="center">$</td>
+<td align="left">Match the last line.</td>
+</tr>
+
+<tr>
+<td align="center">/regexp/</td>
+<td align="left">Output lines matching the regular expression.</td>
+</tr>
+
+<tr>
+<td align="center">addr1,addr2</td>
+<td align="left">Output the contents from lines addr1 to addr2.</td>
+</tr>
+
+<tr>
+<td align="center">addr1,-N</td>
+<td align="left">Output the contents from lines addr1 to N lines.</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="examples">Examples</h1>
+
+<p>Before we get started, let&rsquo;s prepare some test content:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">printf</span> <span class="s1">&#39;%s\n&#39;</span> <span class="se">\
+</span><span class="se"></span><span class="s1">&#39;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nisi tellus,&#39;</span> <span class="se">\
+</span><span class="se"></span><span class="s1">&#39;egestas sed dolor nec, eleifend venenatis mi. Mauris ac ligula&#39;</span> <span class="se">\
+</span><span class="se"></span><span class="s1">&#39;scelerisque libero interdum varius. Aenean nec arcu nec turpis&#39;</span> <span class="se">\
+</span><span class="se"></span><span class="s1">&#39;commodo mollis. Morbi suscipit felis libero, eu sollicitudin justo&#39;</span> <span class="se">\
+</span><span class="se"></span><span class="s1">&#39;condimentum id. Praesent eu metus rutrum, varius leo malesuada,&#39;</span> <span class="se">\
+</span><span class="se"></span><span class="s1">&#39;varius sapien. Vestibulum blandit, dolor bibendum bibendum ultricies,&#39;</span> <span class="se">\
+</span><span class="se"></span><span class="s1">&#39;ipsum velit pretium arcu, eu maximus augue massa vitae justo. Etiam&#39;</span> <span class="se">\
+</span><span class="se"></span><span class="s1">&#39;elit sapien, placerat quis libero a, tincidunt ornare erat. Praesent eu nibh&#39;</span> <span class="se">\
+</span><span class="se"></span><span class="s1">&#39;ac sem mattis tincidunt. Aliquam erat volutpat. Nulla egestas dui ac urna&#39;</span> <span class="se">\
+</span><span class="se"></span><span class="s1">&#39;convallis, vel egestas lectus ultrices. Morbi sit amet quam eget tortor&#39;</span> <span class="se">\
+</span><span class="se"></span><span class="s1">&#39;laoreet laoreet id non libero.&#39;</span> &gt; sed_file</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="match-from-line-one-to-line-five">Match From Line One to Line Five</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sed -n <span class="s1">&#39;1,5p&#39;</span> sed_file</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/58/sed_1_5.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="match-the-last-line">Match The Last Line</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sed -n <span class="s1">&#39;$p&#39;</span> sed_file</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/58/sed_last.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="append-lines-after-line-one-two-and-three">Append Lines After Line One, Two and Three</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sed <span class="s1">&#39;1,3a \A Line After Line One, Two and Three&#39;</span> sed_file</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/58/sed_append_1_3.png"
+         alt="img"/> 
+</figure>
+
+
+<h2 id="insert-a-line-before-last-line">Insert A Line Before Last Line</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sed <span class="s1">&#39;$i \A Line Before Last Line&#39;</span> sed_file</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/58/sed_insert_last.png"
+         alt="img"/> 
+</figure>
+
+
+<blockquote>
+<p>References
+<a href="https://www.gnu.org/software/sed/manual/sed.html">sed, a stream editor</a>,
+<a href="http://man7.org/linux/man-pages/man1/sed.1.html">SED(1)</a></p>
+</blockquote>
+
+<!-- Buy Me a Coffee Button -->
+
+<p class="align-center">
+  <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/PFou9WhLr"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
+</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Dong Chen</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">Sat Mar 30 2019</span>
+  </p>
+  
+  
+</div><div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://dongchen.co/images/wepay_qr_final.png">
+        <span>wechat</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://dongchen.co/images/alipay_qr_final.png">
+        <span>alipay</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/linux/">Linux</a>
+          <a href="/tags/server/">Server</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/simple-but-profound/server-side-programming/linux/administrator/59.-advanced-text-processing-awks-basic-usage/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">59. Advanced Text Processing - Awk&#39;s Basic Usage</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/simple-but-profound/server-side-programming/linux/administrator/57.-advanced-text-processing-grep-egrep/">
+            <span class="next-text nav-default">57. Advanced Text Processing - grep, egrep</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:dongchensteven@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.linkedin.com/in/dongchensteven" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/dongchensteven" class="iconfont icon-github" title="github"></a>
+  <a href="https://dongchen.co/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Dong Chen</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-133226289-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

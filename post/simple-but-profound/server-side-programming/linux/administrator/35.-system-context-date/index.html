@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>35. System Context - Date - Dong - A place to track my time log</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Dong Chen" /><meta name="description" content="Linux provides commands that allow you to view system&amp;rsquo;s date information, and with these commands, you can quickly get the date related information.
+" /><meta name="keywords" content="Linux Date, Linux Locale Date, Linux Century, Linux Year, Linux Quarter, Linux Month, Linux Week, Linux Day, Linux Days Before or After, Linux Months Before or After, Linux Years Before or After" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/35.-system-context-date/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.ea128f8b.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/styles.css">
+
+
+<meta property="og:title" content="35. System Context - Date" />
+<meta property="og:description" content="Linux provides commands that allow you to view system&rsquo;s date information, and with these commands, you can quickly get the date related information." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/35.-system-context-date/" /><meta property="article:published_time" content="2019-03-08T05:51:18&#43;13:00"/>
+<meta property="article:modified_time" content="2019-03-08T05:51:18&#43;13:00"/>
+
+<meta itemprop="name" content="35. System Context - Date">
+<meta itemprop="description" content="Linux provides commands that allow you to view system&rsquo;s date information, and with these commands, you can quickly get the date related information.">
+
+
+<meta itemprop="datePublished" content="2019-03-08T05:51:18&#43;13:00" />
+<meta itemprop="dateModified" content="2019-03-08T05:51:18&#43;13:00" />
+<meta itemprop="wordCount" content="570">
+
+
+
+<meta itemprop="keywords" content="Linux,Server," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="35. System Context - Date"/>
+<meta name="twitter:description" content="Linux provides commands that allow you to view system&rsquo;s date information, and with these commands, you can quickly get the date related information."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Dong</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Dong</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">35. System Context - Date</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> Fri Mar 8 2019 </span>
+        <div class="post-category">
+            <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
+            </div>
+          <span class="more-meta"> 570 words </span>
+          <span class="more-meta"> 3 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#system-date">System Date</a>
+<ul>
+<li><a href="#locale-datetime">Locale Datetime</a></li>
+<li><a href="#locale-date">Locale Date</a></li>
+<li><a href="#locale-weekday-abbreviation">Locale Weekday - Abbreviation</a></li>
+<li><a href="#locale-weekday-full-name">Locale Weekday - Full Name</a></li>
+<li><a href="#locale-month-abbreviation">Locale Month - Abbreviation</a></li>
+<li><a href="#locale-month-full-name">Locale Month - Full Name</a></li>
+<li><a href="#date-yyyy-mm-dd-iso-8601-format">Date - YYYY-MM-DD (ISO 8601 format)</a></li>
+<li><a href="#date-dd-mm-yy">Date - DD/MM/YY</a></li>
+<li><a href="#century">Century</a></li>
+<li><a href="#year-yyyy">Year - YYYY</a></li>
+<li><a href="#year-yy">Year - YY</a></li>
+<li><a href="#month-mm">Month - MM</a></li>
+<li><a href="#week-of-year-00-to-53-first-day-monday">Week of Year - 00 to 53 (First Day Monday)</a></li>
+<li><a href="#week-of-year-00-to-53-first-day-sunday">Week of Year - 00 to 53 (First Day Sunday)</a></li>
+<li><a href="#iso-week-number-year-yy">ISO Week Number Year - YY</a></li>
+<li><a href="#iso-week-number-year-yyyy">ISO Week Number Year - YYYY</a></li>
+<li><a href="#day-of-week-zero-to-six">Day of Week - Zero to Six</a></li>
+<li><a href="#day-of-week-one-to-seven">Day of Week - One to Seven</a></li>
+<li><a href="#day-of-month">Day of Month</a></li>
+<li><a href="#day-of-month-space-padded">Day of Month - Space Padded</a></li>
+<li><a href="#day-of-year">Day of Year</a></li>
+<li><a href="#day-or-days-ago">Day or Days Ago</a></li>
+<li><a href="#day-or-days-hence">Day or Days Hence</a></li>
+<li><a href="#month-or-months-ago">Month or Months Ago</a></li>
+<li><a href="#month-or-months-hence">Month or Months Hence</a></li>
+<li><a href="#year-or-years-ago">Year or Years Ago</a></li>
+<li><a href="#year-or-years-hence">Year or Years Hence</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>Linux provides commands that allow you to view system&rsquo;s date information, and with these commands, you can quickly get the date related information.</p>
+
+<h1 id="system-date">System Date</h1>
+
+<p>We can use the date command to get or set the date of the system:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date.png"
+         alt="img"/> <figcaption>
+            <h4>Prints datetime</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="locale-datetime">Locale Datetime</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%c&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date_locale_datetime.png"
+         alt="img"/> <figcaption>
+            <h4>Prints locale&#39;s datetime</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="locale-date">Locale Date</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%x&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date_locale_date.png"
+         alt="img"/> <figcaption>
+            <h4>Prints locale&#39;s time</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="locale-weekday-abbreviation">Locale Weekday - Abbreviation</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%a&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date_locale_weekday_abbr.png"
+         alt="img"/> <figcaption>
+            <h4>Prints locale&#39;s abbreviated weekday name</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="locale-weekday-full-name">Locale Weekday - Full Name</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%A&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date_locale_weekday_full.png"
+         alt="img"/> <figcaption>
+            <h4>Prints locale&#39;s full weekday name</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="locale-month-abbreviation">Locale Month - Abbreviation</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%b&#39;</span>    <span class="c1"># This is equivalent to date +&#39;%h&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date_locale_month_abbr.png"
+         alt="img"/> <figcaption>
+            <h4>Prints locale&#39;s abbreviated month name</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="locale-month-full-name">Locale Month - Full Name</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%B&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date_locale_month_full.png"
+         alt="img"/> <figcaption>
+            <h4>Prints locale&#39;s full month name</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="date-yyyy-mm-dd-iso-8601-format">Date - YYYY-MM-DD (ISO 8601 format)</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%F&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date_yyyy_mm_dd.png"
+         alt="img"/> <figcaption>
+            <h4>Prints date in YYY-MM-DD format</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="date-dd-mm-yy">Date - DD/MM/YY</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%D&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date_dd_mm_yy.png"
+         alt="img"/> <figcaption>
+            <h4>Prints date in DD/MM/YY format</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="century">Century</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%C&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date_century.png"
+         alt="img"/> <figcaption>
+            <h4>Prints century</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="year-yyyy">Year - YYYY</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%Y&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date_yyyy.png"
+         alt="img"/> <figcaption>
+            <h4>Prints year in YYYY format</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="year-yy">Year - YY</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%y&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date_yy.png"
+         alt="img"/> <figcaption>
+            <h4>Prints year in YY format</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="month-mm">Month - MM</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%m&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date_mm.png"
+         alt="img"/> <figcaption>
+            <h4>Prints month in MM format</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="week-of-year-00-to-53-first-day-monday">Week of Year - 00 to 53 (First Day Monday)</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%W&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date_week_number_monday_first.png"
+         alt="img"/> <figcaption>
+            <h4>Prints Monday first week number</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="week-of-year-00-to-53-first-day-sunday">Week of Year - 00 to 53 (First Day Sunday)</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%U&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date_week_number_sunday_first.png"
+         alt="img"/> <figcaption>
+            <h4>Prints Sunday first week number</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="iso-week-number-year-yy">ISO Week Number Year - YY</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%g&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date_week_number_year_yy.png"
+         alt="img"/> <figcaption>
+            <h4>Prints week number year in YY format</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="iso-week-number-year-yyyy">ISO Week Number Year - YYYY</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%G&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date_week_number_year_yyyy.png"
+         alt="img"/> <figcaption>
+            <h4>Prints week number year in YYYY format</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="day-of-week-zero-to-six">Day of Week - Zero to Six</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%w&#39;</span>    <span class="c1"># 0 corresponding to Sunday</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date_day_of_week_zero_to_six.png"
+         alt="img"/> <figcaption>
+            <h4>Prints day of week zero to six</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="day-of-week-one-to-seven">Day of Week - One to Seven</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%u&#39;</span>    <span class="c1"># 1 corresponding to Monday</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date_day_of_week_one_to_seven.png"
+         alt="img"/> <figcaption>
+            <h4>Prints day of week one to seven</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="day-of-month">Day of Month</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%d&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date_month.png"
+         alt="img"/> <figcaption>
+            <h4>Prints month</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="day-of-month-space-padded">Day of Month - Space Padded</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%e&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date_month_space_padded.png"
+         alt="img"/> <figcaption>
+            <h4>Prints space padded month</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="day-of-year">Day of Year</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date +<span class="s1">&#39;%j&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date_day_of_year.png"
+         alt="img"/> <figcaption>
+            <h4>Prints day of year</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="day-or-days-ago">Day or Days Ago</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date --date<span class="o">=</span><span class="s1">&#39;1 day ago&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date_day_ago.png"
+         alt="img"/> <figcaption>
+            <h4>Prints a day ago</h4>
+        </figcaption>
+</figure>
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date --date<span class="o">=</span><span class="s1">&#39;2 days ago&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date_days_ago.png"
+         alt="img"/> <figcaption>
+            <h4>Prints two days ago</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="day-or-days-hence">Day or Days Hence</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date --date<span class="o">=</span><span class="s1">&#39;1 day&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date_day_hence.png"
+         alt="img"/> <figcaption>
+            <h4>Prints a day hence</h4>
+        </figcaption>
+</figure>
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date --date<span class="o">=</span><span class="s1">&#39;2 days&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date_days_hence.png"
+         alt="img"/> <figcaption>
+            <h4>Prints two days hence</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="month-or-months-ago">Month or Months Ago</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date --date<span class="o">=</span><span class="s1">&#39;1 month ago&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date_month_ago.png"
+         alt="img"/> <figcaption>
+            <h4>Prints a month ago</h4>
+        </figcaption>
+</figure>
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date --date<span class="o">=</span><span class="s1">&#39;2 months ago&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date_months_ago.png"
+         alt="img"/> <figcaption>
+            <h4>Prints two months ago</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="month-or-months-hence">Month or Months Hence</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date --date<span class="o">=</span><span class="s1">&#39;1 month&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date_month_hence.png"
+         alt="img"/> <figcaption>
+            <h4>Prints a month hence</h4>
+        </figcaption>
+</figure>
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date --date<span class="o">=</span><span class="s1">&#39;2 months&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date_months_hence.png"
+         alt="img"/> <figcaption>
+            <h4>Prints two months hence</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="year-or-years-ago">Year or Years Ago</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date --date<span class="o">=</span><span class="s1">&#39;1 year ago&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date_year_ago.png"
+         alt="img"/> <figcaption>
+            <h4>Prints a year ago</h4>
+        </figcaption>
+</figure>
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date --date<span class="o">=</span><span class="s1">&#39;2 years ago&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date_years_ago.png"
+         alt="img"/> <figcaption>
+            <h4>Prints two years ago</h4>
+        </figcaption>
+</figure>
+
+
+<h2 id="year-or-years-hence">Year or Years Hence</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date --date<span class="o">=</span><span class="s1">&#39;1 year&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date_year_hence.png"
+         alt="img"/> <figcaption>
+            <h4>Prints a year hence</h4>
+        </figcaption>
+</figure>
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">date --date<span class="o">=</span><span class="s1">&#39;2 years&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/35/date_years_hence.png"
+         alt="img"/> <figcaption>
+            <h4>Prints two years hence</h4>
+        </figcaption>
+</figure>
+
+
+<blockquote>
+<p>References
+<a href="https://www.gnu.org/software/coreutils/manual/html_node/System-context.html">21 System context</a>,
+<a href="https://www.gnu.org/software/coreutils/manual/html_node/Date-conversion-specifiers.html">21.1.2 Date conversion specifiers</a>,
+<a href="https://www.gnu.org/software/coreutils/manual/html_node/Examples-of-date.html">21.1.7 Examples of date</a></p>
+</blockquote>
+
+<!-- Buy Me a Coffee Button -->
+
+<p class="align-center">
+  <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/PFou9WhLr"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
+</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Dong Chen</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">Fri Mar 8 2019</span>
+  </p>
+  
+  
+</div><div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://dongchen.co/images/wepay_qr_final.png">
+        <span>wechat</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://dongchen.co/images/alipay_qr_final.png">
+        <span>alipay</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/linux/">Linux</a>
+          <a href="/tags/server/">Server</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/simple-but-profound/server-side-programming/linux/administrator/36.-system-context-information/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">36. System Context - Information</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/simple-but-profound/server-side-programming/linux/administrator/34.-system-context-time/">
+            <span class="next-text nav-default">34. System Context - Time</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:dongchensteven@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://www.linkedin.com/in/dongchensteven" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/dongchensteven" class="iconfont icon-github" title="github"></a>
+  <a href="https://dongchen.co/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Dong Chen</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-133226289-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

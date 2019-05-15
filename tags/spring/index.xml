@@ -13,172 +13,172 @@
     
     <item>
       <title>19. Publish to the Production Server</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/19.-publish-to-the-production-server/</link>
+      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/19.-publish-to-the-production-server/</link>
       <pubDate>Wed, 15 May 2019 10:47:32 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/19.-publish-to-the-production-server/</guid>
+      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/19.-publish-to-the-production-server/</guid>
       <description>&lt;p&gt;Publish SpringBoot applications to a production environment server in the form of jar packages.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>18. Product Comment</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/18.-product-comment/</link>
+      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/18.-product-comment/</link>
       <pubDate>Sun, 12 May 2019 15:50:15 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/18.-product-comment/</guid>
+      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/18.-product-comment/</guid>
       <description>&lt;p&gt;Customers can leave comments on products.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>17. Wish List</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/17.-wish-list/</link>
+      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/17.-wish-list/</link>
       <pubDate>Fri, 10 May 2019 22:49:09 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/17.-wish-list/</guid>
+      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/17.-wish-list/</guid>
       <description>&lt;p&gt;We can add our favorite products into wish list.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>16. Product Creation</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/16.-product-creation/</link>
+      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/16.-product-creation/</link>
       <pubDate>Thu, 09 May 2019 22:08:44 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/16.-product-creation/</guid>
+      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/16.-product-creation/</guid>
       <description>&lt;p&gt;We can create products.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>15. Recommended Products</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/15.-recommended-products/</link>
+      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/15.-recommended-products/</link>
       <pubDate>Wed, 08 May 2019 00:18:36 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/15.-recommended-products/</guid>
+      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/15.-recommended-products/</guid>
       <description>&lt;p&gt;We can show our recommended products to visitors.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>14. Top Products - Connect to Redis with Jedis</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/14.-top-products-connect-to-redis-with-jedis/</link>
+      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/14.-top-products-connect-to-redis-with-jedis/</link>
       <pubDate>Tue, 07 May 2019 20:51:45 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/14.-top-products-connect-to-redis-with-jedis/</guid>
+      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/14.-top-products-connect-to-redis-with-jedis/</guid>
       <description>&lt;p&gt;Redis can be used to cache data that needs to be accessed frequently, data will be cached in memory, and we can manipulate Redis through Jedis.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>13. Merchant List and Detail</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/13.-merchant-list-and-detail/</link>
+      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/13.-merchant-list-and-detail/</link>
       <pubDate>Mon, 06 May 2019 20:05:01 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/13.-merchant-list-and-detail/</guid>
+      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/13.-merchant-list-and-detail/</guid>
       <description>&lt;p&gt;Merchants can sell their own products on the platform for consumers to buy.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>12. Product Detail - Contact Form</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/12.-product-detail-contact-form/</link>
+      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/12.-product-detail-contact-form/</link>
       <pubDate>Sun, 05 May 2019 21:40:41 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/12.-product-detail-contact-form/</guid>
+      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/12.-product-detail-contact-form/</guid>
       <description>&lt;p&gt;Through the contact form, customers can easily leave a message to a merchant.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>11. Product List - Pagination</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/11.-product-list-pagination/</link>
+      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/11.-product-list-pagination/</link>
       <pubDate>Sat, 04 May 2019 22:05:24 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/11.-product-list-pagination/</guid>
+      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/11.-product-list-pagination/</guid>
       <description>&lt;p&gt;Through paging techniques, we can only show some of the products.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>10. Static Resources - Nginx Configuration</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/10.-static-resources-nginx-configuration/</link>
+      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/10.-static-resources-nginx-configuration/</link>
       <pubDate>Fri, 03 May 2019 18:47:45 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/10.-static-resources-nginx-configuration/</guid>
+      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/10.-static-resources-nginx-configuration/</guid>
       <description>&lt;p&gt;With the Nginx server, we can increase the speed of loading static resources.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>9. User Authentication - Spring Interceptor</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/9.-user-authentication-spring-interceptor/</link>
+      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/9.-user-authentication-spring-interceptor/</link>
       <pubDate>Thu, 02 May 2019 23:48:50 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/9.-user-authentication-spring-interceptor/</guid>
+      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/9.-user-authentication-spring-interceptor/</guid>
       <description>&lt;p&gt;We can use Spring Interceptor feature to authenticate user more efficiently.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>8. User Login - Spring Security</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/8.-user-login-spring-security/</link>
+      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/8.-user-login-spring-security/</link>
       <pubDate>Wed, 01 May 2019 20:55:39 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/8.-user-login-spring-security/</guid>
+      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/8.-user-login-spring-security/</guid>
       <description>&lt;p&gt;Registered users can log into the system through a login interface.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>7. User Registration - Spring Security</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/7.-user-registration-spring-security/</link>
+      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/7.-user-registration-spring-security/</link>
       <pubDate>Tue, 30 Apr 2019 23:12:05 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/7.-user-registration-spring-security/</guid>
+      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/7.-user-registration-spring-security/</guid>
       <description>&lt;p&gt;The user can register an account to carry on the goods purchase operation.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>6. Modularization and Decoupling - Maven</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/6.-modularization-and-decoupling-maven/</link>
+      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/6.-modularization-and-decoupling-maven/</link>
       <pubDate>Mon, 29 Apr 2019 05:47:50 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/6.-modularization-and-decoupling-maven/</guid>
+      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/6.-modularization-and-decoupling-maven/</guid>
       <description>&lt;p&gt;Through the maven modularization mechanism, we can separate different types of functions and store them in different modules.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>5. Template Engine - Apache FreeMarker Macro</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/5.-template-engine-apache-freemarker-macro/</link>
+      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/5.-template-engine-apache-freemarker-macro/</link>
       <pubDate>Sun, 28 Apr 2019 08:37:25 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/5.-template-engine-apache-freemarker-macro/</guid>
+      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/5.-template-engine-apache-freemarker-macro/</guid>
       <description>&lt;p&gt;Through the macro features provided by FreeMarker, we can easily manage some of the commonly used template code.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>4. Template Engine - Apache FreeMarker</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/4.-template-engine-apache-freemarker/</link>
+      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/4.-template-engine-apache-freemarker/</link>
       <pubDate>Sat, 27 Apr 2019 10:20:00 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/4.-template-engine-apache-freemarker/</guid>
+      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/4.-template-engine-apache-freemarker/</guid>
       <description>&lt;p&gt;FreeMarker is a java-based template engine, commonly used to generate dynamic mvc architecture web pages.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>3. Connection Pool - Alibaba Druid and Google Guava</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/3.-connection-pool-alibaba-druid-and-google-guava/</link>
+      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/3.-connection-pool-alibaba-druid-and-google-guava/</link>
       <pubDate>Fri, 26 Apr 2019 21:18:50 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/3.-connection-pool-alibaba-druid-and-google-guava/</guid>
+      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/3.-connection-pool-alibaba-druid-and-google-guava/</guid>
       <description>&lt;p&gt;Druid is a database connection pool component developed by Alibaba middleware team. It includes powerful connection pool monitoring features.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>2. Database Access - MyBatis and MariaDB 10.x</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/2.-database-access-mybatis-and-mariadb-10.x/</link>
+      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/2.-database-access-mybatis-and-mariadb-10.x/</link>
       <pubDate>Thu, 25 Apr 2019 17:38:16 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/2.-database-access-mybatis-and-mariadb-10.x/</guid>
+      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/2.-database-access-mybatis-and-mariadb-10.x/</guid>
       <description>&lt;p&gt;We first need to install a MariaDB 10.x database locally, and then access the database through MyBatis configuration.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>1. HelloWorld Demo - Hello Spring Stack</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/1.-helloworld-demo-hello-spring-stack/</link>
+      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/1.-helloworld-demo-hello-spring-stack/</link>
       <pubDate>Wed, 24 Apr 2019 19:58:51 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/1.-helloworld-demo-hello-spring-stack/</guid>
+      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/1.-helloworld-demo-hello-spring-stack/</guid>
       <description>&lt;p&gt;Let&amp;rsquo;s use the spring initializer web features provided by the spring website to generate a super-simple hello world project.&lt;/p&gt;</description>
     </item>
     

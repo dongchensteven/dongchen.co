@@ -13,10 +13,10 @@
     
     <item>
       <title>2. Database Access - MyBatis and MariaDB 10.x</title>
-      <link>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/2.-database-access-mybatis-and-mariadb-10.x/</link>
+      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/2.-database-access-mybatis-and-mariadb-10.x/</link>
       <pubDate>Thu, 25 Apr 2019 17:38:16 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/server-side-programming/java/simple-but-profound/spring-stack-developer/2.-database-access-mybatis-and-mariadb-10.x/</guid>
+      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/2.-database-access-mybatis-and-mariadb-10.x/</guid>
       <description>&lt;p&gt;We first need to install a MariaDB 10.x database locally, and then access the database through MyBatis configuration.&lt;/p&gt;</description>
     </item>
     
