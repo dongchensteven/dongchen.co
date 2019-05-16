@@ -99,7 +99,7 @@ All of this is taken from the manual page of the php.net website.
 
 I don't have a definite answer about how long it takes to prepare for the exam. I personally spent a lot of time preparing for the exam. I can't remember how much time it took. It was so long that I forgot about it.
 
-How long it will take to prepare for this exam varies entirely from person to person. For the novice, it may spend months to do the preparation, and for those who are familiar with the field, they may even take the exam without any practice in a short period(Although, [Zhungability](https://www.urbandictionary.com/define.php?term=zhuangbility) is quite easy to get stroke by the thunder). And experienced people who need a little longer may be prepared for a week, two or three weeks.
+How long it will take to prepare for this exam varies entirely from person to person. For the novice, it may spend months to do the preparation, and for those who are familiar with the field, they may even take the exam without any practice in a short period(Although confidence is reasonable, overconfidence is a danger). And experienced people who need a little longer may be prepared for a week, two or three weeks.
 
 My advice is to minimise the time it takes to prepare for the exam because your motivation will be dampened if you take too long to prepare for the exam. Just think, a goal took you a long time to plan to achieve, but after a long time, you found that it has not been completed, and the result is a shock, anyway, I have experienced it.
 
