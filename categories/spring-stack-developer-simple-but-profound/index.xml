@@ -6,10 +6,19 @@
     <description>Recent content in Spring Stack Developer: Simple But Profound on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 20 May 2019 23:07:08 +1200</lastBuildDate>
+    <lastBuildDate>Tue, 21 May 2019 18:11:55 +1200</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/categories/spring-stack-developer-simple-but-profound/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>24. Microservices 4</title>
+      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/24.-microservices-4/</link>
+      <pubDate>Tue, 21 May 2019 18:11:55 +1200</pubDate>
+      
+      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/24.-microservices-4/</guid>
+      <description>&lt;p&gt;Pending&amp;hellip;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>23. Microservices 3</title>
