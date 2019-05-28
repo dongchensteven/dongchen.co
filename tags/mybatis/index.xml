@@ -6,10 +6,37 @@
     <description>Recent content in MyBatis on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 25 Apr 2019 17:38:16 +1200</lastBuildDate>
+    <lastBuildDate>Sun, 05 May 2019 21:40:41 +1200</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/tags/mybatis/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>12. Product Detail - Product and Merchant Info</title>
+      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/12.-product-detail-product-and-merchant-info/</link>
+      <pubDate>Sun, 05 May 2019 21:40:41 +1200</pubDate>
+      
+      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/12.-product-detail-product-and-merchant-info/</guid>
+      <description>&lt;p&gt;Customers can learn about the product information that a merchant has sold through the product details page.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>11. Product List - Pagination</title>
+      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/11.-product-list-pagination/</link>
+      <pubDate>Sat, 04 May 2019 22:05:24 +1200</pubDate>
+      
+      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/11.-product-list-pagination/</guid>
+      <description>&lt;p&gt;Through paging techniques, we can only show some of the products.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>7. User Registration - Spring Security</title>
+      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/7.-user-registration-spring-security/</link>
+      <pubDate>Tue, 30 Apr 2019 23:12:05 +1200</pubDate>
+      
+      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/7.-user-registration-spring-security/</guid>
+      <description>&lt;p&gt;The user can register an account to carry on the goods purchase operation.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>2. Database Access - MyBatis and MariaDB 10.x</title>

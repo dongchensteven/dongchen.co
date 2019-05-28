@@ -174,12 +174,12 @@
     </item>
     
     <item>
-      <title>12. Product Detail - Contact Form</title>
-      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/12.-product-detail-contact-form/</link>
+      <title>12. Product Detail - Product and Merchant Info</title>
+      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/12.-product-detail-product-and-merchant-info/</link>
       <pubDate>Sun, 05 May 2019 21:40:41 +1200</pubDate>
       
-      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/12.-product-detail-contact-form/</guid>
-      <description>&lt;p&gt;Through the contact form, customers can easily leave a message to a merchant.&lt;/p&gt;</description>
+      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/12.-product-detail-product-and-merchant-info/</guid>
+      <description>&lt;p&gt;Customers can learn about the product information that a merchant has sold through the product details page.&lt;/p&gt;</description>
     </item>
     
     <item>
