@@ -16,4 +16,7 @@ hugo.exe
 hugo.darwin
 hugo.linux
 
+# themes
+/themes/even
+
 # End of https://www.gitignore.io/api/hugo
