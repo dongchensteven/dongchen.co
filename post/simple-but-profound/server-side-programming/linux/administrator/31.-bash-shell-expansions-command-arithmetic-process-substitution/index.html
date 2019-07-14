@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
 
 <link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/31.-bash-shell-expansions-command-arithmetic-process-substitution/" />
@@ -43,7 +43,8 @@
 <meta property="og:title" content="31. Bash Shell - Expansions: Command, Arithmetic, Process Substitution" />
 <meta property="og:description" content="Linux provides us with some expansions for command, arithmetic, addition and subtraction, comparison, ternary, assignment, and process substitution operations." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/31.-bash-shell-expansions-command-arithmetic-process-substitution/" /><meta property="article:published_time" content="2019-03-04T07:22:11&#43;13:00"/>
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/31.-bash-shell-expansions-command-arithmetic-process-substitution/" />
+<meta property="article:published_time" content="2019-03-04T07:22:11&#43;13:00"/>
 <meta property="article:modified_time" content="2019-03-04T07:22:11&#43;13:00"/>
 
 <meta itemprop="name" content="31. Bash Shell - Expansions: Command, Arithmetic, Process Substitution">
@@ -178,7 +179,6 @@ cat ls_l_command_file
          alt="img"/> 
 </figure>
 
-
 <p>Alternatively, we can use backtick symbols to achieve the same effect:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -192,7 +192,6 @@ cat ls_l_command_file
     <img src="../images/31/backtick_cat_file_command.png"
          alt="img"/> 
 </figure>
-
 
 <h1 id="arithmetic">Arithmetic</h1>
 
@@ -284,7 +283,6 @@ cat ls_l_command_file
         </figcaption>
 </figure>
 
-
 <h2 id="comparison">Comparison</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -311,7 +309,6 @@ cat ls_l_command_file
         </figcaption>
 </figure>
 
-
 <h2 id="ternary-operator">Ternary Operator</h2>
 
 <p>Positive and negative numbers are true, only zero is false</p>
@@ -333,7 +330,6 @@ cat ls_l_command_file
             <h4>Prints true or false of the ternary operation result</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="assignment-operator">Assignment Operator</h2>
 <div class="highlight"><div class="chroma">
@@ -357,7 +353,6 @@ cat ls_l_command_file
         </figcaption>
 </figure>
 
-
 <h1 id="process-substitution">Process Substitution</h1>
 
 <p>We can use the &lt;() symbols to use the result of the command output as a file:</p>
@@ -377,7 +372,6 @@ tac &lt;<span class="o">(</span>ls<span class="o">)</span>    <span class="c1">#
             <h4>Treat ls results as a file and print it with cat and tac commands</h4>
         </figcaption>
 </figure>
-
 
 <blockquote>
 <p>References

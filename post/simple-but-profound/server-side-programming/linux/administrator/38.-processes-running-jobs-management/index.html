@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
 
 <link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/38.-processes-running-jobs-management/" />
@@ -43,7 +43,8 @@
 <meta property="og:title" content="38. Processes - Running Jobs Management" />
 <meta property="og:description" content="In linux, each running program will create at least one process in memory, and each process will be assigned a process ID, we can use the ID of the process to do the corresponding operation of a running program." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/38.-processes-running-jobs-management/" /><meta property="article:published_time" content="2019-03-10T06:35:35&#43;13:00"/>
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/38.-processes-running-jobs-management/" />
+<meta property="article:published_time" content="2019-03-10T06:35:35&#43;13:00"/>
 <meta property="article:modified_time" content="2019-03-10T06:35:35&#43;13:00"/>
 
 <meta itemprop="name" content="38. Processes - Running Jobs Management">
@@ -182,7 +183,6 @@ cat endless_job.sh</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <p>We&rsquo;re not going to talk too much about the shell script right now. The only thing we need to know is that this script doesn&rsquo;t exit itself after it runs.</p>
 
 <h1 id="execute-scripts-in-the-background">Execute Scripts in the Background</h1>
@@ -204,7 +204,6 @@ bash ./endless_job.sh <span class="p">&amp;</span></code></pre></td></tr></table
             <h4>Execute two scripts with the bash command and keep them running in the background</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="list-all-programs-running-in-the-background">List All Programs Running in the Background</h1>
 
@@ -259,7 +258,6 @@ bash ./endless_job.sh <span class="p">&amp;</span></code></pre></td></tr></table
         </figcaption>
 </figure>
 
-
 <h2 id="list-with-their-process-ids">List With Their Process IDs</h2>
 
 <p>List the jobs and the process ID for each program with the -l option:</p>
@@ -277,7 +275,6 @@ bash ./endless_job.sh <span class="p">&amp;</span></code></pre></td></tr></table
             <h4>Show all the jobs and each job&#39;s process ID</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="list-the-process-ids-only">List the Process IDs Only</h2>
 
@@ -297,7 +294,6 @@ bash ./endless_job.sh <span class="p">&amp;</span></code></pre></td></tr></table
         </figcaption>
 </figure>
 
-
 <h1 id="see-how-the-program-is-running-in-the-background">See How the Program is Running in the Background</h1>
 
 <p>We can see how the two scripts work through the top command:</p>
@@ -315,7 +311,6 @@ bash ./endless_job.sh <span class="p">&amp;</span></code></pre></td></tr></table
             <h4>A list of running programs</h4>
         </figcaption>
 </figure>
-
 
 <p>Through the screenshot, we know that there are three programs currently running, two of which are the two scripts we just ran, and the other is the top command itself.</p>
 
@@ -441,7 +436,6 @@ jobs</code></pre></td></tr></table>
             <h4>List all jobs after killing the two processes</h4>
         </figcaption>
 </figure>
-
 
 <p>From the screenshot, we can see that both processes have been killed.</p>
 

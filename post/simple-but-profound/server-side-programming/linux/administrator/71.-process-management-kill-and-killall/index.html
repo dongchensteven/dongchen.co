@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
 
 <link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/71.-process-management-kill-and-killall/" />
@@ -43,7 +43,8 @@
 <meta property="og:title" content="71. Process Management - kill and killall" />
 <meta property="og:description" content="The kill command can terminate the process by the process ID or name, and the killall command can terminate the process itself and its associated processes by the process name." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/71.-process-management-kill-and-killall/" /><meta property="article:published_time" content="2019-04-12T06:05:16&#43;12:00"/>
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/71.-process-management-kill-and-killall/" />
+<meta property="article:published_time" content="2019-04-12T06:05:16&#43;12:00"/>
 <meta property="article:modified_time" content="2019-04-12T06:05:16&#43;12:00"/>
 
 <meta itemprop="name" content="71. Process Management - kill and killall">
@@ -295,7 +296,6 @@
          alt="img"/> 
 </figure>
 
-
 <h3 id="kill-background-running-processes">Kill Background Running Processes</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -316,7 +316,6 @@ jobs</code></pre></td></tr></table>
          alt="img"/> 
 </figure>
 
-
 <h2 id="killall-command-examples">killall Command Examples</h2>
 
 <h3 id="output-available-signal-names">Output Available Signal Names</h3>
@@ -332,7 +331,6 @@ jobs</code></pre></td></tr></table>
     <img src="../images/71/killall_l.png"
          alt="img"/> 
 </figure>
-
 
 <h3 id="kill-the-process-and-all-its-related-processes">Kill the Process and all Its Related Processes</h3>
 
@@ -361,7 +359,6 @@ nginx    <span class="c1"># Start nginx server</span></code></pre></td></tr></ta
          alt="img"/> 
 </figure>
 
-
 <p>Terminating all processes:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -377,7 +374,6 @@ ps aux <span class="p">|</span> grep nginx</code></pre></td></tr></table>
     <img src="../images/71/killall_nginx_ps_aux_grep_nginx.png"
          alt="img"/> 
 </figure>
-
 
 <blockquote>
 <p>References

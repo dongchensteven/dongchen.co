@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
 
 <link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/2.-database-access-mybatis-and-mariadb-10.x/" />
@@ -43,7 +43,8 @@
 <meta property="og:title" content="2. Database Access - MyBatis and MariaDB 10.x" />
 <meta property="og:description" content="We first need to install a MariaDB 10.x database locally, and then access the database through MyBatis configuration." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/2.-database-access-mybatis-and-mariadb-10.x/" /><meta property="article:published_time" content="2019-04-25T17:38:16&#43;12:00"/>
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/2.-database-access-mybatis-and-mariadb-10.x/" />
+<meta property="article:published_time" content="2019-04-25T17:38:16&#43;12:00"/>
 <meta property="article:modified_time" content="2019-04-25T17:38:16&#43;12:00"/>
 
 <meta itemprop="name" content="2. Database Access - MyBatis and MariaDB 10.x">
@@ -257,7 +258,6 @@
          alt="img"/> 
 </figure>
 
-
 <h1 id="dependencies-and-configurations">Dependencies and Configurations</h1>
 
 <h2 id="add-mybatis-and-mysql-dependencies">Add MyBatis and MySQL Dependencies</h2>
@@ -335,7 +335,6 @@
          alt="img"/> 
 </figure>
 
-
 <ul>
 <li>Right click mybatis directory: New &gt; File</li>
 <li>Fill in: mybatis-config.xml</li>
@@ -346,7 +345,6 @@
     <img src="../images/2/new_mybatis_config.png"
          alt="img"/> 
 </figure>
-
 
 <p>Copy and paste the following content into mybatis-config.xml:</p>
 <div class="highlight"><div class="chroma">
@@ -420,7 +418,6 @@
          alt="img"/> 
 </figure>
 
-
 <ul>
 <li>Right click co.dongchen.shop.common.model directory: New &gt; Java Class</li>
 <li>Fill in: Product</li>
@@ -431,7 +428,6 @@
     <img src="../images/2/new_class.png"
          alt="img"/> 
 </figure>
-
 
 <p>Copy and paste the following content into Product.java:</p>
 <div class="highlight"><div class="chroma">
@@ -727,7 +723,6 @@
          alt="img"/> 
 </figure>
 
-
 <ul>
 <li>Right click co.dongchen.shop.mapper directory: New &gt; Java Class</li>
 <li>Fill in: ProductMapper</li>
@@ -739,7 +734,6 @@
     <img src="../images/2/new_interface.png"
          alt="img"/> 
 </figure>
-
 
 <p>Copy and paste the following content into ProductMapper.java:</p>
 <div class="highlight"><div class="chroma">
@@ -785,7 +779,6 @@
          alt="img"/> 
 </figure>
 
-
 <ul>
 <li>Right click mapper directory: New &gt; File</li>
 <li>Fill in: product.xml</li>
@@ -796,7 +789,6 @@
     <img src="../images/2/new_file.png"
          alt="img"/> 
 </figure>
-
 
 <p>Copy and paste the following content into product.xml:</p>
 <div class="highlight"><div class="chroma">
@@ -836,7 +828,6 @@
          alt="img"/> 
 </figure>
 
-
 <ul>
 <li>Right click co.dongchen.shop.service directory: New &gt; Java Class</li>
 <li>Fill in: ProductService</li>
@@ -847,7 +838,6 @@
     <img src="../images/2/new_class_service.png"
          alt="img"/> 
 </figure>
-
 
 <p>Copy and paste the following content into ProductService.java:</p>
 <div class="highlight"><div class="chroma">
@@ -907,7 +897,6 @@
          alt="img"/> 
 </figure>
 
-
 <ul>
 <li>Right click co.dongchen.shop.controller directory: New &gt; Java Class</li>
 <li>Fill in: ProductController</li>
@@ -918,7 +907,6 @@
     <img src="../images/2/new_class_controller.png"
          alt="img"/> 
 </figure>
-
 
 <p>Copy and paste the following content into ProductController.java:</p>
 <div class="highlight"><div class="chroma">
@@ -987,7 +975,6 @@ Alt + Shift + F10</code></pre></td></tr></table>
          alt="img"/> 
 </figure>
 
-
 <p>Choose the correspondent option and press enter.</p>
 
 <h2 id="view-products-in-the-browser">View Products in the Browser</h2>
@@ -1003,7 +990,6 @@ Alt + Shift + F10</code></pre></td></tr></table>
     <img src="../images/2/products_page.png"
          alt="img"/> 
 </figure>
-
 
 <blockquote>
 <p>References

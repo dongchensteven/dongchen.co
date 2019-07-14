@@ -16,17 +16,14 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="Linux servers exist to process data efficiently, and files store data, so file management is critical. Directories manage files, so directory management is more crucial.
-Let&amp;rsquo;s begin with the first one.
-Print Current Working Directory Let&amp;rsquo;s take a look at the manual for the pwd command:
-1  man pwd # pwd&amp;#39;s manual     Check pwd&amp;#39;s definition and usage   With this command, we know which directory we are currently working on:" /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="Dong Chen" /><meta name="description" content="" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
 
 <link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/8.-linux-directory-and-file-management/" />
@@ -43,19 +40,14 @@ Print Current Working Directory Let&amp;rsquo;s take a look at the manual for th
 
 
 <meta property="og:title" content="8. Linux Directory and File Management" />
-<meta property="og:description" content="Linux servers exist to process data efficiently, and files store data, so file management is critical. Directories manage files, so directory management is more crucial.
-Let&rsquo;s begin with the first one.
-Print Current Working Directory Let&rsquo;s take a look at the manual for the pwd command:
-1  man pwd # pwd&#39;s manual     Check pwd&#39;s definition and usage   With this command, we know which directory we are currently working on:" />
+<meta property="og:description" content="" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/8.-linux-directory-and-file-management/" /><meta property="article:published_time" content="2019-02-09T10:56:58&#43;13:00"/>
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/8.-linux-directory-and-file-management/" />
+<meta property="article:published_time" content="2019-02-09T10:56:58&#43;13:00"/>
 <meta property="article:modified_time" content="2019-02-09T10:56:58&#43;13:00"/>
 
 <meta itemprop="name" content="8. Linux Directory and File Management">
-<meta itemprop="description" content="Linux servers exist to process data efficiently, and files store data, so file management is critical. Directories manage files, so directory management is more crucial.
-Let&rsquo;s begin with the first one.
-Print Current Working Directory Let&rsquo;s take a look at the manual for the pwd command:
-1  man pwd # pwd&#39;s manual     Check pwd&#39;s definition and usage   With this command, we know which directory we are currently working on:">
+<meta itemprop="description" content="">
 
 
 <meta itemprop="datePublished" content="2019-02-09T10:56:58&#43;13:00" />
@@ -67,10 +59,7 @@ Print Current Working Directory Let&rsquo;s take a look at the manual for the pw
 <meta itemprop="keywords" content="Linux,Server," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="8. Linux Directory and File Management"/>
-<meta name="twitter:description" content="Linux servers exist to process data efficiently, and files store data, so file management is critical. Directories manage files, so directory management is more crucial.
-Let&rsquo;s begin with the first one.
-Print Current Working Directory Let&rsquo;s take a look at the manual for the pwd command:
-1  man pwd # pwd&#39;s manual     Check pwd&#39;s definition and usage   With this command, we know which directory we are currently working on:"/>
+<meta name="twitter:description" content=""/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -189,7 +178,6 @@ Print Current Working Directory Let&rsquo;s take a look at the manual for the pw
         </figcaption>
 </figure>
 
-
 <p>With this command, we know which directory we are currently working on:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -205,7 +193,6 @@ Print Current Working Directory Let&rsquo;s take a look at the manual for the pw
             <h4>When I logged in with root, by default, I was in the /root directory</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="list-directory-contents">List Directory Contents</h1>
 
@@ -225,7 +212,6 @@ Print Current Working Directory Let&rsquo;s take a look at the manual for the pw
         </figcaption>
 </figure>
 
-
 <p>Usage of ls:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -242,7 +228,6 @@ Print Current Working Directory Let&rsquo;s take a look at the manual for the pw
         </figcaption>
 </figure>
 
-
 <p>Another command that is often used is a detailed version of ls, which lists file types, permissions, owners and groups, sizes, dates:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -258,7 +243,6 @@ Print Current Working Directory Let&rsquo;s take a look at the manual for the pw
             <h4>This command shows files&#39; and directories&#39; only</h4>
         </figcaption>
 </figure>
-
 
 <p><em>ll</em> is an alias of <em>ls</em> as I mentioned earlier in this page: <a href="/post/server-side-programming/linux/simple-but-profound/7.-types-of-commands/#alias">7. Types of Commands - Alias</a></p>
 
@@ -277,7 +261,6 @@ Print Current Working Directory Let&rsquo;s take a look at the manual for the pw
             <h4>This command shows files&#39; and directories&#39; only</h4>
         </figcaption>
 </figure>
-
 
 <p>The first directory (.) is parent directory, the one below (..) is current working directory. Hidden files or directories usually start with a dot. A line starts with a hyphen (-) means that it is a file if it starts with a letter (d) indicate that it is a directory.</p>
 
@@ -299,7 +282,6 @@ Print Current Working Directory Let&rsquo;s take a look at the manual for the pw
         </figcaption>
 </figure>
 
-
 <p>Create a testd directory:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -318,7 +300,6 @@ ll</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <p>Create a multilevel directory:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -334,7 +315,6 @@ ll</code></pre></td></tr></table>
             <h4>List the created directories as tree-like format</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="remove-directory">Remove Directory</h1>
 
@@ -354,7 +334,6 @@ ll</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <p>We can use the <em>rmdir</em> command to delete the testd directory we just created:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -370,7 +349,6 @@ ll</code></pre></td></tr></table>
             <h4>The testd directory has gone</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="list-tree-like-directory-contents">List Tree-like Directory Contents</h1>
 
@@ -399,7 +377,6 @@ ll</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <p>Let&rsquo;s try this command on the multilevel directory we created above:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -415,7 +392,6 @@ ll</code></pre></td></tr></table>
             <h4>List the directory contents recursively in a tree-like format</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="change-working-directory">Change Working Directory</h1>
 
@@ -435,7 +411,6 @@ ll</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <p>With this command, we can switch the current working directory to directory <em>a</em> we just created:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -451,7 +426,6 @@ ll</code></pre></td></tr></table>
             <h4>Change our working directory to directory a and list the contents</h4>
         </figcaption>
 </figure>
-
 
 <p>We can also change our working directory to a multilevel directory at once:</p>
 <div class="highlight"><div class="chroma">
@@ -473,7 +447,6 @@ ll</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h1 id="create-empty-file">Create Empty File</h1>
 
 <p>We can use the <em>touch</em> command to create empty files:</p>
@@ -491,7 +464,6 @@ ll</code></pre></td></tr></table>
             <h4>Check touch command&#39;s definition and usage</h4>
         </figcaption>
 </figure>
-
 
 <p>Let&rsquo;s create an empty file:</p>
 <div class="highlight"><div class="chroma">
@@ -511,7 +483,6 @@ ll</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <p>We can create multiple empty files at once:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -529,7 +500,6 @@ ll</code></pre></td></tr></table>
             <h4>This creates multiple empty files at once</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="move-file-or-directory">Move File or Directory</h1>
 
@@ -549,7 +519,6 @@ ll</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <p>With this command, we can move the file a to the directory g:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -567,7 +536,6 @@ ll g</code></pre></td></tr></table>
             <h4>Move file a to directory g</h4>
         </figcaption>
 </figure>
-
 
 <p>We can also use this command to change the name of a file or directory:</p>
 <div class="highlight"><div class="chroma">
@@ -587,7 +555,6 @@ ll</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h1 id="copy-file-or-directory">Copy File or Directory</h1>
 
 <p>We can copy files or directories using the <em>cp</em> command:</p>
@@ -605,7 +572,6 @@ ll</code></pre></td></tr></table>
             <h4>Check cp command&#39;s definition and usage</h4>
         </figcaption>
 </figure>
-
 
 <p>We can use this command to back up the file c as c_bak:</p>
 <div class="highlight"><div class="chroma">
@@ -625,7 +591,6 @@ ll</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <p>We can also copy the file d intactly to the directory g:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -644,7 +609,6 @@ ll</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h1 id="system-status-of-file-and-directory">System Status of File and Directory</h1>
 
 <p>You can use the <em>stat</em> command to view system status information for files or directories:</p>
@@ -662,7 +626,6 @@ ll</code></pre></td></tr></table>
             <h4>Check stat command&#39;s definition and usage</h4>
         </figcaption>
 </figure>
-
 
 <p>Let&rsquo;s take a look at the system status of the file d and the directory g, respectively:</p>
 <div class="highlight"><div class="chroma">
@@ -686,7 +649,6 @@ ll</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h1 id="remove-file-or-directory">Remove File or Directory</h1>
 
 <p>We can use the <em>rm</em> command to delete files or directories:</p>
@@ -705,7 +667,6 @@ ll</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <p>We can use the rm command to delete the file c:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -722,7 +683,6 @@ ll</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <p>We can also use this command to delete the directory g:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -738,7 +698,6 @@ ll</code></pre></td></tr></table>
             <h4>All file under the directory g included itself have been removed with my confirmation</h4>
         </figcaption>
 </figure>
-
 
 <p>If this directory has a lot of files and we don&rsquo;t want ignore the confirmation for every file or directory, then we have to add the -f parameter, which means that the deletion is enforced and no manual approval is required.</p>
 

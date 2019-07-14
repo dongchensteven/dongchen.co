@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
 
 <link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/6.-modularization-and-decoupling-maven/" />
@@ -43,7 +43,8 @@
 <meta property="og:title" content="6. Modularization and Decoupling - Maven" />
 <meta property="og:description" content="Through the maven modularization mechanism, we can separate different types of functions and store them in different modules." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/6.-modularization-and-decoupling-maven/" /><meta property="article:published_time" content="2019-04-29T05:47:50&#43;12:00"/>
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/6.-modularization-and-decoupling-maven/" />
+<meta property="article:published_time" content="2019-04-29T05:47:50&#43;12:00"/>
 <meta property="article:modified_time" content="2019-04-29T05:47:50&#43;12:00"/>
 
 <meta itemprop="name" content="6. Modularization and Decoupling - Maven">
@@ -197,7 +198,6 @@
          alt="img"/> 
 </figure>
 
-
 <ul>
 <li>Fill &ldquo;common&rdquo; in ArtifactId, click &ldquo;Next&rdquo; buttons till the last step</li>
 </ul>
@@ -206,7 +206,6 @@
     <img src="../images/6/new_module_quickstart_step2_common.png"
          alt="img"/> 
 </figure>
-
 
 <ul>
 <li>Click &ldquo;Finish&rdquo; button</li>
@@ -218,7 +217,6 @@
     <img src="../images/6/remove_packages_in_common_module.png"
          alt="img"/> 
 </figure>
-
 
 <h2 id="create-service-module">Create Service Module</h2>
 
@@ -234,7 +232,6 @@
          alt="img"/> 
 </figure>
 
-
 <ul>
 <li>Fill &ldquo;service&rdquo; in ArtifactId, click &ldquo;Next&rdquo; buttons till the last step</li>
 </ul>
@@ -243,7 +240,6 @@
     <img src="../images/6/new_module_quickstart_step2_service.png"
          alt="img"/> 
 </figure>
-
 
 <ul>
 <li>Click &ldquo;Finish&rdquo; button</li>
@@ -255,7 +251,6 @@
     <img src="../images/6/remove_packages_in_service_module.png"
          alt="img"/> 
 </figure>
-
 
 <h2 id="create-controller-module">Create Controller Module</h2>
 
@@ -271,7 +266,6 @@
          alt="img"/> 
 </figure>
 
-
 <ul>
 <li>Fill &ldquo;controller&rdquo; in ArtifactId, click &ldquo;Next&rdquo; buttons till the last step</li>
 </ul>
@@ -280,7 +274,6 @@
     <img src="../images/6/new_module_quickstart_step2_controller.png"
          alt="img"/> 
 </figure>
-
 
 <ul>
 <li>Click &ldquo;Finish&rdquo; button</li>
@@ -292,7 +285,6 @@
     <img src="../images/6/remove_packages_in_controller_module.png"
          alt="img"/> 
 </figure>
-
 
 <h1 id="migrate-files-to-correspondent-modules">Migrate Files to Correspondent Modules</h1>
 
@@ -308,7 +300,6 @@
     <img src="../images/6/new_package_common_model.png"
          alt="img"/> 
 </figure>
-
 
 <p>Drag the Product.java file in from the &ldquo;shop/src/main/java/co.dongchen.shop.common.model&rdquo; package, and remove the empty package.</p>
 
@@ -327,7 +318,6 @@
          alt="img"/> 
 </figure>
 
-
 <p>Drag the ProductService.java file in from the &ldquo;shop/src/main/java/co.dongchen.shop.service&rdquo; package, and remove the empty package.</p>
 
 <h3 id="config-package">Config Package</h3>
@@ -342,7 +332,6 @@
     <img src="../images/6/new_package_service_config.png"
          alt="img"/> 
 </figure>
-
 
 <p>Drag the DruidConfig.java file in from the &ldquo;shop/src/main/java/co.dongchen.shop.config&rdquo; package, and remove the empty package.</p>
 
@@ -359,7 +348,6 @@
          alt="img"/> 
 </figure>
 
-
 <p>Drag the ProductMapper.java file in from the &ldquo;shop/src/main/java/co.dongchen.shop.mapper&rdquo; package, and remove the empty package.</p>
 
 <h3 id="resources-directory">Resources Directory</h3>
@@ -374,7 +362,6 @@
     <img src="../images/6/new_directory_resources_service.png"
          alt="img"/> 
 </figure>
-
 
 <p>Drag both the mapper and mybatis directories in from the &ldquo;shop/src/main/resources&rdquo; directory</p>
 
@@ -393,7 +380,6 @@
          alt="img"/> 
 </figure>
 
-
 <p>Drag the ShopApplication.java file in from the &ldquo;shop/src/main/java/co.dongchen.shop&rdquo; package</p>
 
 <h3 id="controller-package">Controller Package</h3>
@@ -409,7 +395,6 @@
          alt="img"/> 
 </figure>
 
-
 <p>Drag both the FreeMarkerController.java and ProductController.java files in from the &ldquo;shop/src/main/java/co.dongchen.shop.controller&rdquo; package, and remove the empty package.</p>
 
 <h3 id="resources-directory-1">Resources Directory</h3>
@@ -424,7 +409,6 @@
     <img src="../images/6/new_directory_resources_controller.png"
          alt="img"/> 
 </figure>
-
 
 <p>Drag both the templates directory and the application.properties file in from the &ldquo;shop/src/main/resources&rdquo; directory.</p>
 
@@ -595,7 +579,6 @@ Alt + Shift + F10</code></pre></td></tr></table>
          alt="img"/> 
 </figure>
 
-
 <p>Choose the correspondent option and press enter.</p>
 
 <h2 id="view-home-page-in-the-browser">View Home Page in the Browser</h2>
@@ -611,7 +594,6 @@ Alt + Shift + F10</code></pre></td></tr></table>
     <img src="../images/6/home_page.png"
          alt="img"/> 
 </figure>
-
 
 <p>Now, our application is modularized.</p>
 

@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
 
 <link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/51.-file-permissions-file-attributes/" />
@@ -43,7 +43,8 @@
 <meta property="og:title" content="51. File Permissions - File Attributes" />
 <meta property="og:description" content="To make our files more secure, Linux provides a feature called file attribute. By configuring the attributes of the file, we can specify whether it is read-only or undeleted, or in other statuses." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/51.-file-permissions-file-attributes/" /><meta property="article:published_time" content="2019-03-23T07:13:22&#43;13:00"/>
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/51.-file-permissions-file-attributes/" />
+<meta property="article:published_time" content="2019-03-23T07:13:22&#43;13:00"/>
 <meta property="article:modified_time" content="2019-03-23T07:13:22&#43;13:00"/>
 
 <meta itemprop="name" content="51. File Permissions - File Attributes">
@@ -221,7 +222,6 @@ tree attr_dir</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <p>The lsattr command iterates all files and directories contained in the specified directory by default but does not iterate through the files or directories under its subdirectories:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -237,7 +237,6 @@ tree attr_dir</code></pre></td></tr></table>
             <h4>Iterates through the attr_dir directory&#39;s files and directories, bypass the files and directories under its subdirectories</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="iterate-recursively">Iterate Recursively</h2>
 
@@ -257,7 +256,6 @@ tree attr_dir</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h2 id="include-directory-itself-and-parent-directory">Include Directory Itself and Parent Directory</h2>
 
 <p>With the -a option, we can iterate all of the contents under the specified directory, including itself and its parent directory:</p>
@@ -275,7 +273,6 @@ tree attr_dir</code></pre></td></tr></table>
             <h4>Iterate all of the contents under the specified directory, including itself and its parent directory</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="directory-itself-only">Directory Itself Only</h2>
 
@@ -295,7 +292,6 @@ tree attr_dir</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h2 id="long-name-instead-of-char-abbreviation">Long Name Instead of Char Abbreviation</h2>
 
 <p>With the -l option, we can display the long name of the option rather than the acronyms:</p>
@@ -314,7 +310,6 @@ tree attr_dir</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h2 id="version-or-generation-number">Version or Generation Number</h2>
 
 <p>With the -v option, we can list version or general numbers of files and directories.</p>
@@ -332,7 +327,6 @@ tree attr_dir</code></pre></td></tr></table>
             <h4>List version or general numbers of files and directories</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="change-file-attributes">Change File Attributes</h1>
 
@@ -585,7 +579,6 @@ tree attr_dir</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h2 id="assign-attributes">Assign Attributes</h2>
 
 <p>With the equal sign(=), we can assign attributes to files or directories:</p>
@@ -608,7 +601,6 @@ lsattr attr_dir</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <p>Or we can set the attribute verbosely:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -630,7 +622,6 @@ lsattr attr_dir</code></pre></td></tr></table>
             <h4>Assign immutable attribute to file1 verbosely</h4>
         </figcaption>
 </figure>
-
 
 <p>When we try to open and save the file, vi prompts that it is a read-only file and can not save the changes:</p>
 <div class="highlight"><div class="chroma">
@@ -655,7 +646,6 @@ lsattr attr_dir</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <p>Even if the save command is followed by an exclamation point, it is also impossible to save the file:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -671,7 +661,6 @@ lsattr attr_dir</code></pre></td></tr></table>
             <h4>Forced save is also invalid for the immutable file</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="append-attributes">Append Attributes</h2>
 
@@ -695,7 +684,6 @@ lsattr -R attr_dir</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h2 id="remove-attributes">Remove Attributes</h2>
 
 <p>With the minus sign(-), we can remove attributes from files or directories:</p>
@@ -717,7 +705,6 @@ lsattr -R attr_dir</code></pre></td></tr></table>
             <h4>Remove all attributes from all files and directories</h4>
         </figcaption>
 </figure>
-
 
 <blockquote>
 <p>References

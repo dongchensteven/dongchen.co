@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
 
 <link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/7.-user-registration-spring-security/" />
@@ -43,7 +43,8 @@
 <meta property="og:title" content="7. User Registration - Spring Security" />
 <meta property="og:description" content="The user can register an account to carry on the goods purchase operation." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/7.-user-registration-spring-security/" /><meta property="article:published_time" content="2019-04-30T23:12:05&#43;12:00"/>
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/7.-user-registration-spring-security/" />
+<meta property="article:published_time" content="2019-04-30T23:12:05&#43;12:00"/>
 <meta property="article:modified_time" content="2019-04-30T23:12:05&#43;12:00"/>
 
 <meta itemprop="name" content="7. User Registration - Spring Security">
@@ -331,7 +332,6 @@
          alt="img"/> 
 </figure>
 
-
 <ul>
 <li><a href="https://support.google.com/accounts/answer/6010255?p=lsa_blocked&amp;hl=en&amp;visit_id=636923143590349233-3289884879&amp;rd=1">Let less secure apps access your account</a></li>
 </ul>
@@ -349,7 +349,6 @@
          alt="img"/> 
 </figure>
 
-
 <ul>
 <li>Right click common/src/main/java/co.dongchen.shop.common/result directory: New &gt; Java Class</li>
 <li>Fill in &ldquo;ResultMsg&rdquo;</li>
@@ -360,7 +359,6 @@
     <img src="../images/7/new_class_result_result_msg.png"
          alt="img"/> 
 </figure>
-
 
 <p>Copy and paste the following content into ResultMsg.java:</p>
 <div class="highlight"><div class="chroma">
@@ -509,12 +507,12 @@
 <li>Click &ldquo;OK&rdquo; button</li>
 </ul>
 
-<p><figure>
+<figure>
     <img src="../images/7/new_class_model_user.png"
          alt="img"/> 
 </figure>
 
-Copy and paste the following content into User.java:</p>
+<p>Copy and paste the following content into User.java:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt">  1
@@ -854,7 +852,6 @@ Copy and paste the following content into User.java:</p>
          alt="img"/> 
 </figure>
 
-
 <ul>
 <li>Right click util directory: New &gt; Java Class</li>
 <li>Fill in &ldquo;UserHelper&rdquo;</li>
@@ -865,7 +862,6 @@ Copy and paste the following content into User.java:</p>
     <img src="../images/7/new_class_util_user_helper.png"
          alt="img"/> 
 </figure>
-
 
 <p>Copy and paste the following content into UserHelper.java:</p>
 <div class="highlight"><div class="chroma">
@@ -948,7 +944,6 @@ Copy and paste the following content into User.java:</p>
     <img src="../images/7/new_class_util_bean_helper.png"
          alt="img"/> 
 </figure>
-
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1
@@ -1093,7 +1088,6 @@ Copy and paste the following content into User.java:</p>
          alt="img"/> 
 </figure>
 
-
 <p>Copy and paste the following content into UserService.java:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1155,7 +1149,6 @@ Copy and paste the following content into User.java:</p>
     <img src="../images/7/new_xml_mapper_user.png"
          alt="img"/> 
 </figure>
-
 
 <p>Copy and paste the following content into user.xml:</p>
 <div class="highlight"><div class="chroma">
@@ -1396,7 +1389,6 @@ Copy and paste the following content into User.java:</p>
          alt="img"/> 
 </figure>
 
-
 <p>Copy and paste the following content into SecurityConfig.java:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1470,7 +1462,6 @@ Copy and paste the following content into User.java:</p>
     <img src="../images/7/new_class_service_file.png"
          alt="img"/> 
 </figure>
-
 
 <p>Copy and paste the following content into FileService.java:</p>
 <div class="highlight"><div class="chroma">
@@ -1585,7 +1576,6 @@ Copy and paste the following content into User.java:</p>
     <img src="../images/7/new_class_service_mail.png"
          alt="img"/> 
 </figure>
-
 
 <p>Copy and paste the following content into MailService.java:</p>
 <div class="highlight"><div class="chroma">
@@ -1763,7 +1753,6 @@ Copy and paste the following content into User.java:</p>
          alt="img"/> 
 </figure>
 
-
 <p>Copy and paste the following content into UserService.java:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1929,7 +1918,6 @@ Copy and paste the following content into User.java:</p>
          alt="img"/> 
 </figure>
 
-
 <p>Copy and paste the following content into UserController.java:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -2034,7 +2022,6 @@ Copy and paste the following content into User.java:</p>
          alt="img"/> 
 </figure>
 
-
 <ul>
 <li>Right click user directory: New &gt; File</li>
 <li>Fill in &ldquo;register.ftl&rdquo;</li>
@@ -2045,7 +2032,6 @@ Copy and paste the following content into User.java:</p>
     <img src="../images/7/new_template_register.png"
          alt="img"/> 
 </figure>
-
 
 <p>Copy and paste the following content into register.ftl:</p>
 <div class="highlight"><div class="chroma">
@@ -2151,7 +2137,6 @@ Copy and paste the following content into User.java:</p>
          alt="img"/> 
 </figure>
 
-
 <p>Copy and paste the following content into registration_succeeded.ftl:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -2193,7 +2178,6 @@ Alt + Shift + F10</code></pre></td></tr></table>
          alt="img"/> 
 </figure>
 
-
 <p>Choose the correspondent option and press enter.</p>
 
 <h2 id="view-register-page-in-the-browser">View Register Page in the Browser</h2>
@@ -2210,7 +2194,6 @@ Alt + Shift + F10</code></pre></td></tr></table>
          alt="img"/> 
 </figure>
 
-
 <ul>
 <li>Fill in the Information and click register:</li>
 </ul>
@@ -2219,7 +2202,6 @@ Alt + Shift + F10</code></pre></td></tr></table>
     <img src="../images/7/register_page_click_register.png"
          alt="img"/> 
 </figure>
-
 
 <ul>
 <li>We will see a registered succeeded page:</li>
@@ -2230,7 +2212,6 @@ Alt + Shift + F10</code></pre></td></tr></table>
          alt="img"/> 
 </figure>
 
-
 <ul>
 <li>We can see an inactivate user in the database:</li>
 </ul>
@@ -2239,7 +2220,6 @@ Alt + Shift + F10</code></pre></td></tr></table>
     <img src="../images/7/select_user_inactivate.png"
          alt="img"/> 
 </figure>
-
 
 <ul>
 <li>We need to click the activation link in 15 minutes:</li>
@@ -2250,7 +2230,6 @@ Alt + Shift + F10</code></pre></td></tr></table>
          alt="img"/> 
 </figure>
 
-
 <ul>
 <li>We will see the following page and url after we clicked the link:</li>
 </ul>
@@ -2260,7 +2239,6 @@ Alt + Shift + F10</code></pre></td></tr></table>
          alt="img"/> 
 </figure>
 
-
 <ul>
 <li>Check the database again</li>
 </ul>
@@ -2269,7 +2247,6 @@ Alt + Shift + F10</code></pre></td></tr></table>
     <img src="../images/7/select_user_activated.png"
          alt="img"/> 
 </figure>
-
 
 <p>Now that the user has been activated, our job is done for now.</p>
 

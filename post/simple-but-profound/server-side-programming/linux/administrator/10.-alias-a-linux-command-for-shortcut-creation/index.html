@@ -16,17 +16,14 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="Sometimes a frequently used Linux command can be very long, and when that happens, we need the alias command to help simplify the work of human input.
-We can create aliases in two common ways, one for temporary aliases and the other for permanent aliases.
-Let&amp;rsquo;s take a look at its help documentation:
-1  help alias     Check alias&amp;#39;s definition and usage   We can use the alias command to view the shortcuts owned by current user:" /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="Dong Chen" /><meta name="description" content="" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
 
 <link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/10.-alias-a-linux-command-for-shortcut-creation/" />
@@ -43,19 +40,14 @@ Let&amp;rsquo;s take a look at its help documentation:
 
 
 <meta property="og:title" content="10. Alias - A Linux Command for Shortcut Creation" />
-<meta property="og:description" content="Sometimes a frequently used Linux command can be very long, and when that happens, we need the alias command to help simplify the work of human input.
-We can create aliases in two common ways, one for temporary aliases and the other for permanent aliases.
-Let&rsquo;s take a look at its help documentation:
-1  help alias     Check alias&#39;s definition and usage   We can use the alias command to view the shortcuts owned by current user:" />
+<meta property="og:description" content="" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/10.-alias-a-linux-command-for-shortcut-creation/" /><meta property="article:published_time" content="2019-02-11T07:08:31&#43;13:00"/>
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/10.-alias-a-linux-command-for-shortcut-creation/" />
+<meta property="article:published_time" content="2019-02-11T07:08:31&#43;13:00"/>
 <meta property="article:modified_time" content="2019-02-11T07:08:31&#43;13:00"/>
 
 <meta itemprop="name" content="10. Alias - A Linux Command for Shortcut Creation">
-<meta itemprop="description" content="Sometimes a frequently used Linux command can be very long, and when that happens, we need the alias command to help simplify the work of human input.
-We can create aliases in two common ways, one for temporary aliases and the other for permanent aliases.
-Let&rsquo;s take a look at its help documentation:
-1  help alias     Check alias&#39;s definition and usage   We can use the alias command to view the shortcuts owned by current user:">
+<meta itemprop="description" content="">
 
 
 <meta itemprop="datePublished" content="2019-02-11T07:08:31&#43;13:00" />
@@ -67,10 +59,7 @@ Let&rsquo;s take a look at its help documentation:
 <meta itemprop="keywords" content="Linux,Server," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="10. Alias - A Linux Command for Shortcut Creation"/>
-<meta name="twitter:description" content="Sometimes a frequently used Linux command can be very long, and when that happens, we need the alias command to help simplify the work of human input.
-We can create aliases in two common ways, one for temporary aliases and the other for permanent aliases.
-Let&rsquo;s take a look at its help documentation:
-1  help alias     Check alias&#39;s definition and usage   We can use the alias command to view the shortcuts owned by current user:"/>
+<meta name="twitter:description" content=""/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -179,7 +168,6 @@ Let&rsquo;s take a look at its help documentation:
         </figcaption>
 </figure>
 
-
 <p>We can use the <em>alias</em> command to view the shortcuts owned by current user:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -195,7 +183,6 @@ Let&rsquo;s take a look at its help documentation:
             <h4>List all the available shortcuts</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="create-temporary-alias">Create Temporary Alias</h1>
 
@@ -215,7 +202,6 @@ Let&rsquo;s take a look at its help documentation:
         </figcaption>
 </figure>
 
-
 <p>Let&rsquo;s see if the temporary shortcut we just created exists:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -232,7 +218,6 @@ Let&rsquo;s take a look at its help documentation:
         </figcaption>
 </figure>
 
-
 <p>We can use it as directly as we use commands:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -248,7 +233,6 @@ Let&rsquo;s take a look at its help documentation:
             <h4>Use the created shortcut, it runs echo command and output the text</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="remove-temporary-alias">Remove Temporary Alias</h1>
 
@@ -270,7 +254,6 @@ Let&rsquo;s take a look at its help documentation:
         </figcaption>
 </figure>
 
-
 <p>Let&rsquo;s remove the show_greetings shortcut:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -287,7 +270,6 @@ Let&rsquo;s take a look at its help documentation:
         </figcaption>
 </figure>
 
-
 <p>Let&rsquo;s check to see if the shortcut has gone:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -303,7 +285,6 @@ Let&rsquo;s take a look at its help documentation:
             <h4>show_greetings shortcut removed successfully</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="create-permanent-alias">Create Permanent Alias</h1>
 
@@ -327,7 +308,6 @@ Let&rsquo;s take a look at its help documentation:
         </figcaption>
 </figure>
 
-
 <p>We can add the commands we used earlier to create the temporary shortcut:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -343,7 +323,6 @@ Let&rsquo;s take a look at its help documentation:
             <h4>we added the show_greeting shortcut in the bashrc file</h4>
         </figcaption>
 </figure>
-
 
 <p>After saving and exiting, let&rsquo;s have a check on the shortcuts list.</p>
 
@@ -363,7 +342,6 @@ Let&rsquo;s take a look at its help documentation:
         </figcaption>
 </figure>
 
-
 <p>We can use the source command to re-import the bashrc file into the running system, so that we can use the permanent shortcut we just created without having to re-login:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -379,7 +357,6 @@ Let&rsquo;s take a look at its help documentation:
             <h4>Check source&#39;s definition and usage</h4>
         </figcaption>
 </figure>
-
 
 <p>Let&rsquo;s re-import bashrc:</p>
 <div class="highlight"><div class="chroma">
@@ -397,7 +374,6 @@ Let&rsquo;s take a look at its help documentation:
         </figcaption>
 </figure>
 
-
 <p>The newly added permanent shortcut, show_greetings, should be visible and usable:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -413,7 +389,6 @@ Let&rsquo;s take a look at its help documentation:
             <h4>the permanent show_greetings shortcut exists</h4>
         </figcaption>
 </figure>
-
 
 <blockquote>
 <p>References

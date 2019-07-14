@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 14 Jul 2019 21:57:53 +1200</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jul 2019 10:26:49 +1200</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>66. Microservices 47</title>
+      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/66.-microservices-46/</link>
+      <pubDate>Mon, 15 Jul 2019 10:26:49 +1200</pubDate>
+      
+      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/66.-microservices-46/</guid>
+      <description>&lt;p&gt;pending&amp;hellip;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>65. Microservices 45</title>
@@ -1171,10 +1180,7 @@
       <pubDate>Wed, 20 Feb 2019 07:42:28 +1300</pubDate>
       
       <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/19.-bash-shell-command-prompt-settings-customization/</guid>
-      <description>Command Prompt Overview The command prompt looks like the following:
-  Command prompt   View Settings of Current Command Prompt There are several ways we can view the settings for the command prompt.
-$PS1 Variable We can get the command-line prompt setting by printing the environment variable $PS1:
-1  echo $PS1     Command prompt   set Command 1  set | grep PS1     Command prompt   Command Prompt Settings Modification Temporarily Back Up the Original Settings Let&amp;rsquo;s temporarily back up the current command prompt settings:</description>
+      <description></description>
     </item>
     
     <item>
@@ -1183,10 +1189,7 @@ $PS1 Variable We can get the command-line prompt setting by printing the environ
       <pubDate>Tue, 19 Feb 2019 08:31:14 +1300</pubDate>
       
       <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/18.-bash-shell-directory-stack-builtins/</guid>
-      <description>With a directory stack, we can push the directories we visit sequentially into the directory stack, and when we&amp;rsquo;ve done a series of operations, we can go all the way back to the origin based on the record of the directory stack.
-Directory Stack Commands The directory stack provides us with three available commands.
-dirs Displays all directories recorded in the directory stack:
-1  help dirs     Check dirs&amp;#39;s definition and usage   pushd Records the specified directory to the directory stack and switches the working directory to the recorded directory:</description>
+      <description></description>
     </item>
     
     <item>
@@ -1195,8 +1198,7 @@ dirs Displays all directories recorded in the directory stack:
       <pubDate>Mon, 18 Feb 2019 07:10:12 +1300</pubDate>
       
       <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/17.-bash-shell-completion-commands/</guid>
-      <description>Most of the time, we can use commands efficiently with the help of Linux&amp;rsquo;s automatic completion capability.
-TAB Completion Variable Tab 1  $HISTS # press Tab key to auto-complete this command     before completing     after completing   Command Tab 1  ec # press Tab key to auto-complete this command     before completing     after completing   File Tab 1  # press Tab key to auto-complete this command     before completing     after completing   Possible Completions Can we use Alt+Shift+?</description>
+      <description></description>
     </item>
     
     <item>
@@ -1205,9 +1207,7 @@ TAB Completion Variable Tab 1  $HISTS # press Tab key to auto-complete this comm
       <pubDate>Sun, 17 Feb 2019 09:35:21 +1300</pubDate>
       
       <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/16.-bash-shell-killing-and-yanking/</guid>
-      <description>You can cut and paste text through the killing and yanking features provided by the bash shell.
-Killing Text Forward We can use Ctrl K to cut the text behind the cursor:
-1  Ctrl + K # press Control and K keys     before killing     after killing   Killing Text Backward We can use Ctrl U to cut the text before the cursor:</description>
+      <description></description>
     </item>
     
     <item>
@@ -1216,9 +1216,7 @@ Killing Text Forward We can use Ctrl K to cut the text behind the cursor:
       <pubDate>Sat, 16 Feb 2019 08:05:01 +1300</pubDate>
       
       <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/15.-bash-shell-text-manipulation/</guid>
-      <description>We usually need to change the display of some text, and these changes can be made through the text changing command.
-Delete char We can use Ctrl + D to delete the character on the current cursor:
-1  Ctrl + D # press Control and D keys     before manipulating     after manipulating   Backward delete char We can use Backspace to delete the character before the current cursor:</description>
+      <description></description>
     </item>
     
     <item>
@@ -1227,9 +1225,7 @@ Delete char We can use Ctrl + D to delete the character on the current cursor:
       <pubDate>Fri, 15 Feb 2019 07:52:08 +1300</pubDate>
       
       <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/14.-bash-shell-cursor-movement/</guid>
-      <description>We can quickly move the cursor to a specific location with the shortcut key provided by the shell.
-Move cursor to the new line We can move the cursor to the beginning of the new line:
-1  Ctrl + C # press Control and C keys     before moving     after moving   Move cursor to the beginning We can move the cursor to the beginning of the line:</description>
+      <description></description>
     </item>
     
     <item>
@@ -1238,10 +1234,7 @@ Move cursor to the new line We can move the cursor to the beginning of the new l
       <pubDate>Thu, 14 Feb 2019 08:17:49 +1300</pubDate>
       
       <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/13.-bourne-and-bash-shells-environment-variables/</guid>
-      <description>The shell that Linux used in the first place was Bourne, and then Linux released Bash, which is an enhanced version of Bourne, and most Linux systems now use Bash by default.
-Bourne Shell Variables Home and path are the two most commonly used bourne shell variables
-HOME Current user&amp;rsquo;s home directory.
-1  echo $HOME     prints current user&amp;#39;s home directory   PATH Paths of binary files, which are runnable programs.</description>
+      <description></description>
     </item>
     
     <item>
@@ -1250,8 +1243,7 @@ HOME Current user&amp;rsquo;s home directory.
       <pubDate>Wed, 13 Feb 2019 07:10:22 +1300</pubDate>
       
       <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/12.-bash-shell-commands-history-record-usage/</guid>
-      <description>With the command reuse feature of the bash shell, it is easy to use a previous command again or to see what commands we have recently used.
-  Check history&amp;#39;s definition and usage   History File Location 1  echo $HISTFILE     the file that records the used commands   History Size 1 2  echo $HISTSIZE echo $HISTFILESIZE     these two commands show the amount of the lines of commands they can keep   History List 1  history     shows all recently used commands   Run Previous Command 1  !</description>
+      <description></description>
     </item>
     
     <item>
@@ -1260,10 +1252,7 @@ HOME Current user&amp;rsquo;s home directory.
       <pubDate>Tue, 12 Feb 2019 07:13:00 +1300</pubDate>
       
       <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/11.-centos-7-bash-shell-auto-completion/</guid>
-      <description>CentOS does not install autocompletion support for all tools by default, so we need to install it manually.
-Check If We Have Bash Completion Installed We can use the following command to verify:
-1  yum list installed | grep completion   We won&amp;rsquo;t see any output if it hasn&amp;rsquo;t been installed, so we need to install this package:
-Install 1  yum install bash-completion -y   Although it is installed, it has not yet been loaded into the running bash, so we need to use the source command to load them into the bash:</description>
+      <description></description>
     </item>
     
     <item>
@@ -1272,10 +1261,7 @@ Install 1  yum install bash-completion -y   Although it is installed, it has not
       <pubDate>Mon, 11 Feb 2019 07:08:31 +1300</pubDate>
       
       <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/10.-alias-a-linux-command-for-shortcut-creation/</guid>
-      <description>Sometimes a frequently used Linux command can be very long, and when that happens, we need the alias command to help simplify the work of human input.
-We can create aliases in two common ways, one for temporary aliases and the other for permanent aliases.
-Let&amp;rsquo;s take a look at its help documentation:
-1  help alias     Check alias&amp;#39;s definition and usage   We can use the alias command to view the shortcuts owned by current user:</description>
+      <description></description>
     </item>
     
     <item>
@@ -1284,9 +1270,7 @@ Let&amp;rsquo;s take a look at its help documentation:
       <pubDate>Sun, 10 Feb 2019 06:00:30 +1300</pubDate>
       
       <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/9.-text-editor-a-powerful-linux-text-editors-basic-usage/</guid>
-      <description>Vim Text editor can efficiently help us quickly create or modify some common text type files, such as configuration files:
-  Check vim&amp;#39;s definition and usage   Create File 1  vim newfile # After running the command, it&amp;#39;ll create an empty file called newfile     Create a new file   Command Mode Vim opens a file in command mode:
-  Command mode   Help We can view the command-related help by the :help command:</description>
+      <description></description>
     </item>
     
     <item>
@@ -1295,10 +1279,7 @@ Let&amp;rsquo;s take a look at its help documentation:
       <pubDate>Sat, 09 Feb 2019 10:56:58 +1300</pubDate>
       
       <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/8.-linux-directory-and-file-management/</guid>
-      <description>Linux servers exist to process data efficiently, and files store data, so file management is critical. Directories manage files, so directory management is more crucial.
-Let&amp;rsquo;s begin with the first one.
-Print Current Working Directory Let&amp;rsquo;s take a look at the manual for the pwd command:
-1  man pwd # pwd&amp;#39;s manual     Check pwd&amp;#39;s definition and usage   With this command, we know which directory we are currently working on:</description>
+      <description></description>
     </item>
     
     <item>
@@ -1307,10 +1288,7 @@ Print Current Working Directory Let&amp;rsquo;s take a look at the manual for th
       <pubDate>Fri, 08 Feb 2019 06:19:30 +1300</pubDate>
       
       <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/7.-types-of-linux-commands/</guid>
-      <description>Type is a command to view command types. We can look at what types this command can see with the help of the help command:
-  there are five types   Alias Alias is a shortcut to commands, such as ll is a simplified version of ls -l:
-  the simplified version of ls -l   More&amp;hellip;
-Keyword Shell has some reserved keywords, while is one of them:</description>
+      <description></description>
     </item>
     
     <item>
@@ -1319,9 +1297,7 @@ Keyword Shell has some reserved keywords, while is one of them:</description>
       <pubDate>Thu, 07 Feb 2019 07:12:39 +1300</pubDate>
       
       <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/6.-linux-bash-help-system-man-info/</guid>
-      <description>Bash Help Command Let&amp;rsquo;s take a look at what bash is, and you can see it through whatis bash, apropos bash or man -k bash commands:
-  bash is GNU&amp;#39;s Bourne-Again SHell   The builtins is actually a soft link to bash-builtins:
-  builtins is a soft link to bash-builtins   So we can use man builtins, info builtins, man bash-builtins or info bash-builtins commands to view bash&amp;rsquo;s built-in commands:</description>
+      <description></description>
     </item>
     
     <item>
@@ -1330,10 +1306,7 @@ Keyword Shell has some reserved keywords, while is one of them:</description>
       <pubDate>Wed, 06 Feb 2019 07:11:06 +1300</pubDate>
       
       <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/5.-linux-command-manual-page-man-page/</guid>
-      <description>With the power of the man page command, we can see what parameters a command accepts and how to use each parameter corresponding to the command. In this way, we are more efficient when using commands.
-Page Sections Given the wide variety of commands, man solves the problem of command classification through section numbering.
-1. User Commands Section (1) is used to categorise user commands.
-Such as the date command we used earlier:</description>
+      <description></description>
     </item>
     
     <item>
@@ -1342,9 +1315,7 @@ Such as the date command we used earlier:</description>
       <pubDate>Tue, 05 Feb 2019 07:25:20 +1300</pubDate>
       
       <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/4.-linux-system-and-hardware-times/</guid>
-      <description>In a Linux system, we can view the time of the system or the time of the underlying hardware.
-Hardware Time We can view the time of the hardware by using the hwclock or clock command. We looked at the two commands separately through the ll command, and we learned that clock was a soft link to hwclock, so they were the same.
-With the help of the man command, we know that hwclock is the command used by system administrators:</description>
+      <description></description>
     </item>
     
     <item>
@@ -1353,11 +1324,7 @@ With the help of the man command, we know that hwclock is the command used by sy
       <pubDate>Mon, 04 Feb 2019 06:41:44 +1300</pubDate>
       
       <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/3.-linux-file-systems/</guid>
-      <description>Filesystem hierarchy standard is maintained by the Linux Foundation, which defines the structure and contents of directories in various distributions of Linux.
-  Linux File System on CentOS 7 Distribution   File System Hierarchy File System Hierarchy
-Let&amp;rsquo;s look at what each of these directories means and what types of files are suitable for each of them.
-bin
-Soft link of /usr/bin directory, those are users&amp;rsquo; executable binary files.</description>
+      <description></description>
     </item>
     
     <item>
@@ -1366,8 +1333,7 @@ Soft link of /usr/bin directory, those are users&amp;rsquo; executable binary fi
       <pubDate>Sun, 03 Feb 2019 06:22:53 +1300</pubDate>
       
       <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/2.-linux-installation/</guid>
-      <description>In the early days, the operating system could only be installed directly on hardware. As the technology matures, we can implement this in a variety of ways. It can now be installed on virtual machines, in local or cloud containers, or even through the App Store.
-Install linux from a local container Docker is a very mature container technology, we can easily access the Linux image of each release by installing docker container technology on Windows and Mac.</description>
+      <description></description>
     </item>
     
     <item>
@@ -1376,8 +1342,7 @@ Install linux from a local container Docker is a very mature container technolog
       <pubDate>Sat, 02 Feb 2019 10:45:06 +1300</pubDate>
       
       <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/1.-introduction/</guid>
-      <description>History Because at that time Linus after studying Minix source code discovered that Minix&amp;rsquo;s design is terrible. So he wrote a kernel from scratch, the Linux kernel, based on the assembly and c language he had accumulated as a child. It was later used by many kernel enthusiasts and vendors to develop release versions suitable for their preferences and needs.
-C language is a high-level language, its efficiency is much faster than most of the current high-level languages, but the effectiveness of c language is 30% slower than assembly language.</description>
+      <description></description>
     </item>
     
     <item>
@@ -1386,7 +1351,7 @@ C language is a high-level language, its efficiency is much faster than most of 
       <pubDate>Fri, 01 Feb 2019 08:14:04 +1300</pubDate>
       
       <guid>https://dongchen.co/post/career-path/2.-how-to-start-from-scratch/</guid>
-      <description>My Experience I started working in the industry in early 2014 until now, and I stumbled upon a pattern. A popular technology that is fast in popularity will be eliminated very quickly. So I’ve concluded that you are not necessary to catch up with fashion technology for no reason, but if you need to, just double check and approximately estimate its EOL (End Of Life) time. Five years? One year? Or six months?</description>
+      <description></description>
     </item>
     
     <item>
@@ -1395,7 +1360,7 @@ C language is a high-level language, its efficiency is much faster than most of 
       <pubDate>Fri, 01 Feb 2019 07:38:01 +1300</pubDate>
       
       <guid>https://dongchen.co/post/career-path/1.-a-little-about-me/</guid>
-      <description>My Story I went to a small island country with my family in 2000 to work in the retail business, and then in 2009, I came to New Zealand to study, and after graduation, I spent a few months in a fish shop and then a few months at a construction site. In 2014, a fortuitous opportunity brought me to a New Zealand telecoms company and opened the way for me to grow in technology.</description>
+      <description></description>
     </item>
     
     <item>
@@ -1404,8 +1369,7 @@ C language is a high-level language, its efficiency is much faster than most of 
       <pubDate>Thu, 31 Jan 2019 07:51:02 +1300</pubDate>
       
       <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/nginx/5.-nginx-space-and-time-measurement-units/</guid>
-      <description>A unit of measurement that is often misleading I often see people confuse the time and space units of Nginx, which is especially prevalent among beginners. One measure unit that most often misleads them is an m letter, which can be expressed either as megabytes or as minutes.
-Space Measurement Units Bytes 1  1024 # A unit without a suffix letter stands for bytes.   Kilobytes 1  8k # A unit with a suffix letter &amp;#39;k&amp;#39; or &amp;#39;K&amp;#39; stands for kilobytes.</description>
+      <description></description>
     </item>
     
     <item>
@@ -1414,7 +1378,7 @@ Space Measurement Units Bytes 1  1024 # A unit without a suffix letter stands fo
       <pubDate>Sat, 26 Jan 2019 07:01:23 +1300</pubDate>
       
       <guid>https://dongchen.co/post/certification/zend-php7-certified-engineer-passing-technique-sharing/</guid>
-      <description>The other day I received an email from a fellow, which he sent me through Zend&amp;rsquo;s list of certifiers. Although we didn&amp;rsquo;t know each other until then, I felt that since we were all in the community of PHP, I should help him sort out the areas he needed to pay attention to before taking the exam. However, it would be nice if other people who had to prepare for the ZCE PHP7 also found this article.</description>
+      <description></description>
     </item>
     
     <item>
@@ -1423,9 +1387,7 @@ Space Measurement Units Bytes 1  1024 # A unit without a suffix letter stands fo
       <pubDate>Thu, 11 Oct 2018 00:00:00 +1300</pubDate>
       
       <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/nginx/4.-default-nginx.conf-file/</guid>
-      <description>Have a glance of Nginx default configuration file The first place we need to visit after the installation should be the nginx.conf file. This file contains everything we need for rendering a very basic static HTML web page on HTTP port 80.
-Locate it through the main process If you have started your Nginx process after the installation then we can get its configuration file through the master process:
-1  ps -ef | grep nginx   The result should look like:</description>
+      <description></description>
     </item>
     
     <item>
@@ -1434,9 +1396,7 @@ Locate it through the main process If you have started your Nginx process after 
       <pubDate>Wed, 10 Oct 2018 00:52:00 +1300</pubDate>
       
       <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/nginx/3.-basic-nginx-operations/</guid>
-      <description>Parameters and Signals Like any other servers, Nginx has its operational instructions (parameters and signals).
-The existence of these instructions makes it very convenient for us to manipulate the various configurations of Nginx. We can manipulate Nginx’s status, running path, test configuration files, etc. We can also reload Nginx’s configuration file at its runtime; this feature is handy for minor changes to Nginx while it&amp;rsquo;s running.
-1. Parameters Parameters can be used to manipulate Nginx to accomplish some basic tasks.</description>
+      <description></description>
     </item>
     
     <item>
@@ -1445,9 +1405,7 @@ The existence of these instructions makes it very convenient for us to manipulat
       <pubDate>Wed, 10 Oct 2018 00:50:00 +1300</pubDate>
       
       <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/nginx/2.-install-nginx/</guid>
-      <description>Ways to install Nginx on CentOS 7 Before we begin our journey, we must prepare a CentOS 7 Linux Server, if you don&amp;rsquo;t have one, you can consider getting one from Linode for very cheap price. Or you can follow along with your existing CentOS 7 Linux Server if you have one. If you are ready, then let’s begin our High-Performance Journey!
-There are two ways of installation:
-1. Nginx package installation This option is suggested to the newcomers since they don&amp;rsquo;t know much details about what exactly Nginx use for, so the first thing they need to do is to quickly install it and start playing around with it.</description>
+      <description></description>
     </item>
     
     <item>
@@ -1456,8 +1414,7 @@ There are two ways of installation:
       <pubDate>Wed, 10 Oct 2018 00:49:00 +1300</pubDate>
       
       <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/nginx/1.-introduction/</guid>
-      <description>Many companies start on a shoestring budget at first, so they choose Cheap Hosting Plans. However, as they are growing bigger and bigger, their customers are also growing. The next most significant consideration is their portals’ PERFORMANCE.
-Most Hosting Plans use Apache Server, it suits well for little traffic websites, but it is a nightmare for high traffic websites, that’s why Nginx was born. People then start moving their websites to Dedicated Virtual Servers.</description>
+      <description></description>
     </item>
     
   </channel>

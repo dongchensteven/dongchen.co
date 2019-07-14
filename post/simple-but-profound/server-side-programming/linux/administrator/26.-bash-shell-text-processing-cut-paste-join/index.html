@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
 
 <link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/26.-bash-shell-text-processing-cut-paste-join/" />
@@ -43,7 +43,8 @@
 <meta property="og:title" content="26. Bash Shell - Text Processing: cut, paste, join" />
 <meta property="og:description" content="We can use the cut, paste, join commands provided by linux to retrieve, duplicate, or merge text file contents." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/26.-bash-shell-text-processing-cut-paste-join/" /><meta property="article:published_time" content="2019-02-27T06:55:58&#43;13:00"/>
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/26.-bash-shell-text-processing-cut-paste-join/" />
+<meta property="article:published_time" content="2019-02-27T06:55:58&#43;13:00"/>
 <meta property="article:modified_time" content="2019-02-27T06:55:58&#43;13:00"/>
 
 <meta itemprop="name" content="26. Bash Shell - Text Processing: cut, paste, join">
@@ -182,7 +183,6 @@ cat cut_file</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h2 id="retrieve-the-specified-amount-of-bytes">Retrieve the Specified Amount of Bytes</h2>
 
 <p>We can add the -b or &ndash;bytes parameter to specify the length of bytes to output:</p>
@@ -202,7 +202,6 @@ cut --bytes <span class="m">1</span>-10 cut_file</code></pre></td></tr></table>
             <h4>Prints ten bytes from the beginning of the lines</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="retrieve-the-specified-amount-of-characters">Retrieve the Specified Amount of Characters</h2>
 
@@ -224,7 +223,6 @@ cut --characters <span class="m">1</span>-10 cut_file</code></pre></td></tr></ta
         </figcaption>
 </figure>
 
-
 <h2 id="retrieve-the-specified-column">Retrieve the Specified Column</h2>
 
 <p>By default, the -f or &ndash;fields parameter distinguishes the contents of each column by TAB.</p>
@@ -245,7 +243,6 @@ cut --fields <span class="m">1</span> --only-delimited cut_file</code></pre></td
         </figcaption>
 </figure>
 
-
 <p>So we need to add an extra -d or &ndash;delimiter parameter to allow the -f or &ndash;fields parameter to distinguish between each column according to the specified delimiter:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -263,7 +260,6 @@ cut --fields <span class="m">1</span> --delimiter <span class="s1">&#39;:&#39;</
             <h4>Retrieves the first column of the cut_file</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="merge-lines-of-files-with-paste">Merge Lines of Files With paste</h1>
 
@@ -289,7 +285,6 @@ cat paste_file2</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h2 id="retrieve-lines-sequentially">Retrieve Lines Sequentially</h2>
 
 <p>We can use the paste command to output the contents of the two files in sequence:</p>
@@ -307,7 +302,6 @@ cat paste_file2</code></pre></td></tr></table>
             <h4>Retrieves two files&#39; contents sequentially</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="duplicate-lines">Duplicate Lines</h2>
 
@@ -327,7 +321,6 @@ cat paste_file2</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h2 id="intermix-lines-from-standard-input">Intermix Lines From Standard Input</h2>
 
 <p>By using - symbols, we can distribute the contents of the file in the input stream to each of the - symbols:</p>
@@ -346,7 +339,6 @@ cat paste_file2</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <p>We can also do this:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -362,7 +354,6 @@ cat paste_file2</code></pre></td></tr></table>
             <h4>Distributes standard input stream&#39;s file contents to each - symbols</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="join-lines-of-two-files-with-join">Join Lines of Two Files With join</h1>
 
@@ -388,7 +379,6 @@ cat join_file2</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <p>We can use join to export the overlapped contents in both files:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -404,7 +394,6 @@ cat join_file2</code></pre></td></tr></table>
             <h4>Retrieves two files overlapped contents</h4>
         </figcaption>
 </figure>
-
 
 <blockquote>
 <p>References

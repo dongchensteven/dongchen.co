@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
 
 <link rel="canonical" href="https://dongchen.co/" />
@@ -45,7 +45,8 @@
 <meta property="og:description" content="Dong&#39;s blog." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://dongchen.co/" />
-<meta property="og:updated_time" content="2019-02-28T07:29:30&#43;13:00"/>
+
+<meta property="og:updated_time" content="2019-07-15T10:26:49&#43;12:00"/>
 
 <meta itemprop="name" content="Dong - A place to track my time log">
 <meta itemprop="description" content="Dong&#39;s blog.">
@@ -113,6 +114,29 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/simple-but-profound/server-side-programming/linux/administrator/28.-bash-shell-most-commonly-used-control-operators/">28. Bash Shell - Most Commonly Used Control Operators</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> Fri Mar 1 2019 </span>
+      <div class="post-category">
+          <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
+          </div>
+        <span class="more-meta"> 421 words </span>
+        <span class="more-meta"> 2 mins read </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>We can use the control operators provided by linux to facilitate the use of commands and the processing of the results of command execution.</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/simple-but-profound/server-side-programming/linux/administrator/28.-bash-shell-most-commonly-used-control-operators/" class="read-more-link">Read more..</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/simple-but-profound/server-side-programming/linux/administrator/27.-bash-shell-text-processing-tr/">27. Bash Shell - Text Processing: tr</a></h1>
@@ -305,17 +329,14 @@
       <div class="post-category">
           <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
           </div>
-        <span class="more-meta"> 1174 words </span>
+        <span class="more-meta"> 1176 words </span>
         <span class="more-meta"> 6 mins read </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      Command Prompt Overview The command prompt looks like the following:
-  Command prompt   View Settings of Current Command Prompt There are several ways we can view the settings for the command prompt.
-$PS1 Variable We can get the command-line prompt setting by printing the environment variable $PS1:
-1  echo $PS1     Command prompt   set Command 1  set | grep PS1     Command prompt   Command Prompt Settings Modification Temporarily Back Up the Original Settings Let&rsquo;s temporarily back up the current command prompt settings:
+      
     </div>
     <div class="read-more">
       <a href="/post/simple-but-profound/server-side-programming/linux/administrator/19.-bash-shell-command-prompt-settings-customization/" class="read-more-link">Read more..</a>
@@ -338,10 +359,7 @@ $PS1 Variable We can get the command-line prompt setting by printing the environ
   
   <div class="post-content">
     <div class="post-summary">
-      With a directory stack, we can push the directories we visit sequentially into the directory stack, and when we&rsquo;ve done a series of operations, we can go all the way back to the origin based on the record of the directory stack.
-Directory Stack Commands The directory stack provides us with three available commands.
-dirs Displays all directories recorded in the directory stack:
-1  help dirs     Check dirs&#39;s definition and usage   pushd Records the specified directory to the directory stack and switches the working directory to the recorded directory:
+      
     </div>
     <div class="read-more">
       <a href="/post/simple-but-profound/server-side-programming/linux/administrator/18.-bash-shell-directory-stack-builtins/" class="read-more-link">Read more..</a>
@@ -364,8 +382,7 @@ dirs Displays all directories recorded in the directory stack:
   
   <div class="post-content">
     <div class="post-summary">
-      Most of the time, we can use commands efficiently with the help of Linux&rsquo;s automatic completion capability.
-TAB Completion Variable Tab 1  $HISTS # press Tab key to auto-complete this command     before completing     after completing   Command Tab 1  ec # press Tab key to auto-complete this command     before completing     after completing   File Tab 1  # press Tab key to auto-complete this command     before completing     after completing   Possible Completions Can we use Alt+Shift+?
+      
     </div>
     <div class="read-more">
       <a href="/post/simple-but-profound/server-side-programming/linux/administrator/17.-bash-shell-completion-commands/" class="read-more-link">Read more..</a>
@@ -388,9 +405,7 @@ TAB Completion Variable Tab 1  $HISTS # press Tab key to auto-complete this comm
   
   <div class="post-content">
     <div class="post-summary">
-      You can cut and paste text through the killing and yanking features provided by the bash shell.
-Killing Text Forward We can use Ctrl K to cut the text behind the cursor:
-1  Ctrl + K # press Control and K keys     before killing     after killing   Killing Text Backward We can use Ctrl U to cut the text before the cursor:
+      
     </div>
     <div class="read-more">
       <a href="/post/simple-but-profound/server-side-programming/linux/administrator/16.-bash-shell-killing-and-yanking/" class="read-more-link">Read more..</a>
@@ -413,9 +428,7 @@ Killing Text Forward We can use Ctrl K to cut the text behind the cursor:
   
   <div class="post-content">
     <div class="post-summary">
-      We usually need to change the display of some text, and these changes can be made through the text changing command.
-Delete char We can use Ctrl + D to delete the character on the current cursor:
-1  Ctrl + D # press Control and D keys     before manipulating     after manipulating   Backward delete char We can use Backspace to delete the character before the current cursor:
+      
     </div>
     <div class="read-more">
       <a href="/post/simple-but-profound/server-side-programming/linux/administrator/15.-bash-shell-text-manipulation/" class="read-more-link">Read more..</a>
@@ -438,9 +451,7 @@ Delete char We can use Ctrl + D to delete the character on the current cursor:
   
   <div class="post-content">
     <div class="post-summary">
-      We can quickly move the cursor to a specific location with the shortcut key provided by the shell.
-Move cursor to the new line We can move the cursor to the beginning of the new line:
-1  Ctrl + C # press Control and C keys     before moving     after moving   Move cursor to the beginning We can move the cursor to the beginning of the line:
+      
     </div>
     <div class="read-more">
       <a href="/post/simple-but-profound/server-side-programming/linux/administrator/14.-bash-shell-cursor-movement/" class="read-more-link">Read more..</a>
@@ -463,10 +474,7 @@ Move cursor to the new line We can move the cursor to the beginning of the new l
   
   <div class="post-content">
     <div class="post-summary">
-      The shell that Linux used in the first place was Bourne, and then Linux released Bash, which is an enhanced version of Bourne, and most Linux systems now use Bash by default.
-Bourne Shell Variables Home and path are the two most commonly used bourne shell variables
-HOME Current user&rsquo;s home directory.
-1  echo $HOME     prints current user&#39;s home directory   PATH Paths of binary files, which are runnable programs.
+      
     </div>
     <div class="read-more">
       <a href="/post/simple-but-profound/server-side-programming/linux/administrator/13.-bourne-and-bash-shells-environment-variables/" class="read-more-link">Read more..</a>
@@ -489,8 +497,7 @@ HOME Current user&rsquo;s home directory.
   
   <div class="post-content">
     <div class="post-summary">
-      With the command reuse feature of the bash shell, it is easy to use a previous command again or to see what commands we have recently used.
-  Check history&#39;s definition and usage   History File Location 1  echo $HISTFILE     the file that records the used commands   History Size 1 2  echo $HISTSIZE echo $HISTFILESIZE     these two commands show the amount of the lines of commands they can keep   History List 1  history     shows all recently used commands   Run Previous Command 1  !
+      
     </div>
     <div class="read-more">
       <a href="/post/simple-but-profound/server-side-programming/linux/administrator/12.-bash-shell-commands-history-record-usage/" class="read-more-link">Read more..</a>
@@ -513,10 +520,7 @@ HOME Current user&rsquo;s home directory.
   
   <div class="post-content">
     <div class="post-summary">
-      CentOS does not install autocompletion support for all tools by default, so we need to install it manually.
-Check If We Have Bash Completion Installed We can use the following command to verify:
-1  yum list installed | grep completion   We won&rsquo;t see any output if it hasn&rsquo;t been installed, so we need to install this package:
-Install 1  yum install bash-completion -y   Although it is installed, it has not yet been loaded into the running bash, so we need to use the source command to load them into the bash:
+      
     </div>
     <div class="read-more">
       <a href="/post/simple-but-profound/server-side-programming/linux/administrator/11.-centos-7-bash-shell-auto-completion/" class="read-more-link">Read more..</a>
@@ -539,10 +543,7 @@ Install 1  yum install bash-completion -y   Although it is installed, it has not
   
   <div class="post-content">
     <div class="post-summary">
-      Sometimes a frequently used Linux command can be very long, and when that happens, we need the alias command to help simplify the work of human input.
-We can create aliases in two common ways, one for temporary aliases and the other for permanent aliases.
-Let&rsquo;s take a look at its help documentation:
-1  help alias     Check alias&#39;s definition and usage   We can use the alias command to view the shortcuts owned by current user:
+      
     </div>
     <div class="read-more">
       <a href="/post/simple-but-profound/server-side-programming/linux/administrator/10.-alias-a-linux-command-for-shortcut-creation/" class="read-more-link">Read more..</a>
@@ -565,38 +566,10 @@ Let&rsquo;s take a look at its help documentation:
   
   <div class="post-content">
     <div class="post-summary">
-      Vim Text editor can efficiently help us quickly create or modify some common text type files, such as configuration files:
-  Check vim&#39;s definition and usage   Create File 1  vim newfile # After running the command, it&#39;ll create an empty file called newfile     Create a new file   Command Mode Vim opens a file in command mode:
-  Command mode   Help We can view the command-related help by the :help command:
+      
     </div>
     <div class="read-more">
       <a href="/post/simple-but-profound/server-side-programming/linux/administrator/9.-text-editor-a-powerful-linux-text-editors-basic-usage/" class="read-more-link">Read more..</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/simple-but-profound/server-side-programming/linux/administrator/8.-linux-directory-and-file-management/">8. Linux Directory and File Management</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> Sat Feb 9 2019 </span>
-      <div class="post-category">
-          <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
-          </div>
-        <span class="more-meta"> 1087 words </span>
-        <span class="more-meta"> 6 mins read </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      Linux servers exist to process data efficiently, and files store data, so file management is critical. Directories manage files, so directory management is more crucial.
-Let&rsquo;s begin with the first one.
-Print Current Working Directory Let&rsquo;s take a look at the manual for the pwd command:
-1  man pwd # pwd&#39;s manual     Check pwd&#39;s definition and usage   With this command, we know which directory we are currently working on:
-    </div>
-    <div class="read-more">
-      <a href="/post/simple-but-profound/server-side-programming/linux/administrator/8.-linux-directory-and-file-management/" class="read-more-link">Read more..</a>
     </div>
   </div>
 </article>

@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
 
 <link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/40.-find-utilities-commands-files-searching-usages/" />
@@ -43,7 +43,8 @@
 <meta property="og:title" content="40. Find Utilities - Commands &amp; Files Searching Usages" />
 <meta property="og:description" content="There are many things we can do with some combination of find and other commands. We can use some commands on the files we find." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/40.-find-utilities-commands-files-searching-usages/" /><meta property="article:published_time" content="2019-03-12T06:17:50&#43;13:00"/>
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/40.-find-utilities-commands-files-searching-usages/" />
+<meta property="article:published_time" content="2019-03-12T06:17:50&#43;13:00"/>
 <meta property="article:modified_time" content="2019-03-12T06:17:50&#43;13:00"/>
 
 <meta itemprop="name" content="40. Find Utilities - Commands &amp; Files Searching Usages">
@@ -190,7 +191,6 @@ cat find_usage01 find_usage02 find_usage03</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h1 id="run-command-on-one-file-or-more-files">Run Command on One File or More Files</h1>
 
 <p>We can apply a command on top of a single file or multiple files that match.</p>
@@ -206,7 +206,6 @@ cat find_usage01 find_usage02 find_usage03</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h2 id="print-the-contents-of-all-matching-files">Print the Contents of All Matching Files</h2>
 
 <p>We can move the {} symbol to the end and ends with a + symbol to apply the command to all matching files at the same time:</p>
@@ -217,7 +216,6 @@ cat find_usage01 find_usage02 find_usage03</code></pre></td></tr></table>
             <h4>Run the cat command on all files at the same time</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="remove-matching-files">Remove Matching Files</h1>
 
@@ -238,7 +236,6 @@ ll <span class="p">|</span> grep <span class="s1">&#39;find*&#39;</span></code><
             <h4>Outputs the files whose name begins with find after removing the matching files</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="change-permissions-of-the-matching-files">Change Permissions of the Matching Files</h1>
 
@@ -266,7 +263,6 @@ ll <span class="p">|</span> grep <span class="s1">&#39;find*&#39;</span></code><
         </figcaption>
 </figure>
 
-
 <h2 id="change-permissions-of-the-matching-directories">Change Permissions of the Matching Directories</h2>
 
 <p>Let&rsquo;s enable user group&rsquo;s write permission on the matching directories:</p>
@@ -288,7 +284,6 @@ ll <span class="p">|</span> grep <span class="s1">&#39;find*&#39;</span></code><
             <h4>Outputs all the files whose name begins with find before and after changing the group permission of the matching directories</h4>
         </figcaption>
 </figure>
-
 
 <blockquote>
 <p>References

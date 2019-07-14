@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
 
 <link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/29.-bash-shell-variables-operations/" />
@@ -43,7 +43,8 @@
 <meta property="og:title" content="29. Bash Shell - Variables Operations" />
 <meta property="og:description" content="I believe that people who have learned how to program know what variables are, and at first it can be understood as an alias that points to the data stored in memory." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/29.-bash-shell-variables-operations/" /><meta property="article:published_time" content="2019-03-02T07:07:52&#43;13:00"/>
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/29.-bash-shell-variables-operations/" />
+<meta property="article:published_time" content="2019-03-02T07:07:52&#43;13:00"/>
 <meta property="article:modified_time" content="2019-03-02T07:07:52&#43;13:00"/>
 
 <meta itemprop="name" content="29. Bash Shell - Variables Operations">
@@ -187,14 +188,12 @@
         </figcaption>
 </figure>
 
-
 <figure>
     <img src="../images/29/set_less_result.png"
          alt="img"/> <figcaption>
             <h4>Use the less command to navigate to the start of the set command&#39;s output result.</h4>
         </figcaption>
 </figure>
-
 
 <p>We can type the q key to exit the the less command&rsquo;s interactive mode.</p>
 
@@ -216,7 +215,6 @@
         </figcaption>
 </figure>
 
-
 <h2 id="show-environment-variables-with-env">Show Environment Variables with env</h2>
 
 <p>We can also use the env command to output the current environment variable:</p>
@@ -234,7 +232,6 @@
             <h4>Prints current environment&#39;s variables</h4>
         </figcaption>
 </figure>
-
 
 <p>The output is quite similar to printenv command&rsquo;s output result.</p>
 
@@ -256,7 +253,6 @@
         </figcaption>
 </figure>
 
-
 <h2 id="show-value-of-a-variable-with-echo">Show Value of a Variable with echo</h2>
 
 <p>We can use the echo command to output variable&rsquo;s value to the screen:</p>
@@ -274,7 +270,6 @@
             <h4>Prints the variable that contains directories of all the executable files</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="variable-operations">Variable Operations</h1>
 
@@ -298,7 +293,6 @@
         </figcaption>
 </figure>
 
-
 <p>We can try to access this variable in the offspring shell:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -316,7 +310,6 @@
             <h4>Prints the created MY_NAME variable in a child shell</h4>
         </figcaption>
 </figure>
-
 
 <p>From the screenshot, we can see that we can&rsquo;t use the MY_NAME variable created by the parent shell in the child shell.</p>
 
@@ -355,7 +348,6 @@ bash
         </figcaption>
 </figure>
 
-
 <h2 id="create-an-array-variable">Create an Array Variable</h2>
 
 <p>We can create an array variable that contains multiple elements:</p>
@@ -378,7 +370,6 @@ MY_NAME<span class="o">[</span><span class="m">2</span><span class="o">]=</span>
         </figcaption>
 </figure>
 
-
 <h2 id="remove-a-variable">Remove a Variable</h2>
 
 <p>We can delete a variable or an array variable through the unset command:</p>
@@ -400,7 +391,6 @@ MY_NAME<span class="o">[</span><span class="m">2</span><span class="o">]=</span>
             <h4>Unset the MY_NAME variable, this will also remove the array elements stored in that variable</h4>
         </figcaption>
 </figure>
-
 
 <blockquote>
 <p>References

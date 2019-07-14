@@ -1,6 +1,66 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <?xml-stylesheet type="text/xsl" href="https://dongchen.co/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/66.-microservices-46/</loc>
+    <lastmod>2019-07-15T10:26:49+12:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/categories/</loc>
+    <lastmod>2019-07-15T10:26:49+12:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/</loc>
+    <lastmod>2019-07-15T10:26:49+12:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/tags/java/</loc>
+    <lastmod>2019-07-15T10:26:49+12:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/post/</loc>
+    <lastmod>2019-07-15T10:26:49+12:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/tags/spring/</loc>
+    <lastmod>2019-07-15T10:26:49+12:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/tags/spring-framework/</loc>
+    <lastmod>2019-07-15T10:26:49+12:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/tags/spring-stack/</loc>
+    <lastmod>2019-07-15T10:26:49+12:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/categories/spring-stack-developer-simple-but-profound/</loc>
+    <lastmod>2019-07-15T10:26:49+12:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/tags/</loc>
+    <lastmod>2019-07-15T10:26:49+12:00</lastmod>
+    <priority>0</priority>
+  </url>
   
   <url>
     <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/65.-microservices-45/</loc>
@@ -381,6 +441,18 @@
   </url>
   
   <url>
+    <loc>https://dongchen.co/tags/mariadb-10/</loc>
+    <lastmod>2019-05-05T21:40:41+12:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/tags/mybatis/</loc>
+    <lastmod>2019-05-05T21:40:41+12:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/11.-product-list-pagination/</loc>
     <lastmod>2019-05-04T22:05:24+12:00</lastmod>
     <changefreq>daily</changefreq>
@@ -402,10 +474,22 @@
   </url>
   
   <url>
+    <loc>https://dongchen.co/tags/spring-interceptor/</loc>
+    <lastmod>2019-05-02T23:48:50+12:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/8.-user-login-spring-security/</loc>
     <lastmod>2019-05-01T20:55:39+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/tags/spring-security/</loc>
+    <lastmod>2019-05-01T20:55:39+12:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -416,6 +500,18 @@
   </url>
   
   <url>
+    <loc>https://dongchen.co/tags/guava-cache/</loc>
+    <lastmod>2019-04-30T23:12:05+12:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/tags/spring-mail/</loc>
+    <lastmod>2019-04-30T23:12:05+12:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/6.-modularization-and-decoupling-maven/</loc>
     <lastmod>2019-04-29T05:47:50+12:00</lastmod>
     <changefreq>daily</changefreq>
@@ -423,10 +519,34 @@
   </url>
   
   <url>
+    <loc>https://dongchen.co/tags/maven-modularization/</loc>
+    <lastmod>2019-04-29T05:47:50+12:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/5.-template-engine-apache-freemarker-macro/</loc>
     <lastmod>2019-04-28T08:37:25+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/tags/apache-freemarker/</loc>
+    <lastmod>2019-04-28T08:37:25+12:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/tags/freemarker-macro/</loc>
+    <lastmod>2019-04-28T08:37:25+12:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/tags/template-engine/</loc>
+    <lastmod>2019-04-28T08:37:25+12:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -444,6 +564,24 @@
   </url>
   
   <url>
+    <loc>https://dongchen.co/tags/alibaba-druid/</loc>
+    <lastmod>2019-04-26T21:18:50+12:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/tags/connection-pool/</loc>
+    <lastmod>2019-04-26T21:18:50+12:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/tags/google-guava/</loc>
+    <lastmod>2019-04-26T21:18:50+12:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/2.-database-access-mybatis-and-mariadb-10.x/</loc>
     <lastmod>2019-04-25T17:38:16+12:00</lastmod>
     <changefreq>daily</changefreq>
@@ -458,10 +596,34 @@
   </url>
   
   <url>
+    <loc>https://dongchen.co/tags/hello-world/</loc>
+    <lastmod>2019-04-24T19:58:51+12:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/82.-system-log-management-rsyslogd/</loc>
     <lastmod>2019-04-23T20:54:13+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/tags/linux/</loc>
+    <lastmod>2019-04-23T20:54:13+12:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/categories/linux-administrator-simple-but-profound/</loc>
+    <lastmod>2019-04-23T20:54:13+12:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/tags/server/</loc>
+    <lastmod>2019-04-23T20:54:13+12:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -1032,10 +1194,22 @@
   </url>
   
   <url>
+    <loc>https://dongchen.co/tags/career-path/</loc>
+    <lastmod>2019-02-03T06:35:04+13:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://dongchen.co/post/career-path/2.-how-to-start-from-scratch/</loc>
     <lastmod>2019-02-03T06:35:04+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/categories/personal-development/</loc>
+    <lastmod>2019-02-03T06:35:04+13:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -1046,6 +1220,12 @@
   </url>
   
   <url>
+    <loc>https://dongchen.co/tags/time-log/</loc>
+    <lastmod>2019-02-01T07:38:01+13:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/nginx/5.-nginx-space-and-time-measurement-units/</loc>
     <lastmod>2019-01-31T07:51:02+13:00</lastmod>
     <changefreq>daily</changefreq>
@@ -1053,10 +1233,40 @@
   </url>
   
   <url>
+    <loc>https://dongchen.co/tags/nginx/</loc>
+    <lastmod>2019-01-31T07:51:02+13:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/categories/nginx-simple-but-profound/</loc>
+    <lastmod>2019-01-31T07:51:02+13:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/categories/how-to-be-certified/</loc>
+    <lastmod>2019-01-26T07:01:23+13:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://dongchen.co/post/certification/zend-php7-certified-engineer-passing-technique-sharing/</loc>
     <lastmod>2019-01-26T07:01:23+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/tags/professional-certification/</loc>
+    <lastmod>2019-01-26T07:01:23+13:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/tags/zend-certified-php7-engineer/</loc>
+    <lastmod>2019-01-26T07:01:23+13:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -1085,243 +1295,6 @@
     <lastmod>2018-10-10T00:49:00+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/tags/alibaba-druid/</loc>
-    <lastmod>2019-04-26T21:18:50+12:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/tags/apache-freemarker/</loc>
-    <lastmod>2019-04-28T08:37:25+12:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/tags/career-path/</loc>
-    <lastmod>2019-02-03T06:35:04+13:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/categories/</loc>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/tags/connection-pool/</loc>
-    <lastmod>2019-04-26T21:18:50+12:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/</loc>
-    <lastmod>2019-07-14T21:57:53+12:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/tags/freemarker-macro/</loc>
-    <lastmod>2019-04-28T08:37:25+12:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/tags/google-guava/</loc>
-    <lastmod>2019-04-26T21:18:50+12:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/tags/guava-cache/</loc>
-    <lastmod>2019-04-30T23:12:05+12:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/tags/hello-world/</loc>
-    <lastmod>2019-04-24T19:58:51+12:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/categories/how-to-be-certified/</loc>
-    <lastmod>2019-01-26T07:01:23+13:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/tags/java/</loc>
-    <lastmod>2019-07-14T21:57:53+12:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/tags/linux/</loc>
-    <lastmod>2019-04-23T20:54:13+12:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/categories/linux-administrator-simple-but-profound/</loc>
-    <lastmod>2019-04-23T20:54:13+12:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/tags/mariadb-10/</loc>
-    <lastmod>2019-05-05T21:40:41+12:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/tags/maven-modularization/</loc>
-    <lastmod>2019-04-29T05:47:50+12:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/tags/mybatis/</loc>
-    <lastmod>2019-05-05T21:40:41+12:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/tags/nginx/</loc>
-    <lastmod>2019-01-31T07:51:02+13:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/categories/nginx-simple-but-profound/</loc>
-    <lastmod>2019-01-31T07:51:02+13:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/categories/personal-development/</loc>
-    <lastmod>2019-02-03T06:35:04+13:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/post/</loc>
-    <lastmod>2019-07-14T21:57:53+12:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/tags/professional-certification/</loc>
-    <lastmod>2019-01-26T07:01:23+13:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/tags/server/</loc>
-    <lastmod>2019-04-23T20:54:13+12:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/tags/spring/</loc>
-    <lastmod>2019-07-14T21:57:53+12:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/tags/spring-framework/</loc>
-    <lastmod>2019-07-14T21:57:53+12:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/tags/spring-interceptor/</loc>
-    <lastmod>2019-05-02T23:48:50+12:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/tags/spring-mail/</loc>
-    <lastmod>2019-04-30T23:12:05+12:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/tags/spring-security/</loc>
-    <lastmod>2019-05-01T20:55:39+12:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/tags/spring-stack/</loc>
-    <lastmod>2019-07-14T21:57:53+12:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/categories/spring-stack-developer-simple-but-profound/</loc>
-    <lastmod>2019-07-14T21:57:53+12:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/tags/</loc>
-    <lastmod>2019-04-26T21:18:50+12:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/tags/template-engine/</loc>
-    <lastmod>2019-04-28T08:37:25+12:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/tags/time-log/</loc>
-    <lastmod>2019-02-01T07:38:01+13:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://dongchen.co/tags/zend-certified-php7-engineer/</loc>
-    <lastmod>2019-01-26T07:01:23+13:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0</priority>
   </url>
   
 </urlset>

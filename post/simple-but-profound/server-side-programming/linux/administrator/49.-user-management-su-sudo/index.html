@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
 
 <link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/49.-user-management-su-sudo/" />
@@ -43,7 +43,8 @@
 <meta property="og:title" content="49. User Management - su, sudo" />
 <meta property="og:description" content="We can switch between users through the su and sudo commands. Also, we can use these two commands to perform certain command operations with the privileges of other users." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/49.-user-management-su-sudo/" /><meta property="article:published_time" content="2019-03-21T07:54:32&#43;13:00"/>
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/49.-user-management-su-sudo/" />
+<meta property="article:published_time" content="2019-03-21T07:54:32&#43;13:00"/>
 <meta property="article:modified_time" content="2019-03-21T07:54:32&#43;13:00"/>
 
 <meta itemprop="name" content="49. User Management - su, sudo">
@@ -210,7 +211,6 @@ whoami</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <p>When we replace root with user, we don&rsquo;t need to enter a password.</p>
 
 <h2 id="change-current-working-directory-to-the-switched-user-home-directory">Change Current Working Directory to the Switched User Home Directory</h2>
@@ -239,7 +239,6 @@ whoami</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h1 id="sudo">sudo</h1>
 
 <h2 id="edit-sudoers-file">Edit Sudoers File</h2>
@@ -263,7 +262,6 @@ whoami</code></pre></td></tr></table>
             <h4>When a user is editing the / etc/sudoers file through the visudo command, there is no way for other users to use the visudo command at this point.</h4>
         </figcaption>
 </figure>
-
 
 <h3 id="naked-editing">Naked Editing</h3>
 
@@ -302,7 +300,6 @@ visudo</code></pre></td></tr></table>
             <h4>The line that starts with usropt is our newly added configuration to the sudoers file</h4>
         </figcaption>
 </figure>
-
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -335,7 +332,6 @@ useradd</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <p>We need to use the sudo command to run the administrator&rsquo;s command:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -352,7 +348,6 @@ useradd</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <p>When configured, if the command is assigned under passwd, you need to enter the user&rsquo;s password when using the command to prevent malicious abuse of account permissions by others:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -368,7 +363,6 @@ useradd</code></pre></td></tr></table>
             <h4>After entering the password of the usropt user, the command can be executed</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="alias">Alias</h2>
 
@@ -409,7 +403,6 @@ visudo    <span class="c1"># Open the /etc/sudoers file again</span></code></pre
         </figcaption>
 </figure>
 
-
 <h2 id="wheel-group">wheel group</h2>
 
 <p>We can configure a user&rsquo;s privileges the same as root through the wheel group:</p>
@@ -437,7 +430,6 @@ visudo    <span class="c1"># Open the /etc/sudoers file again</span></code></pre
         </figcaption>
 </figure>
 
-
 <p>Create a new user to append a wheel supplementary group to that user:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -463,7 +455,6 @@ sudo useradd    <span class="c1"># Needs to provide the current user&#39;s passw
             <h4>Enables users to have root permissions by appending the wheel group to the user&#39;s supplementary group</h4>
         </figcaption>
 </figure>
-
 
 <blockquote>
 <p>References

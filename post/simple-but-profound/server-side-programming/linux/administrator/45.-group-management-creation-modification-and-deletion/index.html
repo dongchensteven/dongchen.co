@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
 
 <link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/45.-group-management-creation-modification-and-deletion/" />
@@ -43,7 +43,8 @@
 <meta property="og:title" content="45. Group Management - Creation, Modification and Deletion" />
 <meta property="og:description" content="To make it easier to manage groups, linux provides some common commands that allow you to add, delete, and modify groups in a more standardized way." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/45.-group-management-creation-modification-and-deletion/" /><meta property="article:published_time" content="2019-03-17T09:16:36&#43;13:00"/>
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/45.-group-management-creation-modification-and-deletion/" />
+<meta property="article:published_time" content="2019-03-17T09:16:36&#43;13:00"/>
 <meta property="article:modified_time" content="2019-03-17T09:16:36&#43;13:00"/>
 
 <meta itemprop="name" content="45. Group Management - Creation, Modification and Deletion">
@@ -215,7 +216,6 @@ tail -3 /etc/group</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h1 id="modify-group">Modify Group</h1>
 
 <p>We can modify the group information through the groupmod command.</p>
@@ -265,7 +265,6 @@ tail -1 /etc/group</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h1 id="delete-group">Delete Group</h1>
 
 <p>Let&rsquo;s delete the group:</p>
@@ -287,7 +286,6 @@ tail -1 /etc/group</code></pre></td></tr></table>
             <h4>Output the last group before and after its deletion</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="group-password">Group Password</h1>
 
@@ -343,7 +341,6 @@ cat /etc/gshadow <span class="p">|</span> grep <span class="s1">&#39;dongs_secre
         </figcaption>
 </figure>
 
-
 <h1 id="new-group">New Group</h1>
 
 <p>With the newgrp command, we can have the user log in to another group.</p>
@@ -373,7 +370,6 @@ id</code></pre></td></tr></table>
             <h4>Output the user&#39;s id and group ids before and after the user&#39;s entry and exit of the another group</h4>
         </figcaption>
 </figure>
-
 
 <blockquote>
 <p>References

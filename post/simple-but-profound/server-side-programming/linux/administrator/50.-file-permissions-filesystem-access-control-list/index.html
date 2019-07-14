@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
 
 <link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/50.-file-permissions-filesystem-access-control-list/" />
@@ -43,7 +43,8 @@
 <meta property="og:title" content="50. File Permissions - Filesystem Access Control List" />
 <meta property="og:description" content="Although the chmod command is powerful enough, it cannot assign permissions more finely, so Linux provides some flexible commands to specify permissions for a particular user or group. Starting from Linux kernel 2.6, we can allocate more granular permissions to users or groups." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/50.-file-permissions-filesystem-access-control-list/" /><meta property="article:published_time" content="2019-03-22T06:48:25&#43;13:00"/>
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/50.-file-permissions-filesystem-access-control-list/" />
+<meta property="article:published_time" content="2019-03-22T06:48:25&#43;13:00"/>
 <meta property="article:modified_time" content="2019-03-22T06:48:25&#43;13:00"/>
 
 <meta itemprop="name" content="50. File Permissions - Filesystem Access Control List">
@@ -198,7 +199,6 @@
         </figcaption>
 </figure>
 
-
 <h1 id="get-file-acl">Get File ACL</h1>
 
 <p>We can use the getfacl command to get an access control list for a file.</p>
@@ -294,7 +294,6 @@ getfacl acl_file</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h2 id="file-access-control-list">File Access Control List</h2>
 
 <p>With the -a or &#8209;&#8209;access parameter, we can view the file&rsquo;s access control list:</p>
@@ -312,7 +311,6 @@ getfacl acl_file</code></pre></td></tr></table>
             <h4>Output the file&#39;s access control list</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="file-default-access-control-list">File Default Access Control List</h2>
 
@@ -332,7 +330,6 @@ getfacl acl_file</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h2 id="ignore-the-comment-header">Ignore the Comment Header</h2>
 
 <p>With the -c or &#8209;&#8209;omit-header parameter, we can view the file&rsquo;s access control list without the comment header:</p>
@@ -350,7 +347,6 @@ getfacl acl_file</code></pre></td></tr></table>
             <h4>Output the file&#39;s access control list without the comment header</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="all-effective-rights-comments">All Effective Rights Comments</h2>
 
@@ -370,7 +366,6 @@ getfacl acl_file</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h2 id="no-effective-rights-comments">No Effective Rights Comments</h2>
 
 <p>With the -E or &#8209;&#8209;no-effective parameter, we can view the file&rsquo;s non effective rights comments:</p>
@@ -389,7 +384,6 @@ getfacl acl_file</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h2 id="skip-base-acl-entries">Skip Base ACL Entries</h2>
 
 <p>With the -s or &#8209;&#8209;skip-base parameter, we can skip the file that only has base ACL entries (owner, group, others):</p>
@@ -407,7 +401,6 @@ getfacl acl_file</code></pre></td></tr></table>
             <h4>Skip the file that only has the base ACL entries</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="all-files-and-directories-acls">All Files and Directories ACLs</h2>
 
@@ -431,7 +424,6 @@ ll acl_dir</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <p>With the -R or &#8209;&#8209;recursive parameter, we can view all the files and directories&rsquo; access control lists:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -447,7 +439,6 @@ ll acl_dir</code></pre></td></tr></table>
             <h4>View all the files and directories&#39; access control lists</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="symbolic-links-in-recursion">Symbolic Links in Recursion</h2>
 
@@ -469,7 +460,6 @@ ll acl_dir</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <p>With the -L or &#8209;&#8209;logical parameter plus the -R or &#8209;&#8209;recursive parameter, we can view all the files, directories and symbolic links&rsquo; access control lists:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -485,7 +475,6 @@ ll acl_dir</code></pre></td></tr></table>
             <h4>View all the files, directories and symbolic links&#39; access control lists</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="no-symbolic-links-in-recursion">No Symbolic Links in Recursion</h2>
 
@@ -505,7 +494,6 @@ ll acl_dir</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h2 id="tabular-format">Tabular Format</h2>
 
 <p>With the -t or &#8209;&#8209;tabular parameter, we can view the file or directory&rsquo;s access control lists side by side:</p>
@@ -524,7 +512,6 @@ ll acl_dir</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <p>Plus the -R or &#8209;&#8209;recursive parameter, we can view all the files and directories&rsquo; access control lists side by side:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -540,7 +527,6 @@ ll acl_dir</code></pre></td></tr></table>
             <h4>View all the files and directories&#39; access control lists side by side</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="keep-the-leading-slash">Keep the Leading slash (/)</h2>
 
@@ -560,7 +546,6 @@ ll acl_dir</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h2 id="user-and-group-ids">User and Group IDs</h2>
 
 <p>With the -n or &#8209;&#8209;numeric parameter, we can view the file or directory&rsquo;s access control lists and its owner and group&rsquo;s IDs instead of the names:</p>
@@ -578,7 +563,6 @@ ll acl_dir</code></pre></td></tr></table>
             <h4>View the directory&#39;s access control lists and its owner and group&#39;s IDs</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="set-and-remove-file-acl">Set and Remove File ACL</h1>
 
@@ -692,7 +676,6 @@ getfacl acl_dir</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h3 id="set-permission-for-a-group">Set Permission for a Group</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -717,7 +700,6 @@ getfacl acl_dir</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h3 id="set-other-permission">Set Other Permission</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -739,7 +721,6 @@ getfacl acl_dir</code></pre></td></tr></table>
             <h4>View the directory&#39;s access control lists before and after the permission allocation of others</h4>
         </figcaption>
 </figure>
-
 
 <h3 id="set-mask-permission">Set Mask Permission</h3>
 <div class="highlight"><div class="chroma">
@@ -763,7 +744,6 @@ getfacl acl_dir</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h3 id="clone-acl-between-files-and-directories">Clone ACL Between Files and Directories</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -786,7 +766,6 @@ getfacl acl_dir2</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h3 id="set-default-permissions">Set Default Permissions</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -806,7 +785,6 @@ getfacl acl_dir2</code></pre></td></tr></table>
             <h4>View the directory&#39;s access control lists before and after the permission allocation of user acl_user&#39;s default</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="remove-extended-acls">Remove Extended ACLs</h2>
 
@@ -832,7 +810,6 @@ getfacl acl_dir2</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h3 id="remove-all-acls">Remove All ACLs</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -852,7 +829,6 @@ getfacl acl_dir2</code></pre></td></tr></table>
             <h4>View the directory&#39;s access control lists before and after the removing of all the ACLs</h4>
         </figcaption>
 </figure>
-
 
 <blockquote>
 <p>References

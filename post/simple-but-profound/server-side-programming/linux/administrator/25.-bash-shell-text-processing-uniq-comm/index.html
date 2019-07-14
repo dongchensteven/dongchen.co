@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
 
 <link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/25.-bash-shell-text-processing-uniq-comm/" />
@@ -43,7 +43,8 @@
 <meta property="og:title" content="25. Bash Shell - Text Processing: uniq, comm" />
 <meta property="og:description" content="We can use the uniq, comm command provided by linux to deduplicate, or compare text file contents." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/25.-bash-shell-text-processing-uniq-comm/" /><meta property="article:published_time" content="2019-02-26T07:31:35&#43;13:00"/>
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/25.-bash-shell-text-processing-uniq-comm/" />
+<meta property="article:published_time" content="2019-02-26T07:31:35&#43;13:00"/>
 <meta property="article:modified_time" content="2019-02-26T07:31:35&#43;13:00"/>
 
 <meta itemprop="name" content="25. Bash Shell - Text Processing: uniq, comm">
@@ -199,7 +200,6 @@
         </figcaption>
 </figure>
 
-
 <p>By default, the uniq command output does not include subsequently repeated contents:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -215,7 +215,6 @@
             <h4>Output all but not the subsequently repeated contents</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="repeated-contents">Repeated Contents</h2>
 
@@ -237,7 +236,6 @@ uniq --repeated uniq_file.txt</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h2 id="unique-contents">Unique Contents</h2>
 
 <p>We can add the -u or &ndash;unique parameter to output the file&rsquo;s unique contents:</p>
@@ -257,7 +255,6 @@ uniq --unique uniq_file.txt</code></pre></td></tr></table>
             <h4>Output uniq_file.txt file&#39;s unique contents</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="repeated-contents-without-case-sensitivity">Repeated Contents Without Case Sensitivity</h2>
 
@@ -279,7 +276,6 @@ uniq --repeated --ignore-case uniq_file.txt</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h2 id="contents-with-their-occurrence-numbers">Contents With Their Occurrence Numbers</h2>
 
 <p>We can add the -c or &ndash;count to output the file&rsquo;s repeated contents without case sensitivity:</p>
@@ -299,7 +295,6 @@ uniq --count uniq_file.txt</code></pre></td></tr></table>
             <h4>Output uniq_file.txt file&#39;s contents with their occurrence numbers</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="compared-result">Compared Result</h1>
 
@@ -325,7 +320,6 @@ cat file2</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <p>By default, comm outputs three columns of data, the first column is unique to the first file, the second column is unique to the second file, and the third column is the co-existent contents of the two files:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -341,7 +335,6 @@ cat file2</code></pre></td></tr></table>
             <h4>Compares file file1 to file file2</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="hide-first-column">Hide First Column</h2>
 
@@ -361,7 +354,6 @@ cat file2</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h2 id="hide-second-column">Hide Second Column</h2>
 
 <p>We can hide the first column with the -2 parameter:</p>
@@ -379,7 +371,6 @@ cat file2</code></pre></td></tr></table>
             <h4>Hide second column</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="hide-third-column">Hide Third Column</h2>
 
@@ -399,7 +390,6 @@ cat file2</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h2 id="show-first-column">Show First Column</h2>
 
 <p>We can hide the first column with the -23 parameter:</p>
@@ -417,7 +407,6 @@ cat file2</code></pre></td></tr></table>
             <h4>Show first column</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="show-second-column">Show Second Column</h2>
 
@@ -437,7 +426,6 @@ cat file2</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h2 id="show-third-column">Show Third Column</h2>
 
 <p>We can hide the first column with the -12 parameter:</p>
@@ -455,7 +443,6 @@ cat file2</code></pre></td></tr></table>
             <h4>Show third column</h4>
         </figcaption>
 </figure>
-
 
 <blockquote>
 <p>References

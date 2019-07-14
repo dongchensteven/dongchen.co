@@ -16,17 +16,14 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="Command Prompt Overview The command prompt looks like the following:
-  Command prompt   View Settings of Current Command Prompt There are several ways we can view the settings for the command prompt.
-$PS1 Variable We can get the command-line prompt setting by printing the environment variable $PS1:
-1  echo $PS1     Command prompt   set Command 1  set | grep PS1     Command prompt   Command Prompt Settings Modification Temporarily Back Up the Original Settings Let&amp;rsquo;s temporarily back up the current command prompt settings:" /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="Dong Chen" /><meta name="description" content="" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
 
 <link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/19.-bash-shell-command-prompt-settings-customization/" />
@@ -43,34 +40,26 @@ $PS1 Variable We can get the command-line prompt setting by printing the environ
 
 
 <meta property="og:title" content="19. Bash Shell - Command Prompt Settings Customization" />
-<meta property="og:description" content="Command Prompt Overview The command prompt looks like the following:
-  Command prompt   View Settings of Current Command Prompt There are several ways we can view the settings for the command prompt.
-$PS1 Variable We can get the command-line prompt setting by printing the environment variable $PS1:
-1  echo $PS1     Command prompt   set Command 1  set | grep PS1     Command prompt   Command Prompt Settings Modification Temporarily Back Up the Original Settings Let&rsquo;s temporarily back up the current command prompt settings:" />
+<meta property="og:description" content="" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/19.-bash-shell-command-prompt-settings-customization/" /><meta property="article:published_time" content="2019-02-20T07:42:28&#43;13:00"/>
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/19.-bash-shell-command-prompt-settings-customization/" />
+<meta property="article:published_time" content="2019-02-20T07:42:28&#43;13:00"/>
 <meta property="article:modified_time" content="2019-02-20T07:42:28&#43;13:00"/>
 
 <meta itemprop="name" content="19. Bash Shell - Command Prompt Settings Customization">
-<meta itemprop="description" content="Command Prompt Overview The command prompt looks like the following:
-  Command prompt   View Settings of Current Command Prompt There are several ways we can view the settings for the command prompt.
-$PS1 Variable We can get the command-line prompt setting by printing the environment variable $PS1:
-1  echo $PS1     Command prompt   set Command 1  set | grep PS1     Command prompt   Command Prompt Settings Modification Temporarily Back Up the Original Settings Let&rsquo;s temporarily back up the current command prompt settings:">
+<meta itemprop="description" content="">
 
 
 <meta itemprop="datePublished" content="2019-02-20T07:42:28&#43;13:00" />
 <meta itemprop="dateModified" content="2019-02-20T07:42:28&#43;13:00" />
-<meta itemprop="wordCount" content="1174">
+<meta itemprop="wordCount" content="1176">
 
 
 
 <meta itemprop="keywords" content="Linux,Server," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="19. Bash Shell - Command Prompt Settings Customization"/>
-<meta name="twitter:description" content="Command Prompt Overview The command prompt looks like the following:
-  Command prompt   View Settings of Current Command Prompt There are several ways we can view the settings for the command prompt.
-$PS1 Variable We can get the command-line prompt setting by printing the environment variable $PS1:
-1  echo $PS1     Command prompt   set Command 1  set | grep PS1     Command prompt   Command Prompt Settings Modification Temporarily Back Up the Original Settings Let&rsquo;s temporarily back up the current command prompt settings:"/>
+<meta name="twitter:description" content=""/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -140,7 +129,7 @@ $PS1 Variable We can get the command-line prompt setting by printing the environ
         <div class="post-category">
             <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
             </div>
-          <span class="more-meta"> 1174 words </span>
+          <span class="more-meta"> 1176 words </span>
           <span class="more-meta"> 6 mins read </span>
         
       </div>
@@ -164,7 +153,6 @@ $PS1 Variable We can get the command-line prompt setting by printing the environ
 <li><a href="#set-a-beep-sound">Set a Beep Sound</a></li>
 <li><a href="#show-date-in-week-month-date">Show Date in Week, Month, Date</a></li>
 <li><a href="#show-date-in-customized-format">Show Date in Customized Format</a></li>
-<li><a href="#show-hostname-content-before-the-first-dot">Show Hostname Content Before the First Dot</a></li>
 <li><a href="#show-the-whole-hostname">Show the Whole Hostname</a></li>
 <li><a href="#show-the-number-of-jobs-managed-by-shell">Show the Number of Jobs Managed By Shell</a></li>
 <li><a href="#show-an-extra-line-when-line-breaks">Show an Extra Line When Line Breaks</a></li>
@@ -200,7 +188,6 @@ $PS1 Variable We can get the command-line prompt setting by printing the environ
         </figcaption>
 </figure>
 
-
 <h1 id="view-settings-of-current-command-prompt">View Settings of Current Command Prompt</h1>
 
 <p>There are several ways we can view the settings for the command prompt.</p>
@@ -223,7 +210,6 @@ $PS1 Variable We can get the command-line prompt setting by printing the environ
         </figcaption>
 </figure>
 
-
 <h2 id="set-command">set Command</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -239,7 +225,6 @@ $PS1 Variable We can get the command-line prompt setting by printing the environ
             <h4>Command prompt</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="command-prompt-settings-modification">Command Prompt Settings Modification</h1>
 
@@ -261,14 +246,12 @@ $PS1 Variable We can get the command-line prompt setting by printing the environ
         </figcaption>
 </figure>
 
-
 <figure>
     <img src="../images/19/echo_ps1_bak.png"
          alt="img"/> <figcaption>
             <h4>Check the temporarily backed up command prompt&#39;s settings</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="set-command-prompt-to-show-nothing">Set Command Prompt to Show Nothing</h2>
 <div class="highlight"><div class="chroma">
@@ -286,7 +269,6 @@ $PS1 Variable We can get the command-line prompt setting by printing the environ
         </figcaption>
 </figure>
 
-
 <p>Let&rsquo;s check if the command-line prompt can still working properly:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -302,7 +284,6 @@ $PS1 Variable We can get the command-line prompt setting by printing the environ
             <h4>The command prompt is still working</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="set-a-beep-sound">Set a Beep Sound</h2>
 
@@ -322,7 +303,6 @@ $PS1 Variable We can get the command-line prompt setting by printing the environ
         </figcaption>
 </figure>
 
-
 <h2 id="show-date-in-week-month-date">Show Date in Week, Month, Date</h2>
 
 <p>We can use the special character \d to display weeks, months, and date at the command line prompt:</p>
@@ -341,7 +321,6 @@ $PS1 Variable We can get the command-line prompt setting by printing the environ
         </figcaption>
 </figure>
 
-
 <h2 id="show-date-in-customized-format">Show Date in Customized Format</h2>
 
 <p>We can use the special character \D{format} to display customized date format at the command line prompt:</p>
@@ -353,32 +332,28 @@ $PS1 Variable We can get the command-line prompt setting by printing the environ
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\D{%d/%m/%y}&#39;</span></code></pre></td></tr></table>
 </div>
 </div>
-<p><figure>
+<figure>
     <img src="../images/19/ps1_customized_date_format.png"
          alt="img"/> <figcaption>
             <h4>Show customized date format. We can use PS1= to reset the settings</h4>
         </figcaption>
 </figure>
-ps1_h_first_part</p>
+ps1_h_first_part
 
-<h2 id="show-hostname-content-before-the-first-dot">Show Hostname Content Before the First Dot</h2>
+## Show Hostname Content Before the First Dot
 
-<p>We can use the special character \h to display the content before the first dot of the hostname at the command line prompt:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\h&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
+We can use the special character \h to display the content before the first dot of the hostname at the command line prompt:
+
+```bash
+PS1='\h'
+```
+
 <figure>
     <img src="../images/19/ps1_h_content_before_first_dot.png"
          alt="img"/> <figcaption>
             <h4>Show first part of the host. We can use PS1= to reset the settings</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="show-the-whole-hostname">Show the Whole Hostname</h2>
 
@@ -398,7 +373,6 @@ ps1_h_first_part</p>
         </figcaption>
 </figure>
 
-
 <h2 id="show-the-number-of-jobs-managed-by-shell">Show the Number of Jobs Managed By Shell</h2>
 
 <p>We can use the special character \j to display the number of jobs managed by shell at the command line prompt:</p>
@@ -416,7 +390,6 @@ ps1_h_first_part</p>
             <h4>Show the number of shell managed jobs. We can use PS1= to reset the settings</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="show-an-extra-line-when-line-breaks">Show an Extra Line When Line Breaks</h2>
 
@@ -436,7 +409,6 @@ ps1_h_first_part</p>
         </figcaption>
 </figure>
 
-
 <h2 id="show-the-name-of-the-shell">Show the Name of the Shell</h2>
 
 <p>We can use the special character \s to display the name of the shell at the command line prompt:</p>
@@ -454,7 +426,6 @@ ps1_h_first_part</p>
             <h4>Show the shell&#39;s name. We can use PS1= to reset the settings</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="show-the-time-in-twenty-four-hour-format">Show the Time in Twenty-Four Hour Format</h2>
 
@@ -474,7 +445,6 @@ ps1_h_first_part</p>
         </figcaption>
 </figure>
 
-
 <p>We can use \A to show time without the second part:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -490,7 +460,6 @@ ps1_h_first_part</p>
             <h4>Show the 24-hour format time without second part. We can use PS1= to reset the settings</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="show-the-time-in-twelve-hour-format">Show the Time in Twelve Hour Format</h2>
 
@@ -510,7 +479,6 @@ ps1_h_first_part</p>
         </figcaption>
 </figure>
 
-
 <h2 id="show-the-time-in-twelve-hour-am-pm-format">Show the Time in Twelve Hour AM/PM Format</h2>
 
 <p>We can use the special character \@ to display the time in 12-hour am/pm format at the command line prompt:</p>
@@ -528,7 +496,6 @@ ps1_h_first_part</p>
             <h4>Show the 12-hour am/pm format time. We can use PS1= to reset the settings</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="show-the-name-of-the-current-user">Show the Name of the Current User</h2>
 
@@ -548,7 +515,6 @@ ps1_h_first_part</p>
         </figcaption>
 </figure>
 
-
 <h2 id="show-the-version-of-the-bash">Show the Version of the Bash</h2>
 
 <p>We can use the special character \v to display the version of the bash at the command line prompt:</p>
@@ -567,7 +533,6 @@ ps1_h_first_part</p>
         </figcaption>
 </figure>
 
-
 <h2 id="show-the-release-of-the-bash">Show the Release of the Bash</h2>
 
 <p>We can use the special character \V to display the release (version and patch level) of the bash at the command line prompt:</p>
@@ -585,7 +550,6 @@ ps1_h_first_part</p>
             <h4>Show the bash&#39;s version and patch level. We can use PS1= to reset the settings</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="show-the-whole-current-working-directory">Show the Whole Current Working Directory</h2>
 
@@ -609,7 +573,6 @@ ps1_h_first_part</p>
         </figcaption>
 </figure>
 
-
 <h2 id="show-only-the-current-working-directory">Show Only the Current Working Directory</h2>
 
 <p>We can use the special character \W to display the whole path of current working directory at the command line prompt:</p>
@@ -627,7 +590,6 @@ ps1_h_first_part</p>
             <h4>Show only the current working directory. We can use PS1= to reset the settings</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="show-the-history-number-of-the-command">Show the History Number of the Command</h2>
 
@@ -647,7 +609,6 @@ ps1_h_first_part</p>
         </figcaption>
 </figure>
 
-
 <h2 id="show-the-command-number-of-the-command">Show the Command Number of the Command</h2>
 
 <p>We can use the special character # to display the command number of the command at the command line prompt:</p>
@@ -665,7 +626,6 @@ ps1_h_first_part</p>
             <h4>Show the command&#39;s command number. We can use PS1= to reset the settings</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="show-the-identity-of-a-user">Show the Identity of a User</h2>
 
@@ -687,7 +647,6 @@ ps1_h_first_part</p>
         </figcaption>
 </figure>
 
-
 <h2 id="show-a-backslash">Show a Backslash</h2>
 
 <p>We can use the special character \ to display a backslash at the command line prompt:</p>
@@ -705,7 +664,6 @@ ps1_h_first_part</p>
             <h4>Show a backslash. We can use PS1= to reset the settings</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="restore-from-backup">Restore from Backup</h1>
 
@@ -725,7 +683,6 @@ ps1_h_first_part</p>
         </figcaption>
 </figure>
 
-
 <h1 id="mimic-the-default-settings">Mimic the Default Settings</h1>
 
 <p>We can mimic the default setting:</p>
@@ -743,7 +700,6 @@ ps1_h_first_part</p>
             <h4>Mimic the default settings. We can use PS1= to reset the settings</h4>
         </figcaption>
 </figure>
-
 
 <blockquote>
 <p>References

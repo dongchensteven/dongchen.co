@@ -16,17 +16,14 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="With a directory stack, we can push the directories we visit sequentially into the directory stack, and when we&amp;rsquo;ve done a series of operations, we can go all the way back to the origin based on the record of the directory stack.
-Directory Stack Commands The directory stack provides us with three available commands.
-dirs Displays all directories recorded in the directory stack:
-1  help dirs     Check dirs&amp;#39;s definition and usage   pushd Records the specified directory to the directory stack and switches the working directory to the recorded directory:" /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="Dong Chen" /><meta name="description" content="" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
 
 <link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/18.-bash-shell-directory-stack-builtins/" />
@@ -43,19 +40,14 @@ dirs Displays all directories recorded in the directory stack:
 
 
 <meta property="og:title" content="18. Bash Shell - Directory Stack Builtins" />
-<meta property="og:description" content="With a directory stack, we can push the directories we visit sequentially into the directory stack, and when we&rsquo;ve done a series of operations, we can go all the way back to the origin based on the record of the directory stack.
-Directory Stack Commands The directory stack provides us with three available commands.
-dirs Displays all directories recorded in the directory stack:
-1  help dirs     Check dirs&#39;s definition and usage   pushd Records the specified directory to the directory stack and switches the working directory to the recorded directory:" />
+<meta property="og:description" content="" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/18.-bash-shell-directory-stack-builtins/" /><meta property="article:published_time" content="2019-02-19T08:31:14&#43;13:00"/>
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/18.-bash-shell-directory-stack-builtins/" />
+<meta property="article:published_time" content="2019-02-19T08:31:14&#43;13:00"/>
 <meta property="article:modified_time" content="2019-02-19T08:31:14&#43;13:00"/>
 
 <meta itemprop="name" content="18. Bash Shell - Directory Stack Builtins">
-<meta itemprop="description" content="With a directory stack, we can push the directories we visit sequentially into the directory stack, and when we&rsquo;ve done a series of operations, we can go all the way back to the origin based on the record of the directory stack.
-Directory Stack Commands The directory stack provides us with three available commands.
-dirs Displays all directories recorded in the directory stack:
-1  help dirs     Check dirs&#39;s definition and usage   pushd Records the specified directory to the directory stack and switches the working directory to the recorded directory:">
+<meta itemprop="description" content="">
 
 
 <meta itemprop="datePublished" content="2019-02-19T08:31:14&#43;13:00" />
@@ -67,10 +59,7 @@ dirs Displays all directories recorded in the directory stack:
 <meta itemprop="keywords" content="Linux,Server," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="18. Bash Shell - Directory Stack Builtins"/>
-<meta name="twitter:description" content="With a directory stack, we can push the directories we visit sequentially into the directory stack, and when we&rsquo;ve done a series of operations, we can go all the way back to the origin based on the record of the directory stack.
-Directory Stack Commands The directory stack provides us with three available commands.
-dirs Displays all directories recorded in the directory stack:
-1  help dirs     Check dirs&#39;s definition and usage   pushd Records the specified directory to the directory stack and switches the working directory to the recorded directory:"/>
+<meta name="twitter:description" content=""/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -210,7 +199,6 @@ dirs Displays all directories recorded in the directory stack:
         </figcaption>
 </figure>
 
-
 <h2 id="pushd">pushd</h2>
 
 <p>Records the specified directory to the directory stack and switches the working directory to the recorded directory:</p>
@@ -229,7 +217,6 @@ dirs Displays all directories recorded in the directory stack:
         </figcaption>
 </figure>
 
-
 <h2 id="popd">popd</h2>
 
 <p>Remove the last directory recorded in the directory stack and switch the working directory to the removed directory:</p>
@@ -247,7 +234,6 @@ dirs Displays all directories recorded in the directory stack:
             <h4>Check popd&#39;s definition and usage</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="preparing-directories">Preparing Directories</h1>
 
@@ -268,7 +254,6 @@ tree a</code></pre></td></tr></table>
             <h4>Create nested directories and show their tree structure</h4>
         </figcaption>
 </figure>
-
 
 <p>Now that we have some nested directories, we can begin to demonstrate. The directory stack can store any directory we push into, and the nested directory is used here just for ease of operation.</p>
 
@@ -308,7 +293,6 @@ tree a</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h2 id="show-recorded-directories">Show Recorded Directories</h2>
 
 <h3 id="by-default">By Default</h3>
@@ -329,7 +313,6 @@ tree a</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h3 id="with-user-home-directory-name">With User Home Directory Name</h3>
 
 <p>Use <em>dirs -l</em> to print the recorded directories with user home directory&rsquo;s name instead of a tilde:</p>
@@ -347,7 +330,6 @@ tree a</code></pre></td></tr></table>
             <h4>Show the directory stack recorded directories with user home name instead of a tilde</h4>
         </figcaption>
 </figure>
-
 
 <h3 id="line-by-line">Line by Line</h3>
 
@@ -367,7 +349,6 @@ tree a</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h3 id="line-by-line-with-their-indexes">Line by Line With Their Indexes</h3>
 
 <p>Use <em>dirs -v</em> to print the recorded directories line by line with their indexes:</p>
@@ -385,7 +366,6 @@ tree a</code></pre></td></tr></table>
             <h4>Show the directory stack recorded directories line by line with their indexes</h4>
         </figcaption>
 </figure>
-
 
 <h3 id="first-recorded-directory">First Recorded Directory</h3>
 
@@ -405,7 +385,6 @@ tree a</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h3 id="last-recorded-directory">Last Recorded Directory</h3>
 
 <p>Use <em>dirs +0</em> to print the last recorded directory:</p>
@@ -423,7 +402,6 @@ tree a</code></pre></td></tr></table>
             <h4>Show the last recorded directory</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="use-recorded-directories">Use Recorded Directories</h2>
 
@@ -445,7 +423,6 @@ tree a</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h3 id="use-from-left">Use From left</h3>
 
 <p>Use <em>pushd +1</em> to change to the directory before the leftmost one and use it as a working directory:</p>
@@ -463,7 +440,6 @@ tree a</code></pre></td></tr></table>
             <h4>Use the previous recorded directory</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="remove-recorded-directories">Remove Recorded Directories</h2>
 
@@ -485,7 +461,6 @@ tree a</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h3 id="remove-from-left">Remove From left</h3>
 
 <p>Use <em>popd +0</em> to remove the leftmost directory and use the previous directory as a working directory:</p>
@@ -503,7 +478,6 @@ tree a</code></pre></td></tr></table>
             <h4>Remove the last recorded directory and use the previous recorded directory as the working directory</h4>
         </figcaption>
 </figure>
-
 
 <blockquote>
 <p>References

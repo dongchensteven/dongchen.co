@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
 
 <link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/34.-system-context-time/" />
@@ -43,7 +43,8 @@
 <meta property="og:title" content="34. System Context - Time" />
 <meta property="og:description" content="Linux provides commands that allow you to view system&rsquo;s time information, and with these commands, you can quickly get the time related information." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/34.-system-context-time/" /><meta property="article:published_time" content="2019-03-07T07:35:44&#43;13:00"/>
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/34.-system-context-time/" />
+<meta property="article:published_time" content="2019-03-07T07:35:44&#43;13:00"/>
 <meta property="article:modified_time" content="2019-03-07T07:35:44&#43;13:00"/>
 
 <meta itemprop="name" content="34. System Context - Time">
@@ -189,7 +190,6 @@
         </figcaption>
 </figure>
 
-
 <h2 id="timezone">Timezone</h2>
 
 <p>We can use the TZ variable to specify the time zone where our server is located:</p>
@@ -209,7 +209,6 @@ date</code></pre></td></tr></table>
             <h4>Changes timezone to Pacific Auckland</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="time-in-difference-timezone">Time in Difference Timezone</h2>
 
@@ -231,7 +230,6 @@ date --date<span class="o">=</span><span class="s1">&#39;TZ=&#34;Pacific/Aucklan
         </figcaption>
 </figure>
 
-
 <h2 id="hour-24-hour-format">Hour - 24-hour format</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -247,7 +245,6 @@ date --date<span class="o">=</span><span class="s1">&#39;TZ=&#34;Pacific/Aucklan
             <h4>Outputs current hour in 24 hours format</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="hour-24-hour-space-padded-format">Hour - 24-hour space padded format</h2>
 <div class="highlight"><div class="chroma">
@@ -265,7 +262,6 @@ date --date<span class="o">=</span><span class="s1">&#39;TZ=&#34;Pacific/Aucklan
         </figcaption>
 </figure>
 
-
 <h2 id="hour-12-hour-format">Hour - 12-hour format</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -281,7 +277,6 @@ date --date<span class="o">=</span><span class="s1">&#39;TZ=&#34;Pacific/Aucklan
             <h4>Outputs current hour in 12 hours format</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="hour-12-hour-space-padded-format">Hour - 12-hour space padded format</h2>
 <div class="highlight"><div class="chroma">
@@ -299,7 +294,6 @@ date --date<span class="o">=</span><span class="s1">&#39;TZ=&#34;Pacific/Aucklan
         </figcaption>
 </figure>
 
-
 <h2 id="minute">Minute</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -315,7 +309,6 @@ date --date<span class="o">=</span><span class="s1">&#39;TZ=&#34;Pacific/Aucklan
             <h4>Outputs current minutes</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="second">Second</h2>
 <div class="highlight"><div class="chroma">
@@ -333,7 +326,6 @@ date --date<span class="o">=</span><span class="s1">&#39;TZ=&#34;Pacific/Aucklan
         </figcaption>
 </figure>
 
-
 <h2 id="nanosecond">Nanosecond</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -349,7 +341,6 @@ date --date<span class="o">=</span><span class="s1">&#39;TZ=&#34;Pacific/Aucklan
             <h4>Outputs current nanoseconds</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="seconds-since-epoch-timestamp">Seconds Since Epoch (Timestamp)</h2>
 <div class="highlight"><div class="chroma">
@@ -367,7 +358,6 @@ date --date<span class="o">=</span><span class="s1">&#39;TZ=&#34;Pacific/Aucklan
         </figcaption>
 </figure>
 
-
 <h2 id="time-24-hour-format-hour-minute-second">Time - 24-hour format (Hour:Minute:Second)</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -383,7 +373,6 @@ date --date<span class="o">=</span><span class="s1">&#39;TZ=&#34;Pacific/Aucklan
             <h4>Outputs hour, minute, second in 24-hour time</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="time-24-hour-format-hour-minute">Time - 24-hour format (Hour:Minute)</h2>
 <div class="highlight"><div class="chroma">
@@ -401,7 +390,6 @@ date --date<span class="o">=</span><span class="s1">&#39;TZ=&#34;Pacific/Aucklan
         </figcaption>
 </figure>
 
-
 <h2 id="locale-time-24-hour-clock-time">Locale Time - 24-hour Clock Time</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -417,7 +405,6 @@ date --date<span class="o">=</span><span class="s1">&#39;TZ=&#34;Pacific/Aucklan
             <h4>Outputs 24-hour clock time</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="locale-time-12-hour-clock-time">Locale Time - 12-hour Clock Time</h2>
 <div class="highlight"><div class="chroma">
@@ -435,7 +422,6 @@ date --date<span class="o">=</span><span class="s1">&#39;TZ=&#34;Pacific/Aucklan
         </figcaption>
 </figure>
 
-
 <h2 id="am-or-pm-uppercase">AM or PM - Uppercase</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -451,7 +437,6 @@ date --date<span class="o">=</span><span class="s1">&#39;TZ=&#34;Pacific/Aucklan
             <h4>Outputs a.m. or p.m. in uppercase</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="am-or-pm-lowercase">AM or PM - Lowercase</h2>
 <div class="highlight"><div class="chroma">
@@ -469,7 +454,6 @@ date --date<span class="o">=</span><span class="s1">&#39;TZ=&#34;Pacific/Aucklan
         </figcaption>
 </figure>
 
-
 <h2 id="timezone-four-digits">Timezone - Four Digits</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -485,7 +469,6 @@ date --date<span class="o">=</span><span class="s1">&#39;TZ=&#34;Pacific/Aucklan
             <h4>Outputs four digits timezone</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="timezone-nearest-minute">Timezone - Nearest Minute</h2>
 <div class="highlight"><div class="chroma">
@@ -503,7 +486,6 @@ date --date<span class="o">=</span><span class="s1">&#39;TZ=&#34;Pacific/Aucklan
         </figcaption>
 </figure>
 
-
 <h2 id="timezone-nearest-second">Timezone - Nearest Second</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -519,7 +501,6 @@ date --date<span class="o">=</span><span class="s1">&#39;TZ=&#34;Pacific/Aucklan
             <h4>Outputs timezone in nearest second</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="timezone-minimum-necessary-precision">Timezone - Minimum Necessary Precision</h2>
 <div class="highlight"><div class="chroma">
@@ -537,7 +518,6 @@ date --date<span class="o">=</span><span class="s1">&#39;TZ=&#34;Pacific/Aucklan
         </figcaption>
 </figure>
 
-
 <h2 id="timezone-alphabetic-abbreviation">Timezone - Alphabetic Abbreviation</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -553,7 +533,6 @@ date --date<span class="o">=</span><span class="s1">&#39;TZ=&#34;Pacific/Aucklan
             <h4>Outputs the timezone in alphabetic abbreviation</h4>
         </figcaption>
 </figure>
-
 
 <blockquote>
 <p>References

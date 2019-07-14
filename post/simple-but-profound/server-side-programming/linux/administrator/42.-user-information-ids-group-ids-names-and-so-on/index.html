@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
 
 <link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/42.-user-information-ids-group-ids-names-and-so-on/" />
@@ -43,7 +43,8 @@
 <meta property="og:title" content="42. User Information - IDs, Group IDs, Names, and so on" />
 <meta property="og:description" content="The Linux core toolset provides us with some commands to view user-related information." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/42.-user-information-ids-group-ids-names-and-so-on/" /><meta property="article:published_time" content="2019-03-14T07:43:04&#43;13:00"/>
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/42.-user-information-ids-group-ids-names-and-so-on/" />
+<meta property="article:published_time" content="2019-03-14T07:43:04&#43;13:00"/>
 <meta property="article:modified_time" content="2019-03-14T07:43:04&#43;13:00"/>
 
 <meta itemprop="name" content="42. User Information - IDs, Group IDs, Names, and so on">
@@ -180,7 +181,6 @@
         </figcaption>
 </figure>
 
-
 <h2 id="print-the-user-id">Print the User ID</h2>
 
 <p>If we add the -u option, the command will only output the user&rsquo;s ID:</p>
@@ -198,7 +198,6 @@
             <h4>Output the user&#39;s ID</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="print-the-group-id">Print the Group ID</h2>
 
@@ -218,7 +217,6 @@
         </figcaption>
 </figure>
 
-
 <h2 id="print-the-group-id-and-the-supplementary-groups">Print the Group ID and the Supplementary Groups</h2>
 
 <p>If we add the -G option, the command will only output the supplementary groups&rsquo; ID:</p>
@@ -236,7 +234,6 @@
             <h4>Output the user&#39;s group ID and supplementary groups</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="print-the-name-group-name-supplementary-group-name-of-the-user">Print the Name, Group Name, Supplementary Group Name of the User</h2>
 
@@ -260,7 +257,6 @@ id -Gn    <span class="c1"># This is equivalent to id -G --name</span></code></p
         </figcaption>
 </figure>
 
-
 <h2 id="print-the-real-id-real-group-id-real-supplementary-group-id-of-the-user">Print the Real ID, Real Group ID, Real Supplementary Group ID of the User</h2>
 
 <p>If we add the -ur, -gr or -Gr option, the command will only output the user&rsquo;s real ID, group real ID, and supplementary group&rsquo;s real ID:</p>
@@ -283,7 +279,6 @@ id -Gr    <span class="c1"># This is equivalent to id -G --real</span></code></p
         </figcaption>
 </figure>
 
-
 <h2 id="print-the-security-context-of-the-user">Print the Security Context of the User</h2>
 
 <p>If we add the -Z option, the command will only output the user&rsquo;s security context:</p>
@@ -301,7 +296,6 @@ id -Gr    <span class="c1"># This is equivalent to id -G --real</span></code></p
             <h4>Output the user&#39;s security context</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="print-current-login-name">Print Current Login Name</h1>
 
@@ -321,7 +315,6 @@ id -Gr    <span class="c1"># This is equivalent to id -G --real</span></code></p
         </figcaption>
 </figure>
 
-
 <h1 id="print-who-is-currently-logged-in">Print Who is Currently Logged in</h1>
 
 <p>We can use who command to display the logged in user names and other login details:</p>
@@ -339,7 +332,6 @@ id -Gr    <span class="c1"># This is equivalent to id -G --real</span></code></p
             <h4>Output the information about users who are currently logged on</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="print-effective-user-id">Print Effective User ID</h1>
 
@@ -359,7 +351,6 @@ id -Gr    <span class="c1"># This is equivalent to id -G --real</span></code></p
         </figcaption>
 </figure>
 
-
 <h1 id="print-group-names-the-user-belongs-to">Print Group Names the User Belongs to</h1>
 
 <p>We can use group command to display the user&rsquo;s belonging group names:</p>
@@ -377,7 +368,6 @@ id -Gr    <span class="c1"># This is equivalent to id -G --real</span></code></p
             <h4>Output the user&#39;s beloging groups</h4>
         </figcaption>
 </figure>
-
 
 <p>Or we can specify a user name to view the group to which the user belongs:</p>
 <div class="highlight"><div class="chroma">
@@ -406,7 +396,6 @@ id -Gr    <span class="c1"># This is equivalent to id -G --real</span></code></p
         </figcaption>
 </figure>
 
-
 <h1 id="print-user-details-with-finger">Print User Details With finger</h1>
 
 <p>We can use finger command to display the user names currently logged in:</p>
@@ -426,7 +415,6 @@ finger root</code></pre></td></tr></table>
             <h4>Output the details of the specified user</h4>
         </figcaption>
 </figure>
-
 
 <blockquote>
 <p>References

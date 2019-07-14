@@ -16,16 +16,14 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="We usually need to change the display of some text, and these changes can be made through the text changing command.
-Delete char We can use Ctrl &#43; D to delete the character on the current cursor:
-1  Ctrl &#43; D # press Control and D keys     before manipulating     after manipulating   Backward delete char We can use Backspace to delete the character before the current cursor:" /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="Dong Chen" /><meta name="description" content="" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
 
 <link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/15.-bash-shell-text-manipulation/" />
@@ -42,17 +40,14 @@ Delete char We can use Ctrl &#43; D to delete the character on the current curso
 
 
 <meta property="og:title" content="15. Bash Shell - Text Manipulation" />
-<meta property="og:description" content="We usually need to change the display of some text, and these changes can be made through the text changing command.
-Delete char We can use Ctrl &#43; D to delete the character on the current cursor:
-1  Ctrl &#43; D # press Control and D keys     before manipulating     after manipulating   Backward delete char We can use Backspace to delete the character before the current cursor:" />
+<meta property="og:description" content="" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/15.-bash-shell-text-manipulation/" /><meta property="article:published_time" content="2019-02-16T08:05:01&#43;13:00"/>
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/15.-bash-shell-text-manipulation/" />
+<meta property="article:published_time" content="2019-02-16T08:05:01&#43;13:00"/>
 <meta property="article:modified_time" content="2019-02-16T08:05:01&#43;13:00"/>
 
 <meta itemprop="name" content="15. Bash Shell - Text Manipulation">
-<meta itemprop="description" content="We usually need to change the display of some text, and these changes can be made through the text changing command.
-Delete char We can use Ctrl &#43; D to delete the character on the current cursor:
-1  Ctrl &#43; D # press Control and D keys     before manipulating     after manipulating   Backward delete char We can use Backspace to delete the character before the current cursor:">
+<meta itemprop="description" content="">
 
 
 <meta itemprop="datePublished" content="2019-02-16T08:05:01&#43;13:00" />
@@ -64,9 +59,7 @@ Delete char We can use Ctrl &#43; D to delete the character on the current curso
 <meta itemprop="keywords" content="Linux,Server," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="15. Bash Shell - Text Manipulation"/>
-<meta name="twitter:description" content="We usually need to change the display of some text, and these changes can be made through the text changing command.
-Delete char We can use Ctrl &#43; D to delete the character on the current cursor:
-1  Ctrl &#43; D # press Control and D keys     before manipulating     after manipulating   Backward delete char We can use Backspace to delete the character before the current cursor:"/>
+<meta name="twitter:description" content=""/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -179,14 +172,12 @@ Delete char We can use Ctrl &#43; D to delete the character on the current curso
         </figcaption>
 </figure>
 
-
 <figure>
     <img src="../images/15/cursor_removed_the_first_char.png"
          alt="img"/> <figcaption>
             <h4>after manipulating</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="backward-delete-char">Backward delete char</h1>
 
@@ -206,14 +197,12 @@ Delete char We can use Ctrl &#43; D to delete the character on the current curso
         </figcaption>
 </figure>
 
-
 <figure>
     <img src="../images/15/cursor_removed_the_last_char_of_the_first_word.png"
          alt="img"/> <figcaption>
             <h4>after manipulating</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="exchange-chars">Exchange chars</h1>
 
@@ -233,14 +222,12 @@ Delete char We can use Ctrl &#43; D to delete the character on the current curso
         </figcaption>
 </figure>
 
-
 <figure>
     <img src="../images/15/cursor_swapped_the_second_char_to_the_first_char.png"
          alt="img"/> <figcaption>
             <h4>after manipulating</h4>
         </figcaption>
 </figure>
-
 
 <p>If we want to restore them, we have to move the cursor to the previous position and press the same command.</p>
 
@@ -255,14 +242,12 @@ Delete char We can use Ctrl &#43; D to delete the character on the current curso
         </figcaption>
 </figure>
 
-
 <figure>
     <img src="../images/15/cursor_swapped_the_third_word_to_the_second_word.png"
          alt="img"/> <figcaption>
             <h4>after manipulating</h4>
         </figcaption>
 </figure>
-
 
 <p>If we want to restore them, we have to move the cursor to the beginning of the word &ldquo;Changing&rdquo; and press the same command.</p>
 
@@ -284,14 +269,12 @@ Delete char We can use Ctrl &#43; D to delete the character on the current curso
         </figcaption>
 </figure>
 
-
 <figure>
     <img src="../images/15/cursor_after_the_second_word.png"
          alt="img"/> <figcaption>
             <h4>after manipulating</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="lowercase-word">Lowercase word</h1>
 
@@ -311,14 +294,12 @@ Delete char We can use Ctrl &#43; D to delete the character on the current curso
         </figcaption>
 </figure>
 
-
 <figure>
     <img src="../images/15/cursor_after_the_second_lowercased_word.png"
          alt="img"/> <figcaption>
             <h4>after manipulating</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="capitalize-word">Capitalize word</h1>
 
@@ -338,14 +319,12 @@ Delete char We can use Ctrl &#43; D to delete the character on the current curso
         </figcaption>
 </figure>
 
-
 <figure>
     <img src="../images/15/cursor_after_the_second_capitalized_word.png"
          alt="img"/> <figcaption>
             <h4>after manipulating</h4>
         </figcaption>
 </figure>
-
 
 <blockquote>
 <p>References

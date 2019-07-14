@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
 
 <link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/46.-user-management-creation-modification-and-deletion/" />
@@ -43,7 +43,8 @@
 <meta property="og:title" content="46. User Management - Creation, Modification and Deletion" />
 <meta property="og:description" content="To make it easier to manage users, linux provides some common commands that allow you to add, delete, and modify users in a more standardized way." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/46.-user-management-creation-modification-and-deletion/" /><meta property="article:published_time" content="2019-03-18T20:03:45&#43;13:00"/>
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/46.-user-management-creation-modification-and-deletion/" />
+<meta property="article:published_time" content="2019-03-18T20:03:45&#43;13:00"/>
 <meta property="article:modified_time" content="2019-03-18T20:03:45&#43;13:00"/>
 
 <meta itemprop="name" content="46. User Management - Creation, Modification and Deletion">
@@ -325,7 +326,6 @@ ll /home <span class="p">|</span> grep <span class="s1">&#39;dong&#39;</span></c
         </figcaption>
 </figure>
 
-
 <h2 id="specify-user-comment-full-name">Specify User Comment (Full Name)</h2>
 
 <p>With the -c option, we can specify comment for the user:</p>
@@ -351,7 +351,6 @@ ll /home <span class="p">|</span> grep <span class="s1">&#39;dong_comment&#39;</
             <h4>Output the last created custom comment user&#39;s details in the group, passwd and shadow files</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="specify-home-directory">Specify Home Directory</h2>
 
@@ -379,7 +378,6 @@ ll /home <span class="p">|</span> grep <span class="s1">&#39;dong_home_dir&#39;<
         </figcaption>
 </figure>
 
-
 <h2 id="specify-group">Specify Group</h2>
 
 <p>With the -g option, we can specify the user&rsquo;s group:</p>
@@ -405,7 +403,6 @@ ll /home <span class="p">|</span> grep <span class="s1">&#39;dong_group&#39;</sp
             <h4>Output the last created custom group user&#39;s details in the group, passwd and shadow files. The user is assigned to an existing group, so no new group created</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="specify-user-id">Specify User ID</h2>
 
@@ -433,7 +430,6 @@ ll /home <span class="p">|</span> grep <span class="s1">&#39;dong_id&#39;</span>
         </figcaption>
 </figure>
 
-
 <h2 id="create-system-user">Create System User</h2>
 
 <p>With the -r option, we can create a system user:</p>
@@ -459,7 +455,6 @@ ll /home <span class="p">|</span> grep <span class="s1">&#39;dong_system&#39;</s
             <h4>Output the last created system user&#39;s details in the group, passwd and shadow files. The user doesn&#39;t have home directory and login capability</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="modify-user">Modify User</h1>
 
@@ -560,7 +555,6 @@ id dong_group</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-
 <h1 id="delete-user">Delete User</h1>
 
 <p>We can delete users through the userdel command.</p>
@@ -609,7 +603,6 @@ ll /home <span class="p">|</span> grep <span class="s1">&#39;user_surplus&#39;</
         </figcaption>
 </figure>
 
-
 <h2 id="delete-users-with-related-directories">Delete Users With Related Directories</h2>
 
 <p>With the -r option, the user&rsquo;s home directory and mailbox directory are also deleted:</p>
@@ -636,7 +629,6 @@ ll /home <span class="p">|</span> grep <span class="s1">&#39;user_surplus2&#39;<
         </figcaption>
 </figure>
 
-
 <h1 id="password-file-integrity-verification">Password File Integrity Verification</h1>
 
 <p>We can use pwck command to check the integrity of user accounts:</p>
@@ -654,7 +646,6 @@ ll /home <span class="p">|</span> grep <span class="s1">&#39;user_surplus2&#39;<
             <h4>Output the result of the password files integrity verification</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="user-password">User Password</h1>
 
@@ -720,7 +711,6 @@ cat /etc/shadow <span class="p">|</span> grep <span class="s1">&#39;dong:&#39;</
         </figcaption>
 </figure>
 
-
 <h1 id="users-passwords">Users Passwords</h1>
 
 <p>We can use the chpasswd command to specify or change the users&rsquo; login passwords.</p>
@@ -768,7 +758,6 @@ cat /etc/shadow <span class="p">|</span> grep <span class="s1">&#39;dong:&#39;</
         </figcaption>
 </figure>
 
-
 <p>We use the chpasswd command to bulk change the users&rsquo; passwords:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -788,7 +777,6 @@ cat /etc/shadow <span class="p">|</span> grep -E <span class="s1">&#39;dong:|don
             <h4>Assign passwords to dong and dongchen individually</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="change-shell">Change Shell</h1>
 
@@ -835,7 +823,6 @@ cat /etc/shadow <span class="p">|</span> grep -E <span class="s1">&#39;dong:|don
         </figcaption>
 </figure>
 
-
 <h2 id="change-to-new-shell">Change to New Shell</h2>
 
 <p>With the -s option, we can assign a login shell to the user:</p>
@@ -859,7 +846,6 @@ finger dongchen</code></pre></td></tr></table>
             <h4>Output the newly created user&#39;s details before and after the login shell modification</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="change-finger">Change Finger</h1>
 
@@ -919,7 +905,6 @@ finger dongchen</code></pre></td></tr></table>
             <h4>Output the user&#39;s details before and after the user details modification</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="change-age">Change Age</h1>
 
@@ -990,7 +975,6 @@ finger dongchen</code></pre></td></tr></table>
             <h4>Output the user account&#39;s aging information</h4>
         </figcaption>
 </figure>
-
 
 <blockquote>
 <p>References

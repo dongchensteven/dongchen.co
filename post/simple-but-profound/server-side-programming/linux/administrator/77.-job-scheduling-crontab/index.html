@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
 
 <link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/77.-job-scheduling-crontab/" />
@@ -43,7 +43,8 @@
 <meta property="og:title" content="77. Job Scheduling - crontab" />
 <meta property="og:description" content="crontab is a tool for configuring scheduled tasks. It also maintains each user&rsquo;s own crontab files." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/77.-job-scheduling-crontab/" /><meta property="article:published_time" content="2019-04-18T05:54:38&#43;12:00"/>
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/77.-job-scheduling-crontab/" />
+<meta property="article:published_time" content="2019-04-18T05:54:38&#43;12:00"/>
 <meta property="article:modified_time" content="2019-04-18T05:54:38&#43;12:00"/>
 
 <meta itemprop="name" content="77. Job Scheduling - crontab">
@@ -369,7 +370,6 @@
          alt="img"/> 
 </figure>
 
-
 <p>Install cronie If It Has Not Been Installed Yet</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -392,7 +392,6 @@
     <img src="../images/77/cat_etc_crontab.png"
          alt="img"/> 
 </figure>
-
 
 <p>Here are some configuration fields in /etc/crontab file:</p>
 
@@ -442,14 +441,12 @@ crontab -e    <span class="c1"># This will open the job definition file in edita
          alt="img"/> 
 </figure>
 
-
 <p>After few minutes:</p>
 
 <figure>
     <img src="../images/77/crontab_e_after.png"
          alt="img"/> 
 </figure>
-
 
 <h2 id="list-scheduled-jobs">List Scheduled Jobs</h2>
 <div class="highlight"><div class="chroma">
@@ -464,7 +461,6 @@ crontab -e    <span class="c1"># This will open the job definition file in edita
     <img src="../images/77/crontab_l.png"
          alt="img"/> 
 </figure>
-
 
 <h2 id="delete-scheduled-jobs-with-confirmation">Delete Scheduled Jobs With Confirmation</h2>
 <div class="highlight"><div class="chroma">
@@ -483,7 +479,6 @@ crontab -l</code></pre></td></tr></table>
     <img src="../images/77/crontab_l_ri_l.png"
          alt="img"/> 
 </figure>
-
 
 <blockquote>
 <p>References

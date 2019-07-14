@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
 
 <link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/48.-user-management-communications-between-users/" />
@@ -43,7 +43,8 @@
 <meta property="og:title" content="48. User Management - Communications Between Users" />
 <meta property="og:description" content="Linux provides users with tools to communicate with each other. Some can send messages to a specified user; some can send a group of messages; some can even send content as an email to a user&rsquo;s inbox list." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/48.-user-management-communications-between-users/" /><meta property="article:published_time" content="2019-03-20T04:40:29&#43;13:00"/>
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/48.-user-management-communications-between-users/" />
+<meta property="article:published_time" content="2019-03-20T04:40:29&#43;13:00"/>
 <meta property="article:modified_time" content="2019-03-20T04:40:29&#43;13:00"/>
 
 <meta itemprop="name" content="48. User Management - Communications Between Users">
@@ -172,7 +173,6 @@
         </figcaption>
 </figure>
 
-
 <p>When we know the terminal of the message receiver, we can send some messages to the terminal:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -197,7 +197,6 @@ Root
         </figcaption>
 </figure>
 
-
 <p>When the message is sent, the receiving terminal should print out the content just sent out by the root terminal:</p>
 
 <figure>
@@ -206,7 +205,6 @@ Root
             <h4>Sending message to a user called user</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="disable-or-enable-messaging-function">Disable or Enable Messaging Function</h1>
 
@@ -251,7 +249,6 @@ Root
         </figcaption>
 </figure>
 
-
 <p>When a user attempts to send a message to root, the system displays that root has disabled the messaging feature:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -267,7 +264,6 @@ Root
             <h4>The user attempts to send a message to a root user who has turned off the messaging function</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="group-messaging-function">Group Messaging Function</h1>
 
@@ -287,7 +283,6 @@ Root
         </figcaption>
 </figure>
 
-
 <p>When the message is broadcasted, the receiving terminals should print out the content just sent out by the root terminal:</p>
 
 <figure>
@@ -296,7 +291,6 @@ Root
             <h4>Broadcasting message to all users</h4>
         </figcaption>
 </figure>
-
 
 <h2 id="output-the-message-without-the-banner">Output the Message Without the Banner</h2>
 
@@ -316,7 +310,6 @@ Root
         </figcaption>
 </figure>
 
-
 <p>When the message is broadcasted, the receiving terminals should print out the content just sent out by the root terminal without the banner:</p>
 
 <figure>
@@ -325,7 +318,6 @@ Root
             <h4>Broadcasting message to all users without the banner</h4>
         </figcaption>
 </figure>
-
 
 <h1 id="send-an-email-to-a-user">Send an Email to a User</h1>
 
@@ -364,7 +356,6 @@ User
         </figcaption>
 </figure>
 
-
 <p>The root user&rsquo;s terminal should prompt a message:</p>
 
 <figure>
@@ -373,7 +364,6 @@ User
             <h4>Received an email</h4>
         </figcaption>
 </figure>
-
 
 <p>We can view the newly received mail through the mail command:</p>
 <div class="highlight"><div class="chroma">
@@ -390,7 +380,6 @@ User
             <h4>Viewing the received email</h4>
         </figcaption>
 </figure>
-
 
 <p>When we have finished checking the e-mail, we can terminate the program by pressing the Ctrl + D key combination.</p>
 
