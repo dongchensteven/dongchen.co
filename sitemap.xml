@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/65.-microservices-45/</loc>
+    <lastmod>2019-07-14T21:57:53+12:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/64.-microservices-44/</loc>
     <lastmod>2019-07-12T18:30:07+12:00</lastmod>
     <changefreq>daily</changefreq>
@@ -1116,7 +1123,7 @@
   
   <url>
     <loc>https://dongchen.co/</loc>
-    <lastmod>2019-07-12T18:30:07+12:00</lastmod>
+    <lastmod>2019-07-14T21:57:53+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
@@ -1158,7 +1165,7 @@
   
   <url>
     <loc>https://dongchen.co/tags/java/</loc>
-    <lastmod>2019-07-12T18:30:07+12:00</lastmod>
+    <lastmod>2019-07-14T21:57:53+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
@@ -1221,7 +1228,7 @@
   
   <url>
     <loc>https://dongchen.co/post/</loc>
-    <lastmod>2019-07-12T18:30:07+12:00</lastmod>
+    <lastmod>2019-07-14T21:57:53+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
@@ -1242,14 +1249,14 @@
   
   <url>
     <loc>https://dongchen.co/tags/spring/</loc>
-    <lastmod>2019-07-12T18:30:07+12:00</lastmod>
+    <lastmod>2019-07-14T21:57:53+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://dongchen.co/tags/spring-framework/</loc>
-    <lastmod>2019-07-12T18:30:07+12:00</lastmod>
+    <lastmod>2019-07-14T21:57:53+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
@@ -1277,14 +1284,14 @@
   
   <url>
     <loc>https://dongchen.co/tags/spring-stack/</loc>
-    <lastmod>2019-07-12T18:30:07+12:00</lastmod>
+    <lastmod>2019-07-14T21:57:53+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://dongchen.co/categories/spring-stack-developer-simple-but-profound/</loc>
-    <lastmod>2019-07-12T18:30:07+12:00</lastmod>
+    <lastmod>2019-07-14T21:57:53+12:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0</priority>
   </url>
