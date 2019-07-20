@@ -6,10 +6,19 @@
     <description>Recent content in Java on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 19 Jul 2019 10:27:25 +1200</lastBuildDate>
+    <lastBuildDate>Sat, 20 Jul 2019 21:17:40 +1200</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>73. Microservices 53</title>
+      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/73.-microservices-53/</link>
+      <pubDate>Sat, 20 Jul 2019 21:17:40 +1200</pubDate>
+      
+      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/73.-microservices-53/</guid>
+      <description>&lt;p&gt;pending&amp;hellip;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>72. Microservices 52</title>
