@@ -581,6 +581,30 @@
   </url>
   
   <url>
+    <loc>https://dongchen.co/tags/jedis/</loc>
+    <lastmod>2019-05-07T20:51:45+12:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/tags/redis/</loc>
+    <lastmod>2019-05-07T20:51:45+12:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/tags/redis-client/</loc>
+    <lastmod>2019-05-07T20:51:45+12:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/tags/redis-server/</loc>
+    <lastmod>2019-05-07T20:51:45+12:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/13.-merchant-list-and-detail/</loc>
     <lastmod>2019-05-06T20:05:01+12:00</lastmod>
     <changefreq>daily</changefreq>

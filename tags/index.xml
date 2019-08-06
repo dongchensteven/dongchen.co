@@ -48,6 +48,42 @@
     </item>
     
     <item>
+      <title>Jedis</title>
+      <link>https://dongchen.co/tags/jedis/</link>
+      <pubDate>Tue, 07 May 2019 20:51:45 +1200</pubDate>
+      
+      <guid>https://dongchen.co/tags/jedis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Redis</title>
+      <link>https://dongchen.co/tags/redis/</link>
+      <pubDate>Tue, 07 May 2019 20:51:45 +1200</pubDate>
+      
+      <guid>https://dongchen.co/tags/redis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Redis Client</title>
+      <link>https://dongchen.co/tags/redis-client/</link>
+      <pubDate>Tue, 07 May 2019 20:51:45 +1200</pubDate>
+      
+      <guid>https://dongchen.co/tags/redis-client/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Redis Server</title>
+      <link>https://dongchen.co/tags/redis-server/</link>
+      <pubDate>Tue, 07 May 2019 20:51:45 +1200</pubDate>
+      
+      <guid>https://dongchen.co/tags/redis-server/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>MariaDB 10</title>
       <link>https://dongchen.co/tags/mariadb-10/</link>
       <pubDate>Sun, 05 May 2019 21:40:41 +1200</pubDate>
