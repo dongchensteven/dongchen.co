@@ -53,7 +53,7 @@
 
 <meta itemprop="datePublished" content="2019-05-07T20:51:45&#43;12:00" />
 <meta itemprop="dateModified" content="2019-05-07T20:51:45&#43;12:00" />
-<meta itemprop="wordCount" content="1601">
+<meta itemprop="wordCount" content="1633">
 
 
 
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/spring-stack-developer-simple-but-profound/"> Spring Stack Developer: Simple But Profound </a>
             </div>
-          <span class="more-meta"> 1601 words </span>
+          <span class="more-meta"> 1633 words </span>
           <span class="more-meta"> 8 mins read </span>
         
       </div>
@@ -766,8 +766,10 @@
 </ul>
 
 <figure>
-    <img src="../images/12/new_service_top_product.png"
-         alt="img"/> 
+    <img src="../images/14/new_service_top_product.png"
+         alt="img"/> <figcaption>
+            <h4>Since I am currently doing this on my MacBook Pro, so this will be slightly different from the previous screenshots.</h4>
+        </figcaption>
 </figure>
 
 <p>Copy and paste the following content into TopProductService.java:</p>
@@ -887,7 +889,18 @@
 </div>
 <h1 id="update-product-controller">Update Product Controller</h1>
 
-<p>Replace the productInfo() method&rsquo;s original content with the following one in the ProductController.java file under the controller/src/main/java/co.dongchen.shop/controller directory:</p>
+<p>Add the following code into ProductController.java file under the controller/src/main/java/co.dongchen.shop/controller directory:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="n">TopProductService</span> <span class="n">topProductService</span><span class="o">;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Also replace the productInfo() method&rsquo;s original content with the following one as well:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1
