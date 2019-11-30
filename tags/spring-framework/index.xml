@@ -6,10 +6,19 @@
     <description>Recent content in Spring Framework on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 30 Nov 2019 06:59:44 +1300</lastBuildDate>
+    <lastBuildDate>Sun, 01 Dec 2019 07:41:21 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/tags/spring-framework/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>190. Microservices 170</title>
+      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/190.-microservices-170/</link>
+      <pubDate>Sun, 01 Dec 2019 07:41:21 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/190.-microservices-170/</guid>
+      <description>&lt;p&gt;pending&amp;hellip;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>189. Microservices 169</title>
