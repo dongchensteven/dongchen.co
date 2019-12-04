@@ -2,64 +2,71 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/193.-microservices-173/</loc>
-    <lastmod>2019-12-04T06:22:06+13:00</lastmod>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/194.-microservices-174/</loc>
+    <lastmod>2019-12-05T09:27:12+13:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://dongchen.co/categories/</loc>
-    <lastmod>2019-12-04T06:22:06+13:00</lastmod>
+    <lastmod>2019-12-05T09:27:12+13:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://dongchen.co/</loc>
-    <lastmod>2019-12-04T06:22:06+13:00</lastmod>
+    <lastmod>2019-12-05T09:27:12+13:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://dongchen.co/tags/java/</loc>
-    <lastmod>2019-12-04T06:22:06+13:00</lastmod>
+    <lastmod>2019-12-05T09:27:12+13:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://dongchen.co/post/</loc>
-    <lastmod>2019-12-04T06:22:06+13:00</lastmod>
+    <lastmod>2019-12-05T09:27:12+13:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://dongchen.co/tags/spring/</loc>
-    <lastmod>2019-12-04T06:22:06+13:00</lastmod>
+    <lastmod>2019-12-05T09:27:12+13:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://dongchen.co/tags/spring-framework/</loc>
-    <lastmod>2019-12-04T06:22:06+13:00</lastmod>
+    <lastmod>2019-12-05T09:27:12+13:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://dongchen.co/tags/spring-stack/</loc>
-    <lastmod>2019-12-04T06:22:06+13:00</lastmod>
+    <lastmod>2019-12-05T09:27:12+13:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://dongchen.co/categories/spring-stack-developer-simple-but-profound/</loc>
-    <lastmod>2019-12-04T06:22:06+13:00</lastmod>
+    <lastmod>2019-12-05T09:27:12+13:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://dongchen.co/tags/</loc>
-    <lastmod>2019-12-04T06:22:06+13:00</lastmod>
+    <lastmod>2019-12-05T09:27:12+13:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/193.-microservices-173/</loc>
+    <lastmod>2019-12-04T06:22:06+13:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
