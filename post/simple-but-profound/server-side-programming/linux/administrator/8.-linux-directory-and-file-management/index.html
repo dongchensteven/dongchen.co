@@ -52,7 +52,7 @@
 
 <meta itemprop="datePublished" content="2019-02-09T10:56:58&#43;13:00" />
 <meta itemprop="dateModified" content="2019-02-09T10:56:58&#43;13:00" />
-<meta itemprop="wordCount" content="1087">
+<meta itemprop="wordCount" content="1092">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
             </div>
-          <span class="more-meta"> 1087 words </span>
+          <span class="more-meta"> 1092 words </span>
           <span class="more-meta"> 6 mins read </span>
         
       </div>
@@ -240,7 +240,7 @@
 <figure>
     <img src="../images/8/ll.png"
          alt="img"/> <figcaption>
-            <h4>This command shows files&#39; and directories&#39; only</h4>
+            <h4>This command also does not show hidden contents</h4>
         </figcaption>
 </figure>
 
@@ -258,7 +258,7 @@
 <figure>
     <img src="../images/8/ll_a.png"
          alt="img"/> <figcaption>
-            <h4>This command shows files&#39; and directories&#39; only</h4>
+            <h4>This command shows hidden contents as well</h4>
         </figcaption>
 </figure>
 
@@ -304,9 +304,11 @@ ll</code></pre></td></tr></table>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">mkdir -p a/b/c/d/e/f/g</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash">mkdir -p a/b/c/d/e/f/g
+tree</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
@@ -415,9 +417,11 @@ ll</code></pre></td></tr></table>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> a</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> a
+ll</code></pre></td></tr></table>
 </div>
 </div>
 <figure>
@@ -605,7 +609,7 @@ ll</code></pre></td></tr></table>
 <figure>
     <img src="../images/8/cp_directory_ll.png"
          alt="img"/> <figcaption>
-            <h4>This command the file d in directory g</h4>
+            <h4>This command copies the file d to directory g</h4>
         </figcaption>
 </figure>
 
@@ -699,7 +703,7 @@ ll</code></pre></td></tr></table>
         </figcaption>
 </figure>
 
-<p>If this directory has a lot of files and we don&rsquo;t want ignore the confirmation for every file or directory, then we have to add the -f parameter, which means that the deletion is enforced and no manual approval is required.</p>
+<p>If this directory has a lot of files and we don&rsquo;t want make confirmation for every file or directory, then we have to add the -f parameter, which means that the deletion is enforced and no manual approval is required.</p>
 
 <blockquote>
 <p>References

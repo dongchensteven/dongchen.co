@@ -6,10 +6,19 @@
     <description>Recent content in Spring Stack Developer: Simple But Profound on Dong - A place to track my time log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 06 Jan 2020 20:36:29 +1300</lastBuildDate>
+    <lastBuildDate>Tue, 07 Jan 2020 23:35:23 +1300</lastBuildDate>
     
 	<atom:link href="https://dongchen.co/categories/spring-stack-developer-simple-but-profound/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>220</title>
+      <link>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/220.-microservices-200/</link>
+      <pubDate>Tue, 07 Jan 2020 23:35:23 +1300</pubDate>
+      
+      <guid>https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/220.-microservices-200/</guid>
+      <description>&lt;p&gt;pending&amp;hellip;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>219. Microservices 199</title>
