@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>9. Text Editor - A Powerful Linux Text Editor&#39;s Basic Usage - Dong - A place to track my time log</title>
+  <title>222. Microservices 202 - Dong - A place to track my time log</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="" /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="Dong Chen" /><meta name="description" content="pending&amp;hellip;
+" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -26,7 +27,7 @@
 <meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
 
-<link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/9.-text-editor-a-powerful-linux-text-editors-basic-usage/" />
+<link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/222.-microservices-202/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,27 +40,27 @@
 <link rel="stylesheet" href="/css/styles.css">
 
 
-<meta property="og:title" content="9. Text Editor - A Powerful Linux Text Editor&#39;s Basic Usage" />
-<meta property="og:description" content="" />
+<meta property="og:title" content="222. Microservices 202" />
+<meta property="og:description" content="pending&hellip;" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/9.-text-editor-a-powerful-linux-text-editors-basic-usage/" />
-<meta property="article:published_time" content="2019-02-10T06:00:30&#43;13:00"/>
-<meta property="article:modified_time" content="2019-02-10T06:00:30&#43;13:00"/>
+<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/222.-microservices-202/" />
+<meta property="article:published_time" content="2020-01-09T21:10:54&#43;13:00"/>
+<meta property="article:modified_time" content="2020-01-09T21:10:54&#43;13:00"/>
 
-<meta itemprop="name" content="9. Text Editor - A Powerful Linux Text Editor&#39;s Basic Usage">
-<meta itemprop="description" content="">
-
-
-<meta itemprop="datePublished" content="2019-02-10T06:00:30&#43;13:00" />
-<meta itemprop="dateModified" content="2019-02-10T06:00:30&#43;13:00" />
-<meta itemprop="wordCount" content="435">
+<meta itemprop="name" content="222. Microservices 202">
+<meta itemprop="description" content="pending&hellip;">
 
 
+<meta itemprop="datePublished" content="2020-01-09T21:10:54&#43;13:00" />
+<meta itemprop="dateModified" content="2020-01-09T21:10:54&#43;13:00" />
+<meta itemprop="wordCount" content="109">
 
-<meta itemprop="keywords" content="Linux,Server," />
+
+
+<meta itemprop="keywords" content="Java,Spring,Spring Stack,Spring Framework," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="9. Text Editor - A Powerful Linux Text Editor&#39;s Basic Usage"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="222. Microservices 202"/>
+<meta name="twitter:description" content="pending&hellip;"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -122,15 +123,15 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">9. Text Editor - A Powerful Linux Text Editor&#39;s Basic Usage</h1>
+      <h1 class="post-title">222. Microservices 202</h1>
 
       <div class="post-meta">
-        <span class="post-time"> Sun Feb 10 2019 </span>
+        <span class="post-time"> Thu Jan 9 2020 </span>
         <div class="post-category">
-            <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
+            <a href="/categories/spring-stack-developer-simple-but-profound/"> Spring Stack Developer: Simple But Profound </a>
             </div>
-          <span class="more-meta"> 435 words </span>
-          <span class="more-meta"> 3 mins read </span>
+          <span class="more-meta"> 109 words </span>
+          <span class="more-meta"> 1 min read </span>
         
       </div>
     </header>
@@ -138,197 +139,11 @@
     <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">Contents</h2>
   <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#create-file">Create File</a></li>
-<li><a href="#command-mode">Command Mode</a>
-<ul>
-<li><a href="#help">Help</a></li>
-</ul></li>
-<li><a href="#insert-mode">Insert Mode</a></li>
-<li><a href="#command-mode-operations">Command Mode Operations</a>
-<ul>
-<li><a href="#save">Save</a></li>
-<li><a href="#exit">Exit</a></li>
-</ul></li>
-<li><a href="#edit-file">Edit File</a></li>
-</ul>
-</nav>
+    
   </div>
 </div>
     <div class="post-content">
-      <p>Vim Text editor can efficiently help us quickly create or modify some common text type files, such as configuration files:</p>
-
-<figure>
-    <img src="../images/9/man_vim.png"
-         alt="img"/> <figcaption>
-            <h4>Check vim&#39;s definition and usage</h4>
-        </figcaption>
-</figure>
-
-<h1 id="create-file">Create File</h1>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">vim newfile    <span class="c1"># After running the command, it&#39;ll create an empty file called newfile</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/9/vim_new.png"
-         alt="img"/> <figcaption>
-            <h4>Create a new file</h4>
-        </figcaption>
-</figure>
-
-<h1 id="command-mode">Command Mode</h1>
-
-<p>Vim opens a file in command mode:</p>
-
-<figure>
-    <img src="../images/9/vim_new_ran.png"
-         alt="img"/> <figcaption>
-            <h4>Command mode</h4>
-        </figcaption>
-</figure>
-
-<h2 id="help">Help</h2>
-
-<p>We can view the command-related help by the :help command:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-vim" data-lang="vim"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-vim" data-lang="vim"><span class="p">:</span><span class="nx">help</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/9/command_mode_help.png"
-         alt="img"/> <figcaption>
-            <h4>Before pressing the Enter key</h4>
-        </figcaption>
-</figure>
-
-<figure>
-    <img src="../images/9/command_mode_help_after.png"
-         alt="img"/> <figcaption>
-            <h4>After pressing the Enter key</h4>
-        </figcaption>
-</figure>
-
-<p>To go back to command mode, just type :q and press Enter:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-vim" data-lang="vim"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-vim" data-lang="vim"><span class="p">:</span><span class="nx">q</span></code></pre></td></tr></table>
-</div>
-</div>
-<h1 id="insert-mode">Insert Mode</h1>
-
-<p>We can press the letter i on the keyboard to enter to insert mode:</p>
-
-<figure>
-    <img src="../images/9/enter_to_insert_mode.png"
-         alt="img"/> <figcaption>
-            <h4>This is shown at the left bottom of the screen</h4>
-        </figcaption>
-</figure>
-
-<p>Let&rsquo;s write something:</p>
-
-<figure>
-    <img src="../images/9/insert_mode_typing.png"
-         alt="img"/> <figcaption>
-            <h4>We have wrote something in the insert mode</h4>
-        </figcaption>
-</figure>
-
-<p>We can press the ESC key to go back to command mode:</p>
-
-<figure>
-    <img src="../images/9/back_to_command_mode.png"
-         alt="img"/> <figcaption>
-            <h4>The -- Insert -- text shown at the left bottom of the screen has gone</h4>
-        </figcaption>
-</figure>
-
-<h1 id="command-mode-operations">Command Mode Operations</h1>
-
-<p>We can do a lot of things in command mode, such as searching, undo changes, save, exit files, and other more advanced uses.</p>
-
-<h2 id="save">Save</h2>
-
-<p>We can type the :w command in command mode and press enter to save the file:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-vim" data-lang="vim"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-vim" data-lang="vim"><span class="p">:</span><span class="nx">w</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/9/command_mode_save.png"
-         alt="img"/> <figcaption>
-            <h4>Before pressing the Enter key</h4>
-        </figcaption>
-</figure>
-
-<p>After we save the file, we can see some basic information about the file at the bottom of the screen</p>
-
-<figure>
-    <img src="../images/9/command_mode_save_after.png"
-         alt="img"/> <figcaption>
-            <h4>After pressing the Enter key</h4>
-        </figcaption>
-</figure>
-
-<h2 id="exit">Exit</h2>
-
-<p>If we have saved the written content, we can exit vim by :q command and press Enter:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-vim" data-lang="vim"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-vim" data-lang="vim"><span class="p">:</span><span class="nx">q</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/9/command_mode_exit.png"
-         alt="img"/> <figcaption>
-            <h4>Before pressing the Enter key</h4>
-        </figcaption>
-</figure>
-
-<h1 id="edit-file">Edit File</h1>
-
-<p>Opening a file is almost the same as creating a file:</p>
-
-<figure>
-    <img src="../images/9/vim_edit.png"
-         alt="img"/> <figcaption>
-            <h4>Edit an existing file</h4>
-        </figcaption>
-</figure>
-
-<p>The difference between an existing file and a new file is the basic information at the bottom of the screen after the file is opened, the existing file has the basic information, and the new file has nothing:</p>
-
-<figure>
-    <img src="../images/9/vim_edit_ran.png"
-         alt="img"/> <figcaption>
-            <h4>After opening an existing file</h4>
-        </figcaption>
-</figure>
-
-<blockquote>
-<p>References
-<a href="https://linuxhandbook.com/basic-vim-commands/">Basic Vim Commands Every Linux User Must Know</a></p>
-</blockquote>
+      <p>pending&hellip;</p>
 
 <!-- Buy Me a Coffee Button -->
 
@@ -344,7 +159,7 @@
   </p>
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
-    <span class="item-content">Sun Feb 10 2019</span>
+    <span class="item-content">Thu Jan 9 2020</span>
   </p>
   
   
@@ -364,17 +179,15 @@
   </div>
 </div><footer class="post-footer">
       <div class="post-tags">
-          <a href="/tags/linux/">Linux</a>
-          <a href="/tags/server/">Server</a>
+          <a href="/tags/java/">Java</a>
+          <a href="/tags/spring/">Spring</a>
+          <a href="/tags/spring-stack/">Spring Stack</a>
+          <a href="/tags/spring-framework/">Spring Framework</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/simple-but-profound/server-side-programming/linux/administrator/10.-alias-a-linux-command-for-shortcut-creation/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">10. Alias - A Linux Command for Shortcut Creation</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        <a class="next" href="/post/simple-but-profound/server-side-programming/linux/administrator/8.-linux-directory-and-file-management/">
-            <span class="next-text nav-default">8. Linux Directory and File Management</span>
+        
+        <a class="next" href="/post/simple-but-profound/server-side-programming/java/spring-stack-developer/221.-microservices-201/">
+            <span class="next-text nav-default">221. Microservices 201</span>
             <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>
