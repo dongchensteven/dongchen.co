@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="We can create products.
+<meta name="author" content="Dong Chen" /><meta name="description" content="We can create products related to a specific merchant type user.
 " /><meta name="keywords" content="Hugo, theme, even" />
 
 
@@ -41,26 +41,26 @@
 
 
 <meta property="og:title" content="16. Product Creation" />
-<meta property="og:description" content="We can create products." />
+<meta property="og:description" content="We can create products related to a specific merchant type user." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/16.-product-creation/" />
 <meta property="article:published_time" content="2019-05-09T22:08:44&#43;12:00"/>
 <meta property="article:modified_time" content="2019-05-09T22:08:44&#43;12:00"/>
 
 <meta itemprop="name" content="16. Product Creation">
-<meta itemprop="description" content="We can create products.">
+<meta itemprop="description" content="We can create products related to a specific merchant type user.">
 
 
 <meta itemprop="datePublished" content="2019-05-09T22:08:44&#43;12:00" />
 <meta itemprop="dateModified" content="2019-05-09T22:08:44&#43;12:00" />
-<meta itemprop="wordCount" content="112">
+<meta itemprop="wordCount" content="1535">
 
 
 
 <meta itemprop="keywords" content="Java,Spring,Spring Stack,Spring Framework," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="16. Product Creation"/>
-<meta name="twitter:description" content="We can create products."/>
+<meta name="twitter:description" content="We can create products related to a specific merchant type user."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -130,8 +130,8 @@
         <div class="post-category">
             <a href="/categories/spring-stack-developer-simple-but-profound/"> Spring Stack Developer: Simple But Profound </a>
             </div>
-          <span class="more-meta"> 112 words </span>
-          <span class="more-meta"> 1 min read </span>
+          <span class="more-meta"> 1535 words </span>
+          <span class="more-meta"> 8 mins read </span>
         
       </div>
     </header>
@@ -139,11 +139,875 @@
     <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">Contents</h2>
   <div class="post-toc-content always-active">
-    
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#update-product-xml">Update product.xml</a></li>
+<li><a href="#update-userservice">Update UserService</a></li>
+<li><a href="#update-productservice">Update ProductService</a></li>
+<li><a href="#update-productcontroller">Update ProductController</a></li>
+<li><a href="#create-add-product-template">Create Add Product Template</a></li>
+<li><a href="#create-merchant-product-template">Create Merchant Product Template</a></li>
+<li><a href="#verify">Verify</a>
+<ul>
+<li><a href="#run-the-app">Run the App</a></li>
+<li><a href="#view-add-product-page-in-the-browser">View Add Product Page in the Browser</a></li>
+</ul></li>
+</ul>
+</nav>
   </div>
 </div>
     <div class="post-content">
-      <p>We can create products.</p>
+      <p>We can create products related to a specific merchant type user.</p>
+
+<h1 id="update-product-xml">Update product.xml</h1>
+
+<p>Copy and paste the following content into ProductMapper.java under the service/src/resources/mapper directory:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; ?&gt;</span>
+<span class="cp">&lt;!DOCTYPE mapper
+</span><span class="cp">        PUBLIC &#34;-//mybatis.org//DTD Mapper 3.0//EN&#34;
+</span><span class="cp">        &#34;http://mybatis.org/dtd/mybatis-3-mapper.dtd&#34;&gt;</span>
+<span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">&#34;co.dongchen.shop.mapper.ProductMapper&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;sql</span> <span class="na">id=</span><span class="s">&#34;productFields&#34;</span><span class="nt">&gt;</span>
+        p.id, p.created_at, p.updated_at, p.sku, p.name, p.stock, p.price, p.is_enabled, p.images, p.description, p.user_id
+    <span class="nt">&lt;/sql&gt;</span>
+    <span class="nt">&lt;sql</span> <span class="na">id=</span><span class="s">&#34;whereCondition&#34;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;where&gt;</span>
+            <span class="nt">&lt;if</span> <span class="na">test=</span><span class="s">&#34;productCondition.id != null and productCondition.id != 0&#34;</span><span class="nt">&gt;</span>
+                and p.id = #{productCondition.id}
+            <span class="nt">&lt;/if&gt;</span>
+            <span class="c">&lt;!-- NEWLY ADDED CODE 1 BEGIN --&gt;</span>
+            <span class="nt">&lt;if</span> <span class="na">test=</span><span class="s">&#34;productCondition.userId != null and productCondition.userId != 0&#34;</span><span class="nt">&gt;</span>
+                and p.user_id = #{productCondition.userId}
+            <span class="nt">&lt;/if&gt;</span>
+            <span class="c">&lt;!-- NEWLY ADDED CODE 1 END --&gt;</span>
+            <span class="nt">&lt;if</span> <span class="na">test=</span><span class="s">&#34;productCondition.isEnabled != null and productCondition.isEnabled == true&#34;</span><span class="nt">&gt;</span>
+                and p.is_enabled = 1
+            <span class="nt">&lt;/if&gt;</span>
+            <span class="nt">&lt;if</span> <span class="na">test=</span><span class="s">&#34;productCondition.isEnabled != null and productCondition.isEnabled == false&#34;</span><span class="nt">&gt;</span>
+                and p.is_enabled = 0
+            <span class="nt">&lt;/if&gt;</span>
+            <span class="nt">&lt;if</span> <span class="na">test=</span><span class="s">&#34;productCondition.name != null and productCondition.name != &#39;&#39;&#34;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;bind</span> <span class="na">name=</span><span class="s">&#34;likeName&#34;</span> <span class="na">value=</span><span class="s">&#34;&#39;%&#39; + productCondition.name + &#39;%&#39;&#34;</span><span class="nt">/&gt;</span>
+                and p.name like #{likeName}
+            <span class="nt">&lt;/if&gt;</span>
+            <span class="nt">&lt;if</span> <span class="na">test=</span><span class="s">&#34;productCondition.ids != null and productCondition.ids.size() &gt; 0 &#34;</span><span class="nt">&gt;</span>
+                and p.id in
+                <span class="nt">&lt;foreach</span> <span class="na">collection=</span><span class="s">&#34;productCondition.ids&#34;</span> <span class="na">item=</span><span class="s">&#34;item&#34;</span> <span class="na">index=</span><span class="s">&#34;index&#34;</span> <span class="na">open=</span><span class="s">&#34;(&#34;</span> <span class="na">separator=</span><span class="s">&#34;,&#34;</span> <span class="na">close=</span><span class="s">&#34;)&#34;</span> <span class="nt">&gt;</span>
+                    #{item}
+                <span class="nt">&lt;/foreach&gt;</span>
+            <span class="nt">&lt;/if&gt;</span>
+        <span class="nt">&lt;/where&gt;</span>
+    <span class="nt">&lt;/sql&gt;</span>
+    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;queryPagedProducts&#34;</span> <span class="na">resultType=</span><span class="s">&#34;product&#34;</span><span class="nt">&gt;</span>
+        select <span class="nt">&lt;include</span> <span class="na">refid=</span><span class="s">&#34;productFields&#34;</span><span class="nt">/&gt;</span>
+        from product p
+        <span class="nt">&lt;include</span> <span class="na">refid=</span><span class="s">&#34;whereCondition&#34;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;choose&gt;</span>
+            <span class="nt">&lt;when</span> <span class="na">test=</span><span class="s">&#34;productCondition.orderBy != null and productCondition.orderBy == &#39;created_at&#39;&#34;</span><span class="nt">&gt;</span>
+                order by p.created_at desc
+            <span class="nt">&lt;/when&gt;</span>
+        <span class="nt">&lt;/choose&gt;</span>
+        <span class="nt">&lt;if</span> <span class="na">test=</span><span class="s">&#34;pageHelperCondition.offSet != null and pageHelperCondition.limit != null&#34;</span><span class="nt">&gt;</span>
+            limit #{pageHelperCondition.offSet},#{pageHelperCondition.limit}
+        <span class="nt">&lt;/if&gt;</span>
+        <span class="nt">&lt;if</span> <span class="na">test=</span><span class="s">&#34;pageHelperCondition.offSet == null and pageHelperCondition.limit != null&#34;</span><span class="nt">&gt;</span>
+            limit #{pageHelperCondition.limit}
+        <span class="nt">&lt;/if&gt;</span>
+    <span class="nt">&lt;/select&gt;</span>
+    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;queryPagedCount&#34;</span> <span class="na">resultType=</span><span class="s">&#34;long&#34;</span><span class="nt">&gt;</span>
+        select count(id)
+        from product p
+        <span class="nt">&lt;include</span> <span class="na">refid=</span><span class="s">&#34;whereCondition&#34;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/select&gt;</span>
+
+    <span class="c">&lt;!-- NEWLY ADDED CODE 2 BEGIN --&gt;</span>
+    <span class="nt">&lt;insert</span> <span class="na">id=</span><span class="s">&#34;insert&#34;</span> <span class="na">useGeneratedKeys=</span><span class="s">&#34;true&#34;</span> <span class="na">keyProperty=</span><span class="s">&#34;id&#34;</span> <span class="nt">&gt;</span>
+        insert into product(
+            created_at, updated_at, sku, name, stock, price, images, description, user_id
+        ) value (
+            #{createdAt}, #{updatedAt}, #{sku}, #{name}, #{stock}, #{price}, #{images}, #{description}, #{userId}
+        )
+    <span class="nt">&lt;/insert&gt;</span>
+    <span class="c">&lt;!-- NEWLY ADDED CODE 2 END --&gt;</span>
+<span class="nt">&lt;/mapper&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+<h1 id="update-userservice">Update UserService</h1>
+
+<p>Replace the original content with the following one in the UserService.java file under the service/src/main/java/co.dongchen.shop/service directory:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">co.dongchen.shop.service</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">co.dongchen.shop.common.model.User</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">co.dongchen.shop.common.util.BeanHelper</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">co.dongchen.shop.mapper.UserMapper</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.google.common.collect.Lists</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.beans.factory.annotation.Value</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Service</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.transaction.annotation.Transactional</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="nd">@Service</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserService</span> <span class="o">{</span>
+
+    <span class="nd">@Value</span><span class="o">(</span><span class="s">&#34;${fileserver.img_path}&#34;</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">imgPath</span><span class="o">;</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="n">BCryptPasswordEncoder</span> <span class="n">bCryptPasswordEncoder</span><span class="o">;</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="n">MailService</span> <span class="n">mailService</span><span class="o">;</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="n">UserMapper</span> <span class="n">userMapper</span><span class="o">;</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="n">FileService</span> <span class="n">fileService</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="nf">getUsers</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">queryUsers</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Transactional</span><span class="o">(</span><span class="n">rollbackFor</span> <span class="o">=</span> <span class="n">Exception</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">register</span><span class="o">(</span><span class="n">User</span> <span class="n">user</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">user</span><span class="o">.</span><span class="na">setPassword</span><span class="o">(</span><span class="n">bCryptPasswordEncoder</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">user</span><span class="o">.</span><span class="na">getPassword</span><span class="o">()));</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">imgs</span> <span class="o">=</span> <span class="n">fileService</span><span class="o">.</span><span class="na">getImgPath</span><span class="o">(</span><span class="n">Lists</span><span class="o">.</span><span class="na">newArrayList</span><span class="o">(</span><span class="n">user</span><span class="o">.</span><span class="na">getAvatarFile</span><span class="o">()));</span>
+        <span class="k">if</span> <span class="o">(</span> <span class="o">!</span> <span class="n">imgs</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">imgs</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">));</span>
+            <span class="n">user</span><span class="o">.</span><span class="na">setAvatar</span><span class="o">(</span><span class="n">imgs</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">));</span>
+        <span class="o">}</span>
+        <span class="n">BeanHelper</span><span class="o">.</span><span class="na">setDefaultProp</span><span class="o">(</span><span class="n">user</span><span class="o">,</span> <span class="n">User</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="n">BeanHelper</span><span class="o">.</span><span class="na">onInsert</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+        <span class="n">user</span><span class="o">.</span><span class="na">setIsEnabled</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+        <span class="n">user</span><span class="o">.</span><span class="na">setType</span><span class="o">(</span><span class="n">1</span><span class="o">);</span>
+        <span class="n">userMapper</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+        <span class="n">mailService</span><span class="o">.</span><span class="na">registerNotification</span><span class="o">(</span><span class="n">user</span><span class="o">.</span><span class="na">getEmail</span><span class="o">());</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">enable</span><span class="o">(</span><span class="n">String</span> <span class="n">key</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">mailService</span><span class="o">.</span><span class="na">enable</span><span class="o">(</span><span class="n">key</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">User</span> <span class="nf">authenticate</span><span class="o">(</span><span class="n">String</span> <span class="n">email</span><span class="o">,</span> <span class="n">String</span> <span class="n">password</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">User</span> <span class="n">user</span> <span class="o">=</span> <span class="k">new</span> <span class="n">User</span><span class="o">();</span>
+        <span class="n">user</span><span class="o">.</span><span class="na">setEmail</span><span class="o">(</span><span class="n">email</span><span class="o">);</span>
+        <span class="n">user</span><span class="o">.</span><span class="na">setIsEnabled</span><span class="o">(</span><span class="n">1</span><span class="o">);</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">queryUserByCondition</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span> <span class="o">!</span> <span class="n">list</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">bCryptPasswordEncoder</span><span class="o">.</span><span class="na">matches</span><span class="o">(</span><span class="n">password</span><span class="o">,</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">).</span><span class="na">getPassword</span><span class="o">())</span> <span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="nf">queryUserByCondition</span><span class="o">(</span><span class="n">User</span> <span class="n">user</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">queryUsersByCondition</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+        <span class="n">list</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">u</span> <span class="o">-&gt;</span> <span class="n">u</span><span class="o">.</span><span class="na">setAvatar</span><span class="o">(</span><span class="n">imgPath</span> <span class="o">+</span> <span class="n">u</span><span class="o">.</span><span class="na">getAvatar</span><span class="o">()));</span>
+        <span class="k">return</span> <span class="n">list</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="n">User</span> <span class="n">user</span><span class="o">,</span> <span class="n">String</span> <span class="n">email</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">user</span><span class="o">.</span><span class="na">setEmail</span><span class="o">(</span><span class="n">email</span><span class="o">);</span>
+        <span class="n">BeanHelper</span><span class="o">.</span><span class="na">onUpdate</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+        <span class="n">userMapper</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="c1">// NEWLY ADDED CODE BEGIN
+</span><span class="c1"></span>    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="nf">queryUsers</span><span class="o">(</span><span class="n">User</span> <span class="n">user</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">queryUsersByCondition</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="c1">// NEWLY ADDED CODE END
+</span><span class="c1"></span>
+<span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<h1 id="update-productservice">Update ProductService</h1>
+
+<p>Replace the original content with the following one in the ProductService.java file under the service/src/main/java/co.dongchen.shop/service directory:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">co.dongchen.shop.service</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">co.dongchen.shop.common.model.Product</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">co.dongchen.shop.common.util.BeanHelper</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">co.dongchen.shop.common.util.PageHelper</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">co.dongchen.shop.common.util.pager.PagingData</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">co.dongchen.shop.mapper.ProductMapper</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.google.common.base.Joiner</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.google.common.collect.Lists</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.commons.collections.CollectionUtils</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.beans.factory.annotation.Value</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Service</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.stream.Collectors</span><span class="o">;</span>
+
+<span class="nd">@Service</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductService</span> <span class="o">{</span>
+
+    <span class="nd">@Value</span><span class="o">(</span><span class="s">&#34;${fileserver.img_path}&#34;</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">imgPath</span><span class="o">;</span>
+
+    <span class="c1">// NEWLY ADDED CODE 1 BEGIN
+</span><span class="c1"></span>    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="n">FileService</span> <span class="n">fileService</span><span class="o">;</span>
+    <span class="c1">// NEWLY ADDED CODE 1 END
+</span><span class="c1"></span>
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="n">ProductMapper</span> <span class="n">productMapper</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">PagingData</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span> <span class="nf">getProducts</span><span class="o">(</span><span class="n">Product</span> <span class="n">productCondition</span><span class="o">,</span> <span class="n">PageHelper</span> <span class="n">pageHelper</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span> <span class="n">products</span> <span class="o">=</span> <span class="n">Lists</span><span class="o">.</span><span class="na">newArrayList</span><span class="o">();</span>
+        <span class="n">products</span> <span class="o">=</span> <span class="n">queryWithImgs</span><span class="o">(</span><span class="n">productCondition</span><span class="o">,</span> <span class="n">pageHelper</span><span class="o">);</span>
+        <span class="n">Long</span> <span class="n">count</span> <span class="o">=</span> <span class="n">productMapper</span><span class="o">.</span><span class="na">queryPagedCount</span><span class="o">(</span><span class="n">productCondition</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">PagingData</span><span class="o">.</span><span class="na">initPaging</span><span class="o">(</span><span class="n">products</span><span class="o">,</span> <span class="n">count</span><span class="o">,</span> <span class="n">pageHelper</span><span class="o">.</span><span class="na">getPageSize</span><span class="o">(),</span> <span class="n">pageHelper</span><span class="o">.</span><span class="na">getPageNumber</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span> <span class="nf">queryWithImgs</span><span class="o">(</span><span class="n">Product</span> <span class="n">productCondition</span><span class="o">,</span> <span class="n">PageHelper</span> <span class="n">pageHelper</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span> <span class="n">products</span> <span class="o">=</span> <span class="n">productMapper</span><span class="o">.</span><span class="na">queryPagedProducts</span><span class="o">(</span><span class="n">productCondition</span><span class="o">,</span> <span class="n">pageHelper</span><span class="o">);</span>
+        <span class="n">products</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">p</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="n">p</span><span class="o">.</span><span class="na">setMainImage</span><span class="o">(</span><span class="n">imgPath</span> <span class="o">+</span> <span class="n">p</span><span class="o">.</span><span class="na">getMainImage</span><span class="o">());</span>
+            <span class="n">p</span><span class="o">.</span><span class="na">setImageList</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">getImageList</span><span class="o">().</span><span class="na">stream</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="n">img</span> <span class="o">-&gt;</span> <span class="n">imgPath</span> <span class="o">+</span> <span class="n">img</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">()));</span>
+        <span class="o">});</span>
+        <span class="k">return</span> <span class="n">products</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">Product</span> <span class="nf">getProductById</span><span class="o">(</span><span class="n">Long</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Product</span> <span class="n">productCondition</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Product</span><span class="o">();</span>
+        <span class="n">productCondition</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span> <span class="n">products</span> <span class="o">=</span> <span class="n">queryWithImgs</span><span class="o">(</span><span class="n">productCondition</span><span class="o">,</span> <span class="n">PageHelper</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="n">1</span><span class="o">));</span>
+        <span class="k">if</span> <span class="o">(!</span> <span class="n">products</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">products</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// NEWLY ADDED CODE 2 BEGIN
+</span><span class="c1"></span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addProduct</span><span class="o">(</span><span class="n">Product</span> <span class="n">product</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">CollectionUtils</span><span class="o">.</span><span class="na">isNotEmpty</span><span class="o">(</span><span class="n">product</span><span class="o">.</span><span class="na">getImageFiles</span><span class="o">()))</span> <span class="o">{</span>
+            <span class="n">String</span> <span class="n">imagePaths</span> <span class="o">=</span> <span class="n">Joiner</span><span class="o">.</span><span class="na">on</span><span class="o">(</span><span class="s">&#34;,&#34;</span><span class="o">).</span><span class="na">join</span><span class="o">(</span><span class="n">fileService</span><span class="o">.</span><span class="na">getImgPath</span><span class="o">(</span><span class="n">product</span><span class="o">.</span><span class="na">getImageFiles</span><span class="o">()));</span>
+            <span class="n">product</span><span class="o">.</span><span class="na">setImages</span><span class="o">(</span><span class="n">imagePaths</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">BeanHelper</span><span class="o">.</span><span class="na">setDefaultProp</span><span class="o">(</span><span class="n">product</span><span class="o">,</span> <span class="n">Product</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="n">BeanHelper</span><span class="o">.</span><span class="na">onInsert</span><span class="o">(</span><span class="n">product</span><span class="o">);</span>
+        <span class="n">productMapper</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="n">product</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="c1">// NEWLY ADDED CODE 2 END
+</span><span class="c1"></span><span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<h1 id="update-productcontroller">Update ProductController</h1>
+
+<p>Replace the original content with the following one in the ProductController.java file under the controller/src/main/java/co.dongchen.shop/controller directory:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">co.dongchen.shop.controller</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">co.dongchen.shop.common.model.Product</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">co.dongchen.shop.common.model.User</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">co.dongchen.shop.common.util.PageHelper</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">co.dongchen.shop.common.util.pager.PagingData</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">co.dongchen.shop.interceptor.UserContext</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">co.dongchen.shop.service.MerchantService</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">co.dongchen.shop.service.ProductService</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">co.dongchen.shop.service.TopProductService</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">co.dongchen.shop.service.UserService</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Controller</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.ui.ModelMap</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RequestMapping</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="nd">@Controller</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductController</span> <span class="o">{</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="n">ProductService</span> <span class="n">productService</span><span class="o">;</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="n">MerchantService</span> <span class="n">merchantService</span><span class="o">;</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="n">TopProductService</span> <span class="n">topProductService</span><span class="o">;</span>
+
+    <span class="c1">// NEWLY ADDED CODE 1 BEGIN
+</span><span class="c1"></span>    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="n">UserService</span> <span class="n">userService</span><span class="o">;</span>
+    <span class="c1">// NEWLY ADDED CODE 1 END
+</span><span class="c1"></span>
+    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&#34;/product/pagination&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">pagination</span><span class="o">(</span><span class="n">PageHelper</span> <span class="n">pageHelper</span><span class="o">,</span> <span class="n">Product</span> <span class="n">productCondition</span><span class="o">,</span> <span class="n">ModelMap</span> <span class="n">modelMap</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">PagingData</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span> <span class="n">pageData</span> <span class="o">=</span> <span class="n">productService</span><span class="o">.</span><span class="na">getProducts</span><span class="o">(</span><span class="n">productCondition</span><span class="o">,</span> <span class="n">PageHelper</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="n">pageHelper</span><span class="o">.</span><span class="na">getPageSize</span><span class="o">(),</span> <span class="n">pageHelper</span><span class="o">.</span><span class="na">getPageNumber</span><span class="o">()));</span>
+        <span class="n">modelMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;pageData&#34;</span><span class="o">,</span> <span class="n">pageData</span><span class="o">);</span>
+        <span class="n">modelMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;productCondition&#34;</span><span class="o">,</span> <span class="n">productCondition</span><span class="o">);</span>
+        <span class="k">return</span> <span class="s">&#34;/product/pagination&#34;</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&#34;product/info&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">productInfo</span><span class="o">(</span><span class="n">Long</span> <span class="n">id</span><span class="o">,</span> <span class="n">ModelMap</span> <span class="n">modelMap</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Product</span> <span class="n">product</span> <span class="o">=</span> <span class="n">productService</span><span class="o">.</span><span class="na">getProductById</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+        <span class="n">topProductService</span><span class="o">.</span><span class="na">increase</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">product</span><span class="o">.</span><span class="na">getUserId</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="o">!</span> <span class="n">product</span><span class="o">.</span><span class="na">getUserId</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">0L</span><span class="o">))</span> <span class="o">{</span>
+            <span class="n">modelMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;merchant&#34;</span><span class="o">,</span> <span class="n">merchantService</span><span class="o">.</span><span class="na">getMerchantById</span><span class="o">(</span><span class="n">product</span><span class="o">.</span><span class="na">getUserId</span><span class="o">()));</span>
+        <span class="o">}</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span> <span class="n">topProducts</span> <span class="o">=</span> <span class="n">topProductService</span><span class="o">.</span><span class="na">getTopProducts</span><span class="o">(</span><span class="n">5</span><span class="o">);</span>
+        <span class="n">modelMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;topProducts&#34;</span><span class="o">,</span> <span class="n">topProducts</span><span class="o">);</span>
+        <span class="n">modelMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;product&#34;</span><span class="o">,</span> <span class="n">product</span><span class="o">);</span>
+        <span class="k">return</span> <span class="s">&#34;/product/info&#34;</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// NEWLY ADDED CODE 2 BEGIN
+</span><span class="c1"></span>    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&#34;product/add&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">add</span><span class="o">(</span><span class="n">ModelMap</span> <span class="n">modelMap</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">User</span> <span class="n">user</span> <span class="o">=</span> <span class="k">new</span> <span class="n">User</span><span class="o">();</span>
+        <span class="n">user</span><span class="o">.</span><span class="na">setType</span><span class="o">(</span><span class="n">2</span><span class="o">);</span>    <span class="c1">// Only list Merchants
+</span><span class="c1"></span>        <span class="n">modelMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;users&#34;</span><span class="o">,</span> <span class="n">userService</span><span class="o">.</span><span class="na">queryUsers</span><span class="o">(</span><span class="n">user</span><span class="o">));</span>
+        <span class="k">return</span> <span class="s">&#34;/product/add&#34;</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&#34;product/addAction&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">addAction</span><span class="o">(</span><span class="n">Product</span> <span class="n">product</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">productService</span><span class="o">.</span><span class="na">addProduct</span><span class="o">(</span><span class="n">product</span><span class="o">);</span>
+        <span class="k">return</span> <span class="s">&#34;redirect:/product/merchant_product?userId=&#34;</span> <span class="o">+</span> <span class="n">product</span><span class="o">.</span><span class="na">getUserId</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&#34;product/merchant_product&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">merchant_product</span><span class="o">(</span><span class="n">PageHelper</span> <span class="n">pageHelper</span><span class="o">,</span> <span class="n">Product</span> <span class="n">product</span><span class="o">,</span> <span class="n">ModelMap</span> <span class="n">modelMap</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">modelMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;pageData&#34;</span><span class="o">,</span> <span class="n">productService</span><span class="o">.</span><span class="na">getProducts</span><span class="o">(</span><span class="n">product</span><span class="o">,</span> <span class="n">PageHelper</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="n">pageHelper</span><span class="o">.</span><span class="na">getPageSize</span><span class="o">(),</span> <span class="n">pageHelper</span><span class="o">.</span><span class="na">getPageNumber</span><span class="o">())));</span>
+        <span class="k">return</span> <span class="s">&#34;/product/merchant_product&#34;</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="c1">// NEWLY ADDED CODE 2 END
+</span><span class="c1"></span><span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<h1 id="create-add-product-template">Create Add Product Template</h1>
+
+<ul>
+<li>Right click controller/src/main/resources/templates/product directory: New &gt; File</li>
+<li>Fill in “add.ftl”</li>
+<li>Press Enter key to continue</li>
+</ul>
+
+<figure>
+    <img src="../images/16/new_template_product_add.png"
+         alt="img"/> <figcaption>
+            <h4>After inputting the name, press Enter.</h4>
+        </figcaption>
+</figure>
+
+<p>Copy and paste the following content into add.ftl:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;en-NZ&#34;</span><span class="p">&gt;</span>
+<span class="err">&lt;</span>@common.header/&gt;
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&#34;post&#34;</span> <span class="na">enctype</span><span class="o">=</span><span class="s">&#34;multipart/form-data&#34;</span> <span class="na">action</span><span class="o">=</span><span class="s">&#34;/product/addAction&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Sku<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;sku&#34;</span> <span class="na">required</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Name<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;name&#34;</span> <span class="na">required</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Stock<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;number&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;stock&#34;</span> <span class="na">required</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Price<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;number&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;price&#34;</span> <span class="na">required</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Merchant<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">select</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;userId&#34;</span><span class="p">&gt;</span>
+            <span class="err">&lt;</span>#foreach user in users&gt;
+                <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;${user.id}&#34;</span><span class="p">&gt;</span>${user.firstName} ${user.lastName}<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+            <span class="err">&lt;</span>/#foreach&gt;
+        <span class="p">&lt;/</span><span class="nt">select</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Images<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;file&#34;</span> <span class="na">accept</span><span class="o">=</span><span class="s">&#34;image/jpeg,image/png&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;imageFiles&#34;</span> <span class="na">multiple</span><span class="o">=</span><span class="s">&#34;true&#34;</span> <span class="na">required</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Description<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;description&#34;</span> <span class="na">required</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;submit&#34;</span><span class="p">&gt;</span>Add<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="err">&lt;</span>@common.footer/&gt;
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+<h1 id="create-merchant-product-template">Create Merchant Product Template</h1>
+
+<ul>
+<li>Right click controller/src/main/resources/templates/product directory: New &gt; File</li>
+<li>Fill in “merchant_product.ftl”</li>
+<li>Press Enter key to continue</li>
+</ul>
+
+<figure>
+    <img src="../images/16/new_template_merchant_product.png"
+         alt="img"/> <figcaption>
+            <h4>After inputting the name, press Enter.</h4>
+        </figcaption>
+</figure>
+
+<p>Copy and paste the following content into merchant_product.ftl:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Merchant&#39;s Product<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="err">&lt;</span>#foreach product in pageData.list&gt;
+        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>${product.name}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="err">&lt;</span>/#foreach&gt;
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="err">&lt;</span>@common.paging pageData.pagination/&gt;
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="err">&lt;</span>@common.js/&gt;</code></pre></td></tr></table>
+</div>
+</div>
+<h1 id="verify">Verify</h1>
+
+<h2 id="run-the-app">Run the App</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-code" data-lang="code"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-code" data-lang="code">// Short Cut for &#34;Run the Program&#34;
+Alt + Shift + F10</code></pre></td></tr></table>
+</div>
+</div>
+<figure>
+    <img src="../images/common/run.png"
+         alt="img"/> 
+</figure>
+
+<p>Choose the correspondent option and press enter.</p>
+
+<h2 id="view-add-product-page-in-the-browser">View Add Product Page in the Browser</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-http" data-lang="http"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-http" data-lang="http"><span class="err">http://localhost:8080/product/add</span></code></pre></td></tr></table>
+</div>
+</div>
+<ul>
+<li>Fill in the Information:</li>
+</ul>
+
+<figure>
+    <img src="../images/16/product_add_page_filling_information.png"
+         alt="img"/> 
+</figure>
+
+<ul>
+<li>Click the &ldquo;Merchant&rdquo; dropdown select menu, select the second user:</li>
+</ul>
+
+<figure>
+    <img src="../images/16/product_add_page_merchant_dropdown.png"
+         alt="img"/> 
+</figure>
+
+<ul>
+<li>Click on &ldquo;Add&rdquo; button and it should redirect us to Merchant&rsquo;s Product page:</li>
+</ul>
+
+<figure>
+    <img src="../images/16/merchant_product_page.png"
+         alt="img"/> 
+</figure>
 
 <!-- Buy Me a Coffee Button -->
 
