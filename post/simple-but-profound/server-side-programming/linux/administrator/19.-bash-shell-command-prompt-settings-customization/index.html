@@ -52,7 +52,7 @@
 
 <meta itemprop="datePublished" content="2019-02-20T07:42:28&#43;13:00" />
 <meta itemprop="dateModified" content="2019-02-20T07:42:28&#43;13:00" />
-<meta itemprop="wordCount" content="1176">
+<meta itemprop="wordCount" content="1159">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
             </div>
-          <span class="more-meta"> 1176 words </span>
+          <span class="more-meta"> 1159 words </span>
           <span class="more-meta"> 6 mins read </span>
         
       </div>
@@ -153,6 +153,7 @@
 <li><a href="#set-a-beep-sound">Set a Beep Sound</a></li>
 <li><a href="#show-date-in-week-month-date">Show Date in Week, Month, Date</a></li>
 <li><a href="#show-date-in-customized-format">Show Date in Customized Format</a></li>
+<li><a href="#show-hostname-content-before-the-first-dot">Show Hostname Content Before the First Dot</a></li>
 <li><a href="#show-the-whole-hostname">Show the Whole Hostname</a></li>
 <li><a href="#show-the-number-of-jobs-managed-by-shell">Show the Number of Jobs Managed By Shell</a></li>
 <li><a href="#show-an-extra-line-when-line-breaks">Show an Extra Line When Line Breaks</a></li>
@@ -206,7 +207,7 @@
 <figure>
     <img src="../images/19/echo_ps1.png"
          alt="img"/> <figcaption>
-            <h4>Command prompt</h4>
+            <h4>Command prompt setting</h4>
         </figcaption>
 </figure>
 
@@ -222,7 +223,7 @@
 <figure>
     <img src="../images/19/set_grep_ps1.png"
          alt="img"/> <figcaption>
-            <h4>Command prompt</h4>
+            <h4>Command prompt setting</h4>
         </figcaption>
 </figure>
 
@@ -338,16 +339,18 @@
             <h4>Show customized date format. We can use PS1= to reset the settings</h4>
         </figcaption>
 </figure>
-ps1_h_first_part
 
-## Show Hostname Content Before the First Dot
+<h2 id="show-hostname-content-before-the-first-dot">Show Hostname Content Before the First Dot</h2>
 
-We can use the special character \h to display the content before the first dot of the hostname at the command line prompt:
-
-```bash
-PS1='\h'
-```
-
+<p>We can use the special character \h to display the content before the first dot of the hostname at the command line prompt:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\h&#39;</span></code></pre></td></tr></table>
+</div>
+</div>
 <figure>
     <img src="../images/19/ps1_h_content_before_first_dot.png"
          alt="img"/> <figcaption>
@@ -593,7 +596,7 @@ PS1='\h'
 
 <h2 id="show-the-history-number-of-the-command">Show the History Number of the Command</h2>
 
-<p>We can use the special character ! to display the history number of the command at the command line prompt:</p>
+<p>We can use the special character \! to display the history number of the command at the command line prompt:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -611,7 +614,7 @@ PS1='\h'
 
 <h2 id="show-the-command-number-of-the-command">Show the Command Number of the Command</h2>
 
-<p>We can use the special character # to display the command number of the command at the command line prompt:</p>
+<p>We can use the special character \# to display the command number of the command at the command line prompt:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -649,7 +652,7 @@ PS1='\h'
 
 <h2 id="show-a-backslash">Show a Backslash</h2>
 
-<p>We can use the special character \ to display a backslash at the command line prompt:</p>
+<p>We can use the special character \\ to display a backslash at the command line prompt:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
@@ -679,7 +682,7 @@ PS1='\h'
 <figure>
     <img src="../images/19/ps1_restore_from_backup.png"
          alt="img"/> <figcaption>
-            <h4>Restore settings from the backup. We can use PS1= to reset the settings</h4>
+            <h4>Restore settings from the backup.</h4>
         </figcaption>
 </figure>
 
@@ -697,7 +700,7 @@ PS1='\h'
 <figure>
     <img src="../images/19/ps1_mimic_the_default_setting.png"
          alt="img"/> <figcaption>
-            <h4>Mimic the default settings. We can use PS1= to reset the settings</h4>
+            <h4>Mimic the default settings.</h4>
         </figcaption>
 </figure>
 
