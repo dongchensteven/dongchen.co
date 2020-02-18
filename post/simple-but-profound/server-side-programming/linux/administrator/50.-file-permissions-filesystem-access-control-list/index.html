@@ -53,7 +53,7 @@
 
 <meta itemprop="datePublished" content="2019-03-22T06:48:25&#43;13:00" />
 <meta itemprop="dateModified" content="2019-03-22T06:48:25&#43;13:00" />
-<meta itemprop="wordCount" content="1519">
+<meta itemprop="wordCount" content="1657">
 
 
 
@@ -130,7 +130,7 @@
         <div class="post-category">
             <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
             </div>
-          <span class="more-meta"> 1519 words </span>
+          <span class="more-meta"> 1657 words </span>
           <span class="more-meta"> 8 mins read </span>
         
       </div>
@@ -456,7 +456,7 @@ ll acl_dir</code></pre></td></tr></table>
 <figure>
     <img src="../images/50/ln_s_file_link_ll_dir.png"
          alt="img"/> <figcaption>
-            <h4>Prepare one directory and two files</h4>
+            <h4>Prepare one symbolic link</h4>
         </figcaption>
 </figure>
 
@@ -596,27 +596,27 @@ ll acl_dir</code></pre></td></tr></table>
 
 <tr>
 <td align="center">-b or &#8209;&#8209;remove-all</td>
-<td align="left"></td>
+<td align="left">Delete extended ACL entries. Keep the base ACL entries of the owner, group and others.</td>
 </tr>
 
 <tr>
 <td align="center">-k or &#8209;&#8209;remove-default</td>
-<td align="left"></td>
+<td align="left">Delete the default ACL. If there is no default ACL, then nothing happens.</td>
 </tr>
 
 <tr>
 <td align="center">-n or &#8209;&#8209;no-mask</td>
-<td align="left"></td>
+<td align="left">Will not recalculate the effective rights mask. Set mask entry to the union of all permissions of the owning group, and all named user and group entries.</td>
 </tr>
 
 <tr>
 <td align="center">&#8209;&#8209;mask</td>
-<td align="left"></td>
+<td align="left">Will not recalculate the effective rights mask, even explicitly gives an ACL mask entry.</td>
 </tr>
 
 <tr>
 <td align="center">-d or &#8209;&#8209;default</td>
-<td align="left"></td>
+<td align="left">Apply operations to the default ACL. Promotes regular ACL entries in the input set to default ACL entries. discards default ACL entries in the input set.</td>
 </tr>
 
 <tr>
@@ -626,22 +626,22 @@ ll acl_dir</code></pre></td></tr></table>
 
 <tr>
 <td align="center">&#8209;&#8209;test</td>
-<td align="left"></td>
+<td align="left">Will not change anything, just list the resulted ACLs.</td>
 </tr>
 
 <tr>
 <td align="center">-R or &#8209;&#8209;recursive</td>
-<td align="left"></td>
+<td align="left">Recursively apply operations to all files and directories. Can&rsquo;t be used with &#8209;&#8209;restore.</td>
 </tr>
 
 <tr>
 <td align="center">-L or &#8209;&#8209;logical</td>
-<td align="left"></td>
+<td align="left">Include symbolic link arguments, but ignore symbolic links encountered in subdirectories. Only used with -R.</td>
 </tr>
 
 <tr>
 <td align="center">-P or &#8209;&#8209;physical</td>
-<td align="left"></td>
+<td align="left">Exclude symbolic link arguments. Only used with -R.</td>
 </tr>
 </tbody>
 </table>
