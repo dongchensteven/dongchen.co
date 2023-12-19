@@ -1,614 +1,906 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>77. Job Scheduling - crontab - Dong - A place to track my time log</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+      77. Job Scheduling - crontab - Dong - A place to track my time log
+    </title>
+    <meta name="renderer" content="webkit" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
 
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+    <meta name="theme-color" content="#f8f5ec" />
+    <meta name="msapplication-navbutton-color" content="#f8f5ec" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec" />
 
+    <meta name="author" content="Dong Chen" />
+    <meta
+      name="description"
+      content="crontab is a tool for configuring scheduled tasks. It also maintains each user&amp;rsquo;s own crontab files.
+"
+    />
+    <meta name="keywords" content="Hugo, theme, even" />
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="crontab is a tool for configuring scheduled tasks. It also maintains each user&amp;rsquo;s own crontab files.
-" /><meta name="keywords" content="Hugo, theme, even" />
+    <meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
+    <link
+      rel="canonical"
+      href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/77.-job-scheduling-crontab/"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
 
+    <link href="/dist/even.ea128f8b.min.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css"
+      integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
 
+    <meta property="og:title" content="77. Job Scheduling - crontab" />
+    <meta
+      property="og:description"
+      content="crontab is a tool for configuring scheduled tasks. It also maintains each user&rsquo;s own crontab files."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/77.-job-scheduling-crontab/"
+    />
+    <meta
+      property="article:published_time"
+      content="2019-04-18T05:54:38&#43;12:00"
+    />
+    <meta
+      property="article:modified_time"
+      content="2019-04-18T05:54:38&#43;12:00"
+    />
 
+    <meta itemprop="name" content="77. Job Scheduling - crontab" />
+    <meta
+      itemprop="description"
+      content="crontab is a tool for configuring scheduled tasks. It also maintains each user&rsquo;s own crontab files."
+    />
 
+    <meta itemprop="datePublished" content="2019-04-18T05:54:38&#43;12:00" />
+    <meta itemprop="dateModified" content="2019-04-18T05:54:38&#43;12:00" />
+    <meta itemprop="wordCount" content="538" />
 
-<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
+    <meta itemprop="keywords" content="Linux,Server," />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="77. Job Scheduling - crontab" />
+    <meta
+      name="twitter:description"
+      content="crontab is a tool for configuring scheduled tasks. It also maintains each user&rsquo;s own crontab files."
+    />
 
+    <!--[if lte IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+    <![endif]-->
 
-<link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/77.-job-scheduling-crontab/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-<link href="/dist/even.ea128f8b.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/styles.css">
-
-
-<meta property="og:title" content="77. Job Scheduling - crontab" />
-<meta property="og:description" content="crontab is a tool for configuring scheduled tasks. It also maintains each user&rsquo;s own crontab files." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/77.-job-scheduling-crontab/" />
-<meta property="article:published_time" content="2019-04-18T05:54:38&#43;12:00"/>
-<meta property="article:modified_time" content="2019-04-18T05:54:38&#43;12:00"/>
-
-<meta itemprop="name" content="77. Job Scheduling - crontab">
-<meta itemprop="description" content="crontab is a tool for configuring scheduled tasks. It also maintains each user&rsquo;s own crontab files.">
-
-
-<meta itemprop="datePublished" content="2019-04-18T05:54:38&#43;12:00" />
-<meta itemprop="dateModified" content="2019-04-18T05:54:38&#43;12:00" />
-<meta itemprop="wordCount" content="538">
-
-
-
-<meta itemprop="keywords" content="Linux,Server," />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="77. Job Scheduling - crontab"/>
-<meta name="twitter:description" content="crontab is a tool for configuring scheduled tasks. It also maintains each user&rsquo;s own crontab files."/>
-
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
-
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
-
-</head>
-<body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">Dong</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">Home</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">Archives</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">Tags</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div id="mobile-navbar" class="mobile-navbar">
+      <div class="mobile-header-logo">
+        <a href="/" class="logo">Dong</a>
+      </div>
+      <div class="mobile-navbar-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <nav id="mobile-menu" class="mobile-menu slideout-menu">
+      <ul class="mobile-menu-list">
+        <a href="/">
+          <li class="mobile-menu-item">Home</li> </a
+        ><a href="/post/">
+          <li class="mobile-menu-item">Archives</li> </a
+        ><a href="/tags/">
+          <li class="mobile-menu-item">Tags</li> </a
+        ><a href="/categories/">
+          <li class="mobile-menu-item">Categories</li> </a
+        ><a href="https://ergate.com/" target="_blank">
+          <li class="mobile-menu-item">Visit ERGATE</li>
+        </a>
+      </ul>
+    </nav>
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header">
         <div class="logo-wrapper">
-  <a href="/" class="logo">Dong</a>
-</div>
-
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">Home</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">Archives</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">Categories</a>
-      </li>
-  </ul>
-</nav>
-    </header>
-
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
-    
-    <header class="post-header">
-      <h1 class="post-title">77. Job Scheduling - crontab</h1>
-
-      <div class="post-meta">
-        <span class="post-time"> Thu Apr 18 2019 </span>
-        <div class="post-category">
-            <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
-            </div>
-          <span class="more-meta"> 538 words </span>
-          <span class="more-meta"> 3 mins read </span>
-        
-      </div>
-    </header>
-
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">Contents</h2>
-  <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#options">Options</a></li>
-<li><a href="#crontab-file">Crontab File</a>
-<ul>
-<li><a href="#job-definition">Job Definition</a></li>
-<li><a href="#time-and-date-fields">Time and Date Fields</a></li>
-<li><a href="#time-and-date-nicknames">Time and Date Nicknames</a></li>
-<li><a href="#time-and-date-fields-utilization">Time and Date Fields Utilization</a></li>
-</ul></li>
-<li><a href="#examples">Examples</a>
-<ul>
-<li><a href="#check-whether-crond-is-running">Check Whether Crond is Running</a></li>
-<li><a href="#check-crontab-configuration">Check Crontab Configuration</a></li>
-<li><a href="#run-command-every-minute">Run Command Every Minute</a></li>
-<li><a href="#list-scheduled-jobs">List Scheduled Jobs</a></li>
-<li><a href="#delete-scheduled-jobs-with-confirmation">Delete Scheduled Jobs With Confirmation</a></li>
-</ul></li>
-</ul>
-</nav>
-  </div>
-</div>
-    <div class="post-content">
-      <p>crontab is a tool for configuring scheduled tasks. It also maintains each user&rsquo;s own crontab files.</p>
-
-<h1 id="options">Options</h1>
-
-<p>Here are some options for crontab command:</p>
-
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">-u user</td>
-<td align="left">Modify the specified user&rsquo;s crontab.</td>
-</tr>
-
-<tr>
-<td align="center">-e</td>
-<td align="left">Edit user&rsquo;s crontab.</td>
-</tr>
-
-<tr>
-<td align="center">-l</td>
-<td align="left">List user&rsquo;s crontab.</td>
-</tr>
-
-<tr>
-<td align="center">-r</td>
-<td align="left">Remove user&rsquo;s crontab.</td>
-</tr>
-
-<tr>
-<td align="center">-i</td>
-<td align="left">User confirmation is required to perform a delete operation.</td>
-</tr>
-</tbody>
-</table>
-
-<h1 id="crontab-file">Crontab File</h1>
-
-<h2 id="job-definition">Job Definition</h2>
-
-<table>
-<thead>
-<tr>
-<th align="center">Time and Date Fields</th>
-<th align="left">User name</th>
-<th align="left">Command</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">* * * * *</td>
-<td align="left">[root]</td>
-<td align="left">wall &lsquo;Broadcast message&rsquo; [Without receiving mail: &gt; /dev/null or &amp;&gt; /dev/null]</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="time-and-date-fields">Time and Date Fields</h2>
-
-<table>
-<thead>
-<tr>
-<th align="center">Field 1</th>
-<th align="left">Field 2</th>
-<th align="left">Field 3</th>
-<th align="left">Field 4</th>
-<th align="left">Field 5</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">*</td>
-<td align="left">*</td>
-<td align="left">*</td>
-<td align="left">*</td>
-<td align="left">*</td>
-</tr>
-
-<tr>
-<td align="center">Minute</td>
-<td align="left">Hour</td>
-<td align="left">Day of month</td>
-<td align="left">Month</td>
-<td align="left">Day of week</td>
-</tr>
-
-<tr>
-<td align="center">0-59</td>
-<td align="left">0-23</td>
-<td align="left">1-31</td>
-<td align="left">1-12 or Jan-Dec</td>
-<td align="left">0-7 or Mon-Sun</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="time-and-date-nicknames">Time and Date Nicknames</h2>
-
-<table>
-<thead>
-<tr>
-<th align="center">Nickname</th>
-<th align="left">Definition</th>
-<th align="left">Actual meaning</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">@hourly</td>
-<td align="left">0 * * * *</td>
-<td align="left">Run hourly.</td>
-</tr>
-
-<tr>
-<td align="center">@daily</td>
-<td align="left">0 0 * * *</td>
-<td align="left">Run daily.</td>
-</tr>
-
-<tr>
-<td align="center">@weekly</td>
-<td align="left">0 0 * * 0</td>
-<td align="left">Run weekly.</td>
-</tr>
-
-<tr>
-<td align="center">@monthly</td>
-<td align="left">0 0 1 * *</td>
-<td align="left">Run monthly.</td>
-</tr>
-
-<tr>
-<td align="center">@annually or @yearly</td>
-<td align="left">0 0 1 1 *</td>
-<td align="left">Run annually.</td>
-</tr>
-
-<tr>
-<td align="center">@reboot</td>
-<td align="left"></td>
-<td align="left">Run after reboot.</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="time-and-date-fields-utilization">Time and Date Fields Utilization</h2>
-
-<table>
-<thead>
-<tr>
-<th align="center">Field</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">N</td>
-<td align="left">Specifies a value within the valid range value of a field.</td>
-</tr>
-
-<tr>
-<td align="center">*</td>
-<td align="left">All values within the valid range value of a field.</td>
-</tr>
-
-<tr>
-<td align="center">N,N,N</td>
-<td align="left">Multiple values within the valid range value of a field.</td>
-</tr>
-
-<tr>
-<td align="center">N-N</td>
-<td align="left">Range values within the valid range value of a field.</td>
-</tr>
-
-<tr>
-<td align="center">*/N</td>
-<td align="left">The number that can be divided by the maximum value of a field.</td>
-</tr>
-</tbody>
-</table>
-
-<h1 id="examples">Examples</h1>
-
-<h2 id="check-whether-crond-is-running">Check Whether Crond is Running</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">systemctl status crond</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/77/systemctl_status_crond.png"
-         alt="img"/> 
-</figure>
-
-<p>Install cronie If It Has Not Been Installed Yet</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">yum install cronie</code></pre></td></tr></table>
-</div>
-</div>
-<h2 id="check-crontab-configuration">Check Crontab Configuration</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">cat /etc/crontab</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/77/cat_etc_crontab.png"
-         alt="img"/> 
-</figure>
-
-<p>Here are some configuration fields in /etc/crontab file:</p>
-
-<table>
-<thead>
-<tr>
-<th align="center">Field</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">SHELL</td>
-<td align="left">Shell to be used by crontab.</td>
-</tr>
-
-<tr>
-<td align="center">PATH</td>
-<td align="left">The path to the command executed by crontab, and if the command is not in these directories, the full path needs to be specified.</td>
-</tr>
-
-<tr>
-<td align="center">MAILTO</td>
-<td align="left">The user who will receive the message after the crontab command has been executed.</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="run-command-every-minute">Run Command Every Minute</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># &gt; /dev/null means don&#39;t send email to user, unless there is an error</span>
-crontab -e    <span class="c1"># This will open the job definition file in editable mode</span>
-*/1 * * * * /usr/bin/wall <span class="s1">&#39;This message is broadcast every minute.&#39;</span> &gt; /dev/null</code></pre></td></tr></table>
-</div>
-</div>
-<p>If this is the first time a crontab is created, the following information will be output after the creation:</p>
-
-<figure>
-    <img src="../images/77/crontab_e.png"
-         alt="img"/> 
-</figure>
-
-<p>After few minutes:</p>
-
-<figure>
-    <img src="../images/77/crontab_e_after.png"
-         alt="img"/> 
-</figure>
-
-<h2 id="list-scheduled-jobs">List Scheduled Jobs</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">crontab -l</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/77/crontab_l.png"
-         alt="img"/> 
-</figure>
-
-<h2 id="delete-scheduled-jobs-with-confirmation">Delete Scheduled Jobs With Confirmation</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">crontab -l
-crontab -ri    <span class="c1"># At this stage: Input y or yes and press enter</span>
-crontab -l</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/77/crontab_l_ri_l.png"
-         alt="img"/> 
-</figure>
-
-<blockquote>
-<p>References
-<a href="http://man7.org/linux/man-pages/man1/crontab.1.html">CRONTAB(1)</a>,
-<a href="http://man7.org/linux/man-pages/man5/crontab.5.html">CRONTAB(5)</a></p>
-</blockquote>
-
-<!-- Buy Me a Coffee Button -->
-
-<p class="align-center">
-  <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/PFou9WhLr"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
-</p>
-    </div>
-
-    <div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">Author</span>
-    <span class="item-content">Dong Chen</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">LastMod</span>
-    <span class="item-content">Thu Apr 18 2019</span>
-  </p>
-  
-  
-</div><div class="post-reward">
-  <input type="checkbox" name="reward" id="reward" hidden />
-  <label class="reward-button" for="reward">Reward</label>
-  <div class="qr-code">
-    
-    <label class="qr-code-image" for="reward">
-        <img class="image" src="https://dongchen.co/images/wepay_qr_final.png">
-        <span>wechat</span>
-      </label>
-    <label class="qr-code-image" for="reward">
-        <img class="image" src="https://dongchen.co/images/alipay_qr_final.png">
-        <span>alipay</span>
-      </label>
-  </div>
-</div><footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/linux/">Linux</a>
-          <a href="/tags/server/">Server</a>
-          </div>
-      <nav class="post-nav">
-        <a class="prev" href="/post/simple-but-profound/server-side-programming/linux/administrator/78.-job-scheduling-anacron/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">78. Job Scheduling - anacron</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        <a class="next" href="/post/simple-but-profound/server-side-programming/linux/administrator/76.-job-scheduling-at/">
-            <span class="next-text nav-default">76. Job Scheduling - at</span>
-            <span class="next-text nav-mobile">Next</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
+          <a href="/" class="logo">Dong</a>
         </div>
-        
 
+        <nav class="site-navbar">
+          <ul id="menu" class="menu">
+            <li class="menu-item">
+              <a class="menu-item-link" href="/">Home</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/post/">Archives</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/tags/">Tags</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/categories/">Categories</a>
+            </li>
+            <li class="menu-item">
+              <a
+                class="menu-item-link"
+                href="https://ergate.com/"
+                target="_blank"
+                >Visit ERGATE</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            <article class="post">
+              <header class="post-header">
+                <h1 class="post-title">77. Job Scheduling - crontab</h1>
+
+                <div class="post-meta">
+                  <span class="post-time"> Thu Apr 18 2019 </span>
+                  <div class="post-category">
+                    <a
+                      href="/categories/linux-administrator-simple-but-profound/"
+                    >
+                      Linux Administrator: Simple But Profound
+                    </a>
+                  </div>
+                  <span class="more-meta"> 538 words </span>
+                  <span class="more-meta"> 3 mins read </span>
+                </div>
+              </header>
+
+              <div class="post-toc" id="post-toc">
+                <h2 class="post-toc-title">Contents</h2>
+                <div class="post-toc-content always-active">
+                  <nav id="TableOfContents">
+                    <ul>
+                      <li><a href="#options">Options</a></li>
+                      <li>
+                        <a href="#crontab-file">Crontab File</a>
+                        <ul>
+                          <li><a href="#job-definition">Job Definition</a></li>
+                          <li>
+                            <a href="#time-and-date-fields"
+                              >Time and Date Fields</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#time-and-date-nicknames"
+                              >Time and Date Nicknames</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#time-and-date-fields-utilization"
+                              >Time and Date Fields Utilization</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="#examples">Examples</a>
+                        <ul>
+                          <li>
+                            <a href="#check-whether-crond-is-running"
+                              >Check Whether Crond is Running</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#check-crontab-configuration"
+                              >Check Crontab Configuration</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#run-command-every-minute"
+                              >Run Command Every Minute</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#list-scheduled-jobs"
+                              >List Scheduled Jobs</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#delete-scheduled-jobs-with-confirmation"
+                              >Delete Scheduled Jobs With Confirmation</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+              <div class="post-content">
+                <p>
+                  crontab is a tool for configuring scheduled tasks. It also
+                  maintains each user&rsquo;s own crontab files.
+                </p>
+
+                <h1 id="options">Options</h1>
+
+                <p>Here are some options for crontab command:</p>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Description</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td align="center">-u user</td>
+                      <td align="left">
+                        Modify the specified user&rsquo;s crontab.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-e</td>
+                      <td align="left">Edit user&rsquo;s crontab.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-l</td>
+                      <td align="left">List user&rsquo;s crontab.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-r</td>
+                      <td align="left">Remove user&rsquo;s crontab.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-i</td>
+                      <td align="left">
+                        User confirmation is required to perform a delete
+                        operation.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <h1 id="crontab-file">Crontab File</h1>
+
+                <h2 id="job-definition">Job Definition</h2>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Time and Date Fields</th>
+                      <th align="left">User name</th>
+                      <th align="left">Command</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td align="center">* * * * *</td>
+                      <td align="left">[root]</td>
+                      <td align="left">
+                        wall &lsquo;Broadcast message&rsquo; [Without receiving
+                        mail: &gt; /dev/null or &amp;&gt; /dev/null]
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <h2 id="time-and-date-fields">Time and Date Fields</h2>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Field 1</th>
+                      <th align="left">Field 2</th>
+                      <th align="left">Field 3</th>
+                      <th align="left">Field 4</th>
+                      <th align="left">Field 5</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td align="center">*</td>
+                      <td align="left">*</td>
+                      <td align="left">*</td>
+                      <td align="left">*</td>
+                      <td align="left">*</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">Minute</td>
+                      <td align="left">Hour</td>
+                      <td align="left">Day of month</td>
+                      <td align="left">Month</td>
+                      <td align="left">Day of week</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">0-59</td>
+                      <td align="left">0-23</td>
+                      <td align="left">1-31</td>
+                      <td align="left">1-12 or Jan-Dec</td>
+                      <td align="left">0-7 or Mon-Sun</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <h2 id="time-and-date-nicknames">Time and Date Nicknames</h2>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Nickname</th>
+                      <th align="left">Definition</th>
+                      <th align="left">Actual meaning</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td align="center">@hourly</td>
+                      <td align="left">0 * * * *</td>
+                      <td align="left">Run hourly.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">@daily</td>
+                      <td align="left">0 0 * * *</td>
+                      <td align="left">Run daily.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">@weekly</td>
+                      <td align="left">0 0 * * 0</td>
+                      <td align="left">Run weekly.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">@monthly</td>
+                      <td align="left">0 0 1 * *</td>
+                      <td align="left">Run monthly.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">@annually or @yearly</td>
+                      <td align="left">0 0 1 1 *</td>
+                      <td align="left">Run annually.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">@reboot</td>
+                      <td align="left"></td>
+                      <td align="left">Run after reboot.</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <h2 id="time-and-date-fields-utilization">
+                  Time and Date Fields Utilization
+                </h2>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Field</th>
+                      <th align="left">Description</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td align="center">N</td>
+                      <td align="left">
+                        Specifies a value within the valid range value of a
+                        field.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">*</td>
+                      <td align="left">
+                        All values within the valid range value of a field.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">N,N,N</td>
+                      <td align="left">
+                        Multiple values within the valid range value of a field.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">N-N</td>
+                      <td align="left">
+                        Range values within the valid range value of a field.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">*/N</td>
+                      <td align="left">
+                        The number that can be divided by the maximum value of a
+                        field.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <h1 id="examples">Examples</h1>
+
+                <h2 id="check-whether-crond-is-running">
+                  Check Whether Crond is Running
+                </h2>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">systemctl status crond</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/77/systemctl_status_crond.png"
+                    alt="img"
+                  />
+                </figure>
+
+                <p>Install cronie If It Has Not Been Installed Yet</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">yum install cronie</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h2 id="check-crontab-configuration">
+                  Check Crontab Configuration
+                </h2>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">cat /etc/crontab</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/77/cat_etc_crontab.png" alt="img" />
+                </figure>
+
+                <p>Here are some configuration fields in /etc/crontab file:</p>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Field</th>
+                      <th align="left">Description</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td align="center">SHELL</td>
+                      <td align="left">Shell to be used by crontab.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">PATH</td>
+                      <td align="left">
+                        The path to the command executed by crontab, and if the
+                        command is not in these directories, the full path needs
+                        to be specified.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">MAILTO</td>
+                      <td align="left">
+                        The user who will receive the message after the crontab
+                        command has been executed.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <h2 id="run-command-every-minute">Run Command Every Minute</h2>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="c1"># &gt; /dev/null means don&#39;t send email to user, unless there is an error</span>
+crontab -e    <span class="c1"># This will open the job definition file in editable mode</span>
+*/1 * * * * /usr/bin/wall <span class="s1">&#39;This message is broadcast every minute.&#39;</span> &gt; /dev/null</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <p>
+                  If this is the first time a crontab is created, the following
+                  information will be output after the creation:
+                </p>
+
+                <figure>
+                  <img src="../images/77/crontab_e.png" alt="img" />
+                </figure>
+
+                <p>After few minutes:</p>
+
+                <figure>
+                  <img src="../images/77/crontab_e_after.png" alt="img" />
+                </figure>
+
+                <h2 id="list-scheduled-jobs">List Scheduled Jobs</h2>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">crontab -l</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/77/crontab_l.png" alt="img" />
+                </figure>
+
+                <h2 id="delete-scheduled-jobs-with-confirmation">
+                  Delete Scheduled Jobs With Confirmation
+                </h2>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">crontab -l
+crontab -ri    <span class="c1"># At this stage: Input y or yes and press enter</span>
+crontab -l</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/77/crontab_l_ri_l.png" alt="img" />
+                </figure>
+
+                <blockquote>
+                  <p>
+                    References
+                    <a
+                      href="http://man7.org/linux/man-pages/man1/crontab.1.html"
+                      >CRONTAB(1)</a
+                    >,
+                    <a
+                      href="http://man7.org/linux/man-pages/man5/crontab.5.html"
+                      >CRONTAB(5)</a
+                    >
+                  </p>
+                </blockquote>
+
+                <!-- Buy Me a Coffee Button -->
+
+                <p class="align-center">
+                  <style>
+                    .bmc-button img {
+                      width: 27px !important;
+                      margin-bottom: 1px !important;
+                      box-shadow: none !important;
+                      border: none !important;
+                      vertical-align: middle !important;
+                    }
+                    .bmc-button {
+                      line-height: 36px !important;
+                      height: 37px !important;
+                      text-decoration: none !important;
+                      display: inline-flex !important;
+                      color: #ffffff !important;
+                      background-color: #ff813f !important;
+                      border-radius: 3px !important;
+                      border: 1px solid transparent !important;
+                      padding: 1px 9px !important;
+                      font-size: 22px !important;
+                      letter-spacing: 0.6px !important;
+                      box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;
+                      -webkit-box-shadow: 0px 1px 2px 2px
+                        rgba(190, 190, 190, 0.5) !important;
+                      margin: 0 auto !important;
+                      font-family: "Cookie", cursive !important;
+                      -webkit-box-sizing: border-box !important;
+                      box-sizing: border-box !important;
+                      -o-transition: 0.3s all linear !important;
+                      -webkit-transition: 0.3s all linear !important;
+                      -moz-transition: 0.3s all linear !important;
+                      -ms-transition: 0.3s all linear !important;
+                      transition: 0.3s all linear !important;
+                    }
+                    .bmc-button:hover,
+                    .bmc-button:active,
+                    .bmc-button:focus {
+                      -webkit-box-shadow: 0px 1px 2px 2px
+                        rgba(190, 190, 190, 0.5) !important;
+                      text-decoration: none !important;
+                      box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+                      opacity: 0.85 !important;
+                      color: #ffffff !important;
+                    }</style
+                  ><link
+                    href="https://fonts.googleapis.com/css?family=Cookie"
+                    rel="stylesheet"
+                  /><a
+                    class="bmc-button"
+                    target="_blank"
+                    href="https://www.buymeacoffee.com/PFou9WhLr"
+                    ><img
+                      src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg"
+                      alt="Buy me a coffee"
+                    /><span style="margin-left: 5px">Buy me a coffee</span></a
+                  >
+                </p>
+              </div>
+
+              <div class="post-copyright">
+                <p class="copyright-item">
+                  <span class="item-title">Author</span>
+                  <span class="item-content">Dong Chen</span>
+                </p>
+                <p class="copyright-item">
+                  <span class="item-title">LastMod</span>
+                  <span class="item-content">Thu Apr 18 2019</span>
+                </p>
+              </div>
+              <div class="post-reward">
+                <input type="checkbox" name="reward" id="reward" hidden />
+                <label class="reward-button" for="reward">Reward</label>
+                <div class="qr-code">
+                  <label class="qr-code-image" for="reward">
+                    <img
+                      class="image"
+                      src="https://dongchen.co/images/wepay_qr_final.png"
+                    />
+                    <span>wechat</span>
+                  </label>
+                  <label class="qr-code-image" for="reward">
+                    <img
+                      class="image"
+                      src="https://dongchen.co/images/alipay_qr_final.png"
+                    />
+                    <span>alipay</span>
+                  </label>
+                </div>
+              </div>
+              <footer class="post-footer">
+                <div class="post-tags">
+                  <a href="/tags/linux/">Linux</a>
+                  <a href="/tags/server/">Server</a>
+                </div>
+                <nav class="post-nav">
+                  <a
+                    class="prev"
+                    href="/post/simple-but-profound/server-side-programming/linux/administrator/78.-job-scheduling-anacron/"
+                  >
+                    <i class="iconfont icon-left"></i>
+                    <span class="prev-text nav-default"
+                      >78. Job Scheduling - anacron</span
+                    >
+                    <span class="prev-text nav-mobile">Prev</span>
+                  </a>
+                  <a
+                    class="next"
+                    href="/post/simple-but-profound/server-side-programming/linux/administrator/76.-job-scheduling-at/"
+                  >
+                    <span class="next-text nav-default"
+                      >76. Job Scheduling - at</span
+                    >
+                    <span class="next-text nav-mobile">Next</span>
+                    <i class="iconfont icon-right"></i>
+                  </a>
+                </nav>
+              </footer>
+            </article>
+          </div>
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="social-links">
+          <a
+            href="mailto:dongchensteven@gmail.com"
+            class="iconfont icon-email"
+            title="email"
+          ></a>
+          <a
+            href="https://www.linkedin.com/in/dongchensteven"
+            class="iconfont icon-linkedin"
+            title="linkedin"
+          ></a>
+          <a
+            href="https://github.com/dongchensteven"
+            class="iconfont icon-github"
+            title="github"
+          ></a>
+          <a
+            href="https://dongchen.co/index.xml"
+            type="application/rss+xml"
+            class="iconfont icon-rss"
+            title="rss"
+          ></a>
+        </div>
+
+        <div class="copyright">
+          <span class="power-by">
+            Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+          </span>
+          <span class="division">|</span>
+          <span class="theme-info">
+            Theme -
+            <a
+              class="theme-link"
+              href="https://github.com/olOwOlo/hugo-theme-even"
+              >Even</a
+            >
+          </span>
+
+          <span class="copyright-year">
+            &copy; 2018 - 2020
+            <span class="heart">
+              <i class="iconfont icon-heart"></i>
+            </span>
+            <span class="author">Dong Chen</span>
+          </span>
+        </div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
       </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:dongchensteven@gmail.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://www.linkedin.com/in/dongchensteven" class="iconfont icon-linkedin" title="linkedin"></a>
-      <a href="https://github.com/dongchensteven" class="iconfont icon-github" title="github"></a>
-  <a href="https://dongchen.co/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
-
-<div class="copyright">
-  <span class="power-by">
-    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    Theme - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2018 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">Dong Chen</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
     </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
-  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
-    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
-    timeago().render(document.querySelectorAll('.timeago'), languageCode);
-    timeago.cancel();  
-  </script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js"
+      integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js"
+      integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js"
+      integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js"
+      integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      <!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+      var languageCode = "en"
+        .replace(/-/g, "_")
+        .replace(/_(.*)/, function ($0, $1) {
+          return $0.replace($1, $1.toUpperCase());
+        });
+      timeago().render(document.querySelectorAll(".timeago"), languageCode);
+      timeago.cancel();
+    </script>
+    <script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-133226289-1', 'auto');
-	ga('set', 'anonymizeIp', true);
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-
-
-
-
-
-
-</body>
+    <script type="application/javascript">
+      var doNotTrack = false;
+      if (!doNotTrack) {
+        window.ga =
+          window.ga ||
+          function () {
+            (ga.q = ga.q || []).push(arguments);
+          };
+        ga.l = +new Date();
+        ga("create", "UA-133226289-1", "auto");
+        ga("set", "anonymizeIp", true);
+        ga("send", "pageview");
+      }
+    </script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
+  </body>
 </html>

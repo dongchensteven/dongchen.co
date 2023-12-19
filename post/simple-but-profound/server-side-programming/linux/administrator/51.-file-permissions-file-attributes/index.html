@@ -1,842 +1,1307 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>51. File Permissions - File Attributes - Dong - A place to track my time log</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+      51. File Permissions - File Attributes - Dong - A place to track my time
+      log
+    </title>
+    <meta name="renderer" content="webkit" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
 
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+    <meta name="theme-color" content="#f8f5ec" />
+    <meta name="msapplication-navbutton-color" content="#f8f5ec" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec" />
 
+    <meta name="author" content="Dong Chen" />
+    <meta
+      name="description"
+      content="To make our files more secure, Linux provides a feature called file attribute. By configuring the attributes of the file, we can specify whether it is read-only or undeleted, or in other statuses.
+"
+    />
+    <meta name="keywords" content="Hugo, theme, even" />
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="To make our files more secure, Linux provides a feature called file attribute. By configuring the attributes of the file, we can specify whether it is read-only or undeleted, or in other statuses.
-" /><meta name="keywords" content="Hugo, theme, even" />
+    <meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
+    <link
+      rel="canonical"
+      href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/51.-file-permissions-file-attributes/"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
 
+    <link href="/dist/even.ea128f8b.min.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css"
+      integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
 
+    <meta
+      property="og:title"
+      content="51. File Permissions - File Attributes"
+    />
+    <meta
+      property="og:description"
+      content="To make our files more secure, Linux provides a feature called file attribute. By configuring the attributes of the file, we can specify whether it is read-only or undeleted, or in other statuses."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/51.-file-permissions-file-attributes/"
+    />
+    <meta
+      property="article:published_time"
+      content="2019-03-23T07:13:22&#43;13:00"
+    />
+    <meta
+      property="article:modified_time"
+      content="2019-03-23T07:13:22&#43;13:00"
+    />
 
+    <meta itemprop="name" content="51. File Permissions - File Attributes" />
+    <meta
+      itemprop="description"
+      content="To make our files more secure, Linux provides a feature called file attribute. By configuring the attributes of the file, we can specify whether it is read-only or undeleted, or in other statuses."
+    />
 
+    <meta itemprop="datePublished" content="2019-03-23T07:13:22&#43;13:00" />
+    <meta itemprop="dateModified" content="2019-03-23T07:13:22&#43;13:00" />
+    <meta itemprop="wordCount" content="930" />
 
-<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
+    <meta itemprop="keywords" content="Linux,Server," />
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="51. File Permissions - File Attributes"
+    />
+    <meta
+      name="twitter:description"
+      content="To make our files more secure, Linux provides a feature called file attribute. By configuring the attributes of the file, we can specify whether it is read-only or undeleted, or in other statuses."
+    />
 
+    <!--[if lte IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+    <![endif]-->
 
-<link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/51.-file-permissions-file-attributes/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-<link href="/dist/even.ea128f8b.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/styles.css">
-
-
-<meta property="og:title" content="51. File Permissions - File Attributes" />
-<meta property="og:description" content="To make our files more secure, Linux provides a feature called file attribute. By configuring the attributes of the file, we can specify whether it is read-only or undeleted, or in other statuses." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/51.-file-permissions-file-attributes/" />
-<meta property="article:published_time" content="2019-03-23T07:13:22&#43;13:00"/>
-<meta property="article:modified_time" content="2019-03-23T07:13:22&#43;13:00"/>
-
-<meta itemprop="name" content="51. File Permissions - File Attributes">
-<meta itemprop="description" content="To make our files more secure, Linux provides a feature called file attribute. By configuring the attributes of the file, we can specify whether it is read-only or undeleted, or in other statuses.">
-
-
-<meta itemprop="datePublished" content="2019-03-23T07:13:22&#43;13:00" />
-<meta itemprop="dateModified" content="2019-03-23T07:13:22&#43;13:00" />
-<meta itemprop="wordCount" content="930">
-
-
-
-<meta itemprop="keywords" content="Linux,Server," />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="51. File Permissions - File Attributes"/>
-<meta name="twitter:description" content="To make our files more secure, Linux provides a feature called file attribute. By configuring the attributes of the file, we can specify whether it is read-only or undeleted, or in other statuses."/>
-
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
-
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
-
-</head>
-<body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">Dong</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">Home</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">Archives</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">Tags</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">Dong</a>
-</div>
-
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">Home</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">Archives</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">Categories</a>
-      </li>
-  </ul>
-</nav>
-    </header>
-
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
-    
-    <header class="post-header">
-      <h1 class="post-title">51. File Permissions - File Attributes</h1>
-
-      <div class="post-meta">
-        <span class="post-time"> Sat Mar 23 2019 </span>
-        <div class="post-category">
-            <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
-            </div>
-          <span class="more-meta"> 930 words </span>
-          <span class="more-meta"> 5 mins read </span>
-        
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div id="mobile-navbar" class="mobile-navbar">
+      <div class="mobile-header-logo">
+        <a href="/" class="logo">Dong</a>
       </div>
-    </header>
+      <div class="mobile-navbar-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <nav id="mobile-menu" class="mobile-menu slideout-menu">
+      <ul class="mobile-menu-list">
+        <a href="/">
+          <li class="mobile-menu-item">Home</li> </a
+        ><a href="/post/">
+          <li class="mobile-menu-item">Archives</li> </a
+        ><a href="/tags/">
+          <li class="mobile-menu-item">Tags</li> </a
+        ><a href="/categories/">
+          <li class="mobile-menu-item">Categories</li> </a
+        ><a href="https://ergate.com/" target="_blank">
+          <li class="mobile-menu-item">Visit ERGATE</li>
+        </a>
+      </ul>
+    </nav>
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header">
+        <div class="logo-wrapper">
+          <a href="/" class="logo">Dong</a>
+        </div>
 
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">Contents</h2>
-  <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#list-file-attributes">List File Attributes</a>
-<ul>
-<li><a href="#iterate-recursively">Iterate Recursively</a></li>
-<li><a href="#include-directory-itself-and-parent-directory">Include Directory Itself and Parent Directory</a></li>
-<li><a href="#directory-itself-only">Directory Itself Only</a></li>
-<li><a href="#long-name-instead-of-char-abbreviation">Long Name Instead of Char Abbreviation</a></li>
-<li><a href="#version-or-generation-number">Version or Generation Number</a></li>
-</ul></li>
-<li><a href="#change-file-attributes">Change File Attributes</a>
-<ul>
-<li><a href="#assign-attributes">Assign Attributes</a></li>
-<li><a href="#append-attributes">Append Attributes</a></li>
-<li><a href="#remove-attributes">Remove Attributes</a></li>
-</ul></li>
-</ul>
-</nav>
-  </div>
-</div>
-    <div class="post-content">
-      <p>To make our files more secure, Linux provides a feature called file attribute. By configuring the attributes of the file, we can specify whether it is read-only or undeleted, or in other statuses.</p>
+        <nav class="site-navbar">
+          <ul id="menu" class="menu">
+            <li class="menu-item">
+              <a class="menu-item-link" href="/">Home</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/post/">Archives</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/tags/">Tags</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/categories/">Categories</a>
+            </li>
+            <li class="menu-item">
+              <a
+                class="menu-item-link"
+                href="https://ergate.com/"
+                target="_blank"
+                >Visit ERGATE</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </header>
 
-<h1 id="list-file-attributes">List File Attributes</h1>
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            <article class="post">
+              <header class="post-header">
+                <h1 class="post-title">
+                  51. File Permissions - File Attributes
+                </h1>
 
-<p>Here are some options for lsattr command:</p>
+                <div class="post-meta">
+                  <span class="post-time"> Sat Mar 23 2019 </span>
+                  <div class="post-category">
+                    <a
+                      href="/categories/linux-administrator-simple-but-profound/"
+                    >
+                      Linux Administrator: Simple But Profound
+                    </a>
+                  </div>
+                  <span class="more-meta"> 930 words </span>
+                  <span class="more-meta"> 5 mins read </span>
+                </div>
+              </header>
 
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Meaning</th>
-</tr>
-</thead>
+              <div class="post-toc" id="post-toc">
+                <h2 class="post-toc-title">Contents</h2>
+                <div class="post-toc-content always-active">
+                  <nav id="TableOfContents">
+                    <ul>
+                      <li>
+                        <a href="#list-file-attributes">List File Attributes</a>
+                        <ul>
+                          <li>
+                            <a href="#iterate-recursively"
+                              >Iterate Recursively</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="#include-directory-itself-and-parent-directory"
+                              >Include Directory Itself and Parent Directory</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#directory-itself-only"
+                              >Directory Itself Only</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#long-name-instead-of-char-abbreviation"
+                              >Long Name Instead of Char Abbreviation</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#version-or-generation-number"
+                              >Version or Generation Number</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="#change-file-attributes"
+                          >Change File Attributes</a
+                        >
+                        <ul>
+                          <li>
+                            <a href="#assign-attributes">Assign Attributes</a>
+                          </li>
+                          <li>
+                            <a href="#append-attributes">Append Attributes</a>
+                          </li>
+                          <li>
+                            <a href="#remove-attributes">Remove Attributes</a>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+              <div class="post-content">
+                <p>
+                  To make our files more secure, Linux provides a feature called
+                  file attribute. By configuring the attributes of the file, we
+                  can specify whether it is read-only or undeleted, or in other
+                  statuses.
+                </p>
 
-<tbody>
-<tr>
-<td align="center">-R</td>
-<td align="left">Output all attributes of files, directories and subdirectories&rsquo; under a specified directory.</td>
-</tr>
+                <h1 id="list-file-attributes">List File Attributes</h1>
 
-<tr>
-<td align="center">-a</td>
-<td align="left">Output all attributes of files, directories, directory itself and the parent directory of a specified directory.</td>
-</tr>
+                <p>Here are some options for lsattr command:</p>
 
-<tr>
-<td align="center">-d</td>
-<td align="left">Output only the directory itself instead of everything under it.</td>
-</tr>
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Meaning</th>
+                    </tr>
+                  </thead>
 
-<tr>
-<td align="center">-l</td>
-<td align="left">Display long names of the option rather than the acronyms.</td>
-</tr>
+                  <tbody>
+                    <tr>
+                      <td align="center">-R</td>
+                      <td align="left">
+                        Output all attributes of files, directories and
+                        subdirectories&rsquo; under a specified directory.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-v</td>
-<td align="left">List version or general numbers of files and directories.</td>
-</tr>
-</tbody>
-</table>
+                    <tr>
+                      <td align="center">-a</td>
+                      <td align="left">
+                        Output all attributes of files, directories, directory
+                        itself and the parent directory of a specified
+                        directory.
+                      </td>
+                    </tr>
 
-<p>Let&rsquo;s first prepare some files and directories:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                    <tr>
+                      <td align="center">-d</td>
+                      <td align="left">
+                        Output only the directory itself instead of everything
+                        under it.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-l</td>
+                      <td align="left">
+                        Display long names of the option rather than the
+                        acronyms.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-v</td>
+                      <td align="left">
+                        List version or general numbers of files and
+                        directories.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>Let&rsquo;s first prepare some files and directories:</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">mkdir -p attr_dir/attr_dir_child
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">mkdir -p attr_dir/attr_dir_child
 touch attr_dir/<span class="o">{</span>file<span class="o">{</span><span class="m">1</span>,2<span class="o">}</span>,attr_dir_child/file_child<span class="o">{</span><span class="m">1</span>,2<span class="o">}}</span>
-tree attr_dir</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/51/mkdir_p_dir_touch_files_tree_dir.png"
-         alt="img"/> <figcaption>
-            <h4>Prepare some files and directories</h4>
-        </figcaption>
-</figure>
+tree attr_dir</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/51/mkdir_p_dir_touch_files_tree_dir.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>Prepare some files and directories</h4>
+                  </figcaption>
+                </figure>
 
-<p>The lsattr command iterates all files and directories contained in the specified directory by default but does not iterate through the files or directories under its subdirectories:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">lsattr attr_dir</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/51/lsattr_dir.png"
-         alt="img"/> <figcaption>
-            <h4>Iterates through the attr_dir directory&#39;s files and directories, bypass the files and directories under its subdirectories</h4>
-        </figcaption>
-</figure>
+                <p>
+                  The lsattr command iterates all files and directories
+                  contained in the specified directory by default but does not
+                  iterate through the files or directories under its
+                  subdirectories:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">lsattr attr_dir</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/51/lsattr_dir.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Iterates through the attr_dir directory&#39;s files and
+                      directories, bypass the files and directories under its
+                      subdirectories
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="iterate-recursively">Iterate Recursively</h2>
+                <h2 id="iterate-recursively">Iterate Recursively</h2>
 
-<p>With the -R option, we can iterate all the contents of the directory and everything under its subdirectories:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">lsattr -R attr_dir</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/51/lsattr_r_upper_dir.png"
-         alt="img"/> <figcaption>
-            <h4>Iterate all the contents of the directory and everything under its subdirectories</h4>
-        </figcaption>
-</figure>
+                <p>
+                  With the -R option, we can iterate all the contents of the
+                  directory and everything under its subdirectories:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">lsattr -R attr_dir</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/51/lsattr_r_upper_dir.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Iterate all the contents of the directory and everything
+                      under its subdirectories
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="include-directory-itself-and-parent-directory">Include Directory Itself and Parent Directory</h2>
+                <h2 id="include-directory-itself-and-parent-directory">
+                  Include Directory Itself and Parent Directory
+                </h2>
 
-<p>With the -a option, we can iterate all of the contents under the specified directory, including itself and its parent directory:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">lsattr -a attr_dir</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/51/lsattr_a_dir.png"
-         alt="img"/> <figcaption>
-            <h4>Iterate all of the contents under the specified directory, including itself and its parent directory</h4>
-        </figcaption>
-</figure>
+                <p>
+                  With the -a option, we can iterate all of the contents under
+                  the specified directory, including itself and its parent
+                  directory:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">lsattr -a attr_dir</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/51/lsattr_a_dir.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Iterate all of the contents under the specified directory,
+                      including itself and its parent directory
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="directory-itself-only">Directory Itself Only</h2>
+                <h2 id="directory-itself-only">Directory Itself Only</h2>
 
-<p>With the -d option, we can display only the directory itself, not everything under it:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">lsattr -d attr_dir</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/51/lsattr_d_dir.png"
-         alt="img"/> <figcaption>
-            <h4>Display only the directory itself, not everything under it</h4>
-        </figcaption>
-</figure>
+                <p>
+                  With the -d option, we can display only the directory itself,
+                  not everything under it:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">lsattr -d attr_dir</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/51/lsattr_d_dir.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Display only the directory itself, not everything under it
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="long-name-instead-of-char-abbreviation">Long Name Instead of Char Abbreviation</h2>
+                <h2 id="long-name-instead-of-char-abbreviation">
+                  Long Name Instead of Char Abbreviation
+                </h2>
 
-<p>With the -l option, we can display the long name of the option rather than the acronyms:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">lsattr -l attr_dir</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/51/lsattr_l_dir.png"
-         alt="img"/> <figcaption>
-            <h4>Display the long name of the option rather than the acronyms</h4>
-        </figcaption>
-</figure>
+                <p>
+                  With the -l option, we can display the long name of the option
+                  rather than the acronyms:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">lsattr -l attr_dir</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/51/lsattr_l_dir.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Display the long name of the option rather than the
+                      acronyms
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="version-or-generation-number">Version or Generation Number</h2>
+                <h2 id="version-or-generation-number">
+                  Version or Generation Number
+                </h2>
 
-<p>With the -v option, we can list version or general numbers of files and directories.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">lsattr -v attr_dir</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/51/lsattr_v_dir.png"
-         alt="img"/> <figcaption>
-            <h4>List version or general numbers of files and directories</h4>
-        </figcaption>
-</figure>
+                <p>
+                  With the -v option, we can list version or general numbers of
+                  files and directories.
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">lsattr -v attr_dir</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/51/lsattr_v_dir.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      List version or general numbers of files and directories
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h1 id="change-file-attributes">Change File Attributes</h1>
+                <h1 id="change-file-attributes">Change File Attributes</h1>
 
-<p>Here are some options for chattr command:</p>
+                <p>Here are some options for chattr command:</p>
 
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Meaning</th>
-</tr>
-</thead>
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Meaning</th>
+                    </tr>
+                  </thead>
 
-<tbody>
-<tr>
-<td align="center">-R</td>
-<td align="left">Recursively change the attributes of the directory and all its contents.</td>
-</tr>
+                  <tbody>
+                    <tr>
+                      <td align="center">-R</td>
+                      <td align="left">
+                        Recursively change the attributes of the directory and
+                        all its contents.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-V</td>
-<td align="left">Change the attributes verbosely.</td>
-</tr>
-</tbody>
-</table>
+                    <tr>
+                      <td align="center">-V</td>
+                      <td align="left">Change the attributes verbosely.</td>
+                    </tr>
+                  </tbody>
+                </table>
 
-<p>Here are all the mode options for chattr command: (Most options work only on older file system types.)</p>
+                <p>
+                  Here are all the mode options for chattr command: (Most
+                  options work only on older file system types.)
+                </p>
 
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Meaning</th>
-</tr>
-</thead>
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Meaning</th>
+                    </tr>
+                  </thead>
 
-<tbody>
-<tr>
-<td align="center">a</td>
-<td align="left">Append only.</td>
-</tr>
+                  <tbody>
+                    <tr>
+                      <td align="center">a</td>
+                      <td align="left">Append only.</td>
+                    </tr>
 
-<tr>
-<td align="center">A</td>
-<td align="left">No atime updates</td>
-</tr>
+                    <tr>
+                      <td align="center">A</td>
+                      <td align="left">No atime updates</td>
+                    </tr>
 
-<tr>
-<td align="center">c</td>
-<td align="left">compressed</td>
-</tr>
+                    <tr>
+                      <td align="center">c</td>
+                      <td align="left">compressed</td>
+                    </tr>
 
-<tr>
-<td align="center">C</td>
-<td align="left">No copy on write</td>
-</tr>
+                    <tr>
+                      <td align="center">C</td>
+                      <td align="left">No copy on write</td>
+                    </tr>
 
-<tr>
-<td align="center">d</td>
-<td align="left">No dump</td>
-</tr>
+                    <tr>
+                      <td align="center">d</td>
+                      <td align="left">No dump</td>
+                    </tr>
 
-<tr>
-<td align="center">D</td>
-<td align="left">Synchronous directory updates</td>
-</tr>
+                    <tr>
+                      <td align="center">D</td>
+                      <td align="left">Synchronous directory updates</td>
+                    </tr>
 
-<tr>
-<td align="center">e</td>
-<td align="left">Extent format</td>
-</tr>
+                    <tr>
+                      <td align="center">e</td>
+                      <td align="left">Extent format</td>
+                    </tr>
 
-<tr>
-<td align="center">F</td>
-<td align="left">Case-insensitive directory lookups</td>
-</tr>
+                    <tr>
+                      <td align="center">F</td>
+                      <td align="left">Case-insensitive directory lookups</td>
+                    </tr>
 
-<tr>
-<td align="center">i</td>
-<td align="left">immutable</td>
-</tr>
+                    <tr>
+                      <td align="center">i</td>
+                      <td align="left">immutable</td>
+                    </tr>
 
-<tr>
-<td align="center">j</td>
-<td align="left">Data journalling</td>
-</tr>
+                    <tr>
+                      <td align="center">j</td>
+                      <td align="left">Data journalling</td>
+                    </tr>
 
-<tr>
-<td align="center">P</td>
-<td align="left">Project hierarchy</td>
-</tr>
+                    <tr>
+                      <td align="center">P</td>
+                      <td align="left">Project hierarchy</td>
+                    </tr>
 
-<tr>
-<td align="center">s</td>
-<td align="left">Secure deletion</td>
-</tr>
+                    <tr>
+                      <td align="center">s</td>
+                      <td align="left">Secure deletion</td>
+                    </tr>
 
-<tr>
-<td align="center">S</td>
-<td align="left">Synchronous updates</td>
-</tr>
+                    <tr>
+                      <td align="center">S</td>
+                      <td align="left">Synchronous updates</td>
+                    </tr>
 
-<tr>
-<td align="center">t</td>
-<td align="left">No tail-merging</td>
-</tr>
+                    <tr>
+                      <td align="center">t</td>
+                      <td align="left">No tail-merging</td>
+                    </tr>
 
-<tr>
-<td align="center">T</td>
-<td align="left">Top of directory hierarchy</td>
-</tr>
+                    <tr>
+                      <td align="center">T</td>
+                      <td align="left">Top of directory hierarchy</td>
+                    </tr>
 
-<tr>
-<td align="center">u</td>
-<td align="left">Undeletable</td>
-</tr>
-</tbody>
-</table>
+                    <tr>
+                      <td align="center">u</td>
+                      <td align="left">Undeletable</td>
+                    </tr>
+                  </tbody>
+                </table>
 
-<p>Mode options supported with xfs type file systems:</p>
+                <p>Mode options supported with xfs type file systems:</p>
 
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Meaning</th>
-</tr>
-</thead>
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Meaning</th>
+                    </tr>
+                  </thead>
 
-<tbody>
-<tr>
-<td align="center">a</td>
-<td align="left">Append only.</td>
-</tr>
+                  <tbody>
+                    <tr>
+                      <td align="center">a</td>
+                      <td align="left">Append only.</td>
+                    </tr>
 
-<tr>
-<td align="center">A</td>
-<td align="left">No atime updates</td>
-</tr>
+                    <tr>
+                      <td align="center">A</td>
+                      <td align="left">No atime updates</td>
+                    </tr>
 
-<tr>
-<td align="center">d</td>
-<td align="left">No dump</td>
-</tr>
+                    <tr>
+                      <td align="center">d</td>
+                      <td align="left">No dump</td>
+                    </tr>
 
-<tr>
-<td align="center">i</td>
-<td align="left">immutable</td>
-</tr>
+                    <tr>
+                      <td align="center">i</td>
+                      <td align="left">immutable</td>
+                    </tr>
 
-<tr>
-<td align="center">S</td>
-<td align="left">Synchronous updates</td>
-</tr>
-</tbody>
-</table>
+                    <tr>
+                      <td align="center">S</td>
+                      <td align="left">Synchronous updates</td>
+                    </tr>
+                  </tbody>
+                </table>
 
-<p>Mode options supported with ext4 type file systems:</p>
+                <p>Mode options supported with ext4 type file systems:</p>
 
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Meaning</th>
-</tr>
-</thead>
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Meaning</th>
+                    </tr>
+                  </thead>
 
-<tbody>
-<tr>
-<td align="center">a</td>
-<td align="left">Append only.</td>
-</tr>
+                  <tbody>
+                    <tr>
+                      <td align="center">a</td>
+                      <td align="left">Append only.</td>
+                    </tr>
 
-<tr>
-<td align="center">A</td>
-<td align="left">No atime updates</td>
-</tr>
+                    <tr>
+                      <td align="center">A</td>
+                      <td align="left">No atime updates</td>
+                    </tr>
 
-<tr>
-<td align="center">d</td>
-<td align="left">No dump</td>
-</tr>
+                    <tr>
+                      <td align="center">d</td>
+                      <td align="left">No dump</td>
+                    </tr>
 
-<tr>
-<td align="center">D</td>
-<td align="left">Synchronous directory updates</td>
-</tr>
+                    <tr>
+                      <td align="center">D</td>
+                      <td align="left">Synchronous directory updates</td>
+                    </tr>
 
-<tr>
-<td align="center">e</td>
-<td align="left">Extent format</td>
-</tr>
+                    <tr>
+                      <td align="center">e</td>
+                      <td align="left">Extent format</td>
+                    </tr>
 
-<tr>
-<td align="center">i</td>
-<td align="left">immutable</td>
-</tr>
+                    <tr>
+                      <td align="center">i</td>
+                      <td align="left">immutable</td>
+                    </tr>
 
-<tr>
-<td align="center">j</td>
-<td align="left">Data journalling</td>
-</tr>
+                    <tr>
+                      <td align="center">j</td>
+                      <td align="left">Data journalling</td>
+                    </tr>
 
-<tr>
-<td align="center">S</td>
-<td align="left">Synchronous updates</td>
-</tr>
+                    <tr>
+                      <td align="center">S</td>
+                      <td align="left">Synchronous updates</td>
+                    </tr>
 
-<tr>
-<td align="center">u</td>
-<td align="left">Undeletable</td>
-</tr>
-</tbody>
-</table>
+                    <tr>
+                      <td align="center">u</td>
+                      <td align="left">Undeletable</td>
+                    </tr>
+                  </tbody>
+                </table>
 
-<p>Mode operations:</p>
+                <p>Mode operations:</p>
 
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Meaning</th>
-</tr>
-</thead>
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Meaning</th>
+                    </tr>
+                  </thead>
 
-<tbody>
-<tr>
-<td align="center">+</td>
-<td align="left">Appendant</td>
-</tr>
+                  <tbody>
+                    <tr>
+                      <td align="center">+</td>
+                      <td align="left">Appendant</td>
+                    </tr>
 
-<tr>
-<td align="center">-</td>
-<td align="left">Deletion</td>
-</tr>
+                    <tr>
+                      <td align="center">-</td>
+                      <td align="left">Deletion</td>
+                    </tr>
 
-<tr>
-<td align="center">=</td>
-<td align="left">Assignment</td>
-</tr>
-</tbody>
-</table>
+                    <tr>
+                      <td align="center">=</td>
+                      <td align="left">Assignment</td>
+                    </tr>
+                  </tbody>
+                </table>
 
-<p>We can use the df command followed by the -T option to view the file system type of the partition in which the root path resides:</p>
+                <p>
+                  We can use the df command followed by the -T option to view
+                  the file system type of the partition in which the root path
+                  resides:
+                </p>
 
-<figure>
-    <img src="../images/51/df_t_upper.png"
-         alt="img"/> <figcaption>
-            <h4>The file system type for the partition in which the root path is located is xfs.</h4>
-        </figcaption>
-</figure>
+                <figure>
+                  <img src="../images/51/df_t_upper.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      The file system type for the partition in which the root
+                      path is located is xfs.
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="assign-attributes">Assign Attributes</h2>
+                <h2 id="assign-attributes">Assign Attributes</h2>
 
-<p>With the equal sign(=), we can assign attributes to files or directories:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <p>
+                  With the equal sign(=), we can assign attributes to files or
+                  directories:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">lsattr attr_dir
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">lsattr attr_dir
 <span class="nv">chattr</span> <span class="o">=</span>i attr_dir/file1    <span class="c1"># Assign immutable attribute to file1 under the directory</span>
-lsattr attr_dir</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/51/lsattr_dir_chattr_assign_i_file_lsattr_dir_vi_file.png"
-         alt="img"/> <figcaption>
-            <h4>Assign immutable attribute to file1</h4>
-        </figcaption>
-</figure>
+lsattr attr_dir</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/51/lsattr_dir_chattr_assign_i_file_lsattr_dir_vi_file.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>Assign immutable attribute to file1</h4>
+                  </figcaption>
+                </figure>
 
-<p>Or we can set the attribute verbosely:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <p>Or we can set the attribute verbosely:</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">chattr -i attr_dir/file1    <span class="c1"># This removes the immutable attribute</span>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">chattr -i attr_dir/file1    <span class="c1"># This removes the immutable attribute</span>
 lsattr attr_dir
 chattr -V <span class="o">=</span>i attr_dir/file1
-lsattr attr_dir</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/51/chattr_remove_i_file_lsattr_dir_chattr_assign_i_file_lsattr_dir_vi_file.png"
-         alt="img"/> <figcaption>
-            <h4>Assign immutable attribute to file1 verbosely</h4>
-        </figcaption>
-</figure>
+lsattr attr_dir</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/51/chattr_remove_i_file_lsattr_dir_chattr_assign_i_file_lsattr_dir_vi_file.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>Assign immutable attribute to file1 verbosely</h4>
+                  </figcaption>
+                </figure>
 
-<p>When we try to open and save the file, vi prompts that it is a read-only file and can not save the changes:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">vim attr_dir/file1</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-vim" data-lang="vim"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-vim" data-lang="vim"><span class="p">:</span><span class="nx">wq</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/51/wq.png"
-         alt="img"/> <figcaption>
-            <h4>vi prompted that it was a read-only file and could not save the changes</h4>
-        </figcaption>
-</figure>
+                <p>
+                  When we try to open and save the file, vi prompts that it is a
+                  read-only file and can not save the changes:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">vim attr_dir/file1</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-vim" data-lang="vim"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-vim" data-lang="vim"><span class="p">:</span><span class="nx">wq</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/51/wq.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      vi prompted that it was a read-only file and could not
+                      save the changes
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<p>Even if the save command is followed by an exclamation point, it is also impossible to save the file:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-vim" data-lang="vim"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-vim" data-lang="vim"><span class="p">:</span><span class="nx">wq</span><span class="p">!</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/51/wq!.png"
-         alt="img"/> <figcaption>
-            <h4>Forced save is also invalid for the immutable file</h4>
-        </figcaption>
-</figure>
+                <p>
+                  Even if the save command is followed by an exclamation point,
+                  it is also impossible to save the file:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-vim" data-lang="vim"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-vim" data-lang="vim"><span class="p">:</span><span class="nx">wq</span><span class="p">!</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/51/wq!.png" alt="img" />
+                  <figcaption>
+                    <h4>Forced save is also invalid for the immutable file</h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="append-attributes">Append Attributes</h2>
+                <h2 id="append-attributes">Append Attributes</h2>
 
-<p>With the plus sign(+), we can append attributes to files or directories:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <p>
+                  With the plus sign(+), we can append attributes to files or
+                  directories:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">lsattr -R attr_dir
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">lsattr -R attr_dir
 chattr -R +aAdS attr_dir/*    <span class="c1"># This appends aAdS attributes to all the files and directories under the attr_dir directory</span>
-lsattr -R attr_dir</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/51/lsattr_r_upper_dir_chattr_r_upper_append_more_dir_content_lsattr_r_upper_dir.png"
-         alt="img"/> <figcaption>
-            <h4>Append more attributes to all files and directories</h4>
-        </figcaption>
-</figure>
+lsattr -R attr_dir</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/51/lsattr_r_upper_dir_chattr_r_upper_append_more_dir_content_lsattr_r_upper_dir.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>Append more attributes to all files and directories</h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="remove-attributes">Remove Attributes</h2>
+                <h2 id="remove-attributes">Remove Attributes</h2>
 
-<p>With the minus sign(-), we can remove attributes from files or directories:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <p>
+                  With the minus sign(-), we can remove attributes from files or
+                  directories:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">lsattr -R attr_dir
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">lsattr -R attr_dir
 chattr -R -aAdiS attr_dir/*    <span class="c1"># This removes aAdiS attributes from all the files and directories under the attr_dir directory</span>
-lsattr -R attr_dir</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/51/lsattr_r_upper_dir_chattr_r_upper_remove_all_dir_content_lsattr_r_upper_dir.png"
-         alt="img"/> <figcaption>
-            <h4>Remove all attributes from all files and directories</h4>
-        </figcaption>
-</figure>
+lsattr -R attr_dir</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/51/lsattr_r_upper_dir_chattr_r_upper_remove_all_dir_content_lsattr_r_upper_dir.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>
+                      Remove all attributes from all files and directories
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<blockquote>
-<p>References
-<a href="http://man7.org/linux/man-pages/man1/lsattr.1.html">LSATTR(1)</a>,
-<a href="http://man7.org/linux/man-pages/man1/chattr.1.html">CHATTR(1)</a>,
-<a href="http://man7.org/linux/man-pages/man5/xfs.5.html">xfs(5)</a>,
-<a href="http://man7.org/linux/man-pages/man5/ext4.5.html">EXT4(5)</a></p>
-</blockquote>
+                <blockquote>
+                  <p>
+                    References
+                    <a href="http://man7.org/linux/man-pages/man1/lsattr.1.html"
+                      >LSATTR(1)</a
+                    >,
+                    <a href="http://man7.org/linux/man-pages/man1/chattr.1.html"
+                      >CHATTR(1)</a
+                    >,
+                    <a href="http://man7.org/linux/man-pages/man5/xfs.5.html"
+                      >xfs(5)</a
+                    >,
+                    <a href="http://man7.org/linux/man-pages/man5/ext4.5.html"
+                      >EXT4(5)</a
+                    >
+                  </p>
+                </blockquote>
 
-<!-- Buy Me a Coffee Button -->
+                <!-- Buy Me a Coffee Button -->
 
-<p class="align-center">
-  <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/PFou9WhLr"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
-</p>
-    </div>
+                <p class="align-center">
+                  <style>
+                    .bmc-button img {
+                      width: 27px !important;
+                      margin-bottom: 1px !important;
+                      box-shadow: none !important;
+                      border: none !important;
+                      vertical-align: middle !important;
+                    }
+                    .bmc-button {
+                      line-height: 36px !important;
+                      height: 37px !important;
+                      text-decoration: none !important;
+                      display: inline-flex !important;
+                      color: #ffffff !important;
+                      background-color: #ff813f !important;
+                      border-radius: 3px !important;
+                      border: 1px solid transparent !important;
+                      padding: 1px 9px !important;
+                      font-size: 22px !important;
+                      letter-spacing: 0.6px !important;
+                      box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;
+                      -webkit-box-shadow: 0px 1px 2px 2px
+                        rgba(190, 190, 190, 0.5) !important;
+                      margin: 0 auto !important;
+                      font-family: "Cookie", cursive !important;
+                      -webkit-box-sizing: border-box !important;
+                      box-sizing: border-box !important;
+                      -o-transition: 0.3s all linear !important;
+                      -webkit-transition: 0.3s all linear !important;
+                      -moz-transition: 0.3s all linear !important;
+                      -ms-transition: 0.3s all linear !important;
+                      transition: 0.3s all linear !important;
+                    }
+                    .bmc-button:hover,
+                    .bmc-button:active,
+                    .bmc-button:focus {
+                      -webkit-box-shadow: 0px 1px 2px 2px
+                        rgba(190, 190, 190, 0.5) !important;
+                      text-decoration: none !important;
+                      box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+                      opacity: 0.85 !important;
+                      color: #ffffff !important;
+                    }</style
+                  ><link
+                    href="https://fonts.googleapis.com/css?family=Cookie"
+                    rel="stylesheet"
+                  /><a
+                    class="bmc-button"
+                    target="_blank"
+                    href="https://www.buymeacoffee.com/PFou9WhLr"
+                    ><img
+                      src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg"
+                      alt="Buy me a coffee"
+                    /><span style="margin-left: 5px">Buy me a coffee</span></a
+                  >
+                </p>
+              </div>
 
-    <div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">Author</span>
-    <span class="item-content">Dong Chen</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">LastMod</span>
-    <span class="item-content">Sat Mar 23 2019</span>
-  </p>
-  
-  
-</div><div class="post-reward">
-  <input type="checkbox" name="reward" id="reward" hidden />
-  <label class="reward-button" for="reward">Reward</label>
-  <div class="qr-code">
-    
-    <label class="qr-code-image" for="reward">
-        <img class="image" src="https://dongchen.co/images/wepay_qr_final.png">
-        <span>wechat</span>
-      </label>
-    <label class="qr-code-image" for="reward">
-        <img class="image" src="https://dongchen.co/images/alipay_qr_final.png">
-        <span>alipay</span>
-      </label>
-  </div>
-</div><footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/linux/">Linux</a>
-          <a href="/tags/server/">Server</a>
+              <div class="post-copyright">
+                <p class="copyright-item">
+                  <span class="item-title">Author</span>
+                  <span class="item-content">Dong Chen</span>
+                </p>
+                <p class="copyright-item">
+                  <span class="item-title">LastMod</span>
+                  <span class="item-content">Sat Mar 23 2019</span>
+                </p>
+              </div>
+              <div class="post-reward">
+                <input type="checkbox" name="reward" id="reward" hidden />
+                <label class="reward-button" for="reward">Reward</label>
+                <div class="qr-code">
+                  <label class="qr-code-image" for="reward">
+                    <img
+                      class="image"
+                      src="https://dongchen.co/images/wepay_qr_final.png"
+                    />
+                    <span>wechat</span>
+                  </label>
+                  <label class="qr-code-image" for="reward">
+                    <img
+                      class="image"
+                      src="https://dongchen.co/images/alipay_qr_final.png"
+                    />
+                    <span>alipay</span>
+                  </label>
+                </div>
+              </div>
+              <footer class="post-footer">
+                <div class="post-tags">
+                  <a href="/tags/linux/">Linux</a>
+                  <a href="/tags/server/">Server</a>
+                </div>
+                <nav class="post-nav">
+                  <a
+                    class="prev"
+                    href="/post/simple-but-profound/server-side-programming/linux/administrator/52.-find-utilities-advanced-files-searching/"
+                  >
+                    <i class="iconfont icon-left"></i>
+                    <span class="prev-text nav-default"
+                      >52. Find Utilities - Advanced Files Searching</span
+                    >
+                    <span class="prev-text nav-mobile">Prev</span>
+                  </a>
+                  <a
+                    class="next"
+                    href="/post/simple-but-profound/server-side-programming/linux/administrator/50.-file-permissions-filesystem-access-control-list/"
+                  >
+                    <span class="next-text nav-default"
+                      >50. File Permissions - Filesystem Access Control
+                      List</span
+                    >
+                    <span class="next-text nav-mobile">Next</span>
+                    <i class="iconfont icon-right"></i>
+                  </a>
+                </nav>
+              </footer>
+            </article>
           </div>
-      <nav class="post-nav">
-        <a class="prev" href="/post/simple-but-profound/server-side-programming/linux/administrator/52.-find-utilities-advanced-files-searching/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">52. Find Utilities - Advanced Files Searching</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        <a class="next" href="/post/simple-but-profound/server-side-programming/linux/administrator/50.-file-permissions-filesystem-access-control-list/">
-            <span class="next-text nav-default">50. File Permissions - Filesystem Access Control List</span>
-            <span class="next-text nav-mobile">Next</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
         </div>
-        
+      </main>
 
+      <footer id="footer" class="footer">
+        <div class="social-links">
+          <a
+            href="mailto:dongchensteven@gmail.com"
+            class="iconfont icon-email"
+            title="email"
+          ></a>
+          <a
+            href="https://www.linkedin.com/in/dongchensteven"
+            class="iconfont icon-linkedin"
+            title="linkedin"
+          ></a>
+          <a
+            href="https://github.com/dongchensteven"
+            class="iconfont icon-github"
+            title="github"
+          ></a>
+          <a
+            href="https://dongchen.co/index.xml"
+            type="application/rss+xml"
+            class="iconfont icon-rss"
+            title="rss"
+          ></a>
+        </div>
+
+        <div class="copyright">
+          <span class="power-by">
+            Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+          </span>
+          <span class="division">|</span>
+          <span class="theme-info">
+            Theme -
+            <a
+              class="theme-link"
+              href="https://github.com/olOwOlo/hugo-theme-even"
+              >Even</a
+            >
+          </span>
+
+          <span class="copyright-year">
+            &copy; 2018 - 2020
+            <span class="heart">
+              <i class="iconfont icon-heart"></i>
+            </span>
+            <span class="author">Dong Chen</span>
+          </span>
+        </div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
       </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:dongchensteven@gmail.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://www.linkedin.com/in/dongchensteven" class="iconfont icon-linkedin" title="linkedin"></a>
-      <a href="https://github.com/dongchensteven" class="iconfont icon-github" title="github"></a>
-  <a href="https://dongchen.co/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
-
-<div class="copyright">
-  <span class="power-by">
-    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    Theme - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2018 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">Dong Chen</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
     </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
-  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
-    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
-    timeago().render(document.querySelectorAll('.timeago'), languageCode);
-    timeago.cancel();  
-  </script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js"
+      integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js"
+      integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js"
+      integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js"
+      integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      <!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+      var languageCode = "en"
+        .replace(/-/g, "_")
+        .replace(/_(.*)/, function ($0, $1) {
+          return $0.replace($1, $1.toUpperCase());
+        });
+      timeago().render(document.querySelectorAll(".timeago"), languageCode);
+      timeago.cancel();
+    </script>
+    <script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-133226289-1', 'auto');
-	ga('set', 'anonymizeIp', true);
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-
-
-
-
-
-
-</body>
+    <script type="application/javascript">
+      var doNotTrack = false;
+      if (!doNotTrack) {
+        window.ga =
+          window.ga ||
+          function () {
+            (ga.q = ga.q || []).push(arguments);
+          };
+        ga.l = +new Date();
+        ga("create", "UA-133226289-1", "auto");
+        ga("set", "anonymizeIp", true);
+        ga("send", "pageview");
+      }
+    </script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
+  </body>
 </html>

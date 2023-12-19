@@ -1,438 +1,782 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>22. Bash Shell - Pattern Matching (Globbing Wildcards) - Dong - A place to track my time log</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+      22. Bash Shell - Pattern Matching (Globbing Wildcards) - Dong - A place to
+      track my time log
+    </title>
+    <meta name="renderer" content="webkit" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
 
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+    <meta name="theme-color" content="#f8f5ec" />
+    <meta name="msapplication-navbutton-color" content="#f8f5ec" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec" />
 
+    <meta name="author" content="Dong Chen" />
+    <meta
+      name="description"
+      content="With the matching patterns, we can easily and efficiently find the files or directories we need.
+"
+    />
+    <meta
+      name="keywords"
+      content="Matching Pattern, Globbing Wildcards, Match any String, Match Starts With Strings, Match Ends With Strings, Match any Character, Match any Enclosed Characters, Match any Number"
+    />
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="With the matching patterns, we can easily and efficiently find the files or directories we need.
-" /><meta name="keywords" content="Matching Pattern, Globbing Wildcards, Match any String, Match Starts With Strings, Match Ends With Strings, Match any Character, Match any Enclosed Characters, Match any Number" />
+    <meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
+    <link
+      rel="canonical"
+      href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/22.-bash-shell-pattern-matching-globbing-wildcards/"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
 
+    <link href="/dist/even.ea128f8b.min.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css"
+      integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
 
+    <meta
+      property="og:title"
+      content="22. Bash Shell - Pattern Matching (Globbing Wildcards)"
+    />
+    <meta
+      property="og:description"
+      content="With the matching patterns, we can easily and efficiently find the files or directories we need."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/22.-bash-shell-pattern-matching-globbing-wildcards/"
+    />
+    <meta
+      property="article:published_time"
+      content="2019-02-23T11:20:55&#43;13:00"
+    />
+    <meta
+      property="article:modified_time"
+      content="2019-02-23T11:20:55&#43;13:00"
+    />
 
+    <meta
+      itemprop="name"
+      content="22. Bash Shell - Pattern Matching (Globbing Wildcards)"
+    />
+    <meta
+      itemprop="description"
+      content="With the matching patterns, we can easily and efficiently find the files or directories we need."
+    />
 
+    <meta itemprop="datePublished" content="2019-02-23T11:20:55&#43;13:00" />
+    <meta itemprop="dateModified" content="2019-02-23T11:20:55&#43;13:00" />
+    <meta itemprop="wordCount" content="339" />
 
-<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
+    <meta itemprop="keywords" content="Linux,Server," />
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="22. Bash Shell - Pattern Matching (Globbing Wildcards)"
+    />
+    <meta
+      name="twitter:description"
+      content="With the matching patterns, we can easily and efficiently find the files or directories we need."
+    />
 
+    <!--[if lte IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+    <![endif]-->
 
-<link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/22.-bash-shell-pattern-matching-globbing-wildcards/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-<link href="/dist/even.ea128f8b.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/styles.css">
-
-
-<meta property="og:title" content="22. Bash Shell - Pattern Matching (Globbing Wildcards)" />
-<meta property="og:description" content="With the matching patterns, we can easily and efficiently find the files or directories we need." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/22.-bash-shell-pattern-matching-globbing-wildcards/" />
-<meta property="article:published_time" content="2019-02-23T11:20:55&#43;13:00"/>
-<meta property="article:modified_time" content="2019-02-23T11:20:55&#43;13:00"/>
-
-<meta itemprop="name" content="22. Bash Shell - Pattern Matching (Globbing Wildcards)">
-<meta itemprop="description" content="With the matching patterns, we can easily and efficiently find the files or directories we need.">
-
-
-<meta itemprop="datePublished" content="2019-02-23T11:20:55&#43;13:00" />
-<meta itemprop="dateModified" content="2019-02-23T11:20:55&#43;13:00" />
-<meta itemprop="wordCount" content="339">
-
-
-
-<meta itemprop="keywords" content="Linux,Server," />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="22. Bash Shell - Pattern Matching (Globbing Wildcards)"/>
-<meta name="twitter:description" content="With the matching patterns, we can easily and efficiently find the files or directories we need."/>
-
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
-
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
-
-</head>
-<body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">Dong</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">Home</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">Archives</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">Tags</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div id="mobile-navbar" class="mobile-navbar">
+      <div class="mobile-header-logo">
+        <a href="/" class="logo">Dong</a>
+      </div>
+      <div class="mobile-navbar-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <nav id="mobile-menu" class="mobile-menu slideout-menu">
+      <ul class="mobile-menu-list">
+        <a href="/">
+          <li class="mobile-menu-item">Home</li> </a
+        ><a href="/post/">
+          <li class="mobile-menu-item">Archives</li> </a
+        ><a href="/tags/">
+          <li class="mobile-menu-item">Tags</li> </a
+        ><a href="/categories/">
+          <li class="mobile-menu-item">Categories</li> </a
+        ><a href="https://ergate.com/" target="_blank">
+          <li class="mobile-menu-item">Visit ERGATE</li>
+        </a>
+      </ul>
+    </nav>
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header">
         <div class="logo-wrapper">
-  <a href="/" class="logo">Dong</a>
-</div>
-
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">Home</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">Archives</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">Categories</a>
-      </li>
-  </ul>
-</nav>
-    </header>
-
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
-    
-    <header class="post-header">
-      <h1 class="post-title">22. Bash Shell - Pattern Matching (Globbing Wildcards)</h1>
-
-      <div class="post-meta">
-        <span class="post-time"> Sat Feb 23 2019 </span>
-        <div class="post-category">
-            <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
-            </div>
-          <span class="more-meta"> 339 words </span>
-          <span class="more-meta"> 2 mins read </span>
-        
-      </div>
-    </header>
-
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">Contents</h2>
-  <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#preparation">Preparation</a></li>
-<li><a href="#special-pattern-characters">Special Pattern Characters</a>
-<ul>
-<li><a href="#match-any-string">Match any string</a>
-<ul>
-<li><a href="#match-any-file-that-starts-with-file">Match any file that starts with file</a></li>
-<li><a href="#match-any-file-that-ends-with-txt">Match any file that ends with .txt</a></li>
-</ul></li>
-<li><a href="#match-any-character">Match any character</a>
-<ul>
-<li><a href="#match-any-file-with-a-1-character-filename">Match any file with a 1-character filename</a></li>
-<li><a href="#match-any-file-with-a-4-character-extension">Match any file with a 4-character extension</a></li>
-</ul></li>
-<li><a href="#match-any-one-of-enclosed-characters">Match any one of enclosed characters</a>
-<ul>
-<li><a href="#match-any-file-that-starts-with-1-2-or-f">Match any file that starts with 1, 2 or f</a></li>
-<li><a href="#match-any-file-that-starts-with-1-2-or-3">Match any file that starts with 1, 2 or 3</a></li>
-<li><a href="#match-any-file-that-starts-without-1-2-or-3">Match any file that starts without 1, 2 or 3</a></li>
-</ul></li>
-</ul></li>
-</ul>
-</nav>
-  </div>
-</div>
-    <div class="post-content">
-      <p>With the matching patterns, we can easily and efficiently find the files or directories we need.</p>
-
-<h1 id="preparation">Preparation</h1>
-
-<p>Let&rsquo;s prepare some test files first before we start:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">touch <span class="m">1</span>.txt <span class="m">2</span>.doc <span class="m">3</span>.html <span class="m">1</span>.c <span class="m">2</span>.c <span class="m">3</span>.c file1.txt file2.doc file3.html 1file.txt 2file.doc 3file.html</code></pre></td></tr></table>
-</div>
-</div>
-<h1 id="special-pattern-characters">Special Pattern Characters</h1>
-
-<h2 id="match-any-string">Match any string</h2>
-
-<p>We can use the * character to match any string.</p>
-
-<h3 id="match-any-file-that-starts-with-file">Match any file that starts with file</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ll file*</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/22/ll_file_any_string.png"
-         alt="img"/> <figcaption>
-            <h4>Finds any file with filename begin with file</h4>
-        </figcaption>
-</figure>
-
-<h3 id="match-any-file-that-ends-with-txt">Match any file that ends with .txt</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ll *.txt</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/22/ll_any_string_txt.png"
-         alt="img"/> <figcaption>
-            <h4>Finds any with filename ends with .txt</h4>
-        </figcaption>
-</figure>
-
-<h2 id="match-any-character">Match any character</h2>
-
-<p>We can use the ? character to match any character.</p>
-
-<h3 id="match-any-file-with-a-1-character-filename">Match any file with a 1-character filename</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ll ?.*</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/22/ll_one_character_any_string.png"
-         alt="img"/> <figcaption>
-            <h4>Finds any file with a 1-character filename</h4>
-        </figcaption>
-</figure>
-
-<h3 id="match-any-file-with-a-4-character-extension">Match any file with a 4-character extension</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ll *.????</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/22/ll_any_string_four_characters.png"
-         alt="img"/> <figcaption>
-            <h4>Finds any file with a 4-character extension</h4>
-        </figcaption>
-</figure>
-
-<h2 id="match-any-one-of-enclosed-characters">Match any one of enclosed characters</h2>
-
-<p>We can use the [] range expression to match any one of enclosed characters.</p>
-
-<h3 id="match-any-file-that-starts-with-1-2-or-f">Match any file that starts with 1, 2 or f</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ll <span class="o">[</span>12f<span class="o">]</span>*</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/22/ll_one_two_f_any_string.png"
-         alt="img"/> <figcaption>
-            <h4>Finds any file that starts with 1, 2 or f</h4>
-        </figcaption>
-</figure>
-
-<h3 id="match-any-file-that-starts-with-1-2-or-3">Match any file that starts with 1, 2 or 3</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ll <span class="o">[</span><span class="m">1</span>-3<span class="o">]</span>*</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/22/ll_one_to_three_any_string.png"
-         alt="img"/> <figcaption>
-            <h4>Finds any file that starts with 1, 2 or 3</h4>
-        </figcaption>
-</figure>
-
-<h3 id="match-any-file-that-starts-without-1-2-or-3">Match any file that starts without 1, 2 or 3</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ll <span class="o">[</span>^1-3<span class="o">]</span>*</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/22/ll_without_one_to_three_any_string.png"
-         alt="img"/> <figcaption>
-            <h4>Finds any file that starts without 1, 2 or 3</h4>
-        </figcaption>
-</figure>
-
-<blockquote>
-<p>References
-<a href="https://www.gnu.org/software/bash/manual/html_node/Pattern-Matching.html#Pattern-Matching">3.5.8.1 Pattern Matching</a></p>
-</blockquote>
-
-<!-- Buy Me a Coffee Button -->
-
-<p class="align-center">
-  <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/PFou9WhLr"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
-</p>
-    </div>
-
-    <div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">Author</span>
-    <span class="item-content">Dong Chen</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">LastMod</span>
-    <span class="item-content">Sat Feb 23 2019</span>
-  </p>
-  
-  
-</div><div class="post-reward">
-  <input type="checkbox" name="reward" id="reward" hidden />
-  <label class="reward-button" for="reward">Reward</label>
-  <div class="qr-code">
-    
-    <label class="qr-code-image" for="reward">
-        <img class="image" src="https://dongchen.co/images/wepay_qr_final.png">
-        <span>wechat</span>
-      </label>
-    <label class="qr-code-image" for="reward">
-        <img class="image" src="https://dongchen.co/images/alipay_qr_final.png">
-        <span>alipay</span>
-      </label>
-  </div>
-</div><footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/linux/">Linux</a>
-          <a href="/tags/server/">Server</a>
-          </div>
-      <nav class="post-nav">
-        <a class="prev" href="/post/simple-but-profound/server-side-programming/linux/administrator/23.-bash-shell-text-processing-cat-tac-nl-head-tail/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">23. Bash Shell - Text Processing: cat, tac, nl, head, tail</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        <a class="next" href="/post/simple-but-profound/server-side-programming/linux/administrator/21.-pipelines-use-other-commands-running-results/">
-            <span class="next-text nav-default">21. Pipelines - Use Other Commands&#39; Running Results</span>
-            <span class="next-text nav-mobile">Next</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
+          <a href="/" class="logo">Dong</a>
         </div>
-        
 
+        <nav class="site-navbar">
+          <ul id="menu" class="menu">
+            <li class="menu-item">
+              <a class="menu-item-link" href="/">Home</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/post/">Archives</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/tags/">Tags</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/categories/">Categories</a>
+            </li>
+            <li class="menu-item">
+              <a
+                class="menu-item-link"
+                href="https://ergate.com/"
+                target="_blank"
+                >Visit ERGATE</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            <article class="post">
+              <header class="post-header">
+                <h1 class="post-title">
+                  22. Bash Shell - Pattern Matching (Globbing Wildcards)
+                </h1>
+
+                <div class="post-meta">
+                  <span class="post-time"> Sat Feb 23 2019 </span>
+                  <div class="post-category">
+                    <a
+                      href="/categories/linux-administrator-simple-but-profound/"
+                    >
+                      Linux Administrator: Simple But Profound
+                    </a>
+                  </div>
+                  <span class="more-meta"> 339 words </span>
+                  <span class="more-meta"> 2 mins read </span>
+                </div>
+              </header>
+
+              <div class="post-toc" id="post-toc">
+                <h2 class="post-toc-title">Contents</h2>
+                <div class="post-toc-content always-active">
+                  <nav id="TableOfContents">
+                    <ul>
+                      <li><a href="#preparation">Preparation</a></li>
+                      <li>
+                        <a href="#special-pattern-characters"
+                          >Special Pattern Characters</a
+                        >
+                        <ul>
+                          <li>
+                            <a href="#match-any-string">Match any string</a>
+                            <ul>
+                              <li>
+                                <a href="#match-any-file-that-starts-with-file"
+                                  >Match any file that starts with file</a
+                                >
+                              </li>
+                              <li>
+                                <a href="#match-any-file-that-ends-with-txt"
+                                  >Match any file that ends with .txt</a
+                                >
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a href="#match-any-character"
+                              >Match any character</a
+                            >
+                            <ul>
+                              <li>
+                                <a
+                                  href="#match-any-file-with-a-1-character-filename"
+                                  >Match any file with a 1-character filename</a
+                                >
+                              </li>
+                              <li>
+                                <a
+                                  href="#match-any-file-with-a-4-character-extension"
+                                  >Match any file with a 4-character
+                                  extension</a
+                                >
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a href="#match-any-one-of-enclosed-characters"
+                              >Match any one of enclosed characters</a
+                            >
+                            <ul>
+                              <li>
+                                <a
+                                  href="#match-any-file-that-starts-with-1-2-or-f"
+                                  >Match any file that starts with 1, 2 or f</a
+                                >
+                              </li>
+                              <li>
+                                <a
+                                  href="#match-any-file-that-starts-with-1-2-or-3"
+                                  >Match any file that starts with 1, 2 or 3</a
+                                >
+                              </li>
+                              <li>
+                                <a
+                                  href="#match-any-file-that-starts-without-1-2-or-3"
+                                  >Match any file that starts without 1, 2 or
+                                  3</a
+                                >
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+              <div class="post-content">
+                <p>
+                  With the matching patterns, we can easily and efficiently find
+                  the files or directories we need.
+                </p>
+
+                <h1 id="preparation">Preparation</h1>
+
+                <p>
+                  Let&rsquo;s prepare some test files first before we start:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">touch <span class="m">1</span>.txt <span class="m">2</span>.doc <span class="m">3</span>.html <span class="m">1</span>.c <span class="m">2</span>.c <span class="m">3</span>.c file1.txt file2.doc file3.html 1file.txt 2file.doc 3file.html</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h1 id="special-pattern-characters">
+                  Special Pattern Characters
+                </h1>
+
+                <h2 id="match-any-string">Match any string</h2>
+
+                <p>We can use the * character to match any string.</p>
+
+                <h3 id="match-any-file-that-starts-with-file">
+                  Match any file that starts with file
+                </h3>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">ll file*</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/22/ll_file_any_string.png" alt="img" />
+                  <figcaption>
+                    <h4>Finds any file with filename begin with file</h4>
+                  </figcaption>
+                </figure>
+
+                <h3 id="match-any-file-that-ends-with-txt">
+                  Match any file that ends with .txt
+                </h3>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">ll *.txt</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/22/ll_any_string_txt.png" alt="img" />
+                  <figcaption>
+                    <h4>Finds any with filename ends with .txt</h4>
+                  </figcaption>
+                </figure>
+
+                <h2 id="match-any-character">Match any character</h2>
+
+                <p>We can use the ? character to match any character.</p>
+
+                <h3 id="match-any-file-with-a-1-character-filename">
+                  Match any file with a 1-character filename
+                </h3>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">ll ?.*</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/22/ll_one_character_any_string.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>Finds any file with a 1-character filename</h4>
+                  </figcaption>
+                </figure>
+
+                <h3 id="match-any-file-with-a-4-character-extension">
+                  Match any file with a 4-character extension
+                </h3>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">ll *.????</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/22/ll_any_string_four_characters.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>Finds any file with a 4-character extension</h4>
+                  </figcaption>
+                </figure>
+
+                <h2 id="match-any-one-of-enclosed-characters">
+                  Match any one of enclosed characters
+                </h2>
+
+                <p>
+                  We can use the [] range expression to match any one of
+                  enclosed characters.
+                </p>
+
+                <h3 id="match-any-file-that-starts-with-1-2-or-f">
+                  Match any file that starts with 1, 2 or f
+                </h3>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">ll <span class="o">[</span>12f<span class="o">]</span>*</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/22/ll_one_two_f_any_string.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>Finds any file that starts with 1, 2 or f</h4>
+                  </figcaption>
+                </figure>
+
+                <h3 id="match-any-file-that-starts-with-1-2-or-3">
+                  Match any file that starts with 1, 2 or 3
+                </h3>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">ll <span class="o">[</span><span class="m">1</span>-3<span class="o">]</span>*</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/22/ll_one_to_three_any_string.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>Finds any file that starts with 1, 2 or 3</h4>
+                  </figcaption>
+                </figure>
+
+                <h3 id="match-any-file-that-starts-without-1-2-or-3">
+                  Match any file that starts without 1, 2 or 3
+                </h3>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">ll <span class="o">[</span>^1-3<span class="o">]</span>*</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/22/ll_without_one_to_three_any_string.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>Finds any file that starts without 1, 2 or 3</h4>
+                  </figcaption>
+                </figure>
+
+                <blockquote>
+                  <p>
+                    References
+                    <a
+                      href="https://www.gnu.org/software/bash/manual/html_node/Pattern-Matching.html#Pattern-Matching"
+                      >3.5.8.1 Pattern Matching</a
+                    >
+                  </p>
+                </blockquote>
+
+                <!-- Buy Me a Coffee Button -->
+
+                <p class="align-center">
+                  <style>
+                    .bmc-button img {
+                      width: 27px !important;
+                      margin-bottom: 1px !important;
+                      box-shadow: none !important;
+                      border: none !important;
+                      vertical-align: middle !important;
+                    }
+                    .bmc-button {
+                      line-height: 36px !important;
+                      height: 37px !important;
+                      text-decoration: none !important;
+                      display: inline-flex !important;
+                      color: #ffffff !important;
+                      background-color: #ff813f !important;
+                      border-radius: 3px !important;
+                      border: 1px solid transparent !important;
+                      padding: 1px 9px !important;
+                      font-size: 22px !important;
+                      letter-spacing: 0.6px !important;
+                      box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;
+                      -webkit-box-shadow: 0px 1px 2px 2px
+                        rgba(190, 190, 190, 0.5) !important;
+                      margin: 0 auto !important;
+                      font-family: "Cookie", cursive !important;
+                      -webkit-box-sizing: border-box !important;
+                      box-sizing: border-box !important;
+                      -o-transition: 0.3s all linear !important;
+                      -webkit-transition: 0.3s all linear !important;
+                      -moz-transition: 0.3s all linear !important;
+                      -ms-transition: 0.3s all linear !important;
+                      transition: 0.3s all linear !important;
+                    }
+                    .bmc-button:hover,
+                    .bmc-button:active,
+                    .bmc-button:focus {
+                      -webkit-box-shadow: 0px 1px 2px 2px
+                        rgba(190, 190, 190, 0.5) !important;
+                      text-decoration: none !important;
+                      box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+                      opacity: 0.85 !important;
+                      color: #ffffff !important;
+                    }</style
+                  ><link
+                    href="https://fonts.googleapis.com/css?family=Cookie"
+                    rel="stylesheet"
+                  /><a
+                    class="bmc-button"
+                    target="_blank"
+                    href="https://www.buymeacoffee.com/PFou9WhLr"
+                    ><img
+                      src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg"
+                      alt="Buy me a coffee"
+                    /><span style="margin-left: 5px">Buy me a coffee</span></a
+                  >
+                </p>
+              </div>
+
+              <div class="post-copyright">
+                <p class="copyright-item">
+                  <span class="item-title">Author</span>
+                  <span class="item-content">Dong Chen</span>
+                </p>
+                <p class="copyright-item">
+                  <span class="item-title">LastMod</span>
+                  <span class="item-content">Sat Feb 23 2019</span>
+                </p>
+              </div>
+              <div class="post-reward">
+                <input type="checkbox" name="reward" id="reward" hidden />
+                <label class="reward-button" for="reward">Reward</label>
+                <div class="qr-code">
+                  <label class="qr-code-image" for="reward">
+                    <img
+                      class="image"
+                      src="https://dongchen.co/images/wepay_qr_final.png"
+                    />
+                    <span>wechat</span>
+                  </label>
+                  <label class="qr-code-image" for="reward">
+                    <img
+                      class="image"
+                      src="https://dongchen.co/images/alipay_qr_final.png"
+                    />
+                    <span>alipay</span>
+                  </label>
+                </div>
+              </div>
+              <footer class="post-footer">
+                <div class="post-tags">
+                  <a href="/tags/linux/">Linux</a>
+                  <a href="/tags/server/">Server</a>
+                </div>
+                <nav class="post-nav">
+                  <a
+                    class="prev"
+                    href="/post/simple-but-profound/server-side-programming/linux/administrator/23.-bash-shell-text-processing-cat-tac-nl-head-tail/"
+                  >
+                    <i class="iconfont icon-left"></i>
+                    <span class="prev-text nav-default"
+                      >23. Bash Shell - Text Processing: cat, tac, nl, head,
+                      tail</span
+                    >
+                    <span class="prev-text nav-mobile">Prev</span>
+                  </a>
+                  <a
+                    class="next"
+                    href="/post/simple-but-profound/server-side-programming/linux/administrator/21.-pipelines-use-other-commands-running-results/"
+                  >
+                    <span class="next-text nav-default"
+                      >21. Pipelines - Use Other Commands&#39; Running
+                      Results</span
+                    >
+                    <span class="next-text nav-mobile">Next</span>
+                    <i class="iconfont icon-right"></i>
+                  </a>
+                </nav>
+              </footer>
+            </article>
+          </div>
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+        <div class="social-links">
+          <a
+            href="mailto:dongchensteven@gmail.com"
+            class="iconfont icon-email"
+            title="email"
+          ></a>
+          <a
+            href="https://www.linkedin.com/in/dongchensteven"
+            class="iconfont icon-linkedin"
+            title="linkedin"
+          ></a>
+          <a
+            href="https://github.com/dongchensteven"
+            class="iconfont icon-github"
+            title="github"
+          ></a>
+          <a
+            href="https://dongchen.co/index.xml"
+            type="application/rss+xml"
+            class="iconfont icon-rss"
+            title="rss"
+          ></a>
+        </div>
+
+        <div class="copyright">
+          <span class="power-by">
+            Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+          </span>
+          <span class="division">|</span>
+          <span class="theme-info">
+            Theme -
+            <a
+              class="theme-link"
+              href="https://github.com/olOwOlo/hugo-theme-even"
+              >Even</a
+            >
+          </span>
+
+          <span class="copyright-year">
+            &copy; 2018 - 2020
+            <span class="heart">
+              <i class="iconfont icon-heart"></i>
+            </span>
+            <span class="author">Dong Chen</span>
+          </span>
+        </div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
       </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:dongchensteven@gmail.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://www.linkedin.com/in/dongchensteven" class="iconfont icon-linkedin" title="linkedin"></a>
-      <a href="https://github.com/dongchensteven" class="iconfont icon-github" title="github"></a>
-  <a href="https://dongchen.co/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
-
-<div class="copyright">
-  <span class="power-by">
-    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    Theme - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2018 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">Dong Chen</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
     </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
-  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
-    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
-    timeago().render(document.querySelectorAll('.timeago'), languageCode);
-    timeago.cancel();  
-  </script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js"
+      integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js"
+      integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js"
+      integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js"
+      integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      <!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+      var languageCode = "en"
+        .replace(/-/g, "_")
+        .replace(/_(.*)/, function ($0, $1) {
+          return $0.replace($1, $1.toUpperCase());
+        });
+      timeago().render(document.querySelectorAll(".timeago"), languageCode);
+      timeago.cancel();
+    </script>
+    <script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-133226289-1', 'auto');
-	ga('set', 'anonymizeIp', true);
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-
-
-
-
-
-
-</body>
+    <script type="application/javascript">
+      var doNotTrack = false;
+      if (!doNotTrack) {
+        window.ga =
+          window.ga ||
+          function () {
+            (ga.q = ga.q || []).push(arguments);
+          };
+        ga.l = +new Date();
+        ga("create", "UA-133226289-1", "auto");
+        ga("set", "anonymizeIp", true);
+        ga("send", "pageview");
+      }
+    </script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
+  </body>
 </html>

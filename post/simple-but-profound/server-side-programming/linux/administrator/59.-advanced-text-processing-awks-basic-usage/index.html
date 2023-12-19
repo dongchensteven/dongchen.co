@@ -1,596 +1,869 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>59. Advanced Text Processing - Awk&#39;s Basic Usage - Dong - A place to track my time log</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+      59. Advanced Text Processing - Awk&#39;s Basic Usage - Dong - A place to
+      track my time log
+    </title>
+    <meta name="renderer" content="webkit" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
 
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+    <meta name="theme-color" content="#f8f5ec" />
+    <meta name="msapplication-navbutton-color" content="#f8f5ec" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec" />
 
+    <meta name="author" content="Dong Chen" />
+    <meta
+      name="description"
+      content="Awk is a flexible pattern matching, text processing and line-oriented language, Linux provides us with an implementation version of it, gawk.
+"
+    />
+    <meta name="keywords" content="Hugo, theme, even" />
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="Awk is a flexible pattern matching, text processing and line-oriented language, Linux provides us with an implementation version of it, gawk.
-" /><meta name="keywords" content="Hugo, theme, even" />
+    <meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
+    <link
+      rel="canonical"
+      href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/59.-advanced-text-processing-awks-basic-usage/"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
 
+    <link href="/dist/even.ea128f8b.min.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css"
+      integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
 
+    <meta
+      property="og:title"
+      content="59. Advanced Text Processing - Awk&#39;s Basic Usage"
+    />
+    <meta
+      property="og:description"
+      content="Awk is a flexible pattern matching, text processing and line-oriented language, Linux provides us with an implementation version of it, gawk."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/59.-advanced-text-processing-awks-basic-usage/"
+    />
+    <meta
+      property="article:published_time"
+      content="2019-03-31T08:48:54&#43;13:00"
+    />
+    <meta
+      property="article:modified_time"
+      content="2019-03-31T08:48:54&#43;13:00"
+    />
 
+    <meta
+      itemprop="name"
+      content="59. Advanced Text Processing - Awk&#39;s Basic Usage"
+    />
+    <meta
+      itemprop="description"
+      content="Awk is a flexible pattern matching, text processing and line-oriented language, Linux provides us with an implementation version of it, gawk."
+    />
 
+    <meta itemprop="datePublished" content="2019-03-31T08:48:54&#43;13:00" />
+    <meta itemprop="dateModified" content="2019-03-31T08:48:54&#43;13:00" />
+    <meta itemprop="wordCount" content="862" />
 
-<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
+    <meta itemprop="keywords" content="Linux,Server," />
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="59. Advanced Text Processing - Awk&#39;s Basic Usage"
+    />
+    <meta
+      name="twitter:description"
+      content="Awk is a flexible pattern matching, text processing and line-oriented language, Linux provides us with an implementation version of it, gawk."
+    />
 
+    <!--[if lte IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+    <![endif]-->
 
-<link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/59.-advanced-text-processing-awks-basic-usage/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-<link href="/dist/even.ea128f8b.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/styles.css">
-
-
-<meta property="og:title" content="59. Advanced Text Processing - Awk&#39;s Basic Usage" />
-<meta property="og:description" content="Awk is a flexible pattern matching, text processing and line-oriented language, Linux provides us with an implementation version of it, gawk." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/59.-advanced-text-processing-awks-basic-usage/" />
-<meta property="article:published_time" content="2019-03-31T08:48:54&#43;13:00"/>
-<meta property="article:modified_time" content="2019-03-31T08:48:54&#43;13:00"/>
-
-<meta itemprop="name" content="59. Advanced Text Processing - Awk&#39;s Basic Usage">
-<meta itemprop="description" content="Awk is a flexible pattern matching, text processing and line-oriented language, Linux provides us with an implementation version of it, gawk.">
-
-
-<meta itemprop="datePublished" content="2019-03-31T08:48:54&#43;13:00" />
-<meta itemprop="dateModified" content="2019-03-31T08:48:54&#43;13:00" />
-<meta itemprop="wordCount" content="862">
-
-
-
-<meta itemprop="keywords" content="Linux,Server," />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="59. Advanced Text Processing - Awk&#39;s Basic Usage"/>
-<meta name="twitter:description" content="Awk is a flexible pattern matching, text processing and line-oriented language, Linux provides us with an implementation version of it, gawk."/>
-
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
-
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
-
-</head>
-<body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">Dong</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">Home</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">Archives</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">Tags</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">Dong</a>
-</div>
-
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">Home</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">Archives</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">Categories</a>
-      </li>
-  </ul>
-</nav>
-    </header>
-
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
-    
-    <header class="post-header">
-      <h1 class="post-title">59. Advanced Text Processing - Awk&#39;s Basic Usage</h1>
-
-      <div class="post-meta">
-        <span class="post-time"> Sun Mar 31 2019 </span>
-        <div class="post-category">
-            <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
-            </div>
-          <span class="more-meta"> 862 words </span>
-          <span class="more-meta"> 5 mins read </span>
-        
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div id="mobile-navbar" class="mobile-navbar">
+      <div class="mobile-header-logo">
+        <a href="/" class="logo">Dong</a>
       </div>
-    </header>
-
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">Contents</h2>
-  <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#options">OPTIONS</a></li>
-<li><a href="#variables-records-and-fields">VARIABLES, RECORDS AND FIELDS</a></li>
-<li><a href="#patterns-and-actions">PATTERNS AND ACTIONS</a>
-<ul>
-<li><a href="#patterns">PATTERNS</a></li>
-<li><a href="#actions">ACTIONS</a></li>
-<li><a href="#operators">Operators</a></li>
-<li><a href="#i-o-statements">I/O Statements</a></li>
-<li><a href="#the-printf-statement">The printf Statement</a></li>
-</ul></li>
-<li><a href="#examples">Examples</a>
-<ul>
-<li><a href="#run-program-only">Run Program Only</a>
-<ul>
-<li><a href="#output-argument-count">Output Argument Count</a></li>
-<li><a href="#output-argument-value">Output Argument Value</a></li>
-<li><a href="#output-integer-variable">Output Integer Variable</a></li>
-<li><a href="#output-integer-variables-summation">Output Integer Variables Summation</a></li>
-<li><a href="#output-string-variable">Output String Variable</a></li>
-</ul></li>
-<li><a href="#use-the-input-stream-as-content">Use the Input Stream as Content</a></li>
-<li><a href="#handle-file-content">Handle File Content</a>
-<ul>
-<li><a href="#output-header-and-footer">Output Header and Footer</a></li>
-<li><a href="#output-with-a-customized-field-separator">Output With A Customized Field Separator</a></li>
-<li><a href="#output-formatted-content">Output Formatted Content</a></li>
-<li><a href="#if-else-ternary-operation">If Else Ternary Operation</a></li>
-</ul></li>
-</ul></li>
-</ul>
-</nav>
-  </div>
-</div>
-    <div class="post-content">
-      <p>Awk is a flexible pattern matching, text processing and line-oriented language, Linux provides us with an implementation version of it, gawk.</p>
-
-<p>We can use the awk or gawk command to demonstrate. Awk is a symbolic link to gawk:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ll /bin/awk</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/59/ll_bin_awk.png"
-         alt="img"/> 
-</figure>
-
-<h1 id="options">OPTIONS</h1>
-
-<p>Here are some common options for gawk command:</p>
-
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Meaning</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">-f program-file or &#8209;&#8209;file program-file</td>
-<td align="left">Reads the gawk execution script from the file.</td>
-</tr>
-
-<tr>
-<td align="center">-F fs or &#8209;&#8209;field-separator fs</td>
-<td align="left">Specifies the value of the predefined variable FS. Use this value as the delimiter for the column.</td>
-</tr>
-
-<tr>
-<td align="center">-v var=val or &#8209;&#8209;assign var=val</td>
-<td align="left">Assign the value val to the variable var.</td>
-</tr>
-</tbody>
-</table>
-
-<h1 id="variables-records-and-fields">VARIABLES, RECORDS AND FIELDS</h1>
-
-<p>Here are some common built-in variables for gawk command:</p>
-
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Meaning</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">ARGC</td>
-<td align="left">The number of command-line arguments.</td>
-</tr>
-
-<tr>
-<td align="center">ARGV</td>
-<td align="left">Command line argument array.</td>
-</tr>
-
-<tr>
-<td align="center">FNR</td>
-<td align="left">The number of records from the current input file.</td>
-</tr>
-
-<tr>
-<td align="center">FS</td>
-<td align="left">The field separator for input content; the default is a space.</td>
-</tr>
-
-<tr>
-<td align="center">NF</td>
-<td align="left">The number of fields from the input.</td>
-</tr>
-
-<tr>
-<td align="center">NR</td>
-<td align="left">The number of records from the input.</td>
-</tr>
-
-<tr>
-<td align="center">OFS</td>
-<td align="left">The field separator for output content; the default is a space.</td>
-</tr>
-
-<tr>
-<td align="center">ORS</td>
-<td align="left">The record separator for output content; the default is a newline.</td>
-</tr>
-
-<tr>
-<td align="center">RS</td>
-<td align="left">The record separator for input content; the default is a newline.</td>
-</tr>
-</tbody>
-</table>
-
-<h1 id="patterns-and-actions">PATTERNS AND ACTIONS</h1>
-
-<p>Here are some common patterns and actions for gawk command:</p>
-
-<h2 id="patterns">PATTERNS</h2>
-
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Meaning</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">BEGIN</td>
-<td align="left">Print once at the beginning.</td>
-</tr>
-
-<tr>
-<td align="center">END</td>
-<td align="left">Print once at the end.</td>
-</tr>
-
-<tr>
-<td align="center">/regular expression/</td>
-<td align="left">Executes a regular expression for each line of content.</td>
-</tr>
-
-<tr>
-<td align="center">relational expression</td>
-<td align="left">Performs operator calculations on each line of content.</td>
-</tr>
-
-<tr>
-<td align="center">pattern &amp;&amp; pattern or pattern &#x7c;&#x7c; pattern or ! pattern</td>
-<td align="left">Performs logical operations on each line of content.</td>
-</tr>
-
-<tr>
-<td align="center">pattern ? pattern : pattern</td>
-<td align="left">Performs a ternary operation on each line of content.</td>
-</tr>
-
-<tr>
-<td align="center">pattern1, pattern2</td>
-<td align="left">Start with the pattern1-matched row until the pattern2-matched row.</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="actions">ACTIONS</h2>
-
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Meaning</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">{}</td>
-<td align="left">Everything in parentheses are executable statements.</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="operators">Operators</h2>
-
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Meaning</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">$N</td>
-<td align="left">Refers to the Nth field.</td>
-</tr>
-
-<tr>
-<td align="center">++ &ndash;</td>
-<td align="left">Auto-increment and auto-decrement.</td>
-</tr>
-
-<tr>
-<td align="center">+ - ~</td>
-<td align="left">Plus, minus, and negation.</td>
-</tr>
-
-<tr>
-<td align="center">* / %</td>
-<td align="left">Multiplication, division, and modulus.</td>
-</tr>
-
-<tr>
-<td align="center">space</td>
-<td align="left">String concatenation.</td>
-</tr>
-
-<tr>
-<td align="center">&lt; &gt; &lt;= &gt;= == !=</td>
-<td align="left">Relational operators.</td>
-</tr>
-
-<tr>
-<td align="center">&amp;&amp; &#x7c;&#x7c;</td>
-<td align="left">Logical AND and OR.</td>
-</tr>
-
-<tr>
-<td align="center">?:</td>
-<td align="left">Ternary operator. expr1 ? expr2 : expr3.</td>
-</tr>
-
-<tr>
-<td align="center">= += -= *= /= %= ^=</td>
-<td align="left">Assignment.</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="i-o-statements">I/O Statements</h2>
-
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Meaning</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">print</td>
-<td align="left">Outputs the current record, ending with the value defined by the built-in variable ORS.</td>
-</tr>
-
-<tr>
-<td align="center">printf</td>
-<td align="left">Output formatted content.</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="the-printf-statement">The printf Statement</h2>
-
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Meaning</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">%a, %A</td>
-<td align="left">A hexadecimal floating point number.</td>
-</tr>
-
-<tr>
-<td align="center">%c</td>
-<td align="left">A single character.</td>
-</tr>
-
-<tr>
-<td align="center">%d, %i</td>
-<td align="left">The integer part of a decimal number.</td>
-</tr>
-
-<tr>
-<td align="center">%e, %E</td>
-<td align="left">A floating point number.</td>
-</tr>
-
-<tr>
-<td align="center">%o</td>
-<td align="left">An unsigned octal number.</td>
-</tr>
-
-<tr>
-<td align="center">%u</td>
-<td align="left">An unsigned decimal number.</td>
-</tr>
-
-<tr>
-<td align="center">%s</td>
-<td align="left">A character string.</td>
-</tr>
-
-<tr>
-<td align="center">%x, %X</td>
-<td align="left">An unsigned hexadecimal number.</td>
-</tr>
-</tbody>
-</table>
-
-<h1 id="examples">Examples</h1>
-
-<h2 id="run-program-only">Run Program Only</h2>
-
-<h3 id="output-argument-count">Output Argument Count</h3>
-
-<p>With the ARGC variable, we can get the number of command-line arguments:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">awk <span class="s1">&#39;BEGIN{print ARGC}&#39;</span>    <span class="c1"># Print the command line argument count</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/59/awk_print_argument_count.png"
-         alt="img"/> 
-</figure>
-
-<h3 id="output-argument-value">Output Argument Value</h3>
-
-<p>With the ARGV variable, we can get the value of the command-line argument:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">awk <span class="s1">&#39;BEGIN{print ARGV[0]}&#39;</span>    <span class="c1"># Print the command line first argument value</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/59/awk_print_argument_first_value.png"
-         alt="img"/> 
-</figure>
-
-<h3 id="output-integer-variable">Output Integer Variable</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">awk <span class="s1">&#39;BEGIN{var=123;print var}&#39;</span>    <span class="c1"># Print the self-defined integer variable</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/59/awk_print_integer.png"
-         alt="img"/> 
-</figure>
-
-<h3 id="output-integer-variables-summation">Output Integer Variables Summation</h3>
-
-<p>We can obtain the summation of two integer variables before the output:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">awk <span class="s1">&#39;BEGIN{var=123;var2=321;print var+var2}&#39;</span>    <span class="c1"># Print the summation of these two integer variable</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/59/awk_integer_summation.png"
-         alt="img"/> 
-</figure>
-
-<h3 id="output-string-variable">Output String Variable</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">awk <span class="s1">&#39;BEGIN{var=&#34;abc&#34;;print var}&#39;</span>    <span class="c1"># Print the self-defined string variable</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/59/awk_print_string.png"
-         alt="img"/> 
-</figure>
-
-<h2 id="use-the-input-stream-as-content">Use the Input Stream as Content</h2>
-
-<p>Awk can also handle content from the input stream:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+      <div class="mobile-navbar-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <nav id="mobile-menu" class="mobile-menu slideout-menu">
+      <ul class="mobile-menu-list">
+        <a href="/">
+          <li class="mobile-menu-item">Home</li> </a
+        ><a href="/post/">
+          <li class="mobile-menu-item">Archives</li> </a
+        ><a href="/tags/">
+          <li class="mobile-menu-item">Tags</li> </a
+        ><a href="/categories/">
+          <li class="mobile-menu-item">Categories</li> </a
+        ><a href="https://ergate.com/" target="_blank">
+          <li class="mobile-menu-item">Visit ERGATE</li>
+        </a>
+      </ul>
+    </nav>
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header">
+        <div class="logo-wrapper">
+          <a href="/" class="logo">Dong</a>
+        </div>
+
+        <nav class="site-navbar">
+          <ul id="menu" class="menu">
+            <li class="menu-item">
+              <a class="menu-item-link" href="/">Home</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/post/">Archives</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/tags/">Tags</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/categories/">Categories</a>
+            </li>
+            <li class="menu-item">
+              <a
+                class="menu-item-link"
+                href="https://ergate.com/"
+                target="_blank"
+                >Visit ERGATE</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            <article class="post">
+              <header class="post-header">
+                <h1 class="post-title">
+                  59. Advanced Text Processing - Awk&#39;s Basic Usage
+                </h1>
+
+                <div class="post-meta">
+                  <span class="post-time"> Sun Mar 31 2019 </span>
+                  <div class="post-category">
+                    <a
+                      href="/categories/linux-administrator-simple-but-profound/"
+                    >
+                      Linux Administrator: Simple But Profound
+                    </a>
+                  </div>
+                  <span class="more-meta"> 862 words </span>
+                  <span class="more-meta"> 5 mins read </span>
+                </div>
+              </header>
+
+              <div class="post-toc" id="post-toc">
+                <h2 class="post-toc-title">Contents</h2>
+                <div class="post-toc-content always-active">
+                  <nav id="TableOfContents">
+                    <ul>
+                      <li><a href="#options">OPTIONS</a></li>
+                      <li>
+                        <a href="#variables-records-and-fields"
+                          >VARIABLES, RECORDS AND FIELDS</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#patterns-and-actions">PATTERNS AND ACTIONS</a>
+                        <ul>
+                          <li><a href="#patterns">PATTERNS</a></li>
+                          <li><a href="#actions">ACTIONS</a></li>
+                          <li><a href="#operators">Operators</a></li>
+                          <li><a href="#i-o-statements">I/O Statements</a></li>
+                          <li>
+                            <a href="#the-printf-statement"
+                              >The printf Statement</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="#examples">Examples</a>
+                        <ul>
+                          <li>
+                            <a href="#run-program-only">Run Program Only</a>
+                            <ul>
+                              <li>
+                                <a href="#output-argument-count"
+                                  >Output Argument Count</a
+                                >
+                              </li>
+                              <li>
+                                <a href="#output-argument-value"
+                                  >Output Argument Value</a
+                                >
+                              </li>
+                              <li>
+                                <a href="#output-integer-variable"
+                                  >Output Integer Variable</a
+                                >
+                              </li>
+                              <li>
+                                <a href="#output-integer-variables-summation"
+                                  >Output Integer Variables Summation</a
+                                >
+                              </li>
+                              <li>
+                                <a href="#output-string-variable"
+                                  >Output String Variable</a
+                                >
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a href="#use-the-input-stream-as-content"
+                              >Use the Input Stream as Content</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#handle-file-content"
+                              >Handle File Content</a
+                            >
+                            <ul>
+                              <li>
+                                <a href="#output-header-and-footer"
+                                  >Output Header and Footer</a
+                                >
+                              </li>
+                              <li>
+                                <a
+                                  href="#output-with-a-customized-field-separator"
+                                  >Output With A Customized Field Separator</a
+                                >
+                              </li>
+                              <li>
+                                <a href="#output-formatted-content"
+                                  >Output Formatted Content</a
+                                >
+                              </li>
+                              <li>
+                                <a href="#if-else-ternary-operation"
+                                  >If Else Ternary Operation</a
+                                >
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+              <div class="post-content">
+                <p>
+                  Awk is a flexible pattern matching, text processing and
+                  line-oriented language, Linux provides us with an
+                  implementation version of it, gawk.
+                </p>
+
+                <p>
+                  We can use the awk or gawk command to demonstrate. Awk is a
+                  symbolic link to gawk:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">ll /bin/awk</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/59/ll_bin_awk.png" alt="img" />
+                </figure>
+
+                <h1 id="options">OPTIONS</h1>
+
+                <p>Here are some common options for gawk command:</p>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Meaning</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td align="center">
+                        -f program-file or &#8209;&#8209;file program-file
+                      </td>
+                      <td align="left">
+                        Reads the gawk execution script from the file.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">
+                        -F fs or &#8209;&#8209;field-separator fs
+                      </td>
+                      <td align="left">
+                        Specifies the value of the predefined variable FS. Use
+                        this value as the delimiter for the column.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">
+                        -v var=val or &#8209;&#8209;assign var=val
+                      </td>
+                      <td align="left">
+                        Assign the value val to the variable var.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <h1 id="variables-records-and-fields">
+                  VARIABLES, RECORDS AND FIELDS
+                </h1>
+
+                <p>Here are some common built-in variables for gawk command:</p>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Meaning</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td align="center">ARGC</td>
+                      <td align="left">
+                        The number of command-line arguments.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">ARGV</td>
+                      <td align="left">Command line argument array.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">FNR</td>
+                      <td align="left">
+                        The number of records from the current input file.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">FS</td>
+                      <td align="left">
+                        The field separator for input content; the default is a
+                        space.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">NF</td>
+                      <td align="left">The number of fields from the input.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">NR</td>
+                      <td align="left">
+                        The number of records from the input.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">OFS</td>
+                      <td align="left">
+                        The field separator for output content; the default is a
+                        space.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">ORS</td>
+                      <td align="left">
+                        The record separator for output content; the default is
+                        a newline.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">RS</td>
+                      <td align="left">
+                        The record separator for input content; the default is a
+                        newline.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <h1 id="patterns-and-actions">PATTERNS AND ACTIONS</h1>
+
+                <p>
+                  Here are some common patterns and actions for gawk command:
+                </p>
+
+                <h2 id="patterns">PATTERNS</h2>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Meaning</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td align="center">BEGIN</td>
+                      <td align="left">Print once at the beginning.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">END</td>
+                      <td align="left">Print once at the end.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">/regular expression/</td>
+                      <td align="left">
+                        Executes a regular expression for each line of content.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">relational expression</td>
+                      <td align="left">
+                        Performs operator calculations on each line of content.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">
+                        pattern &amp;&amp; pattern or pattern &#x7c;&#x7c;
+                        pattern or ! pattern
+                      </td>
+                      <td align="left">
+                        Performs logical operations on each line of content.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">pattern ? pattern : pattern</td>
+                      <td align="left">
+                        Performs a ternary operation on each line of content.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">pattern1, pattern2</td>
+                      <td align="left">
+                        Start with the pattern1-matched row until the
+                        pattern2-matched row.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <h2 id="actions">ACTIONS</h2>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Meaning</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td align="center">{}</td>
+                      <td align="left">
+                        Everything in parentheses are executable statements.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <h2 id="operators">Operators</h2>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Meaning</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td align="center">$N</td>
+                      <td align="left">Refers to the Nth field.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">++ &ndash;</td>
+                      <td align="left">Auto-increment and auto-decrement.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">+ - ~</td>
+                      <td align="left">Plus, minus, and negation.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">* / %</td>
+                      <td align="left">
+                        Multiplication, division, and modulus.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">space</td>
+                      <td align="left">String concatenation.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">&lt; &gt; &lt;= &gt;= == !=</td>
+                      <td align="left">Relational operators.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">&amp;&amp; &#x7c;&#x7c;</td>
+                      <td align="left">Logical AND and OR.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">?:</td>
+                      <td align="left">
+                        Ternary operator. expr1 ? expr2 : expr3.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">= += -= *= /= %= ^=</td>
+                      <td align="left">Assignment.</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <h2 id="i-o-statements">I/O Statements</h2>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Meaning</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td align="center">print</td>
+                      <td align="left">
+                        Outputs the current record, ending with the value
+                        defined by the built-in variable ORS.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">printf</td>
+                      <td align="left">Output formatted content.</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <h2 id="the-printf-statement">The printf Statement</h2>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Meaning</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td align="center">%a, %A</td>
+                      <td align="left">A hexadecimal floating point number.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">%c</td>
+                      <td align="left">A single character.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">%d, %i</td>
+                      <td align="left">
+                        The integer part of a decimal number.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">%e, %E</td>
+                      <td align="left">A floating point number.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">%o</td>
+                      <td align="left">An unsigned octal number.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">%u</td>
+                      <td align="left">An unsigned decimal number.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">%s</td>
+                      <td align="left">A character string.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">%x, %X</td>
+                      <td align="left">An unsigned hexadecimal number.</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <h1 id="examples">Examples</h1>
+
+                <h2 id="run-program-only">Run Program Only</h2>
+
+                <h3 id="output-argument-count">Output Argument Count</h3>
+
+                <p>
+                  With the ARGC variable, we can get the number of command-line
+                  arguments:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">awk <span class="s1">&#39;BEGIN{print ARGC}&#39;</span>    <span class="c1"># Print the command line argument count</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/59/awk_print_argument_count.png"
+                    alt="img"
+                  />
+                </figure>
+
+                <h3 id="output-argument-value">Output Argument Value</h3>
+
+                <p>
+                  With the ARGV variable, we can get the value of the
+                  command-line argument:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">awk <span class="s1">&#39;BEGIN{print ARGV[0]}&#39;</span>    <span class="c1"># Print the command line first argument value</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/59/awk_print_argument_first_value.png"
+                    alt="img"
+                  />
+                </figure>
+
+                <h3 id="output-integer-variable">Output Integer Variable</h3>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">awk <span class="s1">&#39;BEGIN{var=123;print var}&#39;</span>    <span class="c1"># Print the self-defined integer variable</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/59/awk_print_integer.png" alt="img" />
+                </figure>
+
+                <h3 id="output-integer-variables-summation">
+                  Output Integer Variables Summation
+                </h3>
+
+                <p>
+                  We can obtain the summation of two integer variables before
+                  the output:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">awk <span class="s1">&#39;BEGIN{var=123;var2=321;print var+var2}&#39;</span>    <span class="c1"># Print the summation of these two integer variable</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/59/awk_integer_summation.png" alt="img" />
+                </figure>
+
+                <h3 id="output-string-variable">Output String Variable</h3>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">awk <span class="s1">&#39;BEGIN{var=&#34;abc&#34;;print var}&#39;</span>    <span class="c1"># Print the self-defined string variable</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/59/awk_print_string.png" alt="img" />
+                </figure>
+
+                <h2 id="use-the-input-stream-as-content">
+                  Use the Input Stream as Content
+                </h2>
+
+                <p>Awk can also handle content from the input stream:</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ll /
-ll / <span class="p">|</span> awk <span class="s1">&#39;{print $1}&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/59/ll_root_awk_print_first_field.png"
-         alt="img"/> 
-</figure>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">ll /
+ll / <span class="p">|</span> awk <span class="s1">&#39;{print $1}&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/59/ll_root_awk_print_first_field.png"
+                    alt="img"
+                  />
+                </figure>
 
-<h2 id="handle-file-content">Handle File Content</h2>
+                <h2 id="handle-file-content">Handle File Content</h2>
 
-<p>As well as dealing with the content from the file.</p>
+                <p>As well as dealing with the content from the file.</p>
 
-<p>Let&rsquo;s prepare some test content first:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <p>Let&rsquo;s prepare some test content first:</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -598,216 +871,402 @@ ll / <span class="p">|</span> awk <span class="s1">&#39;{print $1}&#39;</span></
 </span><span class="lnt">6
 </span><span class="lnt">7
 </span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">printf</span> <span class="s1">&#39;%s\n&#39;</span> <span class="se">\
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nb">printf</span> <span class="s1">&#39;%s\n&#39;</span> <span class="se">\
 </span><span class="se"></span><span class="s1">&#39;user1:10020:10010:Dong Chen:/bin/bash:active&#39;</span> <span class="se">\
 </span><span class="se"></span><span class="s1">&#39;user2:10021:10010:Dong Chen1:/bin/bash:inactive&#39;</span> <span class="se">\
 </span><span class="se"></span><span class="s1">&#39;user3:10022:10010:Dong Chen2:/bin/bash:active&#39;</span> <span class="se">\
 </span><span class="se"></span><span class="s1">&#39;user4:10023:10010:Dong Chen3:/bin/bash:inactive&#39;</span> <span class="se">\
 </span><span class="se"></span><span class="s1">&#39;user5:10024:10010:Dong Chen4:/bin/bash:active&#39;</span> <span class="se">\
 </span><span class="se"></span><span class="s1">&#39;user6:10025:10010:Dong Chen5:/bin/bash:inactive&#39;</span> &gt; awk_file
-cat awk_file</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/59/printf_content_file_cat_file.png"
-         alt="img"/> 
-</figure>
+cat awk_file</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/59/printf_content_file_cat_file.png"
+                    alt="img"
+                  />
+                </figure>
 
-<h3 id="output-header-and-footer">Output Header and Footer</h3>
+                <h3 id="output-header-and-footer">Output Header and Footer</h3>
 
-<p>The BEGIN and END patterns will only print once:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">awk -F: <span class="s1">&#39;BEGIN{print &#34;HEADER&#34;}END{print &#34;FOOTER&#34;}{print $1,$2,$3,$4,$5}&#39;</span> awk_file</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/59/awk_f_upper_header_content_footer.png"
-         alt="img"/> 
-</figure>
+                <p>The BEGIN and END patterns will only print once:</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">awk -F: <span class="s1">&#39;BEGIN{print &#34;HEADER&#34;}END{print &#34;FOOTER&#34;}{print $1,$2,$3,$4,$5}&#39;</span> awk_file</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/59/awk_f_upper_header_content_footer.png"
+                    alt="img"
+                  />
+                </figure>
 
-<h3 id="output-with-a-customized-field-separator">Output With A Customized Field Separator</h3>
+                <h3 id="output-with-a-customized-field-separator">
+                  Output With A Customized Field Separator
+                </h3>
 
-<p>Through -v argument, we can customize the output field separator&rsquo;s variable OFS:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">awk -v <span class="nv">OFS</span><span class="o">=</span><span class="s1">&#39;, &#39;</span> -F: <span class="s1">&#39;{print $1, $4, $2, $3, $5}&#39;</span> awk_file</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/59/awk_v_ofs_f_upper_printf_file.png"
-         alt="img"/> 
-</figure>
+                <p>
+                  Through -v argument, we can customize the output field
+                  separator&rsquo;s variable OFS:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">awk -v <span class="nv">OFS</span><span class="o">=</span><span class="s1">&#39;, &#39;</span> -F: <span class="s1">&#39;{print $1, $4, $2, $3, $5}&#39;</span> awk_file</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/59/awk_v_ofs_f_upper_printf_file.png"
+                    alt="img"
+                  />
+                </figure>
 
-<h3 id="output-formatted-content">Output Formatted Content</h3>
+                <h3 id="output-formatted-content">Output Formatted Content</h3>
 
-<p>Through printf command and its formats, we can print formatted content:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">awk -F: <span class="s1">&#39;{printf &#34;User Account: %s, Username: %s, User ID: %d, Group ID: %d, Login Shell: %s\n&#34;, $1, $4, $2, $3, $5}&#39;</span> awk_file</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/59/awk_f_upper_printf_file.png"
-         alt="img"/> 
-</figure>
+                <p>
+                  Through printf command and its formats, we can print formatted
+                  content:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">awk -F: <span class="s1">&#39;{printf &#34;User Account: %s, Username: %s, User ID: %d, Group ID: %d, Login Shell: %s\n&#34;, $1, $4, $2, $3, $5}&#39;</span> awk_file</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/59/awk_f_upper_printf_file.png"
+                    alt="img"
+                  />
+                </figure>
 
-<h3 id="if-else-ternary-operation">If Else Ternary Operation</h3>
+                <h3 id="if-else-ternary-operation">
+                  If Else Ternary Operation
+                </h3>
 
-<p>We can use a ternary operator to do conditional statement operations:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">awk -F: <span class="s1">&#39;($6==&#34;active&#34; ? status=&#34;Working hard&#34; : status=&#34;Lazy&#34;){printf &#34;%s is %s.\n&#34;, $1, status }&#39;</span> awk_file</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/59/awk_f_upper_ternary_operation_printf_s_file.png"
-         alt="img"/> 
-</figure>
+                <p>
+                  We can use a ternary operator to do conditional statement
+                  operations:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">awk -F: <span class="s1">&#39;($6==&#34;active&#34; ? status=&#34;Working hard&#34; : status=&#34;Lazy&#34;){printf &#34;%s is %s.\n&#34;, $1, status }&#39;</span> awk_file</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/59/awk_f_upper_ternary_operation_printf_s_file.png"
+                    alt="img"
+                  />
+                </figure>
 
-<blockquote>
-<p>References
-<a href="https://www.gnu.org/software/gawk/manual/html_node/index.html">The GNU Awk User’s Guide</a>,
-<a href="http://man7.org/linux/man-pages/man1/gawk.1.html">GAWK(1)</a></p>
-</blockquote>
+                <blockquote>
+                  <p>
+                    References
+                    <a
+                      href="https://www.gnu.org/software/gawk/manual/html_node/index.html"
+                      >The GNU Awk User’s Guide</a
+                    >,
+                    <a href="http://man7.org/linux/man-pages/man1/gawk.1.html"
+                      >GAWK(1)</a
+                    >
+                  </p>
+                </blockquote>
 
-<!-- Buy Me a Coffee Button -->
+                <!-- Buy Me a Coffee Button -->
 
-<p class="align-center">
-  <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/PFou9WhLr"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
-</p>
-    </div>
+                <p class="align-center">
+                  <style>
+                    .bmc-button img {
+                      width: 27px !important;
+                      margin-bottom: 1px !important;
+                      box-shadow: none !important;
+                      border: none !important;
+                      vertical-align: middle !important;
+                    }
+                    .bmc-button {
+                      line-height: 36px !important;
+                      height: 37px !important;
+                      text-decoration: none !important;
+                      display: inline-flex !important;
+                      color: #ffffff !important;
+                      background-color: #ff813f !important;
+                      border-radius: 3px !important;
+                      border: 1px solid transparent !important;
+                      padding: 1px 9px !important;
+                      font-size: 22px !important;
+                      letter-spacing: 0.6px !important;
+                      box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;
+                      -webkit-box-shadow: 0px 1px 2px 2px
+                        rgba(190, 190, 190, 0.5) !important;
+                      margin: 0 auto !important;
+                      font-family: "Cookie", cursive !important;
+                      -webkit-box-sizing: border-box !important;
+                      box-sizing: border-box !important;
+                      -o-transition: 0.3s all linear !important;
+                      -webkit-transition: 0.3s all linear !important;
+                      -moz-transition: 0.3s all linear !important;
+                      -ms-transition: 0.3s all linear !important;
+                      transition: 0.3s all linear !important;
+                    }
+                    .bmc-button:hover,
+                    .bmc-button:active,
+                    .bmc-button:focus {
+                      -webkit-box-shadow: 0px 1px 2px 2px
+                        rgba(190, 190, 190, 0.5) !important;
+                      text-decoration: none !important;
+                      box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+                      opacity: 0.85 !important;
+                      color: #ffffff !important;
+                    }</style
+                  ><link
+                    href="https://fonts.googleapis.com/css?family=Cookie"
+                    rel="stylesheet"
+                  /><a
+                    class="bmc-button"
+                    target="_blank"
+                    href="https://www.buymeacoffee.com/PFou9WhLr"
+                    ><img
+                      src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg"
+                      alt="Buy me a coffee"
+                    /><span style="margin-left: 5px">Buy me a coffee</span></a
+                  >
+                </p>
+              </div>
 
-    <div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">Author</span>
-    <span class="item-content">Dong Chen</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">LastMod</span>
-    <span class="item-content">Sun Mar 31 2019</span>
-  </p>
-  
-  
-</div><div class="post-reward">
-  <input type="checkbox" name="reward" id="reward" hidden />
-  <label class="reward-button" for="reward">Reward</label>
-  <div class="qr-code">
-    
-    <label class="qr-code-image" for="reward">
-        <img class="image" src="https://dongchen.co/images/wepay_qr_final.png">
-        <span>wechat</span>
-      </label>
-    <label class="qr-code-image" for="reward">
-        <img class="image" src="https://dongchen.co/images/alipay_qr_final.png">
-        <span>alipay</span>
-      </label>
-  </div>
-</div><footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/linux/">Linux</a>
-          <a href="/tags/server/">Server</a>
+              <div class="post-copyright">
+                <p class="copyright-item">
+                  <span class="item-title">Author</span>
+                  <span class="item-content">Dong Chen</span>
+                </p>
+                <p class="copyright-item">
+                  <span class="item-title">LastMod</span>
+                  <span class="item-content">Sun Mar 31 2019</span>
+                </p>
+              </div>
+              <div class="post-reward">
+                <input type="checkbox" name="reward" id="reward" hidden />
+                <label class="reward-button" for="reward">Reward</label>
+                <div class="qr-code">
+                  <label class="qr-code-image" for="reward">
+                    <img
+                      class="image"
+                      src="https://dongchen.co/images/wepay_qr_final.png"
+                    />
+                    <span>wechat</span>
+                  </label>
+                  <label class="qr-code-image" for="reward">
+                    <img
+                      class="image"
+                      src="https://dongchen.co/images/alipay_qr_final.png"
+                    />
+                    <span>alipay</span>
+                  </label>
+                </div>
+              </div>
+              <footer class="post-footer">
+                <div class="post-tags">
+                  <a href="/tags/linux/">Linux</a>
+                  <a href="/tags/server/">Server</a>
+                </div>
+                <nav class="post-nav">
+                  <a
+                    class="prev"
+                    href="/post/simple-but-profound/server-side-programming/linux/administrator/60.-disk-management-concept/"
+                  >
+                    <i class="iconfont icon-left"></i>
+                    <span class="prev-text nav-default"
+                      >60. Disk Management - Concept</span
+                    >
+                    <span class="prev-text nav-mobile">Prev</span>
+                  </a>
+                  <a
+                    class="next"
+                    href="/post/simple-but-profound/server-side-programming/linux/administrator/58.-advanced-text-processing-stream-editor-sed/"
+                  >
+                    <span class="next-text nav-default"
+                      >58. Advanced Text Processing - Stream Editor (sed)</span
+                    >
+                    <span class="next-text nav-mobile">Next</span>
+                    <i class="iconfont icon-right"></i>
+                  </a>
+                </nav>
+              </footer>
+            </article>
           </div>
-      <nav class="post-nav">
-        <a class="prev" href="/post/simple-but-profound/server-side-programming/linux/administrator/60.-disk-management-concept/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">60. Disk Management - Concept</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        <a class="next" href="/post/simple-but-profound/server-side-programming/linux/administrator/58.-advanced-text-processing-stream-editor-sed/">
-            <span class="next-text nav-default">58. Advanced Text Processing - Stream Editor (sed)</span>
-            <span class="next-text nav-mobile">Next</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
         </div>
-        
+      </main>
 
+      <footer id="footer" class="footer">
+        <div class="social-links">
+          <a
+            href="mailto:dongchensteven@gmail.com"
+            class="iconfont icon-email"
+            title="email"
+          ></a>
+          <a
+            href="https://www.linkedin.com/in/dongchensteven"
+            class="iconfont icon-linkedin"
+            title="linkedin"
+          ></a>
+          <a
+            href="https://github.com/dongchensteven"
+            class="iconfont icon-github"
+            title="github"
+          ></a>
+          <a
+            href="https://dongchen.co/index.xml"
+            type="application/rss+xml"
+            class="iconfont icon-rss"
+            title="rss"
+          ></a>
+        </div>
+
+        <div class="copyright">
+          <span class="power-by">
+            Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+          </span>
+          <span class="division">|</span>
+          <span class="theme-info">
+            Theme -
+            <a
+              class="theme-link"
+              href="https://github.com/olOwOlo/hugo-theme-even"
+              >Even</a
+            >
+          </span>
+
+          <span class="copyright-year">
+            &copy; 2018 - 2020
+            <span class="heart">
+              <i class="iconfont icon-heart"></i>
+            </span>
+            <span class="author">Dong Chen</span>
+          </span>
+        </div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
       </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:dongchensteven@gmail.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://www.linkedin.com/in/dongchensteven" class="iconfont icon-linkedin" title="linkedin"></a>
-      <a href="https://github.com/dongchensteven" class="iconfont icon-github" title="github"></a>
-  <a href="https://dongchen.co/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
-
-<div class="copyright">
-  <span class="power-by">
-    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    Theme - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2018 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">Dong Chen</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
     </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
-  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
-    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
-    timeago().render(document.querySelectorAll('.timeago'), languageCode);
-    timeago.cancel();  
-  </script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js"
+      integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js"
+      integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js"
+      integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js"
+      integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      <!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+      var languageCode = "en"
+        .replace(/-/g, "_")
+        .replace(/_(.*)/, function ($0, $1) {
+          return $0.replace($1, $1.toUpperCase());
+        });
+      timeago().render(document.querySelectorAll(".timeago"), languageCode);
+      timeago.cancel();
+    </script>
+    <script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-133226289-1', 'auto');
-	ga('set', 'anonymizeIp', true);
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-
-
-
-
-
-
-</body>
+    <script type="application/javascript">
+      var doNotTrack = false;
+      if (!doNotTrack) {
+        window.ga =
+          window.ga ||
+          function () {
+            (ga.q = ga.q || []).push(arguments);
+          };
+        ga.l = +new Date();
+        ga("create", "UA-133226289-1", "auto");
+        ga("set", "anonymizeIp", true);
+        ga("send", "pageview");
+      }
+    </script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
+  </body>
 </html>

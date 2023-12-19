@@ -1,193 +1,305 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>2. Database Access - MyBatis and MariaDB 10.x - Dong - A place to track my time log</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+      2. Database Access - MyBatis and MariaDB 10.x - Dong - A place to track my
+      time log
+    </title>
+    <meta name="renderer" content="webkit" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
 
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+    <meta name="theme-color" content="#f8f5ec" />
+    <meta name="msapplication-navbutton-color" content="#f8f5ec" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec" />
 
+    <meta name="author" content="Dong Chen" />
+    <meta
+      name="description"
+      content="We first need to install a MariaDB 10.x database locally, and then access the database through MyBatis configuration.
+"
+    />
+    <meta name="keywords" content="Hugo, theme, even" />
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="We first need to install a MariaDB 10.x database locally, and then access the database through MyBatis configuration.
-" /><meta name="keywords" content="Hugo, theme, even" />
+    <meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
+    <link
+      rel="canonical"
+      href="https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/2.-database-access-mybatis-and-mariadb-10.x/"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
 
+    <link href="/dist/even.ea128f8b.min.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css"
+      integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
 
+    <meta
+      property="og:title"
+      content="2. Database Access - MyBatis and MariaDB 10.x"
+    />
+    <meta
+      property="og:description"
+      content="We first need to install a MariaDB 10.x database locally, and then access the database through MyBatis configuration."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/2.-database-access-mybatis-and-mariadb-10.x/"
+    />
+    <meta
+      property="article:published_time"
+      content="2019-04-25T17:38:16&#43;12:00"
+    />
+    <meta
+      property="article:modified_time"
+      content="2019-04-25T17:38:16&#43;12:00"
+    />
 
+    <meta
+      itemprop="name"
+      content="2. Database Access - MyBatis and MariaDB 10.x"
+    />
+    <meta
+      itemprop="description"
+      content="We first need to install a MariaDB 10.x database locally, and then access the database through MyBatis configuration."
+    />
 
+    <meta itemprop="datePublished" content="2019-04-25T17:38:16&#43;12:00" />
+    <meta itemprop="dateModified" content="2019-04-25T17:38:16&#43;12:00" />
+    <meta itemprop="wordCount" content="1345" />
 
-<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
+    <meta
+      itemprop="keywords"
+      content="Java,Spring,Spring Stack,Spring Framework,MyBatis,MariaDB 10,"
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="2. Database Access - MyBatis and MariaDB 10.x"
+    />
+    <meta
+      name="twitter:description"
+      content="We first need to install a MariaDB 10.x database locally, and then access the database through MyBatis configuration."
+    />
 
+    <!--[if lte IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+    <![endif]-->
 
-<link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/2.-database-access-mybatis-and-mariadb-10.x/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-<link href="/dist/even.ea128f8b.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/styles.css">
-
-
-<meta property="og:title" content="2. Database Access - MyBatis and MariaDB 10.x" />
-<meta property="og:description" content="We first need to install a MariaDB 10.x database locally, and then access the database through MyBatis configuration." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/2.-database-access-mybatis-and-mariadb-10.x/" />
-<meta property="article:published_time" content="2019-04-25T17:38:16&#43;12:00"/>
-<meta property="article:modified_time" content="2019-04-25T17:38:16&#43;12:00"/>
-
-<meta itemprop="name" content="2. Database Access - MyBatis and MariaDB 10.x">
-<meta itemprop="description" content="We first need to install a MariaDB 10.x database locally, and then access the database through MyBatis configuration.">
-
-
-<meta itemprop="datePublished" content="2019-04-25T17:38:16&#43;12:00" />
-<meta itemprop="dateModified" content="2019-04-25T17:38:16&#43;12:00" />
-<meta itemprop="wordCount" content="1345">
-
-
-
-<meta itemprop="keywords" content="Java,Spring,Spring Stack,Spring Framework,MyBatis,MariaDB 10," />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="2. Database Access - MyBatis and MariaDB 10.x"/>
-<meta name="twitter:description" content="We first need to install a MariaDB 10.x database locally, and then access the database through MyBatis configuration."/>
-
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
-
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
-
-</head>
-<body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">Dong</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">Home</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">Archives</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">Tags</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">Dong</a>
-</div>
-
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">Home</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">Archives</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">Categories</a>
-      </li>
-  </ul>
-</nav>
-    </header>
-
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
-    
-    <header class="post-header">
-      <h1 class="post-title">2. Database Access - MyBatis and MariaDB 10.x</h1>
-
-      <div class="post-meta">
-        <span class="post-time"> Thu Apr 25 2019 </span>
-        <div class="post-category">
-            <a href="/categories/spring-stack-developer-simple-but-profound/"> Spring Stack Developer: Simple But Profound </a>
-            </div>
-          <span class="more-meta"> 1345 words </span>
-          <span class="more-meta"> 7 mins read </span>
-        
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div id="mobile-navbar" class="mobile-navbar">
+      <div class="mobile-header-logo">
+        <a href="/" class="logo">Dong</a>
       </div>
-    </header>
+      <div class="mobile-navbar-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <nav id="mobile-menu" class="mobile-menu slideout-menu">
+      <ul class="mobile-menu-list">
+        <a href="/"> <li class="mobile-menu-item">Home</li> </a
+        ><a href="/post/"> <li class="mobile-menu-item">Archives</li> </a
+        ><a href="/tags/"> <li class="mobile-menu-item">Tags</li> </a
+        ><a href="/categories/">
+          <li class="mobile-menu-item">Categories</li> </a
+        ><a href="https://ergate.com/" target="_blank">
+          <li class="mobile-menu-item">Visit ERGATE</li>
+        </a>
+      </ul>
+    </nav>
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header">
+        <div class="logo-wrapper">
+          <a href="/" class="logo">Dong</a>
+        </div>
 
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">Contents</h2>
-  <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#data-preparation">Data Preparation</a>
-<ul>
-<li><a href="#install-database-locally">Install Database Locally</a></li>
-<li><a href="#create-database-and-table">Create Database and Table</a></li>
-</ul></li>
-<li><a href="#dependencies-and-configurations">Dependencies and Configurations</a>
-<ul>
-<li><a href="#add-mybatis-and-mysql-dependencies">Add MyBatis and MySQL Dependencies</a></li>
-<li><a href="#add-jdbc-data-source">Add JDBC Data Source</a></li>
-<li><a href="#add-mybatis-configurations">Add MyBatis Configurations</a></li>
-</ul></li>
-<li><a href="#model-view-controller-mvc">Model View Controller (MVC)</a>
-<ul>
-<li><a href="#create-model">Create Model</a></li>
-<li><a href="#create-mapper-interface">Create Mapper Interface</a></li>
-<li><a href="#create-mapper-xml">Create Mapper XML</a></li>
-<li><a href="#create-service">Create Service</a></li>
-<li><a href="#create-controller">Create Controller</a></li>
-</ul></li>
-<li><a href="#verify">Verify</a>
-<ul>
-<li><a href="#run-the-app">Run the App</a></li>
-<li><a href="#view-products-in-the-browser">View Products in the Browser</a></li>
-</ul></li>
-</ul>
-</nav>
-  </div>
-</div>
-    <div class="post-content">
-      <p>We first need to install a MariaDB 10.x database locally, and then access the database through MyBatis configuration.</p>
+        <nav class="site-navbar">
+          <ul id="menu" class="menu">
+            <li class="menu-item">
+              <a class="menu-item-link" href="/">Home</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/post/">Archives</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/tags/">Tags</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/categories/">Categories</a>
+            </li>
+            <li class="menu-item">
+              <a
+                class="menu-item-link"
+                href="https://ergate.com/"
+                target="_blank"
+                >Visit ERGATE</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </header>
 
-<h1 id="data-preparation">Data Preparation</h1>
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            <article class="post">
+              <header class="post-header">
+                <h1 class="post-title">
+                  2. Database Access - MyBatis and MariaDB 10.x
+                </h1>
 
-<h2 id="install-database-locally">Install Database Locally</h2>
+                <div class="post-meta">
+                  <span class="post-time"> Thu Apr 25 2019 </span>
+                  <div class="post-category">
+                    <a
+                      href="/categories/spring-stack-developer-simple-but-profound/"
+                    >
+                      Spring Stack Developer: Simple But Profound
+                    </a>
+                  </div>
+                  <span class="more-meta"> 1345 words </span>
+                  <span class="more-meta"> 7 mins read </span>
+                </div>
+              </header>
 
-<p>Since I also develop PHP projects on my Windows 10 desktop PC, I&rsquo;ll use the MariaDB 10.x that comes with the WAMPSERVER for convenience:</p>
+              <div class="post-toc" id="post-toc">
+                <h2 class="post-toc-title">Contents</h2>
+                <div class="post-toc-content always-active">
+                  <nav id="TableOfContents">
+                    <ul>
+                      <li>
+                        <a href="#data-preparation">Data Preparation</a>
+                        <ul>
+                          <li>
+                            <a href="#install-database-locally"
+                              >Install Database Locally</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#create-database-and-table"
+                              >Create Database and Table</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="#dependencies-and-configurations"
+                          >Dependencies and Configurations</a
+                        >
+                        <ul>
+                          <li>
+                            <a href="#add-mybatis-and-mysql-dependencies"
+                              >Add MyBatis and MySQL Dependencies</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#add-jdbc-data-source"
+                              >Add JDBC Data Source</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#add-mybatis-configurations"
+                              >Add MyBatis Configurations</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="#model-view-controller-mvc"
+                          >Model View Controller (MVC)</a
+                        >
+                        <ul>
+                          <li><a href="#create-model">Create Model</a></li>
+                          <li>
+                            <a href="#create-mapper-interface"
+                              >Create Mapper Interface</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#create-mapper-xml">Create Mapper XML</a>
+                          </li>
+                          <li><a href="#create-service">Create Service</a></li>
+                          <li>
+                            <a href="#create-controller">Create Controller</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="#verify">Verify</a>
+                        <ul>
+                          <li><a href="#run-the-app">Run the App</a></li>
+                          <li>
+                            <a href="#view-products-in-the-browser"
+                              >View Products in the Browser</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+              <div class="post-content">
+                <p>
+                  We first need to install a MariaDB 10.x database locally, and
+                  then access the database through MyBatis configuration.
+                </p>
 
-<ul>
-<li><a href="http://www.wampserver.com/en/">Wampserver</a></li>
-</ul>
+                <h1 id="data-preparation">Data Preparation</h1>
 
-<h2 id="create-database-and-table">Create Database and Table</h2>
+                <h2 id="install-database-locally">Install Database Locally</h2>
 
-<p>Run following SQL script in MySQL or MariaDB database console:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="lnt"> 1
+                <p>
+                  Since I also develop PHP projects on my Windows 10 desktop PC,
+                  I&rsquo;ll use the MariaDB 10.x that comes with the WAMPSERVER
+                  for convenience:
+                </p>
+
+                <ul>
+                  <li>
+                    <a href="http://www.wampserver.com/en/">Wampserver</a>
+                  </li>
+                </ul>
+
+                <h2 id="create-database-and-table">
+                  Create Database and Table
+                </h2>
+
+                <p>
+                  Run following SQL script in MySQL or MariaDB database console:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-sql" data-lang="sql"><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -217,9 +329,12 @@
 </span><span class="lnt">28
 </span><span class="lnt">29
 </span><span class="lnt">30
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">-- Create a database called shop
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-sql" data-lang="sql"><span class="c1">-- Create a database called shop
 </span><span class="c1"></span><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">shop</span> <span class="nb">CHARACTER</span> <span class="k">SET</span> <span class="n">utf8mb4</span> <span class="k">COLLATE</span> <span class="n">utf8mb4_unicode_ci</span><span class="p">;</span>
 
 <span class="c1">-- Use the created database
@@ -248,108 +363,170 @@
 <span class="p">(</span><span class="n">UNIX_TIMESTAMP</span><span class="p">(),</span> <span class="n">UNIX_TIMESTAMP</span><span class="p">(),</span> <span class="s2">&#34;SKU-002&#34;</span><span class="p">,</span> <span class="s2">&#34;Red T-Shirt&#34;</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">999</span><span class="p">,</span> <span class="s2">&#34;Red T-Shirt For Sale!&#34;</span><span class="p">);</span>
 
 <span class="c1">-- Show all product data
-</span><span class="c1"></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">product</span><span class="p">;</span></code></pre></td></tr></table>
-</div>
-</div>
-<p>After executing the above SQL scripts, you may see the following results:</p>
+</span><span class="c1"></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">product</span><span class="p">;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <p>
+                  After executing the above SQL scripts, you may see the
+                  following results:
+                </p>
 
-<figure>
-    <img src="../images/2/sql_script.png"
-         alt="img"/> 
-</figure>
+                <figure>
+                  <img src="../images/2/sql_script.png" alt="img" />
+                </figure>
 
-<h1 id="dependencies-and-configurations">Dependencies and Configurations</h1>
+                <h1 id="dependencies-and-configurations">
+                  Dependencies and Configurations
+                </h1>
 
-<h2 id="add-mybatis-and-mysql-dependencies">Add MyBatis and MySQL Dependencies</h2>
+                <h2 id="add-mybatis-and-mysql-dependencies">
+                  Add MyBatis and MySQL Dependencies
+                </h2>
 
-<p>Add MyBatis dependency into pom.xml:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt">1
+                <p>Add MyBatis dependency into pom.xml:</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-xml" data-lang="xml"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.mybatis.spring.boot<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>mybatis-spring-boot-starter<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>2.0.1<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span></code></pre></td></tr></table>
-</div>
-</div>
-<p>Add MySQL dependency into pom.xml:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt">1
+<span class="nt">&lt;/dependency&gt;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <p>Add MySQL dependency into pom.xml:</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-xml" data-lang="xml"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>mysql<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>mysql-connector-java<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>8.0.15<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span></code></pre></td></tr></table>
-</div>
-</div>
-<h2 id="add-jdbc-data-source">Add JDBC Data Source</h2>
+<span class="nt">&lt;/dependency&gt;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h2 id="add-jdbc-data-source">Add JDBC Data Source</h2>
 
-<p>Add JDBC Data Source into application.properties</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="lnt">1
+                <p>Add JDBC Data Source into application.properties</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-ini" data-lang="ini"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="na">spring.datasource.url</span><span class="o">=</span><span class="s">jdbc:mysql://localhost:3307/shop?characterEncoding=UTF-8&amp;serverTimezone=UTC</span>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-ini" data-lang="ini"><span class="na">spring.datasource.url</span><span class="o">=</span><span class="s">jdbc:mysql://localhost:3307/shop?characterEncoding=UTF-8&amp;serverTimezone=UTC</span>
 <span class="na">spring.datasource.username</span><span class="o">=</span><span class="s">root</span>
 <span class="na">spring.datasource.password</span><span class="o">=</span>
-<span class="na">spring.datasource.driver-class-name</span><span class="o">=</span><span class="s">com.mysql.cj.jdbc.Driver</span></code></pre></td></tr></table>
-</div>
-</div>
-<h2 id="add-mybatis-configurations">Add MyBatis Configurations</h2>
+<span class="na">spring.datasource.driver-class-name</span><span class="o">=</span><span class="s">com.mysql.cj.jdbc.Driver</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h2 id="add-mybatis-configurations">
+                  Add MyBatis Configurations
+                </h2>
 
-<p>Add MyBatis configuration path into application.properties:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="na">mybatis.config-location</span><span class="o">=</span><span class="s">classpath:/mybatis/mybatis-config.xml</span></code></pre></td></tr></table>
-</div>
-</div>
-<ul>
-<li>Right click resources directory: New &gt; Directory</li>
-<li>Fill in: mybatis</li>
-<li>Click &ldquo;OK&rdquo; button</li>
-</ul>
+                <p>
+                  Add MyBatis configuration path into application.properties:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-ini" data-lang="ini"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-ini" data-lang="ini"><span class="na">mybatis.config-location</span><span class="o">=</span><span class="s">classpath:/mybatis/mybatis-config.xml</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <ul>
+                  <li>Right click resources directory: New &gt; Directory</li>
+                  <li>Fill in: mybatis</li>
+                  <li>Click &ldquo;OK&rdquo; button</li>
+                </ul>
 
-<figure>
-    <img src="../images/2/new_mybatis_directory.png"
-         alt="img"/> 
-</figure>
+                <figure>
+                  <img src="../images/2/new_mybatis_directory.png" alt="img" />
+                </figure>
 
-<ul>
-<li>Right click mybatis directory: New &gt; File</li>
-<li>Fill in: mybatis-config.xml</li>
-<li>Click &ldquo;OK&rdquo; button</li>
-</ul>
+                <ul>
+                  <li>Right click mybatis directory: New &gt; File</li>
+                  <li>Fill in: mybatis-config.xml</li>
+                  <li>Click &ldquo;OK&rdquo; button</li>
+                </ul>
 
-<figure>
-    <img src="../images/2/new_mybatis_config.png"
-         alt="img"/> 
-</figure>
+                <figure>
+                  <img src="../images/2/new_mybatis_config.png" alt="img" />
+                </figure>
 
-<p>Copy and paste the following content into mybatis-config.xml:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt"> 1
+                <p>
+                  Copy and paste the following content into mybatis-config.xml:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-xml" data-lang="xml"><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -374,9 +551,12 @@
 </span><span class="lnt">23
 </span><span class="lnt">24
 </span><span class="lnt">25
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
 <span class="cp">&lt;!DOCTYPE configuration
 </span><span class="cp">        PUBLIC &#34;-//mybatis.org//DTD Config 3.0//EN&#34;
 </span><span class="cp">        &#34;http://mybatis.org/dtd/mybatis-3-config.dtd&#34;&gt;</span>
@@ -400,39 +580,50 @@
         <span class="nt">&lt;mapper</span> <span class="na">resource=</span><span class="s">&#34;mapper/product.xml&#34;</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;/mappers&gt;</span>
 
-<span class="nt">&lt;/configuration&gt;</span></code></pre></td></tr></table>
-</div>
-</div>
-<h1 id="model-view-controller-mvc">Model View Controller (MVC)</h1>
+<span class="nt">&lt;/configuration&gt;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h1 id="model-view-controller-mvc">
+                  Model View Controller (MVC)
+                </h1>
 
-<h2 id="create-model">Create Model</h2>
+                <h2 id="create-model">Create Model</h2>
 
-<ul>
-<li>Right click java directory: New &gt; Package</li>
-<li>Fill in: co.dongchen.shop.common.model</li>
-<li>Click &ldquo;OK&rdquo; button</li>
-</ul>
+                <ul>
+                  <li>Right click java directory: New &gt; Package</li>
+                  <li>Fill in: co.dongchen.shop.common.model</li>
+                  <li>Click &ldquo;OK&rdquo; button</li>
+                </ul>
 
-<figure>
-    <img src="../images/2/new_package.png"
-         alt="img"/> 
-</figure>
+                <figure>
+                  <img src="../images/2/new_package.png" alt="img" />
+                </figure>
 
-<ul>
-<li>Right click co.dongchen.shop.common.model directory: New &gt; Java Class</li>
-<li>Fill in: Product</li>
-<li>Click &ldquo;OK&rdquo; button</li>
-</ul>
+                <ul>
+                  <li>
+                    Right click co.dongchen.shop.common.model directory: New
+                    &gt; Java Class
+                  </li>
+                  <li>Fill in: Product</li>
+                  <li>Click &ldquo;OK&rdquo; button</li>
+                </ul>
 
-<figure>
-    <img src="../images/2/new_class.png"
-         alt="img"/> 
-</figure>
+                <figure>
+                  <img src="../images/2/new_class.png" alt="img" />
+                </figure>
 
-<p>Copy and paste the following content into Product.java:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt">  1
+                <p>Copy and paste the following content into Product.java:</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-java" data-lang="java"><span class="lnt">  1
 </span><span class="lnt">  2
 </span><span class="lnt">  3
 </span><span class="lnt">  4
@@ -569,9 +760,12 @@
 </span><span class="lnt">135
 </span><span class="lnt">136
 </span><span class="lnt">137
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">co.dongchen.shop.common.model</span><span class="o">;</span>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">co.dongchen.shop.common.model</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">com.google.common.collect.Lists</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.springframework.web.multipart.MultipartFile</span><span class="o">;</span>
@@ -707,38 +901,49 @@
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setImageFiles</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">MultipartFile</span><span class="o">&gt;</span> <span class="n">imageFiles</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">this</span><span class="o">.</span><span class="na">imageFiles</span> <span class="o">=</span> <span class="n">imageFiles</span><span class="o">;</span>
     <span class="o">}</span>
-<span class="o">}</span></code></pre></td></tr></table>
-</div>
-</div>
-<h2 id="create-mapper-interface">Create Mapper Interface</h2>
+<span class="o">}</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h2 id="create-mapper-interface">Create Mapper Interface</h2>
 
-<ul>
-<li>Right click java directory: New &gt; Package</li>
-<li>Fill in: co.dongchen.shop.mapper</li>
-<li>Click &ldquo;OK&rdquo; button</li>
-</ul>
+                <ul>
+                  <li>Right click java directory: New &gt; Package</li>
+                  <li>Fill in: co.dongchen.shop.mapper</li>
+                  <li>Click &ldquo;OK&rdquo; button</li>
+                </ul>
 
-<figure>
-    <img src="../images/2/new_package_mapper.png"
-         alt="img"/> 
-</figure>
+                <figure>
+                  <img src="../images/2/new_package_mapper.png" alt="img" />
+                </figure>
 
-<ul>
-<li>Right click co.dongchen.shop.mapper directory: New &gt; Java Class</li>
-<li>Fill in: ProductMapper</li>
-<li>Change Kind to: Interface</li>
-<li>Click &ldquo;OK&rdquo; button</li>
-</ul>
+                <ul>
+                  <li>
+                    Right click co.dongchen.shop.mapper directory: New &gt; Java
+                    Class
+                  </li>
+                  <li>Fill in: ProductMapper</li>
+                  <li>Change Kind to: Interface</li>
+                  <li>Click &ldquo;OK&rdquo; button</li>
+                </ul>
 
-<figure>
-    <img src="../images/2/new_interface.png"
-         alt="img"/> 
-</figure>
+                <figure>
+                  <img src="../images/2/new_interface.png" alt="img" />
+                </figure>
 
-<p>Copy and paste the following content into ProductMapper.java:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1
+                <p>
+                  Copy and paste the following content into ProductMapper.java:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-java" data-lang="java"><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -750,9 +955,12 @@
 </span><span class="lnt">10
 </span><span class="lnt">11
 </span><span class="lnt">12
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">co.dongchen.shop.mapper</span><span class="o">;</span>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">co.dongchen.shop.mapper</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">co.dongchen.shop.common.model.Product</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.ibatis.annotations.Mapper</span><span class="o">;</span>
@@ -763,37 +971,43 @@
 <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ProductMapper</span> <span class="o">{</span>
 
     <span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span> <span class="nf">queryProducts</span><span class="o">();</span>
-<span class="o">}</span></code></pre></td></tr></table>
-</div>
-</div>
-<h2 id="create-mapper-xml">Create Mapper XML</h2>
+<span class="o">}</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h2 id="create-mapper-xml">Create Mapper XML</h2>
 
-<ul>
-<li>Right click resources directory: New &gt; Directory</li>
-<li>Fill in: mapper</li>
-<li>Click &ldquo;OK&rdquo; button</li>
-</ul>
+                <ul>
+                  <li>Right click resources directory: New &gt; Directory</li>
+                  <li>Fill in: mapper</li>
+                  <li>Click &ldquo;OK&rdquo; button</li>
+                </ul>
 
-<figure>
-    <img src="../images/2/new_directory.png"
-         alt="img"/> 
-</figure>
+                <figure>
+                  <img src="../images/2/new_directory.png" alt="img" />
+                </figure>
 
-<ul>
-<li>Right click mapper directory: New &gt; File</li>
-<li>Fill in: product.xml</li>
-<li>Click &ldquo;OK&rdquo; button</li>
-</ul>
+                <ul>
+                  <li>Right click mapper directory: New &gt; File</li>
+                  <li>Fill in: product.xml</li>
+                  <li>Click &ldquo;OK&rdquo; button</li>
+                </ul>
 
-<figure>
-    <img src="../images/2/new_file.png"
-         alt="img"/> 
-</figure>
+                <figure>
+                  <img src="../images/2/new_file.png" alt="img" />
+                </figure>
 
-<p>Copy and paste the following content into product.xml:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt">1
+                <p>Copy and paste the following content into product.xml:</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-xml" data-lang="xml"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -802,9 +1016,12 @@
 </span><span class="lnt">7
 </span><span class="lnt">8
 </span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; ?&gt;</span>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; ?&gt;</span>
 <span class="cp">&lt;!DOCTYPE mapper
 </span><span class="cp">        PUBLIC &#34;-//mybatis.org//DTD Mapper 3.0//EN&#34;
 </span><span class="cp">        &#34;http://mybatis.org/dtd/mybatis-3-mapper.dtd&#34;&gt;</span>
@@ -812,37 +1029,48 @@
     <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;queryProducts&#34;</span> <span class="na">resultType=</span><span class="s">&#34;product&#34;</span><span class="nt">&gt;</span>
         select id, created_at, updated_at, sku, name, stock, price, is_enabled, images, description from product
     <span class="nt">&lt;/select&gt;</span>
-<span class="nt">&lt;/mapper&gt;</span></code></pre></td></tr></table>
-</div>
-</div>
-<h2 id="create-service">Create Service</h2>
+<span class="nt">&lt;/mapper&gt;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h2 id="create-service">Create Service</h2>
 
-<ul>
-<li>Right click java directory: New &gt; Package</li>
-<li>Fill in: co.dongchen.shop.service</li>
-<li>Click &ldquo;OK&rdquo; button</li>
-</ul>
+                <ul>
+                  <li>Right click java directory: New &gt; Package</li>
+                  <li>Fill in: co.dongchen.shop.service</li>
+                  <li>Click &ldquo;OK&rdquo; button</li>
+                </ul>
 
-<figure>
-    <img src="../images/2/new_package_service.png"
-         alt="img"/> 
-</figure>
+                <figure>
+                  <img src="../images/2/new_package_service.png" alt="img" />
+                </figure>
 
-<ul>
-<li>Right click co.dongchen.shop.service directory: New &gt; Java Class</li>
-<li>Fill in: ProductService</li>
-<li>Click &ldquo;OK&rdquo; button</li>
-</ul>
+                <ul>
+                  <li>
+                    Right click co.dongchen.shop.service directory: New &gt;
+                    Java Class
+                  </li>
+                  <li>Fill in: ProductService</li>
+                  <li>Click &ldquo;OK&rdquo; button</li>
+                </ul>
 
-<figure>
-    <img src="../images/2/new_class_service.png"
-         alt="img"/> 
-</figure>
+                <figure>
+                  <img src="../images/2/new_class_service.png" alt="img" />
+                </figure>
 
-<p>Copy and paste the following content into ProductService.java:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1
+                <p>
+                  Copy and paste the following content into ProductService.java:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-java" data-lang="java"><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -861,9 +1089,12 @@
 </span><span class="lnt">17
 </span><span class="lnt">18
 </span><span class="lnt">19
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">co.dongchen.shop.service</span><span class="o">;</span>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">co.dongchen.shop.service</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">co.dongchen.shop.common.model.Product</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">co.dongchen.shop.mapper.ProductMapper</span><span class="o">;</span>
@@ -881,37 +1112,49 @@
     <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span> <span class="nf">getProducts</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">productMapper</span><span class="o">.</span><span class="na">queryProducts</span><span class="o">();</span>
     <span class="o">}</span>
-<span class="o">}</span></code></pre></td></tr></table>
-</div>
-</div>
-<h2 id="create-controller">Create Controller</h2>
+<span class="o">}</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h2 id="create-controller">Create Controller</h2>
 
-<ul>
-<li>Right click java directory: New &gt; Package</li>
-<li>Fill in: co.dongchen.shop.controller</li>
-<li>Click &ldquo;OK&rdquo; button</li>
-</ul>
+                <ul>
+                  <li>Right click java directory: New &gt; Package</li>
+                  <li>Fill in: co.dongchen.shop.controller</li>
+                  <li>Click &ldquo;OK&rdquo; button</li>
+                </ul>
 
-<figure>
-    <img src="../images/2/new_package_controller.png"
-         alt="img"/> 
-</figure>
+                <figure>
+                  <img src="../images/2/new_package_controller.png" alt="img" />
+                </figure>
 
-<ul>
-<li>Right click co.dongchen.shop.controller directory: New &gt; Java Class</li>
-<li>Fill in: ProductController</li>
-<li>Click &ldquo;OK&rdquo; button</li>
-</ul>
+                <ul>
+                  <li>
+                    Right click co.dongchen.shop.controller directory: New &gt;
+                    Java Class
+                  </li>
+                  <li>Fill in: ProductController</li>
+                  <li>Click &ldquo;OK&rdquo; button</li>
+                </ul>
 
-<figure>
-    <img src="../images/2/new_class_controller.png"
-         alt="img"/> 
-</figure>
+                <figure>
+                  <img src="../images/2/new_class_controller.png" alt="img" />
+                </figure>
 
-<p>Copy and paste the following content into ProductController.java:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1
+                <p>
+                  Copy and paste the following content into
+                  ProductController.java:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-java" data-lang="java"><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -932,9 +1175,12 @@
 </span><span class="lnt">19
 </span><span class="lnt">20
 </span><span class="lnt">21
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">co.dongchen.shop.controller</span><span class="o">;</span>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">co.dongchen.shop.controller</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">co.dongchen.shop.common.model.Product</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">co.dongchen.shop.service.ProductService</span><span class="o">;</span>
@@ -954,177 +1200,316 @@
     <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span> <span class="nf">getProducts</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">productService</span><span class="o">.</span><span class="na">getProducts</span><span class="o">();</span>
     <span class="o">}</span>
-<span class="o">}</span></code></pre></td></tr></table>
-</div>
-</div>
-<h1 id="verify">Verify</h1>
+<span class="o">}</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h1 id="verify">Verify</h1>
 
-<h2 id="run-the-app">Run the App</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-Code" data-lang="Code"><span class="lnt">1
+                <h2 id="run-the-app">Run the App</h2>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-Code" data-lang="Code"><span class="lnt">1
 </span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-Code" data-lang="Code">// Short Cut for &#34;Run the Program&#34;
-Alt + Shift + F10</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/common/run.png"
-         alt="img"/> 
-</figure>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-Code" data-lang="Code">// Short Cut for &#34;Run the Program&#34;
+Alt + Shift + F10</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/common/run.png" alt="img" />
+                </figure>
 
-<p>Choose the correspondent option and press enter.</p>
+                <p>Choose the correspondent option and press enter.</p>
 
-<h2 id="view-products-in-the-browser">View Products in the Browser</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-http" data-lang="http"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-http" data-lang="http"><span class="err">http://localhost:8080/products</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/2/products_page.png"
-         alt="img"/> 
-</figure>
+                <h2 id="view-products-in-the-browser">
+                  View Products in the Browser
+                </h2>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-http" data-lang="http"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-http" data-lang="http"><span class="err">http://localhost:8080/products</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/2/products_page.png" alt="img" />
+                </figure>
 
-<blockquote>
-<p>References
-<a href="http://www.wampserver.com/en/">Wampserver</a>,
-<a href="http://www.mybatis.org/spring-boot-starter/mybatis-spring-boot-autoconfigure/">mybatis-spring-boot-autoconfigure</a>,
-<a href="https://mvnrepository.com/artifact/mysql/mysql-connector-java/8.0.15">Maven Repository: MySQL Connector/J » 8.0.15</a></p>
-</blockquote>
+                <blockquote>
+                  <p>
+                    References
+                    <a href="http://www.wampserver.com/en/">Wampserver</a>,
+                    <a
+                      href="http://www.mybatis.org/spring-boot-starter/mybatis-spring-boot-autoconfigure/"
+                      >mybatis-spring-boot-autoconfigure</a
+                    >,
+                    <a
+                      href="https://mvnrepository.com/artifact/mysql/mysql-connector-java/8.0.15"
+                      >Maven Repository: MySQL Connector/J » 8.0.15</a
+                    >
+                  </p>
+                </blockquote>
 
-<!-- Buy Me a Coffee Button -->
+                <!-- Buy Me a Coffee Button -->
 
-<p class="align-center">
-  <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/PFou9WhLr"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
-</p>
-    </div>
+                <p class="align-center">
+                  <style>
+                    .bmc-button img {
+                      width: 27px !important;
+                      margin-bottom: 1px !important;
+                      box-shadow: none !important;
+                      border: none !important;
+                      vertical-align: middle !important;
+                    }
+                    .bmc-button {
+                      line-height: 36px !important;
+                      height: 37px !important;
+                      text-decoration: none !important;
+                      display: inline-flex !important;
+                      color: #ffffff !important;
+                      background-color: #ff813f !important;
+                      border-radius: 3px !important;
+                      border: 1px solid transparent !important;
+                      padding: 1px 9px !important;
+                      font-size: 22px !important;
+                      letter-spacing: 0.6px !important;
+                      box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;
+                      -webkit-box-shadow: 0px 1px 2px 2px
+                        rgba(190, 190, 190, 0.5) !important;
+                      margin: 0 auto !important;
+                      font-family: "Cookie", cursive !important;
+                      -webkit-box-sizing: border-box !important;
+                      box-sizing: border-box !important;
+                      -o-transition: 0.3s all linear !important;
+                      -webkit-transition: 0.3s all linear !important;
+                      -moz-transition: 0.3s all linear !important;
+                      -ms-transition: 0.3s all linear !important;
+                      transition: 0.3s all linear !important;
+                    }
+                    .bmc-button:hover,
+                    .bmc-button:active,
+                    .bmc-button:focus {
+                      -webkit-box-shadow: 0px 1px 2px 2px
+                        rgba(190, 190, 190, 0.5) !important;
+                      text-decoration: none !important;
+                      box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+                      opacity: 0.85 !important;
+                      color: #ffffff !important;
+                    }</style
+                  ><link
+                    href="https://fonts.googleapis.com/css?family=Cookie"
+                    rel="stylesheet"
+                  /><a
+                    class="bmc-button"
+                    target="_blank"
+                    href="https://www.buymeacoffee.com/PFou9WhLr"
+                    ><img
+                      src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg"
+                      alt="Buy me a coffee"
+                    /><span style="margin-left: 5px">Buy me a coffee</span></a
+                  >
+                </p>
+              </div>
 
-    <div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">Author</span>
-    <span class="item-content">Dong Chen</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">LastMod</span>
-    <span class="item-content">Thu Apr 25 2019</span>
-  </p>
-  
-  
-</div><div class="post-reward">
-  <input type="checkbox" name="reward" id="reward" hidden />
-  <label class="reward-button" for="reward">Reward</label>
-  <div class="qr-code">
-    
-    <label class="qr-code-image" for="reward">
-        <img class="image" src="https://dongchen.co/images/wepay_qr_final.png">
-        <span>wechat</span>
-      </label>
-    <label class="qr-code-image" for="reward">
-        <img class="image" src="https://dongchen.co/images/alipay_qr_final.png">
-        <span>alipay</span>
-      </label>
-  </div>
-</div><footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/java/">Java</a>
-          <a href="/tags/spring/">Spring</a>
-          <a href="/tags/spring-stack/">Spring Stack</a>
-          <a href="/tags/spring-framework/">Spring Framework</a>
-          <a href="/tags/mybatis/">MyBatis</a>
-          <a href="/tags/mariadb-10/">MariaDB 10</a>
+              <div class="post-copyright">
+                <p class="copyright-item">
+                  <span class="item-title">Author</span>
+                  <span class="item-content">Dong Chen</span>
+                </p>
+                <p class="copyright-item">
+                  <span class="item-title">LastMod</span>
+                  <span class="item-content">Thu Apr 25 2019</span>
+                </p>
+              </div>
+              <div class="post-reward">
+                <input type="checkbox" name="reward" id="reward" hidden />
+                <label class="reward-button" for="reward">Reward</label>
+                <div class="qr-code">
+                  <label class="qr-code-image" for="reward">
+                    <img
+                      class="image"
+                      src="https://dongchen.co/images/wepay_qr_final.png"
+                    />
+                    <span>wechat</span>
+                  </label>
+                  <label class="qr-code-image" for="reward">
+                    <img
+                      class="image"
+                      src="https://dongchen.co/images/alipay_qr_final.png"
+                    />
+                    <span>alipay</span>
+                  </label>
+                </div>
+              </div>
+              <footer class="post-footer">
+                <div class="post-tags">
+                  <a href="/tags/java/">Java</a>
+                  <a href="/tags/spring/">Spring</a>
+                  <a href="/tags/spring-stack/">Spring Stack</a>
+                  <a href="/tags/spring-framework/">Spring Framework</a>
+                  <a href="/tags/mybatis/">MyBatis</a>
+                  <a href="/tags/mariadb-10/">MariaDB 10</a>
+                </div>
+                <nav class="post-nav">
+                  <a
+                    class="prev"
+                    href="/post/simple-but-profound/server-side-programming/java/spring-stack-developer/3.-connection-pool-alibaba-druid-and-google-guava/"
+                  >
+                    <i class="iconfont icon-left"></i>
+                    <span class="prev-text nav-default"
+                      >3. Connection Pool - Alibaba Druid and Google Guava</span
+                    >
+                    <span class="prev-text nav-mobile">Prev</span>
+                  </a>
+                  <a
+                    class="next"
+                    href="/post/simple-but-profound/server-side-programming/java/spring-stack-developer/1.-helloworld-demo-hello-spring-stack/"
+                  >
+                    <span class="next-text nav-default"
+                      >1. HelloWorld Demo - Hello Spring Stack</span
+                    >
+                    <span class="next-text nav-mobile">Next</span>
+                    <i class="iconfont icon-right"></i>
+                  </a>
+                </nav>
+              </footer>
+            </article>
           </div>
-      <nav class="post-nav">
-        <a class="prev" href="/post/simple-but-profound/server-side-programming/java/spring-stack-developer/3.-connection-pool-alibaba-druid-and-google-guava/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">3. Connection Pool - Alibaba Druid and Google Guava</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        <a class="next" href="/post/simple-but-profound/server-side-programming/java/spring-stack-developer/1.-helloworld-demo-hello-spring-stack/">
-            <span class="next-text nav-default">1. HelloWorld Demo - Hello Spring Stack</span>
-            <span class="next-text nav-mobile">Next</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
         </div>
-        
+      </main>
 
+      <footer id="footer" class="footer">
+        <div class="social-links">
+          <a
+            href="mailto:dongchensteven@gmail.com"
+            class="iconfont icon-email"
+            title="email"
+          ></a>
+          <a
+            href="https://www.linkedin.com/in/dongchensteven"
+            class="iconfont icon-linkedin"
+            title="linkedin"
+          ></a>
+          <a
+            href="https://github.com/dongchensteven"
+            class="iconfont icon-github"
+            title="github"
+          ></a>
+          <a
+            href="https://dongchen.co/index.xml"
+            type="application/rss+xml"
+            class="iconfont icon-rss"
+            title="rss"
+          ></a>
+        </div>
+
+        <div class="copyright">
+          <span class="power-by">
+            Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+          </span>
+          <span class="division">|</span>
+          <span class="theme-info">
+            Theme -
+            <a
+              class="theme-link"
+              href="https://github.com/olOwOlo/hugo-theme-even"
+              >Even</a
+            >
+          </span>
+
+          <span class="copyright-year">
+            &copy; 2018 - 2020
+            <span class="heart">
+              <i class="iconfont icon-heart"></i>
+            </span>
+            <span class="author">Dong Chen</span>
+          </span>
+        </div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
       </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:dongchensteven@gmail.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://www.linkedin.com/in/dongchensteven" class="iconfont icon-linkedin" title="linkedin"></a>
-      <a href="https://github.com/dongchensteven" class="iconfont icon-github" title="github"></a>
-  <a href="https://dongchen.co/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
-
-<div class="copyright">
-  <span class="power-by">
-    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    Theme - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2018 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">Dong Chen</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
     </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
-  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
-    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
-    timeago().render(document.querySelectorAll('.timeago'), languageCode);
-    timeago.cancel();  
-  </script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js"
+      integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js"
+      integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js"
+      integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js"
+      integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      <!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+      var languageCode = "en"
+        .replace(/-/g, "_")
+        .replace(/_(.*)/, function ($0, $1) {
+          return $0.replace($1, $1.toUpperCase());
+        });
+      timeago().render(document.querySelectorAll(".timeago"), languageCode);
+      timeago.cancel();
+    </script>
+    <script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-133226289-1', 'auto');
-	ga('set', 'anonymizeIp', true);
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-
-
-
-
-
-
-</body>
+    <script type="application/javascript">
+      var doNotTrack = false;
+      if (!doNotTrack) {
+        window.ga =
+          window.ga ||
+          function () {
+            (ga.q = ga.q || []).push(arguments);
+          };
+        ga.l = +new Date();
+        ga("create", "UA-133226289-1", "auto");
+        ga("set", "anonymizeIp", true);
+        ga("send", "pageview");
+      }
+    </script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
+  </body>
 </html>

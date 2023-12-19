@@ -1,1323 +1,2160 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>61. Disk Management - Tools - Dong - A place to track my time log</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+      61. Disk Management - Tools - Dong - A place to track my time log
+    </title>
+    <meta name="renderer" content="webkit" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
 
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+    <meta name="theme-color" content="#f8f5ec" />
+    <meta name="msapplication-navbutton-color" content="#f8f5ec" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec" />
 
+    <meta name="author" content="Dong Chen" />
+    <meta
+      name="description"
+      content="Linux provides us with a lot of tools to manage disks. These tools allow us to view disk usage and partition the drive.
+"
+    />
+    <meta name="keywords" content="Hugo, theme, even" />
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="Linux provides us with a lot of tools to manage disks. These tools allow us to view disk usage and partition the drive.
-" /><meta name="keywords" content="Hugo, theme, even" />
+    <meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
+    <link
+      rel="canonical"
+      href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/61.-disk-management-tools/"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
 
+    <link href="/dist/even.ea128f8b.min.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css"
+      integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
 
+    <meta property="og:title" content="61. Disk Management - Tools" />
+    <meta
+      property="og:description"
+      content="Linux provides us with a lot of tools to manage disks. These tools allow us to view disk usage and partition the drive."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/61.-disk-management-tools/"
+    />
+    <meta
+      property="article:published_time"
+      content="2019-04-02T07:52:07&#43;13:00"
+    />
+    <meta
+      property="article:modified_time"
+      content="2019-04-02T07:52:07&#43;13:00"
+    />
 
+    <meta itemprop="name" content="61. Disk Management - Tools" />
+    <meta
+      itemprop="description"
+      content="Linux provides us with a lot of tools to manage disks. These tools allow us to view disk usage and partition the drive."
+    />
 
+    <meta itemprop="datePublished" content="2019-04-02T07:52:07&#43;13:00" />
+    <meta itemprop="dateModified" content="2019-04-02T07:52:07&#43;13:00" />
+    <meta itemprop="wordCount" content="1439" />
 
-<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
+    <meta itemprop="keywords" content="Linux,Server," />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="61. Disk Management - Tools" />
+    <meta
+      name="twitter:description"
+      content="Linux provides us with a lot of tools to manage disks. These tools allow us to view disk usage and partition the drive."
+    />
 
+    <!--[if lte IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+    <![endif]-->
 
-<link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/61.-disk-management-tools/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-<link href="/dist/even.ea128f8b.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/styles.css">
-
-
-<meta property="og:title" content="61. Disk Management - Tools" />
-<meta property="og:description" content="Linux provides us with a lot of tools to manage disks. These tools allow us to view disk usage and partition the drive." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/61.-disk-management-tools/" />
-<meta property="article:published_time" content="2019-04-02T07:52:07&#43;13:00"/>
-<meta property="article:modified_time" content="2019-04-02T07:52:07&#43;13:00"/>
-
-<meta itemprop="name" content="61. Disk Management - Tools">
-<meta itemprop="description" content="Linux provides us with a lot of tools to manage disks. These tools allow us to view disk usage and partition the drive.">
-
-
-<meta itemprop="datePublished" content="2019-04-02T07:52:07&#43;13:00" />
-<meta itemprop="dateModified" content="2019-04-02T07:52:07&#43;13:00" />
-<meta itemprop="wordCount" content="1439">
-
-
-
-<meta itemprop="keywords" content="Linux,Server," />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="61. Disk Management - Tools"/>
-<meta name="twitter:description" content="Linux provides us with a lot of tools to manage disks. These tools allow us to view disk usage and partition the drive."/>
-
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
-
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
-
-</head>
-<body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">Dong</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">Home</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">Archives</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">Tags</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">Dong</a>
-</div>
-
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">Home</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">Archives</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">Categories</a>
-      </li>
-  </ul>
-</nav>
-    </header>
-
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
-    
-    <header class="post-header">
-      <h1 class="post-title">61. Disk Management - Tools</h1>
-
-      <div class="post-meta">
-        <span class="post-time"> Tue Apr 2 2019 </span>
-        <div class="post-category">
-            <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
-            </div>
-          <span class="more-meta"> 1439 words </span>
-          <span class="more-meta"> 7 mins read </span>
-        
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div id="mobile-navbar" class="mobile-navbar">
+      <div class="mobile-header-logo">
+        <a href="/" class="logo">Dong</a>
       </div>
-    </header>
-
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">Contents</h2>
-  <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#report-disk-space-usage">Report Disk Space Usage</a></li>
-<li><a href="#estimate-file-space-usage">Estimate File Space Usage</a></li>
-<li><a href="#list-block-devices">List Block Devices</a></li>
-<li><a href="#show-partitions">Show Partitions</a></li>
-<li><a href="#change-or-show-an-ext-2-3-4-filesystem-label">Change or Show an ext{2|3|4} Filesystem Label</a></li>
-<li><a href="#dump-an-ext-2-3-4-filesystem-information">Dump an ext{2|3|4} Filesystem Information</a></li>
-<li><a href="#adjust-ext-2-3-4-filesystem-tunable-parameters">Adjust ext{2|3|4} Filesystem Tunable Parameters</a></li>
-<li><a href="#show-locate-print-block-device-attributes">Show locate/print block device attributes</a></li>
-<li><a href="#check-and-repair-a-linux-filesystem">Check and Repair a Linux Filesystem</a></li>
-<li><a href="#repair-an-xfs-filesystem">Repair an XFS Filesystem</a></li>
-<li><a href="#check-a-linux-ext-2-3-4-filesystem">Check a Linux ext{2|3|4} Filesystem</a></li>
-<li><a href="#manipulate-disk-partition-table">Manipulate Disk Partition Table</a></li>
-<li><a href="#manipulate-guid-partition-tables">Manipulate GUID Partition Tables</a></li>
-<li><a href="#manipulate-disk-partitions">Manipulate Disk Partitions</a></li>
-<li><a href="#inform-the-system-of-partition-table-changes">Inform the System of Partition Table Changes</a></li>
-<li><a href="#build-a-linux-filesystem">Build a Linux Filesystem</a></li>
-<li><a href="#create-an-ext-2-3-4-filesystem">Create an ext{2|3|4} Filesystem</a></li>
-<li><a href="#mount-a-filesystem">Mount a Filesystem</a></li>
-<li><a href="#unmount-filesystems">Unmount Filesystems</a></li>
-<li><a href="#check-mounted-devices">Check Mounted Devices</a></li>
-<li><a href="#check-processes-using-files-or-sockets">Check Processes Using Files or Sockets</a></li>
-<li><a href="#list-opened-files">List Opened Files</a></li>
-<li><a href="#create-a-swap-area">Create a Swap Area</a></li>
-<li><a href="#enable-or-disable-devices-and-files-for-paging-and-swapping">Enable or Disable Devices and Files for Paging and Swapping</a></li>
-<li><a href="#static-information-about-the-filesystems">Static Information About the Filesystems</a></li>
-<li><a href="#make-block-or-character-special-files">Make Block or Character Special Files</a></li>
-<li><a href="#copy-a-file">Copy a File</a>
-<ul>
-<li><a href="#backup-disk-mbr">Backup Disk MBR</a></li>
-<li><a href="#recover-disk-mbr">Recover Disk MBR</a></li>
-<li><a href="#create-virtual-compact-disc">Create Virtual Compact Disc</a></li>
-<li><a href="#a-worse-performance-swap-space">A Worse Performance Swap Space</a></li>
-</ul></li>
-<li><a href="#display-file-contents-in-hexadecimal-decimal-octal-or-ascii">Display File Contents in Hexadecimal, Decimal, Octal, or ASCII</a></li>
-</ul>
-</nav>
-  </div>
-</div>
-    <div class="post-content">
-      <p>Linux provides us with a lot of tools to manage disks. These tools allow us to view disk usage and partition the drive.</p>
-
-<h1 id="report-disk-space-usage">Report Disk Space Usage</h1>
-
-<p>Here are some common options for du command:</p>
-
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">-h or &#8209;&#8209;human-readable</td>
-<td align="left">Show human readable size format.</td>
-</tr>
-
-<tr>
-<td align="center">-s or &#8209;&#8209;summarize</td>
-<td align="left">Size of the specified directory only.</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">du <span class="o">[</span>OPTION<span class="o">]</span></code></pre></td></tr></table>
-</div>
-</div>
-<h1 id="estimate-file-space-usage">Estimate File Space Usage</h1>
-
-<p>Here are some common options for df command:</p>
-
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">-h or &#8209;&#8209;human-readable</td>
-<td align="left">Show human readable size format.</td>
-</tr>
-
-<tr>
-<td align="center">-i or &#8209;&#8209;inodes</td>
-<td align="left">Show inodes instead of blocks.</td>
-</tr>
-
-<tr>
-<td align="center">-l or &#8209;&#8209;local</td>
-<td align="left">Show local file related information.</td>
-</tr>
-
-<tr>
-<td align="center">-P or &#8209;&#8209;portability</td>
-<td align="left">Show in POSIX style, keep in same line.</td>
-</tr>
-
-<tr>
-<td align="center">-T or &#8209;&#8209;print-type</td>
-<td align="left">Show filesystem type.</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">df <span class="o">[</span>OPTION<span class="o">]</span></code></pre></td></tr></table>
-</div>
-</div>
-<h1 id="list-block-devices">List Block Devices</h1>
-
-<p>We can use lsblk command to list block devices:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">lsblk</code></pre></td></tr></table>
-</div>
-</div>
-<h1 id="show-partitions">Show Partitions</h1>
-
-<p>We can output all the partitions through the /proc/partitions file:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">cat /proc/partitions</code></pre></td></tr></table>
-</div>
-</div>
-<h1 id="change-or-show-an-ext-2-3-4-filesystem-label">Change or Show an ext{2|3|4} Filesystem Label</h1>
-
-<p>Show device&rsquo;s label:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">e2label device</code></pre></td></tr></table>
-</div>
-</div>
-<p>Change device&rsquo;s label:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">e2label device label</code></pre></td></tr></table>
-</div>
-</div>
-<h1 id="dump-an-ext-2-3-4-filesystem-information">Dump an ext{2|3|4} Filesystem Information</h1>
-
-<p>Here are some common options for dumpe2fs command:</p>
-
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">-h</td>
-<td align="left">Show super block details.</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">dumpe2fs <span class="o">[</span>OPTION<span class="o">]</span> device</code></pre></td></tr></table>
-</div>
-</div>
-<h1 id="adjust-ext-2-3-4-filesystem-tunable-parameters">Adjust ext{2|3|4} Filesystem Tunable Parameters</h1>
-
-<p>Here are some common options for tune2fs command:</p>
-
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">-c #</td>
-<td align="left">Adjust the self-check behavior after the # mount amount,0 or -1 means disable the function.</td>
-</tr>
-
-<tr>
-<td align="center">-i #</td>
-<td align="left">Adjust the self-check behavior after # days of the mount usage.</td>
-</tr>
-
-<tr>
-<td align="center">-j</td>
-<td align="left">Adjust disk from ext2 to ext3, this can be reversed, but this doesn&rsquo;t hurt the existing data.</td>
-</tr>
-
-<tr>
-<td align="center">-l</td>
-<td align="left">Show super block details.</td>
-</tr>
-
-<tr>
-<td align="center">-L LABEL</td>
-<td align="left">Change disk label.</td>
-</tr>
-
-<tr>
-<td align="center">-m</td>
-<td align="left">Adjust remaining percentage for super user.</td>
-</tr>
-
-<tr>
-<td align="center">-o OPTION(acl or ^acl)</td>
-<td align="left">Adjust default mount point.</td>
-</tr>
-
-<tr>
-<td align="center">-r</td>
-<td align="left">Adjust remaining blocks.</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">tune2fs <span class="o">[</span>OPTION<span class="o">]</span> device</code></pre></td></tr></table>
-</div>
-</div>
-<h1 id="show-locate-print-block-device-attributes">Show locate/print block device attributes</h1>
-
-<p>Here are some common options for blkid command:</p>
-
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">-i or &#8209;&#8209;info</td>
-<td align="left">Show I/O Limits (aka I/O topology) information</td>
-</tr>
-
-<tr>
-<td align="center">-k or &#8209;&#8209;list-filesystems</td>
-<td align="left">Show all known filesystems and RAIDs.</td>
-</tr>
-
-<tr>
-<td align="center">-L LABEL or &#8209;&#8209;label LABEL</td>
-<td align="left">Look for devices according to LABEL.</td>
-</tr>
-
-<tr>
-<td align="center">-U UUID or &#8209;&#8209;uuid UUID</td>
-<td align="left">Look for devices according to UUID.</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">blkid <span class="o">[</span>OPTION<span class="o">]</span> device</code></pre></td></tr></table>
-</div>
-</div>
-<h1 id="check-and-repair-a-linux-filesystem">Check and Repair a Linux Filesystem</h1>
-
-<p>Here are some common options for fsck command:</p>
-
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">-t FSTYPE</td>
-<td align="left">Specify a file system type.</td>
-</tr>
-
-<tr>
-<td align="center">-a</td>
-<td align="left">Repair automatically.</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">fsck <span class="o">[</span>OPTION<span class="o">]</span> device</code></pre></td></tr></table>
-</div>
-</div>
-<h1 id="repair-an-xfs-filesystem">Repair an XFS Filesystem</h1>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">xfs_repair</code></pre></td></tr></table>
-</div>
-</div>
-<h1 id="check-a-linux-ext-2-3-4-filesystem">Check a Linux ext{2|3|4} Filesystem</h1>
-
-<p>Here are some common options for e2fsck command:</p>
-
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">-f</td>
-<td align="left">Force inspecting.</td>
-</tr>
-
-<tr>
-<td align="center">-p</td>
-<td align="left">Repair automatically.</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">e2fsck <span class="o">[</span>OPTION<span class="o">]</span> device</code></pre></td></tr></table>
-</div>
-</div>
-<h1 id="manipulate-disk-partition-table">Manipulate Disk Partition Table</h1>
-
-<p>Here are some common options for fdisk command:</p>
-
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">-l or &#8209;&#8209;list</td>
-<td align="left">List device&rsquo;s partition tables, if no device is given, then output /proc/partitions instead.</td>
-</tr>
-</tbody>
-</table>
-
-<p>Here are some common command for fdisk command when creating partition:</p>
-
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">d</td>
-<td align="left">Delete a partition.</td>
-</tr>
-
-<tr>
-<td align="center">l</td>
-<td align="left">Show supported types.</td>
-</tr>
-
-<tr>
-<td align="center">n</td>
-<td align="left">Create partition, e: extended partition, p: primary partition. +NG(Number of GigaBytes), +NM(Number of MegaBytes), +NK(Number of KiloBytes), +N(Number of Bytes)</td>
-</tr>
-
-<tr>
-<td align="center">p</td>
-<td align="left">Show disk partition, include the pending one.</td>
-</tr>
-
-<tr>
-<td align="center">q</td>
-<td align="left">Exit without saving the operations.</td>
-</tr>
-
-<tr>
-<td align="center">t</td>
-<td align="left">Edit partition type.</td>
-</tr>
-
-<tr>
-<td align="center">w</td>
-<td align="left">Save before exit.</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">fdisk <span class="o">[</span>OPTION<span class="o">]</span> device</code></pre></td></tr></table>
-</div>
-</div>
-<h1 id="manipulate-guid-partition-tables">Manipulate GUID Partition Tables</h1>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">gdisk</code></pre></td></tr></table>
-</div>
-</div>
-<h1 id="manipulate-disk-partitions">Manipulate Disk Partitions</h1>
-
-<p>Here are some common options for parted command:</p>
-
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">-l or &#8209;&#8209;list</td>
-<td align="left">Show all block devices&rsquo; partition layout.</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">parted <span class="o">[</span>OPTION<span class="o">]</span> <span class="o">[</span>device<span class="o">]</span></code></pre></td></tr></table>
-</div>
-</div>
-<h1 id="inform-the-system-of-partition-table-changes">Inform the System of Partition Table Changes</h1>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">partprobe</code></pre></td></tr></table>
-</div>
-</div>
-<h1 id="build-a-linux-filesystem">Build a Linux Filesystem</h1>
-
-<p>Here are some common options for mkfs command:</p>
-
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">-b BLOCKSIZE</td>
-<td align="left">Specify the block size, by default is 4096, available options are 1024, 2048 or 4096.</td>
-</tr>
-
-<tr>
-<td align="center">-E</td>
-<td align="left">User specified extra file system attributes.</td>
-</tr>
-
-<tr>
-<td align="center">-i #</td>
-<td align="left">Specify the byte spaces per inode, by default is 8192, this value must be the block size to the second power.</td>
-</tr>
-
-<tr>
-<td align="center">-L LABEL</td>
-<td align="left">Specify partition label.</td>
-</tr>
-
-<tr>
-<td align="center">-m #</td>
-<td align="left">Specify remaining percentage for super user.</td>
-</tr>
-
-<tr>
-<td align="center">-N #</td>
-<td align="left">Specify inode quantity.</td>
-</tr>
-
-<tr>
-<td align="center">-t FSTYPE</td>
-<td align="left">FSTYPE can be either ext2, ext3, ext4 or xfs. This is equivalent to mkfs.ext2, mkfs.ext3, mkfs.ext4, mkfs.xfs.</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">mkfs</code></pre></td></tr></table>
-</div>
-</div>
-<h1 id="create-an-ext-2-3-4-filesystem">Create an ext{2|3|4} Filesystem</h1>
-
-<p>Here are some common options for mke2fs command:</p>
-
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">-b BLOCKSIZE</td>
-<td align="left">Specify the block size, by default is 4096, available options are 1024, 2048 or 4096.</td>
-</tr>
-
-<tr>
-<td align="center">-i #</td>
-<td align="left">Specify the byte spaces per inode, by default is 8192, this value must be the block size to the second power.</td>
-</tr>
-
-<tr>
-<td align="center">-j</td>
-<td align="left">Create ext3 file system.</td>
-</tr>
-
-<tr>
-<td align="center">-L LABEL</td>
-<td align="left">Specify partition label.</td>
-</tr>
-
-<tr>
-<td align="center">-m #</td>
-<td align="left">Specify remaining percentage for super user.</td>
-</tr>
-
-<tr>
-<td align="center">-N #</td>
-<td align="left">Specify inode quantity.</td>
-</tr>
-
-<tr>
-<td align="center">-O FEATURE:</td>
-<td align="left">Create with the given features.</td>
-</tr>
-
-<tr>
-<td align="center">-t FSTYPE</td>
-<td align="left">Can be either ext2, ext3 or ext4.</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">mke2fs</code></pre></td></tr></table>
-</div>
-</div>
-<h1 id="mount-a-filesystem">Mount a Filesystem</h1>
-
-<p>Here are some common options for mount command:</p>
-
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">-a</td>
-<td align="left">Mount all file systems defined in /etc/fstab file.</td>
-</tr>
-
-<tr>
-<td align="center">-n</td>
-<td align="left">Stop appending devices&rsquo; details to /etc/mtab file.</td>
-</tr>
-
-<tr>
-<td align="center">-o</td>
-<td align="left">Specify additional mount device options, it is, the file systems&rsquo; enabled attributes, use comma for multiple options.</td>
-</tr>
-
-<tr>
-<td align="center">-r</td>
-<td align="left">Read only mount, usually used for compact disc (CD).</td>
-</tr>
-
-<tr>
-<td align="center">-t FSTYPE</td>
-<td align="left">Specify device&rsquo;s file system type, mount will call blkid to identify the type by default.</td>
-</tr>
-
-<tr>
-<td align="center">-w</td>
-<td align="left">Read write mount.</td>
-</tr>
-</tbody>
-</table>
-
-<p>Show all mounted devices by default, append mounted device&rsquo;s detail to /etc/mtab file by default.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">mount <span class="o">[</span>device<span class="o">]</span> <span class="o">[</span>mountpoint<span class="o">]</span></code></pre></td></tr></table>
-</div>
-</div>
-<h1 id="unmount-filesystems">Unmount Filesystems</h1>
-
-<p>Here are some common options for umount command:</p>
-
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">-n or &#8209;&#8209;no-mtab</td>
-<td align="left">Unmount without writing in /etc/mtab file.</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">umount <span class="o">[</span>OPTION<span class="o">]</span> <span class="o">[</span>device<span class="o">]</span></code></pre></td></tr></table>
-</div>
-</div>
-<h1 id="check-mounted-devices">Check Mounted Devices</h1>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+      <div class="mobile-navbar-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <nav id="mobile-menu" class="mobile-menu slideout-menu">
+      <ul class="mobile-menu-list">
+        <a href="/">
+          <li class="mobile-menu-item">Home</li> </a
+        ><a href="/post/">
+          <li class="mobile-menu-item">Archives</li> </a
+        ><a href="/tags/">
+          <li class="mobile-menu-item">Tags</li> </a
+        ><a href="/categories/">
+          <li class="mobile-menu-item">Categories</li> </a
+        ><a href="https://ergate.com/" target="_blank">
+          <li class="mobile-menu-item">Visit ERGATE</li>
+        </a>
+      </ul>
+    </nav>
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header">
+        <div class="logo-wrapper">
+          <a href="/" class="logo">Dong</a>
+        </div>
+
+        <nav class="site-navbar">
+          <ul id="menu" class="menu">
+            <li class="menu-item">
+              <a class="menu-item-link" href="/">Home</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/post/">Archives</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/tags/">Tags</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/categories/">Categories</a>
+            </li>
+            <li class="menu-item">
+              <a
+                class="menu-item-link"
+                href="https://ergate.com/"
+                target="_blank"
+                >Visit ERGATE</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            <article class="post">
+              <header class="post-header">
+                <h1 class="post-title">61. Disk Management - Tools</h1>
+
+                <div class="post-meta">
+                  <span class="post-time"> Tue Apr 2 2019 </span>
+                  <div class="post-category">
+                    <a
+                      href="/categories/linux-administrator-simple-but-profound/"
+                    >
+                      Linux Administrator: Simple But Profound
+                    </a>
+                  </div>
+                  <span class="more-meta"> 1439 words </span>
+                  <span class="more-meta"> 7 mins read </span>
+                </div>
+              </header>
+
+              <div class="post-toc" id="post-toc">
+                <h2 class="post-toc-title">Contents</h2>
+                <div class="post-toc-content always-active">
+                  <nav id="TableOfContents">
+                    <ul>
+                      <li>
+                        <a href="#report-disk-space-usage"
+                          >Report Disk Space Usage</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#estimate-file-space-usage"
+                          >Estimate File Space Usage</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#list-block-devices">List Block Devices</a>
+                      </li>
+                      <li><a href="#show-partitions">Show Partitions</a></li>
+                      <li>
+                        <a href="#change-or-show-an-ext-2-3-4-filesystem-label"
+                          >Change or Show an ext{2|3|4} Filesystem Label</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#dump-an-ext-2-3-4-filesystem-information"
+                          >Dump an ext{2|3|4} Filesystem Information</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#adjust-ext-2-3-4-filesystem-tunable-parameters"
+                          >Adjust ext{2|3|4} Filesystem Tunable Parameters</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#show-locate-print-block-device-attributes"
+                          >Show locate/print block device attributes</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#check-and-repair-a-linux-filesystem"
+                          >Check and Repair a Linux Filesystem</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#repair-an-xfs-filesystem"
+                          >Repair an XFS Filesystem</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#check-a-linux-ext-2-3-4-filesystem"
+                          >Check a Linux ext{2|3|4} Filesystem</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#manipulate-disk-partition-table"
+                          >Manipulate Disk Partition Table</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#manipulate-guid-partition-tables"
+                          >Manipulate GUID Partition Tables</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#manipulate-disk-partitions"
+                          >Manipulate Disk Partitions</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#inform-the-system-of-partition-table-changes"
+                          >Inform the System of Partition Table Changes</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#build-a-linux-filesystem"
+                          >Build a Linux Filesystem</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#create-an-ext-2-3-4-filesystem"
+                          >Create an ext{2|3|4} Filesystem</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#mount-a-filesystem">Mount a Filesystem</a>
+                      </li>
+                      <li>
+                        <a href="#unmount-filesystems">Unmount Filesystems</a>
+                      </li>
+                      <li>
+                        <a href="#check-mounted-devices"
+                          >Check Mounted Devices</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#check-processes-using-files-or-sockets"
+                          >Check Processes Using Files or Sockets</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#list-opened-files">List Opened Files</a>
+                      </li>
+                      <li>
+                        <a href="#create-a-swap-area">Create a Swap Area</a>
+                      </li>
+                      <li>
+                        <a
+                          href="#enable-or-disable-devices-and-files-for-paging-and-swapping"
+                          >Enable or Disable Devices and Files for Paging and
+                          Swapping</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#static-information-about-the-filesystems"
+                          >Static Information About the Filesystems</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#make-block-or-character-special-files"
+                          >Make Block or Character Special Files</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#copy-a-file">Copy a File</a>
+                        <ul>
+                          <li>
+                            <a href="#backup-disk-mbr">Backup Disk MBR</a>
+                          </li>
+                          <li>
+                            <a href="#recover-disk-mbr">Recover Disk MBR</a>
+                          </li>
+                          <li>
+                            <a href="#create-virtual-compact-disc"
+                              >Create Virtual Compact Disc</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#a-worse-performance-swap-space"
+                              >A Worse Performance Swap Space</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a
+                          href="#display-file-contents-in-hexadecimal-decimal-octal-or-ascii"
+                          >Display File Contents in Hexadecimal, Decimal, Octal,
+                          or ASCII</a
+                        >
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+              <div class="post-content">
+                <p>
+                  Linux provides us with a lot of tools to manage disks. These
+                  tools allow us to view disk usage and partition the drive.
+                </p>
+
+                <h1 id="report-disk-space-usage">Report Disk Space Usage</h1>
+
+                <p>Here are some common options for du command:</p>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Description</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td align="center">-h or &#8209;&#8209;human-readable</td>
+                      <td align="left">Show human readable size format.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-s or &#8209;&#8209;summarize</td>
+                      <td align="left">
+                        Size of the specified directory only.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">du <span class="o">[</span>OPTION<span class="o">]</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h1 id="estimate-file-space-usage">
+                  Estimate File Space Usage
+                </h1>
+
+                <p>Here are some common options for df command:</p>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Description</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td align="center">-h or &#8209;&#8209;human-readable</td>
+                      <td align="left">Show human readable size format.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-i or &#8209;&#8209;inodes</td>
+                      <td align="left">Show inodes instead of blocks.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-l or &#8209;&#8209;local</td>
+                      <td align="left">Show local file related information.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-P or &#8209;&#8209;portability</td>
+                      <td align="left">
+                        Show in POSIX style, keep in same line.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-T or &#8209;&#8209;print-type</td>
+                      <td align="left">Show filesystem type.</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">df <span class="o">[</span>OPTION<span class="o">]</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h1 id="list-block-devices">List Block Devices</h1>
+
+                <p>We can use lsblk command to list block devices:</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">lsblk</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h1 id="show-partitions">Show Partitions</h1>
+
+                <p>
+                  We can output all the partitions through the /proc/partitions
+                  file:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">cat /proc/partitions</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h1 id="change-or-show-an-ext-2-3-4-filesystem-label">
+                  Change or Show an ext{2|3|4} Filesystem Label
+                </h1>
+
+                <p>Show device&rsquo;s label:</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">e2label device</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <p>Change device&rsquo;s label:</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">e2label device label</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h1 id="dump-an-ext-2-3-4-filesystem-information">
+                  Dump an ext{2|3|4} Filesystem Information
+                </h1>
+
+                <p>Here are some common options for dumpe2fs command:</p>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Description</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td align="center">-h</td>
+                      <td align="left">Show super block details.</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">dumpe2fs <span class="o">[</span>OPTION<span class="o">]</span> device</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h1 id="adjust-ext-2-3-4-filesystem-tunable-parameters">
+                  Adjust ext{2|3|4} Filesystem Tunable Parameters
+                </h1>
+
+                <p>Here are some common options for tune2fs command:</p>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Description</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td align="center">-c #</td>
+                      <td align="left">
+                        Adjust the self-check behavior after the # mount
+                        amount,0 or -1 means disable the function.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-i #</td>
+                      <td align="left">
+                        Adjust the self-check behavior after # days of the mount
+                        usage.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-j</td>
+                      <td align="left">
+                        Adjust disk from ext2 to ext3, this can be reversed, but
+                        this doesn&rsquo;t hurt the existing data.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-l</td>
+                      <td align="left">Show super block details.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-L LABEL</td>
+                      <td align="left">Change disk label.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-m</td>
+                      <td align="left">
+                        Adjust remaining percentage for super user.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-o OPTION(acl or ^acl)</td>
+                      <td align="left">Adjust default mount point.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-r</td>
+                      <td align="left">Adjust remaining blocks.</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">tune2fs <span class="o">[</span>OPTION<span class="o">]</span> device</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h1 id="show-locate-print-block-device-attributes">
+                  Show locate/print block device attributes
+                </h1>
+
+                <p>Here are some common options for blkid command:</p>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Description</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td align="center">-i or &#8209;&#8209;info</td>
+                      <td align="left">
+                        Show I/O Limits (aka I/O topology) information
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">
+                        -k or &#8209;&#8209;list-filesystems
+                      </td>
+                      <td align="left">
+                        Show all known filesystems and RAIDs.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">
+                        -L LABEL or &#8209;&#8209;label LABEL
+                      </td>
+                      <td align="left">Look for devices according to LABEL.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-U UUID or &#8209;&#8209;uuid UUID</td>
+                      <td align="left">Look for devices according to UUID.</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">blkid <span class="o">[</span>OPTION<span class="o">]</span> device</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h1 id="check-and-repair-a-linux-filesystem">
+                  Check and Repair a Linux Filesystem
+                </h1>
+
+                <p>Here are some common options for fsck command:</p>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Description</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td align="center">-t FSTYPE</td>
+                      <td align="left">Specify a file system type.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-a</td>
+                      <td align="left">Repair automatically.</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">fsck <span class="o">[</span>OPTION<span class="o">]</span> device</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h1 id="repair-an-xfs-filesystem">Repair an XFS Filesystem</h1>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">xfs_repair</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h1 id="check-a-linux-ext-2-3-4-filesystem">
+                  Check a Linux ext{2|3|4} Filesystem
+                </h1>
+
+                <p>Here are some common options for e2fsck command:</p>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Description</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td align="center">-f</td>
+                      <td align="left">Force inspecting.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-p</td>
+                      <td align="left">Repair automatically.</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">e2fsck <span class="o">[</span>OPTION<span class="o">]</span> device</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h1 id="manipulate-disk-partition-table">
+                  Manipulate Disk Partition Table
+                </h1>
+
+                <p>Here are some common options for fdisk command:</p>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Description</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td align="center">-l or &#8209;&#8209;list</td>
+                      <td align="left">
+                        List device&rsquo;s partition tables, if no device is
+                        given, then output /proc/partitions instead.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>
+                  Here are some common command for fdisk command when creating
+                  partition:
+                </p>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Description</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td align="center">d</td>
+                      <td align="left">Delete a partition.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">l</td>
+                      <td align="left">Show supported types.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">n</td>
+                      <td align="left">
+                        Create partition, e: extended partition, p: primary
+                        partition. +NG(Number of GigaBytes), +NM(Number of
+                        MegaBytes), +NK(Number of KiloBytes), +N(Number of
+                        Bytes)
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">p</td>
+                      <td align="left">
+                        Show disk partition, include the pending one.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">q</td>
+                      <td align="left">Exit without saving the operations.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">t</td>
+                      <td align="left">Edit partition type.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">w</td>
+                      <td align="left">Save before exit.</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">fdisk <span class="o">[</span>OPTION<span class="o">]</span> device</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h1 id="manipulate-guid-partition-tables">
+                  Manipulate GUID Partition Tables
+                </h1>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">gdisk</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h1 id="manipulate-disk-partitions">
+                  Manipulate Disk Partitions
+                </h1>
+
+                <p>Here are some common options for parted command:</p>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Description</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td align="center">-l or &#8209;&#8209;list</td>
+                      <td align="left">
+                        Show all block devices&rsquo; partition layout.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">parted <span class="o">[</span>OPTION<span class="o">]</span> <span class="o">[</span>device<span class="o">]</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h1 id="inform-the-system-of-partition-table-changes">
+                  Inform the System of Partition Table Changes
+                </h1>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">partprobe</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h1 id="build-a-linux-filesystem">Build a Linux Filesystem</h1>
+
+                <p>Here are some common options for mkfs command:</p>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Description</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td align="center">-b BLOCKSIZE</td>
+                      <td align="left">
+                        Specify the block size, by default is 4096, available
+                        options are 1024, 2048 or 4096.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-E</td>
+                      <td align="left">
+                        User specified extra file system attributes.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-i #</td>
+                      <td align="left">
+                        Specify the byte spaces per inode, by default is 8192,
+                        this value must be the block size to the second power.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-L LABEL</td>
+                      <td align="left">Specify partition label.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-m #</td>
+                      <td align="left">
+                        Specify remaining percentage for super user.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-N #</td>
+                      <td align="left">Specify inode quantity.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-t FSTYPE</td>
+                      <td align="left">
+                        FSTYPE can be either ext2, ext3, ext4 or xfs. This is
+                        equivalent to mkfs.ext2, mkfs.ext3, mkfs.ext4, mkfs.xfs.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">mkfs</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h1 id="create-an-ext-2-3-4-filesystem">
+                  Create an ext{2|3|4} Filesystem
+                </h1>
+
+                <p>Here are some common options for mke2fs command:</p>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Description</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td align="center">-b BLOCKSIZE</td>
+                      <td align="left">
+                        Specify the block size, by default is 4096, available
+                        options are 1024, 2048 or 4096.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-i #</td>
+                      <td align="left">
+                        Specify the byte spaces per inode, by default is 8192,
+                        this value must be the block size to the second power.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-j</td>
+                      <td align="left">Create ext3 file system.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-L LABEL</td>
+                      <td align="left">Specify partition label.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-m #</td>
+                      <td align="left">
+                        Specify remaining percentage for super user.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-N #</td>
+                      <td align="left">Specify inode quantity.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-O FEATURE:</td>
+                      <td align="left">Create with the given features.</td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-t FSTYPE</td>
+                      <td align="left">Can be either ext2, ext3 or ext4.</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">mke2fs</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h1 id="mount-a-filesystem">Mount a Filesystem</h1>
+
+                <p>Here are some common options for mount command:</p>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Description</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td align="center">-a</td>
+                      <td align="left">
+                        Mount all file systems defined in /etc/fstab file.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-n</td>
+                      <td align="left">
+                        Stop appending devices&rsquo; details to /etc/mtab file.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-o</td>
+                      <td align="left">
+                        Specify additional mount device options, it is, the file
+                        systems&rsquo; enabled attributes, use comma for
+                        multiple options.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-r</td>
+                      <td align="left">
+                        Read only mount, usually used for compact disc (CD).
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-t FSTYPE</td>
+                      <td align="left">
+                        Specify device&rsquo;s file system type, mount will call
+                        blkid to identify the type by default.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-w</td>
+                      <td align="left">Read write mount.</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>
+                  Show all mounted devices by default, append mounted
+                  device&rsquo;s detail to /etc/mtab file by default.
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">mount <span class="o">[</span>device<span class="o">]</span> <span class="o">[</span>mountpoint<span class="o">]</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h1 id="unmount-filesystems">Unmount Filesystems</h1>
+
+                <p>Here are some common options for umount command:</p>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Description</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td align="center">-n or &#8209;&#8209;no-mtab</td>
+                      <td align="left">
+                        Unmount without writing in /etc/mtab file.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">umount <span class="o">[</span>OPTION<span class="o">]</span> <span class="o">[</span>device<span class="o">]</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h1 id="check-mounted-devices">Check Mounted Devices</h1>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">cat /proc/mounts
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">cat /proc/mounts
 <span class="c1"># OR</span>
-cat /etc/mtab</code></pre></td></tr></table>
-</div>
-</div>
-<h1 id="check-processes-using-files-or-sockets">Check Processes Using Files or Sockets</h1>
+cat /etc/mtab</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h1 id="check-processes-using-files-or-sockets">
+                  Check Processes Using Files or Sockets
+                </h1>
 
-<p>Here are some common options for fuser command:</p>
+                <p>Here are some common options for fuser command:</p>
 
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Description</th>
-</tr>
-</thead>
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Description</th>
+                    </tr>
+                  </thead>
 
-<tbody>
-<tr>
-<td align="center">-k</td>
-<td align="left">Terminates all processes that are using the specified file or directory.</td>
-</tr>
+                  <tbody>
+                    <tr>
+                      <td align="center">-k</td>
+                      <td align="left">
+                        Terminates all processes that are using the specified
+                        file or directory.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-m</td>
-<td align="left">Lists all processes that are using the specified mount point.</td>
-</tr>
+                    <tr>
+                      <td align="center">-m</td>
+                      <td align="left">
+                        Lists all processes that are using the specified mount
+                        point.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-km</td>
-<td align="left">Terminates all processes that are using the specified mount point.</td>
-</tr>
+                    <tr>
+                      <td align="center">-km</td>
+                      <td align="left">
+                        Terminates all processes that are using the specified
+                        mount point.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-v</td>
-<td align="left">View the process.</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">fuser <span class="o">[</span>OPTION<span class="o">]</span></code></pre></td></tr></table>
-</div>
-</div>
-<h1 id="list-opened-files">List Opened Files</h1>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">lsof</code></pre></td></tr></table>
-</div>
-</div>
-<h1 id="create-a-swap-area">Create a Swap Area</h1>
+                    <tr>
+                      <td align="center">-v</td>
+                      <td align="left">View the process.</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">fuser <span class="o">[</span>OPTION<span class="o">]</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h1 id="list-opened-files">List Opened Files</h1>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">lsof</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h1 id="create-a-swap-area">Create a Swap Area</h1>
 
-<p>Here are some common options for mkswap command:</p>
+                <p>Here are some common options for mkswap command:</p>
 
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Description</th>
-</tr>
-</thead>
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Description</th>
+                    </tr>
+                  </thead>
 
-<tbody>
-<tr>
-<td align="center">-c or &#8209;&#8209;check</td>
-<td align="left">Check the block device for bad blocks before creating the swap area.</td>
-</tr>
+                  <tbody>
+                    <tr>
+                      <td align="center">-c or &#8209;&#8209;check</td>
+                      <td align="left">
+                        Check the block device for bad blocks before creating
+                        the swap area.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-L or &#8209;&#8209;label</td>
-<td align="left">Specify a label for the device.</td>
-</tr>
+                    <tr>
+                      <td align="center">-L or &#8209;&#8209;label</td>
+                      <td align="left">Specify a label for the device.</td>
+                    </tr>
 
-<tr>
-<td align="center">-U or &#8209;&#8209;uuid</td>
-<td align="left">Specify the UUID to use. The default behavior is to generate a UUID.</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">mkswap <span class="o">[</span>OPTION<span class="o">]</span> device <span class="o">[</span>SIZE<span class="o">]</span></code></pre></td></tr></table>
-</div>
-</div>
-<h1 id="enable-or-disable-devices-and-files-for-paging-and-swapping">Enable or Disable Devices and Files for Paging and Swapping</h1>
+                    <tr>
+                      <td align="center">-U or &#8209;&#8209;uuid</td>
+                      <td align="left">
+                        Specify the UUID to use. The default behavior is to
+                        generate a UUID.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">mkswap <span class="o">[</span>OPTION<span class="o">]</span> device <span class="o">[</span>SIZE<span class="o">]</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h1
+                  id="enable-or-disable-devices-and-files-for-paging-and-swapping"
+                >
+                  Enable or Disable Devices and Files for Paging and Swapping
+                </h1>
 
-<p>Here are some common options for swapon command:</p>
+                <p>Here are some common options for swapon command:</p>
 
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Description</th>
-</tr>
-</thead>
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Description</th>
+                    </tr>
+                  </thead>
 
-<tbody>
-<tr>
-<td align="center">-a or &#8209;&#8209;all</td>
-<td align="left">All swap devices defined in the /etc/fstab file.</td>
-</tr>
+                  <tbody>
+                    <tr>
+                      <td align="center">-a or &#8209;&#8209;all</td>
+                      <td align="left">
+                        All swap devices defined in the /etc/fstab file.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-L or &#8209;&#8209;label</td>
-<td align="left">The label of the partition.</td>
-</tr>
+                    <tr>
+                      <td align="center">-L or &#8209;&#8209;label</td>
+                      <td align="left">The label of the partition.</td>
+                    </tr>
 
-<tr>
-<td align="center">-s or &#8209;&#8209;summary</td>
-<td align="left">Show swap usage summary, cat /proc/swaps is equivalent.</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                    <tr>
+                      <td align="center">-s or &#8209;&#8209;summary</td>
+                      <td align="left">
+                        Show swap usage summary, cat /proc/swaps is equivalent.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">swapon <span class="o">[</span>OPTION<span class="o">]</span> <span class="o">[</span>file<span class="o">]</span>
-swapoff <span class="o">[</span>-a<span class="o">]</span></code></pre></td></tr></table>
-</div>
-</div>
-<h1 id="static-information-about-the-filesystems">Static Information About the Filesystems</h1>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">swapon <span class="o">[</span>OPTION<span class="o">]</span> <span class="o">[</span>file<span class="o">]</span>
+swapoff <span class="o">[</span>-a<span class="o">]</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h1 id="static-information-about-the-filesystems">
+                  Static Information About the Filesystems
+                </h1>
 
-<p>Here are /etc/fstab file&rsquo;s fields definitions</p>
+                <p>Here are /etc/fstab file&rsquo;s fields definitions</p>
 
-<table>
-<thead>
-<tr>
-<th align="center">Field</th>
-<th align="left">Description</th>
-</tr>
-</thead>
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Field</th>
+                      <th align="left">Description</th>
+                    </tr>
+                  </thead>
 
-<tbody>
-<tr>
-<td align="center">First</td>
-<td align="left">Device name, LABEL, UUID, pseudo file systems(proc, tmpfs, sysfs).</td>
-</tr>
+                  <tbody>
+                    <tr>
+                      <td align="center">First</td>
+                      <td align="left">
+                        Device name, LABEL, UUID, pseudo file systems(proc,
+                        tmpfs, sysfs).
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">Second</td>
-<td align="left">Mount point, swap is the mount point of swap device.</td>
-</tr>
+                    <tr>
+                      <td align="center">Second</td>
+                      <td align="left">
+                        Mount point, swap is the mount point of swap device.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">Third</td>
-<td align="left">File system type.</td>
-</tr>
+                    <tr>
+                      <td align="center">Third</td>
+                      <td align="left">File system type.</td>
+                    </tr>
 
-<tr>
-<td align="center">Fourth</td>
-<td align="left">Mount point option, defaults means default options, multiple options(default,noauto,user, owner, nofail).</td>
-</tr>
+                    <tr>
+                      <td align="center">Fourth</td>
+                      <td align="left">
+                        Mount point option, defaults means default options,
+                        multiple options(default,noauto,user, owner, nofail).
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">Fifth</td>
-<td align="left">Dump frequency, 0(no backup), 1(backup everyday), 2(backup every other day)</td>
-</tr>
+                    <tr>
+                      <td align="center">Fifth</td>
+                      <td align="left">
+                        Dump frequency, 0(no backup), 1(backup everyday),
+                        2(backup every other day)
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">Sixth</td>
-<td align="left">Check file system, 0(no self-check), 1(self-test first), 2(secondary self-test).</td>
-</tr>
-</tbody>
-</table>
+                    <tr>
+                      <td align="center">Sixth</td>
+                      <td align="left">
+                        Check file system, 0(no self-check), 1(self-test first),
+                        2(secondary self-test).
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
 
-<h1 id="make-block-or-character-special-files">Make Block or Character Special Files</h1>
+                <h1 id="make-block-or-character-special-files">
+                  Make Block or Character Special Files
+                </h1>
 
-<p>Here are some common options for mknod command:</p>
+                <p>Here are some common options for mknod command:</p>
 
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Description</th>
-</tr>
-</thead>
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Description</th>
+                    </tr>
+                  </thead>
 
-<tbody>
-<tr>
-<td align="center">-m MODE or &#8209;&#8209;mode=MODE</td>
-<td align="left">Set file permission bits to MODE.</td>
-</tr>
-</tbody>
-</table>
+                  <tbody>
+                    <tr>
+                      <td align="center">-m MODE or &#8209;&#8209;mode=MODE</td>
+                      <td align="left">Set file permission bits to MODE.</td>
+                    </tr>
+                  </tbody>
+                </table>
 
-<p>Here are some TYPEs for mknod command:</p>
+                <p>Here are some TYPEs for mknod command:</p>
 
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Description</th>
-</tr>
-</thead>
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Description</th>
+                    </tr>
+                  </thead>
 
-<tbody>
-<tr>
-<td align="center">b</td>
-<td align="left">Block (buffered) special file, MAJOR and MINOR must be specified.</td>
-</tr>
+                  <tbody>
+                    <tr>
+                      <td align="center">b</td>
+                      <td align="left">
+                        Block (buffered) special file, MAJOR and MINOR must be
+                        specified.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">c, u</td>
-<td align="left">Character (unbuffered) special file, MAJOR and MINOR must be specified.</td>
-</tr>
+                    <tr>
+                      <td align="center">c, u</td>
+                      <td align="left">
+                        Character (unbuffered) special file, MAJOR and MINOR
+                        must be specified.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">p</td>
-<td align="left">FIFO, MAJOR and MINOR must be omitted.</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">mknod <span class="o">[</span>OPTION<span class="o">]</span> TYPE <span class="o">[</span>MAJOR MINOR<span class="o">]</span></code></pre></td></tr></table>
-</div>
-</div>
-<h1 id="copy-a-file">Copy a File</h1>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">dd <span class="k">if</span><span class="o">=</span>data_source <span class="nv">of</span><span class="o">=</span>target <span class="nv">bs</span><span class="o">=</span>block_size <span class="nv">count</span><span class="o">=</span>block_amount</code></pre></td></tr></table>
-</div>
-</div>
-<h2 id="backup-disk-mbr">Backup Disk MBR</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">dd <span class="k">if</span><span class="o">=</span>/dev/sda <span class="nv">of</span><span class="o">=</span>/mnt/usb/mbr.backup <span class="nv">bs</span><span class="o">=</span><span class="m">512</span> count1</code></pre></td></tr></table>
-</div>
-</div>
-<h2 id="recover-disk-mbr">Recover Disk MBR</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">dd <span class="k">if</span><span class="o">=</span>/mnt/usb/mbr.backup <span class="nv">of</span><span class="o">=</span>/dev/sda <span class="nv">bs</span><span class="o">=</span><span class="m">512</span> <span class="nv">count</span><span class="o">=</span><span class="m">1</span></code></pre></td></tr></table>
-</div>
-</div>
-<h2 id="create-virtual-compact-disc">Create Virtual Compact Disc</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">cat /dev/cdrom &gt; /root/compact_disc.iso</code></pre></td></tr></table>
-</div>
-</div>
-<h2 id="a-worse-performance-swap-space">A Worse Performance Swap Space</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                    <tr>
+                      <td align="center">p</td>
+                      <td align="left">
+                        FIFO, MAJOR and MINOR must be omitted.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">mknod <span class="o">[</span>OPTION<span class="o">]</span> TYPE <span class="o">[</span>MAJOR MINOR<span class="o">]</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h1 id="copy-a-file">Copy a File</h1>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">dd <span class="k">if</span><span class="o">=</span>data_source <span class="nv">of</span><span class="o">=</span>target <span class="nv">bs</span><span class="o">=</span>block_size <span class="nv">count</span><span class="o">=</span>block_amount</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h2 id="backup-disk-mbr">Backup Disk MBR</h2>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">dd <span class="k">if</span><span class="o">=</span>/dev/sda <span class="nv">of</span><span class="o">=</span>/mnt/usb/mbr.backup <span class="nv">bs</span><span class="o">=</span><span class="m">512</span> count1</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h2 id="recover-disk-mbr">Recover Disk MBR</h2>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">dd <span class="k">if</span><span class="o">=</span>/mnt/usb/mbr.backup <span class="nv">of</span><span class="o">=</span>/dev/sda <span class="nv">bs</span><span class="o">=</span><span class="m">512</span> <span class="nv">count</span><span class="o">=</span><span class="m">1</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h2 id="create-virtual-compact-disc">
+                  Create Virtual Compact Disc
+                </h2>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">cat /dev/cdrom &gt; /root/compact_disc.iso</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h2 id="a-worse-performance-swap-space">
+                  A Worse Performance Swap Space
+                </h2>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">free -m
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">free -m
 dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>/var/swapfile <span class="nv">bs</span><span class="o">=</span>1M <span class="nv">count</span><span class="o">=</span><span class="m">2014</span>
 mkswap /var/swapfile
-free -m</code></pre></td></tr></table>
-</div>
-</div>
-<h1 id="display-file-contents-in-hexadecimal-decimal-octal-or-ascii">Display File Contents in Hexadecimal, Decimal, Octal, or ASCII</h1>
+free -m</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h1
+                  id="display-file-contents-in-hexadecimal-decimal-octal-or-ascii"
+                >
+                  Display File Contents in Hexadecimal, Decimal, Octal, or ASCII
+                </h1>
 
-<p>Here are some common options for mknod command:</p>
+                <p>Here are some common options for mknod command:</p>
 
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Description</th>
-</tr>
-</thead>
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Description</th>
+                    </tr>
+                  </thead>
 
-<tbody>
-<tr>
-<td align="center">-b or &#8209;&#8209;one-byte-octal</td>
-<td align="left">One-byte octal display.</td>
-</tr>
+                  <tbody>
+                    <tr>
+                      <td align="center">-b or &#8209;&#8209;one-byte-octal</td>
+                      <td align="left">One-byte octal display.</td>
+                    </tr>
 
-<tr>
-<td align="center">-c or &#8209;&#8209;one-byte-char</td>
-<td align="left">One-byte character display.</td>
-</tr>
+                    <tr>
+                      <td align="center">-c or &#8209;&#8209;one-byte-char</td>
+                      <td align="left">One-byte character display.</td>
+                    </tr>
 
-<tr>
-<td align="center">-C or &#8209;&#8209;canonical</td>
-<td align="left">Canonical hex+ASCII display.</td>
-</tr>
+                    <tr>
+                      <td align="center">-C or &#8209;&#8209;canonical</td>
+                      <td align="left">Canonical hex+ASCII display.</td>
+                    </tr>
 
-<tr>
-<td align="center">-d or &#8209;&#8209;two-bytes-decimal</td>
-<td align="left">Two-byte decimal display.</td>
-</tr>
+                    <tr>
+                      <td align="center">
+                        -d or &#8209;&#8209;two-bytes-decimal
+                      </td>
+                      <td align="left">Two-byte decimal display.</td>
+                    </tr>
 
-<tr>
-<td align="center">-x or &#8209;&#8209;two-bytes-hex</td>
-<td align="left">Two-byte hexadecimal display.</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">hexdump <span class="o">[</span>OPTION<span class="o">]</span> file</code></pre></td></tr></table>
-</div>
-</div>
-<blockquote>
-<p>References
-<a href="http://man7.org/linux/man-pages/man1/df.1.html">DF(1)</a>,
-<a href="http://man7.org/linux/man-pages/man1/du.1.html">DU(1)</a>,
-<a href="http://man7.org/linux/man-pages/man8/lsblk.8.html">LSBLK(8)</a>,
-<a href="http://man7.org/linux/man-pages/man8/e2label.8.html">E2LABEL(8)</a>,
-<a href="http://man7.org/linux/man-pages/man8/dumpe2fs.8.html">DUMPE2FS(8)</a>,
-<a href="http://man7.org/linux/man-pages/man8/tune2fs.8.html">TUNE2FS(8)</a>,
-<a href="http://man7.org/linux/man-pages/man8/blkid.8.html">BLKID(8)</a>,
-<a href="http://man7.org/linux/man-pages/man8/fsck.8@@e2fsprogs.html">FSCK(8)</a>,
-<a href="http://man7.org/linux/man-pages/man8/xfs_repair.8.html">xfs_repair(8)</a>,
-<a href="http://man7.org/linux/man-pages/man8/e2fsck.8.html">E2FSCK(8)</a>,
-<a href="http://man7.org/linux/man-pages/man8/fdisk.8.html">FDISK(8)</a>,
-<a href="http://www.rodsbooks.com/gdisk/gdisk.html">GDISK</a>,
-<a href="http://man7.org/linux/man-pages/man8/parted.8.html">PARTED(8)</a>,
-<a href="http://man7.org/linux/man-pages/man8/partprobe.8.html">PARTPROBE(8)</a>,
-<a href="http://man7.org/linux/man-pages/man8/mkfs.8.html">MKFS(8)</a>,
-<a href="http://man7.org/linux/man-pages/man8/mke2fs.8.html">MKE2FS(8)</a>,
-<a href="http://man7.org/linux/man-pages/man8/mount.8.html">MOUNT(8)</a>,
-<a href="http://man7.org/linux/man-pages/man8/umount.8.html">UMOUNT(8)</a>,
-<a href="http://man7.org/linux/man-pages/man1/fuser.1.html">FUSER(1)</a>,
-<a href="http://man7.org/linux/man-pages/man8/lsof.8.html">LSOF(8)</a>,
-<a href="http://man7.org/linux/man-pages/man8/mkswap.8.html">MKSWAP(8)</a>,
-<a href="http://man7.org/linux/man-pages/man8/swapon.8.html">SWAPON(8)</a>,
-<a href="http://man7.org/linux/man-pages/man5/fstab.5.html">FSTAB(5)</a>,
-<a href="http://man7.org/linux/man-pages/man1/mknod.1.html">MKNOD(1)</a>,
-<a href="http://man7.org/linux/man-pages/man1/dd.1.html">DD(1)</a>,
-<a href="http://man7.org/linux/man-pages/man1/hexdump.1.html">HEXDUMP(1)</a></p>
-</blockquote>
+                    <tr>
+                      <td align="center">-x or &#8209;&#8209;two-bytes-hex</td>
+                      <td align="left">Two-byte hexadecimal display.</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">hexdump <span class="o">[</span>OPTION<span class="o">]</span> file</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <blockquote>
+                  <p>
+                    References
+                    <a href="http://man7.org/linux/man-pages/man1/df.1.html"
+                      >DF(1)</a
+                    >,
+                    <a href="http://man7.org/linux/man-pages/man1/du.1.html"
+                      >DU(1)</a
+                    >,
+                    <a href="http://man7.org/linux/man-pages/man8/lsblk.8.html"
+                      >LSBLK(8)</a
+                    >,
+                    <a
+                      href="http://man7.org/linux/man-pages/man8/e2label.8.html"
+                      >E2LABEL(8)</a
+                    >,
+                    <a
+                      href="http://man7.org/linux/man-pages/man8/dumpe2fs.8.html"
+                      >DUMPE2FS(8)</a
+                    >,
+                    <a
+                      href="http://man7.org/linux/man-pages/man8/tune2fs.8.html"
+                      >TUNE2FS(8)</a
+                    >,
+                    <a href="http://man7.org/linux/man-pages/man8/blkid.8.html"
+                      >BLKID(8)</a
+                    >,
+                    <a
+                      href="http://man7.org/linux/man-pages/man8/fsck.8@@e2fsprogs.html"
+                      >FSCK(8)</a
+                    >,
+                    <a
+                      href="http://man7.org/linux/man-pages/man8/xfs_repair.8.html"
+                      >xfs_repair(8)</a
+                    >,
+                    <a href="http://man7.org/linux/man-pages/man8/e2fsck.8.html"
+                      >E2FSCK(8)</a
+                    >,
+                    <a href="http://man7.org/linux/man-pages/man8/fdisk.8.html"
+                      >FDISK(8)</a
+                    >,
+                    <a href="http://www.rodsbooks.com/gdisk/gdisk.html">GDISK</a
+                    >,
+                    <a href="http://man7.org/linux/man-pages/man8/parted.8.html"
+                      >PARTED(8)</a
+                    >,
+                    <a
+                      href="http://man7.org/linux/man-pages/man8/partprobe.8.html"
+                      >PARTPROBE(8)</a
+                    >,
+                    <a href="http://man7.org/linux/man-pages/man8/mkfs.8.html"
+                      >MKFS(8)</a
+                    >,
+                    <a href="http://man7.org/linux/man-pages/man8/mke2fs.8.html"
+                      >MKE2FS(8)</a
+                    >,
+                    <a href="http://man7.org/linux/man-pages/man8/mount.8.html"
+                      >MOUNT(8)</a
+                    >,
+                    <a href="http://man7.org/linux/man-pages/man8/umount.8.html"
+                      >UMOUNT(8)</a
+                    >,
+                    <a href="http://man7.org/linux/man-pages/man1/fuser.1.html"
+                      >FUSER(1)</a
+                    >,
+                    <a href="http://man7.org/linux/man-pages/man8/lsof.8.html"
+                      >LSOF(8)</a
+                    >,
+                    <a href="http://man7.org/linux/man-pages/man8/mkswap.8.html"
+                      >MKSWAP(8)</a
+                    >,
+                    <a href="http://man7.org/linux/man-pages/man8/swapon.8.html"
+                      >SWAPON(8)</a
+                    >,
+                    <a href="http://man7.org/linux/man-pages/man5/fstab.5.html"
+                      >FSTAB(5)</a
+                    >,
+                    <a href="http://man7.org/linux/man-pages/man1/mknod.1.html"
+                      >MKNOD(1)</a
+                    >,
+                    <a href="http://man7.org/linux/man-pages/man1/dd.1.html"
+                      >DD(1)</a
+                    >,
+                    <a
+                      href="http://man7.org/linux/man-pages/man1/hexdump.1.html"
+                      >HEXDUMP(1)</a
+                    >
+                  </p>
+                </blockquote>
 
-<!-- Buy Me a Coffee Button -->
+                <!-- Buy Me a Coffee Button -->
 
-<p class="align-center">
-  <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/PFou9WhLr"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
-</p>
-    </div>
+                <p class="align-center">
+                  <style>
+                    .bmc-button img {
+                      width: 27px !important;
+                      margin-bottom: 1px !important;
+                      box-shadow: none !important;
+                      border: none !important;
+                      vertical-align: middle !important;
+                    }
+                    .bmc-button {
+                      line-height: 36px !important;
+                      height: 37px !important;
+                      text-decoration: none !important;
+                      display: inline-flex !important;
+                      color: #ffffff !important;
+                      background-color: #ff813f !important;
+                      border-radius: 3px !important;
+                      border: 1px solid transparent !important;
+                      padding: 1px 9px !important;
+                      font-size: 22px !important;
+                      letter-spacing: 0.6px !important;
+                      box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;
+                      -webkit-box-shadow: 0px 1px 2px 2px
+                        rgba(190, 190, 190, 0.5) !important;
+                      margin: 0 auto !important;
+                      font-family: "Cookie", cursive !important;
+                      -webkit-box-sizing: border-box !important;
+                      box-sizing: border-box !important;
+                      -o-transition: 0.3s all linear !important;
+                      -webkit-transition: 0.3s all linear !important;
+                      -moz-transition: 0.3s all linear !important;
+                      -ms-transition: 0.3s all linear !important;
+                      transition: 0.3s all linear !important;
+                    }
+                    .bmc-button:hover,
+                    .bmc-button:active,
+                    .bmc-button:focus {
+                      -webkit-box-shadow: 0px 1px 2px 2px
+                        rgba(190, 190, 190, 0.5) !important;
+                      text-decoration: none !important;
+                      box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+                      opacity: 0.85 !important;
+                      color: #ffffff !important;
+                    }</style
+                  ><link
+                    href="https://fonts.googleapis.com/css?family=Cookie"
+                    rel="stylesheet"
+                  /><a
+                    class="bmc-button"
+                    target="_blank"
+                    href="https://www.buymeacoffee.com/PFou9WhLr"
+                    ><img
+                      src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg"
+                      alt="Buy me a coffee"
+                    /><span style="margin-left: 5px">Buy me a coffee</span></a
+                  >
+                </p>
+              </div>
 
-    <div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">Author</span>
-    <span class="item-content">Dong Chen</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">LastMod</span>
-    <span class="item-content">Tue Apr 2 2019</span>
-  </p>
-  
-  
-</div><div class="post-reward">
-  <input type="checkbox" name="reward" id="reward" hidden />
-  <label class="reward-button" for="reward">Reward</label>
-  <div class="qr-code">
-    
-    <label class="qr-code-image" for="reward">
-        <img class="image" src="https://dongchen.co/images/wepay_qr_final.png">
-        <span>wechat</span>
-      </label>
-    <label class="qr-code-image" for="reward">
-        <img class="image" src="https://dongchen.co/images/alipay_qr_final.png">
-        <span>alipay</span>
-      </label>
-  </div>
-</div><footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/linux/">Linux</a>
-          <a href="/tags/server/">Server</a>
+              <div class="post-copyright">
+                <p class="copyright-item">
+                  <span class="item-title">Author</span>
+                  <span class="item-content">Dong Chen</span>
+                </p>
+                <p class="copyright-item">
+                  <span class="item-title">LastMod</span>
+                  <span class="item-content">Tue Apr 2 2019</span>
+                </p>
+              </div>
+              <div class="post-reward">
+                <input type="checkbox" name="reward" id="reward" hidden />
+                <label class="reward-button" for="reward">Reward</label>
+                <div class="qr-code">
+                  <label class="qr-code-image" for="reward">
+                    <img
+                      class="image"
+                      src="https://dongchen.co/images/wepay_qr_final.png"
+                    />
+                    <span>wechat</span>
+                  </label>
+                  <label class="qr-code-image" for="reward">
+                    <img
+                      class="image"
+                      src="https://dongchen.co/images/alipay_qr_final.png"
+                    />
+                    <span>alipay</span>
+                  </label>
+                </div>
+              </div>
+              <footer class="post-footer">
+                <div class="post-tags">
+                  <a href="/tags/linux/">Linux</a>
+                  <a href="/tags/server/">Server</a>
+                </div>
+                <nav class="post-nav">
+                  <a
+                    class="prev"
+                    href="/post/simple-but-profound/server-side-programming/linux/administrator/62.-raid-redundant-array-of-independent-disks/"
+                  >
+                    <i class="iconfont icon-left"></i>
+                    <span class="prev-text nav-default"
+                      >62. RAID - Redundant Array of Independent Disks</span
+                    >
+                    <span class="prev-text nav-mobile">Prev</span>
+                  </a>
+                  <a
+                    class="next"
+                    href="/post/simple-but-profound/server-side-programming/linux/administrator/60.-disk-management-concept/"
+                  >
+                    <span class="next-text nav-default"
+                      >60. Disk Management - Concept</span
+                    >
+                    <span class="next-text nav-mobile">Next</span>
+                    <i class="iconfont icon-right"></i>
+                  </a>
+                </nav>
+              </footer>
+            </article>
           </div>
-      <nav class="post-nav">
-        <a class="prev" href="/post/simple-but-profound/server-side-programming/linux/administrator/62.-raid-redundant-array-of-independent-disks/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">62. RAID - Redundant Array of Independent Disks</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        <a class="next" href="/post/simple-but-profound/server-side-programming/linux/administrator/60.-disk-management-concept/">
-            <span class="next-text nav-default">60. Disk Management - Concept</span>
-            <span class="next-text nav-mobile">Next</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
         </div>
-        
+      </main>
 
+      <footer id="footer" class="footer">
+        <div class="social-links">
+          <a
+            href="mailto:dongchensteven@gmail.com"
+            class="iconfont icon-email"
+            title="email"
+          ></a>
+          <a
+            href="https://www.linkedin.com/in/dongchensteven"
+            class="iconfont icon-linkedin"
+            title="linkedin"
+          ></a>
+          <a
+            href="https://github.com/dongchensteven"
+            class="iconfont icon-github"
+            title="github"
+          ></a>
+          <a
+            href="https://dongchen.co/index.xml"
+            type="application/rss+xml"
+            class="iconfont icon-rss"
+            title="rss"
+          ></a>
+        </div>
+
+        <div class="copyright">
+          <span class="power-by">
+            Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+          </span>
+          <span class="division">|</span>
+          <span class="theme-info">
+            Theme -
+            <a
+              class="theme-link"
+              href="https://github.com/olOwOlo/hugo-theme-even"
+              >Even</a
+            >
+          </span>
+
+          <span class="copyright-year">
+            &copy; 2018 - 2020
+            <span class="heart">
+              <i class="iconfont icon-heart"></i>
+            </span>
+            <span class="author">Dong Chen</span>
+          </span>
+        </div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
       </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:dongchensteven@gmail.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://www.linkedin.com/in/dongchensteven" class="iconfont icon-linkedin" title="linkedin"></a>
-      <a href="https://github.com/dongchensteven" class="iconfont icon-github" title="github"></a>
-  <a href="https://dongchen.co/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
-
-<div class="copyright">
-  <span class="power-by">
-    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    Theme - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2018 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">Dong Chen</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
     </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
-  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
-    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
-    timeago().render(document.querySelectorAll('.timeago'), languageCode);
-    timeago.cancel();  
-  </script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js"
+      integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js"
+      integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js"
+      integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js"
+      integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      <!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+      var languageCode = "en"
+        .replace(/-/g, "_")
+        .replace(/_(.*)/, function ($0, $1) {
+          return $0.replace($1, $1.toUpperCase());
+        });
+      timeago().render(document.querySelectorAll(".timeago"), languageCode);
+      timeago.cancel();
+    </script>
+    <script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-133226289-1', 'auto');
-	ga('set', 'anonymizeIp', true);
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-
-
-
-
-
-
-</body>
+    <script type="application/javascript">
+      var doNotTrack = false;
+      if (!doNotTrack) {
+        window.ga =
+          window.ga ||
+          function () {
+            (ga.q = ga.q || []).push(arguments);
+          };
+        ga.l = +new Date();
+        ga("create", "UA-133226289-1", "auto");
+        ga("set", "anonymizeIp", true);
+        ga("send", "pageview");
+      }
+    </script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
+  </body>
 </html>

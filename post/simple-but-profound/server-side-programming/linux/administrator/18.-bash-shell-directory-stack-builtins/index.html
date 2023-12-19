@@ -1,270 +1,424 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>18. Bash Shell - Directory Stack Builtins - Dong - A place to track my time log</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+      18. Bash Shell - Directory Stack Builtins - Dong - A place to track my
+      time log
+    </title>
+    <meta name="renderer" content="webkit" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
 
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+    <meta name="theme-color" content="#f8f5ec" />
+    <meta name="msapplication-navbutton-color" content="#f8f5ec" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec" />
 
+    <meta name="author" content="Dong Chen" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="Hugo, theme, even" />
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="" /><meta name="keywords" content="Hugo, theme, even" />
+    <meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
+    <link
+      rel="canonical"
+      href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/18.-bash-shell-directory-stack-builtins/"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
 
+    <link href="/dist/even.ea128f8b.min.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css"
+      integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
 
+    <meta
+      property="og:title"
+      content="18. Bash Shell - Directory Stack Builtins"
+    />
+    <meta property="og:description" content="" />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/18.-bash-shell-directory-stack-builtins/"
+    />
+    <meta
+      property="article:published_time"
+      content="2019-02-19T08:31:14&#43;13:00"
+    />
+    <meta
+      property="article:modified_time"
+      content="2019-02-19T08:31:14&#43;13:00"
+    />
 
+    <meta itemprop="name" content="18. Bash Shell - Directory Stack Builtins" />
+    <meta itemprop="description" content="" />
 
+    <meta itemprop="datePublished" content="2019-02-19T08:31:14&#43;13:00" />
+    <meta itemprop="dateModified" content="2019-02-19T08:31:14&#43;13:00" />
+    <meta itemprop="wordCount" content="635" />
 
-<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
+    <meta itemprop="keywords" content="Linux,Server," />
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="18. Bash Shell - Directory Stack Builtins"
+    />
+    <meta name="twitter:description" content="" />
 
+    <!--[if lte IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+    <![endif]-->
 
-<link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/18.-bash-shell-directory-stack-builtins/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-<link href="/dist/even.ea128f8b.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/styles.css">
-
-
-<meta property="og:title" content="18. Bash Shell - Directory Stack Builtins" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/18.-bash-shell-directory-stack-builtins/" />
-<meta property="article:published_time" content="2019-02-19T08:31:14&#43;13:00"/>
-<meta property="article:modified_time" content="2019-02-19T08:31:14&#43;13:00"/>
-
-<meta itemprop="name" content="18. Bash Shell - Directory Stack Builtins">
-<meta itemprop="description" content="">
-
-
-<meta itemprop="datePublished" content="2019-02-19T08:31:14&#43;13:00" />
-<meta itemprop="dateModified" content="2019-02-19T08:31:14&#43;13:00" />
-<meta itemprop="wordCount" content="635">
-
-
-
-<meta itemprop="keywords" content="Linux,Server," />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="18. Bash Shell - Directory Stack Builtins"/>
-<meta name="twitter:description" content=""/>
-
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
-
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
-
-</head>
-<body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">Dong</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">Home</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">Archives</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">Tags</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">Dong</a>
-</div>
-
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">Home</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">Archives</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">Categories</a>
-      </li>
-  </ul>
-</nav>
-    </header>
-
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
-    
-    <header class="post-header">
-      <h1 class="post-title">18. Bash Shell - Directory Stack Builtins</h1>
-
-      <div class="post-meta">
-        <span class="post-time"> Tue Feb 19 2019 </span>
-        <div class="post-category">
-            <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
-            </div>
-          <span class="more-meta"> 635 words </span>
-          <span class="more-meta"> 3 mins read </span>
-        
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div id="mobile-navbar" class="mobile-navbar">
+      <div class="mobile-header-logo">
+        <a href="/" class="logo">Dong</a>
       </div>
-    </header>
+      <div class="mobile-navbar-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <nav id="mobile-menu" class="mobile-menu slideout-menu">
+      <ul class="mobile-menu-list">
+        <a href="/">
+          <li class="mobile-menu-item">Home</li> </a
+        ><a href="/post/">
+          <li class="mobile-menu-item">Archives</li> </a
+        ><a href="/tags/">
+          <li class="mobile-menu-item">Tags</li> </a
+        ><a href="/categories/">
+          <li class="mobile-menu-item">Categories</li> </a
+        ><a href="https://ergate.com/" target="_blank">
+          <li class="mobile-menu-item">Visit ERGATE</li>
+        </a>
+      </ul>
+    </nav>
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header">
+        <div class="logo-wrapper">
+          <a href="/" class="logo">Dong</a>
+        </div>
 
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">Contents</h2>
-  <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#directory-stack-commands">Directory Stack Commands</a>
-<ul>
-<li><a href="#dirs">dirs</a></li>
-<li><a href="#pushd">pushd</a></li>
-<li><a href="#popd">popd</a></li>
-</ul></li>
-<li><a href="#preparing-directories">Preparing Directories</a></li>
-<li><a href="#use-of-commands">Use of Commands</a>
-<ul>
-<li><a href="#adding-directories">Adding Directories</a></li>
-<li><a href="#show-recorded-directories">Show Recorded Directories</a>
-<ul>
-<li><a href="#by-default">By Default</a></li>
-<li><a href="#with-user-home-directory-name">With User Home Directory Name</a></li>
-<li><a href="#line-by-line">Line by Line</a></li>
-<li><a href="#line-by-line-with-their-indexes">Line by Line With Their Indexes</a></li>
-<li><a href="#first-recorded-directory">First Recorded Directory</a></li>
-<li><a href="#last-recorded-directory">Last Recorded Directory</a></li>
-</ul></li>
-<li><a href="#use-recorded-directories">Use Recorded Directories</a>
-<ul>
-<li><a href="#use-from-right">Use From right</a></li>
-<li><a href="#use-from-left">Use From left</a></li>
-</ul></li>
-<li><a href="#remove-recorded-directories">Remove Recorded Directories</a>
-<ul>
-<li><a href="#remove-from-right">Remove From right</a></li>
-<li><a href="#remove-from-left">Remove From left</a></li>
-</ul></li>
-</ul></li>
-</ul>
-</nav>
-  </div>
-</div>
-    <div class="post-content">
-      <p>With a directory stack, we can push the directories we visit sequentially into the directory stack, and when we&rsquo;ve done a series of operations, we can go all the way back to the origin based on the record of the directory stack.</p>
+        <nav class="site-navbar">
+          <ul id="menu" class="menu">
+            <li class="menu-item">
+              <a class="menu-item-link" href="/">Home</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/post/">Archives</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/tags/">Tags</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/categories/">Categories</a>
+            </li>
+            <li class="menu-item">
+              <a
+                class="menu-item-link"
+                href="https://ergate.com/"
+                target="_blank"
+                >Visit ERGATE</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </header>
 
-<h1 id="directory-stack-commands">Directory Stack Commands</h1>
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            <article class="post">
+              <header class="post-header">
+                <h1 class="post-title">
+                  18. Bash Shell - Directory Stack Builtins
+                </h1>
 
-<p>The directory stack provides us with three available commands.</p>
+                <div class="post-meta">
+                  <span class="post-time"> Tue Feb 19 2019 </span>
+                  <div class="post-category">
+                    <a
+                      href="/categories/linux-administrator-simple-but-profound/"
+                    >
+                      Linux Administrator: Simple But Profound
+                    </a>
+                  </div>
+                  <span class="more-meta"> 635 words </span>
+                  <span class="more-meta"> 3 mins read </span>
+                </div>
+              </header>
 
-<h2 id="dirs">dirs</h2>
+              <div class="post-toc" id="post-toc">
+                <h2 class="post-toc-title">Contents</h2>
+                <div class="post-toc-content always-active">
+                  <nav id="TableOfContents">
+                    <ul>
+                      <li>
+                        <a href="#directory-stack-commands"
+                          >Directory Stack Commands</a
+                        >
+                        <ul>
+                          <li><a href="#dirs">dirs</a></li>
+                          <li><a href="#pushd">pushd</a></li>
+                          <li><a href="#popd">popd</a></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="#preparing-directories"
+                          >Preparing Directories</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#use-of-commands">Use of Commands</a>
+                        <ul>
+                          <li>
+                            <a href="#adding-directories">Adding Directories</a>
+                          </li>
+                          <li>
+                            <a href="#show-recorded-directories"
+                              >Show Recorded Directories</a
+                            >
+                            <ul>
+                              <li><a href="#by-default">By Default</a></li>
+                              <li>
+                                <a href="#with-user-home-directory-name"
+                                  >With User Home Directory Name</a
+                                >
+                              </li>
+                              <li><a href="#line-by-line">Line by Line</a></li>
+                              <li>
+                                <a href="#line-by-line-with-their-indexes"
+                                  >Line by Line With Their Indexes</a
+                                >
+                              </li>
+                              <li>
+                                <a href="#first-recorded-directory"
+                                  >First Recorded Directory</a
+                                >
+                              </li>
+                              <li>
+                                <a href="#last-recorded-directory"
+                                  >Last Recorded Directory</a
+                                >
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a href="#use-recorded-directories"
+                              >Use Recorded Directories</a
+                            >
+                            <ul>
+                              <li>
+                                <a href="#use-from-right">Use From right</a>
+                              </li>
+                              <li>
+                                <a href="#use-from-left">Use From left</a>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a href="#remove-recorded-directories"
+                              >Remove Recorded Directories</a
+                            >
+                            <ul>
+                              <li>
+                                <a href="#remove-from-right"
+                                  >Remove From right</a
+                                >
+                              </li>
+                              <li>
+                                <a href="#remove-from-left">Remove From left</a>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+              <div class="post-content">
+                <p>
+                  With a directory stack, we can push the directories we visit
+                  sequentially into the directory stack, and when we&rsquo;ve
+                  done a series of operations, we can go all the way back to the
+                  origin based on the record of the directory stack.
+                </p>
 
-<p>Displays all directories recorded in the directory stack:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">help</span> dirs</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/18/help_dirs.png"
-         alt="img"/> <figcaption>
-            <h4>Check dirs&#39;s definition and usage</h4>
-        </figcaption>
-</figure>
+                <h1 id="directory-stack-commands">Directory Stack Commands</h1>
 
-<h2 id="pushd">pushd</h2>
+                <p>
+                  The directory stack provides us with three available commands.
+                </p>
 
-<p>Records the specified directory to the directory stack and switches the working directory to the recorded directory:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">help</span> pushd</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/18/help_pushd.png"
-         alt="img"/> <figcaption>
-            <h4>Check pushd&#39;s definition and usage</h4>
-        </figcaption>
-</figure>
+                <h2 id="dirs">dirs</h2>
 
-<h2 id="popd">popd</h2>
+                <p>Displays all directories recorded in the directory stack:</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nb">help</span> dirs</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/18/help_dirs.png" alt="img" />
+                  <figcaption>
+                    <h4>Check dirs&#39;s definition and usage</h4>
+                  </figcaption>
+                </figure>
 
-<p>Remove the last directory recorded in the directory stack and switch the working directory to the removed directory:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">help</span> popd</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/18/help_popd.png"
-         alt="img"/> <figcaption>
-            <h4>Check popd&#39;s definition and usage</h4>
-        </figcaption>
-</figure>
+                <h2 id="pushd">pushd</h2>
 
-<h1 id="preparing-directories">Preparing Directories</h1>
+                <p>
+                  Records the specified directory to the directory stack and
+                  switches the working directory to the recorded directory:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nb">help</span> pushd</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/18/help_pushd.png" alt="img" />
+                  <figcaption>
+                    <h4>Check pushd&#39;s definition and usage</h4>
+                  </figcaption>
+                </figure>
 
-<p>Let&rsquo;s prepare some directories for demonstration:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <h2 id="popd">popd</h2>
+
+                <p>
+                  Remove the last directory recorded in the directory stack and
+                  switch the working directory to the removed directory:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nb">help</span> popd</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/18/help_popd.png" alt="img" />
+                  <figcaption>
+                    <h4>Check popd&#39;s definition and usage</h4>
+                  </figcaption>
+                </figure>
+
+                <h1 id="preparing-directories">Preparing Directories</h1>
+
+                <p>Let&rsquo;s prepare some directories for demonstration:</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">mkdir -p a/b/c/d/e/f/g
-tree a</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/18/mkdir_recursive_tree.png"
-         alt="img"/> <figcaption>
-            <h4>Create nested directories and show their tree structure</h4>
-        </figcaption>
-</figure>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">mkdir -p a/b/c/d/e/f/g
+tree a</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/18/mkdir_recursive_tree.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Create nested directories and show their tree structure
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<p>Now that we have some nested directories, we can begin to demonstrate. The directory stack can store any directory we push into, and the nested directory is used here just for ease of operation.</p>
+                <p>
+                  Now that we have some nested directories, we can begin to
+                  demonstrate. The directory stack can store any directory we
+                  push into, and the nested directory is used here just for ease
+                  of operation.
+                </p>
 
-<h1 id="use-of-commands">Use of Commands</h1>
+                <h1 id="use-of-commands">Use of Commands</h1>
 
-<h2 id="adding-directories">Adding Directories</h2>
+                <h2 id="adding-directories">Adding Directories</h2>
 
-<p>Let&rsquo;s adding directories to directory stack:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <p>Let&rsquo;s adding directories to directory stack:</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -273,9 +427,12 @@ tree a</code></pre></td></tr></table>
 </span><span class="lnt">7
 </span><span class="lnt">8
 </span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> ~
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nb">cd</span> ~
 <span class="nb">dirs</span>
 <span class="nb">pushd</span> a
 <span class="nb">pushd</span> b
@@ -283,330 +440,603 @@ tree a</code></pre></td></tr></table>
 <span class="nb">pushd</span> d
 <span class="nb">pushd</span> e
 <span class="nb">pushd</span> f
-<span class="nb">pushd</span> g</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/18/cd_dirs_pushd.png"
-         alt="img"/> <figcaption>
-            <h4>Switch to user&#39;s home directory, check to make sure that dirs only shows the tilde(~) and start pushing the nested directories into directory stack</h4>
-        </figcaption>
-</figure>
+<span class="nb">pushd</span> g</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/18/cd_dirs_pushd.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Switch to user&#39;s home directory, check to make sure
+                      that dirs only shows the tilde(~) and start pushing the
+                      nested directories into directory stack
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="show-recorded-directories">Show Recorded Directories</h2>
+                <h2 id="show-recorded-directories">
+                  Show Recorded Directories
+                </h2>
 
-<h3 id="by-default">By Default</h3>
+                <h3 id="by-default">By Default</h3>
 
-<p>Use <em>dirs</em> to print the recorded directories:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">dirs</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/18/dirs.png"
-         alt="img"/> <figcaption>
-            <h4>Show the directory stack recorded directories</h4>
-        </figcaption>
-</figure>
+                <p>Use <em>dirs</em> to print the recorded directories:</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">dirs</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/18/dirs.png" alt="img" />
+                  <figcaption>
+                    <h4>Show the directory stack recorded directories</h4>
+                  </figcaption>
+                </figure>
 
-<h3 id="with-user-home-directory-name">With User Home Directory Name</h3>
+                <h3 id="with-user-home-directory-name">
+                  With User Home Directory Name
+                </h3>
 
-<p>Use <em>dirs -l</em> to print the recorded directories with user home directory&rsquo;s name instead of a tilde:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">dirs</span> -l</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/18/dirs_l.png"
-         alt="img"/> <figcaption>
-            <h4>Show the directory stack recorded directories with user home name instead of a tilde</h4>
-        </figcaption>
-</figure>
+                <p>
+                  Use <em>dirs -l</em> to print the recorded directories with
+                  user home directory&rsquo;s name instead of a tilde:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nb">dirs</span> -l</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/18/dirs_l.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Show the directory stack recorded directories with user
+                      home name instead of a tilde
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h3 id="line-by-line">Line by Line</h3>
+                <h3 id="line-by-line">Line by Line</h3>
 
-<p>Use <em>dirs -p</em> to print the recorded directories line by line:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">dirs</span> -p</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/18/dirs_p.png"
-         alt="img"/> <figcaption>
-            <h4>Show the directory stack recorded directories line by line</h4>
-        </figcaption>
-</figure>
+                <p>
+                  Use <em>dirs -p</em> to print the recorded directories line by
+                  line:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nb">dirs</span> -p</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/18/dirs_p.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Show the directory stack recorded directories line by line
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h3 id="line-by-line-with-their-indexes">Line by Line With Their Indexes</h3>
+                <h3 id="line-by-line-with-their-indexes">
+                  Line by Line With Their Indexes
+                </h3>
 
-<p>Use <em>dirs -v</em> to print the recorded directories line by line with their indexes:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">dirs</span> -v</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/18/dirs_v.png"
-         alt="img"/> <figcaption>
-            <h4>Show the directory stack recorded directories line by line with their indexes</h4>
-        </figcaption>
-</figure>
+                <p>
+                  Use <em>dirs -v</em> to print the recorded directories line by
+                  line with their indexes:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nb">dirs</span> -v</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/18/dirs_v.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Show the directory stack recorded directories line by line
+                      with their indexes
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h3 id="first-recorded-directory">First Recorded Directory</h3>
+                <h3 id="first-recorded-directory">First Recorded Directory</h3>
 
-<p>Use <em>dirs -0</em> to print the first recorded directory:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">dirs</span> -0</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/18/dirs_first.png"
-         alt="img"/> <figcaption>
-            <h4>Show the first recorded directory</h4>
-        </figcaption>
-</figure>
+                <p>
+                  Use <em>dirs -0</em> to print the first recorded directory:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nb">dirs</span> -0</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/18/dirs_first.png" alt="img" />
+                  <figcaption>
+                    <h4>Show the first recorded directory</h4>
+                  </figcaption>
+                </figure>
 
-<h3 id="last-recorded-directory">Last Recorded Directory</h3>
+                <h3 id="last-recorded-directory">Last Recorded Directory</h3>
 
-<p>Use <em>dirs +0</em> to print the last recorded directory:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">dirs</span> +0</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/18/dirs_last.png"
-         alt="img"/> <figcaption>
-            <h4>Show the last recorded directory</h4>
-        </figcaption>
-</figure>
+                <p>
+                  Use <em>dirs +0</em> to print the last recorded directory:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nb">dirs</span> +0</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/18/dirs_last.png" alt="img" />
+                  <figcaption>
+                    <h4>Show the last recorded directory</h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="use-recorded-directories">Use Recorded Directories</h2>
+                <h2 id="use-recorded-directories">Use Recorded Directories</h2>
 
-<h3 id="use-from-right">Use From right</h3>
+                <h3 id="use-from-right">Use From right</h3>
 
-<p>Use <em>pushd -0</em> to change to the rightmost directory and use it as a working directory:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">pushd</span> -0</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/18/pushd_use_first.png"
-         alt="img"/> <figcaption>
-            <h4>Use the first recorded directory</h4>
-        </figcaption>
-</figure>
+                <p>
+                  Use <em>pushd -0</em> to change to the rightmost directory and
+                  use it as a working directory:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nb">pushd</span> -0</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/18/pushd_use_first.png" alt="img" />
+                  <figcaption>
+                    <h4>Use the first recorded directory</h4>
+                  </figcaption>
+                </figure>
 
-<h3 id="use-from-left">Use From left</h3>
+                <h3 id="use-from-left">Use From left</h3>
 
-<p>Use <em>pushd +1</em> to change to the directory before the leftmost one and use it as a working directory:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">pushd</span> +1</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/18/pushd_use_previous.png"
-         alt="img"/> <figcaption>
-            <h4>Use the previous recorded directory</h4>
-        </figcaption>
-</figure>
+                <p>
+                  Use <em>pushd +1</em> to change to the directory before the
+                  leftmost one and use it as a working directory:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nb">pushd</span> +1</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/18/pushd_use_previous.png" alt="img" />
+                  <figcaption>
+                    <h4>Use the previous recorded directory</h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="remove-recorded-directories">Remove Recorded Directories</h2>
+                <h2 id="remove-recorded-directories">
+                  Remove Recorded Directories
+                </h2>
 
-<h3 id="remove-from-right">Remove From right</h3>
+                <h3 id="remove-from-right">Remove From right</h3>
 
-<p>Use <em>popd -0</em> to remove the rightmost directory:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">popd</span> -0</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/18/popd_remove_first.png"
-         alt="img"/> <figcaption>
-            <h4>Remove the first recorded directory</h4>
-        </figcaption>
-</figure>
+                <p>Use <em>popd -0</em> to remove the rightmost directory:</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nb">popd</span> -0</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/18/popd_remove_first.png" alt="img" />
+                  <figcaption>
+                    <h4>Remove the first recorded directory</h4>
+                  </figcaption>
+                </figure>
 
-<h3 id="remove-from-left">Remove From left</h3>
+                <h3 id="remove-from-left">Remove From left</h3>
 
-<p>Use <em>popd +0</em> to remove the leftmost directory and use the previous directory as a working directory:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">popd</span> +0</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/18/popd_remove_last_move_to_previous.png"
-         alt="img"/> <figcaption>
-            <h4>Remove the last recorded directory and use the previous recorded directory as the working directory</h4>
-        </figcaption>
-</figure>
+                <p>
+                  Use <em>popd +0</em> to remove the leftmost directory and use
+                  the previous directory as a working directory:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nb">popd</span> +0</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/18/popd_remove_last_move_to_previous.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>
+                      Remove the last recorded directory and use the previous
+                      recorded directory as the working directory
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<blockquote>
-<p>References
-<a href="https://www.gnu.org/software/bash/manual/html_node/Directory-Stack-Builtins.html#Directory-Stack-Builtins">6.8.1 Directory Stack Builtins</a></p>
-</blockquote>
+                <blockquote>
+                  <p>
+                    References
+                    <a
+                      href="https://www.gnu.org/software/bash/manual/html_node/Directory-Stack-Builtins.html#Directory-Stack-Builtins"
+                      >6.8.1 Directory Stack Builtins</a
+                    >
+                  </p>
+                </blockquote>
 
-<!-- Buy Me a Coffee Button -->
+                <!-- Buy Me a Coffee Button -->
 
-<p class="align-center">
-  <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/PFou9WhLr"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
-</p>
-    </div>
+                <p class="align-center">
+                  <style>
+                    .bmc-button img {
+                      width: 27px !important;
+                      margin-bottom: 1px !important;
+                      box-shadow: none !important;
+                      border: none !important;
+                      vertical-align: middle !important;
+                    }
+                    .bmc-button {
+                      line-height: 36px !important;
+                      height: 37px !important;
+                      text-decoration: none !important;
+                      display: inline-flex !important;
+                      color: #ffffff !important;
+                      background-color: #ff813f !important;
+                      border-radius: 3px !important;
+                      border: 1px solid transparent !important;
+                      padding: 1px 9px !important;
+                      font-size: 22px !important;
+                      letter-spacing: 0.6px !important;
+                      box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;
+                      -webkit-box-shadow: 0px 1px 2px 2px
+                        rgba(190, 190, 190, 0.5) !important;
+                      margin: 0 auto !important;
+                      font-family: "Cookie", cursive !important;
+                      -webkit-box-sizing: border-box !important;
+                      box-sizing: border-box !important;
+                      -o-transition: 0.3s all linear !important;
+                      -webkit-transition: 0.3s all linear !important;
+                      -moz-transition: 0.3s all linear !important;
+                      -ms-transition: 0.3s all linear !important;
+                      transition: 0.3s all linear !important;
+                    }
+                    .bmc-button:hover,
+                    .bmc-button:active,
+                    .bmc-button:focus {
+                      -webkit-box-shadow: 0px 1px 2px 2px
+                        rgba(190, 190, 190, 0.5) !important;
+                      text-decoration: none !important;
+                      box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+                      opacity: 0.85 !important;
+                      color: #ffffff !important;
+                    }</style
+                  ><link
+                    href="https://fonts.googleapis.com/css?family=Cookie"
+                    rel="stylesheet"
+                  /><a
+                    class="bmc-button"
+                    target="_blank"
+                    href="https://www.buymeacoffee.com/PFou9WhLr"
+                    ><img
+                      src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg"
+                      alt="Buy me a coffee"
+                    /><span style="margin-left: 5px">Buy me a coffee</span></a
+                  >
+                </p>
+              </div>
 
-    <div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">Author</span>
-    <span class="item-content">Dong Chen</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">LastMod</span>
-    <span class="item-content">Tue Feb 19 2019</span>
-  </p>
-  
-  
-</div><div class="post-reward">
-  <input type="checkbox" name="reward" id="reward" hidden />
-  <label class="reward-button" for="reward">Reward</label>
-  <div class="qr-code">
-    
-    <label class="qr-code-image" for="reward">
-        <img class="image" src="https://dongchen.co/images/wepay_qr_final.png">
-        <span>wechat</span>
-      </label>
-    <label class="qr-code-image" for="reward">
-        <img class="image" src="https://dongchen.co/images/alipay_qr_final.png">
-        <span>alipay</span>
-      </label>
-  </div>
-</div><footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/linux/">Linux</a>
-          <a href="/tags/server/">Server</a>
+              <div class="post-copyright">
+                <p class="copyright-item">
+                  <span class="item-title">Author</span>
+                  <span class="item-content">Dong Chen</span>
+                </p>
+                <p class="copyright-item">
+                  <span class="item-title">LastMod</span>
+                  <span class="item-content">Tue Feb 19 2019</span>
+                </p>
+              </div>
+              <div class="post-reward">
+                <input type="checkbox" name="reward" id="reward" hidden />
+                <label class="reward-button" for="reward">Reward</label>
+                <div class="qr-code">
+                  <label class="qr-code-image" for="reward">
+                    <img
+                      class="image"
+                      src="https://dongchen.co/images/wepay_qr_final.png"
+                    />
+                    <span>wechat</span>
+                  </label>
+                  <label class="qr-code-image" for="reward">
+                    <img
+                      class="image"
+                      src="https://dongchen.co/images/alipay_qr_final.png"
+                    />
+                    <span>alipay</span>
+                  </label>
+                </div>
+              </div>
+              <footer class="post-footer">
+                <div class="post-tags">
+                  <a href="/tags/linux/">Linux</a>
+                  <a href="/tags/server/">Server</a>
+                </div>
+                <nav class="post-nav">
+                  <a
+                    class="prev"
+                    href="/post/simple-but-profound/server-side-programming/linux/administrator/19.-bash-shell-command-prompt-settings-customization/"
+                  >
+                    <i class="iconfont icon-left"></i>
+                    <span class="prev-text nav-default"
+                      >19. Bash Shell - Command Prompt Settings
+                      Customization</span
+                    >
+                    <span class="prev-text nav-mobile">Prev</span>
+                  </a>
+                  <a
+                    class="next"
+                    href="/post/simple-but-profound/server-side-programming/linux/administrator/17.-bash-shell-completion-commands/"
+                  >
+                    <span class="next-text nav-default"
+                      >17. Bash Shell - Completion Commands</span
+                    >
+                    <span class="next-text nav-mobile">Next</span>
+                    <i class="iconfont icon-right"></i>
+                  </a>
+                </nav>
+              </footer>
+            </article>
           </div>
-      <nav class="post-nav">
-        <a class="prev" href="/post/simple-but-profound/server-side-programming/linux/administrator/19.-bash-shell-command-prompt-settings-customization/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">19. Bash Shell - Command Prompt Settings Customization</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        <a class="next" href="/post/simple-but-profound/server-side-programming/linux/administrator/17.-bash-shell-completion-commands/">
-            <span class="next-text nav-default">17. Bash Shell - Completion Commands</span>
-            <span class="next-text nav-mobile">Next</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
         </div>
-        
+      </main>
 
+      <footer id="footer" class="footer">
+        <div class="social-links">
+          <a
+            href="mailto:dongchensteven@gmail.com"
+            class="iconfont icon-email"
+            title="email"
+          ></a>
+          <a
+            href="https://www.linkedin.com/in/dongchensteven"
+            class="iconfont icon-linkedin"
+            title="linkedin"
+          ></a>
+          <a
+            href="https://github.com/dongchensteven"
+            class="iconfont icon-github"
+            title="github"
+          ></a>
+          <a
+            href="https://dongchen.co/index.xml"
+            type="application/rss+xml"
+            class="iconfont icon-rss"
+            title="rss"
+          ></a>
+        </div>
+
+        <div class="copyright">
+          <span class="power-by">
+            Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+          </span>
+          <span class="division">|</span>
+          <span class="theme-info">
+            Theme -
+            <a
+              class="theme-link"
+              href="https://github.com/olOwOlo/hugo-theme-even"
+              >Even</a
+            >
+          </span>
+
+          <span class="copyright-year">
+            &copy; 2018 - 2020
+            <span class="heart">
+              <i class="iconfont icon-heart"></i>
+            </span>
+            <span class="author">Dong Chen</span>
+          </span>
+        </div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
       </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:dongchensteven@gmail.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://www.linkedin.com/in/dongchensteven" class="iconfont icon-linkedin" title="linkedin"></a>
-      <a href="https://github.com/dongchensteven" class="iconfont icon-github" title="github"></a>
-  <a href="https://dongchen.co/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
-
-<div class="copyright">
-  <span class="power-by">
-    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    Theme - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2018 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">Dong Chen</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
     </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
-  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
-    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
-    timeago().render(document.querySelectorAll('.timeago'), languageCode);
-    timeago.cancel();  
-  </script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js"
+      integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js"
+      integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js"
+      integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js"
+      integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      <!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+      var languageCode = "en"
+        .replace(/-/g, "_")
+        .replace(/_(.*)/, function ($0, $1) {
+          return $0.replace($1, $1.toUpperCase());
+        });
+      timeago().render(document.querySelectorAll(".timeago"), languageCode);
+      timeago.cancel();
+    </script>
+    <script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-133226289-1', 'auto');
-	ga('set', 'anonymizeIp', true);
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-
-
-
-
-
-
-</body>
+    <script type="application/javascript">
+      var doNotTrack = false;
+      if (!doNotTrack) {
+        window.ga =
+          window.ga ||
+          function () {
+            (ga.q = ga.q || []).push(arguments);
+          };
+        ga.l = +new Date();
+        ga("create", "UA-133226289-1", "auto");
+        ga("set", "anonymizeIp", true);
+        ga("send", "pageview");
+      }
+    </script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
+  </body>
 </html>

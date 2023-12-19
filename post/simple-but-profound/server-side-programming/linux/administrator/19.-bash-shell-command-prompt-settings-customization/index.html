@@ -1,837 +1,1606 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>19. Bash Shell - Command Prompt Settings Customization - Dong - A place to track my time log</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+      19. Bash Shell - Command Prompt Settings Customization - Dong - A place to
+      track my time log
+    </title>
+    <meta name="renderer" content="webkit" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
 
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+    <meta name="theme-color" content="#f8f5ec" />
+    <meta name="msapplication-navbutton-color" content="#f8f5ec" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec" />
 
+    <meta name="author" content="Dong Chen" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="Hugo, theme, even" />
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="" /><meta name="keywords" content="Hugo, theme, even" />
+    <meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
+    <link
+      rel="canonical"
+      href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/19.-bash-shell-command-prompt-settings-customization/"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
 
+    <link href="/dist/even.ea128f8b.min.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css"
+      integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
 
+    <meta
+      property="og:title"
+      content="19. Bash Shell - Command Prompt Settings Customization"
+    />
+    <meta property="og:description" content="" />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/19.-bash-shell-command-prompt-settings-customization/"
+    />
+    <meta
+      property="article:published_time"
+      content="2019-02-20T07:42:28&#43;13:00"
+    />
+    <meta
+      property="article:modified_time"
+      content="2019-02-20T07:42:28&#43;13:00"
+    />
 
+    <meta
+      itemprop="name"
+      content="19. Bash Shell - Command Prompt Settings Customization"
+    />
+    <meta itemprop="description" content="" />
 
+    <meta itemprop="datePublished" content="2019-02-20T07:42:28&#43;13:00" />
+    <meta itemprop="dateModified" content="2019-02-20T07:42:28&#43;13:00" />
+    <meta itemprop="wordCount" content="1159" />
 
-<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
+    <meta itemprop="keywords" content="Linux,Server," />
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="19. Bash Shell - Command Prompt Settings Customization"
+    />
+    <meta name="twitter:description" content="" />
 
+    <!--[if lte IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+    <![endif]-->
 
-<link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/19.-bash-shell-command-prompt-settings-customization/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-<link href="/dist/even.ea128f8b.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/styles.css">
-
-
-<meta property="og:title" content="19. Bash Shell - Command Prompt Settings Customization" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/19.-bash-shell-command-prompt-settings-customization/" />
-<meta property="article:published_time" content="2019-02-20T07:42:28&#43;13:00"/>
-<meta property="article:modified_time" content="2019-02-20T07:42:28&#43;13:00"/>
-
-<meta itemprop="name" content="19. Bash Shell - Command Prompt Settings Customization">
-<meta itemprop="description" content="">
-
-
-<meta itemprop="datePublished" content="2019-02-20T07:42:28&#43;13:00" />
-<meta itemprop="dateModified" content="2019-02-20T07:42:28&#43;13:00" />
-<meta itemprop="wordCount" content="1159">
-
-
-
-<meta itemprop="keywords" content="Linux,Server," />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="19. Bash Shell - Command Prompt Settings Customization"/>
-<meta name="twitter:description" content=""/>
-
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
-
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
-
-</head>
-<body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">Dong</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">Home</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">Archives</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">Tags</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">Dong</a>
-</div>
-
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">Home</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">Archives</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">Categories</a>
-      </li>
-  </ul>
-</nav>
-    </header>
-
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
-    
-    <header class="post-header">
-      <h1 class="post-title">19. Bash Shell - Command Prompt Settings Customization</h1>
-
-      <div class="post-meta">
-        <span class="post-time"> Wed Feb 20 2019 </span>
-        <div class="post-category">
-            <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
-            </div>
-          <span class="more-meta"> 1159 words </span>
-          <span class="more-meta"> 6 mins read </span>
-        
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div id="mobile-navbar" class="mobile-navbar">
+      <div class="mobile-header-logo">
+        <a href="/" class="logo">Dong</a>
       </div>
-    </header>
+      <div class="mobile-navbar-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <nav id="mobile-menu" class="mobile-menu slideout-menu">
+      <ul class="mobile-menu-list">
+        <a href="/">
+          <li class="mobile-menu-item">Home</li> </a
+        ><a href="/post/">
+          <li class="mobile-menu-item">Archives</li> </a
+        ><a href="/tags/">
+          <li class="mobile-menu-item">Tags</li> </a
+        ><a href="/categories/">
+          <li class="mobile-menu-item">Categories</li> </a
+        ><a href="https://ergate.com/" target="_blank">
+          <li class="mobile-menu-item">Visit ERGATE</li>
+        </a>
+      </ul>
+    </nav>
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header">
+        <div class="logo-wrapper">
+          <a href="/" class="logo">Dong</a>
+        </div>
 
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">Contents</h2>
-  <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#command-prompt-overview">Command Prompt Overview</a></li>
-<li><a href="#view-settings-of-current-command-prompt">View Settings of Current Command Prompt</a>
-<ul>
-<li><a href="#ps1-variable">$PS1 Variable</a></li>
-<li><a href="#set-command">set Command</a></li>
-</ul></li>
-<li><a href="#command-prompt-settings-modification">Command Prompt Settings Modification</a>
-<ul>
-<li><a href="#temporarily-back-up-the-original-settings">Temporarily Back Up the Original Settings</a></li>
-<li><a href="#set-command-prompt-to-show-nothing">Set Command Prompt to Show Nothing</a></li>
-<li><a href="#set-a-beep-sound">Set a Beep Sound</a></li>
-<li><a href="#show-date-in-week-month-date">Show Date in Week, Month, Date</a></li>
-<li><a href="#show-date-in-customized-format">Show Date in Customized Format</a></li>
-<li><a href="#show-hostname-content-before-the-first-dot">Show Hostname Content Before the First Dot</a></li>
-<li><a href="#show-the-whole-hostname">Show the Whole Hostname</a></li>
-<li><a href="#show-the-number-of-jobs-managed-by-shell">Show the Number of Jobs Managed By Shell</a></li>
-<li><a href="#show-an-extra-line-when-line-breaks">Show an Extra Line When Line Breaks</a></li>
-<li><a href="#show-the-name-of-the-shell">Show the Name of the Shell</a></li>
-<li><a href="#show-the-time-in-twenty-four-hour-format">Show the Time in Twenty-Four Hour Format</a></li>
-<li><a href="#show-the-time-in-twelve-hour-format">Show the Time in Twelve Hour Format</a></li>
-<li><a href="#show-the-time-in-twelve-hour-am-pm-format">Show the Time in Twelve Hour AM/PM Format</a></li>
-<li><a href="#show-the-name-of-the-current-user">Show the Name of the Current User</a></li>
-<li><a href="#show-the-version-of-the-bash">Show the Version of the Bash</a></li>
-<li><a href="#show-the-release-of-the-bash">Show the Release of the Bash</a></li>
-<li><a href="#show-the-whole-current-working-directory">Show the Whole Current Working Directory</a></li>
-<li><a href="#show-only-the-current-working-directory">Show Only the Current Working Directory</a></li>
-<li><a href="#show-the-history-number-of-the-command">Show the History Number of the Command</a></li>
-<li><a href="#show-the-command-number-of-the-command">Show the Command Number of the Command</a></li>
-<li><a href="#show-the-identity-of-a-user">Show the Identity of a User</a></li>
-<li><a href="#show-a-backslash">Show a Backslash</a></li>
-</ul></li>
-<li><a href="#restore-from-backup">Restore from Backup</a></li>
-<li><a href="#mimic-the-default-settings">Mimic the Default Settings</a></li>
-</ul>
-</nav>
-  </div>
-</div>
-    <div class="post-content">
-      <h1 id="command-prompt-overview">Command Prompt Overview</h1>
+        <nav class="site-navbar">
+          <ul id="menu" class="menu">
+            <li class="menu-item">
+              <a class="menu-item-link" href="/">Home</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/post/">Archives</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/tags/">Tags</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/categories/">Categories</a>
+            </li>
+            <li class="menu-item">
+              <a
+                class="menu-item-link"
+                href="https://ergate.com/"
+                target="_blank"
+                >Visit ERGATE</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </header>
 
-<p>The command prompt looks like the following:</p>
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            <article class="post">
+              <header class="post-header">
+                <h1 class="post-title">
+                  19. Bash Shell - Command Prompt Settings Customization
+                </h1>
 
-<figure>
-    <img src="../images/19/command_prompt.png"
-         alt="img"/> <figcaption>
-            <h4>Command prompt</h4>
-        </figcaption>
-</figure>
+                <div class="post-meta">
+                  <span class="post-time"> Wed Feb 20 2019 </span>
+                  <div class="post-category">
+                    <a
+                      href="/categories/linux-administrator-simple-but-profound/"
+                    >
+                      Linux Administrator: Simple But Profound
+                    </a>
+                  </div>
+                  <span class="more-meta"> 1159 words </span>
+                  <span class="more-meta"> 6 mins read </span>
+                </div>
+              </header>
 
-<h1 id="view-settings-of-current-command-prompt">View Settings of Current Command Prompt</h1>
+              <div class="post-toc" id="post-toc">
+                <h2 class="post-toc-title">Contents</h2>
+                <div class="post-toc-content always-active">
+                  <nav id="TableOfContents">
+                    <ul>
+                      <li>
+                        <a href="#command-prompt-overview"
+                          >Command Prompt Overview</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#view-settings-of-current-command-prompt"
+                          >View Settings of Current Command Prompt</a
+                        >
+                        <ul>
+                          <li><a href="#ps1-variable">$PS1 Variable</a></li>
+                          <li><a href="#set-command">set Command</a></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="#command-prompt-settings-modification"
+                          >Command Prompt Settings Modification</a
+                        >
+                        <ul>
+                          <li>
+                            <a href="#temporarily-back-up-the-original-settings"
+                              >Temporarily Back Up the Original Settings</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#set-command-prompt-to-show-nothing"
+                              >Set Command Prompt to Show Nothing</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#set-a-beep-sound">Set a Beep Sound</a>
+                          </li>
+                          <li>
+                            <a href="#show-date-in-week-month-date"
+                              >Show Date in Week, Month, Date</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#show-date-in-customized-format"
+                              >Show Date in Customized Format</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="#show-hostname-content-before-the-first-dot"
+                              >Show Hostname Content Before the First Dot</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#show-the-whole-hostname"
+                              >Show the Whole Hostname</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#show-the-number-of-jobs-managed-by-shell"
+                              >Show the Number of Jobs Managed By Shell</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#show-an-extra-line-when-line-breaks"
+                              >Show an Extra Line When Line Breaks</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#show-the-name-of-the-shell"
+                              >Show the Name of the Shell</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#show-the-time-in-twenty-four-hour-format"
+                              >Show the Time in Twenty-Four Hour Format</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#show-the-time-in-twelve-hour-format"
+                              >Show the Time in Twelve Hour Format</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#show-the-time-in-twelve-hour-am-pm-format"
+                              >Show the Time in Twelve Hour AM/PM Format</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#show-the-name-of-the-current-user"
+                              >Show the Name of the Current User</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#show-the-version-of-the-bash"
+                              >Show the Version of the Bash</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#show-the-release-of-the-bash"
+                              >Show the Release of the Bash</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#show-the-whole-current-working-directory"
+                              >Show the Whole Current Working Directory</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#show-only-the-current-working-directory"
+                              >Show Only the Current Working Directory</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#show-the-history-number-of-the-command"
+                              >Show the History Number of the Command</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#show-the-command-number-of-the-command"
+                              >Show the Command Number of the Command</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#show-the-identity-of-a-user"
+                              >Show the Identity of a User</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#show-a-backslash">Show a Backslash</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="#restore-from-backup">Restore from Backup</a>
+                      </li>
+                      <li>
+                        <a href="#mimic-the-default-settings"
+                          >Mimic the Default Settings</a
+                        >
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+              <div class="post-content">
+                <h1 id="command-prompt-overview">Command Prompt Overview</h1>
 
-<p>There are several ways we can view the settings for the command prompt.</p>
+                <p>The command prompt looks like the following:</p>
 
-<h2 id="ps1-variable">$PS1 Variable</h2>
+                <figure>
+                  <img src="../images/19/command_prompt.png" alt="img" />
+                  <figcaption>
+                    <h4>Command prompt</h4>
+                  </figcaption>
+                </figure>
 
-<p>We can get the command-line prompt setting by printing the environment variable $PS1:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="nv">$PS1</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/19/echo_ps1.png"
-         alt="img"/> <figcaption>
-            <h4>Command prompt setting</h4>
-        </figcaption>
-</figure>
+                <h1 id="view-settings-of-current-command-prompt">
+                  View Settings of Current Command Prompt
+                </h1>
 
-<h2 id="set-command">set Command</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">set</span> <span class="p">|</span> grep PS1</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/19/set_grep_ps1.png"
-         alt="img"/> <figcaption>
-            <h4>Command prompt setting</h4>
-        </figcaption>
-</figure>
+                <p>
+                  There are several ways we can view the settings for the
+                  command prompt.
+                </p>
 
-<h1 id="command-prompt-settings-modification">Command Prompt Settings Modification</h1>
+                <h2 id="ps1-variable">$PS1 Variable</h2>
 
-<h2 id="temporarily-back-up-the-original-settings">Temporarily Back Up the Original Settings</h2>
+                <p>
+                  We can get the command-line prompt setting by printing the
+                  environment variable $PS1:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="nv">$PS1</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/19/echo_ps1.png" alt="img" />
+                  <figcaption>
+                    <h4>Command prompt setting</h4>
+                  </figcaption>
+                </figure>
 
-<p>Let&rsquo;s temporarily back up the current command prompt settings:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">PS1_BAK</span><span class="o">=</span><span class="nv">$PS1</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/19/ps1_bak_ps1.png"
-         alt="img"/> <figcaption>
-            <h4>Temporarily back up current command prompt&#39;s settings</h4>
-        </figcaption>
-</figure>
+                <h2 id="set-command">set Command</h2>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nb">set</span> <span class="p">|</span> grep PS1</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/19/set_grep_ps1.png" alt="img" />
+                  <figcaption>
+                    <h4>Command prompt setting</h4>
+                  </figcaption>
+                </figure>
 
-<figure>
-    <img src="../images/19/echo_ps1_bak.png"
-         alt="img"/> <figcaption>
-            <h4>Check the temporarily backed up command prompt&#39;s settings</h4>
-        </figcaption>
-</figure>
+                <h1 id="command-prompt-settings-modification">
+                  Command Prompt Settings Modification
+                </h1>
 
-<h2 id="set-command-prompt-to-show-nothing">Set Command Prompt to Show Nothing</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span>   <span class="c1"># Without specifying anything tells command prompt to show nothing</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/19/ps1_empty.png"
-         alt="img"/> <figcaption>
-            <h4>Empty the command prompt settings</h4>
-        </figcaption>
-</figure>
+                <h2 id="temporarily-back-up-the-original-settings">
+                  Temporarily Back Up the Original Settings
+                </h2>
 
-<p>Let&rsquo;s check if the command-line prompt can still working properly:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s1">&#39;The command prompt is still working&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/19/echo_message_prompt_still_working.png"
-         alt="img"/> <figcaption>
-            <h4>The command prompt is still working</h4>
-        </figcaption>
-</figure>
+                <p>
+                  Let&rsquo;s temporarily back up the current command prompt
+                  settings:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nv">PS1_BAK</span><span class="o">=</span><span class="nv">$PS1</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/19/ps1_bak_ps1.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Temporarily back up current command prompt&#39;s settings
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="set-a-beep-sound">Set a Beep Sound</h2>
+                <figure>
+                  <img src="../images/19/echo_ps1_bak.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Check the temporarily backed up command prompt&#39;s
+                      settings
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<p>Every time the line breaks, the computer will make a sound:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\a&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/19/ps1_a.png"
-         alt="img"/> <figcaption>
-            <h4>Set a beep sound. We can use PS1= to reset the settings</h4>
-        </figcaption>
-</figure>
+                <h2 id="set-command-prompt-to-show-nothing">
+                  Set Command Prompt to Show Nothing
+                </h2>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span>   <span class="c1"># Without specifying anything tells command prompt to show nothing</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/19/ps1_empty.png" alt="img" />
+                  <figcaption>
+                    <h4>Empty the command prompt settings</h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="show-date-in-week-month-date">Show Date in Week, Month, Date</h2>
+                <p>
+                  Let&rsquo;s check if the command-line prompt can still working
+                  properly:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s1">&#39;The command prompt is still working&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/19/echo_message_prompt_still_working.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>The command prompt is still working</h4>
+                  </figcaption>
+                </figure>
 
-<p>We can use the special character \d to display weeks, months, and date at the command line prompt:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\d&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/19/ps1_d.png"
-         alt="img"/> <figcaption>
-            <h4>Show Week, Month, Date. We can use PS1= to reset the settings</h4>
-        </figcaption>
-</figure>
+                <h2 id="set-a-beep-sound">Set a Beep Sound</h2>
 
-<h2 id="show-date-in-customized-format">Show Date in Customized Format</h2>
+                <p>
+                  Every time the line breaks, the computer will make a sound:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\a&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/19/ps1_a.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Set a beep sound. We can use PS1= to reset the settings
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<p>We can use the special character \D{format} to display customized date format at the command line prompt:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\D{%d/%m/%y}&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/19/ps1_customized_date_format.png"
-         alt="img"/> <figcaption>
-            <h4>Show customized date format. We can use PS1= to reset the settings</h4>
-        </figcaption>
-</figure>
+                <h2 id="show-date-in-week-month-date">
+                  Show Date in Week, Month, Date
+                </h2>
 
-<h2 id="show-hostname-content-before-the-first-dot">Show Hostname Content Before the First Dot</h2>
+                <p>
+                  We can use the special character \d to display weeks, months,
+                  and date at the command line prompt:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\d&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/19/ps1_d.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Show Week, Month, Date. We can use PS1= to reset the
+                      settings
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<p>We can use the special character \h to display the content before the first dot of the hostname at the command line prompt:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\h&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/19/ps1_h_content_before_first_dot.png"
-         alt="img"/> <figcaption>
-            <h4>Show first part of the host. We can use PS1= to reset the settings</h4>
-        </figcaption>
-</figure>
+                <h2 id="show-date-in-customized-format">
+                  Show Date in Customized Format
+                </h2>
 
-<h2 id="show-the-whole-hostname">Show the Whole Hostname</h2>
+                <p>
+                  We can use the special character \D{format} to display
+                  customized date format at the command line prompt:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\D{%d/%m/%y}&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/19/ps1_customized_date_format.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>
+                      Show customized date format. We can use PS1= to reset the
+                      settings
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<p>We can use the special character \H to display the whole hostname at the command line prompt:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\H&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/19/ps1_h_whole_content.png"
-         alt="img"/> <figcaption>
-            <h4>Show the whole hostname. We can use PS1= to reset the settings</h4>
-        </figcaption>
-</figure>
+                <h2 id="show-hostname-content-before-the-first-dot">
+                  Show Hostname Content Before the First Dot
+                </h2>
 
-<h2 id="show-the-number-of-jobs-managed-by-shell">Show the Number of Jobs Managed By Shell</h2>
+                <p>
+                  We can use the special character \h to display the content
+                  before the first dot of the hostname at the command line
+                  prompt:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\h&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/19/ps1_h_content_before_first_dot.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>
+                      Show first part of the host. We can use PS1= to reset the
+                      settings
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<p>We can use the special character \j to display the number of jobs managed by shell at the command line prompt:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\j&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/19/ps1_j.png"
-         alt="img"/> <figcaption>
-            <h4>Show the number of shell managed jobs. We can use PS1= to reset the settings</h4>
-        </figcaption>
-</figure>
+                <h2 id="show-the-whole-hostname">Show the Whole Hostname</h2>
 
-<h2 id="show-an-extra-line-when-line-breaks">Show an Extra Line When Line Breaks</h2>
+                <p>
+                  We can use the special character \H to display the whole
+                  hostname at the command line prompt:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\H&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/19/ps1_h_whole_content.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Show the whole hostname. We can use PS1= to reset the
+                      settings
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<p>We can use the special character \n to display the an extra line at the command line prompt:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\n&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/19/ps1_n.png"
-         alt="img"/> <figcaption>
-            <h4>Show an extra line. We can use PS1= to reset the settings</h4>
-        </figcaption>
-</figure>
+                <h2 id="show-the-number-of-jobs-managed-by-shell">
+                  Show the Number of Jobs Managed By Shell
+                </h2>
 
-<h2 id="show-the-name-of-the-shell">Show the Name of the Shell</h2>
+                <p>
+                  We can use the special character \j to display the number of
+                  jobs managed by shell at the command line prompt:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\j&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/19/ps1_j.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Show the number of shell managed jobs. We can use PS1= to
+                      reset the settings
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<p>We can use the special character \s to display the name of the shell at the command line prompt:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\s&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/19/ps1_s.png"
-         alt="img"/> <figcaption>
-            <h4>Show the shell&#39;s name. We can use PS1= to reset the settings</h4>
-        </figcaption>
-</figure>
+                <h2 id="show-an-extra-line-when-line-breaks">
+                  Show an Extra Line When Line Breaks
+                </h2>
 
-<h2 id="show-the-time-in-twenty-four-hour-format">Show the Time in Twenty-Four Hour Format</h2>
+                <p>
+                  We can use the special character \n to display the an extra
+                  line at the command line prompt:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\n&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/19/ps1_n.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Show an extra line. We can use PS1= to reset the settings
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<p>We can use the special character \t to display the time in 24-hour format at the command line prompt:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\t&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/19/ps1_t_24.png"
-         alt="img"/> <figcaption>
-            <h4>Show the 24-hour format time. We can use PS1= to reset the settings</h4>
-        </figcaption>
-</figure>
+                <h2 id="show-the-name-of-the-shell">
+                  Show the Name of the Shell
+                </h2>
 
-<p>We can use \A to show time without the second part:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\A&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/19/ps1_a_24_without_second.png"
-         alt="img"/> <figcaption>
-            <h4>Show the 24-hour format time without second part. We can use PS1= to reset the settings</h4>
-        </figcaption>
-</figure>
+                <p>
+                  We can use the special character \s to display the name of the
+                  shell at the command line prompt:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\s&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/19/ps1_s.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Show the shell&#39;s name. We can use PS1= to reset the
+                      settings
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="show-the-time-in-twelve-hour-format">Show the Time in Twelve Hour Format</h2>
+                <h2 id="show-the-time-in-twenty-four-hour-format">
+                  Show the Time in Twenty-Four Hour Format
+                </h2>
 
-<p>We can use the special character \T to display the time in 12-hour format at the command line prompt:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\T&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/19/ps1_t_12.png"
-         alt="img"/> <figcaption>
-            <h4>Show the 12-hour format time. We can use PS1= to reset the settings</h4>
-        </figcaption>
-</figure>
+                <p>
+                  We can use the special character \t to display the time in
+                  24-hour format at the command line prompt:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\t&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/19/ps1_t_24.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Show the 24-hour format time. We can use PS1= to reset the
+                      settings
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="show-the-time-in-twelve-hour-am-pm-format">Show the Time in Twelve Hour AM/PM Format</h2>
+                <p>We can use \A to show time without the second part:</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\A&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/19/ps1_a_24_without_second.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>
+                      Show the 24-hour format time without second part. We can
+                      use PS1= to reset the settings
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<p>We can use the special character \@ to display the time in 12-hour am/pm format at the command line prompt:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\@&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/19/ps1_@.png"
-         alt="img"/> <figcaption>
-            <h4>Show the 12-hour am/pm format time. We can use PS1= to reset the settings</h4>
-        </figcaption>
-</figure>
+                <h2 id="show-the-time-in-twelve-hour-format">
+                  Show the Time in Twelve Hour Format
+                </h2>
 
-<h2 id="show-the-name-of-the-current-user">Show the Name of the Current User</h2>
+                <p>
+                  We can use the special character \T to display the time in
+                  12-hour format at the command line prompt:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\T&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/19/ps1_t_12.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Show the 12-hour format time. We can use PS1= to reset the
+                      settings
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<p>We can use the special character \u to display the name of the current user at the command line prompt:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\u&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/19/ps1_u.png"
-         alt="img"/> <figcaption>
-            <h4>Show the current user&#39;s name. We can use PS1= to reset the settings</h4>
-        </figcaption>
-</figure>
+                <h2 id="show-the-time-in-twelve-hour-am-pm-format">
+                  Show the Time in Twelve Hour AM/PM Format
+                </h2>
 
-<h2 id="show-the-version-of-the-bash">Show the Version of the Bash</h2>
+                <p>
+                  We can use the special character \@ to display the time in
+                  12-hour am/pm format at the command line prompt:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\@&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/19/ps1_@.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Show the 12-hour am/pm format time. We can use PS1= to
+                      reset the settings
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<p>We can use the special character \v to display the version of the bash at the command line prompt:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\v&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/19/ps1_v_version.png"
-         alt="img"/> <figcaption>
-            <h4>Show the bash&#39;s version. We can use PS1= to reset the settings</h4>
-        </figcaption>
-</figure>
+                <h2 id="show-the-name-of-the-current-user">
+                  Show the Name of the Current User
+                </h2>
 
-<h2 id="show-the-release-of-the-bash">Show the Release of the Bash</h2>
+                <p>
+                  We can use the special character \u to display the name of the
+                  current user at the command line prompt:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\u&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/19/ps1_u.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Show the current user&#39;s name. We can use PS1= to reset
+                      the settings
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<p>We can use the special character \V to display the release (version and patch level) of the bash at the command line prompt:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\V&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/19/ps1_v_release.png"
-         alt="img"/> <figcaption>
-            <h4>Show the bash&#39;s version and patch level. We can use PS1= to reset the settings</h4>
-        </figcaption>
-</figure>
+                <h2 id="show-the-version-of-the-bash">
+                  Show the Version of the Bash
+                </h2>
 
-<h2 id="show-the-whole-current-working-directory">Show the Whole Current Working Directory</h2>
+                <p>
+                  We can use the special character \v to display the version of
+                  the bash at the command line prompt:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\v&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/19/ps1_v_version.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Show the bash&#39;s version. We can use PS1= to reset the
+                      settings
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<p>We can use the special character \w to display the whole path of current working directory at the command line prompt:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <h2 id="show-the-release-of-the-bash">
+                  Show the Release of the Bash
+                </h2>
+
+                <p>
+                  We can use the special character \V to display the release
+                  (version and patch level) of the bash at the command line
+                  prompt:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\V&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/19/ps1_v_release.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Show the bash&#39;s version and patch level. We can use
+                      PS1= to reset the settings
+                    </h4>
+                  </figcaption>
+                </figure>
+
+                <h2 id="show-the-whole-current-working-directory">
+                  Show the Whole Current Working Directory
+                </h2>
+
+                <p>
+                  We can use the special character \w to display the whole path
+                  of current working directory at the command line prompt:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">mkdir a    <span class="c1"># let&#39;s create a directory to demonstrate</span>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">mkdir a    <span class="c1"># let&#39;s create a directory to demonstrate</span>
 <span class="nb">cd</span> a    <span class="c1"># change to that directory</span>
-<span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\w&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/19/ps1_w_pwd.png"
-         alt="img"/> <figcaption>
-            <h4>Show the whole working directory path. We can use PS1= to reset the settings</h4>
-        </figcaption>
-</figure>
+<span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\w&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/19/ps1_w_pwd.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Show the whole working directory path. We can use PS1= to
+                      reset the settings
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="show-only-the-current-working-directory">Show Only the Current Working Directory</h2>
+                <h2 id="show-only-the-current-working-directory">
+                  Show Only the Current Working Directory
+                </h2>
 
-<p>We can use the special character \W to display the whole path of current working directory at the command line prompt:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\W&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/19/ps1_w_only_current_directory.png"
-         alt="img"/> <figcaption>
-            <h4>Show only the current working directory. We can use PS1= to reset the settings</h4>
-        </figcaption>
-</figure>
+                <p>
+                  We can use the special character \W to display the whole path
+                  of current working directory at the command line prompt:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\W&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/19/ps1_w_only_current_directory.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>
+                      Show only the current working directory. We can use PS1=
+                      to reset the settings
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="show-the-history-number-of-the-command">Show the History Number of the Command</h2>
+                <h2 id="show-the-history-number-of-the-command">
+                  Show the History Number of the Command
+                </h2>
 
-<p>We can use the special character \! to display the history number of the command at the command line prompt:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\!&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/19/ps1_!.png"
-         alt="img"/> <figcaption>
-            <h4>Show the command&#39;s history number. We can use PS1= to reset the settings</h4>
-        </figcaption>
-</figure>
+                <p>
+                  We can use the special character \! to display the history
+                  number of the command at the command line prompt:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\!&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/19/ps1_!.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Show the command&#39;s history number. We can use PS1= to
+                      reset the settings
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="show-the-command-number-of-the-command">Show the Command Number of the Command</h2>
+                <h2 id="show-the-command-number-of-the-command">
+                  Show the Command Number of the Command
+                </h2>
 
-<p>We can use the special character \# to display the command number of the command at the command line prompt:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\#&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/19/ps1_cmd_no.png"
-         alt="img"/> <figcaption>
-            <h4>Show the command&#39;s command number. We can use PS1= to reset the settings</h4>
-        </figcaption>
-</figure>
+                <p>
+                  We can use the special character \# to display the command
+                  number of the command at the command line prompt:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\#&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/19/ps1_cmd_no.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Show the command&#39;s command number. We can use PS1= to
+                      reset the settings
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="show-the-identity-of-a-user">Show the Identity of a User</h2>
+                <h2 id="show-the-identity-of-a-user">
+                  Show the Identity of a User
+                </h2>
 
-<p>We can use the special character \$ to display the identity of a user at the command line prompt:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\$&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<p>If the user&rsquo;s uid equals to 0 then show #, otherwise show $:</p>
+                <p>
+                  We can use the special character \$ to display the identity of
+                  a user at the command line prompt:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\$&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <p>
+                  If the user&rsquo;s uid equals to 0 then show #, otherwise
+                  show $:
+                </p>
 
-<figure>
-    <img src="../images/19/ps1_$.png"
-         alt="img"/> <figcaption>
-            <h4>Show the user&#39;s identity. We can use PS1= to reset the settings</h4>
-        </figcaption>
-</figure>
+                <figure>
+                  <img src="../images/19/ps1_$.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Show the user&#39;s identity. We can use PS1= to reset the
+                      settings
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="show-a-backslash">Show a Backslash</h2>
+                <h2 id="show-a-backslash">Show a Backslash</h2>
 
-<p>We can use the special character \\ to display a backslash at the command line prompt:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\\&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/19/ps1_backslash.png"
-         alt="img"/> <figcaption>
-            <h4>Show a backslash. We can use PS1= to reset the settings</h4>
-        </figcaption>
-</figure>
+                <p>
+                  We can use the special character \\ to display a backslash at
+                  the command line prompt:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;\\&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/19/ps1_backslash.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Show a backslash. We can use PS1= to reset the settings
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h1 id="restore-from-backup">Restore from Backup</h1>
+                <h1 id="restore-from-backup">Restore from Backup</h1>
 
-<p>We can restore the setting from the PS1_BAK variable we created early:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="nv">$PS1_BAK</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/19/ps1_restore_from_backup.png"
-         alt="img"/> <figcaption>
-            <h4>Restore settings from the backup.</h4>
-        </figcaption>
-</figure>
+                <p>
+                  We can restore the setting from the PS1_BAK variable we
+                  created early:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="nv">$PS1_BAK</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/19/ps1_restore_from_backup.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>Restore settings from the backup.</h4>
+                  </figcaption>
+                </figure>
 
-<h1 id="mimic-the-default-settings">Mimic the Default Settings</h1>
+                <h1 id="mimic-the-default-settings">
+                  Mimic the Default Settings
+                </h1>
 
-<p>We can mimic the default setting:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;[\u@\h \W]\$&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/19/ps1_mimic_the_default_setting.png"
-         alt="img"/> <figcaption>
-            <h4>Mimic the default settings.</h4>
-        </figcaption>
-</figure>
+                <p>We can mimic the default setting:</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;[\u@\h \W]\$&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/19/ps1_mimic_the_default_setting.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>Mimic the default settings.</h4>
+                  </figcaption>
+                </figure>
 
-<blockquote>
-<p>References
-<a href="https://www.gnu.org/software/bash/manual/html_node/Controlling-the-Prompt.html#Controlling-the-Prompt">6.9 Controlling the Prompt</a></p>
-</blockquote>
+                <blockquote>
+                  <p>
+                    References
+                    <a
+                      href="https://www.gnu.org/software/bash/manual/html_node/Controlling-the-Prompt.html#Controlling-the-Prompt"
+                      >6.9 Controlling the Prompt</a
+                    >
+                  </p>
+                </blockquote>
 
-<!-- Buy Me a Coffee Button -->
+                <!-- Buy Me a Coffee Button -->
 
-<p class="align-center">
-  <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/PFou9WhLr"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
-</p>
-    </div>
+                <p class="align-center">
+                  <style>
+                    .bmc-button img {
+                      width: 27px !important;
+                      margin-bottom: 1px !important;
+                      box-shadow: none !important;
+                      border: none !important;
+                      vertical-align: middle !important;
+                    }
+                    .bmc-button {
+                      line-height: 36px !important;
+                      height: 37px !important;
+                      text-decoration: none !important;
+                      display: inline-flex !important;
+                      color: #ffffff !important;
+                      background-color: #ff813f !important;
+                      border-radius: 3px !important;
+                      border: 1px solid transparent !important;
+                      padding: 1px 9px !important;
+                      font-size: 22px !important;
+                      letter-spacing: 0.6px !important;
+                      box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;
+                      -webkit-box-shadow: 0px 1px 2px 2px
+                        rgba(190, 190, 190, 0.5) !important;
+                      margin: 0 auto !important;
+                      font-family: "Cookie", cursive !important;
+                      -webkit-box-sizing: border-box !important;
+                      box-sizing: border-box !important;
+                      -o-transition: 0.3s all linear !important;
+                      -webkit-transition: 0.3s all linear !important;
+                      -moz-transition: 0.3s all linear !important;
+                      -ms-transition: 0.3s all linear !important;
+                      transition: 0.3s all linear !important;
+                    }
+                    .bmc-button:hover,
+                    .bmc-button:active,
+                    .bmc-button:focus {
+                      -webkit-box-shadow: 0px 1px 2px 2px
+                        rgba(190, 190, 190, 0.5) !important;
+                      text-decoration: none !important;
+                      box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+                      opacity: 0.85 !important;
+                      color: #ffffff !important;
+                    }</style
+                  ><link
+                    href="https://fonts.googleapis.com/css?family=Cookie"
+                    rel="stylesheet"
+                  /><a
+                    class="bmc-button"
+                    target="_blank"
+                    href="https://www.buymeacoffee.com/PFou9WhLr"
+                    ><img
+                      src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg"
+                      alt="Buy me a coffee"
+                    /><span style="margin-left: 5px">Buy me a coffee</span></a
+                  >
+                </p>
+              </div>
 
-    <div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">Author</span>
-    <span class="item-content">Dong Chen</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">LastMod</span>
-    <span class="item-content">Wed Feb 20 2019</span>
-  </p>
-  
-  
-</div><div class="post-reward">
-  <input type="checkbox" name="reward" id="reward" hidden />
-  <label class="reward-button" for="reward">Reward</label>
-  <div class="qr-code">
-    
-    <label class="qr-code-image" for="reward">
-        <img class="image" src="https://dongchen.co/images/wepay_qr_final.png">
-        <span>wechat</span>
-      </label>
-    <label class="qr-code-image" for="reward">
-        <img class="image" src="https://dongchen.co/images/alipay_qr_final.png">
-        <span>alipay</span>
-      </label>
-  </div>
-</div><footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/linux/">Linux</a>
-          <a href="/tags/server/">Server</a>
+              <div class="post-copyright">
+                <p class="copyright-item">
+                  <span class="item-title">Author</span>
+                  <span class="item-content">Dong Chen</span>
+                </p>
+                <p class="copyright-item">
+                  <span class="item-title">LastMod</span>
+                  <span class="item-content">Wed Feb 20 2019</span>
+                </p>
+              </div>
+              <div class="post-reward">
+                <input type="checkbox" name="reward" id="reward" hidden />
+                <label class="reward-button" for="reward">Reward</label>
+                <div class="qr-code">
+                  <label class="qr-code-image" for="reward">
+                    <img
+                      class="image"
+                      src="https://dongchen.co/images/wepay_qr_final.png"
+                    />
+                    <span>wechat</span>
+                  </label>
+                  <label class="qr-code-image" for="reward">
+                    <img
+                      class="image"
+                      src="https://dongchen.co/images/alipay_qr_final.png"
+                    />
+                    <span>alipay</span>
+                  </label>
+                </div>
+              </div>
+              <footer class="post-footer">
+                <div class="post-tags">
+                  <a href="/tags/linux/">Linux</a>
+                  <a href="/tags/server/">Server</a>
+                </div>
+                <nav class="post-nav">
+                  <a
+                    class="prev"
+                    href="/post/simple-but-profound/server-side-programming/linux/administrator/20.-bash-shell-io-reirection/"
+                  >
+                    <i class="iconfont icon-left"></i>
+                    <span class="prev-text nav-default"
+                      >20. Bash Shell - IO Redirection</span
+                    >
+                    <span class="prev-text nav-mobile">Prev</span>
+                  </a>
+                  <a
+                    class="next"
+                    href="/post/simple-but-profound/server-side-programming/linux/administrator/18.-bash-shell-directory-stack-builtins/"
+                  >
+                    <span class="next-text nav-default"
+                      >18. Bash Shell - Directory Stack Builtins</span
+                    >
+                    <span class="next-text nav-mobile">Next</span>
+                    <i class="iconfont icon-right"></i>
+                  </a>
+                </nav>
+              </footer>
+            </article>
           </div>
-      <nav class="post-nav">
-        <a class="prev" href="/post/simple-but-profound/server-side-programming/linux/administrator/20.-bash-shell-io-reirection/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">20. Bash Shell - IO Redirection</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        <a class="next" href="/post/simple-but-profound/server-side-programming/linux/administrator/18.-bash-shell-directory-stack-builtins/">
-            <span class="next-text nav-default">18. Bash Shell - Directory Stack Builtins</span>
-            <span class="next-text nav-mobile">Next</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
         </div>
-        
+      </main>
 
+      <footer id="footer" class="footer">
+        <div class="social-links">
+          <a
+            href="mailto:dongchensteven@gmail.com"
+            class="iconfont icon-email"
+            title="email"
+          ></a>
+          <a
+            href="https://www.linkedin.com/in/dongchensteven"
+            class="iconfont icon-linkedin"
+            title="linkedin"
+          ></a>
+          <a
+            href="https://github.com/dongchensteven"
+            class="iconfont icon-github"
+            title="github"
+          ></a>
+          <a
+            href="https://dongchen.co/index.xml"
+            type="application/rss+xml"
+            class="iconfont icon-rss"
+            title="rss"
+          ></a>
+        </div>
+
+        <div class="copyright">
+          <span class="power-by">
+            Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+          </span>
+          <span class="division">|</span>
+          <span class="theme-info">
+            Theme -
+            <a
+              class="theme-link"
+              href="https://github.com/olOwOlo/hugo-theme-even"
+              >Even</a
+            >
+          </span>
+
+          <span class="copyright-year">
+            &copy; 2018 - 2020
+            <span class="heart">
+              <i class="iconfont icon-heart"></i>
+            </span>
+            <span class="author">Dong Chen</span>
+          </span>
+        </div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
       </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:dongchensteven@gmail.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://www.linkedin.com/in/dongchensteven" class="iconfont icon-linkedin" title="linkedin"></a>
-      <a href="https://github.com/dongchensteven" class="iconfont icon-github" title="github"></a>
-  <a href="https://dongchen.co/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
-
-<div class="copyright">
-  <span class="power-by">
-    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    Theme - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2018 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">Dong Chen</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
     </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
-  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
-    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
-    timeago().render(document.querySelectorAll('.timeago'), languageCode);
-    timeago.cancel();  
-  </script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js"
+      integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js"
+      integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js"
+      integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js"
+      integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      <!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+      var languageCode = "en"
+        .replace(/-/g, "_")
+        .replace(/_(.*)/, function ($0, $1) {
+          return $0.replace($1, $1.toUpperCase());
+        });
+      timeago().render(document.querySelectorAll(".timeago"), languageCode);
+      timeago.cancel();
+    </script>
+    <script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-133226289-1', 'auto');
-	ga('set', 'anonymizeIp', true);
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-
-
-
-
-
-
-</body>
+    <script type="application/javascript">
+      var doNotTrack = false;
+      if (!doNotTrack) {
+        window.ga =
+          window.ga ||
+          function () {
+            (ga.q = ga.q || []).push(arguments);
+          };
+        ga.l = +new Date();
+        ga("create", "UA-133226289-1", "auto");
+        ga("set", "anonymizeIp", true);
+        ga("send", "pageview");
+      }
+    </script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
+  </body>
 </html>

@@ -1,1117 +1,1884 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>46. User Management - Creation, Modification and Deletion - Dong - A place to track my time log</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+      46. User Management - Creation, Modification and Deletion - Dong - A place
+      to track my time log
+    </title>
+    <meta name="renderer" content="webkit" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
 
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+    <meta name="theme-color" content="#f8f5ec" />
+    <meta name="msapplication-navbutton-color" content="#f8f5ec" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec" />
 
+    <meta name="author" content="Dong Chen" />
+    <meta
+      name="description"
+      content="To make it easier to manage users, linux provides some common commands that allow you to add, delete, and modify users in a more standardized way.
+"
+    />
+    <meta name="keywords" content="Hugo, theme, even" />
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="To make it easier to manage users, linux provides some common commands that allow you to add, delete, and modify users in a more standardized way.
-" /><meta name="keywords" content="Hugo, theme, even" />
+    <meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
+    <link
+      rel="canonical"
+      href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/46.-user-management-creation-modification-and-deletion/"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
 
+    <link href="/dist/even.ea128f8b.min.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css"
+      integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
 
+    <meta
+      property="og:title"
+      content="46. User Management - Creation, Modification and Deletion"
+    />
+    <meta
+      property="og:description"
+      content="To make it easier to manage users, linux provides some common commands that allow you to add, delete, and modify users in a more standardized way."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/46.-user-management-creation-modification-and-deletion/"
+    />
+    <meta
+      property="article:published_time"
+      content="2019-03-18T20:03:45&#43;13:00"
+    />
+    <meta
+      property="article:modified_time"
+      content="2019-03-18T20:03:45&#43;13:00"
+    />
 
+    <meta
+      itemprop="name"
+      content="46. User Management - Creation, Modification and Deletion"
+    />
+    <meta
+      itemprop="description"
+      content="To make it easier to manage users, linux provides some common commands that allow you to add, delete, and modify users in a more standardized way."
+    />
 
+    <meta itemprop="datePublished" content="2019-03-18T20:03:45&#43;13:00" />
+    <meta itemprop="dateModified" content="2019-03-18T20:03:45&#43;13:00" />
+    <meta itemprop="wordCount" content="2084" />
 
-<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
+    <meta itemprop="keywords" content="Linux,Server," />
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="46. User Management - Creation, Modification and Deletion"
+    />
+    <meta
+      name="twitter:description"
+      content="To make it easier to manage users, linux provides some common commands that allow you to add, delete, and modify users in a more standardized way."
+    />
 
+    <!--[if lte IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+    <![endif]-->
 
-<link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/46.-user-management-creation-modification-and-deletion/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-<link href="/dist/even.ea128f8b.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/styles.css">
-
-
-<meta property="og:title" content="46. User Management - Creation, Modification and Deletion" />
-<meta property="og:description" content="To make it easier to manage users, linux provides some common commands that allow you to add, delete, and modify users in a more standardized way." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/46.-user-management-creation-modification-and-deletion/" />
-<meta property="article:published_time" content="2019-03-18T20:03:45&#43;13:00"/>
-<meta property="article:modified_time" content="2019-03-18T20:03:45&#43;13:00"/>
-
-<meta itemprop="name" content="46. User Management - Creation, Modification and Deletion">
-<meta itemprop="description" content="To make it easier to manage users, linux provides some common commands that allow you to add, delete, and modify users in a more standardized way.">
-
-
-<meta itemprop="datePublished" content="2019-03-18T20:03:45&#43;13:00" />
-<meta itemprop="dateModified" content="2019-03-18T20:03:45&#43;13:00" />
-<meta itemprop="wordCount" content="2084">
-
-
-
-<meta itemprop="keywords" content="Linux,Server," />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="46. User Management - Creation, Modification and Deletion"/>
-<meta name="twitter:description" content="To make it easier to manage users, linux provides some common commands that allow you to add, delete, and modify users in a more standardized way."/>
-
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
-
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
-
-</head>
-<body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">Dong</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">Home</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">Archives</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">Tags</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">Dong</a>
-</div>
-
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">Home</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">Archives</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">Categories</a>
-      </li>
-  </ul>
-</nav>
-    </header>
-
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
-    
-    <header class="post-header">
-      <h1 class="post-title">46. User Management - Creation, Modification and Deletion</h1>
-
-      <div class="post-meta">
-        <span class="post-time"> Mon Mar 18 2019 </span>
-        <div class="post-category">
-            <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
-            </div>
-          <span class="more-meta"> 2084 words </span>
-          <span class="more-meta"> 10 mins read </span>
-        
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div id="mobile-navbar" class="mobile-navbar">
+      <div class="mobile-header-logo">
+        <a href="/" class="logo">Dong</a>
       </div>
-    </header>
+      <div class="mobile-navbar-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <nav id="mobile-menu" class="mobile-menu slideout-menu">
+      <ul class="mobile-menu-list">
+        <a href="/">
+          <li class="mobile-menu-item">Home</li> </a
+        ><a href="/post/">
+          <li class="mobile-menu-item">Archives</li> </a
+        ><a href="/tags/">
+          <li class="mobile-menu-item">Tags</li> </a
+        ><a href="/categories/">
+          <li class="mobile-menu-item">Categories</li> </a
+        ><a href="https://ergate.com/" target="_blank">
+          <li class="mobile-menu-item">Visit ERGATE</li>
+        </a>
+      </ul>
+    </nav>
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header">
+        <div class="logo-wrapper">
+          <a href="/" class="logo">Dong</a>
+        </div>
 
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">Contents</h2>
-  <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#add-user">Add User</a>
-<ul>
-<li><a href="#specify-user-comment-full-name">Specify User Comment (Full Name)</a></li>
-<li><a href="#specify-home-directory">Specify Home Directory</a></li>
-<li><a href="#specify-group">Specify Group</a></li>
-<li><a href="#specify-user-id">Specify User ID</a></li>
-<li><a href="#create-system-user">Create System User</a></li>
-</ul></li>
-<li><a href="#modify-user">Modify User</a>
-<ul>
-<li><a href="#append-supplementary-groups">Append Supplementary Groups</a></li>
-</ul></li>
-<li><a href="#delete-user">Delete User</a>
-<ul>
-<li><a href="#delete-users-without-deleting-related-directories">Delete Users Without Deleting Related Directories</a></li>
-<li><a href="#delete-users-with-related-directories">Delete Users With Related Directories</a></li>
-</ul></li>
-<li><a href="#password-file-integrity-verification">Password File Integrity Verification</a></li>
-<li><a href="#user-password">User Password</a>
-<ul>
-<li><a href="#set-user-password-through-io-input">Set User Password Through IO Input</a></li>
-</ul></li>
-<li><a href="#users-passwords">Users Passwords</a>
-<ul>
-<li><a href="#set-users-passwords-through-io-input">Set Users Passwords Through IO Input</a></li>
-</ul></li>
-<li><a href="#change-shell">Change Shell</a>
-<ul>
-<li><a href="#check-for-available-shells">Check for Available Shells</a></li>
-<li><a href="#change-to-new-shell">Change to New Shell</a></li>
-</ul></li>
-<li><a href="#change-finger">Change Finger</a>
-<ul>
-<li><a href="#change-user-details">Change User Details</a></li>
-</ul></li>
-<li><a href="#change-age">Change Age</a>
-<ul>
-<li><a href="#output-user-account-aging-information">Output User Account Aging Information</a></li>
-</ul></li>
-</ul>
-</nav>
-  </div>
-</div>
-    <div class="post-content">
-      <p>To make it easier to manage users, linux provides some common commands that allow you to add, delete, and modify users in a more standardized way.</p>
+        <nav class="site-navbar">
+          <ul id="menu" class="menu">
+            <li class="menu-item">
+              <a class="menu-item-link" href="/">Home</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/post/">Archives</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/tags/">Tags</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/categories/">Categories</a>
+            </li>
+            <li class="menu-item">
+              <a
+                class="menu-item-link"
+                href="https://ergate.com/"
+                target="_blank"
+                >Visit ERGATE</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </header>
 
-<h1 id="add-user">Add User</h1>
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            <article class="post">
+              <header class="post-header">
+                <h1 class="post-title">
+                  46. User Management - Creation, Modification and Deletion
+                </h1>
 
-<p>With the useradd command, we can create new users.</p>
+                <div class="post-meta">
+                  <span class="post-time"> Mon Mar 18 2019 </span>
+                  <div class="post-category">
+                    <a
+                      href="/categories/linux-administrator-simple-but-profound/"
+                    >
+                      Linux Administrator: Simple But Profound
+                    </a>
+                  </div>
+                  <span class="more-meta"> 2084 words </span>
+                  <span class="more-meta"> 10 mins read </span>
+                </div>
+              </header>
 
-<p>The following are the relevant files or directories that will be involved when creating a user:</p>
+              <div class="post-toc" id="post-toc">
+                <h2 class="post-toc-title">Contents</h2>
+                <div class="post-toc-content always-active">
+                  <nav id="TableOfContents">
+                    <ul>
+                      <li>
+                        <a href="#add-user">Add User</a>
+                        <ul>
+                          <li>
+                            <a href="#specify-user-comment-full-name"
+                              >Specify User Comment (Full Name)</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#specify-home-directory"
+                              >Specify Home Directory</a
+                            >
+                          </li>
+                          <li><a href="#specify-group">Specify Group</a></li>
+                          <li>
+                            <a href="#specify-user-id">Specify User ID</a>
+                          </li>
+                          <li>
+                            <a href="#create-system-user">Create System User</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="#modify-user">Modify User</a>
+                        <ul>
+                          <li>
+                            <a href="#append-supplementary-groups"
+                              >Append Supplementary Groups</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="#delete-user">Delete User</a>
+                        <ul>
+                          <li>
+                            <a
+                              href="#delete-users-without-deleting-related-directories"
+                              >Delete Users Without Deleting Related
+                              Directories</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#delete-users-with-related-directories"
+                              >Delete Users With Related Directories</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="#password-file-integrity-verification"
+                          >Password File Integrity Verification</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#user-password">User Password</a>
+                        <ul>
+                          <li>
+                            <a href="#set-user-password-through-io-input"
+                              >Set User Password Through IO Input</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="#users-passwords">Users Passwords</a>
+                        <ul>
+                          <li>
+                            <a href="#set-users-passwords-through-io-input"
+                              >Set Users Passwords Through IO Input</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="#change-shell">Change Shell</a>
+                        <ul>
+                          <li>
+                            <a href="#check-for-available-shells"
+                              >Check for Available Shells</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#change-to-new-shell"
+                              >Change to New Shell</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="#change-finger">Change Finger</a>
+                        <ul>
+                          <li>
+                            <a href="#change-user-details"
+                              >Change User Details</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="#change-age">Change Age</a>
+                        <ul>
+                          <li>
+                            <a href="#output-user-account-aging-information"
+                              >Output User Account Aging Information</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+              <div class="post-content">
+                <p>
+                  To make it easier to manage users, linux provides some common
+                  commands that allow you to add, delete, and modify users in a
+                  more standardized way.
+                </p>
 
-<table>
-<thead>
-<tr>
-<th align="center">Name</th>
-<th align="left">Type</th>
-<th align="left">Purpose</th>
-<th>Preview</th>
-</tr>
-</thead>
+                <h1 id="add-user">Add User</h1>
 
-<tbody>
-<tr>
-<td align="center">/etc/default/useradd</td>
-<td align="left">File</td>
-<td align="left">Default variables&rsquo; setting file for the useradd command.</td>
-<td><center><img src="../images/46/preview_etc_default_useradd.png" alt="checked" /></center></td>
-</tr>
+                <p>With the useradd command, we can create new users.</p>
 
-<tr>
-<td align="center">/etc/login.defs</td>
-<td align="left">File</td>
-<td align="left">Default variables&rsquo; setting file for the useradd command options.</td>
-<td><center><img src="../images/46/preview_etc_login_defs.png" alt="checked" /></center></td>
-</tr>
+                <p>
+                  The following are the relevant files or directories that will
+                  be involved when creating a user:
+                </p>
 
-<tr>
-<td align="center">/etc/shells</td>
-<td align="left">File</td>
-<td align="left">Available shells for new users.</td>
-<td><center><img src="../images/46/preview_etc_shells.png" alt="checked" /></center></td>
-</tr>
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Name</th>
+                      <th align="left">Type</th>
+                      <th align="left">Purpose</th>
+                      <th>Preview</th>
+                    </tr>
+                  </thead>
 
-<tr>
-<td align="center">/etc/skel/</td>
-<td align="left">Directory</td>
-<td align="left">Initialization profiles for new users.</td>
-<td><center><img src="../images/46/preview_etc_skel.png" alt="checked" /></center></td>
-</tr>
-</tbody>
-</table>
+                  <tbody>
+                    <tr>
+                      <td align="center">/etc/default/useradd</td>
+                      <td align="left">File</td>
+                      <td align="left">
+                        Default variables&rsquo; setting file for the useradd
+                        command.
+                      </td>
+                      <td>
+                        <center>
+                          <img
+                            src="../images/46/preview_etc_default_useradd.png"
+                            alt="checked"
+                          />
+                        </center>
+                      </td>
+                    </tr>
 
-<p>Here are some common options for useradd command:</p>
+                    <tr>
+                      <td align="center">/etc/login.defs</td>
+                      <td align="left">File</td>
+                      <td align="left">
+                        Default variables&rsquo; setting file for the useradd
+                        command options.
+                      </td>
+                      <td>
+                        <center>
+                          <img
+                            src="../images/46/preview_etc_login_defs.png"
+                            alt="checked"
+                          />
+                        </center>
+                      </td>
+                    </tr>
 
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Meaning</th>
-</tr>
-</thead>
+                    <tr>
+                      <td align="center">/etc/shells</td>
+                      <td align="left">File</td>
+                      <td align="left">Available shells for new users.</td>
+                      <td>
+                        <center>
+                          <img
+                            src="../images/46/preview_etc_shells.png"
+                            alt="checked"
+                          />
+                        </center>
+                      </td>
+                    </tr>
 
-<tbody>
-<tr>
-<td align="center">-b or &#8209;&#8209;base-dir</td>
-<td align="left">Specify the user home&rsquo;s base directory, use the value of the HOME variable in /etc/default/useradd if this is not specified.</td>
-</tr>
+                    <tr>
+                      <td align="center">/etc/skel/</td>
+                      <td align="left">Directory</td>
+                      <td align="left">
+                        Initialization profiles for new users.
+                      </td>
+                      <td>
+                        <center>
+                          <img
+                            src="../images/46/preview_etc_skel.png"
+                            alt="checked"
+                          />
+                        </center>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
 
-<tr>
-<td align="center">-c or &#8209;&#8209;comment</td>
-<td align="left">Specify the user&rsquo;s comment, commonly used to hold the full name of the user.</td>
-</tr>
+                <p>Here are some common options for useradd command:</p>
 
-<tr>
-<td align="center">-d or &#8209;&#8209;home-dir</td>
-<td align="left">Specify the user&rsquo;s home directory. The user home&rsquo;s directory will be the value of the HOME variable in the /etc/default/useradd configuration file plus the user&rsquo;s login name if this is not specified.</td>
-</tr>
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Meaning</th>
+                    </tr>
+                  </thead>
 
-<tr>
-<td align="center">-g or &#8209;&#8209;gid</td>
-<td align="left">Specify the user&rsquo;s group. When this is not specified: if the value of the USERGROUPS_ENAB in the /etc/login.defs file is yes, then the user&rsquo;s login name is used as the group name to create a group, or else if the value is no, then use the value of the GROUP variable in the / etc/default/useradd configuration file as the user&rsquo;s group ID.</td>
-</tr>
+                  <tbody>
+                    <tr>
+                      <td align="center">-b or &#8209;&#8209;base-dir</td>
+                      <td align="left">
+                        Specify the user home&rsquo;s base directory, use the
+                        value of the HOME variable in /etc/default/useradd if
+                        this is not specified.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-G or &#8209;&#8209;groups</td>
-<td align="left">Specify the user&rsquo;s supplementary groups.</td>
-</tr>
+                    <tr>
+                      <td align="center">-c or &#8209;&#8209;comment</td>
+                      <td align="left">
+                        Specify the user&rsquo;s comment, commonly used to hold
+                        the full name of the user.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-k or &#8209;&#8209;skel</td>
-<td align="left">Specify a path that contains files and directories to copy to user&rsquo;s home directory. If this option is not specified, the value of the SKEL variable in the /etc/default/useradd configuration file or the /etc/skel directory will be used as the path.</td>
-</tr>
+                    <tr>
+                      <td align="center">-d or &#8209;&#8209;home-dir</td>
+                      <td align="left">
+                        Specify the user&rsquo;s home directory. The user
+                        home&rsquo;s directory will be the value of the HOME
+                        variable in the /etc/default/useradd configuration file
+                        plus the user&rsquo;s login name if this is not
+                        specified.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-m or &#8209;&#8209;create-home</td>
-<td align="left">Create the user&rsquo;s home directory if it doesn&rsquo;t exist. If this option is not specified and the value of the CREATE_HOME variable in the /etc/login.defs configuration file is not set to yes, then the home directory will not be created.</td>
-</tr>
+                    <tr>
+                      <td align="center">-g or &#8209;&#8209;gid</td>
+                      <td align="left">
+                        Specify the user&rsquo;s group. When this is not
+                        specified: if the value of the USERGROUPS_ENAB in the
+                        /etc/login.defs file is yes, then the user&rsquo;s login
+                        name is used as the group name to create a group, or
+                        else if the value is no, then use the value of the GROUP
+                        variable in the / etc/default/useradd configuration file
+                        as the user&rsquo;s group ID.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-M or &#8209;&#8209;no-create-home</td>
-<td align="left">Don&rsquo;t create the user&rsquo;s home directory, this ignores the value of CREATE_HOME variable in the /etc/login.defs</td>
-</tr>
+                    <tr>
+                      <td align="center">-G or &#8209;&#8209;groups</td>
+                      <td align="left">
+                        Specify the user&rsquo;s supplementary groups.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-r or &#8209;&#8209;system</td>
-<td align="left">If this option is specified, the created user is a system user. The system user&rsquo;s id range is between the values of the SYS_UID_MIN and SYS_UID_MAX variables in the /etc/login.defs configuration file. Home directories are not created by default for system users, and you can create home directories by specifying the -m option. The system user is a non-login user, so it does not have login information.</td>
-</tr>
+                    <tr>
+                      <td align="center">-k or &#8209;&#8209;skel</td>
+                      <td align="left">
+                        Specify a path that contains files and directories to
+                        copy to user&rsquo;s home directory. If this option is
+                        not specified, the value of the SKEL variable in the
+                        /etc/default/useradd configuration file or the /etc/skel
+                        directory will be used as the path.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-s or &#8209;&#8209;shell</td>
-<td align="left">Specify the user&rsquo;s login shell. If this option is not specified or the value passed to this option is empty, the user uses the system default login shell.</td>
-</tr>
+                    <tr>
+                      <td align="center">-m or &#8209;&#8209;create-home</td>
+                      <td align="left">
+                        Create the user&rsquo;s home directory if it
+                        doesn&rsquo;t exist. If this option is not specified and
+                        the value of the CREATE_HOME variable in the
+                        /etc/login.defs configuration file is not set to yes,
+                        then the home directory will not be created.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-u or &#8209;&#8209;uid</td>
-<td align="left">Specify the user&rsquo;s ID. The specified value must be greater than or equal to the value of the UID_MIN variable in the /etc/login.defs configuration file and less than or equal to the value of the UID_MAX variable in the same file.</td>
-</tr>
-</tbody>
-</table>
+                    <tr>
+                      <td align="center">-M or &#8209;&#8209;no-create-home</td>
+                      <td align="left">
+                        Don&rsquo;t create the user&rsquo;s home directory, this
+                        ignores the value of CREATE_HOME variable in the
+                        /etc/login.defs
+                      </td>
+                    </tr>
 
-<p>The ID of the new user created by default by the useradd command is the value of the last user ID plus 1, followed by the creation of a group with the same name as the user:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                    <tr>
+                      <td align="center">-r or &#8209;&#8209;system</td>
+                      <td align="left">
+                        If this option is specified, the created user is a
+                        system user. The system user&rsquo;s id range is between
+                        the values of the SYS_UID_MIN and SYS_UID_MAX variables
+                        in the /etc/login.defs configuration file. Home
+                        directories are not created by default for system users,
+                        and you can create home directories by specifying the -m
+                        option. The system user is a non-login user, so it does
+                        not have login information.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-s or &#8209;&#8209;shell</td>
+                      <td align="left">
+                        Specify the user&rsquo;s login shell. If this option is
+                        not specified or the value passed to this option is
+                        empty, the user uses the system default login shell.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td align="center">-u or &#8209;&#8209;uid</td>
+                      <td align="left">
+                        Specify the user&rsquo;s ID. The specified value must be
+                        greater than or equal to the value of the UID_MIN
+                        variable in the /etc/login.defs configuration file and
+                        less than or equal to the value of the UID_MAX variable
+                        in the same file.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>
+                  The ID of the new user created by default by the useradd
+                  command is the value of the last user ID plus 1, followed by
+                  the creation of a group with the same name as the user:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">useradd dong
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">useradd dong
 tail -1 /etc/group
 tail -1 /etc/passwd
 tail -1 /etc/shadow
-ll /home <span class="p">|</span> grep <span class="s1">&#39;dong&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/46/useradd_user_tail_etc_group_passwd_shadow_ll_home.png"
-         alt="img"/> <figcaption>
-            <h4>Output the last created user&#39;s details in the group, passwd and shadow files</h4>
-        </figcaption>
-</figure>
+ll /home <span class="p">|</span> grep <span class="s1">&#39;dong&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/46/useradd_user_tail_etc_group_passwd_shadow_ll_home.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>
+                      Output the last created user&#39;s details in the group,
+                      passwd and shadow files
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="specify-user-comment-full-name">Specify User Comment (Full Name)</h2>
+                <h2 id="specify-user-comment-full-name">
+                  Specify User Comment (Full Name)
+                </h2>
 
-<p>With the -c option, we can specify comment for the user:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <p>With the -c option, we can specify comment for the user:</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">useradd -c <span class="s1">&#39;Dong Chen&#39;</span> dong_comment
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">useradd -c <span class="s1">&#39;Dong Chen&#39;</span> dong_comment
 tail -1 /etc/group
 tail -1 /etc/passwd
 tail -1 /etc/shadow
-ll /home <span class="p">|</span> grep <span class="s1">&#39;dong_comment&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/46/useradd_c_user_tail_etc_group_tail_etc_passwd_shadow_ll_home.png"
-         alt="img"/> <figcaption>
-            <h4>Output the last created custom comment user&#39;s details in the group, passwd and shadow files</h4>
-        </figcaption>
-</figure>
+ll /home <span class="p">|</span> grep <span class="s1">&#39;dong_comment&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/46/useradd_c_user_tail_etc_group_tail_etc_passwd_shadow_ll_home.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>
+                      Output the last created custom comment user&#39;s details
+                      in the group, passwd and shadow files
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="specify-home-directory">Specify Home Directory</h2>
+                <h2 id="specify-home-directory">Specify Home Directory</h2>
 
-<p>With the -d option, we can specify the user&rsquo;s home directory:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <p>
+                  With the -d option, we can specify the user&rsquo;s home
+                  directory:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">useradd -d /home/dong_home_dir dong_home
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">useradd -d /home/dong_home_dir dong_home
 tail -1 /etc/group
 tail -1 /etc/passwd
 tail -1 /etc/shadow
-ll /home <span class="p">|</span> grep <span class="s1">&#39;dong_home_dir&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/46/useradd_d_user_tail_etc_group_passwd_shadow_ll_home.png"
-         alt="img"/> <figcaption>
-            <h4>Output the last created custom home directory user&#39;s details in the group, passwd and shadow files. The user&#39;s directory is different with the login name</h4>
-        </figcaption>
-</figure>
+ll /home <span class="p">|</span> grep <span class="s1">&#39;dong_home_dir&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/46/useradd_d_user_tail_etc_group_passwd_shadow_ll_home.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>
+                      Output the last created custom home directory user&#39;s
+                      details in the group, passwd and shadow files. The
+                      user&#39;s directory is different with the login name
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="specify-group">Specify Group</h2>
+                <h2 id="specify-group">Specify Group</h2>
 
-<p>With the -g option, we can specify the user&rsquo;s group:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <p>
+                  With the -g option, we can specify the user&rsquo;s group:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">useradd -g dongs_group dong_group
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">useradd -g dongs_group dong_group
 tail -1 /etc/group
 tail -1 /etc/passwd
 tail -1 /etc/shadow
-ll /home <span class="p">|</span> grep <span class="s1">&#39;dong_group&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/46/useradd_g_user_tail_etc_group_passwd_shadow_ll_home.png"
-         alt="img"/> <figcaption>
-            <h4>Output the last created custom group user&#39;s details in the group, passwd and shadow files. The user is assigned to an existing group, so no new group created</h4>
-        </figcaption>
-</figure>
+ll /home <span class="p">|</span> grep <span class="s1">&#39;dong_group&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/46/useradd_g_user_tail_etc_group_passwd_shadow_ll_home.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>
+                      Output the last created custom group user&#39;s details in
+                      the group, passwd and shadow files. The user is assigned
+                      to an existing group, so no new group created
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="specify-user-id">Specify User ID</h2>
+                <h2 id="specify-user-id">Specify User ID</h2>
 
-<p>With the -u option, we can specify the user&rsquo;s ID:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <p>With the -u option, we can specify the user&rsquo;s ID:</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">useradd -u <span class="m">1100</span> dong_id
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">useradd -u <span class="m">1100</span> dong_id
 tail -1 /etc/group
 tail -1 /etc/passwd
 tail -1 /etc/shadow
-ll /home <span class="p">|</span> grep <span class="s1">&#39;dong_id&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/46/useradd_u_user_tail_etc_group_passwd_shadow_ll_home.png"
-         alt="img"/> <figcaption>
-            <h4>Output the last created custom ID user&#39;s details in the group, passwd and shadow files. The user&#39;s ID and group ID are both 1100</h4>
-        </figcaption>
-</figure>
+ll /home <span class="p">|</span> grep <span class="s1">&#39;dong_id&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/46/useradd_u_user_tail_etc_group_passwd_shadow_ll_home.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>
+                      Output the last created custom ID user&#39;s details in
+                      the group, passwd and shadow files. The user&#39;s ID and
+                      group ID are both 1100
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="create-system-user">Create System User</h2>
+                <h2 id="create-system-user">Create System User</h2>
 
-<p>With the -r option, we can create a system user:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <p>With the -r option, we can create a system user:</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">useradd -r dong_system
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">useradd -r dong_system
 tail -1 /etc/group
 tail -1 /etc/passwd
 tail -1 /etc/shadow
-ll /home <span class="p">|</span> grep <span class="s1">&#39;dong_system&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/46/useradd_r_user_tail_etc_group_passwd_shadow_ll_home.png"
-         alt="img"/> <figcaption>
-            <h4>Output the last created system user&#39;s details in the group, passwd and shadow files. The user doesn&#39;t have home directory and login capability</h4>
-        </figcaption>
-</figure>
+ll /home <span class="p">|</span> grep <span class="s1">&#39;dong_system&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/46/useradd_r_user_tail_etc_group_passwd_shadow_ll_home.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>
+                      Output the last created system user&#39;s details in the
+                      group, passwd and shadow files. The user doesn&#39;t have
+                      home directory and login capability
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h1 id="modify-user">Modify User</h1>
+                <h1 id="modify-user">Modify User</h1>
 
-<p>We can change the user&rsquo;s information through the usermod command.</p>
+                <p>
+                  We can change the user&rsquo;s information through the usermod
+                  command.
+                </p>
 
-<p>Here are some common options for usermod command:</p>
+                <p>Here are some common options for usermod command:</p>
 
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Meaning</th>
-</tr>
-</thead>
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Meaning</th>
+                    </tr>
+                  </thead>
 
-<tbody>
-<tr>
-<td align="center">-a or &#8209;&#8209;append</td>
-<td align="left">Used in conjunction with the -G option, if used, retains the user&rsquo;s previous supplementary groups.</td>
-</tr>
+                  <tbody>
+                    <tr>
+                      <td align="center">-a or &#8209;&#8209;append</td>
+                      <td align="left">
+                        Used in conjunction with the -G option, if used, retains
+                        the user&rsquo;s previous supplementary groups.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-c or &#8209;&#8209;comment</td>
-<td align="left">Specify the user&rsquo;s new comment, that is, the full name of the user.</td>
-</tr>
+                    <tr>
+                      <td align="center">-c or &#8209;&#8209;comment</td>
+                      <td align="left">
+                        Specify the user&rsquo;s new comment, that is, the full
+                        name of the user.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-d or &#8209;&#8209;home</td>
-<td align="left">Specify the user&rsquo;s new home directory.</td>
-</tr>
+                    <tr>
+                      <td align="center">-d or &#8209;&#8209;home</td>
+                      <td align="left">
+                        Specify the user&rsquo;s new home directory.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-e or &#8209;&#8209;expiredate</td>
-<td align="left">Specify the user&rsquo;s expiration date. Commonly used to specify a value of 1 to disable a user.</td>
-</tr>
+                    <tr>
+                      <td align="center">-e or &#8209;&#8209;expiredate</td>
+                      <td align="left">
+                        Specify the user&rsquo;s expiration date. Commonly used
+                        to specify a value of 1 to disable a user.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-g or &#8209;&#8209;gid</td>
-<td align="left">Specify the user&rsquo;s new group, which replaces the previous user group&rsquo;s ownership of all files in the user&rsquo;s home directory.</td>
-</tr>
+                    <tr>
+                      <td align="center">-g or &#8209;&#8209;gid</td>
+                      <td align="left">
+                        Specify the user&rsquo;s new group, which replaces the
+                        previous user group&rsquo;s ownership of all files in
+                        the user&rsquo;s home directory.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-G or &#8209;&#8209;groups</td>
-<td align="left">Specify the user&rsquo;s new supplementary groups. Adding the -a option preserves the previous supplementary groups.</td>
-</tr>
+                    <tr>
+                      <td align="center">-G or &#8209;&#8209;groups</td>
+                      <td align="left">
+                        Specify the user&rsquo;s new supplementary groups.
+                        Adding the -a option preserves the previous
+                        supplementary groups.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-l or &#8209;&#8209;login</td>
-<td align="left">Specify the user&rsquo;s new login name.</td>
-</tr>
+                    <tr>
+                      <td align="center">-l or &#8209;&#8209;login</td>
+                      <td align="left">
+                        Specify the user&rsquo;s new login name.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-L or &#8209;&#8209;lock</td>
-<td align="left">Lock the specified user.</td>
-</tr>
+                    <tr>
+                      <td align="center">-L or &#8209;&#8209;lock</td>
+                      <td align="left">Lock the specified user.</td>
+                    </tr>
 
-<tr>
-<td align="center">-m or &#8209;&#8209;move-home</td>
-<td align="left">Move the contents of the previous home directory to the new home directory; this option can only be used with the -d option.</td>
-</tr>
+                    <tr>
+                      <td align="center">-m or &#8209;&#8209;move-home</td>
+                      <td align="left">
+                        Move the contents of the previous home directory to the
+                        new home directory; this option can only be used with
+                        the -d option.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-s or &#8209;&#8209;shell</td>
-<td align="left">Specify the user&rsquo;s new login shell. If the value passed to this option is empty, the user uses the system default login shell.</td>
-</tr>
+                    <tr>
+                      <td align="center">-s or &#8209;&#8209;shell</td>
+                      <td align="left">
+                        Specify the user&rsquo;s new login shell. If the value
+                        passed to this option is empty, the user uses the system
+                        default login shell.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-u or &#8209;&#8209;uid</td>
-<td align="left">Specify the user&rsquo;s new ID.</td>
-</tr>
+                    <tr>
+                      <td align="center">-u or &#8209;&#8209;uid</td>
+                      <td align="left">Specify the user&rsquo;s new ID.</td>
+                    </tr>
 
-<tr>
-<td align="center">-U or &#8209;&#8209;unlock</td>
-<td align="left">Unlock the specified user.</td>
-</tr>
-</tbody>
-</table>
+                    <tr>
+                      <td align="center">-U or &#8209;&#8209;unlock</td>
+                      <td align="left">Unlock the specified user.</td>
+                    </tr>
+                  </tbody>
+                </table>
 
-<h2 id="append-supplementary-groups">Append Supplementary Groups</h2>
+                <h2 id="append-supplementary-groups">
+                  Append Supplementary Groups
+                </h2>
 
-<p>With the combination of -a and -G options, we can append more supplementary groups to the user:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <p>
+                  With the combination of -a and -G options, we can append more
+                  supplementary groups to the user:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">id dong_group
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">id dong_group
 usermod -a -G dongs_another_group dong_group
-id dong_group</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/46/id_usermod_id.png"
-         alt="img"/> <figcaption>
-            <h4>Output the user&#39;s id and group ids before and after the supplementary group appendant</h4>
-        </figcaption>
-</figure>
+id dong_group</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/46/id_usermod_id.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Output the user&#39;s id and group ids before and after
+                      the supplementary group appendant
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h1 id="delete-user">Delete User</h1>
+                <h1 id="delete-user">Delete User</h1>
 
-<p>We can delete users through the userdel command.</p>
+                <p>We can delete users through the userdel command.</p>
 
-<p>Here are some common options for userdel command:</p>
+                <p>Here are some common options for userdel command:</p>
 
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Meaning</th>
-</tr>
-</thead>
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Meaning</th>
+                    </tr>
+                  </thead>
 
-<tbody>
-<tr>
-<td align="center">-r or &#8209;&#8209;remove</td>
-<td align="left">If this option is not specified, the user&rsquo;s home directory and mail spool directory are not deleted.</td>
-</tr>
-</tbody>
-</table>
+                  <tbody>
+                    <tr>
+                      <td align="center">-r or &#8209;&#8209;remove</td>
+                      <td align="left">
+                        If this option is not specified, the user&rsquo;s home
+                        directory and mail spool directory are not deleted.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
 
-<h2 id="delete-users-without-deleting-related-directories">Delete Users Without Deleting Related Directories</h2>
+                <h2 id="delete-users-without-deleting-related-directories">
+                  Delete Users Without Deleting Related Directories
+                </h2>
 
-<p>By default, the userdel command preserves home and mailbox directories when deleting a user:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <p>
+                  By default, the userdel command preserves home and mailbox
+                  directories when deleting a user:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">useradd user_surplus
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">useradd user_surplus
 id user_surplus
 userdel user_surplus
 id user_surplus
-ll /home <span class="p">|</span> grep <span class="s1">&#39;user_surplus&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/46/useradd_id_userdel_id_ll_home.png"
-         alt="img"/> <figcaption>
-            <h4>Output the user&#39;s id and group ids before and after the deletion of the newly created user. The deleted user&#39;s home directory is retained</h4>
-        </figcaption>
-</figure>
+ll /home <span class="p">|</span> grep <span class="s1">&#39;user_surplus&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/46/useradd_id_userdel_id_ll_home.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>
+                      Output the user&#39;s id and group ids before and after
+                      the deletion of the newly created user. The deleted
+                      user&#39;s home directory is retained
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="delete-users-with-related-directories">Delete Users With Related Directories</h2>
+                <h2 id="delete-users-with-related-directories">
+                  Delete Users With Related Directories
+                </h2>
 
-<p>With the -r option, the user&rsquo;s home directory and mailbox directory are also deleted:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <p>
+                  With the -r option, the user&rsquo;s home directory and
+                  mailbox directory are also deleted:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">useradd user_surplus2
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">useradd user_surplus2
 id user_surplus2
 userdel -r user_surplus2
 id user_surplus2
-ll /home <span class="p">|</span> grep <span class="s1">&#39;user_surplus2&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/46/useradd_id_userdel_r_id_ll_home.png"
-         alt="img"/> <figcaption>
-            <h4>Output the user&#39;s id and group ids before and after the deletion of the newly created user. The user&#39;s home directory is also deleted</h4>
-        </figcaption>
-</figure>
+ll /home <span class="p">|</span> grep <span class="s1">&#39;user_surplus2&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/46/useradd_id_userdel_r_id_ll_home.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>
+                      Output the user&#39;s id and group ids before and after
+                      the deletion of the newly created user. The user&#39;s
+                      home directory is also deleted
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h1 id="password-file-integrity-verification">Password File Integrity Verification</h1>
+                <h1 id="password-file-integrity-verification">
+                  Password File Integrity Verification
+                </h1>
 
-<p>We can use pwck command to check the integrity of user accounts:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">pwck</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/46/pwck.png"
-         alt="img"/> <figcaption>
-            <h4>Output the result of the password files integrity verification</h4>
-        </figcaption>
-</figure>
+                <p>
+                  We can use pwck command to check the integrity of user
+                  accounts:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">pwck</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/46/pwck.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Output the result of the password files integrity
+                      verification
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h1 id="user-password">User Password</h1>
+                <h1 id="user-password">User Password</h1>
 
-<p>We can use the passwd command to specify or change the user&rsquo;s login password.</p>
+                <p>
+                  We can use the passwd command to specify or change the
+                  user&rsquo;s login password.
+                </p>
 
-<p>Here are some common options for passwd command:</p>
+                <p>Here are some common options for passwd command:</p>
 
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Meaning</th>
-</tr>
-</thead>
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Meaning</th>
+                    </tr>
+                  </thead>
 
-<tbody>
-<tr>
-<td align="center">&#8209;&#8209;stdin</td>
-<td align="left">Get the new password from the standard IO input.</td>
-</tr>
+                  <tbody>
+                    <tr>
+                      <td align="center">&#8209;&#8209;stdin</td>
+                      <td align="left">
+                        Get the new password from the standard IO input.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-d or &#8209;&#8209;delete</td>
-<td align="left">Delete the user&rsquo;s password.</td>
-</tr>
+                    <tr>
+                      <td align="center">-d or &#8209;&#8209;delete</td>
+                      <td align="left">Delete the user&rsquo;s password.</td>
+                    </tr>
 
-<tr>
-<td align="center">-e or &#8209;&#8209;expire</td>
-<td align="left">Expire the user&rsquo;s password. The next time the user logs in, a new password needs to be specified.</td>
-</tr>
+                    <tr>
+                      <td align="center">-e or &#8209;&#8209;expire</td>
+                      <td align="left">
+                        Expire the user&rsquo;s password. The next time the user
+                        logs in, a new password needs to be specified.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-l or &#8209;&#8209;lock</td>
-<td align="left">Lock the user&rsquo;s password. This is not valid for logging in via SSH Key.</td>
-</tr>
+                    <tr>
+                      <td align="center">-l or &#8209;&#8209;lock</td>
+                      <td align="left">
+                        Lock the user&rsquo;s password. This is not valid for
+                        logging in via SSH Key.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-u or &#8209;&#8209;unlock</td>
-<td align="left">Unlock the user&rsquo;s password.</td>
-</tr>
-</tbody>
-</table>
+                    <tr>
+                      <td align="center">-u or &#8209;&#8209;unlock</td>
+                      <td align="left">Unlock the user&rsquo;s password.</td>
+                    </tr>
+                  </tbody>
+                </table>
 
-<h2 id="set-user-password-through-io-input">Set User Password Through IO Input</h2>
+                <h2 id="set-user-password-through-io-input">
+                  Set User Password Through IO Input
+                </h2>
 
-<p>With the &#8209;&#8209;stdin option, the passwd command gets the data from the IO input as the password:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <p>
+                  With the &#8209;&#8209;stdin option, the passwd command gets
+                  the data from the IO input as the password:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">cat /etc/shadow <span class="p">|</span> grep <span class="s1">&#39;dong:&#39;</span>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">cat /etc/shadow <span class="p">|</span> grep <span class="s1">&#39;dong:&#39;</span>
 <span class="nb">echo</span> <span class="s2">&#34;dongspwd&#34;</span> <span class="p">|</span> passwd --stdin dong
-cat /etc/shadow <span class="p">|</span> grep <span class="s1">&#39;dong:&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/46/cat_etc_shadow_echo_passwd_cat_etc_shadow.png"
-         alt="img"/> <figcaption>
-            <h4>Output the shadow file before and after the user&#39;s password modification</h4>
-        </figcaption>
-</figure>
+cat /etc/shadow <span class="p">|</span> grep <span class="s1">&#39;dong:&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/46/cat_etc_shadow_echo_passwd_cat_etc_shadow.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>
+                      Output the shadow file before and after the user&#39;s
+                      password modification
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h1 id="users-passwords">Users Passwords</h1>
+                <h1 id="users-passwords">Users Passwords</h1>
 
-<p>We can use the chpasswd command to specify or change the users&rsquo; login passwords.</p>
+                <p>
+                  We can use the chpasswd command to specify or change the
+                  users&rsquo; login passwords.
+                </p>
 
-<p>Here are some common options for chpasswd command:</p>
+                <p>Here are some common options for chpasswd command:</p>
 
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Meaning</th>
-</tr>
-</thead>
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Meaning</th>
+                    </tr>
+                  </thead>
 
-<tbody>
-<tr>
-<td align="center">-c or &#8209;&#8209;crypt-method</td>
-<td align="left">Use a method to encrypt the password. Algorithms such as DES, MD5, NONE, SHA256, SHA512 can be used, if they exist in libc.</td>
-</tr>
+                  <tbody>
+                    <tr>
+                      <td align="center">-c or &#8209;&#8209;crypt-method</td>
+                      <td align="left">
+                        Use a method to encrypt the password. Algorithms such as
+                        DES, MD5, NONE, SHA256, SHA512 can be used, if they
+                        exist in libc.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-s or &#8209;&#8209;sha-rounds</td>
-<td align="left">By default, the system uses 5000 rounds to encrypt the password. We can specify a value between 1000 and 999999999.</td>
-</tr>
-</tbody>
-</table>
+                    <tr>
+                      <td align="center">-s or &#8209;&#8209;sha-rounds</td>
+                      <td align="left">
+                        By default, the system uses 5000 rounds to encrypt the
+                        password. We can specify a value between 1000 and
+                        999999999.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
 
-<h2 id="set-users-passwords-through-io-input">Set Users Passwords Through IO Input</h2>
+                <h2 id="set-users-passwords-through-io-input">
+                  Set Users Passwords Through IO Input
+                </h2>
 
-<p>Let&rsquo;s first remove dong&rsquo;s password:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <p>Let&rsquo;s first remove dong&rsquo;s password:</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">passwd -d dong
-cat /etc/shadow <span class="p">|</span> grep <span class="s1">&#39;dong:&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/46/passwd_d_dong_cat_shadow.png"
-         alt="img"/> <figcaption>
-            <h4>Dong&#39;s password has been removed</h4>
-        </figcaption>
-</figure>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">passwd -d dong
+cat /etc/shadow <span class="p">|</span> grep <span class="s1">&#39;dong:&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/46/passwd_d_dong_cat_shadow.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>Dong&#39;s password has been removed</h4>
+                  </figcaption>
+                </figure>
 
-<p>We use the chpasswd command to bulk change the users&rsquo; passwords:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <p>
+                  We use the chpasswd command to bulk change the users&rsquo;
+                  passwords:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">cat /etc/shadow <span class="p">|</span> grep -E <span class="s1">&#39;dong:|dongchen:&#39;</span>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">cat /etc/shadow <span class="p">|</span> grep -E <span class="s1">&#39;dong:|dongchen:&#39;</span>
 <span class="nb">printf</span> <span class="s1">&#39;%s\n&#39;</span> <span class="s1">&#39;dong:dong123&#39;</span> <span class="s1">&#39;dongchen:chen123&#39;</span> <span class="p">|</span> chpasswd
-cat /etc/shadow <span class="p">|</span> grep -E <span class="s1">&#39;dong:|dongchen:&#39;</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/46/cat_shadow_printf_strings_chpasswd_cat_shadow.png"
-         alt="img"/> <figcaption>
-            <h4>Assign passwords to dong and dongchen individually</h4>
-        </figcaption>
-</figure>
+cat /etc/shadow <span class="p">|</span> grep -E <span class="s1">&#39;dong:|dongchen:&#39;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/46/cat_shadow_printf_strings_chpasswd_cat_shadow.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>Assign passwords to dong and dongchen individually</h4>
+                  </figcaption>
+                </figure>
 
-<h1 id="change-shell">Change Shell</h1>
+                <h1 id="change-shell">Change Shell</h1>
 
-<p>We can use the chsh command to change the user&rsquo;s login shell.</p>
+                <p>
+                  We can use the chsh command to change the user&rsquo;s login
+                  shell.
+                </p>
 
-<p>Here are some common options for chsh command:</p>
+                <p>Here are some common options for chsh command:</p>
 
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Meaning</th>
-</tr>
-</thead>
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Meaning</th>
+                    </tr>
+                  </thead>
 
-<tbody>
-<tr>
-<td align="center">-l or &#8209;&#8209;list-shells</td>
-<td align="left">Output the list of the shells listed in /etc/shells file</td>
-</tr>
+                  <tbody>
+                    <tr>
+                      <td align="center">-l or &#8209;&#8209;list-shells</td>
+                      <td align="left">
+                        Output the list of the shells listed in /etc/shells file
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-s or &#8209;&#8209;shell</td>
-<td align="left">Specify the user&rsquo;s login shell.</td>
-</tr>
-</tbody>
-</table>
+                    <tr>
+                      <td align="center">-s or &#8209;&#8209;shell</td>
+                      <td align="left">
+                        Specify the user&rsquo;s login shell.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
 
-<h2 id="check-for-available-shells">Check for Available Shells</h2>
+                <h2 id="check-for-available-shells">
+                  Check for Available Shells
+                </h2>
 
-<p>With the -l option, we can view the available login shells:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">chsh -l    <span class="c1"># This is equivalent to chsh --list-shells</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/46/chsh_l.png"
-         alt="img"/> <figcaption>
-            <h4>Output available login shells</h4>
-        </figcaption>
-</figure>
+                <p>
+                  With the -l option, we can view the available login shells:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">chsh -l    <span class="c1"># This is equivalent to chsh --list-shells</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/46/chsh_l.png" alt="img" />
+                  <figcaption>
+                    <h4>Output available login shells</h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="change-to-new-shell">Change to New Shell</h2>
+                <h2 id="change-to-new-shell">Change to New Shell</h2>
 
-<p>With the -s option, we can assign a login shell to the user:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <p>
+                  With the -s option, we can assign a login shell to the user:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">useradd dongchen
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">useradd dongchen
 finger dongchen
 chsh -s /bin/sh dongchen
-finger dongchen</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/46/useradd_finger_chsh_s_finger.png"
-         alt="img"/> <figcaption>
-            <h4>Output the newly created user&#39;s details before and after the login shell modification</h4>
-        </figcaption>
-</figure>
+finger dongchen</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/46/useradd_finger_chsh_s_finger.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>
+                      Output the newly created user&#39;s details before and
+                      after the login shell modification
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h1 id="change-finger">Change Finger</h1>
+                <h1 id="change-finger">Change Finger</h1>
 
-<p>With the chfn command, we can change user details.</p>
+                <p>With the chfn command, we can change user details.</p>
 
-<p>Here are some common options for chfn command:</p>
+                <p>Here are some common options for chfn command:</p>
 
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Meaning</th>
-</tr>
-</thead>
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Meaning</th>
+                    </tr>
+                  </thead>
 
-<tbody>
-<tr>
-<td align="center">-f or &#8209;&#8209;full-name</td>
-<td align="left">Specify the user&rsquo;s full name.</td>
-</tr>
+                  <tbody>
+                    <tr>
+                      <td align="center">-f or &#8209;&#8209;full-name</td>
+                      <td align="left">Specify the user&rsquo;s full name.</td>
+                    </tr>
 
-<tr>
-<td align="center">-o or &#8209;&#8209;office</td>
-<td align="left">Specify the user&rsquo;s office room number.</td>
-</tr>
+                    <tr>
+                      <td align="center">-o or &#8209;&#8209;office</td>
+                      <td align="left">
+                        Specify the user&rsquo;s office room number.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-p or &#8209;&#8209;office-phone</td>
-<td align="left">Specify the user&rsquo;s office phone number.</td>
-</tr>
+                    <tr>
+                      <td align="center">-p or &#8209;&#8209;office-phone</td>
+                      <td align="left">
+                        Specify the user&rsquo;s office phone number.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-h or &#8209;&#8209;home-phone</td>
-<td align="left">Specify the user&rsquo;s home phone number.</td>
-</tr>
-</tbody>
-</table>
+                    <tr>
+                      <td align="center">-h or &#8209;&#8209;home-phone</td>
+                      <td align="left">
+                        Specify the user&rsquo;s home phone number.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
 
-<h2 id="change-user-details">Change User Details</h2>
+                <h2 id="change-user-details">Change User Details</h2>
 
-<p>With the -f option, we can change the user&rsquo;s basic information:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <p>
+                  With the -f option, we can change the user&rsquo;s basic
+                  information:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">finger dongchen
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">finger dongchen
 chfn -f <span class="s1">&#39;Dong Chen&#39;</span> -o <span class="m">1024</span> -p <span class="m">12345678</span> -h <span class="m">87654321</span> dongchen
-finger dongchen</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/46/finger_chfn_f_finger.png"
-         alt="img"/> <figcaption>
-            <h4>Output the user&#39;s details before and after the user details modification</h4>
-        </figcaption>
-</figure>
+finger dongchen</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/46/finger_chfn_f_finger.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Output the user&#39;s details before and after the user
+                      details modification
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h1 id="change-age">Change Age</h1>
+                <h1 id="change-age">Change Age</h1>
 
-<p>With the chage command, we can change user password expiration information.</p>
+                <p>
+                  With the chage command, we can change user password expiration
+                  information.
+                </p>
 
-<p>Here are some common options for chage command:</p>
+                <p>Here are some common options for chage command:</p>
 
-<table>
-<thead>
-<tr>
-<th align="center">Option</th>
-<th align="left">Meaning</th>
-</tr>
-</thead>
+                <table>
+                  <thead>
+                    <tr>
+                      <th align="center">Option</th>
+                      <th align="left">Meaning</th>
+                    </tr>
+                  </thead>
 
-<tbody>
-<tr>
-<td align="center">-d or &#8209;&#8209;lastday</td>
-<td align="left">Specifies the date on which the password was last modified.</td>
-</tr>
+                  <tbody>
+                    <tr>
+                      <td align="center">-d or &#8209;&#8209;lastday</td>
+                      <td align="left">
+                        Specifies the date on which the password was last
+                        modified.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-E or &#8209;&#8209;expiredate</td>
-<td align="left">Specifies the expiration date of the password.</td>
-</tr>
+                    <tr>
+                      <td align="center">-E or &#8209;&#8209;expiredate</td>
+                      <td align="left">
+                        Specifies the expiration date of the password.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-I or &#8209;&#8209;inactive</td>
-<td align="left">Specifies the number of days that you can log in after the password expires.</td>
-</tr>
+                    <tr>
+                      <td align="center">-I or &#8209;&#8209;inactive</td>
+                      <td align="left">
+                        Specifies the number of days that you can log in after
+                        the password expires.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-l or &#8209;&#8209;list</td>
-<td align="left">Output the user account&rsquo;s aging information.</td>
-</tr>
+                    <tr>
+                      <td align="center">-l or &#8209;&#8209;list</td>
+                      <td align="left">
+                        Output the user account&rsquo;s aging information.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-m or &#8209;&#8209;mindays</td>
-<td align="left">Specifies the minimum number of days that can be used after password modification.</td>
-</tr>
+                    <tr>
+                      <td align="center">-m or &#8209;&#8209;mindays</td>
+                      <td align="left">
+                        Specifies the minimum number of days that can be used
+                        after password modification.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-M or &#8209;&#8209;maxdays</td>
-<td align="left">Specifies the maximum number of days that can be used after password modification.</td>
-</tr>
+                    <tr>
+                      <td align="center">-M or &#8209;&#8209;maxdays</td>
+                      <td align="left">
+                        Specifies the maximum number of days that can be used
+                        after password modification.
+                      </td>
+                    </tr>
 
-<tr>
-<td align="center">-W or &#8209;&#8209;warndays</td>
-<td align="left">Specifies the number of days to alert the user if the password needs to be modified.</td>
-</tr>
-</tbody>
-</table>
+                    <tr>
+                      <td align="center">-W or &#8209;&#8209;warndays</td>
+                      <td align="left">
+                        Specifies the number of days to alert the user if the
+                        password needs to be modified.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
 
-<h2 id="output-user-account-aging-information">Output User Account Aging Information</h2>
+                <h2 id="output-user-account-aging-information">
+                  Output User Account Aging Information
+                </h2>
 
-<p>With the -l option, we can view the aging information for the user&rsquo;s account:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">chage -l dongchen</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/46/chage_l.png"
-         alt="img"/> <figcaption>
-            <h4>Output the user account&#39;s aging information</h4>
-        </figcaption>
-</figure>
+                <p>
+                  With the -l option, we can view the aging information for the
+                  user&rsquo;s account:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">chage -l dongchen</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/46/chage_l.png" alt="img" />
+                  <figcaption>
+                    <h4>Output the user account&#39;s aging information</h4>
+                  </figcaption>
+                </figure>
 
-<blockquote>
-<p>References
-<a href="http://man7.org/linux/man-pages/man8/useradd.8.html">USERADD(8)</a>,
-<a href="http://man7.org/linux/man-pages/man8/usermod.8.html">USERMOD(8)</a>,
-<a href="http://man7.org/linux/man-pages/man8/userdel.8.html">USERDEL(8)</a>,
-<a href="http://man7.org/linux/man-pages/man8/pwck.8.html">PWCK(8)</a>,
-<a href="http://man7.org/linux/man-pages/man1/passwd.1.html">PASSWD(1)</a>,
-<a href="http://man7.org/linux/man-pages/man8/chpasswd.8.html">CHPASSWD(8)</a>,
-<a href="http://man7.org/linux/man-pages/man1/chsh.1.html">CHSH(1)</a>,
-<a href="http://man7.org/linux/man-pages/man1/chfn.1.html">CHFN(1)</a>,
-<a href="http://man7.org/linux/man-pages/man1/chage.1.html">CHAGE(1)</a></p>
-</blockquote>
+                <blockquote>
+                  <p>
+                    References
+                    <a
+                      href="http://man7.org/linux/man-pages/man8/useradd.8.html"
+                      >USERADD(8)</a
+                    >,
+                    <a
+                      href="http://man7.org/linux/man-pages/man8/usermod.8.html"
+                      >USERMOD(8)</a
+                    >,
+                    <a
+                      href="http://man7.org/linux/man-pages/man8/userdel.8.html"
+                      >USERDEL(8)</a
+                    >,
+                    <a href="http://man7.org/linux/man-pages/man8/pwck.8.html"
+                      >PWCK(8)</a
+                    >,
+                    <a href="http://man7.org/linux/man-pages/man1/passwd.1.html"
+                      >PASSWD(1)</a
+                    >,
+                    <a
+                      href="http://man7.org/linux/man-pages/man8/chpasswd.8.html"
+                      >CHPASSWD(8)</a
+                    >,
+                    <a href="http://man7.org/linux/man-pages/man1/chsh.1.html"
+                      >CHSH(1)</a
+                    >,
+                    <a href="http://man7.org/linux/man-pages/man1/chfn.1.html"
+                      >CHFN(1)</a
+                    >,
+                    <a href="http://man7.org/linux/man-pages/man1/chage.1.html"
+                      >CHAGE(1)</a
+                    >
+                  </p>
+                </blockquote>
 
-<!-- Buy Me a Coffee Button -->
+                <!-- Buy Me a Coffee Button -->
 
-<p class="align-center">
-  <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/PFou9WhLr"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
-</p>
-    </div>
+                <p class="align-center">
+                  <style>
+                    .bmc-button img {
+                      width: 27px !important;
+                      margin-bottom: 1px !important;
+                      box-shadow: none !important;
+                      border: none !important;
+                      vertical-align: middle !important;
+                    }
+                    .bmc-button {
+                      line-height: 36px !important;
+                      height: 37px !important;
+                      text-decoration: none !important;
+                      display: inline-flex !important;
+                      color: #ffffff !important;
+                      background-color: #ff813f !important;
+                      border-radius: 3px !important;
+                      border: 1px solid transparent !important;
+                      padding: 1px 9px !important;
+                      font-size: 22px !important;
+                      letter-spacing: 0.6px !important;
+                      box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;
+                      -webkit-box-shadow: 0px 1px 2px 2px
+                        rgba(190, 190, 190, 0.5) !important;
+                      margin: 0 auto !important;
+                      font-family: "Cookie", cursive !important;
+                      -webkit-box-sizing: border-box !important;
+                      box-sizing: border-box !important;
+                      -o-transition: 0.3s all linear !important;
+                      -webkit-transition: 0.3s all linear !important;
+                      -moz-transition: 0.3s all linear !important;
+                      -ms-transition: 0.3s all linear !important;
+                      transition: 0.3s all linear !important;
+                    }
+                    .bmc-button:hover,
+                    .bmc-button:active,
+                    .bmc-button:focus {
+                      -webkit-box-shadow: 0px 1px 2px 2px
+                        rgba(190, 190, 190, 0.5) !important;
+                      text-decoration: none !important;
+                      box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+                      opacity: 0.85 !important;
+                      color: #ffffff !important;
+                    }</style
+                  ><link
+                    href="https://fonts.googleapis.com/css?family=Cookie"
+                    rel="stylesheet"
+                  /><a
+                    class="bmc-button"
+                    target="_blank"
+                    href="https://www.buymeacoffee.com/PFou9WhLr"
+                    ><img
+                      src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg"
+                      alt="Buy me a coffee"
+                    /><span style="margin-left: 5px">Buy me a coffee</span></a
+                  >
+                </p>
+              </div>
 
-    <div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">Author</span>
-    <span class="item-content">Dong Chen</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">LastMod</span>
-    <span class="item-content">Mon Mar 18 2019</span>
-  </p>
-  
-  
-</div><div class="post-reward">
-  <input type="checkbox" name="reward" id="reward" hidden />
-  <label class="reward-button" for="reward">Reward</label>
-  <div class="qr-code">
-    
-    <label class="qr-code-image" for="reward">
-        <img class="image" src="https://dongchen.co/images/wepay_qr_final.png">
-        <span>wechat</span>
-      </label>
-    <label class="qr-code-image" for="reward">
-        <img class="image" src="https://dongchen.co/images/alipay_qr_final.png">
-        <span>alipay</span>
-      </label>
-  </div>
-</div><footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/linux/">Linux</a>
-          <a href="/tags/server/">Server</a>
+              <div class="post-copyright">
+                <p class="copyright-item">
+                  <span class="item-title">Author</span>
+                  <span class="item-content">Dong Chen</span>
+                </p>
+                <p class="copyright-item">
+                  <span class="item-title">LastMod</span>
+                  <span class="item-content">Mon Mar 18 2019</span>
+                </p>
+              </div>
+              <div class="post-reward">
+                <input type="checkbox" name="reward" id="reward" hidden />
+                <label class="reward-button" for="reward">Reward</label>
+                <div class="qr-code">
+                  <label class="qr-code-image" for="reward">
+                    <img
+                      class="image"
+                      src="https://dongchen.co/images/wepay_qr_final.png"
+                    />
+                    <span>wechat</span>
+                  </label>
+                  <label class="qr-code-image" for="reward">
+                    <img
+                      class="image"
+                      src="https://dongchen.co/images/alipay_qr_final.png"
+                    />
+                    <span>alipay</span>
+                  </label>
+                </div>
+              </div>
+              <footer class="post-footer">
+                <div class="post-tags">
+                  <a href="/tags/linux/">Linux</a>
+                  <a href="/tags/server/">Server</a>
+                </div>
+                <nav class="post-nav">
+                  <a
+                    class="prev"
+                    href="/post/simple-but-profound/server-side-programming/linux/administrator/47.-user-management-login-details-record/"
+                  >
+                    <i class="iconfont icon-left"></i>
+                    <span class="prev-text nav-default"
+                      >47. User Management - Login Details &amp; Record</span
+                    >
+                    <span class="prev-text nav-mobile">Prev</span>
+                  </a>
+                  <a
+                    class="next"
+                    href="/post/simple-but-profound/server-side-programming/linux/administrator/45.-group-management-creation-modification-and-deletion/"
+                  >
+                    <span class="next-text nav-default"
+                      >45. Group Management - Creation, Modification and
+                      Deletion</span
+                    >
+                    <span class="next-text nav-mobile">Next</span>
+                    <i class="iconfont icon-right"></i>
+                  </a>
+                </nav>
+              </footer>
+            </article>
           </div>
-      <nav class="post-nav">
-        <a class="prev" href="/post/simple-but-profound/server-side-programming/linux/administrator/47.-user-management-login-details-record/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">47. User Management - Login Details &amp; Record</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        <a class="next" href="/post/simple-but-profound/server-side-programming/linux/administrator/45.-group-management-creation-modification-and-deletion/">
-            <span class="next-text nav-default">45. Group Management - Creation, Modification and Deletion</span>
-            <span class="next-text nav-mobile">Next</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
         </div>
-        
+      </main>
 
+      <footer id="footer" class="footer">
+        <div class="social-links">
+          <a
+            href="mailto:dongchensteven@gmail.com"
+            class="iconfont icon-email"
+            title="email"
+          ></a>
+          <a
+            href="https://www.linkedin.com/in/dongchensteven"
+            class="iconfont icon-linkedin"
+            title="linkedin"
+          ></a>
+          <a
+            href="https://github.com/dongchensteven"
+            class="iconfont icon-github"
+            title="github"
+          ></a>
+          <a
+            href="https://dongchen.co/index.xml"
+            type="application/rss+xml"
+            class="iconfont icon-rss"
+            title="rss"
+          ></a>
+        </div>
+
+        <div class="copyright">
+          <span class="power-by">
+            Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+          </span>
+          <span class="division">|</span>
+          <span class="theme-info">
+            Theme -
+            <a
+              class="theme-link"
+              href="https://github.com/olOwOlo/hugo-theme-even"
+              >Even</a
+            >
+          </span>
+
+          <span class="copyright-year">
+            &copy; 2018 - 2020
+            <span class="heart">
+              <i class="iconfont icon-heart"></i>
+            </span>
+            <span class="author">Dong Chen</span>
+          </span>
+        </div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
       </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:dongchensteven@gmail.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://www.linkedin.com/in/dongchensteven" class="iconfont icon-linkedin" title="linkedin"></a>
-      <a href="https://github.com/dongchensteven" class="iconfont icon-github" title="github"></a>
-  <a href="https://dongchen.co/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
-
-<div class="copyright">
-  <span class="power-by">
-    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    Theme - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2018 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">Dong Chen</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
     </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
-  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
-    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
-    timeago().render(document.querySelectorAll('.timeago'), languageCode);
-    timeago.cancel();  
-  </script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js"
+      integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js"
+      integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js"
+      integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js"
+      integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      <!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+      var languageCode = "en"
+        .replace(/-/g, "_")
+        .replace(/_(.*)/, function ($0, $1) {
+          return $0.replace($1, $1.toUpperCase());
+        });
+      timeago().render(document.querySelectorAll(".timeago"), languageCode);
+      timeago.cancel();
+    </script>
+    <script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-133226289-1', 'auto');
-	ga('set', 'anonymizeIp', true);
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-
-
-
-
-
-
-</body>
+    <script type="application/javascript">
+      var doNotTrack = false;
+      if (!doNotTrack) {
+        window.ga =
+          window.ga ||
+          function () {
+            (ga.q = ga.q || []).push(arguments);
+          };
+        ga.l = +new Date();
+        ga("create", "UA-133226289-1", "auto");
+        ga("set", "anonymizeIp", true);
+        ga("send", "pageview");
+      }
+    </script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
+  </body>
 </html>

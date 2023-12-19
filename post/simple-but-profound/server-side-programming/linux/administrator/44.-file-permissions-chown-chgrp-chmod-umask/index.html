@@ -1,428 +1,805 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>44. File Permissions - chown, chgrp, chmod, umask - Dong - A place to track my time log</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+      44. File Permissions - chown, chgrp, chmod, umask - Dong - A place to
+      track my time log
+    </title>
+    <meta name="renderer" content="webkit" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
 
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+    <meta name="theme-color" content="#f8f5ec" />
+    <meta name="msapplication-navbutton-color" content="#f8f5ec" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec" />
 
+    <meta name="author" content="Dong Chen" />
+    <meta
+      name="description"
+      content="In order to make it easier to manage user and group permissions on files and directories, linux provides some common commands that can assign and reclaim permissions to users and groups in a more standardized way.
+"
+    />
+    <meta name="keywords" content="Hugo, theme, even" />
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="In order to make it easier to manage user and group permissions on files and directories, linux provides some common commands that can assign and reclaim permissions to users and groups in a more standardized way.
-" /><meta name="keywords" content="Hugo, theme, even" />
+    <meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
+    <link
+      rel="canonical"
+      href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/44.-file-permissions-chown-chgrp-chmod-umask/"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
 
+    <link href="/dist/even.ea128f8b.min.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css"
+      integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
 
+    <meta
+      property="og:title"
+      content="44. File Permissions - chown, chgrp, chmod, umask"
+    />
+    <meta
+      property="og:description"
+      content="In order to make it easier to manage user and group permissions on files and directories, linux provides some common commands that can assign and reclaim permissions to users and groups in a more standardized way."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/44.-file-permissions-chown-chgrp-chmod-umask/"
+    />
+    <meta
+      property="article:published_time"
+      content="2019-03-16T06:24:51&#43;13:00"
+    />
+    <meta
+      property="article:modified_time"
+      content="2019-03-16T06:24:51&#43;13:00"
+    />
 
+    <meta
+      itemprop="name"
+      content="44. File Permissions - chown, chgrp, chmod, umask"
+    />
+    <meta
+      itemprop="description"
+      content="In order to make it easier to manage user and group permissions on files and directories, linux provides some common commands that can assign and reclaim permissions to users and groups in a more standardized way."
+    />
 
+    <meta itemprop="datePublished" content="2019-03-16T06:24:51&#43;13:00" />
+    <meta itemprop="dateModified" content="2019-03-16T06:24:51&#43;13:00" />
+    <meta itemprop="wordCount" content="1693" />
 
-<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
+    <meta itemprop="keywords" content="Linux,Server," />
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="44. File Permissions - chown, chgrp, chmod, umask"
+    />
+    <meta
+      name="twitter:description"
+      content="In order to make it easier to manage user and group permissions on files and directories, linux provides some common commands that can assign and reclaim permissions to users and groups in a more standardized way."
+    />
 
+    <!--[if lte IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+    <![endif]-->
 
-<link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/44.-file-permissions-chown-chgrp-chmod-umask/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-<link href="/dist/even.ea128f8b.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/styles.css">
-
-
-<meta property="og:title" content="44. File Permissions - chown, chgrp, chmod, umask" />
-<meta property="og:description" content="In order to make it easier to manage user and group permissions on files and directories, linux provides some common commands that can assign and reclaim permissions to users and groups in a more standardized way." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/44.-file-permissions-chown-chgrp-chmod-umask/" />
-<meta property="article:published_time" content="2019-03-16T06:24:51&#43;13:00"/>
-<meta property="article:modified_time" content="2019-03-16T06:24:51&#43;13:00"/>
-
-<meta itemprop="name" content="44. File Permissions - chown, chgrp, chmod, umask">
-<meta itemprop="description" content="In order to make it easier to manage user and group permissions on files and directories, linux provides some common commands that can assign and reclaim permissions to users and groups in a more standardized way.">
-
-
-<meta itemprop="datePublished" content="2019-03-16T06:24:51&#43;13:00" />
-<meta itemprop="dateModified" content="2019-03-16T06:24:51&#43;13:00" />
-<meta itemprop="wordCount" content="1693">
-
-
-
-<meta itemprop="keywords" content="Linux,Server," />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="44. File Permissions - chown, chgrp, chmod, umask"/>
-<meta name="twitter:description" content="In order to make it easier to manage user and group permissions on files and directories, linux provides some common commands that can assign and reclaim permissions to users and groups in a more standardized way."/>
-
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
-
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
-
-</head>
-<body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">Dong</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">Home</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">Archives</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">Tags</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">Dong</a>
-</div>
-
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">Home</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">Archives</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">Categories</a>
-      </li>
-  </ul>
-</nav>
-    </header>
-
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
-    
-    <header class="post-header">
-      <h1 class="post-title">44. File Permissions - chown, chgrp, chmod, umask</h1>
-
-      <div class="post-meta">
-        <span class="post-time"> Sat Mar 16 2019 </span>
-        <div class="post-category">
-            <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
-            </div>
-          <span class="more-meta"> 1693 words </span>
-          <span class="more-meta"> 8 mins read </span>
-        
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div id="mobile-navbar" class="mobile-navbar">
+      <div class="mobile-header-logo">
+        <a href="/" class="logo">Dong</a>
       </div>
-    </header>
+      <div class="mobile-navbar-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <nav id="mobile-menu" class="mobile-menu slideout-menu">
+      <ul class="mobile-menu-list">
+        <a href="/">
+          <li class="mobile-menu-item">Home</li> </a
+        ><a href="/post/">
+          <li class="mobile-menu-item">Archives</li> </a
+        ><a href="/tags/">
+          <li class="mobile-menu-item">Tags</li> </a
+        ><a href="/categories/">
+          <li class="mobile-menu-item">Categories</li> </a
+        ><a href="https://ergate.com/" target="_blank">
+          <li class="mobile-menu-item">Visit ERGATE</li>
+        </a>
+      </ul>
+    </nav>
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header">
+        <div class="logo-wrapper">
+          <a href="/" class="logo">Dong</a>
+        </div>
 
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">Contents</h2>
-  <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#change-the-owner-or-group-of-one-or-more-files-or-directories">Change the Owner or Group of One or More Files or Directories</a>
-<ul>
-<li><a href="#change-owner-group-or-both-of-a-file-or-directory">Change Owner, Group or Both of a File or Directory</a></li>
-<li><a href="#recursively-change-group-of-a-directory-and-its-subdirectories-and-files">Recursively Change Group of a Directory and its Subdirectories and Files</a></li>
-</ul></li>
-<li><a href="#change-the-group-of-one-or-more-files-or-directories">Change the Group of One or More Files or Directories</a></li>
-<li><a href="#change-the-mode-bits-of-one-or-more-files-or-directories">Change the Mode Bits of One or More Files or Directories</a>
-<ul>
-<li><a href="#change-permissions-with-symbolic-mode-bits">Change Permissions With Symbolic Mode Bits</a>
-<ul>
-<li><a href="#change-user-permissions-with-rwx">Change User Permissions With rwx</a></li>
-<li><a href="#change-group-permissions-with-rwx">Change Group Permissions with rwx</a></li>
-<li><a href="#change-others-permissions-with-rwx">Change Others Permissions with rwx</a></li>
-<li><a href="#change-all-permissions-with-rwx">Change All Permissions with rwx</a></li>
-</ul></li>
-<li><a href="#change-permissions-with-numeric-mode-bits">Change Permissions with Numeric Mode Bits</a>
-<ul>
-<li><a href="#change-all-users-permissions-with-7654321">Change All Users Permissions with 7654321</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#umask">umask</a>
-<ul>
-<li><a href="#check-umask-in-numeric-value">Check umask in Numeric Value</a></li>
-<li><a href="#check-umask-in-symbolic-value">Check umask in Symbolic Value</a></li>
-<li><a href="#change-the-value-through-numeric-mode-bits">Change the Value Through Numeric Mode Bits</a>
-<ul>
-<li><a href="#give-no-permission-to-anyone-0777">Give No Permission to Anyone - 0777</a></li>
-<li><a href="#give-all-permissions-to-anyone-0000">Give All Permissions to Anyone - 0000</a></li>
-</ul></li>
-<li><a href="#change-the-value-through-symbolic-mode-bits">Change the Value Through Symbolic Mode Bits</a>
-<ul>
-<li><a href="#give-no-permission-to-anyone-ugo-rwx">Give No Permission to Anyone - ugo-rwx</a></li>
-<li><a href="#give-all-permissions-to-anyone-ugo-rwx-or-ugo-rwx">Give All Permissions to Anyone - ugo+rwx or ugo=rwx</a></li>
-<li><a href="#restore-the-umask-value-to-the-initial-value">Restore the umask Value to the Initial Value</a></li>
-</ul></li>
-<li><a href="#impact-on-non-executable-files">Impact on Non-Executable Files</a></li>
-<li><a href="#impact-on-executable-files">Impact on Executable Files</a></li>
-<li><a href="#if-no-user-is-specified-when-setting-symbolic-mode-bits-on-non-executable-files">If No User is Specified When Setting Symbolic Mode Bits on Non-Executable Files</a></li>
-</ul></li>
-</ul>
-</nav>
-  </div>
-</div>
-    <div class="post-content">
-      <p>In order to make it easier to manage user and group permissions on files and directories, linux provides some common commands that can assign and reclaim permissions to users and groups in a more standardized way.</p>
+        <nav class="site-navbar">
+          <ul id="menu" class="menu">
+            <li class="menu-item">
+              <a class="menu-item-link" href="/">Home</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/post/">Archives</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/tags/">Tags</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/categories/">Categories</a>
+            </li>
+            <li class="menu-item">
+              <a
+                class="menu-item-link"
+                href="https://ergate.com/"
+                target="_blank"
+                >Visit ERGATE</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </header>
 
-<h1 id="change-the-owner-or-group-of-one-or-more-files-or-directories">Change the Owner or Group of One or More Files or Directories</h1>
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            <article class="post">
+              <header class="post-header">
+                <h1 class="post-title">
+                  44. File Permissions - chown, chgrp, chmod, umask
+                </h1>
 
-<p>With the chown command, we can assign an owner or group to a file or directory.</p>
+                <div class="post-meta">
+                  <span class="post-time"> Sat Mar 16 2019 </span>
+                  <div class="post-category">
+                    <a
+                      href="/categories/linux-administrator-simple-but-profound/"
+                    >
+                      Linux Administrator: Simple But Profound
+                    </a>
+                  </div>
+                  <span class="more-meta"> 1693 words </span>
+                  <span class="more-meta"> 8 mins read </span>
+                </div>
+              </header>
 
-<h2 id="change-owner-group-or-both-of-a-file-or-directory">Change Owner, Group or Both of a File or Directory</h2>
+              <div class="post-toc" id="post-toc">
+                <h2 class="post-toc-title">Contents</h2>
+                <div class="post-toc-content always-active">
+                  <nav id="TableOfContents">
+                    <ul>
+                      <li>
+                        <a
+                          href="#change-the-owner-or-group-of-one-or-more-files-or-directories"
+                          >Change the Owner or Group of One or More Files or
+                          Directories</a
+                        >
+                        <ul>
+                          <li>
+                            <a
+                              href="#change-owner-group-or-both-of-a-file-or-directory"
+                              >Change Owner, Group or Both of a File or
+                              Directory</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="#recursively-change-group-of-a-directory-and-its-subdirectories-and-files"
+                              >Recursively Change Group of a Directory and its
+                              Subdirectories and Files</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a
+                          href="#change-the-group-of-one-or-more-files-or-directories"
+                          >Change the Group of One or More Files or
+                          Directories</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#change-the-mode-bits-of-one-or-more-files-or-directories"
+                          >Change the Mode Bits of One or More Files or
+                          Directories</a
+                        >
+                        <ul>
+                          <li>
+                            <a
+                              href="#change-permissions-with-symbolic-mode-bits"
+                              >Change Permissions With Symbolic Mode Bits</a
+                            >
+                            <ul>
+                              <li>
+                                <a href="#change-user-permissions-with-rwx"
+                                  >Change User Permissions With rwx</a
+                                >
+                              </li>
+                              <li>
+                                <a href="#change-group-permissions-with-rwx"
+                                  >Change Group Permissions with rwx</a
+                                >
+                              </li>
+                              <li>
+                                <a href="#change-others-permissions-with-rwx"
+                                  >Change Others Permissions with rwx</a
+                                >
+                              </li>
+                              <li>
+                                <a href="#change-all-permissions-with-rwx"
+                                  >Change All Permissions with rwx</a
+                                >
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a href="#change-permissions-with-numeric-mode-bits"
+                              >Change Permissions with Numeric Mode Bits</a
+                            >
+                            <ul>
+                              <li>
+                                <a
+                                  href="#change-all-users-permissions-with-7654321"
+                                  >Change All Users Permissions with 7654321</a
+                                >
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="#umask">umask</a>
+                        <ul>
+                          <li>
+                            <a href="#check-umask-in-numeric-value"
+                              >Check umask in Numeric Value</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#check-umask-in-symbolic-value"
+                              >Check umask in Symbolic Value</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="#change-the-value-through-numeric-mode-bits"
+                              >Change the Value Through Numeric Mode Bits</a
+                            >
+                            <ul>
+                              <li>
+                                <a href="#give-no-permission-to-anyone-0777"
+                                  >Give No Permission to Anyone - 0777</a
+                                >
+                              </li>
+                              <li>
+                                <a href="#give-all-permissions-to-anyone-0000"
+                                  >Give All Permissions to Anyone - 0000</a
+                                >
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a
+                              href="#change-the-value-through-symbolic-mode-bits"
+                              >Change the Value Through Symbolic Mode Bits</a
+                            >
+                            <ul>
+                              <li>
+                                <a href="#give-no-permission-to-anyone-ugo-rwx"
+                                  >Give No Permission to Anyone - ugo-rwx</a
+                                >
+                              </li>
+                              <li>
+                                <a
+                                  href="#give-all-permissions-to-anyone-ugo-rwx-or-ugo-rwx"
+                                  >Give All Permissions to Anyone - ugo+rwx or
+                                  ugo=rwx</a
+                                >
+                              </li>
+                              <li>
+                                <a
+                                  href="#restore-the-umask-value-to-the-initial-value"
+                                  >Restore the umask Value to the Initial
+                                  Value</a
+                                >
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a href="#impact-on-non-executable-files"
+                              >Impact on Non-Executable Files</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#impact-on-executable-files"
+                              >Impact on Executable Files</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="#if-no-user-is-specified-when-setting-symbolic-mode-bits-on-non-executable-files"
+                              >If No User is Specified When Setting Symbolic
+                              Mode Bits on Non-Executable Files</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+              <div class="post-content">
+                <p>
+                  In order to make it easier to manage user and group
+                  permissions on files and directories, linux provides some
+                  common commands that can assign and reclaim permissions to
+                  users and groups in a more standardized way.
+                </p>
 
-<p>If you just want to specify the owner:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">chown user file_for_user    <span class="c1"># This command will only specify the owner of the file file_for_user to user</span></code></pre></td></tr></table>
-</div>
-</div>
-<p>If you just want to specify the group:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">chown :user file_for_user    <span class="c1"># This command will only specify the group of the file file_for_user to user</span></code></pre></td></tr></table>
-</div>
-</div>
-<p>Let&rsquo;s create the file with the privileges of the root user, and then use the chown command to change the owner and group of the file to <em>user</em>:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <h1
+                  id="change-the-owner-or-group-of-one-or-more-files-or-directories"
+                >
+                  Change the Owner or Group of One or More Files or Directories
+                </h1>
+
+                <p>
+                  With the chown command, we can assign an owner or group to a
+                  file or directory.
+                </p>
+
+                <h2 id="change-owner-group-or-both-of-a-file-or-directory">
+                  Change Owner, Group or Both of a File or Directory
+                </h2>
+
+                <p>If you just want to specify the owner:</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">chown user file_for_user    <span class="c1"># This command will only specify the owner of the file file_for_user to user</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <p>If you just want to specify the group:</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">chown :user file_for_user    <span class="c1"># This command will only specify the group of the file file_for_user to user</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <p>
+                  Let&rsquo;s create the file with the privileges of the root
+                  user, and then use the chown command to change the owner and
+                  group of the file to <em>user</em>:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">touch file_for_user
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">touch file_for_user
 ll file_for_user
 chown user:user file_for_user    <span class="c1"># To the left of the colon is the owner of the file, and to the right is the group to which the file belongs</span>
-ll file_for_user</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/44/touch_file_ll_file_chown_file_ll_file.png"
-         alt="img"/> <figcaption>
-            <h4>Create a file and change the owner and group of the file to user</h4>
-        </figcaption>
-</figure>
+ll file_for_user</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/44/touch_file_ll_file_chown_file_ll_file.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>
+                      Create a file and change the owner and group of the file
+                      to user
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="recursively-change-group-of-a-directory-and-its-subdirectories-and-files">Recursively Change Group of a Directory and its Subdirectories and Files</h2>
+                <h2
+                  id="recursively-change-group-of-a-directory-and-its-subdirectories-and-files"
+                >
+                  Recursively Change Group of a Directory and its Subdirectories
+                  and Files
+                </h2>
 
-<p>With the -R parameter provided by chown command, we can iteratively assign the same group to the directory, subdirectory, and all files in the directory:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <p>
+                  With the -R parameter provided by chown command, we can
+                  iteratively assign the same group to the directory,
+                  subdirectory, and all files in the directory:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">mkdir -p a/b/c/d/e
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">mkdir -p a/b/c/d/e
 tree a
 ll a <span class="o">&amp;&amp;</span> ll a/b <span class="o">&amp;&amp;</span> ll a/b/c <span class="o">&amp;&amp;</span> ll a/b/c/d
 chown -R :user a    <span class="c1"># This is equivalent to chgrp -R user a</span>
-ll a <span class="o">&amp;&amp;</span> ll a/b <span class="o">&amp;&amp;</span> ll a/b/c <span class="o">&amp;&amp;</span> ll a/b/c/d</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/44/mkdir_p_directories_tree_directory_ll_directories_chown_r_directory_ll_directories.png"
-         alt="img"/> <figcaption>
-            <h4>Create multilevel directories and recursively change the group of the directory, its subdirectories and files to user</h4>
-        </figcaption>
-</figure>
+ll a <span class="o">&amp;&amp;</span> ll a/b <span class="o">&amp;&amp;</span> ll a/b/c <span class="o">&amp;&amp;</span> ll a/b/c/d</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/44/mkdir_p_directories_tree_directory_ll_directories_chown_r_directory_ll_directories.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>
+                      Create multilevel directories and recursively change the
+                      group of the directory, its subdirectories and files to
+                      user
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h1 id="change-the-group-of-one-or-more-files-or-directories">Change the Group of One or More Files or Directories</h1>
+                <h1 id="change-the-group-of-one-or-more-files-or-directories">
+                  Change the Group of One or More Files or Directories
+                </h1>
 
-<p>We can specify only the group to which the file belongs through the chgrp command:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <p>
+                  We can specify only the group to which the file belongs
+                  through the chgrp command:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">mkdir -p <span class="m">1</span>/2/3/4/5
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">mkdir -p <span class="m">1</span>/2/3/4/5
 tree <span class="m">1</span>
 ll <span class="m">1</span> <span class="o">&amp;&amp;</span> ll <span class="m">1</span>/2 <span class="o">&amp;&amp;</span> ll <span class="m">1</span>/2/3 <span class="o">&amp;&amp;</span> ll <span class="m">1</span>/2/3/4
 chgrp -R user <span class="m">1</span>    <span class="c1"># This is equivalent to chown -R :user 1</span>
-ll <span class="m">1</span> <span class="o">&amp;&amp;</span> ll <span class="m">1</span>/2 <span class="o">&amp;&amp;</span> ll <span class="m">1</span>/2/3 <span class="o">&amp;&amp;</span> ll <span class="m">1</span>/2/3/4</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/44/mkdir_p_directories_tree_directory_ll_directories_chown_r_directory_ll_directories_2.png"
-         alt="img"/> <figcaption>
-            <h4>Create multilevel directories and recursively change the group of the directory, its subdirectories and files to user</h4>
-        </figcaption>
-</figure>
+ll <span class="m">1</span> <span class="o">&amp;&amp;</span> ll <span class="m">1</span>/2 <span class="o">&amp;&amp;</span> ll <span class="m">1</span>/2/3 <span class="o">&amp;&amp;</span> ll <span class="m">1</span>/2/3/4</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/44/mkdir_p_directories_tree_directory_ll_directories_chown_r_directory_ll_directories_2.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>
+                      Create multilevel directories and recursively change the
+                      group of the directory, its subdirectories and files to
+                      user
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h1 id="change-the-mode-bits-of-one-or-more-files-or-directories">Change the Mode Bits of One or More Files or Directories</h1>
+                <h1
+                  id="change-the-mode-bits-of-one-or-more-files-or-directories"
+                >
+                  Change the Mode Bits of One or More Files or Directories
+                </h1>
 
-<p>We can append, remove, or assign permission to users, groups, other people, or everyone else to read, write, or execute files or directories through the chmod command.</p>
+                <p>
+                  We can append, remove, or assign permission to users, groups,
+                  other people, or everyone else to read, write, or execute
+                  files or directories through the chmod command.
+                </p>
 
-<p>Let&rsquo;s create a file for demonstration:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <p>Let&rsquo;s create a file for demonstration:</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">touch file_permissions
-ll file_permissions</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/44/touch_file_ll_file.png"
-         alt="img"/> <figcaption>
-            <h4>Create a file and list it</h4>
-        </figcaption>
-</figure>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">touch file_permissions
+ll file_permissions</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/44/touch_file_ll_file.png" alt="img" />
+                  <figcaption>
+                    <h4>Create a file and list it</h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="change-permissions-with-symbolic-mode-bits">Change Permissions With Symbolic Mode Bits</h2>
+                <h2 id="change-permissions-with-symbolic-mode-bits">
+                  Change Permissions With Symbolic Mode Bits
+                </h2>
 
-<p>Here is the link to Symbolic Mode Bits: <a href="/post/server-side-programming/linux/simple-but-profound/43.-file-permissions-symbolic-numeric-modes-setuid-setgid/#symbolic-modes">43. File Permissions</a></p>
+                <p>
+                  Here is the link to Symbolic Mode Bits:
+                  <a
+                    href="/post/server-side-programming/linux/simple-but-profound/43.-file-permissions-symbolic-numeric-modes-setuid-setgid/#symbolic-modes"
+                    >43. File Permissions</a
+                  >
+                </p>
 
-<h3 id="change-user-permissions-with-rwx">Change User Permissions With rwx</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <h3 id="change-user-permissions-with-rwx">
+                  Change User Permissions With rwx
+                </h3>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span><span class="lnt">6
 </span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ll file_permission
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">ll file_permission
 chmod u+rwx file_permission    <span class="c1"># This command appends the read, write and execute permissions to the owner of the file</span>
 ll file_permission
 chmod u-w file_permission    <span class="c1"># This command removes the write permission from the owner of the file</span>
 ll file_permission
 chmod <span class="nv">u</span><span class="o">=</span>rw file_permission    <span class="c1"># This command assigns the read and write permissions to the owner of the file</span>
-ll file_permission</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/44/ll_file_chmod_u_file_ll_x3.png"
-         alt="img"/> 
-</figure>
+ll file_permission</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/44/ll_file_chmod_u_file_ll_x3.png"
+                    alt="img"
+                  />
+                </figure>
 
-<h3 id="change-group-permissions-with-rwx">Change Group Permissions with rwx</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <h3 id="change-group-permissions-with-rwx">
+                  Change Group Permissions with rwx
+                </h3>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span><span class="lnt">6
 </span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ll file_permission
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">ll file_permission
 chmod g+rwx file_permission    <span class="c1"># This command appends the read, write and execute permissions to the group of the file</span>
 ll file_permission
 chmod g-w file_permission    <span class="c1"># This command removes the write permission from the group of the file</span>
 ll file_permission
 chmod <span class="nv">g</span><span class="o">=</span>r file_permission    <span class="c1"># This command assigns the read permission to the group of the file</span>
-ll file_permission</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/44/ll_file_chmod_g_file_ll_x3.png"
-         alt="img"/> 
-</figure>
+ll file_permission</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/44/ll_file_chmod_g_file_ll_x3.png"
+                    alt="img"
+                  />
+                </figure>
 
-<h3 id="change-others-permissions-with-rwx">Change Others Permissions with rwx</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <h3 id="change-others-permissions-with-rwx">
+                  Change Others Permissions with rwx
+                </h3>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span><span class="lnt">6
 </span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ll file_permission
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">ll file_permission
 chmod o+rwx file_permission    <span class="c1"># This command appends the read, write and execute permissions to others</span>
 ll file_permission
 chmod o-w file_permission    <span class="c1"># This command removes the write permission from others</span>
 ll file_permission
 chmod <span class="nv">o</span><span class="o">=</span>r file_permission    <span class="c1"># This command assigns the read permission to others</span>
-ll file_permission</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/44/ll_file_chmod_o_file_ll_x3.png"
-         alt="img"/> 
-</figure>
+ll file_permission</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/44/ll_file_chmod_o_file_ll_x3.png"
+                    alt="img"
+                  />
+                </figure>
 
-<h3 id="change-all-permissions-with-rwx">Change All Permissions with rwx</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <h3 id="change-all-permissions-with-rwx">
+                  Change All Permissions with rwx
+                </h3>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span><span class="lnt">6
 </span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ll file_permission
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">ll file_permission
 chmod a+rwx file_permission    <span class="c1"># This command appends the read, write and execute permissions to all</span>
 ll file_permission
 chmod a-w file_permission    <span class="c1"># This command removes the write permission from all</span>
 ll file_permission
 chmod <span class="nv">u</span><span class="o">=</span>rw,go<span class="o">=</span>r file_permission    <span class="c1"># This command assigns the read and write permissions to owner, and only read permission to group and others</span>
-ll file_permission</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/44/ll_file_chmod_a_file_ll_x3.png"
-         alt="img"/> 
-</figure>
+ll file_permission</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/44/ll_file_chmod_a_file_ll_x3.png"
+                    alt="img"
+                  />
+                </figure>
 
-<h2 id="change-permissions-with-numeric-mode-bits">Change Permissions with Numeric Mode Bits</h2>
+                <h2 id="change-permissions-with-numeric-mode-bits">
+                  Change Permissions with Numeric Mode Bits
+                </h2>
 
-<p>Here is the link to Numeric Mode Bits: <a href="/post/server-side-programming/linux/simple-but-profound/43.-file-permissions-symbolic-numeric-modes-setuid-setgid/#numeric-modes">43. File Permissions</a></p>
+                <p>
+                  Here is the link to Numeric Mode Bits:
+                  <a
+                    href="/post/server-side-programming/linux/simple-but-profound/43.-file-permissions-symbolic-numeric-modes-setuid-setgid/#numeric-modes"
+                    >43. File Permissions</a
+                  >
+                </p>
 
-<h3 id="change-all-users-permissions-with-7654321">Change All Users Permissions with 7654321</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt"> 1
+                <h3 id="change-all-users-permissions-with-7654321">
+                  Change All Users Permissions with 7654321
+                </h3>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -439,9 +816,12 @@ ll file_permission</code></pre></td></tr></table>
 </span><span class="lnt">15
 </span><span class="lnt">16
 </span><span class="lnt">17
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">ll file_permission
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">ll file_permission
 chmod <span class="m">777</span> file_permission    <span class="c1"># This command assigns the read, write and execute permissions to the owner, group and others of the file</span>
 ll file_permission
 chmod <span class="m">666</span> file_permission    <span class="c1"># This command assigns the read and write permissions to the owner, group and others of the file</span>
@@ -457,209 +837,387 @@ ll file_permission
 chmod <span class="m">111</span> file_permission    <span class="c1"># This command assigns the execute permission to the owner, group and others of the file</span>
 ll file_permission
 chmod <span class="m">644</span> file_permission    <span class="c1"># This command assigns the read and write permissions to the owner, and read permission to the group and others</span>
-ll file_permission</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/44/ll_file_chmod_a_file_ll_x8.png"
-         alt="img"/> 
-</figure>
+ll file_permission</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/44/ll_file_chmod_a_file_ll_x8.png"
+                    alt="img"
+                  />
+                </figure>
 
-<h1 id="umask">umask</h1>
+                <h1 id="umask">umask</h1>
 
-<p>With the umask feature, we can preset permissions for new files. The permissions for a new file are obtained by subtracting the value of umask based on the maximum permission value of 0777.</p>
+                <p>
+                  With the umask feature, we can preset permissions for new
+                  files. The permissions for a new file are obtained by
+                  subtracting the value of umask based on the maximum permission
+                  value of 0777.
+                </p>
 
-<h2 id="check-umask-in-numeric-value">Check umask in Numeric Value</h2>
+                <h2 id="check-umask-in-numeric-value">
+                  Check umask in Numeric Value
+                </h2>
 
-<p>The default output for umask is numeric mode bits:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">umask</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/44/umask.png"
-         alt="img"/> 
-</figure>
+                <p>The default output for umask is numeric mode bits:</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">umask</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/44/umask.png" alt="img" />
+                </figure>
 
-<h2 id="check-umask-in-symbolic-value">Check umask in Symbolic Value</h2>
+                <h2 id="check-umask-in-symbolic-value">
+                  Check umask in Symbolic Value
+                </h2>
 
-<p>By adding the -S parameter, we can see it in symbolic mode bits:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">umask</span> -S</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/44/umask_s.png"
-         alt="img"/> 
-</figure>
+                <p>
+                  By adding the -S parameter, we can see it in symbolic mode
+                  bits:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nb">umask</span> -S</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/44/umask_s.png" alt="img" />
+                </figure>
 
-<h2 id="change-the-value-through-numeric-mode-bits">Change the Value Through Numeric Mode Bits</h2>
+                <h2 id="change-the-value-through-numeric-mode-bits">
+                  Change the Value Through Numeric Mode Bits
+                </h2>
 
-<h3 id="give-no-permission-to-anyone-0777">Give No Permission to Anyone - 0777</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <h3 id="give-no-permission-to-anyone-0777">
+                  Give No Permission to Anyone - 0777
+                </h3>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">umask</span> <span class="m">0777</span>    <span class="c1"># This is equivalent to 777 or ugo-rwx</span>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nb">umask</span> <span class="m">0777</span>    <span class="c1"># This is equivalent to 777 or ugo-rwx</span>
 <span class="nb">umask</span>
 <span class="nb">umask</span> -S
 touch new_file_without_any_permission_num
-ll new_file_without_any_permission_num</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/44/umask_0777_umask_umask_s_touch_file_ll_file.png"
-         alt="img"/> 
-</figure>
+ll new_file_without_any_permission_num</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/44/umask_0777_umask_umask_s_touch_file_ll_file.png"
+                    alt="img"
+                  />
+                </figure>
 
-<p>The file’s permission is 0000(0+0+0,0+0+0,0+0+0,0+0+0), which happens to be the result of 0777 minus 0777.</p>
+                <p>
+                  The file’s permission is 0000(0+0+0,0+0+0,0+0+0,0+0+0), which
+                  happens to be the result of 0777 minus 0777.
+                </p>
 
-<h3 id="give-all-permissions-to-anyone-0000">Give All Permissions to Anyone - 0000</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <h3 id="give-all-permissions-to-anyone-0000">
+                  Give All Permissions to Anyone - 0000
+                </h3>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">umask</span> <span class="m">0000</span>    <span class="c1"># This is equivalent to 000 or ugo+rwx or ugo=rwx</span>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nb">umask</span> <span class="m">0000</span>    <span class="c1"># This is equivalent to 000 or ugo+rwx or ugo=rwx</span>
 <span class="nb">umask</span>
 <span class="nb">umask</span> -S
 touch new_file_with_every_permissions_num
-ll new_file_with_every_permissions_num</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/44/umask_0000_umask_umask_s_touch_file_ll_file.png"
-         alt="img"/> 
-</figure>
+ll new_file_with_every_permissions_num</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/44/umask_0000_umask_umask_s_touch_file_ll_file.png"
+                    alt="img"
+                  />
+                </figure>
 
-<p>The file’s permission is 0666(0+0+0,4+2+0,4+2+0,4+2+0), which happens to be the result of 0777 minus 0111 (execute permission from owner, group and others).</p>
+                <p>
+                  The file’s permission is 0666(0+0+0,4+2+0,4+2+0,4+2+0), which
+                  happens to be the result of 0777 minus 0111 (execute
+                  permission from owner, group and others).
+                </p>
 
-<p>Because this is a non-executable file, it is not given execution permission.</p>
+                <p>
+                  Because this is a non-executable file, it is not given
+                  execution permission.
+                </p>
 
-<h2 id="change-the-value-through-symbolic-mode-bits">Change the Value Through Symbolic Mode Bits</h2>
+                <h2 id="change-the-value-through-symbolic-mode-bits">
+                  Change the Value Through Symbolic Mode Bits
+                </h2>
 
-<h3 id="give-no-permission-to-anyone-ugo-rwx">Give No Permission to Anyone - ugo-rwx</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <h3 id="give-no-permission-to-anyone-ugo-rwx">
+                  Give No Permission to Anyone - ugo-rwx
+                </h3>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">umask</span> ugo-rwx    <span class="c1"># This is equivalent to 777 or 0777</span>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nb">umask</span> ugo-rwx    <span class="c1"># This is equivalent to 777 or 0777</span>
 <span class="nb">umask</span>
 <span class="nb">umask</span> -S
 touch new_file_without_any_permission_sym
-ll new_file_without_any_permission_sym</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/44/umask_ugo_minus_rwx_umask_umask_s_touch_file_ll_file.png"
-         alt="img"/> 
-</figure>
+ll new_file_without_any_permission_sym</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/44/umask_ugo_minus_rwx_umask_umask_s_touch_file_ll_file.png"
+                    alt="img"
+                  />
+                </figure>
 
-<p>The file’s permission is &#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;(-+-+-,-+-+-,-+-+-,-+-+-), which happens to be the result of rwxrwxrwx minus rwxrwxrwx.</p>
+                <p>
+                  The file’s permission is
+                  &#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;&#8209;(-+-+-,-+-+-,-+-+-,-+-+-),
+                  which happens to be the result of rwxrwxrwx minus rwxrwxrwx.
+                </p>
 
-<h3 id="give-all-permissions-to-anyone-ugo-rwx-or-ugo-rwx">Give All Permissions to Anyone - ugo+rwx or ugo=rwx</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <h3 id="give-all-permissions-to-anyone-ugo-rwx-or-ugo-rwx">
+                  Give All Permissions to Anyone - ugo+rwx or ugo=rwx
+                </h3>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">umask</span> ugo+rwx    <span class="c1"># This is equivalent to 000 or 0000 or ugo=rwx</span>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nb">umask</span> ugo+rwx    <span class="c1"># This is equivalent to 000 or 0000 or ugo=rwx</span>
 <span class="nb">umask</span>
 <span class="nb">umask</span> -S
 touch new_file_with_every_permissions_sym
-ll new_file_with_every_permissions_sym</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/44/umask_ugo_plus_rwx_umask_umask_s_touch_file_ll_file.png"
-         alt="img"/> 
-</figure>
+ll new_file_with_every_permissions_sym</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/44/umask_ugo_plus_rwx_umask_umask_s_touch_file_ll_file.png"
+                    alt="img"
+                  />
+                </figure>
 
-<p>The file’s permission is rw-rw-rw-(-+-+-,r+w+-,r+w+-,r+w+-), which happens to be the result of rwxrwxrwx minus &#8209;&#8209;x&#8209;&#8209;x&#8209;&#8209;x (execute permission from owner, group and others).</p>
+                <p>
+                  The file’s permission is rw-rw-rw-(-+-+-,r+w+-,r+w+-,r+w+-),
+                  which happens to be the result of rwxrwxrwx minus
+                  &#8209;&#8209;x&#8209;&#8209;x&#8209;&#8209;x (execute
+                  permission from owner, group and others).
+                </p>
 
-<p>Because this is a non-executable file, it is not given execution permission.</p>
+                <p>
+                  Because this is a non-executable file, it is not given
+                  execution permission.
+                </p>
 
-<h3 id="restore-the-umask-value-to-the-initial-value">Restore the umask Value to the Initial Value</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <h3 id="restore-the-umask-value-to-the-initial-value">
+                  Restore the umask Value to the Initial Value
+                </h3>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">umask</span> <span class="m">0022</span>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nb">umask</span> <span class="m">0022</span>
 <span class="nb">umask</span>
-<span class="nb">umask</span> -S</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/44/umask_umask_umask_s.png"
-         alt="img"/> 
-</figure>
+<span class="nb">umask</span> -S</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/44/umask_umask_umask_s.png" alt="img" />
+                </figure>
 
-<h2 id="impact-on-non-executable-files">Impact on Non-Executable Files</h2>
+                <h2 id="impact-on-non-executable-files">
+                  Impact on Non-Executable Files
+                </h2>
 
-<p>We can create non-executable files in a number of ways, the three simplest ways are:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <p>
+                  We can create non-executable files in a number of ways, the
+                  three simplest ways are:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">touch touch_non_executable_file
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">touch touch_non_executable_file
 <span class="nb">echo</span> <span class="s1">&#39;&#39;</span> &gt; echo_non_executable_file
-<span class="nb">printf</span> <span class="s1">&#39;&#39;</span> &gt; printf_non_executable_file</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/44/touch_file_echo_file_printf_file_ll_files.png"
-         alt="img"/> 
-</figure>
+<span class="nb">printf</span> <span class="s1">&#39;&#39;</span> &gt; printf_non_executable_file</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/44/touch_file_echo_file_printf_file_ll_files.png"
+                    alt="img"
+                  />
+                </figure>
 
-<p>The file’s permission is 0644(0+0+0,4+2+0,4+0+0,4+0+0), which happens to be the result of 0777 minus 0022 and 0111 (execute permission from owner, group and others).</p>
+                <p>
+                  The file’s permission is 0644(0+0+0,4+2+0,4+0+0,4+0+0), which
+                  happens to be the result of 0777 minus 0022 and 0111 (execute
+                  permission from owner, group and others).
+                </p>
 
-<h2 id="impact-on-executable-files">Impact on Executable Files</h2>
+                <h2 id="impact-on-executable-files">
+                  Impact on Executable Files
+                </h2>
 
-<p>To create an executable file for demonstration, we need to install a compiler called gcc to compile the C language code:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">yum install gcc -y</code></pre></td></tr></table>
-</div>
-</div>
-<p>Let&rsquo;s create a file called test.c:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <p>
+                  To create an executable file for demonstration, we need to
+                  install a compiler called gcc to compile the C language code:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">yum install gcc -y</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <p>Let&rsquo;s create a file called test.c:</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -667,204 +1225,384 @@ ll new_file_with_every_permissions_sym</code></pre></td></tr></table>
 </span><span class="lnt">6
 </span><span class="lnt">7
 </span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">printf</span> <span class="s1">&#39;%s\n&#39;</span> <span class="se">\
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nb">printf</span> <span class="s1">&#39;%s\n&#39;</span> <span class="se">\
 </span><span class="se"></span><span class="s1">&#39;#include &lt;stdio.h&gt;&#39;</span> <span class="se">\
 </span><span class="se"></span><span class="s1">&#39;int main()&#39;</span> <span class="se">\
 </span><span class="se"></span><span class="s1">&#39;{&#39;</span> <span class="se">\
 </span><span class="se"></span><span class="s1">&#39;    printf(&#34;Test! \n&#34;);&#39;</span> <span class="se">\
 </span><span class="se"></span><span class="s1">&#39;    return 0;&#39;</span> <span class="se">\
 </span><span class="se"></span><span class="s1">&#39;}&#39;</span> &gt; test.c
-cat test.c</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/44/printf_c_code_file_cat_file.png"
-         alt="img"/> <figcaption>
-            <h4>Print the C code into file test.c</h4>
-        </figcaption>
-</figure>
+cat test.c</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/44/printf_c_code_file_cat_file.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>Print the C code into file test.c</h4>
+                  </figcaption>
+                </figure>
 
-<p>Let&rsquo;s compile the test.c file through gcc, run it and check its permissions:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <p>
+                  Let&rsquo;s compile the test.c file through gcc, run it and
+                  check its permissions:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">gcc test.c    <span class="c1"># By default, the executable file compiled through the gcc compiler is called a.out</span>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">gcc test.c    <span class="c1"># By default, the executable file compiled through the gcc compiler is called a.out</span>
 ./a.out    <span class="c1"># Execute the compiled binary file</span>
-ll a.out</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/44/gcc_c_file_run_binary_file_ll_program.png"
-         alt="img"/> <figcaption>
-            <h4>Compile the C code, run the binary file and list the program with its permissions</h4>
-        </figcaption>
-</figure>
+ll a.out</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/44/gcc_c_file_run_binary_file_ll_program.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>
+                      Compile the C code, run the binary file and list the
+                      program with its permissions
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<p>The binary file&rsquo;s permission is 0755(0+0+0,4+2+1,4+0+1,4+0+1), which happens to be the result of 0777 minus 0022.</p>
+                <p>
+                  The binary file&rsquo;s permission is
+                  0755(0+0+0,4+2+1,4+0+1,4+0+1), which happens to be the result
+                  of 0777 minus 0022.
+                </p>
 
-<h2 id="if-no-user-is-specified-when-setting-symbolic-mode-bits-on-non-executable-files">If No User is Specified When Setting Symbolic Mode Bits on Non-Executable Files</h2>
+                <h2
+                  id="if-no-user-is-specified-when-setting-symbolic-mode-bits-on-non-executable-files"
+                >
+                  If No User is Specified When Setting Symbolic Mode Bits on
+                  Non-Executable Files
+                </h2>
 
-<p>If no user is specified when the mode bit is specified, the newly created non-executable file is also granted write permission from the umask:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <p>
+                  If no user is specified when the mode bit is specified, the
+                  newly created non-executable file is also granted write
+                  permission from the umask:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">touch new_touch_file
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">touch new_touch_file
 ll new_touch_file
 chmod +rwx new_touch_file
-ll new_touch_file</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/44/touch_file_ll_file_chmod_file_ll_file.png"
-         alt="img"/> <figcaption>
-            <h4>Create a new file, specify mode bits without specifying any user and list the file with its permissions</h4>
-        </figcaption>
-</figure>
+ll new_touch_file</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/44/touch_file_ll_file_chmod_file_ll_file.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>
+                      Create a new file, specify mode bits without specifying
+                      any user and list the file with its permissions
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<p>The file&rsquo;s permission is 0755(0+0+0,4+2+1,4+0+1,4+0+1), which happens to be the result of 0777 minus 0022.</p>
+                <p>
+                  The file&rsquo;s permission is 0755(0+0+0,4+2+1,4+0+1,4+0+1),
+                  which happens to be the result of 0777 minus 0022.
+                </p>
 
-<blockquote>
-<p>References
-<a href="https://www.gnu.org/software/coreutils/manual/html_node/chown-invocation.html">13.1 chown: Change file owner and group</a>,
-<a href="https://www.gnu.org/software/coreutils/manual/html_node/chgrp-invocation.html">13.2 chgrp: Change group ownership</a>,
-<a href="https://www.gnu.org/software/coreutils/manual/html_node/chmod-invocation.html">13.3 chmod: Change access permissions</a>,
-<a href="https://en.wikipedia.org/wiki/Umask">umask</a></p>
-</blockquote>
+                <blockquote>
+                  <p>
+                    References
+                    <a
+                      href="https://www.gnu.org/software/coreutils/manual/html_node/chown-invocation.html"
+                      >13.1 chown: Change file owner and group</a
+                    >,
+                    <a
+                      href="https://www.gnu.org/software/coreutils/manual/html_node/chgrp-invocation.html"
+                      >13.2 chgrp: Change group ownership</a
+                    >,
+                    <a
+                      href="https://www.gnu.org/software/coreutils/manual/html_node/chmod-invocation.html"
+                      >13.3 chmod: Change access permissions</a
+                    >, <a href="https://en.wikipedia.org/wiki/Umask">umask</a>
+                  </p>
+                </blockquote>
 
-<!-- Buy Me a Coffee Button -->
+                <!-- Buy Me a Coffee Button -->
 
-<p class="align-center">
-  <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/PFou9WhLr"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
-</p>
-    </div>
+                <p class="align-center">
+                  <style>
+                    .bmc-button img {
+                      width: 27px !important;
+                      margin-bottom: 1px !important;
+                      box-shadow: none !important;
+                      border: none !important;
+                      vertical-align: middle !important;
+                    }
+                    .bmc-button {
+                      line-height: 36px !important;
+                      height: 37px !important;
+                      text-decoration: none !important;
+                      display: inline-flex !important;
+                      color: #ffffff !important;
+                      background-color: #ff813f !important;
+                      border-radius: 3px !important;
+                      border: 1px solid transparent !important;
+                      padding: 1px 9px !important;
+                      font-size: 22px !important;
+                      letter-spacing: 0.6px !important;
+                      box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;
+                      -webkit-box-shadow: 0px 1px 2px 2px
+                        rgba(190, 190, 190, 0.5) !important;
+                      margin: 0 auto !important;
+                      font-family: "Cookie", cursive !important;
+                      -webkit-box-sizing: border-box !important;
+                      box-sizing: border-box !important;
+                      -o-transition: 0.3s all linear !important;
+                      -webkit-transition: 0.3s all linear !important;
+                      -moz-transition: 0.3s all linear !important;
+                      -ms-transition: 0.3s all linear !important;
+                      transition: 0.3s all linear !important;
+                    }
+                    .bmc-button:hover,
+                    .bmc-button:active,
+                    .bmc-button:focus {
+                      -webkit-box-shadow: 0px 1px 2px 2px
+                        rgba(190, 190, 190, 0.5) !important;
+                      text-decoration: none !important;
+                      box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+                      opacity: 0.85 !important;
+                      color: #ffffff !important;
+                    }</style
+                  ><link
+                    href="https://fonts.googleapis.com/css?family=Cookie"
+                    rel="stylesheet"
+                  /><a
+                    class="bmc-button"
+                    target="_blank"
+                    href="https://www.buymeacoffee.com/PFou9WhLr"
+                    ><img
+                      src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg"
+                      alt="Buy me a coffee"
+                    /><span style="margin-left: 5px">Buy me a coffee</span></a
+                  >
+                </p>
+              </div>
 
-    <div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">Author</span>
-    <span class="item-content">Dong Chen</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">LastMod</span>
-    <span class="item-content">Sat Mar 16 2019</span>
-  </p>
-  
-  
-</div><div class="post-reward">
-  <input type="checkbox" name="reward" id="reward" hidden />
-  <label class="reward-button" for="reward">Reward</label>
-  <div class="qr-code">
-    
-    <label class="qr-code-image" for="reward">
-        <img class="image" src="https://dongchen.co/images/wepay_qr_final.png">
-        <span>wechat</span>
-      </label>
-    <label class="qr-code-image" for="reward">
-        <img class="image" src="https://dongchen.co/images/alipay_qr_final.png">
-        <span>alipay</span>
-      </label>
-  </div>
-</div><footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/linux/">Linux</a>
-          <a href="/tags/server/">Server</a>
+              <div class="post-copyright">
+                <p class="copyright-item">
+                  <span class="item-title">Author</span>
+                  <span class="item-content">Dong Chen</span>
+                </p>
+                <p class="copyright-item">
+                  <span class="item-title">LastMod</span>
+                  <span class="item-content">Sat Mar 16 2019</span>
+                </p>
+              </div>
+              <div class="post-reward">
+                <input type="checkbox" name="reward" id="reward" hidden />
+                <label class="reward-button" for="reward">Reward</label>
+                <div class="qr-code">
+                  <label class="qr-code-image" for="reward">
+                    <img
+                      class="image"
+                      src="https://dongchen.co/images/wepay_qr_final.png"
+                    />
+                    <span>wechat</span>
+                  </label>
+                  <label class="qr-code-image" for="reward">
+                    <img
+                      class="image"
+                      src="https://dongchen.co/images/alipay_qr_final.png"
+                    />
+                    <span>alipay</span>
+                  </label>
+                </div>
+              </div>
+              <footer class="post-footer">
+                <div class="post-tags">
+                  <a href="/tags/linux/">Linux</a>
+                  <a href="/tags/server/">Server</a>
+                </div>
+                <nav class="post-nav">
+                  <a
+                    class="prev"
+                    href="/post/simple-but-profound/server-side-programming/linux/administrator/45.-group-management-creation-modification-and-deletion/"
+                  >
+                    <i class="iconfont icon-left"></i>
+                    <span class="prev-text nav-default"
+                      >45. Group Management - Creation, Modification and
+                      Deletion</span
+                    >
+                    <span class="prev-text nav-mobile">Prev</span>
+                  </a>
+                  <a
+                    class="next"
+                    href="/post/simple-but-profound/server-side-programming/linux/administrator/43.-file-permissions-symbolic-numeric-modes-setuid-setgid/"
+                  >
+                    <span class="next-text nav-default"
+                      >43. File Permissions - Symbolic &amp; Numeric Modes,
+                      Setuid &amp; Setgid</span
+                    >
+                    <span class="next-text nav-mobile">Next</span>
+                    <i class="iconfont icon-right"></i>
+                  </a>
+                </nav>
+              </footer>
+            </article>
           </div>
-      <nav class="post-nav">
-        <a class="prev" href="/post/simple-but-profound/server-side-programming/linux/administrator/45.-group-management-creation-modification-and-deletion/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">45. Group Management - Creation, Modification and Deletion</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        <a class="next" href="/post/simple-but-profound/server-side-programming/linux/administrator/43.-file-permissions-symbolic-numeric-modes-setuid-setgid/">
-            <span class="next-text nav-default">43. File Permissions - Symbolic &amp; Numeric Modes, Setuid &amp; Setgid</span>
-            <span class="next-text nav-mobile">Next</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
         </div>
-        
+      </main>
 
+      <footer id="footer" class="footer">
+        <div class="social-links">
+          <a
+            href="mailto:dongchensteven@gmail.com"
+            class="iconfont icon-email"
+            title="email"
+          ></a>
+          <a
+            href="https://www.linkedin.com/in/dongchensteven"
+            class="iconfont icon-linkedin"
+            title="linkedin"
+          ></a>
+          <a
+            href="https://github.com/dongchensteven"
+            class="iconfont icon-github"
+            title="github"
+          ></a>
+          <a
+            href="https://dongchen.co/index.xml"
+            type="application/rss+xml"
+            class="iconfont icon-rss"
+            title="rss"
+          ></a>
+        </div>
+
+        <div class="copyright">
+          <span class="power-by">
+            Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+          </span>
+          <span class="division">|</span>
+          <span class="theme-info">
+            Theme -
+            <a
+              class="theme-link"
+              href="https://github.com/olOwOlo/hugo-theme-even"
+              >Even</a
+            >
+          </span>
+
+          <span class="copyright-year">
+            &copy; 2018 - 2020
+            <span class="heart">
+              <i class="iconfont icon-heart"></i>
+            </span>
+            <span class="author">Dong Chen</span>
+          </span>
+        </div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
       </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:dongchensteven@gmail.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://www.linkedin.com/in/dongchensteven" class="iconfont icon-linkedin" title="linkedin"></a>
-      <a href="https://github.com/dongchensteven" class="iconfont icon-github" title="github"></a>
-  <a href="https://dongchen.co/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
-
-<div class="copyright">
-  <span class="power-by">
-    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    Theme - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2018 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">Dong Chen</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
     </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
-  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
-    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
-    timeago().render(document.querySelectorAll('.timeago'), languageCode);
-    timeago.cancel();  
-  </script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js"
+      integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js"
+      integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js"
+      integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js"
+      integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      <!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+      var languageCode = "en"
+        .replace(/-/g, "_")
+        .replace(/_(.*)/, function ($0, $1) {
+          return $0.replace($1, $1.toUpperCase());
+        });
+      timeago().render(document.querySelectorAll(".timeago"), languageCode);
+      timeago.cancel();
+    </script>
+    <script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-133226289-1', 'auto');
-	ga('set', 'anonymizeIp', true);
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-
-
-
-
-
-
-</body>
+    <script type="application/javascript">
+      var doNotTrack = false;
+      if (!doNotTrack) {
+        window.ga =
+          window.ga ||
+          function () {
+            (ga.q = ga.q || []).push(arguments);
+          };
+        ga.l = +new Date();
+        ga("create", "UA-133226289-1", "auto");
+        ga("set", "anonymizeIp", true);
+        ga("send", "pageview");
+      }
+    </script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
+  </body>
 </html>

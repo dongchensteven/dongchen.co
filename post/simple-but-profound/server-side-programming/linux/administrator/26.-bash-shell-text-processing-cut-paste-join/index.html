@@ -1,530 +1,940 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>26. Bash Shell - Text Processing: cut, paste, join - Dong - A place to track my time log</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+      26. Bash Shell - Text Processing: cut, paste, join - Dong - A place to
+      track my time log
+    </title>
+    <meta name="renderer" content="webkit" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
 
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+    <meta name="theme-color" content="#f8f5ec" />
+    <meta name="msapplication-navbutton-color" content="#f8f5ec" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec" />
 
+    <meta name="author" content="Dong Chen" />
+    <meta
+      name="description"
+      content="We can use the cut, paste, join commands provided by linux to retrieve, duplicate, or merge text file contents.
+"
+    />
+    <meta
+      name="keywords"
+      content="Linux Retrieve Column of the Contents, Merge Lines of Files, Duplicate Lines, Join Two Files&#39; Lines"
+    />
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="We can use the cut, paste, join commands provided by linux to retrieve, duplicate, or merge text file contents.
-" /><meta name="keywords" content="Linux Retrieve Column of the Contents, Merge Lines of Files, Duplicate Lines, Join Two Files&#39; Lines" />
+    <meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
+    <link
+      rel="canonical"
+      href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/26.-bash-shell-text-processing-cut-paste-join/"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
 
+    <link href="/dist/even.ea128f8b.min.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css"
+      integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
 
+    <meta
+      property="og:title"
+      content="26. Bash Shell - Text Processing: cut, paste, join"
+    />
+    <meta
+      property="og:description"
+      content="We can use the cut, paste, join commands provided by linux to retrieve, duplicate, or merge text file contents."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/26.-bash-shell-text-processing-cut-paste-join/"
+    />
+    <meta
+      property="article:published_time"
+      content="2019-02-27T06:55:58&#43;13:00"
+    />
+    <meta
+      property="article:modified_time"
+      content="2019-02-27T06:55:58&#43;13:00"
+    />
 
+    <meta
+      itemprop="name"
+      content="26. Bash Shell - Text Processing: cut, paste, join"
+    />
+    <meta
+      itemprop="description"
+      content="We can use the cut, paste, join commands provided by linux to retrieve, duplicate, or merge text file contents."
+    />
 
+    <meta itemprop="datePublished" content="2019-02-27T06:55:58&#43;13:00" />
+    <meta itemprop="dateModified" content="2019-02-27T06:55:58&#43;13:00" />
+    <meta itemprop="wordCount" content="627" />
 
-<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
+    <meta itemprop="keywords" content="Linux,Server," />
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="26. Bash Shell - Text Processing: cut, paste, join"
+    />
+    <meta
+      name="twitter:description"
+      content="We can use the cut, paste, join commands provided by linux to retrieve, duplicate, or merge text file contents."
+    />
 
+    <!--[if lte IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+    <![endif]-->
 
-<link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/26.-bash-shell-text-processing-cut-paste-join/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-<link href="/dist/even.ea128f8b.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/styles.css">
-
-
-<meta property="og:title" content="26. Bash Shell - Text Processing: cut, paste, join" />
-<meta property="og:description" content="We can use the cut, paste, join commands provided by linux to retrieve, duplicate, or merge text file contents." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/linux/administrator/26.-bash-shell-text-processing-cut-paste-join/" />
-<meta property="article:published_time" content="2019-02-27T06:55:58&#43;13:00"/>
-<meta property="article:modified_time" content="2019-02-27T06:55:58&#43;13:00"/>
-
-<meta itemprop="name" content="26. Bash Shell - Text Processing: cut, paste, join">
-<meta itemprop="description" content="We can use the cut, paste, join commands provided by linux to retrieve, duplicate, or merge text file contents.">
-
-
-<meta itemprop="datePublished" content="2019-02-27T06:55:58&#43;13:00" />
-<meta itemprop="dateModified" content="2019-02-27T06:55:58&#43;13:00" />
-<meta itemprop="wordCount" content="627">
-
-
-
-<meta itemprop="keywords" content="Linux,Server," />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="26. Bash Shell - Text Processing: cut, paste, join"/>
-<meta name="twitter:description" content="We can use the cut, paste, join commands provided by linux to retrieve, duplicate, or merge text file contents."/>
-
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
-
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
-
-</head>
-<body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">Dong</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">Home</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">Archives</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">Tags</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">Dong</a>
-</div>
-
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">Home</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">Archives</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">Categories</a>
-      </li>
-  </ul>
-</nav>
-    </header>
-
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
-    
-    <header class="post-header">
-      <h1 class="post-title">26. Bash Shell - Text Processing: cut, paste, join</h1>
-
-      <div class="post-meta">
-        <span class="post-time"> Wed Feb 27 2019 </span>
-        <div class="post-category">
-            <a href="/categories/linux-administrator-simple-but-profound/"> Linux Administrator: Simple But Profound </a>
-            </div>
-          <span class="more-meta"> 627 words </span>
-          <span class="more-meta"> 3 mins read </span>
-        
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div id="mobile-navbar" class="mobile-navbar">
+      <div class="mobile-header-logo">
+        <a href="/" class="logo">Dong</a>
       </div>
-    </header>
+      <div class="mobile-navbar-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <nav id="mobile-menu" class="mobile-menu slideout-menu">
+      <ul class="mobile-menu-list">
+        <a href="/">
+          <li class="mobile-menu-item">Home</li> </a
+        ><a href="/post/">
+          <li class="mobile-menu-item">Archives</li> </a
+        ><a href="/tags/">
+          <li class="mobile-menu-item">Tags</li> </a
+        ><a href="/categories/">
+          <li class="mobile-menu-item">Categories</li> </a
+        ><a href="https://ergate.com/" target="_blank">
+          <li class="mobile-menu-item">Visit ERGATE</li>
+        </a>
+      </ul>
+    </nav>
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header">
+        <div class="logo-wrapper">
+          <a href="/" class="logo">Dong</a>
+        </div>
 
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">Contents</h2>
-  <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#print-selected-parts-with-cut">Print Selected Parts With cut</a>
-<ul>
-<li><a href="#retrieve-the-specified-amount-of-bytes">Retrieve the Specified Amount of Bytes</a></li>
-<li><a href="#retrieve-the-specified-amount-of-characters">Retrieve the Specified Amount of Characters</a></li>
-<li><a href="#retrieve-the-specified-column">Retrieve the Specified Column</a></li>
-</ul></li>
-<li><a href="#merge-lines-of-files-with-paste">Merge Lines of Files With paste</a>
-<ul>
-<li><a href="#retrieve-lines-sequentially">Retrieve Lines Sequentially</a></li>
-<li><a href="#duplicate-lines">Duplicate Lines</a></li>
-<li><a href="#intermix-lines-from-standard-input">Intermix Lines From Standard Input</a></li>
-</ul></li>
-<li><a href="#join-lines-of-two-files-with-join">Join Lines of Two Files With join</a></li>
-</ul>
-</nav>
-  </div>
-</div>
-    <div class="post-content">
-      <p>We can use the cut, paste, join commands provided by linux to retrieve, duplicate, or merge text file contents.</p>
+        <nav class="site-navbar">
+          <ul id="menu" class="menu">
+            <li class="menu-item">
+              <a class="menu-item-link" href="/">Home</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/post/">Archives</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/tags/">Tags</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/categories/">Categories</a>
+            </li>
+            <li class="menu-item">
+              <a
+                class="menu-item-link"
+                href="https://ergate.com/"
+                target="_blank"
+                >Visit ERGATE</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </header>
 
-<h1 id="print-selected-parts-with-cut">Print Selected Parts With cut</h1>
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            <article class="post">
+              <header class="post-header">
+                <h1 class="post-title">
+                  26. Bash Shell - Text Processing: cut, paste, join
+                </h1>
 
-<p>Let&rsquo;s prepare some test data for the cut command:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <div class="post-meta">
+                  <span class="post-time"> Wed Feb 27 2019 </span>
+                  <div class="post-category">
+                    <a
+                      href="/categories/linux-administrator-simple-but-profound/"
+                    >
+                      Linux Administrator: Simple But Profound
+                    </a>
+                  </div>
+                  <span class="more-meta"> 627 words </span>
+                  <span class="more-meta"> 3 mins read </span>
+                </div>
+              </header>
+
+              <div class="post-toc" id="post-toc">
+                <h2 class="post-toc-title">Contents</h2>
+                <div class="post-toc-content always-active">
+                  <nav id="TableOfContents">
+                    <ul>
+                      <li>
+                        <a href="#print-selected-parts-with-cut"
+                          >Print Selected Parts With cut</a
+                        >
+                        <ul>
+                          <li>
+                            <a href="#retrieve-the-specified-amount-of-bytes"
+                              >Retrieve the Specified Amount of Bytes</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="#retrieve-the-specified-amount-of-characters"
+                              >Retrieve the Specified Amount of Characters</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#retrieve-the-specified-column"
+                              >Retrieve the Specified Column</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="#merge-lines-of-files-with-paste"
+                          >Merge Lines of Files With paste</a
+                        >
+                        <ul>
+                          <li>
+                            <a href="#retrieve-lines-sequentially"
+                              >Retrieve Lines Sequentially</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#duplicate-lines">Duplicate Lines</a>
+                          </li>
+                          <li>
+                            <a href="#intermix-lines-from-standard-input"
+                              >Intermix Lines From Standard Input</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="#join-lines-of-two-files-with-join"
+                          >Join Lines of Two Files With join</a
+                        >
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+              <div class="post-content">
+                <p>
+                  We can use the cut, paste, join commands provided by linux to
+                  retrieve, duplicate, or merge text file contents.
+                </p>
+
+                <h1 id="print-selected-parts-with-cut">
+                  Print Selected Parts With cut
+                </h1>
+
+                <p>Let&rsquo;s prepare some test data for the cut command:</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">printf</span> <span class="s1">&#39;%s\n&#39;</span> <span class="m">001</span>:andy:30:root <span class="m">002</span>:mary:26:user <span class="m">003</span>:anna:22:user <span class="m">004</span>:john:24:user <span class="m">005</span>:jeff:28:user &gt;&gt; cut_file
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nb">printf</span> <span class="s1">&#39;%s\n&#39;</span> <span class="m">001</span>:andy:30:root <span class="m">002</span>:mary:26:user <span class="m">003</span>:anna:22:user <span class="m">004</span>:john:24:user <span class="m">005</span>:jeff:28:user &gt;&gt; cut_file
 <span class="nb">printf</span> <span class="s1">&#39;%s\t%s\t%s\t%s\n&#39;</span> <span class="s1">&#39;006&#39;</span> <span class="s1">&#39;andy&#39;</span> <span class="s1">&#39;30&#39;</span> <span class="s1">&#39;root&#39;</span> <span class="s1">&#39;007&#39;</span> <span class="s1">&#39;mary&#39;</span> <span class="s1">&#39;26&#39;</span> <span class="s1">&#39;user&#39;</span> <span class="s1">&#39;008&#39;</span> <span class="s1">&#39;anna&#39;</span> <span class="s1">&#39;22&#39;</span> <span class="s1">&#39;user&#39;</span> <span class="s1">&#39;009&#39;</span> <span class="s1">&#39;john&#39;</span> <span class="s1">&#39;24&#39;</span> <span class="s1">&#39;user&#39;</span> <span class="s1">&#39;010&#39;</span> <span class="s1">&#39;jeff&#39;</span> <span class="s1">&#39;28&#39;</span> <span class="s1">&#39;user&#39;</span> &gt;&gt; cut_file
-cat cut_file</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/26/printf_multiple_lines_cat_cut_file.png"
-         alt="img"/> <figcaption>
-            <h4>Prints multiple lines of test data to cut_file</h4>
-        </figcaption>
-</figure>
+cat cut_file</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/26/printf_multiple_lines_cat_cut_file.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>Prints multiple lines of test data to cut_file</h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="retrieve-the-specified-amount-of-bytes">Retrieve the Specified Amount of Bytes</h2>
+                <h2 id="retrieve-the-specified-amount-of-bytes">
+                  Retrieve the Specified Amount of Bytes
+                </h2>
 
-<p>We can add the -b or &ndash;bytes parameter to specify the length of bytes to output:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <p>
+                  We can add the -b or &ndash;bytes parameter to specify the
+                  length of bytes to output:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">cut -b <span class="m">1</span>-10 cut_file
-cut --bytes <span class="m">1</span>-10 cut_file</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/26/cut_b_or_bytes_from_1_to_10_cut_file.png"
-         alt="img"/> <figcaption>
-            <h4>Prints ten bytes from the beginning of the lines</h4>
-        </figcaption>
-</figure>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">cut -b <span class="m">1</span>-10 cut_file
+cut --bytes <span class="m">1</span>-10 cut_file</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/26/cut_b_or_bytes_from_1_to_10_cut_file.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>Prints ten bytes from the beginning of the lines</h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="retrieve-the-specified-amount-of-characters">Retrieve the Specified Amount of Characters</h2>
+                <h2 id="retrieve-the-specified-amount-of-characters">
+                  Retrieve the Specified Amount of Characters
+                </h2>
 
-<p>We can add the -c or &ndash;characters parameter to specify the length of characters to output:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <p>
+                  We can add the -c or &ndash;characters parameter to specify
+                  the length of characters to output:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">cut -c <span class="m">1</span>-10 cut_file
-cut --characters <span class="m">1</span>-10 cut_file</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/26/cut_c_or_characters_from_1_to_10_cut_file.png"
-         alt="img"/> <figcaption>
-            <h4>Prints ten characters from the beginning of the lines</h4>
-        </figcaption>
-</figure>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">cut -c <span class="m">1</span>-10 cut_file
+cut --characters <span class="m">1</span>-10 cut_file</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/26/cut_c_or_characters_from_1_to_10_cut_file.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>
+                      Prints ten characters from the beginning of the lines
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="retrieve-the-specified-column">Retrieve the Specified Column</h2>
+                <h2 id="retrieve-the-specified-column">
+                  Retrieve the Specified Column
+                </h2>
 
-<p>By default, the -f or &ndash;fields parameter distinguishes the contents of each column by TAB.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <p>
+                  By default, the -f or &ndash;fields parameter distinguishes
+                  the contents of each column by TAB.
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">cut -f <span class="m">1</span> -s cut_file
-cut --fields <span class="m">1</span> --only-delimited cut_file</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/26/cut_f_or_fields_1_plus_s_or_only_delimited_cut_file.png"
-         alt="img"/> <figcaption>
-            <h4>Retrieves the first column of the cut_file</h4>
-        </figcaption>
-</figure>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">cut -f <span class="m">1</span> -s cut_file
+cut --fields <span class="m">1</span> --only-delimited cut_file</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/26/cut_f_or_fields_1_plus_s_or_only_delimited_cut_file.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>Retrieves the first column of the cut_file</h4>
+                  </figcaption>
+                </figure>
 
-<p>So we need to add an extra -d or &ndash;delimiter parameter to allow the -f or &ndash;fields parameter to distinguish between each column according to the specified delimiter:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <p>
+                  So we need to add an extra -d or &ndash;delimiter parameter to
+                  allow the -f or &ndash;fields parameter to distinguish between
+                  each column according to the specified delimiter:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">cut -f <span class="m">1</span> -d <span class="s1">&#39;:&#39;</span> -s cut_file
-cut --fields <span class="m">1</span> --delimiter <span class="s1">&#39;:&#39;</span> --only-delimited cut_file</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/26/cut_f_or_fields_1_plus_d_or_delimiter_plus_s_or_only_delimited_cut_file.png"
-         alt="img"/> <figcaption>
-            <h4>Retrieves the first column of the cut_file</h4>
-        </figcaption>
-</figure>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">cut -f <span class="m">1</span> -d <span class="s1">&#39;:&#39;</span> -s cut_file
+cut --fields <span class="m">1</span> --delimiter <span class="s1">&#39;:&#39;</span> --only-delimited cut_file</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/26/cut_f_or_fields_1_plus_d_or_delimiter_plus_s_or_only_delimited_cut_file.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>Retrieves the first column of the cut_file</h4>
+                  </figcaption>
+                </figure>
 
-<h1 id="merge-lines-of-files-with-paste">Merge Lines of Files With paste</h1>
+                <h1 id="merge-lines-of-files-with-paste">
+                  Merge Lines of Files With paste
+                </h1>
 
-<p>Let&rsquo;s prepare some test data for the paste command:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <p>Let&rsquo;s prepare some test data for the paste command:</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">printf</span> <span class="s1">&#39;%s\n&#39;</span> file1a file1b file1c file1d file1e file1f &gt; paste_file1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nb">printf</span> <span class="s1">&#39;%s\n&#39;</span> file1a file1b file1c file1d file1e file1f &gt; paste_file1
 <span class="nb">printf</span> <span class="s1">&#39;%s\n&#39;</span> file2a file2b file2c file2d file2e file2f &gt; paste_file2
 cat paste_file1
-cat paste_file2</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/26/printf_multiple_lines_cat_paste_files.png"
-         alt="img"/> <figcaption>
-            <h4>Prints multiple lines of test data to two files</h4>
-        </figcaption>
-</figure>
+cat paste_file2</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/26/printf_multiple_lines_cat_paste_files.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>Prints multiple lines of test data to two files</h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="retrieve-lines-sequentially">Retrieve Lines Sequentially</h2>
+                <h2 id="retrieve-lines-sequentially">
+                  Retrieve Lines Sequentially
+                </h2>
 
-<p>We can use the paste command to output the contents of the two files in sequence:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">paste paste_file1 paste_file2</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/26/paste_two_files.png"
-         alt="img"/> <figcaption>
-            <h4>Retrieves two files&#39; contents sequentially</h4>
-        </figcaption>
-</figure>
+                <p>
+                  We can use the paste command to output the contents of the two
+                  files in sequence:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">paste paste_file1 paste_file2</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/26/paste_two_files.png" alt="img" />
+                  <figcaption>
+                    <h4>Retrieves two files&#39; contents sequentially</h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="duplicate-lines">Duplicate Lines</h2>
+                <h2 id="duplicate-lines">Duplicate Lines</h2>
 
-<p>The paste command supports repeating the contents of the same file:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">paste paste_file1 paste_file2 paste_file1</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/26/paste_three_files.png"
-         alt="img"/> <figcaption>
-            <h4>Retrieves three files&#39; contents sequentially</h4>
-        </figcaption>
-</figure>
+                <p>
+                  The paste command supports repeating the contents of the same
+                  file:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">paste paste_file1 paste_file2 paste_file1</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/26/paste_three_files.png" alt="img" />
+                  <figcaption>
+                    <h4>Retrieves three files&#39; contents sequentially</h4>
+                  </figcaption>
+                </figure>
 
-<h2 id="intermix-lines-from-standard-input">Intermix Lines From Standard Input</h2>
+                <h2 id="intermix-lines-from-standard-input">
+                  Intermix Lines From Standard Input
+                </h2>
 
-<p>By using - symbols, we can distribute the contents of the file in the input stream to each of the - symbols:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">paste - - - &lt; paste_file1</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/26/paste_hyphen_file.png"
-         alt="img"/> <figcaption>
-            <h4>Distributes standard input stream&#39;s file contents to each - symbols</h4>
-        </figcaption>
-</figure>
+                <p>
+                  By using - symbols, we can distribute the contents of the file
+                  in the input stream to each of the - symbols:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">paste - - - &lt; paste_file1</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/26/paste_hyphen_file.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Distributes standard input stream&#39;s file contents to
+                      each - symbols
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<p>We can also do this:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">paste - paste_file1 - paste_file2 - &lt; paste_file1</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/26/paste_hyphens_files.png"
-         alt="img"/> <figcaption>
-            <h4>Distributes standard input stream&#39;s file contents to each - symbols</h4>
-        </figcaption>
-</figure>
+                <p>We can also do this:</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">paste - paste_file1 - paste_file2 - &lt; paste_file1</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/26/paste_hyphens_files.png" alt="img" />
+                  <figcaption>
+                    <h4>
+                      Distributes standard input stream&#39;s file contents to
+                      each - symbols
+                    </h4>
+                  </figcaption>
+                </figure>
 
-<h1 id="join-lines-of-two-files-with-join">Join Lines of Two Files With join</h1>
+                <h1 id="join-lines-of-two-files-with-join">
+                  Join Lines of Two Files With join
+                </h1>
 
-<p>Let&rsquo;s prepare some test data for the paste command:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+                <p>Let&rsquo;s prepare some test data for the paste command:</p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">printf</span> <span class="s1">&#39;%s\n&#39;</span> <span class="s1">&#39;ID1 User1&#39;</span> <span class="s1">&#39;ID2 User2&#39;</span> <span class="s1">&#39;ID3 User3&#39;</span> <span class="s1">&#39;ID5 User5&#39;</span> &gt; join_file1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="nb">printf</span> <span class="s1">&#39;%s\n&#39;</span> <span class="s1">&#39;ID1 User1&#39;</span> <span class="s1">&#39;ID2 User2&#39;</span> <span class="s1">&#39;ID3 User3&#39;</span> <span class="s1">&#39;ID5 User5&#39;</span> &gt; join_file1
 <span class="nb">printf</span> <span class="s1">&#39;%s\n&#39;</span> <span class="s1">&#39;ID1 User1&#39;</span> <span class="s1">&#39;ID3 User3&#39;</span> <span class="s1">&#39;ID4 User4&#39;</span> &gt; join_file2
 cat join_file1
-cat join_file2</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/26/printf_multiple_lines_cat_join_files.png"
-         alt="img"/> <figcaption>
-            <h4>Prints multiple lines of test data to two files</h4>
-        </figcaption>
-</figure>
+cat join_file2</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img
+                    src="../images/26/printf_multiple_lines_cat_join_files.png"
+                    alt="img"
+                  />
+                  <figcaption>
+                    <h4>Prints multiple lines of test data to two files</h4>
+                  </figcaption>
+                </figure>
 
-<p>We can use join to export the overlapped contents from both files:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">join join_file1 join_file2</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/26/join_files.png"
-         alt="img"/> <figcaption>
-            <h4>Retrieves two files overlapped contents</h4>
-        </figcaption>
-</figure>
+                <p>
+                  We can use join to export the overlapped contents from both
+                  files:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-bash" data-lang="bash">join join_file1 join_file2</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/26/join_files.png" alt="img" />
+                  <figcaption>
+                    <h4>Retrieves two files overlapped contents</h4>
+                  </figcaption>
+                </figure>
 
-<blockquote>
-<p>References
-<a href="https://www.gnu.org/software/coreutils/manual/html_node/cut-invocation.html">8.1 cut: Print selected parts of lines</a>,
-<a href="https://www.gnu.org/software/coreutils/manual/html_node/paste-invocation.html">8.2 paste: Merge lines of files</a>,
-<a href="https://www.gnu.org/software/coreutils/manual/html_node/join-invocation.html">8.3 join: Join lines on a common field</a></p>
-</blockquote>
+                <blockquote>
+                  <p>
+                    References
+                    <a
+                      href="https://www.gnu.org/software/coreutils/manual/html_node/cut-invocation.html"
+                      >8.1 cut: Print selected parts of lines</a
+                    >,
+                    <a
+                      href="https://www.gnu.org/software/coreutils/manual/html_node/paste-invocation.html"
+                      >8.2 paste: Merge lines of files</a
+                    >,
+                    <a
+                      href="https://www.gnu.org/software/coreutils/manual/html_node/join-invocation.html"
+                      >8.3 join: Join lines on a common field</a
+                    >
+                  </p>
+                </blockquote>
 
-<!-- Buy Me a Coffee Button -->
+                <!-- Buy Me a Coffee Button -->
 
-<p class="align-center">
-  <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/PFou9WhLr"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
-</p>
-    </div>
+                <p class="align-center">
+                  <style>
+                    .bmc-button img {
+                      width: 27px !important;
+                      margin-bottom: 1px !important;
+                      box-shadow: none !important;
+                      border: none !important;
+                      vertical-align: middle !important;
+                    }
+                    .bmc-button {
+                      line-height: 36px !important;
+                      height: 37px !important;
+                      text-decoration: none !important;
+                      display: inline-flex !important;
+                      color: #ffffff !important;
+                      background-color: #ff813f !important;
+                      border-radius: 3px !important;
+                      border: 1px solid transparent !important;
+                      padding: 1px 9px !important;
+                      font-size: 22px !important;
+                      letter-spacing: 0.6px !important;
+                      box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;
+                      -webkit-box-shadow: 0px 1px 2px 2px
+                        rgba(190, 190, 190, 0.5) !important;
+                      margin: 0 auto !important;
+                      font-family: "Cookie", cursive !important;
+                      -webkit-box-sizing: border-box !important;
+                      box-sizing: border-box !important;
+                      -o-transition: 0.3s all linear !important;
+                      -webkit-transition: 0.3s all linear !important;
+                      -moz-transition: 0.3s all linear !important;
+                      -ms-transition: 0.3s all linear !important;
+                      transition: 0.3s all linear !important;
+                    }
+                    .bmc-button:hover,
+                    .bmc-button:active,
+                    .bmc-button:focus {
+                      -webkit-box-shadow: 0px 1px 2px 2px
+                        rgba(190, 190, 190, 0.5) !important;
+                      text-decoration: none !important;
+                      box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+                      opacity: 0.85 !important;
+                      color: #ffffff !important;
+                    }</style
+                  ><link
+                    href="https://fonts.googleapis.com/css?family=Cookie"
+                    rel="stylesheet"
+                  /><a
+                    class="bmc-button"
+                    target="_blank"
+                    href="https://www.buymeacoffee.com/PFou9WhLr"
+                    ><img
+                      src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg"
+                      alt="Buy me a coffee"
+                    /><span style="margin-left: 5px">Buy me a coffee</span></a
+                  >
+                </p>
+              </div>
 
-    <div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">Author</span>
-    <span class="item-content">Dong Chen</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">LastMod</span>
-    <span class="item-content">Wed Feb 27 2019</span>
-  </p>
-  
-  
-</div><div class="post-reward">
-  <input type="checkbox" name="reward" id="reward" hidden />
-  <label class="reward-button" for="reward">Reward</label>
-  <div class="qr-code">
-    
-    <label class="qr-code-image" for="reward">
-        <img class="image" src="https://dongchen.co/images/wepay_qr_final.png">
-        <span>wechat</span>
-      </label>
-    <label class="qr-code-image" for="reward">
-        <img class="image" src="https://dongchen.co/images/alipay_qr_final.png">
-        <span>alipay</span>
-      </label>
-  </div>
-</div><footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/linux/">Linux</a>
-          <a href="/tags/server/">Server</a>
+              <div class="post-copyright">
+                <p class="copyright-item">
+                  <span class="item-title">Author</span>
+                  <span class="item-content">Dong Chen</span>
+                </p>
+                <p class="copyright-item">
+                  <span class="item-title">LastMod</span>
+                  <span class="item-content">Wed Feb 27 2019</span>
+                </p>
+              </div>
+              <div class="post-reward">
+                <input type="checkbox" name="reward" id="reward" hidden />
+                <label class="reward-button" for="reward">Reward</label>
+                <div class="qr-code">
+                  <label class="qr-code-image" for="reward">
+                    <img
+                      class="image"
+                      src="https://dongchen.co/images/wepay_qr_final.png"
+                    />
+                    <span>wechat</span>
+                  </label>
+                  <label class="qr-code-image" for="reward">
+                    <img
+                      class="image"
+                      src="https://dongchen.co/images/alipay_qr_final.png"
+                    />
+                    <span>alipay</span>
+                  </label>
+                </div>
+              </div>
+              <footer class="post-footer">
+                <div class="post-tags">
+                  <a href="/tags/linux/">Linux</a>
+                  <a href="/tags/server/">Server</a>
+                </div>
+                <nav class="post-nav">
+                  <a
+                    class="prev"
+                    href="/post/simple-but-profound/server-side-programming/linux/administrator/27.-bash-shell-text-processing-tr/"
+                  >
+                    <i class="iconfont icon-left"></i>
+                    <span class="prev-text nav-default"
+                      >27. Bash Shell - Text Processing: tr</span
+                    >
+                    <span class="prev-text nav-mobile">Prev</span>
+                  </a>
+                  <a
+                    class="next"
+                    href="/post/simple-but-profound/server-side-programming/linux/administrator/25.-bash-shell-text-processing-uniq-comm/"
+                  >
+                    <span class="next-text nav-default"
+                      >25. Bash Shell - Text Processing: uniq, comm</span
+                    >
+                    <span class="next-text nav-mobile">Next</span>
+                    <i class="iconfont icon-right"></i>
+                  </a>
+                </nav>
+              </footer>
+            </article>
           </div>
-      <nav class="post-nav">
-        <a class="prev" href="/post/simple-but-profound/server-side-programming/linux/administrator/27.-bash-shell-text-processing-tr/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">27. Bash Shell - Text Processing: tr</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        <a class="next" href="/post/simple-but-profound/server-side-programming/linux/administrator/25.-bash-shell-text-processing-uniq-comm/">
-            <span class="next-text nav-default">25. Bash Shell - Text Processing: uniq, comm</span>
-            <span class="next-text nav-mobile">Next</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
         </div>
-        
+      </main>
 
+      <footer id="footer" class="footer">
+        <div class="social-links">
+          <a
+            href="mailto:dongchensteven@gmail.com"
+            class="iconfont icon-email"
+            title="email"
+          ></a>
+          <a
+            href="https://www.linkedin.com/in/dongchensteven"
+            class="iconfont icon-linkedin"
+            title="linkedin"
+          ></a>
+          <a
+            href="https://github.com/dongchensteven"
+            class="iconfont icon-github"
+            title="github"
+          ></a>
+          <a
+            href="https://dongchen.co/index.xml"
+            type="application/rss+xml"
+            class="iconfont icon-rss"
+            title="rss"
+          ></a>
+        </div>
+
+        <div class="copyright">
+          <span class="power-by">
+            Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+          </span>
+          <span class="division">|</span>
+          <span class="theme-info">
+            Theme -
+            <a
+              class="theme-link"
+              href="https://github.com/olOwOlo/hugo-theme-even"
+              >Even</a
+            >
+          </span>
+
+          <span class="copyright-year">
+            &copy; 2018 - 2020
+            <span class="heart">
+              <i class="iconfont icon-heart"></i>
+            </span>
+            <span class="author">Dong Chen</span>
+          </span>
+        </div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
       </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:dongchensteven@gmail.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://www.linkedin.com/in/dongchensteven" class="iconfont icon-linkedin" title="linkedin"></a>
-      <a href="https://github.com/dongchensteven" class="iconfont icon-github" title="github"></a>
-  <a href="https://dongchen.co/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
-
-<div class="copyright">
-  <span class="power-by">
-    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    Theme - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2018 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">Dong Chen</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
     </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
-  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
-    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
-    timeago().render(document.querySelectorAll('.timeago'), languageCode);
-    timeago.cancel();  
-  </script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js"
+      integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js"
+      integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js"
+      integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js"
+      integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      <!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+      var languageCode = "en"
+        .replace(/-/g, "_")
+        .replace(/_(.*)/, function ($0, $1) {
+          return $0.replace($1, $1.toUpperCase());
+        });
+      timeago().render(document.querySelectorAll(".timeago"), languageCode);
+      timeago.cancel();
+    </script>
+    <script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-133226289-1', 'auto');
-	ga('set', 'anonymizeIp', true);
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-
-
-
-
-
-
-</body>
+    <script type="application/javascript">
+      var doNotTrack = false;
+      if (!doNotTrack) {
+        window.ga =
+          window.ga ||
+          function () {
+            (ga.q = ga.q || []).push(arguments);
+          };
+        ga.l = +new Date();
+        ga("create", "UA-133226289-1", "auto");
+        ga("set", "anonymizeIp", true);
+        ga("send", "pageview");
+      }
+    </script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
+  </body>
 </html>

@@ -1,425 +1,680 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>6. Modularization and Decoupling - Maven - Dong - A place to track my time log</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+      6. Modularization and Decoupling - Maven - Dong - A place to track my time
+      log
+    </title>
+    <meta name="renderer" content="webkit" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
 
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+    <meta name="theme-color" content="#f8f5ec" />
+    <meta name="msapplication-navbutton-color" content="#f8f5ec" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec" />
 
+    <meta name="author" content="Dong Chen" />
+    <meta
+      name="description"
+      content="Through the maven modularization mechanism, we can separate different types of functions and store them in different modules.
+"
+    />
+    <meta name="keywords" content="Java, Spring, Decoupling" />
 
-<meta name="author" content="Dong Chen" /><meta name="description" content="Through the maven modularization mechanism, we can separate different types of functions and store them in different modules.
-" /><meta name="keywords" content="Java, Spring, Decoupling" />
+    <meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
 
+    <link
+      rel="canonical"
+      href="https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/6.-modularization-and-decoupling-maven/"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
 
+    <link href="/dist/even.ea128f8b.min.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css"
+      integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
 
+    <meta
+      property="og:title"
+      content="6. Modularization and Decoupling - Maven"
+    />
+    <meta
+      property="og:description"
+      content="Through the maven modularization mechanism, we can separate different types of functions and store them in different modules."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/6.-modularization-and-decoupling-maven/"
+    />
+    <meta
+      property="article:published_time"
+      content="2019-04-29T05:47:50&#43;12:00"
+    />
+    <meta
+      property="article:modified_time"
+      content="2019-04-29T05:47:50&#43;12:00"
+    />
 
+    <meta itemprop="name" content="6. Modularization and Decoupling - Maven" />
+    <meta
+      itemprop="description"
+      content="Through the maven modularization mechanism, we can separate different types of functions and store them in different modules."
+    />
 
+    <meta itemprop="datePublished" content="2019-04-29T05:47:50&#43;12:00" />
+    <meta itemprop="dateModified" content="2019-04-29T05:47:50&#43;12:00" />
+    <meta itemprop="wordCount" content="734" />
 
-<meta name="generator" content="Hugo 0.55.6 with even 4.0.0" />
+    <meta
+      itemprop="keywords"
+      content="Java,Spring,Spring Stack,Spring Framework,Maven Modularization,"
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="6. Modularization and Decoupling - Maven"
+    />
+    <meta
+      name="twitter:description"
+      content="Through the maven modularization mechanism, we can separate different types of functions and store them in different modules."
+    />
 
+    <!--[if lte IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+    <![endif]-->
 
-<link rel="canonical" href="https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/6.-modularization-and-decoupling-maven/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-<link href="/dist/even.ea128f8b.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/styles.css">
-
-
-<meta property="og:title" content="6. Modularization and Decoupling - Maven" />
-<meta property="og:description" content="Through the maven modularization mechanism, we can separate different types of functions and store them in different modules." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://dongchen.co/post/simple-but-profound/server-side-programming/java/spring-stack-developer/6.-modularization-and-decoupling-maven/" />
-<meta property="article:published_time" content="2019-04-29T05:47:50&#43;12:00"/>
-<meta property="article:modified_time" content="2019-04-29T05:47:50&#43;12:00"/>
-
-<meta itemprop="name" content="6. Modularization and Decoupling - Maven">
-<meta itemprop="description" content="Through the maven modularization mechanism, we can separate different types of functions and store them in different modules.">
-
-
-<meta itemprop="datePublished" content="2019-04-29T05:47:50&#43;12:00" />
-<meta itemprop="dateModified" content="2019-04-29T05:47:50&#43;12:00" />
-<meta itemprop="wordCount" content="734">
-
-
-
-<meta itemprop="keywords" content="Java,Spring,Spring Stack,Spring Framework,Maven Modularization," />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="6. Modularization and Decoupling - Maven"/>
-<meta name="twitter:description" content="Through the maven modularization mechanism, we can separate different types of functions and store them in different modules."/>
-
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
-
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
-
-</head>
-<body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">Dong</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">Home</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">Archives</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">Tags</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">Dong</a>
-</div>
-
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">Home</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">Archives</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">Categories</a>
-      </li>
-  </ul>
-</nav>
-    </header>
-
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
-    
-    <header class="post-header">
-      <h1 class="post-title">6. Modularization and Decoupling - Maven</h1>
-
-      <div class="post-meta">
-        <span class="post-time"> Mon Apr 29 2019 </span>
-        <div class="post-category">
-            <a href="/categories/spring-stack-developer-simple-but-profound/"> Spring Stack Developer: Simple But Profound </a>
-            </div>
-          <span class="more-meta"> 734 words </span>
-          <span class="more-meta"> 4 mins read </span>
-        
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div id="mobile-navbar" class="mobile-navbar">
+      <div class="mobile-header-logo">
+        <a href="/" class="logo">Dong</a>
       </div>
-    </header>
-
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">Contents</h2>
-  <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#create-maven-modules">Create Maven Modules</a>
-<ul>
-<li><a href="#create-common-module">Create Common Module</a></li>
-<li><a href="#create-service-module">Create Service Module</a></li>
-<li><a href="#create-controller-module">Create Controller Module</a></li>
-</ul></li>
-<li><a href="#migrate-files-to-correspondent-modules">Migrate Files to Correspondent Modules</a>
-<ul>
-<li><a href="#migrate-common-module-related-files">Migrate Common Module Related Files</a></li>
-<li><a href="#migrate-service-module-related-files">Migrate Service Module Related Files</a>
-<ul>
-<li><a href="#service-package">Service Package</a></li>
-<li><a href="#config-package">Config Package</a></li>
-<li><a href="#mapper-package">Mapper Package</a></li>
-<li><a href="#resources-directory">Resources Directory</a></li>
-</ul></li>
-<li><a href="#migrate-controller-module-related-files">Migrate Controller Module Related Files</a>
-<ul>
-<li><a href="#shop-package">Shop Package</a></li>
-<li><a href="#controller-package">Controller Package</a></li>
-<li><a href="#resources-directory-1">Resources Directory</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#move-maven-dependencies-into-related-modules">Move Maven Dependencies into Related Modules</a>
-<ul>
-<li><a href="#common-module">Common Module</a></li>
-<li><a href="#service-module">Service Module</a></li>
-<li><a href="#controller-module">Controller Module</a></li>
-</ul></li>
-<li><a href="#verify">Verify</a>
-<ul>
-<li><a href="#run-the-app">Run the App</a></li>
-<li><a href="#view-home-page-in-the-browser">View Home Page in the Browser</a></li>
-</ul></li>
-</ul>
-</nav>
-  </div>
-</div>
-    <div class="post-content">
-      <p>Through the maven modularization mechanism, we can separate different types of functions and store them in different modules.</p>
-
-<h1 id="create-maven-modules">Create Maven Modules</h1>
-
-<h2 id="create-common-module">Create Common Module</h2>
-
-<ul>
-<li>Right click shop (project) directory: New &gt; Module</li>
-<li>Choose &ldquo;Maven&rdquo;</li>
-<li>Tick &ldquo;Create from archetype&rdquo; checkbox option</li>
-<li>Scroll down a little bit and choose &ldquo;maven-archetype-quickstart&rdquo;, click &ldquo;Next&rdquo; button</li>
-</ul>
-
-<figure>
-    <img src="../images/6/new_module_quickstart_step1.png"
-         alt="img"/> 
-</figure>
-
-<ul>
-<li>Fill &ldquo;common&rdquo; in ArtifactId, click &ldquo;Next&rdquo; buttons till the last step</li>
-</ul>
-
-<figure>
-    <img src="../images/6/new_module_quickstart_step2_common.png"
-         alt="img"/> 
-</figure>
-
-<ul>
-<li>Click &ldquo;Finish&rdquo; button</li>
-</ul>
-
-<p>Remove &ldquo;co.dongchen&rdquo; package in java and test directories of the common module</p>
-
-<figure>
-    <img src="../images/6/remove_packages_in_common_module.png"
-         alt="img"/> 
-</figure>
-
-<h2 id="create-service-module">Create Service Module</h2>
-
-<ul>
-<li>Right click shop (project) directory: New &gt; Module</li>
-<li>Choose &ldquo;Maven&rdquo;</li>
-<li>Tick &ldquo;Create from archetype&rdquo; checkbox option</li>
-<li>Scroll down a little bit and choose &ldquo;maven-archetype-quickstart&rdquo;, click &ldquo;Next&rdquo; button</li>
-</ul>
-
-<figure>
-    <img src="../images/6/new_module_quickstart_step1.png"
-         alt="img"/> 
-</figure>
-
-<ul>
-<li>Fill &ldquo;service&rdquo; in ArtifactId, click &ldquo;Next&rdquo; buttons till the last step</li>
-</ul>
-
-<figure>
-    <img src="../images/6/new_module_quickstart_step2_service.png"
-         alt="img"/> 
-</figure>
-
-<ul>
-<li>Click &ldquo;Finish&rdquo; button</li>
-</ul>
-
-<p>Remove &ldquo;co.dongchen&rdquo; package in java and test directories of the service module</p>
-
-<figure>
-    <img src="../images/6/remove_packages_in_service_module.png"
-         alt="img"/> 
-</figure>
-
-<h2 id="create-controller-module">Create Controller Module</h2>
-
-<ul>
-<li>Right click shop (project) directory: New &gt; Module</li>
-<li>Choose &ldquo;Maven&rdquo;</li>
-<li>Tick &ldquo;Create from archetype&rdquo; checkbox option</li>
-<li>Scroll down a little bit and choose &ldquo;maven-archetype-quickstart&rdquo;, click &ldquo;Next&rdquo; button</li>
-</ul>
-
-<figure>
-    <img src="../images/6/new_module_quickstart_step1.png"
-         alt="img"/> 
-</figure>
-
-<ul>
-<li>Fill &ldquo;controller&rdquo; in ArtifactId, click &ldquo;Next&rdquo; buttons till the last step</li>
-</ul>
-
-<figure>
-    <img src="../images/6/new_module_quickstart_step2_controller.png"
-         alt="img"/> 
-</figure>
-
-<ul>
-<li>Click &ldquo;Finish&rdquo; button</li>
-</ul>
-
-<p>Remove &ldquo;co.dongchen&rdquo; package in java and test directories of the service module</p>
-
-<figure>
-    <img src="../images/6/remove_packages_in_controller_module.png"
-         alt="img"/> 
-</figure>
-
-<h1 id="migrate-files-to-correspondent-modules">Migrate Files to Correspondent Modules</h1>
-
-<h2 id="migrate-common-module-related-files">Migrate Common Module Related Files</h2>
-
-<ul>
-<li>Right click common/src/main/java directory: New &gt; Package</li>
-<li>Fill in &ldquo;co.dongchen.shop.common.model&rdquo;</li>
-<li>Click &ldquo;Finish&rdquo; button</li>
-</ul>
-
-<figure>
-    <img src="../images/6/new_package_common_model.png"
-         alt="img"/> 
-</figure>
-
-<p>Drag the Product.java file in from the &ldquo;shop/src/main/java/co.dongchen.shop.common.model&rdquo; package, and remove the empty package.</p>
-
-<h2 id="migrate-service-module-related-files">Migrate Service Module Related Files</h2>
-
-<h3 id="service-package">Service Package</h3>
-
-<ul>
-<li>Right click service/src/main/java directory: New &gt; Package</li>
-<li>Fill in &ldquo;co.dongchen.shop.service&rdquo;</li>
-<li>Click &ldquo;Finish&rdquo; button</li>
-</ul>
-
-<figure>
-    <img src="../images/6/new_package_service_service.png"
-         alt="img"/> 
-</figure>
-
-<p>Drag the ProductService.java file in from the &ldquo;shop/src/main/java/co.dongchen.shop.service&rdquo; package, and remove the empty package.</p>
-
-<h3 id="config-package">Config Package</h3>
-
-<ul>
-<li>Right click service/src/main/java directory: New &gt; Package</li>
-<li>Fill in &ldquo;co.dongchen.shop.config&rdquo;</li>
-<li>Click &ldquo;Finish&rdquo; button</li>
-</ul>
-
-<figure>
-    <img src="../images/6/new_package_service_config.png"
-         alt="img"/> 
-</figure>
-
-<p>Drag the DruidConfig.java file in from the &ldquo;shop/src/main/java/co.dongchen.shop.config&rdquo; package, and remove the empty package.</p>
-
-<h3 id="mapper-package">Mapper Package</h3>
-
-<ul>
-<li>Right click service/src/main/java directory: New &gt; Package</li>
-<li>Fill in &ldquo;co.dongchen.shop.mapper&rdquo;</li>
-<li>Click &ldquo;Finish&rdquo; button</li>
-</ul>
-
-<figure>
-    <img src="../images/6/new_package_service_mapper.png"
-         alt="img"/> 
-</figure>
-
-<p>Drag the ProductMapper.java file in from the &ldquo;shop/src/main/java/co.dongchen.shop.mapper&rdquo; package, and remove the empty package.</p>
-
-<h3 id="resources-directory">Resources Directory</h3>
-
-<ul>
-<li>Right click service/src/main directory: New &gt; Directory</li>
-<li>Fill in &ldquo;resources&rdquo;</li>
-<li>Click &ldquo;Finish&rdquo; button</li>
-</ul>
-
-<figure>
-    <img src="../images/6/new_directory_resources_service.png"
-         alt="img"/> 
-</figure>
-
-<p>Drag both the mapper and mybatis directories in from the &ldquo;shop/src/main/resources&rdquo; directory</p>
-
-<h2 id="migrate-controller-module-related-files">Migrate Controller Module Related Files</h2>
-
-<h3 id="shop-package">Shop Package</h3>
-
-<ul>
-<li>Right click controller/src/main/java directory: New &gt; Package</li>
-<li>Fill in &ldquo;co.dongchen.shop&rdquo;</li>
-<li>Click &ldquo;Finish&rdquo; button</li>
-</ul>
-
-<figure>
-    <img src="../images/6/new_package_controller_application.png"
-         alt="img"/> 
-</figure>
-
-<p>Drag the ShopApplication.java file in from the &ldquo;shop/src/main/java/co.dongchen.shop&rdquo; package</p>
-
-<h3 id="controller-package">Controller Package</h3>
-
-<ul>
-<li>Right click controller/src/main/java directory: New &gt; Package</li>
-<li>Fill in &ldquo;co.dongchen.shop.controller&rdquo;</li>
-<li>Click &ldquo;Finish&rdquo; button</li>
-</ul>
-
-<figure>
-    <img src="../images/6/new_package_controller_controller.png"
-         alt="img"/> 
-</figure>
-
-<p>Drag both the FreeMarkerController.java and ProductController.java files in from the &ldquo;shop/src/main/java/co.dongchen.shop.controller&rdquo; package, and remove the empty package.</p>
-
-<h3 id="resources-directory-1">Resources Directory</h3>
-
-<ul>
-<li>Right click controller/src/main directory: New &gt; Directory</li>
-<li>Fill in &ldquo;resources&rdquo;</li>
-<li>Click &ldquo;Finish&rdquo; button</li>
-</ul>
-
-<figure>
-    <img src="../images/6/new_directory_resources_controller.png"
-         alt="img"/> 
-</figure>
-
-<p>Drag both the templates directory and the application.properties file in from the &ldquo;shop/src/main/resources&rdquo; directory.</p>
-
-<h1 id="move-maven-dependencies-into-related-modules">Move Maven Dependencies into Related Modules</h1>
-
-<h2 id="common-module">Common Module</h2>
-
-<p>Move the following dependencies from &ldquo;shop/pom.xml&rdquo; to &ldquo;common/pom.xml&rdquo;:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt"> 1
+      <div class="mobile-navbar-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <nav id="mobile-menu" class="mobile-menu slideout-menu">
+      <ul class="mobile-menu-list">
+        <a href="/">
+          <li class="mobile-menu-item">Home</li> </a
+        ><a href="/post/">
+          <li class="mobile-menu-item">Archives</li> </a
+        ><a href="/tags/">
+          <li class="mobile-menu-item">Tags</li> </a
+        ><a href="/categories/">
+          <li class="mobile-menu-item">Categories</li> </a
+        ><a href="https://ergate.com/" target="_blank">
+          <li class="mobile-menu-item">Visit ERGATE</li>
+        </a>
+      </ul>
+    </nav>
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header">
+        <div class="logo-wrapper">
+          <a href="/" class="logo">Dong</a>
+        </div>
+
+        <nav class="site-navbar">
+          <ul id="menu" class="menu">
+            <li class="menu-item">
+              <a class="menu-item-link" href="/">Home</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/post/">Archives</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/tags/">Tags</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-item-link" href="/categories/">Categories</a>
+            </li>
+            <li class="menu-item">
+              <a
+                class="menu-item-link"
+                href="https://ergate.com/"
+                target="_blank"
+                >Visit ERGATE</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            <article class="post">
+              <header class="post-header">
+                <h1 class="post-title">
+                  6. Modularization and Decoupling - Maven
+                </h1>
+
+                <div class="post-meta">
+                  <span class="post-time"> Mon Apr 29 2019 </span>
+                  <div class="post-category">
+                    <a
+                      href="/categories/spring-stack-developer-simple-but-profound/"
+                    >
+                      Spring Stack Developer: Simple But Profound
+                    </a>
+                  </div>
+                  <span class="more-meta"> 734 words </span>
+                  <span class="more-meta"> 4 mins read </span>
+                </div>
+              </header>
+
+              <div class="post-toc" id="post-toc">
+                <h2 class="post-toc-title">Contents</h2>
+                <div class="post-toc-content always-active">
+                  <nav id="TableOfContents">
+                    <ul>
+                      <li>
+                        <a href="#create-maven-modules">Create Maven Modules</a>
+                        <ul>
+                          <li>
+                            <a href="#create-common-module"
+                              >Create Common Module</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#create-service-module"
+                              >Create Service Module</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#create-controller-module"
+                              >Create Controller Module</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="#migrate-files-to-correspondent-modules"
+                          >Migrate Files to Correspondent Modules</a
+                        >
+                        <ul>
+                          <li>
+                            <a href="#migrate-common-module-related-files"
+                              >Migrate Common Module Related Files</a
+                            >
+                          </li>
+                          <li>
+                            <a href="#migrate-service-module-related-files"
+                              >Migrate Service Module Related Files</a
+                            >
+                            <ul>
+                              <li>
+                                <a href="#service-package">Service Package</a>
+                              </li>
+                              <li>
+                                <a href="#config-package">Config Package</a>
+                              </li>
+                              <li>
+                                <a href="#mapper-package">Mapper Package</a>
+                              </li>
+                              <li>
+                                <a href="#resources-directory"
+                                  >Resources Directory</a
+                                >
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a href="#migrate-controller-module-related-files"
+                              >Migrate Controller Module Related Files</a
+                            >
+                            <ul>
+                              <li><a href="#shop-package">Shop Package</a></li>
+                              <li>
+                                <a href="#controller-package"
+                                  >Controller Package</a
+                                >
+                              </li>
+                              <li>
+                                <a href="#resources-directory-1"
+                                  >Resources Directory</a
+                                >
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="#move-maven-dependencies-into-related-modules"
+                          >Move Maven Dependencies into Related Modules</a
+                        >
+                        <ul>
+                          <li><a href="#common-module">Common Module</a></li>
+                          <li><a href="#service-module">Service Module</a></li>
+                          <li>
+                            <a href="#controller-module">Controller Module</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="#verify">Verify</a>
+                        <ul>
+                          <li><a href="#run-the-app">Run the App</a></li>
+                          <li>
+                            <a href="#view-home-page-in-the-browser"
+                              >View Home Page in the Browser</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+              <div class="post-content">
+                <p>
+                  Through the maven modularization mechanism, we can separate
+                  different types of functions and store them in different
+                  modules.
+                </p>
+
+                <h1 id="create-maven-modules">Create Maven Modules</h1>
+
+                <h2 id="create-common-module">Create Common Module</h2>
+
+                <ul>
+                  <li>Right click shop (project) directory: New &gt; Module</li>
+                  <li>Choose &ldquo;Maven&rdquo;</li>
+                  <li>
+                    Tick &ldquo;Create from archetype&rdquo; checkbox option
+                  </li>
+                  <li>
+                    Scroll down a little bit and choose
+                    &ldquo;maven-archetype-quickstart&rdquo;, click
+                    &ldquo;Next&rdquo; button
+                  </li>
+                </ul>
+
+                <figure>
+                  <img
+                    src="../images/6/new_module_quickstart_step1.png"
+                    alt="img"
+                  />
+                </figure>
+
+                <ul>
+                  <li>
+                    Fill &ldquo;common&rdquo; in ArtifactId, click
+                    &ldquo;Next&rdquo; buttons till the last step
+                  </li>
+                </ul>
+
+                <figure>
+                  <img
+                    src="../images/6/new_module_quickstart_step2_common.png"
+                    alt="img"
+                  />
+                </figure>
+
+                <ul>
+                  <li>Click &ldquo;Finish&rdquo; button</li>
+                </ul>
+
+                <p>
+                  Remove &ldquo;co.dongchen&rdquo; package in java and test
+                  directories of the common module
+                </p>
+
+                <figure>
+                  <img
+                    src="../images/6/remove_packages_in_common_module.png"
+                    alt="img"
+                  />
+                </figure>
+
+                <h2 id="create-service-module">Create Service Module</h2>
+
+                <ul>
+                  <li>Right click shop (project) directory: New &gt; Module</li>
+                  <li>Choose &ldquo;Maven&rdquo;</li>
+                  <li>
+                    Tick &ldquo;Create from archetype&rdquo; checkbox option
+                  </li>
+                  <li>
+                    Scroll down a little bit and choose
+                    &ldquo;maven-archetype-quickstart&rdquo;, click
+                    &ldquo;Next&rdquo; button
+                  </li>
+                </ul>
+
+                <figure>
+                  <img
+                    src="../images/6/new_module_quickstart_step1.png"
+                    alt="img"
+                  />
+                </figure>
+
+                <ul>
+                  <li>
+                    Fill &ldquo;service&rdquo; in ArtifactId, click
+                    &ldquo;Next&rdquo; buttons till the last step
+                  </li>
+                </ul>
+
+                <figure>
+                  <img
+                    src="../images/6/new_module_quickstart_step2_service.png"
+                    alt="img"
+                  />
+                </figure>
+
+                <ul>
+                  <li>Click &ldquo;Finish&rdquo; button</li>
+                </ul>
+
+                <p>
+                  Remove &ldquo;co.dongchen&rdquo; package in java and test
+                  directories of the service module
+                </p>
+
+                <figure>
+                  <img
+                    src="../images/6/remove_packages_in_service_module.png"
+                    alt="img"
+                  />
+                </figure>
+
+                <h2 id="create-controller-module">Create Controller Module</h2>
+
+                <ul>
+                  <li>Right click shop (project) directory: New &gt; Module</li>
+                  <li>Choose &ldquo;Maven&rdquo;</li>
+                  <li>
+                    Tick &ldquo;Create from archetype&rdquo; checkbox option
+                  </li>
+                  <li>
+                    Scroll down a little bit and choose
+                    &ldquo;maven-archetype-quickstart&rdquo;, click
+                    &ldquo;Next&rdquo; button
+                  </li>
+                </ul>
+
+                <figure>
+                  <img
+                    src="../images/6/new_module_quickstart_step1.png"
+                    alt="img"
+                  />
+                </figure>
+
+                <ul>
+                  <li>
+                    Fill &ldquo;controller&rdquo; in ArtifactId, click
+                    &ldquo;Next&rdquo; buttons till the last step
+                  </li>
+                </ul>
+
+                <figure>
+                  <img
+                    src="../images/6/new_module_quickstart_step2_controller.png"
+                    alt="img"
+                  />
+                </figure>
+
+                <ul>
+                  <li>Click &ldquo;Finish&rdquo; button</li>
+                </ul>
+
+                <p>
+                  Remove &ldquo;co.dongchen&rdquo; package in java and test
+                  directories of the service module
+                </p>
+
+                <figure>
+                  <img
+                    src="../images/6/remove_packages_in_controller_module.png"
+                    alt="img"
+                  />
+                </figure>
+
+                <h1 id="migrate-files-to-correspondent-modules">
+                  Migrate Files to Correspondent Modules
+                </h1>
+
+                <h2 id="migrate-common-module-related-files">
+                  Migrate Common Module Related Files
+                </h2>
+
+                <ul>
+                  <li>
+                    Right click common/src/main/java directory: New &gt; Package
+                  </li>
+                  <li>Fill in &ldquo;co.dongchen.shop.common.model&rdquo;</li>
+                  <li>Click &ldquo;Finish&rdquo; button</li>
+                </ul>
+
+                <figure>
+                  <img
+                    src="../images/6/new_package_common_model.png"
+                    alt="img"
+                  />
+                </figure>
+
+                <p>
+                  Drag the Product.java file in from the
+                  &ldquo;shop/src/main/java/co.dongchen.shop.common.model&rdquo;
+                  package, and remove the empty package.
+                </p>
+
+                <h2 id="migrate-service-module-related-files">
+                  Migrate Service Module Related Files
+                </h2>
+
+                <h3 id="service-package">Service Package</h3>
+
+                <ul>
+                  <li>
+                    Right click service/src/main/java directory: New &gt;
+                    Package
+                  </li>
+                  <li>Fill in &ldquo;co.dongchen.shop.service&rdquo;</li>
+                  <li>Click &ldquo;Finish&rdquo; button</li>
+                </ul>
+
+                <figure>
+                  <img
+                    src="../images/6/new_package_service_service.png"
+                    alt="img"
+                  />
+                </figure>
+
+                <p>
+                  Drag the ProductService.java file in from the
+                  &ldquo;shop/src/main/java/co.dongchen.shop.service&rdquo;
+                  package, and remove the empty package.
+                </p>
+
+                <h3 id="config-package">Config Package</h3>
+
+                <ul>
+                  <li>
+                    Right click service/src/main/java directory: New &gt;
+                    Package
+                  </li>
+                  <li>Fill in &ldquo;co.dongchen.shop.config&rdquo;</li>
+                  <li>Click &ldquo;Finish&rdquo; button</li>
+                </ul>
+
+                <figure>
+                  <img
+                    src="../images/6/new_package_service_config.png"
+                    alt="img"
+                  />
+                </figure>
+
+                <p>
+                  Drag the DruidConfig.java file in from the
+                  &ldquo;shop/src/main/java/co.dongchen.shop.config&rdquo;
+                  package, and remove the empty package.
+                </p>
+
+                <h3 id="mapper-package">Mapper Package</h3>
+
+                <ul>
+                  <li>
+                    Right click service/src/main/java directory: New &gt;
+                    Package
+                  </li>
+                  <li>Fill in &ldquo;co.dongchen.shop.mapper&rdquo;</li>
+                  <li>Click &ldquo;Finish&rdquo; button</li>
+                </ul>
+
+                <figure>
+                  <img
+                    src="../images/6/new_package_service_mapper.png"
+                    alt="img"
+                  />
+                </figure>
+
+                <p>
+                  Drag the ProductMapper.java file in from the
+                  &ldquo;shop/src/main/java/co.dongchen.shop.mapper&rdquo;
+                  package, and remove the empty package.
+                </p>
+
+                <h3 id="resources-directory">Resources Directory</h3>
+
+                <ul>
+                  <li>
+                    Right click service/src/main directory: New &gt; Directory
+                  </li>
+                  <li>Fill in &ldquo;resources&rdquo;</li>
+                  <li>Click &ldquo;Finish&rdquo; button</li>
+                </ul>
+
+                <figure>
+                  <img
+                    src="../images/6/new_directory_resources_service.png"
+                    alt="img"
+                  />
+                </figure>
+
+                <p>
+                  Drag both the mapper and mybatis directories in from the
+                  &ldquo;shop/src/main/resources&rdquo; directory
+                </p>
+
+                <h2 id="migrate-controller-module-related-files">
+                  Migrate Controller Module Related Files
+                </h2>
+
+                <h3 id="shop-package">Shop Package</h3>
+
+                <ul>
+                  <li>
+                    Right click controller/src/main/java directory: New &gt;
+                    Package
+                  </li>
+                  <li>Fill in &ldquo;co.dongchen.shop&rdquo;</li>
+                  <li>Click &ldquo;Finish&rdquo; button</li>
+                </ul>
+
+                <figure>
+                  <img
+                    src="../images/6/new_package_controller_application.png"
+                    alt="img"
+                  />
+                </figure>
+
+                <p>
+                  Drag the ShopApplication.java file in from the
+                  &ldquo;shop/src/main/java/co.dongchen.shop&rdquo; package
+                </p>
+
+                <h3 id="controller-package">Controller Package</h3>
+
+                <ul>
+                  <li>
+                    Right click controller/src/main/java directory: New &gt;
+                    Package
+                  </li>
+                  <li>Fill in &ldquo;co.dongchen.shop.controller&rdquo;</li>
+                  <li>Click &ldquo;Finish&rdquo; button</li>
+                </ul>
+
+                <figure>
+                  <img
+                    src="../images/6/new_package_controller_controller.png"
+                    alt="img"
+                  />
+                </figure>
+
+                <p>
+                  Drag both the FreeMarkerController.java and
+                  ProductController.java files in from the
+                  &ldquo;shop/src/main/java/co.dongchen.shop.controller&rdquo;
+                  package, and remove the empty package.
+                </p>
+
+                <h3 id="resources-directory-1">Resources Directory</h3>
+
+                <ul>
+                  <li>
+                    Right click controller/src/main directory: New &gt;
+                    Directory
+                  </li>
+                  <li>Fill in &ldquo;resources&rdquo;</li>
+                  <li>Click &ldquo;Finish&rdquo; button</li>
+                </ul>
+
+                <figure>
+                  <img
+                    src="../images/6/new_directory_resources_controller.png"
+                    alt="img"
+                  />
+                </figure>
+
+                <p>
+                  Drag both the templates directory and the
+                  application.properties file in from the
+                  &ldquo;shop/src/main/resources&rdquo; directory.
+                </p>
+
+                <h1 id="move-maven-dependencies-into-related-modules">
+                  Move Maven Dependencies into Related Modules
+                </h1>
+
+                <h2 id="common-module">Common Module</h2>
+
+                <p>
+                  Move the following dependencies from
+                  &ldquo;shop/pom.xml&rdquo; to &ldquo;common/pom.xml&rdquo;:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-xml" data-lang="xml"><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -446,9 +701,12 @@
 </span><span class="lnt">25
 </span><span class="lnt">26
 </span><span class="lnt">27
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml">        <span class="nt">&lt;dependency&gt;</span>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-xml" data-lang="xml">        <span class="nt">&lt;dependency&gt;</span>
             <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
             <span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-actuator<span class="nt">&lt;/artifactId&gt;</span>
         <span class="nt">&lt;/dependency&gt;</span>
@@ -474,15 +732,26 @@
             <span class="nt">&lt;groupId&gt;</span>com.google.guava<span class="nt">&lt;/groupId&gt;</span>
             <span class="nt">&lt;artifactId&gt;</span>guava<span class="nt">&lt;/artifactId&gt;</span>
             <span class="nt">&lt;version&gt;</span>27.0-jre<span class="nt">&lt;/version&gt;</span>
-        <span class="nt">&lt;/dependency&gt;</span></code></pre></td></tr></table>
-</div>
-</div>
-<h2 id="service-module">Service Module</h2>
+        <span class="nt">&lt;/dependency&gt;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h2 id="service-module">Service Module</h2>
 
-<p>Move the following dependencies from &ldquo;shop/pom.xml&rdquo; to &ldquo;service/pom.xml&rdquo;:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt"> 1
+                <p>
+                  Move the following dependencies from
+                  &ldquo;shop/pom.xml&rdquo; to &ldquo;service/pom.xml&rdquo;:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-xml" data-lang="xml"><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -493,9 +762,12 @@
 </span><span class="lnt"> 9
 </span><span class="lnt">10
 </span><span class="lnt">11
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml">        <span class="nt">&lt;dependency&gt;</span>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-xml" data-lang="xml">        <span class="nt">&lt;dependency&gt;</span>
             <span class="nt">&lt;groupId&gt;</span>mysql<span class="nt">&lt;/groupId&gt;</span>
             <span class="nt">&lt;artifactId&gt;</span>mysql-connector-java<span class="nt">&lt;/artifactId&gt;</span>
             <span class="nt">&lt;version&gt;</span>8.0.15<span class="nt">&lt;/version&gt;</span>
@@ -505,229 +777,408 @@
             <span class="nt">&lt;groupId&gt;</span>com.alibaba<span class="nt">&lt;/groupId&gt;</span>
             <span class="nt">&lt;artifactId&gt;</span>druid-spring-boot-starter<span class="nt">&lt;/artifactId&gt;</span>
             <span class="nt">&lt;version&gt;</span>1.1.16<span class="nt">&lt;/version&gt;</span>
-        <span class="nt">&lt;/dependency&gt;</span></code></pre></td></tr></table>
-</div>
-</div>
-<p>Add the common module dependency into &ldquo;service/pom.xml&rdquo;:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt">1
+        <span class="nt">&lt;/dependency&gt;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <p>
+                  Add the common module dependency into
+                  &ldquo;service/pom.xml&rdquo;:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-xml" data-lang="xml"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml">        <span class="nt">&lt;dependency&gt;</span>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-xml" data-lang="xml">        <span class="nt">&lt;dependency&gt;</span>
             <span class="nt">&lt;groupId&gt;</span>co.dongchen<span class="nt">&lt;/groupId&gt;</span>
             <span class="nt">&lt;artifactId&gt;</span>common<span class="nt">&lt;/artifactId&gt;</span>
             <span class="nt">&lt;version&gt;</span>0.0.1-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
-        <span class="nt">&lt;/dependency&gt;</span></code></pre></td></tr></table>
-</div>
-</div>
-<h2 id="controller-module">Controller Module</h2>
+        <span class="nt">&lt;/dependency&gt;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h2 id="controller-module">Controller Module</h2>
 
-<p>Move the following dependencies from &ldquo;shop/pom.xml&rdquo; to &ldquo;controller/pom.xml&rdquo;:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt">1
+                <p>
+                  Move the following dependencies from
+                  &ldquo;shop/pom.xml&rdquo; to
+                  &ldquo;controller/pom.xml&rdquo;:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-xml" data-lang="xml"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml">        <span class="nt">&lt;dependency&gt;</span>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-xml" data-lang="xml">        <span class="nt">&lt;dependency&gt;</span>
             <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
             <span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-freemarker<span class="nt">&lt;/artifactId&gt;</span>
             <span class="nt">&lt;version&gt;</span>2.1.4.RELEASE<span class="nt">&lt;/version&gt;</span>
-        <span class="nt">&lt;/dependency&gt;</span></code></pre></td></tr></table>
-</div>
-</div>
-<p>Add the service module dependency into &ldquo;controller/pom.xml&rdquo;:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt">1
+        <span class="nt">&lt;/dependency&gt;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <p>
+                  Add the service module dependency into
+                  &ldquo;controller/pom.xml&rdquo;:
+                </p>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-xml" data-lang="xml"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml">        <span class="nt">&lt;dependency&gt;</span>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-xml" data-lang="xml">        <span class="nt">&lt;dependency&gt;</span>
             <span class="nt">&lt;groupId&gt;</span>co.dongchen<span class="nt">&lt;/groupId&gt;</span>
             <span class="nt">&lt;artifactId&gt;</span>service<span class="nt">&lt;/artifactId&gt;</span>
             <span class="nt">&lt;version&gt;</span>0.0.1-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
-        <span class="nt">&lt;/dependency&gt;</span></code></pre></td></tr></table>
-</div>
-</div>
-<h1 id="verify">Verify</h1>
+        <span class="nt">&lt;/dependency&gt;</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <h1 id="verify">Verify</h1>
 
-<h2 id="run-the-app">Run the App</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-Code" data-lang="Code"><span class="lnt">1
+                <h2 id="run-the-app">Run the App</h2>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-Code" data-lang="Code"><span class="lnt">1
 </span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-Code" data-lang="Code">// Short Cut for &#34;Run the Program&#34;
-Alt + Shift + F10</code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/common/run.png"
-         alt="img"/> 
-</figure>
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-Code" data-lang="Code">// Short Cut for &#34;Run the Program&#34;
+Alt + Shift + F10</code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/common/run.png" alt="img" />
+                </figure>
 
-<p>Choose the correspondent option and press enter.</p>
+                <p>Choose the correspondent option and press enter.</p>
 
-<h2 id="view-home-page-in-the-browser">View Home Page in the Browser</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-http" data-lang="http"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-http" data-lang="http"><span class="err">http://localhost:8080/home</span></code></pre></td></tr></table>
-</div>
-</div>
-<figure>
-    <img src="../images/6/home_page.png"
-         alt="img"/> 
-</figure>
+                <h2 id="view-home-page-in-the-browser">
+                  View Home Page in the Browser
+                </h2>
+                <div class="highlight">
+                  <div class="chroma">
+                    <table class="lntable">
+                      <tr>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-http" data-lang="http"><span class="lnt">1
+</span></code></pre>
+                        </td>
+                        <td class="lntd">
+                          <pre
+                            class="chroma"
+                          ><code class="language-http" data-lang="http"><span class="err">http://localhost:8080/home</span></code></pre>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <figure>
+                  <img src="../images/6/home_page.png" alt="img" />
+                </figure>
 
-<p>Now, our application is modularized.</p>
+                <p>Now, our application is modularized.</p>
 
-<blockquote>
-<p>References
-<a href="https://www.jetbrains.com/help/idea/creating-and-managing-modules.html">Modules</a></p>
-</blockquote>
+                <blockquote>
+                  <p>
+                    References
+                    <a
+                      href="https://www.jetbrains.com/help/idea/creating-and-managing-modules.html"
+                      >Modules</a
+                    >
+                  </p>
+                </blockquote>
 
-<!-- Buy Me a Coffee Button -->
+                <!-- Buy Me a Coffee Button -->
 
-<p class="align-center">
-  <style>.bmc-button img{width: 27px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{line-height: 36px !important;height:37px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#FF813F !important;border-radius: 3px !important;border: 1px solid transparent !important;padding: 1px 9px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/PFou9WhLr"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
-</p>
-    </div>
+                <p class="align-center">
+                  <style>
+                    .bmc-button img {
+                      width: 27px !important;
+                      margin-bottom: 1px !important;
+                      box-shadow: none !important;
+                      border: none !important;
+                      vertical-align: middle !important;
+                    }
+                    .bmc-button {
+                      line-height: 36px !important;
+                      height: 37px !important;
+                      text-decoration: none !important;
+                      display: inline-flex !important;
+                      color: #ffffff !important;
+                      background-color: #ff813f !important;
+                      border-radius: 3px !important;
+                      border: 1px solid transparent !important;
+                      padding: 1px 9px !important;
+                      font-size: 22px !important;
+                      letter-spacing: 0.6px !important;
+                      box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;
+                      -webkit-box-shadow: 0px 1px 2px 2px
+                        rgba(190, 190, 190, 0.5) !important;
+                      margin: 0 auto !important;
+                      font-family: "Cookie", cursive !important;
+                      -webkit-box-sizing: border-box !important;
+                      box-sizing: border-box !important;
+                      -o-transition: 0.3s all linear !important;
+                      -webkit-transition: 0.3s all linear !important;
+                      -moz-transition: 0.3s all linear !important;
+                      -ms-transition: 0.3s all linear !important;
+                      transition: 0.3s all linear !important;
+                    }
+                    .bmc-button:hover,
+                    .bmc-button:active,
+                    .bmc-button:focus {
+                      -webkit-box-shadow: 0px 1px 2px 2px
+                        rgba(190, 190, 190, 0.5) !important;
+                      text-decoration: none !important;
+                      box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;
+                      opacity: 0.85 !important;
+                      color: #ffffff !important;
+                    }</style
+                  ><link
+                    href="https://fonts.googleapis.com/css?family=Cookie"
+                    rel="stylesheet"
+                  /><a
+                    class="bmc-button"
+                    target="_blank"
+                    href="https://www.buymeacoffee.com/PFou9WhLr"
+                    ><img
+                      src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg"
+                      alt="Buy me a coffee"
+                    /><span style="margin-left: 5px">Buy me a coffee</span></a
+                  >
+                </p>
+              </div>
 
-    <div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">Author</span>
-    <span class="item-content">Dong Chen</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">LastMod</span>
-    <span class="item-content">Mon Apr 29 2019</span>
-  </p>
-  
-  
-</div><div class="post-reward">
-  <input type="checkbox" name="reward" id="reward" hidden />
-  <label class="reward-button" for="reward">Reward</label>
-  <div class="qr-code">
-    
-    <label class="qr-code-image" for="reward">
-        <img class="image" src="https://dongchen.co/images/wepay_qr_final.png">
-        <span>wechat</span>
-      </label>
-    <label class="qr-code-image" for="reward">
-        <img class="image" src="https://dongchen.co/images/alipay_qr_final.png">
-        <span>alipay</span>
-      </label>
-  </div>
-</div><footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/java/">Java</a>
-          <a href="/tags/spring/">Spring</a>
-          <a href="/tags/spring-stack/">Spring Stack</a>
-          <a href="/tags/spring-framework/">Spring Framework</a>
-          <a href="/tags/maven-modularization/">Maven Modularization</a>
+              <div class="post-copyright">
+                <p class="copyright-item">
+                  <span class="item-title">Author</span>
+                  <span class="item-content">Dong Chen</span>
+                </p>
+                <p class="copyright-item">
+                  <span class="item-title">LastMod</span>
+                  <span class="item-content">Mon Apr 29 2019</span>
+                </p>
+              </div>
+              <div class="post-reward">
+                <input type="checkbox" name="reward" id="reward" hidden />
+                <label class="reward-button" for="reward">Reward</label>
+                <div class="qr-code">
+                  <label class="qr-code-image" for="reward">
+                    <img
+                      class="image"
+                      src="https://dongchen.co/images/wepay_qr_final.png"
+                    />
+                    <span>wechat</span>
+                  </label>
+                  <label class="qr-code-image" for="reward">
+                    <img
+                      class="image"
+                      src="https://dongchen.co/images/alipay_qr_final.png"
+                    />
+                    <span>alipay</span>
+                  </label>
+                </div>
+              </div>
+              <footer class="post-footer">
+                <div class="post-tags">
+                  <a href="/tags/java/">Java</a>
+                  <a href="/tags/spring/">Spring</a>
+                  <a href="/tags/spring-stack/">Spring Stack</a>
+                  <a href="/tags/spring-framework/">Spring Framework</a>
+                  <a href="/tags/maven-modularization/">Maven Modularization</a>
+                </div>
+                <nav class="post-nav">
+                  <a
+                    class="prev"
+                    href="/post/simple-but-profound/server-side-programming/java/spring-stack-developer/7.-user-registration-spring-security/"
+                  >
+                    <i class="iconfont icon-left"></i>
+                    <span class="prev-text nav-default"
+                      >7. User Registration - Spring Security</span
+                    >
+                    <span class="prev-text nav-mobile">Prev</span>
+                  </a>
+                  <a
+                    class="next"
+                    href="/post/simple-but-profound/server-side-programming/java/spring-stack-developer/5.-template-engine-apache-freemarker-macro/"
+                  >
+                    <span class="next-text nav-default"
+                      >5. Template Engine - Apache FreeMarker Macro</span
+                    >
+                    <span class="next-text nav-mobile">Next</span>
+                    <i class="iconfont icon-right"></i>
+                  </a>
+                </nav>
+              </footer>
+            </article>
           </div>
-      <nav class="post-nav">
-        <a class="prev" href="/post/simple-but-profound/server-side-programming/java/spring-stack-developer/7.-user-registration-spring-security/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">7. User Registration - Spring Security</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        <a class="next" href="/post/simple-but-profound/server-side-programming/java/spring-stack-developer/5.-template-engine-apache-freemarker-macro/">
-            <span class="next-text nav-default">5. Template Engine - Apache FreeMarker Macro</span>
-            <span class="next-text nav-mobile">Next</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
         </div>
-        
+      </main>
 
+      <footer id="footer" class="footer">
+        <div class="social-links">
+          <a
+            href="mailto:dongchensteven@gmail.com"
+            class="iconfont icon-email"
+            title="email"
+          ></a>
+          <a
+            href="https://www.linkedin.com/in/dongchensteven"
+            class="iconfont icon-linkedin"
+            title="linkedin"
+          ></a>
+          <a
+            href="https://github.com/dongchensteven"
+            class="iconfont icon-github"
+            title="github"
+          ></a>
+          <a
+            href="https://dongchen.co/index.xml"
+            type="application/rss+xml"
+            class="iconfont icon-rss"
+            title="rss"
+          ></a>
+        </div>
+
+        <div class="copyright">
+          <span class="power-by">
+            Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+          </span>
+          <span class="division">|</span>
+          <span class="theme-info">
+            Theme -
+            <a
+              class="theme-link"
+              href="https://github.com/olOwOlo/hugo-theme-even"
+              >Even</a
+            >
+          </span>
+
+          <span class="copyright-year">
+            &copy; 2018 - 2020
+            <span class="heart">
+              <i class="iconfont icon-heart"></i>
+            </span>
+            <span class="author">Dong Chen</span>
+          </span>
+        </div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
       </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:dongchensteven@gmail.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://www.linkedin.com/in/dongchensteven" class="iconfont icon-linkedin" title="linkedin"></a>
-      <a href="https://github.com/dongchensteven" class="iconfont icon-github" title="github"></a>
-  <a href="https://dongchen.co/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
-
-<div class="copyright">
-  <span class="power-by">
-    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    Theme - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2018 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">Dong Chen</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
     </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
-  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
-    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
-    timeago().render(document.querySelectorAll('.timeago'), languageCode);
-    timeago.cancel();  
-  </script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js"
+      integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js"
+      integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js"
+      integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js"
+      integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      <!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+      var languageCode = "en"
+        .replace(/-/g, "_")
+        .replace(/_(.*)/, function ($0, $1) {
+          return $0.replace($1, $1.toUpperCase());
+        });
+      timeago().render(document.querySelectorAll(".timeago"), languageCode);
+      timeago.cancel();
+    </script>
+    <script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-133226289-1', 'auto');
-	ga('set', 'anonymizeIp', true);
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-
-
-
-
-
-
-</body>
+    <script type="application/javascript">
+      var doNotTrack = false;
+      if (!doNotTrack) {
+        window.ga =
+          window.ga ||
+          function () {
+            (ga.q = ga.q || []).push(arguments);
+          };
+        ga.l = +new Date();
+        ga("create", "UA-133226289-1", "auto");
+        ga("set", "anonymizeIp", true);
+        ga("send", "pageview");
+      }
+    </script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
+  </body>
 </html>
